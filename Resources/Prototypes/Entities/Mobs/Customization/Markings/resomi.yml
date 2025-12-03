@@ -61,7 +61,7 @@
   groupWhitelist: [Resomi]
   sprites:
   - sprite: Mobs/Customization/resomi_parts.rsi
-    state: fluff_head
+    state: resomi_fluff_head
 
 - type: marking
   id: ResomiFluffHeadUp
@@ -87,7 +87,7 @@
   bodyPart: HeadSide
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
+  - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_1
 
 - type: marking
@@ -95,7 +95,7 @@
   bodyPart: HeadSide
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
+  - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_2
 
 - type: marking
@@ -103,7 +103,7 @@
   bodyPart: HeadSide
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
+  - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_3
 
 - type: marking
@@ -111,7 +111,7 @@
   bodyPart: HeadSide
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
+  - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_4
 
 - type: marking
@@ -119,7 +119,7 @@
   bodyPart: HeadSide
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
+  - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_5
 
 - type: marking
@@ -127,20 +127,10 @@
   bodyPart: HeadSide
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
+  - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_6
 
 # Tails
-
-- type: marking
-  id: ResomiTailCombined
-  bodyPart: Chest
-  groupWhitelist: [Resomi, ProtoResomi] #FH
-  sprites:
-  - sprite: Mobs/Customization/resomi_parts.rsi
-    state: tail
-  - sprite: Mobs/Customization/resomi_parts.rsi
-    state: tail_feathers
 
 - type: marking
   id: ResomiTailOne
@@ -176,7 +166,7 @@
 
 - type: marking
   id: ResomiTailFive
-  bodyPart: Head
+  bodyPart: Tail
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_parts.rsi
@@ -243,14 +233,6 @@
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_fluff_groin
-
-- type: marking
-  id: ResomiFluffHeadMarking
-  bodyPart: Head
-  groupWhitelist: [Resomi, ProtoResomi] #FH
-  sprites:
-  - sprite: Mobs/Customization/resomi_markings.rsi
-    state: resomi_fluff_head
 
 - type: marking
   id: ResomiFluffLFoot
@@ -466,8 +448,6 @@
   - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_stripe_torso
 
-
-
 # Jewelry
 
 - type: marking
@@ -552,3 +532,18 @@
   - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_tailbands_2_3
 
+- type: marking
+  id: ResomiHolowingR
+  bodyPart: RHand
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_holowing_r
+
+- type: marking
+  id: ResomiHolowingL
+  bodyPart: LHand
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_holowing_l

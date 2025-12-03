@@ -287,6 +287,11 @@
 - type: entity
   parent: [ DamageableLimbVisualsResomi, OrganBaseHeadSexed, OrganBaseHead, OrganResomiExternal ]
   id: OrganResomiHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.HeadSide
 
 - type: entity
   parent: [ DamageableLimbVisualsResomi, OrganBaseArmLeft, OrganResomiExternal ]

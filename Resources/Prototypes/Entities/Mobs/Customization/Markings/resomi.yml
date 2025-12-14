@@ -2,7 +2,6 @@
   id: ResomiTail
   bodyPart: Tail
   groupWhitelist: [Resomi, ProtoResomi] #FH
-  forcedColoring: true
   sprites:
   - sprite: Mobs/Customization/resomi_parts.rsi
     state: tail
@@ -12,6 +11,18 @@
   bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: tail_feathers
+
+# This marking has no difference between the others above, It's just combined to hopefully reduce the confusion of having to use the bare tail and tail feathers for just a simple tail'
+
+- type: marking
+  id: ResomiBasicTail
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: tail
   - sprite: Mobs/Customization/resomi_parts.rsi
     state: tail_feathers
 
@@ -130,7 +141,7 @@
   - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_ears_marking_6
 
-# Tails
+# Tail Marking Patterns
 
 - type: marking
   id: ResomiTailOne
@@ -171,8 +182,6 @@
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_tail_5
-
-# Resomi Markings ported from ss13 Teshari
 
 # Resomi Coat Markings
 
@@ -547,3 +556,125 @@
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
     state: resomi_holowing_l
+
+# Prosthetic/Damaged tails ported from @Greenjoe12345 PR https://github.com/PolarisSS13/Polaris/pull/6880
+
+- type: marking
+  id: ResomiDamagedProstheticHighTech
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged_prosthetic_high_tech
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged
+
+
+- type: marking
+  id: ResomiDamagedProstheticUnbranded
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged_prosthetic_unbranded
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged
+
+- type: marking
+  id: ResomiDamagedProstheticWood
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged_prosthetic_wood
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged
+
+- type: marking
+  id: ResomiDamaged
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged
+
+- type: marking
+  id: ResomiDamagedFeathers
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_damaged_feathers
+  
+
+- type: marking
+  id: ResomiNoPlumeFeathers
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_noplume_feathers
+
+- type: marking
+  id: ResomiProstheticHighTech
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_prosthetic_high_tech
+
+- type: marking
+  id: ResomiProstheticUnbranded
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_prosthetic_unbranded
+
+- type: marking
+  id: ResomiStubby
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby
+
+- type: marking
+  id: ResomiStubbyFeathers
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby_feathers
+  
+
+- type: marking
+  id: ResomiStubbyProstheticHighTech
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby_prosthetic_high_tech
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby
+
+- type: marking
+  id: ResomiStubbyProstheticWood
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby_prosthetic_wood
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby
+
+- type: marking
+  id: ResomiStubbyProstheticUnbranded
+  bodyPart: Tail
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby_prosthetic_unbranded
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stubby
+

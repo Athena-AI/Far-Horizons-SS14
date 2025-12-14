@@ -3,14 +3,13 @@
   onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Tail:
-      limit: 1
-      required: true
-      default: [ ResomiTail ]
+      limit: 5
+      required: false
     enum.HumanoidVisualLayers.TailCover:
       limit: 1
       required: false
     enum.HumanoidVisualLayers.HeadSide:
-      limit: 1
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1

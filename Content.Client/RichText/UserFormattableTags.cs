@@ -21,6 +21,24 @@ public static class UserFormattableTags
         typeof(HeadingTag),
         typeof(ItalicTag),
         typeof(MonoTag),
+        //Far Horizons-Start
+        typeof(FormTagHandler),
+        typeof(SignatureTagHandler),
+        typeof(LogoTag),
+        typeof(SyndieLogoTag),
+        typeof(CCLogoTag),
+        typeof(CFALogoTag),
+        typeof(NSLogoTag),
+        typeof(HCLogoTag),
+        typeof(MELogoTag),
+        typeof(NSGSLLogoTag),
+        typeof(CDLogoTag),
+        typeof(IPLogoTag),
+        typeof(MRILogoTag),
+        typeof(ACSLogoTag),
+        typeof(NSCFALogoTag),
+        typeof(CheckTagHandler)
+        //Far Horizons-End
     ];
 
     /// <summary>

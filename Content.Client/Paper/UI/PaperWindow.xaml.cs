@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client.RichText;
 using Content.Client.UserInterface.RichText;
 using Content.Shared.Paper;
 using static Content.Shared.Paper.PaperComponent; // Starlight-edit
@@ -45,34 +46,6 @@ namespace Content.Client.Paper.UI
         
         // Store original margin to restore when switching modes
         private Thickness _originalContentMargin;
-
-        private readonly Type[] _allowedTags = new Type[] {
-            typeof(BoldItalicTag),
-            typeof(BoldTag),
-            typeof(BulletTag),
-            typeof(ColorTag),
-            typeof(HeadingTag),
-            typeof(ItalicTag),
-            typeof(MonoTag),
-            typeof(FormTagHandler),
-            typeof(SignatureTagHandler),
-            typeof(LogoTag),
-            typeof(SyndieLogoTag),
-            typeof(CCLogoTag),
-            //Far Horizons-Start
-            typeof(CFALogoTag),
-            typeof(NSLogoTag),
-            typeof(HCLogoTag),
-            typeof(MELogoTag),
-            typeof(NSGSLLogoTag),
-            typeof(CDLogoTag),
-            typeof(IPLogoTag),
-            typeof(MRILogoTag),
-            typeof(ACSLogoTag),
-            typeof(NSCFALogoTag),
-            //Far Horizons-End
-            typeof(CheckTagHandler)
-        };
 
         public event Action<string>? OnSaved;
         public event Action<int>? OnSignatureRequested;
@@ -325,7 +298,7 @@ namespace Content.Client.Paper.UI
             // The markup system converts [form] and [signature] tags into interactive buttons
             var fm = new FormattedMessage();
             fm.AddMarkupPermissive(state.Text);
-            WrittenTextLabel.SetMessage(fm, _allowedTags, DefaultTextColor);
+            WrittenTextLabel.SetMessage(fm, UserFormattableTags.BaseAllowedTags, DefaultTextColor);
             
             // Add extra bottom margin based on tag count to prevent cutoff (only in read mode)
             var tagCount = CountTags(state.Text);

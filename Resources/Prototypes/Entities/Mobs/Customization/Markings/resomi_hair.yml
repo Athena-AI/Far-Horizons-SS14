@@ -12,7 +12,7 @@
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
     - sprite: Mobs/Customization/resomi_hair.rsi
-      state: 
+      state: ResomiBurstShort
 
 - type: marking
   id: HairResomiDefault

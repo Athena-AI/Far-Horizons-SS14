@@ -1,0 +1,46 @@
+- type: antag
+  id: MaintsSlasher
+  name: roles-antag-slasher-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-slasher-objective
+  previewStartingGear: SpaceNinjaGear
+  requirements:
+  - !type:OverallPlaytimeRequirement #Far Horizons
+    time: 7200 # 2 hours - Far Horizons
+#  - !type:DepartmentTimeRequirement #Far Horizons
+#    department: Security
+#    time: 3h
+  playTimeTracker: AntagSlasher
+
+#Ninja Gear
+- type: startingGear
+  id: SpaceNinjaGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNinja
+    back: ClothingBackpackSatchelNinja
+    mask: ClothingMaskNinja
+    head: ClothingHeadHelmetSpaceNinja
+    eyes: ClothingEyesVisorNinja
+    gloves: ClothingHandsGlovesSpaceNinja
+    outerClothing: ClothingOuterSuitSpaceNinja
+    shoes: ClothingShoesSpaceNinja
+    id: AgentIDCard
+    ears: ClothingHeadsetAssistantNinja # Starlight
+    pocket1: SpiderCharge
+    pocket2: PinpointerStation
+    belt: EnergyKatana
+  inhand:
+    - JetpackBlackFilled
+  storage:
+    back:
+    - Crowbar
+    - Wrench
+    - Screwdriver
+    - Wirecutter
+    - Welder
+    - Multitool
+    - EmergencyMedipen
+    - Flare
+    - FoodSnackNutribrick
+    - DrinkWaterBottleFull

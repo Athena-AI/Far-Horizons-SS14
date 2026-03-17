@@ -1,0 +1,11 @@
+# MaintSlasher
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSlasher
+  name: Slasher
+  components:
+  - type: MindRole
+    antagPrototype: MaintsSlasher
+    subtype: role-subtype-ninja
+    exclusiveAntag: true
+  - type: SlasherRole

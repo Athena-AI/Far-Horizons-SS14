@@ -1,0 +1,12 @@
+- type: entity
+  name: Slasher's Machete
+  parent: Machete
+  id: SlasherMachete
+  description: The blade of a killer that has inflicted fear in thousands of hearts.
+  components:
+  - type: DisarmMalus
+    malus: 1.0
+  - type: SlasherWeapon
+    bonusDamage:
+      types:
+        Slash: 15

@@ -13,34 +13,12 @@
 #    time: 3h
   playTimeTracker: AntagSlasher
 
-#Ninja Gear
+#Slasher Gear
 - type: startingGear
-  id: SpaceNinjaGear
+  id: SlasherGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitNinja
-    back: ClothingBackpackSatchelNinja
-    mask: ClothingMaskNinja
-    head: ClothingHeadHelmetSpaceNinja
-    eyes: ClothingEyesVisorNinja
-    gloves: ClothingHandsGlovesSpaceNinja
-    outerClothing: ClothingOuterSuitSpaceNinja
-    shoes: ClothingShoesSpaceNinja
-    id: AgentIDCard
-    ears: ClothingHeadsetAssistantNinja # Starlight
-    pocket1: SpiderCharge
-    pocket2: PinpointerStation
-    belt: EnergyKatana
-  inhand:
-    - JetpackBlackFilled
-  storage:
-    back:
-    - Crowbar
-    - Wrench
-    - Screwdriver
-    - Wirecutter
-    - Welder
-    - Multitool
-    - EmergencyMedipen
-    - Flare
-    - FoodSnackNutribrick
-    - DrinkWaterBottleFull
+    jumpsuit: CoolTanktopUniformSuit
+    back: ClothingBackpackSatchelLeather
+    mask: ClothingMaskSlasher
+    outerClothing: ClothingOuterFlannelRed
+    shoes: ClothingShoesBootsCargo

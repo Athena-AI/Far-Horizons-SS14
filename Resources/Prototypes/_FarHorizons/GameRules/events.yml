@@ -1,0 +1,98 @@
+- type: entity
+  parent: BaseGameRule
+  id: SlasherSpawn
+  components:
+  - type: StationEvent
+    weight: 3 
+    duration: null
+    earliestStart: 45 
+    reoccurrenceDelay: 45 
+    minimumPlayers: 30
+  - type: SpaceSpawnRule
+  - type: AntagLoadProfileRule
+  - type: AntagObjectives
+    objectives:
+    - StealResearchObjective
+    - DoorjackObjective
+    - SpiderChargeObjective
+    - TerrorObjective
+    - MassArrestObjective
+    - NinjaSurviveObjective
+  - type: AntagSelection
+    agentName: slasher-round-end-agent-name
+    definitions:
+    - spawnerPrototype: SpawnPointGhostSpaceNinja
+      min: 1
+      max: 1
+      prefRoles: [ MaintsSlasher ]
+      pickPlayer: false
+      startingGear: SlasherGear
+      briefing:
+        text: slasher-role-greeting
+        color: Red
+        sound: /Audio/Misc/ninja_greeting.ogg
+      components:
+      - type: Slasher
+      - type: ThermalVision
+      - type: NightVision
+      - type: PressureImmunity
+      - type: Prying
+        pryPowered: true
+        speedModifier: 2.0
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      - type: AutoImplant
+        implants:
+        - DeathAcidifierImplant
+      - type: MovementSpeedModifier
+        baseSprintSpeed: 1.5
+        baseWalkSpeed: 1.5
+      - type: SlowOnDamage
+        speedModifierThresholds:
+          100: 0.9
+          200: 0.8
+          300: 0.7
+          400: 0.6
+      - type: PassiveDamage
+        allowedStates:
+        - Alive
+        damage:
+          types:
+            Poison: -5.0
+          groups:
+            Brute: -15.0
+            Burn: -15.0
+            Airloss: -10.0
+      - type: MeleeWeapon
+        altDisarm: false
+        angle: 0
+        soundHit:
+          collection: Punch
+        damage:
+          types:
+            Blunt: 10
+            Structural: 30
+        animation: WeaponArcFist
+      - type: MobThresholds
+        allowRevives: false
+        thresholds:
+          0: Alive
+          500: Dead
+      - type: Bloodstream
+        bloodlossDamage:
+          types:
+            Bloodloss: 0.5
+        bloodlossHealDamage:
+          types:
+            Bloodloss: -1
+        bloodlossThreshold: 0
+      - type: StaminaDamageOnHit
+        damage: 10
+      - type: MeleeThrowOnHit
+        speed: 20
+        distance: 5
+      mindRoles:
+      - MindRoleSlasher
+  - type: DynamicRuleCost
+    cost: 75

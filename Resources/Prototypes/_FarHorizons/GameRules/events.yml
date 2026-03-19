@@ -8,7 +8,7 @@
     earliestStart: 45 
     reoccurrenceDelay: 45 
     minimumPlayers: 30
-  - type: SpaceSpawnRule
+  - type: AntagRandomSpawn
   - type: AntagLoadProfileRule
   - type: AntagObjectives
     objectives:
@@ -21,7 +21,7 @@
   - type: AntagSelection
     agentName: slasher-round-end-agent-name
     definitions:
-    - spawnerPrototype: SpawnPointGhostSpaceNinja
+    - spawnerPrototype: SpawnPointSlasher
       min: 1
       max: 1
       prefRoles: [ MaintsSlasher ]
@@ -36,6 +36,8 @@
       - type: ThermalVision
       - type: NightVision
       - type: PressureImmunity
+      - type: Damageable
+        damageContainer: BiologicalMetaphysical
       - type: Prying
         pryPowered: true
         speedModifier: 2.0

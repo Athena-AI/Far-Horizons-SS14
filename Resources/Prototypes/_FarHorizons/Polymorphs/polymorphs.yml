@@ -5,3 +5,16 @@
     forced: true
     inventory: None
     allowRepeatedMorphs: false
+
+- type: polymorph
+  id: Incorporealize
+  configuration:
+    entity: EtherealIncorporealize
+    transferName: true
+    forced: true
+    revertOnDeath: true
+    revertOnCrit: true
+    allowRepeatedMorphs: false
+    polymorphSound: /Audio/Magic/ethereal_enter.ogg
+    exitPolymorphSound: /Audio/Magic/ethereal_exit.ogg
+    

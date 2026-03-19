@@ -7,3 +7,6 @@ ghost-role-information-plutonium-rod-rules = You are a [color={role-type-free-ag
 
 ghost-role-information-detective-scurret-name = Detective WaWa
 ghost-role-information-detective-scurret-description = Be the best detective you can be! Help out the on-station Detective and be sure to say "Wa" a lot.
+
+ghost-role-information-slasher-name = The Slasher
+ghost-role-information-slasher-description = Stalk and Kill your prey in the station. Make them pay for trespassing on your territory.

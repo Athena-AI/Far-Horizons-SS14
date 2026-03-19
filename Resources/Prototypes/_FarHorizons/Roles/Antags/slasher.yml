@@ -4,7 +4,7 @@
   antagonist: true
   setPreference: true
   objective: roles-antag-slasher-objective
-  previewStartingGear: SpaceNinjaGear
+  previewStartingGear: SlasherGear
   requirements:
   - !type:OverallPlaytimeRequirement #Far Horizons
     time: 7200 # 2 hours - Far Horizons
@@ -22,3 +22,5 @@
     mask: ClothingMaskSlasher
     outerClothing: ClothingOuterFlannelRed
     shoes: ClothingShoesBootsCargo
+  inhand:
+    - SlasherMachete

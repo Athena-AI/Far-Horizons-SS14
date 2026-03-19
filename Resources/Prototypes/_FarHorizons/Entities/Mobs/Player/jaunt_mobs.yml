@@ -1,0 +1,40 @@
+- type: entity
+  name: Slasher's Phantom
+  description: Boo!
+  parent: 
+  - Incorporeal
+  - BaseMob
+  id: EtherealIncorporealize
+  suffix: Slasher
+  components:
+  - type: Sprite
+    sprite: Mobs/Ghosts/ghost_human.rsi
+    color: "#60f7eb"
+    layers:
+    - state: animated
+      shader: unshaded
+    noRot: true
+    overrideContainerOcclusion: true
+    drawdepth: Ghosts
+  - type: Actions
+  - type: ActionsContainer
+  - type: SlasherGhost
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
+    baseWalkSpeed: 4
+  - type: ThermalVision
+  - type: NightVision
+  - type: Eye
+    drawFov: true
+  - type: Spectral
+  - type: ContentEye
+    maxZoom: 1.44,1.44
+  - type: Input
+    context: "ghost"
+  - type: Examiner
+    skipChecks: true
+  - type: Tag
+    tags:
+    - BypassInteractionRangeChecks
+    - Ghost
+  - type: ActiveInputMover

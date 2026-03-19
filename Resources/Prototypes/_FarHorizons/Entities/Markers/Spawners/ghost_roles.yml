@@ -1,0 +1,18 @@
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointSlasher
+  components:
+  - type: GhostRole
+    name: ghost-role-information-slasher-name
+    description: ghost-role-information-slasher-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleSlasher
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/machete.rsi

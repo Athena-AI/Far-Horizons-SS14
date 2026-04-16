@@ -1,56 +1,54 @@
-using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Starlight.Time
+namespace Content.Shared._Starlight.Time;
+
+public abstract partial class SharedTimeSystem : EntitySystem
 {
-    public sealed partial class SharedTimeSystem : EntitySystem
-    {
-        [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
         
-        private DateTime _date = DateTime.UtcNow.AddYears(300);
+    // Default value is sensible but will be updated later.
+    protected DateTime Date = DateTime.UtcNow.AddYears(300);
 
-        private TimeSpan _roundStart;
+    private TimeSpan _roundStart;
 
-        public override void Initialize()
-        {
-            base.Initialize();
-            SubscribeNetworkEvent<TickerLobbyStatusEvent>(LobbyStatus);
-        }
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeNetworkEvent<TickerLobbyStatusEvent>(LobbyStatus);
+        SubscribeNetworkEvent<RoundDateSetEvent>(OnRoundDateSetEvent);
+    }
 
-        private void LobbyStatus(TickerLobbyStatusEvent ev)
-        {
-            _roundStart = ev.RoundStartTimeSpan;
-        }
+    private void OnRoundDateSetEvent(RoundDateSetEvent ev) => Date = ev.Date;
+    private void LobbyStatus(TickerLobbyStatusEvent ev) => _roundStart = ev.RoundStartTimeSpan;
 
-        public (TimeSpan Time, string Date) GetStationTime()
-        {
-            var scaledTimeSinceStart = _timing.CurTime.Subtract(_roundStart).Multiply(4);
-            var stationTime = scaledTimeSinceStart.Add(TimeSpan.FromHours(12));
+    public (TimeSpan Time, string Date) GetStationTime()
+    {
+        var scaledTimeSinceStart = _timing.CurTime.Subtract(_roundStart).Multiply(4);
+        var stationTime = scaledTimeSinceStart.Add(TimeSpan.FromHours(12));
 
-            var totalDays = (int) stationTime.TotalDays;
-            stationTime = stationTime.Subtract(TimeSpan.FromDays(totalDays));
+        var totalDays = (int)stationTime.TotalDays;
+        stationTime = stationTime.Subtract(TimeSpan.FromDays(totalDays));
 
-            var newDate = _date.AddDays(totalDays);
+        var newDate = Date.AddDays(totalDays);
 
-            // ISO 8601 (YYYY-MM-DD or YYYYMMDD)
-            return (stationTime, newDate.ToString("yyyy-MM-dd"));
-        }
+        // ISO 8601 (YYYY-MM-DD or YYYYMMDD)
+        return (stationTime, newDate.ToString("yyyy-MM-dd"));
+    }
 
-        public string GetDate()
-        {
-            // ISO 8601 (YYYY-MM-DD or YYYYMMDD)
-            return Date.ToString("yyyy-MM-dd");
-        }
+    public string GetDate()
+    {
+        // ISO 8601 (YYYY-MM-DD or YYYYMMDD)
+        return Date.ToString("yyyy-MM-dd");
+    }
 
-        /// <summary>
-        /// Gets the ellapsed time of the round, useful for paperwork.
-        /// </summary>
-        public TimeSpan GetShiftDuration()
-        {
-            return _timing.CurTime - _roundStart;
-        }
+    /// <summary>
+    /// Gets the ellapsed time of the round, useful for paperwork.
+    /// </summary>
+    public TimeSpan GetShiftDuration()
+    {
+        return _timing.CurTime - _roundStart;
     }
 }
 

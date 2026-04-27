@@ -22,6 +22,7 @@ public static class UserFormattableTags
         typeof(HeadingTag),
         typeof(ItalicTag),
         typeof(MonoTag),
+        typeof(DateTimeTagHandler), // Starlight
         //Far Horizons-Start
         typeof(FormTagHandler),
         typeof(SignatureTagHandler),

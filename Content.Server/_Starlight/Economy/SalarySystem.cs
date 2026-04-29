@@ -14,6 +14,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Server.Starlight.SecureTerminal;
 
 namespace Content.Shared.Starlight.Economy;
 public sealed partial class SalarySystem : SharedSalarySystem
@@ -95,9 +96,20 @@ public sealed partial class SalarySystem : SharedSalarySystem
 
     private int CalculateSalaryWithBonuses(int baseSalary, ICommonSession session)
     {
-        var bonusMultiplier = 1.0;
+        var bonusMultiplier = _defaultBonusMultiplier;
 
-        return (int)Math.Ceiling(baseSalary * bonusMultiplier);
+        var stationPenalty = GetStationSalaryPenalty();
+        return (int)Math.Ceiling(baseSalary * bonusMultiplier * (1f - stationPenalty));
+    }
+
+    // TODO: Add a way to support multistation? or we do this global? (maybe global as they might be on same map and so benefit)
+    private float GetStationSalaryPenalty()
+    {
+        var maxPenalty = 0f;
+        var query = _entityManager.EntityQueryEnumerator<SecureCommandTerminalStationComponent>();
+        while (query.MoveNext(out _, out var comp))
+            maxPenalty = Math.Max(maxPenalty, comp.SalaryPenalty);
+        return maxPenalty;
     }
 
     internal void Donate(ICommonSession session, int amount)

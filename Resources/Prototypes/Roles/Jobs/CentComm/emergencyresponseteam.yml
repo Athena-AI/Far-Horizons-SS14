@@ -182,11 +182,16 @@
     pocket2: DrinkWaterBottleFull
   storage:
     back:
-    - BoxCandle
-    - BodyBagFolded
-    - BodyBagFolded
+    # Starlight - Start
     - JugWater
-    - JugBlood # End of first row
+    - JugBlood
+    - Bible
+    - CosmicCenser
+    - CrowbarRed
+    - Lantern
+    - BodyBagFolded
+    - BodyBagFolded
+    - FlippoEngravedLighter
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -401,6 +406,7 @@
   id: ERTSecurityGearArmedRifle
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
+    back: ClothingBackpackERTSecurity # SL
     shoes: ClothingShoesBootsMagERT
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesCentComm
@@ -408,11 +414,38 @@
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
     ears: ClothingHeadsetCentCom #Starlight
-    belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle556AP #FH
-    pocket2: MagazineRifle556Incendiary #FH
-  inhand:
-    - WeaponRiflePeacemaker # Starlight-edit: Changed from: WeaponRifleLecter
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+    suitstorage: WeaponRiflePeacemaker # Starlight-edit: Changed from: WeaponRifleLecter
+  storage:
+    # SL - Start
+    back:
+    - BoxZiptie
+    - Flash
+    - GrenadeFlashBang
+    - TearGasGrenade
+    - GrenadeStinger
+    - MedkitCombatFilled # End of first line
+    - TelescopicShield
+    - HoloprojectorSecurity
+    - PowerCellHigh
+    # SL - End
+    belt:
+    - CrowbarRed
+    - Zipties
+    - MedkitCombatFilled
+    - MagazineRifleSP
+    - MagazineRifleSP
+    - MagazineRifleIncendiary
+    - MagazineRifleUranium
+    - Zipties
+
+- type: startingGear
+  parent: ERTSecurityGearEVA
+  id: ERTSecurityGearArmedGrenade
+  equipment:
+    pocket2: WeaponDisabler
+    suitstorage: WeaponLauncherHydraLethal
   storage:
     back:
     - WeaponDisabler

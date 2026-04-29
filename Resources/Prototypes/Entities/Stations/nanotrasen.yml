@@ -29,6 +29,7 @@
     - BaseStationDeliveries
     - BaseStationCryoTeleportation
     - BaseStationAlertArmories
+    - BaseStationSecureTerminal # Starlight
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform

@@ -109,6 +109,8 @@
     - type: CommunicationsConsole
       title: comms-console-announcement-title-centcom
       global: true
+    - type: SecureCommandTerminalConsole
+      enabled: false
     - type: PointLight
       enabled: true
       radius: 1.5
@@ -515,6 +517,8 @@
         - orange
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: EngineeringCommsComputerCircuitboard
     - type: PointLight
@@ -549,11 +553,11 @@
       title: comms-console-announcement-title-med
       sound: /Audio/_Starlight/Announcements/announce2.ogg
       color: "#57b8f0"
-      settableAlertLevels:
-        - green
-        - violet
+      settableAlertLevels: []
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: MedicalCommsComputerCircuitboard
     - type: PointLight
@@ -593,6 +597,8 @@
         - yellow #FH
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: ScienceCommsComputerCircuitboard
     - type: PointLight
@@ -632,6 +638,8 @@
         - red
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: SecurityCommsComputerCircuitboard
     - type: PointLight
@@ -668,6 +676,8 @@
       settableAlertLevels: []
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: ServiceCommsComputerCircuitboard
     - type: PointLight
@@ -704,6 +714,8 @@
       settableAlertLevels: []
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: CargoCommsComputerCircuitboard
     - type: PointLight
@@ -740,6 +752,8 @@
       settableAlertLevels: []
       canBroadcast: false
       canShuttle: false
+    - type: SecureCommandTerminalConsole
+      authTerminal: true
     - type: Computer
       board: LawCommsComputerCircuitboard
     - type: PointLight

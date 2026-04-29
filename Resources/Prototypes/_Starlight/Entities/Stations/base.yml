@@ -2,7 +2,7 @@
   id: BaseStationCryoTeleportation
   abstract: true
   components:
-  - type: StationCryoTeleportation
+    - type: StationCryoTeleportation
   
 - type: entity
   id: BaseStationAlertArmories
@@ -20,3 +20,8 @@
           announcementColor: "#2288ff"
           recallAnnouncement: announcement-psi-armory-recall
           recallAnnouncementColor: "#2288ff"
+- type: entity
+  id: BaseStationSecureTerminal
+  abstract: true
+  components:
+    - type: SecureCommandTerminalStation

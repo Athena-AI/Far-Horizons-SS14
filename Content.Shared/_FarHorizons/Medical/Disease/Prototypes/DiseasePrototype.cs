@@ -91,65 +91,19 @@ public sealed partial class DiseasePrototype : IPrototype
     public float AirborneRange { get; private set; } = 3f;
 
     /// <summary>
-    /// Stage configurations in ascending order (1-indexed semantics).
-    /// Each stage can define stealth/resistance and symptom activations.
+    /// Time Configuration for each stage this also handles max stage level. So 3 entry means a disease have 4 stages counting stage 0.
     /// </summary>
     [DataField(required: true)]
-    public List<DiseaseStage> Stages { get; private set; } = [];
+    public List<float> Stages { get; private set; } = [];
 
     /// <summary>
-    /// Optional list of cure steps for the disease. Each entry is a specific cure action.
-    /// </summary>
-    [DataField]
-    public List<CureStep> CureSteps { get; private set; } = [];
-}
-
-/// <summary>
-/// Per-stage configuration for a disease.
-/// </summary>
-[DataDefinition]
-[Serializable, NetSerializable]
-public sealed partial class DiseaseStage
-{
-    /// <summary>
-    /// Stage number (1-indexed).
-    /// </summary>
-    [DataField(required: true)]
-    public int Stage { get; private set; } = 1;
-
-    /// <summary>
-    /// Optional stealth flags for this stage. Controls visibility in HUD/diagnoser/analyzers.
-    /// </summary>
-    [DataField]
-    public DiseaseStealthFlags Stealth { get; private set; } = DiseaseStealthFlags.None;
-
-    /// <summary>
-    /// Time for being in this stage before attempting to go to the next stage. We don't want someone to just go to stage 3 due to bad luck.
-    /// </summary>
-    [DataField]
-    public float MinStageTime { get; private set; } = 30;
-
-    /// <summary>
-    /// Optional time for being in this stage before attempting to go to the next stage.
-    /// </summary>
-    [DataField]
-    public float MaxStageTime { get; private set; } = 180;
-
-    /// <summary>
-    /// Symptoms that can trigger during this stage. Order matters for deterministic iteration.
-    /// Each entry is a mapping with `symptom` and optional `probability` to override the symptom prototype's `probability`.
+    /// Symptoms for this disease.
     /// </summary>
     [DataField]
     public List<SymptomEntry> Symptoms { get; private set; } = [];
 
     /// <summary>
-    /// Optional list of loc message keys to show as "sensations" to the carrier while at this stage.
-    /// </summary>
-    [DataField]
-    public List<string> Sensations { get; private set; } = [];
-
-    /// <summary>
-    /// Optional list of cure steps specific to this stage. Overrides disease-level <see cref="CureSteps"/> for this stage.
+    /// Optional list of cure steps for the disease. Each entry is a specific cure action.
     /// </summary>
     [DataField]
     public List<CureStep> CureSteps { get; private set; } = [];
@@ -164,10 +118,19 @@ public sealed partial class SymptomEntry
     /// </summary>
     [DataField(required: true)]
     public ProtoId<DiseaseSymptomPrototype> Symptom { get; private set; }
-
+    
     /// <summary>
-    /// Per-tick probability (0-1) to trigger this symptom while in the stage. If negative, the probability of symptom is used.
+    /// At what stage levels does this symptom present?
     /// </summary>
     [DataField]
-    public float Probability { get; private set; } = -1f;
+    public List<int> Stages { get; private set; } = new() { 0 };
+    
+    /// <summary>
+    /// Per stage level probability overwrites the symptom level probability if > -1.
+    /// </summary>
+    [DataField]
+    public Dictionary<int, float> Probability { get; private set; } = new()
+    {
+        { 0, -1f } // Int: Stage, Float: Chance
+    };
 }

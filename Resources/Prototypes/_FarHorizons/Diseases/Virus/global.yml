@@ -4,6 +4,22 @@
   desc: disease-DiseaseCold-desc
   spreadPath: [ Airborne ]
   permeabilityMod: 0.5
+  stages: [300, 150]
+  symptoms:
+  - symptom: SymptomCough
+    stages: [1, 2]
+    probability:
+      1: 0.02
+      2: 0.04
+  - symptom: SymptomSneeze
+    stages: [1, 2]
+    probability:
+      1: 0.02
+      2: 0.04
+  - symptom: SymptomFever
+    stages: [2]
+  - symptom: SymptomTransitionToFlu
+    stages: [2]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15
@@ -18,29 +34,26 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stages:
-  - stage: 0
-    stealth: [ Hidden, VeryHidden ]
-  - stage: 1
-    stealth: [ Hidden ]
-    sensations: [ "disease-sensation-throat-sore", "disease-sensation-throat-mucus" ]
-    symptoms:
-    - symptom: SymptomCough
-    - symptom: SymptomSneeze
-
-  - stage: 2
-    sensations: [ "disease-sensation-throat-sore", "disease-sensation-throat-mucus" ]
-    symptoms:
-    - symptom: SymptomCough
-    - symptom: SymptomSneeze
-    - symptom: SymptomFever
-    - symptom: SymptomTransitionToFlu
 
 - type: disease
   id: DiseaseCold9
   name: disease-DiseaseCold9-name
   desc: disease-DiseaseCold9-desc
   spreadPath: [ Contact ]
+  stages: [300, 150]
+  symptoms:
+  - symptom: SymptomCough
+    stages: [1, 2]
+    probability:
+      1: 0.02
+      2: 0.04
+  - symptom: SymptomSneeze
+    stages: [1, 2]
+    probability:
+      1: 0.02
+      2: 0.04
+  - symptom: SymptomFreeze
+    stages: [2]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15 # Higher chance to cure, since two reagents are required.
@@ -56,27 +69,6 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stages:
-  - stage: 0
-    stealth: [ Hidden, VeryHidden ]
-  - stage: 1
-    stealth: [ Hidden ]
-    sensations: [ "disease-sensation-throat-sore", "disease-sensation-stiff" ]
-    symptoms:
-    - symptom: SymptomCough
-      probability: 0.02
-    - symptom: SymptomSneeze
-      probability: 0.02
-    - symptom: SymptomFreezeLight
-  - stage: 2
-    stealth: [ Hidden ]
-    sensations: [ "disease-sensation-throat-sore", "disease-sensation-stiff" ]
-    symptoms:
-    - symptom: SymptomCough
-      probability: 0.04
-    - symptom: SymptomSneeze
-      probability: 0.04
-    - symptom: SymptomFreeze
 
 - type: disease
   id: DiseaseFlu
@@ -84,6 +76,14 @@
   desc: disease-DiseaseFlu-desc
   spreadPath: [ Airborne ]
   permeabilityMod: 0.75
+  stages: [120, 60]
+  symptoms:
+    - symptom: SymptomCough
+      stages: [1, 2]
+    - symptom: SymptomSneeze
+      stages: [1, 2]
+    - symptom: SymptomToxinLight
+      stages: [2]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15
@@ -99,28 +99,3 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stages:
-  - stage: 0
-    stealth: [ Hidden ]
-  - stage: 1
-    sensations: [ "disease-sensation-muscles-ache", "disease-sensation-stomach-hurt" ]
-    symptoms:
-    - symptom: SymptomCough
-    - symptom: SymptomSneeze
-    - symptom: SymptomToxinLight
-    cureSteps:
-    - !type:CureBedrest
-      bedrestChance: 0.20
-      sleepMultiplier: 1
-      lowerStage: true
-  - stage: 2
-    sensations: [ "disease-sensation-muscles-ache", "disease-sensation-stomach-hurt" ]
-    symptoms:
-    - symptom: SymptomCough
-    - symptom: SymptomSneeze
-    - symptom: SymptomToxinLight
-    cureSteps:
-    - !type:CureBedrest
-      bedrestChance: 0.15
-      sleepMultiplier: 1
-      lowerStage: true

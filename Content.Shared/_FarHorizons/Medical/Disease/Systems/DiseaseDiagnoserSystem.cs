@@ -90,20 +90,7 @@ public sealed class DiseaseDiagnoserSystem : EntitySystem
             var displayName = Loc.GetString(diseaseData.Name);
             var stage = stageData.Stage;
 
-            DiseaseStage? stageCfg = null;
-            foreach (var stCfg in diseaseProto.Stages)
-            {
-                if (stCfg.Stage == stage)
-                {
-                    stageCfg = stCfg;
-                    break;
-                }
-            }
-
-            if (stageCfg == null)
-                continue;
-
-            var showStage = (stageCfg.Stealth & DiseaseStealthFlags.HiddenStage) == 0;
+            var showStage = true;
 
             lines.Add(Loc.GetString("diagnoser-disease-report-name",("name", displayName)));
             lines.Add(Loc.GetString("diagnoser-disease-report-stage",("stage", showStage ? stage+1 : "Unknown")));
@@ -114,13 +101,13 @@ public sealed class DiseaseDiagnoserSystem : EntitySystem
 
             // Symptoms block.
             lines.Add(Loc.GetString("diagnoser-disease-symptoms-header"));
-            if (stageCfg.Symptoms.Count == 0)
+            if (diseaseData.Symptoms.Count == 0)
             {
                 lines.Add("- " + Loc.GetString("diagnoser-disease-symptoms-none"));
             }
             else
             {
-                foreach (var symptomEntry in stageCfg.Symptoms)
+                foreach (var symptomEntry in diseaseData.Symptoms)
                 {
                     var symptomId = symptomEntry.Symptom;
                     if (_prototypes.TryIndex(symptomId, out var symProto))
@@ -132,8 +119,8 @@ public sealed class DiseaseDiagnoserSystem : EntitySystem
             }
 
             // Cures block.
-            var cureSteps = stageCfg.CureSteps.Count > 0 ? stageCfg.CureSteps : diseaseProto.CureSteps;
-            var showTreatment = (stageCfg.Stealth & DiseaseStealthFlags.HiddenTreatment) == 0;
+            var cureSteps = diseaseData.CureSteps;
+            var showTreatment = true;
             if (cureSteps.Count == 0)
             {
                 lines.Add(Loc.GetString("diagnoser-no-cures"));

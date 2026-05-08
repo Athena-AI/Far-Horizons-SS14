@@ -3,6 +3,24 @@
   name: disease-DiseaseGBS-name
   desc: disease-DiseaseGBS-desc
   spreadPath: [ NonContagious ]
+  stages: [60, 120, 120, 180]
+  symptoms: 
+  - symptom: SymptomCough
+    stages: [1, 2]
+    probability:
+      1: 0.02
+      2: 0.04
+  - symptom: SymptomSneeze
+    stages: [1, 2, 3]
+    probability:
+      1: 0.02
+      2: 0.04
+  - symptom: SymptomGasp
+    stages: [3]
+    probability:
+      3: 0.05
+  - symptom: SymptomGib
+    stages: [4]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15 # Higher chance to cure, since two reagents are required.
@@ -13,40 +31,20 @@
     - !type:ReagentCondition
       reagent: Sulfur
       min: 1
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5
-  stages:
-  - stage: 0
-    stealth: [ Hidden, VeryHidden ]
-  - stage: 1
-    symptoms:
-    - symptom: SymptomSneeze
-  - stage: 2
-    sensations: [ "disease-sensation-very-weak" ]
-    symptoms:
-    - symptom: SymptomCough
-      probability: 0.05
-    - symptom: SymptomGasp
-      probability: 0.05
-  - stage: 3
-    symptoms:
-    - symptom: SymptomCough
-      probability: 0.1
-  - stage: 4
-    sensations: [ "disease-sensation-gib-itself" ]
-    symptoms:
-    - symptom: SymptomCough
-      probability: 0.05
-    - symptom: SymptomGib
 
 - type: disease
   id: DiseaseHonkSyndrome
   name: disease-DiseaseHonkSyndrome-name
   desc: disease-DiseaseHonkSyndrome-desc
   spreadPath: [ NonContagious ]
+  stages: [120, 180]
+  symptoms:
+    - symptom: SymptomJitters
+      stages: [1]
+    - symptom: SymptomEmoteHonk
+      stages: [1,2]
+    - symptom: SymptomHonkShout
+      stages: [1,2]
   cureSteps:
   - !type:CureConditions
     conditions:
@@ -58,18 +56,6 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stages:
-  - stage: 0
-    stealth: [ Hidden, VeryHidden ]
-  - stage: 1
-    sensations: [ "disease-sensation-clown", "disease-sensation-banana-compulsion" ]
-    symptoms:
-    - symptom: SymptomJitters
-    - symptom: SymptomEmoteHonk
-  - stage: 2
-    sensations: [ "disease-sensation-clown" ]
-    symptoms:
-    - symptom: SymptomHonkShout
 
 - type: disease
   id: DiseaseOwOnavirus
@@ -77,6 +63,14 @@
   desc: disease-DiseaseOwOnavirus-desc
   spreadPath: [ NonContagious ]
   iconDisease: DiseaseIconBuff
+  stages: []
+  symptoms:
+  - symptom: SymptomOwOAccent
+    stages: [0]
+  - symptom: SymptomEmoteCat
+    stages: [0]
+  - symptom: SymptomSpeedBoost
+    stages: [0]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15 # Did you know cats hate the smell of citrus?
@@ -92,10 +86,3 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stages:
-  - stage: 0
-    stealth: [ Hidden ]
-    symptoms:
-    - symptom: SymptomOwOAccent
-    - symptom: SymptomEmoteCat
-    - symptom: SymptomSpeedBoost

@@ -18,7 +18,6 @@ using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Network;
-using Content.Shared.Atmos.Components;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Systems;
 
@@ -136,79 +135,38 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     }
 
     private StageData AdvanceStage(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData currentStage)
-    {
-        if(!_prototypes.TryIndex(disease.Id, out var diseaseProto))
-            return currentStage;
-            
-        var maxStage = Math.Max(0, diseaseProto.Stages.Count-1);
+    {       
+        var maxStage = Math.Max(0, disease.Stages.Count);
         if(currentStage.Stage == maxStage)
             return currentStage;
-            
-        if (currentStage.MinStageUntil > _timing.CurTime)
-            return currentStage;
 
-        // If max time exceeded, force stage change
-        if (currentStage.MaxStageUntil < _timing.CurTime)
-        {
-            // Force advance change
-            currentStage.MinStageUntil = _timing.CurTime + TimeSpan.FromSeconds(diseaseProto.Stages[currentStage.Stage].MinStageTime);
-            currentStage.MaxStageUntil = _timing.CurTime + TimeSpan.FromSeconds(diseaseProto.Stages[currentStage.Stage].MaxStageTime);
-            currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
-            return currentStage; 
-        }
-        
-        // Normal stage change.
-        var perTickAdvance = Math.Clamp(disease.StageProb, 0f, 1f);
-        var seed = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, GetNetEntity(ent).Id, currentStage.MinStageUntil.Microseconds, currentStage.Stage]);
-        var rand = new System.Random(seed);
-        
-        if (!rand.Prob(perTickAdvance))
+        if (currentStage.AdvanceStageAt > _timing.CurTime)
             return currentStage;
             
-        // Advance stage
-        currentStage.MinStageUntil = _timing.CurTime + TimeSpan.FromSeconds(diseaseProto.Stages[currentStage.Stage].MinStageTime);
-        currentStage.MaxStageUntil = _timing.CurTime + TimeSpan.FromSeconds(diseaseProto.Stages[currentStage.Stage].MaxStageTime);
+        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(disease.Stages[currentStage.Stage]);
         currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
         return currentStage; 
     }
 
     private void TriggerStage(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData stage)
     {
-        if(!_prototypes.TryIndex(disease.Id, out var diseaseProto))
-            return;
-
-        var stageCfg = diseaseProto.Stages.FirstOrDefault(s => s.Stage == stage.Stage);
-        if (stageCfg == null)
-            return;
-
-        // Uses popup
-        for (var i = 0; i < stageCfg.Sensations.Count; i++)
+        // Symptoms are a list of detailed entries (symptom + optional probability override).
+        for (var i = 0; i < disease.Symptoms.Count; i++)
         {
-            var prob = 0.05f;
-            // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, stage.MinStageUntil.Microseconds, stage.Stage, i);
-            var rand = new System.Random(seed);
-            if (!rand.Prob(prob))
+            var symptomId = disease.Symptoms[i].Symptom;
+            if (!_prototypes.TryIndex(symptomId, out var symptom))
                 continue;
 
-            _popup.PopupClient(Loc.GetString(stageCfg.Sensations[i]), ent.Owner);
-        }
-
-        // Symptoms are a list of detailed entries (symptom + optional probability override).
-        for (var i = 0; i < stageCfg.Symptoms.Count; i++)
-        {
-            var entry = stageCfg.Symptoms[i];
-            var symptomId = entry.Symptom;
-            if (!_prototypes.TryIndex(symptomId, out var symptom))
+            if(!disease.Symptoms[i].Stages.Contains(stage.Stage))
                 continue;
 
             // Skip if this symptom is currently suppressed by a symptom-level cure.
             if (ent.Comp.SuppressedSymptoms.TryGetValue(symptomId, out var value) && value > _timing.CurTime)
                 continue;
 
-            var prob = entry.Probability >= 0f ? entry.Probability : symptom.Probability;
+            var prob = disease.Symptoms[i].Probability[stage.Stage] >= 0f ? disease.Symptoms[i].Probability[stage.Stage] : symptom.Probability;
             // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, stage.MinStageUntil.Microseconds, stage.Stage, i);
+            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, stage.AdvanceStageAt.Microseconds, stage.Stage, i);
             var rand = new System.Random(seed);
             if (!rand.Prob(prob))
                 continue;
@@ -337,7 +295,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             return false;
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
-        var seed = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.MinStageUntil.GetHashCode()]);
+        var seed = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.AdvanceStageAt.GetHashCode()]);
         var rand = new System.Random(seed);
         if (!rand.Prob(probability))
             return false;
@@ -346,7 +304,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         {
             // Roll against immunity strength.
             // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seedImmunity = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.MaxStageUntil.GetHashCode()]);
+            var seedImmunity = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.AdvanceStageAt.GetHashCode()]);
             var randImmunity = new System.Random(seedImmunity);
             if (!randImmunity.Prob(immunityStrength))
                 return false;
@@ -397,7 +355,10 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             ContactInfect = proto.ContactInfect,
             ContactDeposit = proto.ContactDeposit,
             AirborneInfect = proto.AirborneInfect,
-            AirborneRange = proto.AirborneRange
+            AirborneRange = proto.AirborneRange,
+            Stages = proto.Stages,
+            Symptoms = proto.Symptoms,
+            CureSteps = proto.CureSteps
         };
         return disease;
     }
@@ -410,8 +371,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         var stage = new StageData
         {
             Stage = startStage,
-            MinStageUntil = _timing.CurTime + TimeSpan.FromSeconds(proto.Stages[startStage].MinStageTime),
-            MaxStageUntil = _timing.CurTime + TimeSpan.FromSeconds(proto.Stages[startStage].MaxStageTime)
+            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(proto.Stages[startStage])
         };
         return stage;
     }

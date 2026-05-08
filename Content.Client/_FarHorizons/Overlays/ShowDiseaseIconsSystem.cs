@@ -43,7 +43,7 @@ public sealed class ShowDiseaseIconsSystem : EquipmentHudSystem<ShowDiseaseIcons
                 return false;
             }
 
-            return (disease.Stages[index].Stealth & DiseaseStealthFlags.VeryHidden) == 0;
+            return true;
         });
 
         if (_prototype.Resolve(iconId, out var iconPrototype) && showDisease)

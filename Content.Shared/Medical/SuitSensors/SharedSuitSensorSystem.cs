@@ -449,7 +449,7 @@ public abstract class SharedSuitSensorSystem : EntitySystem
                     return false;
                 }
 
-                return (disease.Stages[index].Stealth & DiseaseStealthFlags.Hidden) == 0;
+                return true;
             });
             status.DiseaseIcon = carrier.DiseaseIcon;
         }

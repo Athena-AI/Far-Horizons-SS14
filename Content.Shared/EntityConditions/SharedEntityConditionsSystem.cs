@@ -1,4 +1,5 @@
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions;
 
@@ -100,6 +101,7 @@ public interface IEntityConditionRaiser
 /// Used to store an <see cref="EntityCondition"/> so it can be raised without losing the type of the condition.
 /// </summary>
 /// <typeparam name="T">The Condition wer are raising.</typeparam>
+[NetSerializable, Serializable] //Far Horizons
 public abstract partial class EntityConditionBase<T> : EntityCondition where T : EntityConditionBase<T>
 {
     public override bool RaiseEvent(EntityUid target, IEntityConditionRaiser raiser)
@@ -116,6 +118,7 @@ public abstract partial class EntityConditionBase<T> : EntityCondition where T :
 /// A basic condition which can be checked for on an entity via events.
 /// </summary>
 [ImplicitDataDefinitionForInheritors]
+[NetSerializable, Serializable] //Far Horizons
 public abstract partial class EntityCondition
 {
     public abstract bool RaiseEvent(EntityUid target, IEntityConditionRaiser raiser);

@@ -6,6 +6,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.EntityConditions;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Funkystation.EntityConditions.Conditions;
 
@@ -32,6 +33,7 @@ public sealed partial class BloodReagentEntityConditionSystem : EntityConditionS
 }
 
 /// <inheritdoc cref="EntityCondition"/>
+[NetSerializable, Serializable]
 public sealed partial class BloodReagentCondition : EntityConditionBase<BloodReagentCondition>
 {
     [DataField]

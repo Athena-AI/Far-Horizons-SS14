@@ -1,10 +1,12 @@
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions;
 
 /// <summary>
 /// Uses the conditions of an <see cref="EntityConditionPrototype"/>.
 /// </summary>
+[NetSerializable, Serializable] //Far Horizons
 public sealed partial class NestedCondition : EntityConditionBase<NestedCondition>
 {
     /// <summary>

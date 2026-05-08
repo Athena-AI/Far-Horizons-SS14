@@ -2,10 +2,12 @@
 using Content.Shared.Localizations;
 using Content.Shared.Metabolism;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions.Body;
 
 /// <inheritdoc cref="EntityCondition"/>
+[NetSerializable, Serializable] //Far Horizons
 public sealed partial class MetabolizerTypeCondition : EntityConditionBase<MetabolizerTypeCondition>
 {
     [DataField(required: true)]

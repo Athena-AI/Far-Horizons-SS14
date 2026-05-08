@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Chemistry.Components;
 using Content.Shared.Temperature.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions;
 
@@ -31,6 +32,7 @@ public sealed partial class SolutionTemperatureEntityConditionSystem : EntityCon
 }
 
 /// <inheritdoc cref="EntityCondition"/>
+[NetSerializable, Serializable] //Far Horizons
 public sealed partial class TemperatureCondition : EntityConditionBase<TemperatureCondition>
 {
     /// <summary>

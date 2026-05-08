@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions;
 ///<summary>
@@ -14,6 +15,7 @@ public sealed partial class TemplateEntityConditionSystem : EntityConditionSyste
 }
 
 /// <inheritdoc cref="EntityCondition"/>
+[NetSerializable, Serializable] //Far Horizons
 public sealed partial class TemplateCondition : EntityConditionBase<TemplateCondition>
 {
     public override string EntityConditionGuidebookText(IPrototypeManager prototype) => String.Empty;

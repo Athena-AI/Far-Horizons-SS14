@@ -32,15 +32,26 @@ public sealed class DiseaseData
     public string StrainName = string.Empty;
 
     /// <summary>
-    /// Spread vectors for this disease.
+    /// The total stats from summing all the symptom stats.
     /// </summary>
-    [DataField]
+    [ViewVariables]
+    public DiseaseStats Stats { get; set; } = default!;
+
+    /// <summary>
+    /// The Stealth level of the disease. Handled by Stats.
+    /// </summary>
+    [ViewVariables]
+    public DiseaseStealthFlags Stealth { get; set; } = DiseaseStealthFlags.None;
+    /// <summary>
+    /// Spread vectors for this disease. Handled by Stats.
+    /// </summary>
+    [ViewVariables]
     public DiseaseSpreadPath SpreadPath { get; set; } = DiseaseSpreadPath.NonContagious;
 
     /// <summary>
-    /// Probability of progression through disease stages per tick.
+    /// Probability of progression through disease stages per tick. Handled by Stats.
     /// </summary>
-    [DataField]
+    [ViewVariables]
     public float StageProb { get; set; } = 0.02f;
 
     /// <summary>

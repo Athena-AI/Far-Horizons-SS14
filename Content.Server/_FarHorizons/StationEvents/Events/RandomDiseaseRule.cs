@@ -30,11 +30,9 @@ public sealed class RandomDiseaseRule : StationEventSystem<RandomDiseaseRuleComp
         var chosenDisease = _random.Pick(comp.Disease).Id;
         
         var disease = _disease.CreateDisease(chosenDisease);
-        var stage = _disease.CreateStage(chosenDisease);
-        if(disease == null || stage == null)
-        {
-            return;
-        }
+        if(disease == null) return;
+        var stage = _disease.CreateStage(disease);
+        if(stage == null) return;
 
         // Collect eligible humanoids with carrier component on the chosen station.
         var candidates = new List<EntityUid>();

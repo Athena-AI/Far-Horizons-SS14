@@ -10,6 +10,12 @@
       amplitude: 2
       frequency: 6
       time: 3
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomTransitionToFlu
@@ -22,6 +28,12 @@
     - !type:TransitionDisease
       fromDiseaseId: DiseaseCold
       toDiseaseId: DiseaseFlu
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomVomiting
@@ -39,6 +51,12 @@
   - !type:SymptomStatusEffect
     effects:
     - !type:Vomit
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomNarcolepsy
@@ -60,6 +78,12 @@
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectForcedSleeping
     time: 6
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomFever
@@ -88,6 +112,12 @@
       damage:
         types:
           Heat: 0.1
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomFreezeLight
@@ -106,6 +136,12 @@
       damage:
         types:
           Cold: 0.05
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomFreeze
@@ -124,6 +160,12 @@
       damage:
         types:
           Cold: 0.1
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomToxin
@@ -137,6 +179,12 @@
       damage:
         types:
           Poison: 9
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomToxinLight
@@ -159,6 +207,12 @@
       damage:
         types:
           Poison: 3
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomGeneticDamage
@@ -181,6 +235,12 @@
       damage:
         types:
           Cellular: 1
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomGib
@@ -194,6 +254,12 @@
       damage:
         types:
           Blunt: 9999
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomSpeedBoost
@@ -206,3 +272,9 @@
     - !type:AddReagentToSolution
       reagent: Ephedrine
       solution: chemicals
+  level: 1
+  stats:
+    stealth: 1
+    resistance: 1
+    stageSpeed: 1
+    transmittable: 1

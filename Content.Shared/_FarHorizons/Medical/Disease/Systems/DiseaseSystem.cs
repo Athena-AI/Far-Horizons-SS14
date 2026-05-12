@@ -143,14 +143,13 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         if (currentStage.AdvanceStageAt > _timing.CurTime)
             return currentStage;
             
-        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(disease.Stages[currentStage.Stage]);
+        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( disease.Stages[currentStage.Stage] - (disease.Stages[currentStage.Stage] * disease.StageProb));
         currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
         return currentStage; 
     }
 
     private void TriggerStage(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData stage)
     {
-        // Symptoms are a list of detailed entries (symptom + optional probability override).
         for (var i = 0; i < disease.Symptoms.Count; i++)
         {
             var symptomId = disease.Symptoms[i].Symptom;
@@ -160,17 +159,20 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             if(!disease.Symptoms[i].Stages.Contains(stage.Stage))
                 continue;
 
-            // Skip if this symptom is currently suppressed by a symptom-level cure.
             if (ent.Comp.SuppressedSymptoms.TryGetValue(symptomId, out var value) && value > _timing.CurTime)
                 continue;
-
-            var prob = disease.Symptoms[i].Probability[stage.Stage] >= 0f ? disease.Symptoms[i].Probability[stage.Stage] : symptom.Probability;
+            
+            var prob = symptom.Probability; 
+            if (disease.Symptoms[i].Probability.TryGetValue(stage.Stage, out var overrideProb) && overrideProb >= 0f)
+            {
+                prob = overrideProb;
+            }
+            
             // TODO: Replace with RandomPredicted once the engine PR is merged
             var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, stage.AdvanceStageAt.Microseconds, stage.Stage, i);
             var rand = new System.Random(seed);
             if (!rand.Prob(prob))
                 continue;
-
             _symptoms.TriggerSymptom(ent, disease, symptom);
         }
     }
@@ -348,8 +350,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Name = proto.Name,
             Description = proto.Description,
             StrainName = GenerateStrainName(),
-            SpreadPath = proto.SpreadPath,
-            StageProb = proto.StageProb,
+            SpreadPath = DiseaseSpreadPath.NonContagious,
             PostCureImmunity = proto.PostCureImmunity,
             IncubationSeconds = proto.IncubationSeconds,
             ContactInfect = proto.ContactInfect,
@@ -360,24 +361,73 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Symptoms = proto.Symptoms,
             CureSteps = proto.CureSteps
         };
+
+        disease.Stats = GenerateDiseaseStats(disease);
+        disease.StageProb = disease.Stats.StageSpeed/100f;
+        disease.SpreadPath = UpdateSpreadPath(disease);
+        disease.Stealth = UpdateStealth(disease);
+
         return disease;
     }
 
-    public StageData? CreateStage(string diseaseId, int startStage=0)
-    {
-        if (!_prototypes.TryIndex<DiseasePrototype>(diseaseId, out var proto))
-            return null;
-        
+    public StageData? CreateStage(DiseaseData disease, int startStage=0)
+    {   
         var stage = new StageData
         {
             Stage = startStage,
-            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(proto.Stages[startStage])
+            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(disease.Stages[startStage] - (disease.Stages[startStage]* disease.StageProb))
         };
         return stage;
     }
 
     private string GenerateStrainName()
         => $"{_random.Pick(_prototypes.Index<LocalizedDatasetPrototype>(_firstStrainName))}-{_random.NextByte(99)} {_random.Pick(_prototypes.Index<LocalizedDatasetPrototype>(_secondStrainName))}";
+
+    private DiseaseStats GenerateDiseaseStats(DiseaseData disease)
+    {
+        var stats = new DiseaseStats();
+        foreach(var symptomID in disease.Symptoms)
+        {
+            if(!_prototypes.TryIndex(symptomID.Symptom, out var symptom))    
+                continue;
+            
+            stats.Resistance += symptom.Stats.Resistance;
+            stats.Stealth += symptom.Stats.Stealth;
+            stats.StageSpeed += symptom.Stats.StageSpeed;
+            stats.Transmittable += symptom.Stats.Transmittable;
+        }
+
+        return stats;
+    }
+
+    private DiseaseSpreadPath UpdateSpreadPath(DiseaseData disease)
+    {
+        var transmitionStat = disease.Stats.Transmittable;
+        if(transmitionStat <= 0 )
+            return DiseaseSpreadPath.NonContagious;
+        else if(transmitionStat is > 0 and <= 2)
+            return DiseaseSpreadPath.Blood;
+        else if(transmitionStat is > 2 and <= 5)
+            return DiseaseSpreadPath.Contact;
+        else if(transmitionStat is > 5 and <= 99)
+            return DiseaseSpreadPath.Airborne;
+        else if(transmitionStat is > 99)
+            return DiseaseSpreadPath.Special;
+
+        return DiseaseSpreadPath.NonContagious;
+    }
+    private DiseaseStealthFlags UpdateStealth(DiseaseData disease)
+    {
+        var stealthStat = disease.Stats.Stealth;
+        if(stealthStat < 2)
+            return DiseaseStealthFlags.None;
+        if(stealthStat is 2)
+            return DiseaseStealthFlags.Hidden;
+        if(stealthStat is 3 )
+            return DiseaseStealthFlags.Hidden | DiseaseStealthFlags.VeryHidden;
+            
+        return DiseaseStealthFlags.None;
+    }
 
     public void UpdateBloodData(Entity<DiseaseCarrierComponent> ent)
     {

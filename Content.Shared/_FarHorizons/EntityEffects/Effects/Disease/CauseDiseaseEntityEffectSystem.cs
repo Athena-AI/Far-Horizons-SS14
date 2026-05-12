@@ -20,9 +20,9 @@ public sealed partial class CauseDiseaseEntityEffectSystem : EntityEffectSystem<
             return;
 
         var disease = _disease.CreateDisease(args.Effect.DiseaseId);
-        var stage = _disease.CreateStage(args.Effect.DiseaseId);
-        if(disease == null || stage == null)
-            return;
+        if(disease == null) return; 
+        var stage = _disease.CreateStage(disease);
+        if(stage == null) return;
             
         if (args.Effect.ForceInfect)
         {

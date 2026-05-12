@@ -23,6 +23,18 @@ public sealed partial class DiseaseSymptomPrototype : IPrototype
     public string Name { get; private set; } = string.Empty;
 
     /// <summary>
+    /// What level is this symptom? For the sake of mutations. Higher level = Higher Rarity
+    /// </summary>
+    [DataField]
+    public int Level { get; private set; } = 1;
+
+    /// <summary>
+    /// The stats for this symptom this are added for the total stats of the disease.
+    /// </summary>
+    [DataField]
+    public DiseaseStats Stats { get; private set; } = default!;
+
+    /// <summary>
     /// Behavior variants configured by name. Each entry is a symptom effect with its own parameters.
     /// </summary>
     [DataField]

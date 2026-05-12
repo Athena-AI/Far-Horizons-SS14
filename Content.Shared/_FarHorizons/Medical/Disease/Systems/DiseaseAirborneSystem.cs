@@ -96,7 +96,7 @@ public sealed class DiseaseAirborneSystem : EntitySystem
             if (!_interaction.InRangeUnobstructed(source, other, range))
                 continue;
             
-            var stage = _disease.CreateStage(disease.Id);
+            var stage = _disease.CreateStage(disease);
             if(stage == null)
                 continue;
             _disease.TryInfectWithChance(other, disease, stage, chance);

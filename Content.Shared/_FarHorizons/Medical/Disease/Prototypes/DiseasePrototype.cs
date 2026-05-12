@@ -29,22 +29,10 @@ public sealed partial class DiseasePrototype : IPrototype
     public string Description { get; private set; } = default!;
 
     /// <summary>
-    /// Spread vectors for this disease.
-    /// </summary>
-    [DataField(required: true)]
-    public DiseaseSpreadPath SpreadPath { get; private set; } = DiseaseSpreadPath.NonContagious;
-
-    /// <summary>
     /// Disease icon prototype to show on HUDs.
     /// </summary>
     [DataField]
     public ProtoId<DiseaseIconPrototype>? IconDisease { get; private set; } = "DiseaseIconIll";
-
-    /// <summary>
-    /// Probability of progression through disease stages per tick.
-    /// </summary>
-    [DataField]
-    public float StageProb { get; private set; } = 0.02f;
 
     /// <summary>
     /// Default immunity strength granted after curing this disease (0-1).
@@ -133,4 +121,21 @@ public sealed partial class SymptomEntry
     {
         { 0, -1f } // Int: Stage, Float: Chance
     };
+}
+
+[DataDefinition]
+[Serializable, NetSerializable]
+public sealed partial class DiseaseStats
+{
+    [DataField]
+    public int Stealth { get; set; } = 0;
+
+    [DataField]
+    public int Resistance { get; set; } = 0;
+
+    [DataField]
+    public int StageSpeed { get; set; } = 0;
+
+    [DataField]
+    public int Transmittable { get; set; } = 0;
 }

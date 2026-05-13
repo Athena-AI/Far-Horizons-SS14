@@ -108,12 +108,6 @@ public sealed partial class SymptomEntry
     public ProtoId<DiseaseSymptomPrototype> Symptom { get; private set; }
     
     /// <summary>
-    /// At what stage levels does this symptom present?
-    /// </summary>
-    [DataField]
-    public List<int> Stages { get; private set; } = new() { 0 };
-    
-    /// <summary>
     /// Per stage level probability overwrites the symptom level probability if > -1.
     /// </summary>
     [DataField]

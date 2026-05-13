@@ -6,21 +6,17 @@
   stages: [60, 120, 120, 180]
   symptoms: 
   - symptom: SymptomCough
-    stages: [1, 2]
     probability:
       1: 0.02
       2: 0.04
   - symptom: SymptomSneeze
-    stages: [1, 2, 3]
     probability:
       1: 0.02
       2: 0.04
   - symptom: SymptomGasp
-    stages: [3]
     probability:
       3: 0.05
   - symptom: SymptomGib
-    stages: [4]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15 # Higher chance to cure, since two reagents are required.
@@ -40,11 +36,8 @@
   stages: [120, 180]
   symptoms:
     - symptom: SymptomJitters
-      stages: [1]
     - symptom: SymptomEmoteHonk
-      stages: [1,2]
     - symptom: SymptomHonkShout
-      stages: [1,2]
   cureSteps:
   - !type:CureConditions
     conditions:
@@ -66,11 +59,8 @@
   stages: []
   symptoms:
   - symptom: SymptomOwOAccent
-    stages: [0]
   - symptom: SymptomEmoteCat
-    stages: [0]
   - symptom: SymptomSpeedBoost
-    stages: [0]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15 # Did you know cats hate the smell of citrus?

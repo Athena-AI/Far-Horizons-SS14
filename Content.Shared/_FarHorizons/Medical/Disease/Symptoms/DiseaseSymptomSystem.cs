@@ -4,6 +4,7 @@ using Content.Shared._FarHorizons.Medical.Disease.Components;
 using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
+using Content.Shared.Emag.Systems;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -20,7 +21,7 @@ public sealed partial class SharedDiseaseSymptomSystem : EntitySystem
     /// <summary>
     /// Executes the side-effects for a triggered symptom on a carrier.
     /// </summary>
-    public void TriggerSymptom(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, DiseaseSymptomPrototype symptom)
+    public void TriggerSymptom(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData stage, DiseaseSymptomPrototype symptom)
     {
         // Skip this symptom when the carrier is dead.
         if (symptom.OnlyAlive && _mobState.IsDead(ent.Owner))

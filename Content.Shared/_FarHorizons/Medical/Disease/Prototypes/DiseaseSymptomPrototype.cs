@@ -1,3 +1,4 @@
+using Content.Shared._FarHorizons.Medical.Disease.Effects;
 using Content.Shared._FarHorizons.Medical.Disease.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -33,6 +34,9 @@ public sealed partial class DiseaseSymptomPrototype : IPrototype
     /// </summary>
     [DataField]
     public DiseaseStats Stats { get; private set; } = default!;
+
+    [DataField]
+    public DiseaseStageCondition? Stages { get; private set;} = default!;
 
     /// <summary>
     /// Behavior variants configured by name. Each entry is a symptom effect with its own parameters.
@@ -101,6 +105,9 @@ public sealed partial class SymptomAirborneBurst
 /// </summary>
 public abstract partial class SymptomBehavior
 {
+    [DataField]
+    public IDiseaseCondition[]? Conditions = default;
+
     /// <summary>
     /// Called when the symptom is triggered on the carrier.
     /// </summary>

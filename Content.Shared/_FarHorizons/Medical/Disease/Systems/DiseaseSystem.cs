@@ -156,7 +156,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             if (!_prototypes.TryIndex(symptomId, out var symptom))
                 continue;
 
-            if(!disease.Symptoms[i].Stages.Contains(stage.Stage))
+            if(symptom.Stages != null && !symptom.Stages.Check(ent, disease, stage))
                 continue;
 
             if (ent.Comp.SuppressedSymptoms.TryGetValue(symptomId, out var value) && value > _timing.CurTime)
@@ -173,7 +173,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             var rand = new System.Random(seed);
             if (!rand.Prob(prob))
                 continue;
-            _symptoms.TriggerSymptom(ent, disease, symptom);
+            _symptoms.TriggerSymptom(ent, disease, stage, symptom);
         }
     }
 

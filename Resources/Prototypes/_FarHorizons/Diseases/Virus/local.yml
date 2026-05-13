@@ -3,21 +3,17 @@
   name: disease-DiseaseFoodPoisoning-name
   desc: disease-DiseaseFoodPoisoning-desc
   spreadPath: [ NonContagious ]
-  stageProb: 0.03
   stages: [60, 180]
   symptoms:
   - symptom: SymptomEmoteGroan
-    stages: [1, 2]
     probability: 
       1: 0.1
       2: 0.2
   - symptom: SymptomEmoteMoan
-    stages: [1, 2]
     probability: 
       1: 0.1
       2: 0.2
   - symptom: SymptomVomiting
-    stages: [2]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.05
@@ -39,7 +35,6 @@
   stages: [180]
   symptoms:
   - symptom: SymptomNarcolepsy
-    stages: [1]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.05
@@ -63,9 +58,7 @@
   stages: [180, 120]
   symptoms:
   - symptom: SymptomMonkeyShout
-    stages: [2]
   - symptom: SymptomGeneticDamage
-    stages: [2]
   cureSteps:
   - !type:CureConditions
     conditions:

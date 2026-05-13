@@ -4,22 +4,18 @@
   desc: disease-DiseaseCold-desc
   spreadPath: [ Airborne ]
   permeabilityMod: 0.5
-  stages: [300, 150]
+  stages: [30, 150]
   symptoms:
   - symptom: SymptomCough
-    stages: [1, 2]
     probability:
       1: 0.02
       2: 0.04
   - symptom: SymptomSneeze
-    stages: [1, 2]
     probability:
       1: 0.02
       2: 0.04
   - symptom: SymptomFever
-    stages: [2]
   - symptom: SymptomTransitionToFlu
-    stages: [2]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15
@@ -43,17 +39,14 @@
   stages: [300, 150]
   symptoms:
   - symptom: SymptomCough
-    stages: [1, 2]
     probability:
       1: 0.02
       2: 0.04
   - symptom: SymptomSneeze
-    stages: [1, 2]
     probability:
       1: 0.02
       2: 0.04
   - symptom: SymptomFreeze
-    stages: [2]
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15 # Higher chance to cure, since two reagents are required.
@@ -79,11 +72,8 @@
   stages: [120, 60]
   symptoms:
     - symptom: SymptomCough
-      stages: [1, 2]
     - symptom: SymptomSneeze
-      stages: [1, 2]
-    - symptom: SymptomToxinLight
-      stages: [2]
+    - symptom: SymptomToxin
   cureSteps:
   - !type:CureConditions
     cureChance: 0.15

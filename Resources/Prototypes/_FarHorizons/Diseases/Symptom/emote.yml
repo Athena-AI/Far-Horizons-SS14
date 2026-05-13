@@ -2,6 +2,8 @@
   id: SymptomCough
   name: disease-symptom-SymptomCough-name
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   airborneBurst:
     rangeMultiplier: 1.75
     chanceMultiplier: 1.5
@@ -29,6 +31,8 @@
   id: SymptomSneeze
   name: disease-symptom-SymptomSneeze-name
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   airborneBurst:
     rangeMultiplier: 2.5
     chanceMultiplier: 2.5
@@ -56,6 +60,8 @@
   id: SymptomGasp
   name: disease-symptom-SymptomGasp-name
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 3
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -74,6 +80,8 @@
   name: disease-symptom-SymptomHonk-name
   probability: 0.05
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -93,6 +101,8 @@
   probability: 0.05
   singleBehavior: true
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 0
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -115,6 +125,8 @@
   id: SymptomEmoteGroan
   name: disease-symptom-SymptomEmoteGroan-name
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -132,6 +144,8 @@
   id: SymptomEmoteMoan
   name: disease-symptom-SymptomEmoteMoan-name
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -152,6 +166,8 @@
   name: disease-symptom-SymptomHonkShout-name
   probability: 0.05
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -169,6 +185,8 @@
   name: disease-symptom-SymptomMonkeyShout-name
   probability: 0.05
   onlyAlive: true
+  stages: !type:DiseaseStageCondition
+    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -187,6 +205,8 @@
   id: SymptomOwOAccent
   name: disease-symptom-SymptomOwOAccent-name
   probability: 1
+  stages: !type:DiseaseStageCondition
+    min: 0
   behaviors:
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectOwO

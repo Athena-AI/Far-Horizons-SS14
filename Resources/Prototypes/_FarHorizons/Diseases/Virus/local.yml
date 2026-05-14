@@ -3,7 +3,6 @@
   name: disease-DiseaseFoodPoisoning-name
   desc: disease-DiseaseFoodPoisoning-desc
   spreadPath: [ NonContagious ]
-  stages: [60, 180]
   symptoms:
   - symptom: SymptomEmoteGroan
     probability: 
@@ -32,7 +31,6 @@
   name: disease-DiseaseNarcolepsySyndrome-name
   desc: disease-DiseaseNarcolepsySyndrome-desc
   spreadPath: [ NonContagious ]
-  stages: [180]
   symptoms:
   - symptom: SymptomNarcolepsy
   cureSteps:
@@ -55,7 +53,6 @@
   spreadPath: [ Contact ]
   contactInfect: 0.005
   contactDeposit: 0.05
-  stages: [180, 120]
   symptoms:
   - symptom: SymptomMonkeyShout
   - symptom: SymptomGeneticDamage

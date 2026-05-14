@@ -3,6 +3,15 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 
+[Serializable, NetSerializable]
+public enum DiseaseTimers : byte
+{
+    Stage01 = 240,
+    Stage12 = 180,
+    Stage23 = 120,
+    Stage34 = 60
+}
+
 /// <summary>
 /// Enumeration describing disease transmission vectors.
 /// TODO: only the Contact works and Airborne.

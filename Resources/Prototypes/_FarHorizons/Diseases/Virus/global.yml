@@ -4,7 +4,6 @@
   desc: disease-DiseaseCold-desc
   spreadPath: [ Airborne ]
   permeabilityMod: 0.5
-  stages: [30, 150]
   symptoms:
   - symptom: SymptomCough
     probability:
@@ -36,7 +35,6 @@
   name: disease-DiseaseCold9-name
   desc: disease-DiseaseCold9-desc
   spreadPath: [ Contact ]
-  stages: [300, 150]
   symptoms:
   - symptom: SymptomCough
     probability:
@@ -69,7 +67,6 @@
   desc: disease-DiseaseFlu-desc
   spreadPath: [ Airborne ]
   permeabilityMod: 0.75
-  stages: [120, 60]
   symptoms:
     - symptom: SymptomCough
     - symptom: SymptomSneeze

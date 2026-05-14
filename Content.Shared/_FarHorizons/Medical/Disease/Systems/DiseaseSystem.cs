@@ -135,15 +135,17 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     }
 
     private StageData AdvanceStage(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData currentStage)
-    {       
-        var maxStage = Math.Max(0, disease.Stages.Count);
+    {   
+        var stages = Enum.GetValues<DiseaseTimers>().Reverse().ToList();
+        var maxStage = stages.Count();
+        
         if(currentStage.Stage == maxStage)
             return currentStage;
 
         if (currentStage.AdvanceStageAt > _timing.CurTime)
             return currentStage;
             
-        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( disease.Stages[currentStage.Stage] - (disease.Stages[currentStage.Stage] * disease.StageProb));
+        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( (float) stages[currentStage.Stage] - ((float) stages[currentStage.Stage] * disease.StageProb));
         currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
         return currentStage; 
     }
@@ -357,7 +359,6 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             ContactDeposit = proto.ContactDeposit,
             AirborneInfect = proto.AirborneInfect,
             AirborneRange = proto.AirborneRange,
-            Stages = proto.Stages,
             Symptoms = proto.Symptoms,
             CureSteps = proto.CureSteps
         };
@@ -372,10 +373,11 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
     public StageData? CreateStage(DiseaseData disease, int startStage=0)
     {   
+        var stages = Enum.GetValues<DiseaseTimers>().Reverse().ToList();
         var stage = new StageData
         {
             Stage = startStage,
-            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(disease.Stages[startStage] - (disease.Stages[startStage]* disease.StageProb))
+            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds((float) stages[startStage] - ((float) stages[startStage]* disease.StageProb))
         };
         return stage;
     }
@@ -403,28 +405,24 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     private DiseaseSpreadPath UpdateSpreadPath(DiseaseData disease)
     {
         var transmitionStat = disease.Stats.Transmittable;
-        if(transmitionStat <= 0 )
-            return DiseaseSpreadPath.NonContagious;
-        else if(transmitionStat is > 0 and <= 2)
-            return DiseaseSpreadPath.Blood;
-        else if(transmitionStat is > 2 and <= 5)
-            return DiseaseSpreadPath.Contact;
-        else if(transmitionStat is > 5 and <= 99)
-            return DiseaseSpreadPath.Airborne;
-        else if(transmitionStat is > 99)
+        if(transmitionStat > 99)
             return DiseaseSpreadPath.Special;
-
+        else if(transmitionStat > 5)
+            return DiseaseSpreadPath.Airborne;
+        else if(transmitionStat > 2)
+            return DiseaseSpreadPath.Contact;
+        else if(transmitionStat > 0)
+            return DiseaseSpreadPath.Blood;
+            
         return DiseaseSpreadPath.NonContagious;
     }
     private DiseaseStealthFlags UpdateStealth(DiseaseData disease)
     {
         var stealthStat = disease.Stats.Stealth;
-        if(stealthStat < 2)
-            return DiseaseStealthFlags.None;
-        if(stealthStat is 2)
-            return DiseaseStealthFlags.Hidden;
-        if(stealthStat is 3 )
+        if(stealthStat > 3 )
             return DiseaseStealthFlags.Hidden | DiseaseStealthFlags.VeryHidden;
+        else if(stealthStat > 2)
+            return DiseaseStealthFlags.Hidden;
             
         return DiseaseStealthFlags.None;
     }

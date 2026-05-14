@@ -79,22 +79,16 @@ public sealed partial class DiseasePrototype : IPrototype
     public float AirborneRange { get; private set; } = 3f;
 
     /// <summary>
-    /// Time Configuration for each stage this also handles max stage level. So 3 entry means a disease have 4 stages counting stage 0.
-    /// </summary>
-    [DataField(required: true)]
-    public List<float> Stages { get; private set; } = [];
-
-    /// <summary>
     /// Symptoms for this disease.
     /// </summary>
     [DataField]
-    public List<SymptomEntry> Symptoms { get; private set; } = [];
+    public List<SymptomEntry> Symptoms { get; private set; } = new List<SymptomEntry>();
 
     /// <summary>
     /// Optional list of cure steps for the disease. Each entry is a specific cure action.
     /// </summary>
     [DataField]
-    public List<CureStep> CureSteps { get; private set; } = [];
+    public List<CureStep> CureSteps { get; private set; } = new List<CureStep>();
 }
 
 [DataDefinition]

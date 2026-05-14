@@ -32,16 +32,11 @@ public sealed class ShowDiseaseIconsSystem : EquipmentHudSystem<ShowDiseaseIcons
 
         var showDisease = carrier.ActiveDiseases.Any(x =>
         {
-            if(!_prototype.TryIndex(x.Key.Id, out var disease))
-                return false;
+            var stages = Enum.GetValues<DiseaseTimers>();
+            var maxStage = stages.Count();
 
-            var index = x.Value.Stage;
-
-            if (index < 0 || index >= disease.Stages.Count)
-            {
-                Log.Error($"Invalid stage index {index} for {x.Key}");
+            if(x.Key.Stealth.HasFlag(DiseaseStealthFlags.Hidden) && x.Value.Stage < maxStage/2)
                 return false;
-            }
 
             return true;
         });

@@ -3,7 +3,6 @@
   name: disease-DiseaseGBS-name
   desc: disease-DiseaseGBS-desc
   spreadPath: [ NonContagious ]
-  stages: [60, 120, 120, 180]
   symptoms: 
   - symptom: SymptomCough
     probability:
@@ -33,7 +32,6 @@
   name: disease-DiseaseHonkSyndrome-name
   desc: disease-DiseaseHonkSyndrome-desc
   spreadPath: [ NonContagious ]
-  stages: [120, 180]
   symptoms:
     - symptom: SymptomJitters
     - symptom: SymptomEmoteHonk
@@ -56,7 +54,6 @@
   desc: disease-DiseaseOwOnavirus-desc
   spreadPath: [ NonContagious ]
   iconDisease: DiseaseIconBuff
-  stages: []
   symptoms:
   - symptom: SymptomOwOAccent
   - symptom: SymptomEmoteCat

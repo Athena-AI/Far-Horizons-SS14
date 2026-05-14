@@ -132,8 +132,10 @@ public sealed class DiseaseDiagnoserSystem : EntitySystem
             else
             {
                 lines.Add(Loc.GetString("diagnoser-cure-has"));
-                foreach (var step in cureSteps)
+                for (int i = 0; i < cureSteps.Count; i++)
                 {
+                    var step = cureSteps[i];
+                    lines.Add("Option " + $"{i+1}:");
                     var stepLines = step.BuildDiagnoserLines(_prototypes).ToList();
 
                     foreach (var stepLine in stepLines)

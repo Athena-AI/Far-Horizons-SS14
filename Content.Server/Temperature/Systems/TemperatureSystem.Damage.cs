@@ -1,6 +1,7 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Components;
 using Content.Server.Temperature.Components;
+using Content.Shared._FarHorizons.LimbDamage;
 using Content.Shared.Alert;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -23,6 +24,7 @@ public sealed partial class TemperatureSystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly LimbDamageSystem _limbDamage = default!; // Far Horizons
 
     private EntityQuery<TemperatureDamageComponent> _tempDamageQuery;
     private EntityQuery<ContainerTemperatureComponent> _containerTemperatureQuery;
@@ -113,6 +115,7 @@ public sealed partial class TemperatureSystem
             var diff = Math.Abs(temperature.CurrentTemperature - heatDamageThreshold);
             var tempDamage = c / (1 + a * Math.Pow(Math.E, -heatK * diff)) - y;
             _damageable.TryChangeDamage(entity.Owner, entity.Comp.HeatDamage * tempDamage * deltaTime.TotalSeconds, ignoreResistances: true, interruptsDoAfters: false);
+            _limbDamage.ChangeDamageAll(entity.Owner, entity.Comp.HeatDamage * tempDamage * deltaTime.TotalSeconds, ignoreResistances: true, interruptsDoAfters: false); // Far Horizons
         }
         else if (temperature.CurrentTemperature <= coldDamageThreshold)
         {
@@ -126,6 +129,7 @@ public sealed partial class TemperatureSystem
             var tempDamage =
                 Math.Sqrt(diff * (Math.Pow(entity.Comp.DamageCap.Double(), 2) / coldDamageThreshold));
             _damageable.TryChangeDamage(entity.Owner, entity.Comp.ColdDamage * tempDamage * deltaTime.TotalSeconds, ignoreResistances: true, interruptsDoAfters: false);
+            _limbDamage.ChangeDamageAll(entity.Owner, entity.Comp.ColdDamage * tempDamage * deltaTime.TotalSeconds, ignoreResistances: true, interruptsDoAfters: false); // Far Horizons
         }
         else if (entity.Comp.TakingDamage)
         {

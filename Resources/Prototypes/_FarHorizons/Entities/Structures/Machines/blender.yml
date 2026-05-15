@@ -1,0 +1,21 @@
+- type: entity
+  id: KitchenBlender
+  parent: KitchenReagentGrinder
+  name: Blender
+  suffix: grinder/juicer
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Machines/Kitchen/blender.rsi
+    layers:
+      - state: blender
+      - state: blender_online
+        shader: unshaded
+        visible: false
+        map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+  - type: ItemMapper
+    containerWhitelist: [beakerSlot]
+    mapLayers:
+      blender_beaker_attached:
+        whitelist:
+          components:
+          - FitsInDispenser

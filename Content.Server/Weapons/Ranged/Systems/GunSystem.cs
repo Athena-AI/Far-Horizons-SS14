@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Server.Cargo.Systems;
 using Content.Server.Weapons.Ranged.Components;
+using Content.Shared._FarHorizons.LimbDamage;
 using Content.Shared.Cargo;
 using Content.Shared.Damage;
 using Content.Shared.Projectiles;
@@ -30,7 +31,7 @@ public sealed partial class GunSystem : SharedGunSystem
 {
     [Dependency] private readonly PricingSystem _pricing = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
-
+    [Dependency] private readonly LimbDamageSystem _limbDamage = default!; // Far Horizons
 #region Starlight
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
@@ -248,6 +249,7 @@ public sealed partial class GunSystem : SharedGunSystem
         {
             var targeted = EnsureComp<TargetedProjectileComponent>(uid);
             targeted.Target = target;
+            targeted.LimbTarget = user == null ? null : _limbDamage.GetCurrentSelectedTarget(user.Value); // Far Horizons
             Dirty(uid, targeted);
         }
         

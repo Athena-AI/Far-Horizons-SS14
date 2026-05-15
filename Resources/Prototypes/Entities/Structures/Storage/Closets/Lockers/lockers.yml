@@ -189,6 +189,41 @@
   suffix: No Access
   components:
   - type: Appearance
+  # FarHorizons - Start
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/freezer.rsi
+    layers:
+    - state: freezer
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: freezer_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      offset: "-0.065,0"
+      map: ["enum.PaperLabelVisuals.Layer"]
+    # Starlight-start: Maintenance panel
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      visible: false
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
+    - state: electrified
+      sprite: Effects/electricity.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.Sparks"]
+    # Starlight-end
+  # FarHorizons - End
   - type: EntityStorageVisuals
     stateBaseClosed: freezer
     stateDoorOpen: freezer_open

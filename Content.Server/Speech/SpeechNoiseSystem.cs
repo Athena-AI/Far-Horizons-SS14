@@ -58,6 +58,10 @@ namespace Content.Server.Speech
 
         private void OnEntitySpoke(EntityUid uid, SpeechComponent component, EntitySpokeEvent args)
         {
+            // Far Horizons - suppress the talking noise when suppressing local TTS
+            if (args.SuppressLocalTTS)
+                return;
+
             if (component.SpeechSounds == null)
                 return;
 

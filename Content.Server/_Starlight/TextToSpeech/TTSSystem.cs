@@ -7,6 +7,7 @@ using Content.Shared._Starlight.Speech;
 using Content.Shared.Chat;
 using Content.Shared.Preferences;
 using Content.Shared.Radio;
+using Content.Shared.Radio.Components;
 using Content.Shared.Starlight.CCVar;
 using Content.Shared.Starlight.TextToSpeech;
 using Robust.Shared.Audio;
@@ -106,8 +107,8 @@ public sealed partial class TTSSystem : EntitySystem
             var symspeech = GetOrAssignVoice(args.Source); // Far Horizons
             var channel = new ProtoId<RadioChannelPrototype>(args.Channel.ID);
             
+            await GenerateAndStream(TTSType.Radio, symspeech, text, filter, GetEffectForRadioType(args.Channel.RadioChannelType), chime, null, channel);
             // Far Horizons edit
-            await GenerateAndStream(TTSType.Radio, symspeech, text, filter, TTSEffect.Radio, chime, null, channel);
         }
         catch (TaskCanceledException ex)
         {
@@ -187,6 +188,10 @@ public sealed partial class TTSSystem : EntitySystem
 
     private async void OnEntitySpoke(EntityUid uid, TextToSpeechComponent component, EntitySpokeEvent args)
     {
+        // Far Horizons - skip TTS message if local TTS is supressed
+        if (args.SuppressLocalTTS)
+            return;
+
         // Far Horizons Start - add logic to shorten the message instead of rejecting when its too long
         args.Message.Tts ??= ShortenMessage(args.Message.Text);
         if (!_isEnabled
@@ -194,6 +199,12 @@ public sealed partial class TTSSystem : EntitySystem
             )
             return;
         // Far Horizons End
+
+        // Far Horizons - suppress intrinsic radio
+        if (args.Channel != null
+            && TryComp<IntrinsicRadioTransmitterComponent>(uid, out var intrinsicRadio)
+            && intrinsicRadio.Channels.Contains(args.Channel.ID))
+            return;
 
         await Task.Yield();
         try
@@ -290,7 +301,20 @@ public sealed partial class TTSSystem : EntitySystem
     [GeneratedRegex(@"\[[^\]]*\]")]
     private static partial Regex TagStripperRegex();
     
-    // Far Horizons-Start shorten all messages for TTS to 50 characters
+    // Far Horizons Start
     private string ShortenMessage(string text) => text.Substring(0, Math.Min(text.Length, _maxChars));
+
+    private TTSEffect GetEffectForRadioType(RadioChannelType type)
+    {
+        switch (type)
+        {
+            case RadioChannelType.Radio:
+                return TTSEffect.Radio;
+            case RadioChannelType.CollectiveMind:
+                return TTSEffect.Underwater;
+            default:
+                return TTSEffect.Radio;
+        }
+    }
     // Far Horizons-End
 }

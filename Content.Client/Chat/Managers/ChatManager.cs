@@ -86,6 +86,12 @@ internal sealed class ChatManager : IChatManager
             case ChatSelectChannel.CollectiveMind:
                 _consoleHost.ExecuteCommand($"cmsay \"{CommandParsing.Escape(str)}\"");
                 break;
+            
+            // Far Horizons start
+            case ChatSelectChannel.Mentor:
+                _consoleHost.ExecuteCommand($"msay \"{CommandParsing.Escape(str)}\"");
+                break;
+            // Far Horizons end
 
             default:
                 throw new ArgumentOutOfRangeException(nameof(channel), channel, null);

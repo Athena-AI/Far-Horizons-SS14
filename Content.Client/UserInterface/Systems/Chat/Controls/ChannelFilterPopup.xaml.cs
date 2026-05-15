@@ -31,6 +31,7 @@ public sealed partial class ChannelFilterPopup : Popup
         ChatChannel.Admin,
         ChatChannel.AdminAlert,
         ChatChannel.AdminChat,
+        ChatChannel.MentorChat, // Far Horizons
         ChatChannel.Server,
         ChatChannel.CollectiveMind
     };

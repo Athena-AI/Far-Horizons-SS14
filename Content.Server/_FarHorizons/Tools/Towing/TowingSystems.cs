@@ -114,11 +114,16 @@ public sealed partial class TowingSystem : EntitySystem
             _movementSpeed.RefreshMovementSpeedModifiers(attachedTo);
             RemComp<TiedComponent>(attachedTo);
             RemComp<JointVisualsComponent>(attachedTo);
+            
+            if(HasComp<HitchComponent>(attachedTo) && HasComp<TowingRopeComponent>(attachedTo))
+                QueueDel(attachedTo);
         }
 
         _movementSpeed.RefreshMovementSpeedModifiers(ent.Owner);    
         RemComp<TiedComponent>(ent.Owner);
         RemComp<JointVisualsComponent>(ent.Owner);
+        if(HasComp<HitchComponent>(ent.Owner) && HasComp<TowingRopeComponent>(ent.Owner))
+            QueueDel(ent.Owner);
         _joint.RecursiveClearJoints(ent.Owner);
     }
 

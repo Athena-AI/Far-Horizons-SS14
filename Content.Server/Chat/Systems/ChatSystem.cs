@@ -703,9 +703,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Starlight
 
         // Far Horizons Start - skip local whisper when using subdermal radio
-        if (channel == null
-            || !TryComp<IntrinsicRadioTransmitterComponent>(source, out var subdermalRadio)
-            || !subdermalRadio.Channels.Contains(channel.ID))
+        var subdermalSpeak = channel != null
+            && TryComp<IntrinsicRadioTransmitterComponent>(source, out var subdermalRadio)
+            && subdermalRadio.Channels.Contains(channel.ID);
+
+        if (!subdermalSpeak)
         {
             foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange, true)) // Starlight-edit
             {
@@ -760,7 +762,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var replayWrap = WrapWhisperMessage(source, "chat-manager-entity-whisper-wrap-message", name, message.Text, language); // Starlight-edit: Languages
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message.Text, replayWrap, GetNetEntity(source), null, MessageRangeHideChatForReplay(range))); // Starlight-edit: Languages
 
-        var ev = new EntitySpokeEvent(source, message, channel, languageObfuscatedMessage, true, language); // Starlight-edit: Languages
+        var ev = new EntitySpokeEvent(source, message, channel, languageObfuscatedMessage, true, language, subdermalSpeak); // Starlight-edit: Languages // Far Horizons edit - suppress local TTS for subdermal radio
         RaiseLocalEvent(source, ev, true);
         if (!hideLog)
             if (original == message.Text) // Starlight

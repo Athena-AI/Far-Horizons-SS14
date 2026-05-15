@@ -55,6 +55,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.3
   - type: Storage
+    maxItemSize: Huge
     grid:
     - 0,0,8,4
   - type: ClothingSpeedModifier
@@ -73,6 +74,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.3
   - type: Storage
+    maxItemSize: Huge
     grid:
     - 0,0,9,5
   - type: ClothingSpeedModifier

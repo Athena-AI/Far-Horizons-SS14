@@ -1,0 +1,20 @@
+{
+    "license":"CC-BY-SA-3.0",
+    "copyright":"Taken from Goon Station SS13, Modified by ItsAbby For Far Horizons",
+    "version":1,
+    "size":{
+        "x":32,
+        "y":32
+    },
+    "states":[
+        {
+            "name":"blender"
+        },
+        {
+            "name":"blender_online"
+        },
+        {
+            "name":"blender_beaker_attached"
+        }
+    ]
+}

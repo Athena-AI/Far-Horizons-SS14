@@ -87,9 +87,14 @@ public sealed partial class RadioSystem : EntitySystem
             var listener = component.Owner;
             var msg = args.OriginalChatMsg;
 
+            // Far Horizons - When its a subdermal radio, we should also send the message to the sender, as they dont get local TTS message
+            var shouldSendMessageToSelf = args.MessageSource == uid
+                && TryComp<IntrinsicRadioTransmitterComponent>(uid, out var selfTransmitter)
+                && selfTransmitter.Channels.Contains(args.Channel.ID);
+
             if (!_language.CanUnderstand(listener, args.Language.ID))
                 msg = args.LanguageObfuscatedChatMsg;
-            else if(args.MessageSource != uid)
+            else if (args.MessageSource != uid || shouldSendMessageToSelf)
                 args.Receivers.Add(uid);
 
             _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);

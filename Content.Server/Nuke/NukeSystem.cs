@@ -510,7 +510,7 @@ public sealed class NukeSystem : EntitySystem
         _selectedNukeSong = _audio.ResolveSound(component.ArmMusic);
 
         // warn a crew
-        var announcement = Loc.GetString("nuke-component-announcement-armed",
+        var announcement = Loc.GetString("fh-nuke-component-announcement-armed", //FH
             ("time", (int) component.RemainingTime),
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, nukeXform)))));
         var sender = Loc.GetString("nuke-component-announcement-sender");

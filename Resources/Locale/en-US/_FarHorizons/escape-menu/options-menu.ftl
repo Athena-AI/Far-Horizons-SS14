@@ -15,3 +15,5 @@ ui-options-function-target-leg-left = Target Left Leg
 ui-options-function-target-leg-right = Target Right Leg
 ui-options-function-target-foot-left = Target Left Foot
 ui-options-function-target-foot-right = Target Right Foot
+
+ui-options-function-focus-mentor-chat-window = Focus chat (Mentor)

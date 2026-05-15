@@ -24,6 +24,7 @@
   anonymous: true
   anonymousAlias: "Nexus User {0}"
   anonymousIcon: JobIconUnknown
+  radioChannelType: CollectiveMind
 
 - type: radioChannel
   id: Lambda

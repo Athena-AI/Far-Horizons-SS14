@@ -23,3 +23,31 @@
       state: mopshoes
     useDelay: 1
     itemIconStyle: BigAction
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleParamedicSirenSyndi
+  name: Toggle Paramedic Siren
+  description: Toggles the paramedic siren on and off.
+  components:
+  - type: Action
+    icon:
+      sprite: _FarHorizons/Clothing/OuterClothing/Suits/NeoSol/paramed.rsi 
+      state: icon-siren
+    useDelay: 1
+    itemIconStyle: BigAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionOpenCantripStore
+  name: Select Intrinsics
+  description: Opens the intrinsics selection screen
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: _Starlight/Objects/Misc/books.rsi
+      state: cantrips
+  - type: InstantAction
+    event: !type:OpenUplinkImplantEvent

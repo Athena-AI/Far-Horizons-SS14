@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprited by ItsAbby For Far Horizons",
+    "states": [
+        {
+            "name": "medium_screen_broken"
+        },
+        {
+            "name": "medium_television_base"
+        },
+        {
+            "name": "medium_television_off"
+        },
+        {
+            "name": "14Loko",
+            "delays": [
+                [0.1666,0.1666,0.1666,0.1666,0.1666,0.1666,0.1666,0.1666,0.1666,0.1666]
+            ]
+        },
+        {
+            "name": "burger",
+            "delays": [
+                [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2]
+            ]
+        },
+        {
+            "name": "cola",
+            "delays": [
+                [0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15]
+            ]
+        },
+        {
+            "name": "smite",
+            "delays": [
+                [0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.15]
+            ]
+        },
+        {
+            "name": "gibbs",
+            "delays": [
+                [0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2,0.2]
+            ]
+        }
+    ]
+}

@@ -18604,18 +18604,6 @@ entities:
     - type: Transform
       pos: -26.53436,39.65242
       parent: 2
-- proto: BriefcaseBrownSyndicateFilledPistolViper
-  entities:
-  - uid: 29339
-    components:
-    - type: Transform
-      pos: -5.980951,29.719837
-      parent: 2
-  - uid: 29340
-    components:
-    - type: Transform
-      pos: -5.340326,29.641712
-      parent: 2
 - proto: Brutepack
   entities:
   - uid: 896

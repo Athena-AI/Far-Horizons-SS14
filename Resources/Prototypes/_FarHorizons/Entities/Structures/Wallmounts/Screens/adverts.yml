@@ -1,0 +1,116 @@
+- type: entity
+  parent: [ BaseSign, BaseSignPowered ]
+  id: SignAdvertMediumBase
+  abstract: true
+  name: Advertisement
+  description: Even space was corrupted by capitalism.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Wallmounts/advert_medium.rsi
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SignAdvertMediumBroken:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: BaseSign
+  id: SignAdvertMediumBroken
+  name: Broken Advertisement
+  description: Space just got a little less capitalist.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Wallmounts/advert_medium.rsi
+    layers:
+      - state: medium_screen_broken
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+- type: entity
+  parent: SignAdvertMediumBase
+  id: SignAdvertMedium14Loko
+  suffix: 14Loko
+  components:
+  - type: Sprite
+    layers:
+      - state: medium_television_off
+      - map: ["enum.PowerDeviceVisualLayers.Powered"]
+        shader: unshaded
+        state: 14Loko
+
+- type: entity
+  parent: SignAdvertMediumBase
+  id: SignAdvertMediumBurger
+  suffix: Burger
+  components:
+  - type: Sprite
+    layers:
+      - state: medium_television_off
+      - map: ["enum.PowerDeviceVisualLayers.Powered"]
+        shader: unshaded
+        state: burger
+
+- type: entity
+  parent: SignAdvertMediumBase
+  id: SignAdvertMediumCola
+  suffix: Cola
+  components:
+  - type: Sprite
+    layers:
+      - state: medium_television_off
+      - map: ["enum.PowerDeviceVisualLayers.Powered"]
+        shader: unshaded
+        state: cola
+
+- type: entity
+  parent: SignAdvertMediumBase
+  id: SignAdvertMediumGibbs
+  suffix: Gibbs
+  components:
+  - type: Sprite
+    layers:
+      - state: medium_television_off
+      - map: ["enum.PowerDeviceVisualLayers.Powered"]
+        shader: unshaded
+        state: gibbs
+
+- type: entity
+  parent: SignAdvertMediumBase
+  id: SignAdvertMediumSmite
+  suffix: Smite
+  components:
+  - type: Sprite
+    layers:
+      - state: medium_television_off
+      - map: ["enum.PowerDeviceVisualLayers.Powered"]
+        shader: unshaded
+        state: smite

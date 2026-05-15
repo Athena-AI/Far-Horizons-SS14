@@ -140,6 +140,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         SubscribeLocalEvent<RiderComponent, RefreshMovementSpeedModifiersEvent>(OnMovementSpeedRefreshRiderEvent);
         SubscribeLocalEvent<RiderComponent, DidEquipHandEvent>(OnHandEquippedRider);
         SubscribeLocalEvent<RiderComponent, PullAttemptEvent>(OnPullAttempt);
+        SubscribeLocalEvent<RiderComponent, EntityTerminatingEvent>(OnRiderTerminating);
 
         SubscribeLocalEvent<GunComponent, ItemWieldedEvent>(OnGunWielded);
         SubscribeLocalEvent<GunComponent, ItemUnwieldedEvent>(OnGunUnwielded);
@@ -769,6 +770,12 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         args.Cancelled = true;
     }
 
+    private void OnRiderTerminating(Entity<RiderComponent> ent, ref EntityTerminatingEvent args)
+    {
+        if (ent.Comp.Riding is { } vehicle && TryComp<VehicleComponent>(vehicle, out var vehicleComp))
+            RemoveRider(ent.Owner, vehicle, vehicleComp);
+    }
+
     #endregion
     #region Gun Events
     private void OnGunUnwielded(EntityUid uid, GunComponent component, ItemUnwieldedEvent args)
@@ -839,6 +846,9 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         if( vehicleComp.Rider == null) return;
         var rider = vehicleComp.Rider.Value;
+
+        if (!rider.IsValid() || !Exists(rider)) return;
+
         var riderTransform = Transform(rider);
         if(riderTransform.ParentUid !=  vehicle) return;
 

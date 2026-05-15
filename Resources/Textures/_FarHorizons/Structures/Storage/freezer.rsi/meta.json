@@ -1,0 +1,42 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "copyright": "Sprited by ItsAbby For Far Horizons",
+    "license": "CC-BY-SA-3.0",
+    "states": [
+        {
+            "name": "panel_open"
+        },
+        {
+            "name": "freezer"
+        },
+        {
+            "name": "freezer_icon"
+        },
+        {
+            "name": "freezer_door"
+        },
+        {
+            "name": "freezer_open"
+        },
+        {
+            "name": "welded"
+        },
+        {
+            "name": "locked",
+            "delays": [
+                [0.2, 0.2, 0.2, 0.2]
+            ]
+        },
+        {
+            "name": "unlocked",
+            "delays": [
+                [0.2, 0.2, 0.2, 0.2]
+            ]
+        }
+    ]
+}
+

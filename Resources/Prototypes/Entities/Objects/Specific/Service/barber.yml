@@ -40,6 +40,9 @@
       path: /Audio/_Starlight/Medical/Surgery/hemostat1.ogg
   - type: SurgeryTool
   #FarHorizons End
+  - type: Tool
+    qualities:
+    - Shearing
   - type: PhysicalComposition
     materialComposition:
       Steel: 200

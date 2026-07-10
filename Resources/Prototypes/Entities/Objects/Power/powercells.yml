@@ -84,6 +84,7 @@
   - type: Tag
     tags:
       - PowerCellSmall
+      - SurvivalKitItems #FH
 
 - type: entity
   id: PowerCellSmallPrinted
@@ -236,6 +237,11 @@
     startingCharge: 720
   - type: BatterySelfRecharger
     autoRechargeRate: 12 # takes 1 minute to charge itself back to full
+  #FarHorizons Start
+  - type: Tag
+    tags:
+      - PowerCellMicroreactor
+  #FarHorizons End
 
 - type: entity
   parent: PowerCellMicroreactor

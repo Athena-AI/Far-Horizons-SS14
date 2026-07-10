@@ -363,7 +363,9 @@
         conditions:
           # they gotta be in crit first
         - !type:MobStateCondition
-          mobstate: Critical
+          mobstates: # Far Horizons
+            - Critical
+            - ActiveCritical # Far Horizons
         - !type:ReagentCondition
           reagent: Epinephrine
           max: 20
@@ -375,7 +377,9 @@
         conditions:
           # they gotta be in crit first
         - !type:MobStateCondition
-          mobstate: Critical
+          mobstates: # Far Horizons
+            - Critical
+            - ActiveCritical # Far Horizons
         - !type:ReagentCondition
           reagent: Epinephrine
           max: 20
@@ -489,7 +493,9 @@
         conditions:
           # they gotta be in crit first
         - !type:MobStateCondition
-          mobstate: Critical
+          mobstates: # Far Horizons
+            - Critical
+            - ActiveCritical # Far Horizons
         damage:
           types:
             Asphyxiation: -2
@@ -1226,20 +1232,26 @@
       effects:
       - !type:SatiateThirst
         factor: 3
+        # Far Horizons start
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [ Vampire, LesserVampire ]
+            inverted: true
+        # Far Horizons end
     Bloodstream:  # Starlight
       effects:
       #If vampire
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
+          type: [ Vampire, LesserVampire ] # Far Horizons
         damage:
           types:
             Heat: 2
       - !type:Emote
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
+          type: [ Vampire, LesserVampire ] # Far Horizons
         emote: Scream
         probability: 0.3
       #If not vampire
@@ -1248,7 +1260,7 @@
         - !type:TotalDamageCondition
           max: 50
         - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
+          type: [ Vampire, LesserVampire ] # Far Horizons
           inverted: true
         damage:
           types:
@@ -1404,7 +1416,8 @@
           - !type:TemperatureCondition
             max: 150.0
           - !type:MobStateCondition
-            mobstate: Dead
+            mobstates: # Far Horizons
+              - Dead # Far Horizons
 
 - type: reagent
   id: Arcryox

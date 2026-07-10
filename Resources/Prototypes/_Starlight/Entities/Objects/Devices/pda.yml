@@ -21,7 +21,8 @@
     scanningEndSound:
       path: "/Audio/Items/Medical/healthscanner.ogg"
     damageContainers:
-    - Silicon
+    - Silicon #FH
+    - Robotic #FH
 
 - type: entity
   parent: BaseMedicalPDA
@@ -75,6 +76,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
+    - NanoChatCartridge
 
 # - type: entity
 #   parent: BaseMedicalPDA
@@ -137,6 +139,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
+    - NanoChatCartridge
 
 - type: entity
   parent: BasePDA
@@ -163,6 +166,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
+    - NanoChatCartridge #FH
   - type: PdaBorderColor
     borderColor: "#7C5D00"
   - type: Icon
@@ -220,6 +224,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
+    - NanoChatCartridge #FH
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -258,6 +263,7 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - MedTekCartridge
+      - NanoChatCartridge
 
 - type: entity
   parent: BasePDA
@@ -289,6 +295,7 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - AstroNavCartridge
+      - NanoChatCartridge
 
 - type: entity
   parent: SalvageLeadPDA
@@ -365,6 +372,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - AstroNavCartridge
+    - NanoChatCartridge
 
 - type: entity
   parent: MiningPDA
@@ -409,6 +417,19 @@
   - type: Icon
     sprite: _FarHorizons/Objects/Devices/pda.rsi #FH
     state: pda-mailtech
+
+# Pun Pun
+- type: entity
+  parent: BasePDA
+  id: PunPunPDA
+  name: Pun Pun's PDA
+  description: Smells like bananas.
+  components:
+  - type: Pda
+    id: PunPunIDCard
+  - type: PdaBorderColor
+    borderColor: "#333333"
+    accentVColor: "#ffdc54"
 
 - type: entity
   parent: BasePDA
@@ -462,6 +483,7 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
+      - NanoChatCartridge
 
 - type: entity
   parent: BasePDA
@@ -493,6 +515,7 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
+      - NanoChatCartridge
 
 - type: entity
   parent: ClearPDA
@@ -530,29 +553,4 @@
       - WantedListCartridge
       - LogProbeCartridge
       - AstroNavCartridge
-
-- type: entity
-  parent: CentcomPDA
-  id: DecimusPDA
-  suffix: ERROR #starlight
-  components:
-  - type: Pda
-    id: CentcomIDCardDecimus
-  - type: HealthAnalyzer
-    maxScanRange: null
-    scanDelay: 0
-    silent: true
-  - type: Tag #  Ignore Chameleon tags
-    tags:
-    - DoorBumpOpener
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
-      - WantedListCartridge
-      - LogProbeCartridge
-      - AstroNavCartridge
+      - NanoChatCartridge

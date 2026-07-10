@@ -16,8 +16,8 @@
 - type: entity
   parent: [ ClothingHeadset, BaseLawContraband ]
   id: ClothingHeadsetMagistrate
-  name: Magistrate headset
-  description: A headset for the magistrate to hear the far whispers of space law. #Far Horizons
+  name: Concord Liaison's Headset #Far Horizons
+  description: A headset for the liaison to hear the far whispers of space law. #Far Horizons
   components:
     - type: ContainerFill
       containers:

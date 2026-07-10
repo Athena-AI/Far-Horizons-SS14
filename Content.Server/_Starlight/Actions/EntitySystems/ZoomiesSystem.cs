@@ -74,8 +74,6 @@ public sealed class ZoomiesSystem : SharedZoomiesSystem
             if (!comp.Active || _timing.CurTime < comp.EffectEndTime) continue;
             comp.Active = false;
             _speed.RefreshMovementSpeedModifiers(uid);
-            _hunger.RemoveHungerDrain(uid, comp.EffectEndTime);
-            _thirst.RemoveThirstDrain(uid, comp.EffectEndTime);
             _alert.ClearAlert(uid, comp.ZoomiesAlert);
         }
     }

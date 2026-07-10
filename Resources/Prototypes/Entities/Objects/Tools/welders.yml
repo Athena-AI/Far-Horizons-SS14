@@ -236,6 +236,7 @@
   - type: Tag
     tags:
       - EmergencyWelder #Starlight, distinction needed for use in crafting recipies.
+      - SurvivalKitItems #FH
   #FarHorizons Start
   - type: SurgeryTool
   - type: WelderSurgery

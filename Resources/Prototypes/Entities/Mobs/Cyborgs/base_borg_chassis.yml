@@ -18,7 +18,6 @@
       collection: MetalThud
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: NoSlip
   - type: StaticPrice
     price: 1250
@@ -147,7 +146,7 @@
   - type: Speech
     speechVerb: Robotic
     speechSounds: Borg
-    allowedEmotes: ['Beep', 'Ping', 'Buzz', 'Buzz-Two', 'Chime', 'Honk']
+    allowedEmotes: ['Beep', 'Ping', 'Buzz', 'Buzz-Two', 'Chime', 'Honk', 'Laugh'] # FarHorizons, added Laugh to list
   - type: Vocal
     sounds:
       Unsexed: UnisexSilicon
@@ -266,6 +265,11 @@
   - type: Blindable
   - type: EyeProtection
   - type: Stripping
+  - type: InteractionPopup # All Borgs should now be pettable again
+    interactSuccessString: petting-success-generic-cyborg
+    interactFailureString: petting-failure-generic-cyborg
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
   #endregion
   - type: GlitchOnEMP #Far Horizons
 

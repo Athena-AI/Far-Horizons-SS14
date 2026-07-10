@@ -100,7 +100,6 @@
   components:
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 7
@@ -190,7 +189,6 @@
   components:
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: MeleeWeapon
     angle: 0
     animation: WeaponArcBite
@@ -501,7 +499,6 @@
     capacity: 500
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: HTN
     rootTask:
       task: GlockroachCompound
@@ -615,7 +612,6 @@
         Asphyxiation: -0.5
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: Butcherable
     spawned:
     - id: FoodMeatSlime
@@ -1334,10 +1330,27 @@
   - type: CombatMode
     canDisarm: true
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: Inventory
     templateId: monkey
     speciesId: monkey
+  # Starlight Start
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Animals/displacements.rsi
+            state: jumpsuit-monkey
+      belt:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Animals/displacements.rsi
+            state: belt-monkey
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Animals/displacements.rsi
+            state: hand-monkey
+  # Starlight End
   - type: Deathgasp
     prototype: MonkeyDeathgasp
   - type: Cuffable
@@ -1453,6 +1466,7 @@
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: JobStatus # marks them as crew
+  - type: Puller #FarHorizons
 
 - type: entity
   name: monkey
@@ -1527,6 +1541,18 @@
   - type: GhostTakeoverAvailable
   - type: Loadout
     prototypes: [SyndicateOperativeGearMonkey]
+  # Far Horizons-Start
+  - type: LanguageSpeaker
+  - type: LanguageKnowledge
+    speaks:
+    - Ancestor
+    - Sign 
+    understands:
+    - Ancestor
+    - GalacticCommon
+    - Sign 
+    - SolCommon 
+  # Far Horizons-End
 
 - type: entity
   id: MobMonkeySyndicateAgent
@@ -1669,6 +1695,25 @@
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
     rules: ghost-role-information-nonantagonist-rules
+  # Starlight Start
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Animals/displacements.rsi
+            state: jumpsuit-kobold
+      belt:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Animals/displacements.rsi
+            state: belt-kobold
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _Starlight/Mobs/Animals/displacements.rsi
+            state: hand-kobold
+  # Starlight End
   - type: LimbDamageable # Far Horizons
     proto: LimbTargetKobold
 
@@ -1700,9 +1745,10 @@
   - type: LanguageKnowledge
     speaks:
     - Ancestor
-    - Draconic
+    - Sign #Far Horizons: Give orange me give eat orange
     understands:
     - Ancestor
+    - Sign #Far Horizons: Give orange me give eat orange
     - Draconic
     - GalacticCommon
   # Starlight-End
@@ -1900,7 +1946,6 @@
   # TODO: Remove CombatMode when Prototype Composition is added
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Effects/bite.ogg
@@ -2568,7 +2613,6 @@
       amount: 2
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -3672,7 +3716,6 @@
         Blunt: 0.1
   - type: CombatMode
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Effects/bite.ogg

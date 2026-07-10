@@ -81,7 +81,7 @@
 - type: entity
   parent: BaseHypospray
   id: BorgHypo
-  name: borghypo
+  name: Borg Injector #FH
   description: A sterile injector for rapid administration of drugs to patients. This integrated model is specialized for use by medical borgs.
   components:
   - type: Sprite
@@ -97,7 +97,7 @@
   - type: SolutionContainerManager
     solutions:
       hypospray:
-        maxVol: 10
+        maxVol: 20 #FH-Edit
   - type: RefillableSolution
     solution: hypospray
   - type: SolutionContainerVisuals
@@ -106,6 +106,13 @@
     solutionName: hypospray
   - type: UseDelay
     delay: 0.5
+  #FH Start
+  - type: Injector
+    activeModeProtoId: AdvancedJetInjectorDynamicMode
+    allowedModes:
+    - AdvancedJetInjectorDynamicMode
+    - AdvancedJetInjectorInjectMode
+  #FH End
 
 - type: entity
   parent: BaseHypospray

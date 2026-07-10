@@ -21,11 +21,9 @@ public sealed partial class DropOperator : HTNOperator
         // TODO: Need some sort of interaction cooldown probably.
         var handsSystem = _entManager.System<HandsSystem>();
 
-        if (handsSystem.TryDrop(owner))
-        {
-            return HTNOperatorStatus.Finished;
-        }
-
-        return HTNOperatorStatus.Failed;
+        // Far Horizons start
+        handsSystem.TryDrop(owner); // we actually don't care if we can't drop the item, most likely cause of it would be empty hand, and if there's nothing to drop - that's the same outcome
+        return HTNOperatorStatus.Finished;
+        // Far Horizons end
     }
 }

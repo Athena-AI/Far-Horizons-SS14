@@ -61,6 +61,7 @@
     children:
     - id: ClothingOuterHardsuitWarden
     - id: OxygenTankFilled
+    - id: CoolingUnit # Starlight - Beep, Boop!
     - id: NitrogenTankFilled # Starlight - vox gang
     - id: ClothingMaskBreath
 

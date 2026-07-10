@@ -137,3 +137,11 @@
   components:
   - type: Implanter
     implant: DeathAcidifierImplant
+
+- type: entity
+  id: LanguageDatabaseImplanter
+  name: Language Database Implanter
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: LanguageDatabaseImplant

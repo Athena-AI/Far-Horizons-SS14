@@ -64,6 +64,7 @@
         - id: DerelictMedicalCyborgSpawn
         - id: DerelictMiningCyborgSpawn
         - id: DerelictBorgiSpawn # Starlight
+        - id: DerelictPurrfusCyborgSpawn #Starlight
     - !type:GroupSelector # Other Borgs
       weight: 15
       children:
@@ -612,7 +613,7 @@
   # Yes, it is stupid
   - type: RuleGrids
   - type: LoadMapRule
-    gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
+    gridPath: /Maps/_FarHorizons/Shuttles/ShuttleEvent/fhstriker.yml
   # Far Horizons end
   - type: DynamicRuleCost
     cost: 75

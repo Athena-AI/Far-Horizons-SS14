@@ -270,32 +270,28 @@ public sealed class HungerSystem : EntitySystem
                 continue;
             hunger.NextThresholdUpdateTime = _timing.CurTime + hunger.ThresholdUpdateRate;
             
-            //Starlight begin
+            //Far Horizons start
+            if (hunger.HungerDrains.RemoveAll(p => p.endTime < _timing.CurTime) > 0)
+                DirtyField(uid, hunger, nameof(HungerComponent.HungerDrains));
+
             if (hunger.HungerDrains.Count > 0)
             {
-                var totalDrain =
-                    hunger.HungerDrains.Aggregate<(EntityUid, float, TimeSpan?), float>(1,
-                        (current, modifier) => current * modifier.Item2);
-                ModifyHunger(uid, -totalDrain * hunger.ActualDecayRate, hunger);
+                var totalDrainMod = hunger.HungerDrains.Aggregate(1f, (current, modifier) => current * modifier.mod);
+                ModifyHunger(uid, -hunger.ActualDecayRate * totalDrainMod, hunger);
             }
-            //Starlight end
+            //Far Horizons end
 
             UpdateCurrentThreshold(uid, hunger);
             DoContinuousHungerEffects(uid, hunger);
         }
     }
     
-    //Starlight begin
-    public void AddHungerDrain(EntityUid uid, float mod, TimeSpan? endTime, HungerComponent? comp = null)
+    //Far Horizons start
+    public void AddHungerDrain(Entity<HungerComponent?> ent, float mod, TimeSpan endTime)
     {
-        if (!Resolve(uid, ref comp)) return;
-        comp.HungerDrains.Add((uid, mod, endTime));
+        if (!Resolve(ent, ref ent.Comp)) return;
+        ent.Comp.HungerDrains.Add((mod, endTime));
+        DirtyField(ent, ent.Comp, nameof(HungerComponent.HungerDrains));
     }
-
-    public void RemoveHungerDrain(EntityUid uid, TimeSpan? endTime, HungerComponent? comp = null)
-    {
-        if (!Resolve(uid, ref comp)) return;
-        comp.HungerDrains.RemoveAll(x => x.Item1 == uid && x.Item3 == endTime);
-    }
-    //Starlight end
+    //Far Horizons end
 }

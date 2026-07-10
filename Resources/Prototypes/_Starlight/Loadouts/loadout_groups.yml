@@ -215,6 +215,14 @@
   - NanoTrasenRepresentativeMonocle
 
 - type: loadoutGroup
+  id: NTRBackpack
+  name: loadout-group-nanotrasenrepresentative-backpack
+  loadouts:
+  - NTRBackpack
+  - NTRDuffel
+  - NTRSatchel
+
+- type: loadoutGroup
   id: BlueShieldHead
   name: loadout-group-blueshield-head
   loadouts:
@@ -388,6 +396,16 @@
   loadouts:
     - SalvageLeadJumpsuit
     - SalvageLeadJumpskirt
+    #FarHorizons Start
+    - SalvageMedicJumpsuit
+    - SalvageMedicJumpskirt
+    - SalvageLeadJumpsuitFormal
+    - SalvageLeadJumpskirtFormal
+    - SalvageLeadJumpsuitSenior
+    - SalvageLeadJumpskirtSenior
+    - SalvageMedicJumpsuitFormal
+    - SalvageMedicJumpskirtFormal
+    #FarHorizons End
 
 - type: loadoutGroup
   id: SalvageLeadNeck
@@ -410,6 +428,12 @@
   loadouts:
     - MiningSpecialistJumpsuit
     - MiningSpecialistJumpskirt
+    #FarHorizons Start
+    - MiningSpecialistJumpsuitFormal
+    - MiningSpecialistJumpskirtFormal
+    - MiningSpecialistJumpsuitSenior
+    - MiningSpecialistJumpskirtSenior
+    #FarHorizons End
 
 - type: loadoutGroup
   id: MiningSpecialistPDA
@@ -531,34 +555,34 @@
     - DarkBeaker
     - SilverBeakerBrigmedic
 
-# Brighteye
-- type: loadoutGroup
-  id: BrighteyeJumpsuit
-  name: loadout-group-brighteye-jumpsuit
-  loadouts:
-    - BrighteyeTatteredClothes
-    - BrighteyeGladiator
+# Brighteye - FH removed
+# - type: loadoutGroup
+#   id: BrighteyeJumpsuit
+#   name: loadout-group-brighteye-jumpsuit
+#   loadouts:
+#     - BrighteyeTatteredClothes
+#     - BrighteyeGladiator
 
-- type: loadoutGroup
-  id: BrighteyeNeck
-  name: Loadout-group-brighteye-neck
-  loadouts:
-    - BrighteyeTatteredHood
-    - BrighteyeMantle
-    - BrighteyeOldMantle
-    - BrighteyeGoliathCloak
-    - BrighteyeCloakVoid
+# - type: loadoutGroup
+#   id: BrighteyeNeck
+#   name: Loadout-group-brighteye-neck
+#   loadouts:
+#     - BrighteyeTatteredHood
+#     - BrighteyeMantle
+#     - BrighteyeOldMantle
+#     - BrighteyeGoliathCloak
+#     - BrighteyeCloakVoid
 
-- type: loadoutGroup
-  id: BrighteyeShoes
-  name: loadout-group-civilian-shoes
-  loadouts:
-    - BrighteyeClothWrapShoe
-    - BlackShoes
+# - type: loadoutGroup
+#   id: BrighteyeShoes
+#   name: loadout-group-civilian-shoes
+#   loadouts:
+#     - BrighteyeClothWrapShoe
+#     - BlackShoes
 
-- type: loadoutGroup
-  id: BrighteyeGloves
-  minLimit: 0
-  name: loadout-group-brighteye-gloves
-  loadouts:
-    - BrighteyeClothWrapGlove
+# - type: loadoutGroup
+#   id: BrighteyeGloves
+#   minLimit: 0
+#   name: loadout-group-brighteye-gloves
+#   loadouts:
+#     - BrighteyeClothWrapGlove

@@ -7,7 +7,7 @@
       amount: 1
     Carbon:
       amount: 1
-    Iron:
+    Copper: #FH
       amount: 1
   products:
     Amoxla: 2

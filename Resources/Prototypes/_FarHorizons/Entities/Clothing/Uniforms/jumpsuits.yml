@@ -1,3 +1,103 @@
+#region ## GSL ##
+
+# Salvage Lead
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSalvageLeadFormal
+  name: Formal Salvage Leads's Jumpsuit
+  description: It's a snappy jumpsuit with rolleable sleeves. It's very dirty.
+  components:
+    - type: RollUpSleeves
+    - type: Sprite
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvageleadformal.rsi
+    - type: Clothing
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvageleadformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSalvageLeadSenior
+  name: Senior Salvage Leads's Jumpsuit
+  description: It's a snappy jumpsuit with rolleable sleeves. It's very dirty.
+  components:
+    - type: Sprite
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvageleadsenior.rsi
+    - type: Clothing
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvageleadsenior.rsi
+
+# Salvage Med
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSalvageMed
+  name: Salvage Medic's Jumpsuit
+  description: It's a snappy jumpsuit with rolleable sleeves. It's very dirty.
+  components:
+    - type: RollUpSleeves
+    - type: Sprite
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvagemed.rsi
+    - type: Clothing
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvagemed.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSalvageMedFormal
+  name: Formal Salvage Medic's Jumpsuit
+  description: It's a snappy jumpsuit with rolleable sleeves. It's very dirty.
+  components:
+    - type: RollUpSleeves
+    - type: Sprite
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvagemedformal.rsi
+    - type: Clothing
+      sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvagemedformal.rsi
+
+# Salvage Specialist
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJumpsuitSalvageSenior
+  name: Senior Salvage Specialist's Jumpsuit 
+  description: It's a snappy jumpsuit with a sturdy set of overalls. It's very dirty.
+  components:
+  - type: RollUpSleeves
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvagesenior.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/salvagesenior.rsi
+
+# Mining Specialist
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMiningSpecialistFormal
+  name: Formal Mining Specialist's Jumpsuit 
+  description: A suit passed down through many generations. A fine layer of dust trails behind it.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/miningformal.rsi 
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/miningformal.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitMiningSpecialistSenior
+  name: Senior Mining Specialist's Jumpsuit 
+  description: A suit passed down through many generations. A fine layer of dust trails behind it.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/miningsenior.rsi 
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/miningsenior.rsi 
+
+# Cargo Tech
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitCargoSenior
+  name: Senior Cargo Tech Jumpsuit
+  description: A sturdy jumpsuit, issued to members of the Cargo department.
+  components:
+  - type: RollUpSleeves
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/cargotechsenior.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/cargotechsenior.rsi
+
 #region ## NanoTrasen ##
 
 
@@ -344,6 +444,94 @@
     sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/rnd.rsi
   - type: Clothing
     sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/rnd.rsi
+
+# NeoSol Representative (NTR)
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseRepresentativesContraband ]
+  id: ClothingUniformJumpsuitNSR
+  name: NeoSol Representative Suit
+  description: That suit that is better not to see.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrep.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrep.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseRepresentativesContraband ]
+  id: ClothingUniformJumpsuitNSRFormal
+  name: NeoSol Representative Formal Suit
+  description: That suit that is better not to see.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrepformal.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrepformal.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseRepresentativesContraband ]
+  id: ClothingUniformJumpsuitNSRTurtleNeck
+  name: NeoSol Representative's Turtleneck Jumpsuit
+  description: For a more casual look while on the job.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrepturtleneck.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrepturtleneck.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseRepresentativesContraband ]
+  id: ClothingUniformJumpsuitNSRHighCommand
+  name: NeoSol Representative's High Command Jumpsuit
+  description: When you somehow want to look even more official than you did before.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrepSHC.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/shrepSHC.rsi
+
+# Red Sword Operative (BSO)
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseBlueshieldContraband ] # Technically not Blueshield, but that's a problem for another day
+  id: ClothingUniformJumpsuitRedSword
+  name: Red Sword Operative's Suit 
+  description: Suit of a bodyguard specialized in harming threats.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/redsword.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/redsword.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseBlueshieldContraband ] # Technically not Blueshield, but that's a problem for another day
+  id: ClothingUniformJumpsuitEliteRedSword
+  name: Elite Red Sword Operative's Suit 
+  description: Suit of an elite red sword. The feats required to aquire one make other red swords kneel.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/redsword_elite.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/redsword_elite.rsi
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseBlueshieldContraband ] # Technically not Blueshield, but that's a problem for another day
+  id: ClothingUniformJumpsuitRedSwordFormal
+  name: Red Sword Operative's Formal Suit 
+  description: For when a slaughter does not warrant a lack of class.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/redsword_formal.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Uniforms/Jumpsuit/NeoSol/redsword_formal.rsi
 
 #region Civilian
 

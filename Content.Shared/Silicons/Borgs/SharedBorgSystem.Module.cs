@@ -4,12 +4,17 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Localizations;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Containers;
+//FarHorizons Start
+using Content.Shared._FarHorizons.Silicons.IPC;
+using Content.Shared._FarHorizons.Silicons.IPC.Components; 
+//FarHorizons End
 
 namespace Content.Shared.Silicons.Borgs;
 
 public abstract partial class SharedBorgSystem
 {
     private EntityQuery<BorgModuleComponent> _moduleQuery;
+    [Dependency] private readonly SharedIPCSystem _ipc = default!; // FarHorizons
 
     public void InitializeModule()
     {
@@ -119,28 +124,46 @@ public abstract partial class SharedBorgSystem
     {
         var chassis = args.ChassisEnt;
         _actions.RemoveProvidedActions(chassis, module.Owner);
-        if (!TryComp<BorgChassisComponent>(chassis, out var chassisComp))
-            return;
+        //FarHorizons Start
+        if (TryComp<BorgChassisComponent>(chassis, out var chassisComp))
+            if (chassisComp.SelectedModule == module.Owner)
+                UnselectModule((chassis, chassisComp));
 
-        if (chassisComp.SelectedModule == module.Owner)
-            UnselectModule((chassis, chassisComp));
+        if (TryComp<IPCModulesComponent>(chassis, out var moduleComp))
+            if (moduleComp.SelectedModule == module.Owner)
+                _ipc.UnselectModule(chassis);
+        //FarHorizons End
     }
 
     private void OnSelectableAction(Entity<SelectableBorgModuleComponent> module, ref BorgModuleActionSelectedEvent args)
     {
         var chassis = args.Performer;
-        if (!TryComp<BorgChassisComponent>(chassis, out var chassisComp))
-            return;
-
-        var selected = chassisComp.SelectedModule;
-
-        args.Handled = true;
-        UnselectModule((chassis, chassisComp));
-
-        if (selected != module.Owner)
+        //FarHorizons Start
+        if (TryComp<BorgChassisComponent>(chassis, out var chassisComp))
         {
-            SelectModule((chassis, chassisComp), module.Owner);
+            var selected = chassisComp.SelectedModule;
+
+            args.Handled = true;
+            UnselectModule((chassis, chassisComp));
+
+            if (selected != module.Owner)
+            {
+                SelectModule((chassis, chassisComp), module.Owner);
+            }
         }
+        else if(TryComp<IPCModulesComponent>(chassis, out var moduleComp))
+        {
+            var selected = moduleComp.SelectedModule;
+
+            args.Handled = true;
+            _ipc.UnselectModule((chassis, moduleComp));
+
+            if (selected != module.Owner)
+            {
+                _ipc.SelectModule((chassis, moduleComp), module.Owner);
+            }
+        }
+        //FarHorizons End
     }
     #endregion
 
@@ -160,9 +183,9 @@ public abstract partial class SharedBorgSystem
         RemoveProvidedItems(args.Chassis, module.AsNullable());
     }
 
-    private void ProvideItems(Entity<BorgChassisComponent?> chassis, Entity<ItemBorgModuleComponent?> module)
+    private void ProvideItems(EntityUid chassis, Entity<ItemBorgModuleComponent?> module) //FarHorizons 
     {
-        if (!Resolve(chassis, ref chassis.Comp) || !Resolve(module, ref module.Comp))
+        if (/*!Resolve(chassis, ref chassis.Comp) || */!Resolve(module, ref module.Comp)) //FarHorizons 
             return;
 
         if (!TryComp<HandsComponent>(chassis, out var hands))
@@ -178,7 +201,7 @@ public abstract partial class SharedBorgSystem
             var hand = module.Comp.Hands[i];
             var handId = $"{GetNetEntity(module.Owner)}-hand-{i}";
 
-            _hands.AddHand((chassis.Owner, hands), handId, hand.Hand);
+            _hands.AddHand((chassis, hands), handId, hand.Hand); //FarHorizons 
             EntityUid? item = null;
 
             if (module.Comp.Spawned)
@@ -217,9 +240,9 @@ public abstract partial class SharedBorgSystem
         Dirty(module);
     }
 
-    private void RemoveProvidedItems(Entity<BorgChassisComponent?> chassis, Entity<ItemBorgModuleComponent?> module)
+    private void RemoveProvidedItems(EntityUid chassis, Entity<ItemBorgModuleComponent?> module) //FarHorizons 
     {
-        if (!Resolve(chassis, ref chassis.Comp) || !Resolve(module, ref module.Comp))
+        if (/*!Resolve(chassis, ref chassis.Comp) || */!Resolve(module, ref module.Comp)) //FarHorizons 
             return;
 
         if (!TryComp<HandsComponent>(chassis, out var hands))
@@ -235,7 +258,7 @@ public abstract partial class SharedBorgSystem
         {
             var handId = $"{GetNetEntity(module.Owner)}-hand-{i}";
 
-            if (_hands.TryGetHeldItem((chassis.Owner, hands), handId, out var held))
+            if (_hands.TryGetHeldItem((chassis, hands), handId, out var held)) //FarHorizons 
             {
                 RemComp<UnremoveableComponent>(held.Value);
                 _container.Insert(held.Value, container);
@@ -246,7 +269,7 @@ public abstract partial class SharedBorgSystem
                 module.Comp.StoredItems.Remove(handId);
             }
 
-            _hands.RemoveHand((chassis.Owner, hands), handId);
+            _hands.RemoveHand((chassis, hands), handId); //FarHorizons 
         }
 
         Dirty(module);

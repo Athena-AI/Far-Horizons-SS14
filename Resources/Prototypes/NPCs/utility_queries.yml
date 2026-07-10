@@ -14,7 +14,7 @@
   query:
     - !type:ComponentQuery
       components:
-        - type: Ammo
+        - type: BallisticAmmoProvider # Far Horizons
         - type: Item
   considerations:
     - !type:TargetAmmoMatchesCon
@@ -22,7 +22,8 @@
     - !type:TargetDistanceCon
       curve: !type:PresetCurve
         preset: TargetDistance
-    # TODO: Get ammo count.
+    - !type:TargetAmmoCon # Far Horizons
+      curve: !type:QuadraticCurve
     - !type:TargetAccessibleCon
       curve: !type:BoolCurve
 

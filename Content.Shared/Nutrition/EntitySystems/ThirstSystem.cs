@@ -219,16 +219,18 @@ public sealed class ThirstSystem : EntitySystem
 
             thirst.NextUpdateTime += thirst.UpdateRate;
 
-            //Starlight begin
+            // Far Horizons start
+            if (thirst.ThirstDrains.RemoveAll(p => p.endTime < _timing.CurTime) > 0)
+                DirtyField(uid, thirst, nameof(ThirstComponent.ThirstDrains));
+            
             if (thirst.ThirstDrains.Count > 0)
             {
-                var totalDrain =
-                    thirst.ThirstDrains.Aggregate<(EntityUid, float, TimeSpan?), float>(1,
-                        (current, modifier) => current * modifier.Item2);
-                ModifyThirst(uid, thirst, -totalDrain * thirst.ActualDecayRate);
+                var totalDrainMod = thirst.ThirstDrains.Aggregate(1f, (current, modifier) => current * modifier.mod);
+                ModifyThirst(uid, thirst, -thirst.ActualDecayRate * totalDrainMod);
             }
             else ModifyThirst(uid, thirst, -thirst.ActualDecayRate);
-            //Starlight end
+            // Far Horizons end
+
             var calculatedThirstThreshold = GetThirstThreshold(thirst, thirst.CurrentThirst);
 
             if (calculatedThirstThreshold == thirst.CurrentThirstThreshold)
@@ -239,17 +241,12 @@ public sealed class ThirstSystem : EntitySystem
         }
     }
     
-    //Starlight begin
-    public void AddThirstDrain(EntityUid uid, float mod, TimeSpan? endTime, ThirstComponent? comp = null)
+    // Far Horizons start
+    public void AddThirstDrain(Entity<ThirstComponent?> ent, float mod, TimeSpan endTime)
     {
-        if (!Resolve(uid, ref comp)) return;
-        comp.ThirstDrains.Add((uid, mod, endTime));
+        if (!Resolve(ent, ref ent.Comp)) return;
+        ent.Comp.ThirstDrains.Add((mod, endTime));
+        DirtyField(ent, ent.Comp, nameof(ThirstComponent.ThirstDrains));
     }
-
-    public void RemoveThirstDrain(EntityUid uid, TimeSpan? endTime, ThirstComponent? comp = null)
-    {
-        if (!Resolve(uid, ref comp)) return;
-        comp.ThirstDrains.RemoveAll(x => x.Item1 == uid && x.Item3 == endTime);
-    }
-    //Starlight end
+    // Far Horizons end
 }

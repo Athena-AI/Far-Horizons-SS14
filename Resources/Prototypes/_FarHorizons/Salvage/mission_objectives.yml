@@ -19,7 +19,6 @@
   description: salvage-mission-objective-description-free-danger
   announcement: salvage-mission-objective-announcement-free-danger
   allowedDifficulties:
-    - Difficult
     - Impossible
 
 - type: salvageMissionObjective
@@ -51,6 +50,7 @@
     - Haunted
     - Mineshaft
     - Reactor
+    - Factory
 
 - type: salvageMissionObjective
   id: MissionObjectiveCapture
@@ -76,6 +76,7 @@
   allowedFactions:
     - Xenos
     - Carps
+    - Meat
 
 - type: salvageMissionObjective
   id: MissionObjectiveRescue
@@ -103,6 +104,7 @@
     - LavaBrig
     - SnowyLabs
     - Reactor
+    - Factory
 
 - type: salvageMissionObjective
   id: MissionObjectivePurge
@@ -130,6 +132,7 @@
     - LavaBrig
     - SnowyLabs
     - Reactor
+    - Factory
 
 - type: salvageMissionObjective
   id: MissionObjectiveShutdown
@@ -160,3 +163,46 @@
     - Haunted
     - Mineshaft
     - Reactor
+    - Factory
+
+- type: salvageMissionObjective
+  id: MissionObjectiveDisarm
+  handlerId: "MissionObjectiveDisarmHandler"
+  name: salvage-mission-objective-name-disarm
+  description: salvage-mission-objective-description-disarm
+  announcement: salvage-mission-objective-announcement-disarm
+  baseReward:
+    Easy: 1200
+    Moderate: 1450
+    Challenging: 1600 # High rewards, but it has no bonus, also this mission is insanely rare
+  cashMultiplier: 5.5
+  numTargets:
+    Easy: 1
+    Moderate: 2
+    Challenging: 3
+  bonus: 0
+  bonusCap: 0
+  allowedDifficulties:
+    - Easy
+    - Moderate
+    - Challenging
+  allowedDungeons:
+    - Factory
+
+- type: salvageMissionObjective
+  id: MissionObjectiveHeadHunt
+  handlerId: "MissionObjectiveHeadHuntHandler"
+  name: salvage-mission-objective-name-headhunt
+  description: salvage-mission-objective-description-headhunt
+  announcement: salvage-mission-objective-announcement-headhunt
+  baseReward:
+    Difficult: 150
+  cashMultiplier: 2.5
+  numTargets:
+    Difficult: 1
+  bonus: 150
+  bonusCap: 29 # 30 total
+  allowedDifficulties:
+    - Difficult
+  allowedFactions:
+    - Soviet

@@ -134,6 +134,7 @@
 
 - type: entity
   parent:
+  - ActiveCritBase # FH
   - AppearanceMoth
   - BaseSpeciesMobOrganic
   - BaseSpeciesPickupableLarge #FH
@@ -346,6 +347,10 @@
 - type: entity
   parent: [ OrganBaseHeart, OrganMothInternal, OrganAnimalMetabolizer ]
   id: OrganMothHeart
+  components: #FH start
+  - type: Metabolizer
+    maxReagents: 2
+    metabolizerTypes: [ Moth ] #FH end
 
 - type: entity
   parent: [ OrganBaseStomach, OrganMothInternal, OrganMothMetabolizer ]

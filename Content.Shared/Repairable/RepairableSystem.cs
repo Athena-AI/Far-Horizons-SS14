@@ -62,7 +62,12 @@ public sealed partial class RepairableSystem : EntitySystem
         else
             RepairAllDamage((ent, damageable), args.User);
 
-        args.Repeat = ent.Comp.AutoDoAfter && totalDamage > 0;
+        //Far Horizons start
+        // Check if remaining damage is still repairable by this component
+        var stillRepairable = CanRepairMore(ent, damageable, target);
+
+        args.Repeat = ent.Comp.AutoDoAfter && totalDamage > 0 && stillRepairable;
+        //Far Horizons end
         args.Args.Event.Repeat = args.Repeat;
         args.Handled = true;
 
@@ -75,6 +80,36 @@ public sealed partial class RepairableSystem : EntitySystem
             RaiseLocalEvent(ent.Owner, ref ev);
         }
     }
+
+    //Far Horizons start
+    /// <summary>
+    /// Returns true if there is damage remaining that this component's configuration can still affect.
+    /// </summary>
+    private bool CanRepairMore(Entity<RepairableComponent> ent, DamageableComponent damageable, ProtoId<OrganCategoryPrototype>? limbTarget)
+    {
+        if (ent.Comp.Damage == null && ent.Comp.DamageValue == null)
+            return _damageableSystem.GetTotalDamage((ent.Owner, damageable)) > 0;
+
+        if (ent.Comp.DamageValue != null)
+            return _damageableSystem.GetTotalDamage((ent.Owner, damageable)) > 0;
+
+        if (ent.Comp.Damage != null)
+        {
+            var currentDamage = _damageableSystem.GetPositiveDamage((ent.Owner, damageable));
+            if (currentDamage == null)
+                return false;
+
+            foreach (var (type, _) in ent.Comp.Damage.DamageDict)
+            {
+                if (currentDamage.DamageDict.TryGetValue(type, out var current) && current > 0)
+                    return true;
+            }
+            return false;
+        }
+
+        return false;
+    }
+    //Far Horizons end
 
     /// <summary>
     /// Repairs some damage of a entity.

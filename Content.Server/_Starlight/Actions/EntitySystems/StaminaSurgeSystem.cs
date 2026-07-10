@@ -56,10 +56,10 @@ public sealed class StaminaSurgeSystem : SharedStaminaSurgeSystem
             stamina.ResistanceModifiers.Add((GetNetEntity(uid), surge.StaminaResistModifier.Value, endTime));
         
         if (surge.HungerDrain is not null)
-                _hunger.AddHungerDrain(uid, surge.HungerDrain.Value, endTime);
+            _hunger.AddHungerDrain(uid, surge.HungerDrain.Value, endTime);
         
         if (surge.ThirstDrain is not null)
-                _thirst.AddThirstDrain(uid, surge.ThirstDrain.Value, endTime);
+            _thirst.AddThirstDrain(uid, surge.ThirstDrain.Value, endTime);
         
         _alerts.ShowAlert(uid, surge.SurgeAlert);
         surge.Active = true;
@@ -81,9 +81,6 @@ public sealed class StaminaSurgeSystem : SharedStaminaSurgeSystem
             stamina.ResistanceModifiers.RemoveAll(x => x.Item1 == GetNetEntity(uid) && x.Item3 == surge.EffectEndTime);
 
             _alerts.ClearAlert(uid, surge.SurgeAlert);
-            
-            _hunger.RemoveHungerDrain(uid, surge.EffectEndTime);
-            _thirst.RemoveThirstDrain(uid, surge.EffectEndTime);
         }
     }
 }

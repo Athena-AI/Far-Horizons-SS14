@@ -18,6 +18,8 @@
     science: FHAirlockScience
     security: FHAirlockSecurity
     virology: FHAirlockVirology
+    liaison: FHAirlockLiaison
+    quartermaster: FHAirlockQuartermaster
 
 - type: paintableGroup
   id: FHAirlockGlass
@@ -38,3 +40,5 @@
     science: FHAirlockScienceGlass
     security: FHAirlockSecurityGlass
     virology: FHAirlockVirologyGlass
+    liaison: FHAirlockLiaisonGlass
+    quartermaster: FHAirlockQuartermasterGlass

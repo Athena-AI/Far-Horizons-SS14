@@ -17,3 +17,10 @@
       reagents:
       - ReagentId: Nocturine
         Quantity: 0.2
+  #FH Start
+  - type: Injector
+    activeModeProtoId: HyposprayDynamicMode
+    allowedModes:
+    - HyposprayDynamicMode
+    - HyposprayInjectMode
+  #FH End

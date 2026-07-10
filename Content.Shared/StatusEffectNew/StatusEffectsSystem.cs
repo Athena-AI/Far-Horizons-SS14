@@ -364,3 +364,19 @@ public record struct StatusEffectEndTimeUpdatedEvent(EntityUid Target, TimeSpan?
 /// <param name="StartTime">The new start time of the status effect, included for convenience.</param>
 [ByRefEvent]
 public record struct StatusEffectStartTimeUpdatedEvent(EntityUid Target, TimeSpan? StartTime);
+
+//Far Horizons Start
+
+/// <summary>
+/// Raised on an entity before a status effect is attempted to be added in case you want to cancel it before the same status check.
+/// </summary>
+[ByRefEvent]
+public record struct AttemptAddStatusEvent(EntProtoId Effect, bool Cancelled = false);
+
+/// <summary>
+/// Raised on an entity before a status effect is removed to determine if removing it should be cancelled.
+/// </summary>
+[ByRefEvent]
+public record struct AttemptRemoveStatusEvent(EntProtoId Effect, bool Cancelled = false);
+
+//Far Horizons End

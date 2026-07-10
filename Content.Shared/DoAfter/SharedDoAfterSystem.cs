@@ -217,6 +217,18 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
             return false;
         }
 
+        //Far Horizons Start
+        var beforeEv = new BeforeDoAfterEvent(args);
+        RaiseLocalEvent(args.User, ref beforeEv);
+        if(beforeEv.Cancelled)
+        {
+            id = null;
+            return false;
+        }
+        if(args != beforeEv.Args)
+            args = beforeEv.Args;
+        //Far Horizons End
+
         id = new DoAfterId(args.User, comp.NextId++);
         var doAfter = new DoAfter(id.Value.Index, args, GameTiming.CurTime);
 

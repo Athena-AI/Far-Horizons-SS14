@@ -9,6 +9,7 @@
   - EmergencyOxygenCargo
   - EmergencyNitrogenCargo
   - EmergencyNonBreatherCargo
+  - EmergencyIPCCargo #FH
 
 # Quartermaster
 
@@ -21,6 +22,16 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
+
+# Cargo Tech
+- type: loadoutGroup
+  id: CargoTechHandsGloves
+  name: loadout-group-cargo-technician-hands
+  minLimit: 0
+  loadouts:
+  - CargoTechnicianFingerlessGloves
+  - CargoTechnicianFingerlessGlovesCargo
 
 # Mining Specialist
 
@@ -39,6 +50,9 @@
   - MiningBackpack
   - MiningDuffel
   - MiningSatchel
+  - MiningBackpackSenior
+  - MiningDuffelSenior
+  - MiningSatchelSenior
 
 - type: loadoutGroup
   id: MiningSpecialistBelt
@@ -56,6 +70,19 @@
   loadouts:
   - SalvageHelmet
   - CargoTechnicianHead
+  - SalvageBeret
+
+#Salvage Lead
+- type: loadoutGroup
+  id: SalvageLeadHead
+  name: loadout-group-salvage-head
+  minLimit: 0
+  loadouts:
+  - SalvageHelmet
+  - CargoTechnicianHead
+  - SalvageBeret
+  - SalvageLeadBeret
+
 
 #region CFA/Law
 
@@ -134,6 +161,7 @@
   - EmergencyOxygenStationManagement
   - EmergencyNitrogenStationManagement
   - EmergencyNonBreatherStationManagement
+  - EmergencyIPCStationManagement #FH
 
 
 #region Command
@@ -148,6 +176,7 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
 
 # Head of Personnel
 - type: loadoutGroup
@@ -159,6 +188,7 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
 
 # Research Director
 - type: loadoutGroup
@@ -170,6 +200,7 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
 
 # General Command
 - type: loadoutGroup
@@ -206,12 +237,16 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
 # Chief Medical Officer
 
 - type: loadoutGroup
   id: CMOBackpack
   name: loadout-group-cmo-backpack
   loadouts:
+    - CMOBackpack
+    - CMODuffel
+    - CMOSatchel
     - MedicalDoctorBackpack
     - MedicalDoctorDuffel
     - MedicalDoctorSatchel
@@ -235,6 +270,7 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
 # NTR
 
 - type: loadoutGroup
@@ -281,6 +317,7 @@
   - EmergencyOxygenExtendedCommand02
   - EmergencyNitrogenExtendedCommandN2
   - EmergencyNonBreatherExtendedCommandNone
+  - EmergencyNonBreatherExtendedCommandIPC #FH
 
 #region Research
 
@@ -293,6 +330,7 @@
   - EmergencyOxygenScience
   - EmergencyNitrogenScience
   - EmergencyNonBreatherScience
+  - EmergencyIPCScience #FH
 
 #region Engineering
 
@@ -607,3 +645,4 @@
   - EmergencyOxygenService
   - EmergencyNitrogenService
   - EmergencyNonBreatherService
+  - EmergencyIPCService #FH

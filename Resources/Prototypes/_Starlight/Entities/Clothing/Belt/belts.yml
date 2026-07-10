@@ -283,6 +283,7 @@
         - Handcuff
         - BallisticAmmoProvider
         - Ammo
+        - CartridgeAmmo # Far Horizons
   - type: ItemMapper
     mapLayers:
       flashbang:

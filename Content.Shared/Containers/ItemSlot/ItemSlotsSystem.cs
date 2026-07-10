@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
@@ -968,5 +969,84 @@ namespace Content.Shared.Containers.ItemSlots
         {
             args.State = new ItemSlotsComponentState(component.Slots);
         }
+    #region Far Horizons API
+        public void SetDisableEject(EntityUid uid, string id, bool eject, ItemSlotsComponent? itemSlots = null)
+        {
+            if (!Resolve(uid, ref itemSlots))
+                return;
+
+            if (!itemSlots.Slots.TryGetValue(id, out var slot))
+                return;
+
+            SetDisableEject(uid, slot, eject, itemSlots);
+        }
+
+        public void SetDisableEject(EntityUid uid, ItemSlot slot, bool eject, ItemSlotsComponent? itemSlots = null)
+        {
+            if (!Resolve(uid, ref itemSlots))
+                return;
+
+            slot.DisableEject = eject;
+            Dirty(uid, itemSlots);
+        }
+
+        public void SetSwap(EntityUid uid, string id, bool swap, ItemSlotsComponent? itemSlots = null)
+        {
+            if (!Resolve(uid, ref itemSlots))
+                return;
+
+            if (!itemSlots.Slots.TryGetValue(id, out var slot))
+                return;
+
+            SetSwap(uid, slot, swap, itemSlots);
+        }
+
+        public void SetSwap(EntityUid uid, ItemSlot slot, bool swap, ItemSlotsComponent? itemSlots = null)
+        {
+            if (!Resolve(uid, ref itemSlots))
+                return;
+
+            slot.Swap = swap;
+            Dirty(uid, itemSlots);
+        }
+
+        public void SetBlacklist(EntityUid uid, string id, EntityWhitelist blacklist, bool replaceExisting=false, ItemSlotsComponent? itemSlots = null)
+        {
+            if (!Resolve(uid, ref itemSlots))
+                return;
+
+            if (!itemSlots.Slots.TryGetValue(id, out var slot))
+                return;
+
+            SetBlacklist(uid, slot, blacklist, replaceExisting, itemSlots);
+        }
+
+        public void SetBlacklist(EntityUid uid, ItemSlot slot, EntityWhitelist blacklist, bool replaceExisting=false, ItemSlotsComponent? itemSlots = null)
+        {
+            if (!Resolve(uid, ref itemSlots))
+                return;
+
+            if (replaceExisting)
+            {
+                slot.Blacklist = blacklist;
+            }
+            else
+            {
+                var currBlacklist = slot.Blacklist ??= new EntityWhitelist();
+                currBlacklist.Components = currBlacklist.Components == null
+                    ? blacklist.Components
+                    : currBlacklist.Components.Concat(blacklist.Components ?? Array.Empty<string>()).ToArray();
+                
+                currBlacklist.Tags = currBlacklist.Tags == null
+                    ? blacklist.Tags
+                    : currBlacklist.Tags.Concat(blacklist.Tags!).ToList();
+
+                currBlacklist.Sizes = currBlacklist.Sizes == null
+                    ? blacklist.Sizes
+                    : currBlacklist.Sizes.Concat(blacklist.Sizes!).ToList();
+            }
+            Dirty(uid, itemSlots);
+        }
+    #endregion
     }
 }

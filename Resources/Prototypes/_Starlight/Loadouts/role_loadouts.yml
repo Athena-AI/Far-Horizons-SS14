@@ -52,7 +52,7 @@
   - NanoTrasenRepresentativeHead
   - NanoTrasenRepresentativeJumpsuit
   - NanoTrasenRepresentativeEyewear
-  - CommonBackpack
+  - NTRBackpack #FH
   - NanotrasenRepresentativeShoes
   - Trinkets
   - Scarves
@@ -138,11 +138,13 @@
     - BrigmedicSidearm # FarHorizons
     - SurvivalSecurity
     - Trinkets
+    - Scarves
+    - Pens
 
 - type: roleLoadout
   id: JobSalvageLead
   groups:
-    - SalvageHead #Far Horizons
+    - SalvageLeadHead #Far Horizons
     - SalvageSpecialistBackpack
     - SalvageLeadJumpsuit
     - SalvageLeadNeck
@@ -166,11 +168,12 @@
   nameDataset: NamesXenoborg
   canCustomizeName: true
 
-- type: roleLoadout
-  id: AntagBrighteye
-  groups:
-  - BrighteyeJumpsuit
-  - BrighteyeNeck
-  - BrighteyeShoes
-  - BrighteyeGloves
-  - Scarves
+# FH - remove brighteye
+# - type: roleLoadout
+#   id: AntagBrighteye
+#   groups:
+#   - BrighteyeJumpsuit
+#   - BrighteyeNeck
+#   - BrighteyeShoes
+#   - BrighteyeGloves
+#   - Scarves

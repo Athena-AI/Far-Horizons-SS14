@@ -41,6 +41,7 @@ public abstract partial class SharedIPCSystem : EntitySystem
         SetupBattery();
         SetupRadio();
         SetupLock();
+        SetupModule();
     }
 
     private void AddAltVerbs(GetVerbsEvent<AlternativeVerb> ev)

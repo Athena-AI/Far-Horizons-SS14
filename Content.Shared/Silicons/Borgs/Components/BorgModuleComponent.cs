@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.GameStates;
+using Content.Shared._FarHorizons.Silicons.IPC; //FarHorizons
 
 namespace Content.Shared.Silicons.Borgs.Components;
 
@@ -7,7 +8,7 @@ namespace Content.Shared.Silicons.Borgs.Components;
 /// to give them unique abilities and attributes.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBorgSystem))]
+[Access(typeof(SharedBorgSystem), typeof(SharedIPCSystem))] //FarHorizons
 public sealed partial class BorgModuleComponent : Component
 {
     /// <summary>

@@ -17,6 +17,8 @@
   - type: Tag
     tags:
     - BoxCardboard
+  - type: Storage #FH
+    maxItemSize: Normal
 
 - type: entity
   parent: BoxBaseSmall
@@ -279,10 +281,6 @@
   id: BoxFlare
   description: A box of flares. Party time.
   components:
-  - type: Item #FH
-    size: Small
-    shape: 
-    - 0,0,1,1 
   - type: EntityTableContainerFill
     containers:
       storagebase:

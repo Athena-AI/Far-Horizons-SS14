@@ -33,6 +33,17 @@ public sealed partial class StatusEffectsSystem
             return false;
         }
 
+        //FH Start
+        var ev = new AttemptAddStatusEvent(effectProto);
+        RaiseLocalEvent(target, ref ev);
+
+        if(ev.Cancelled)
+        {
+            statusEffect = null;
+            return false;
+        }
+        //FH End
+
         // We check to make sure time is greater than zero here because sometimes you want to use TryAddStatusEffect to remove duration instead...
         if (!TryGetStatusEffect(target, effectProto, out statusEffect))
             return TryAddStatusEffect(target, effectProto, out statusEffect, duration, delay);
@@ -73,6 +84,17 @@ public sealed partial class StatusEffectsSystem
             statusEffect = null;
             return false;
         }
+
+        //FH Start
+        var ev = new AttemptAddStatusEvent(effectProto);
+        RaiseLocalEvent(target, ref ev);
+
+        if(ev.Cancelled)
+        {
+            statusEffect = null;
+            return false;
+        }
+        //FH End
 
         if (!TryGetStatusEffect(target, effectProto, out statusEffect))
             return TryAddStatusEffect(target, effectProto, out statusEffect, duration, delay);
@@ -117,6 +139,17 @@ public sealed partial class StatusEffectsSystem
             return false;
         }
 
+        //FH Start
+        var ev = new AttemptAddStatusEvent(effectProto);
+        RaiseLocalEvent(target, ref ev);
+
+        if(ev.Cancelled)
+        {
+            statusEffect = null;
+            return false;
+        }
+        //FH End
+
         if (!TryGetStatusEffect(target, effectProto, out statusEffect))
             return TryAddStatusEffect(target, effectProto, out statusEffect, duration, delay);
 
@@ -144,6 +177,14 @@ public sealed partial class StatusEffectsSystem
     {
         if (!_containerQuery.TryComp(target, out var container))
             return false;
+
+        //FH Start
+        var ev = new AttemptRemoveStatusEvent(effectProto);
+        RaiseLocalEvent(target, ref ev);
+
+        if(ev.Cancelled)
+            return false;
+        //FH End
 
         foreach (var effect in container.ActiveStatusEffects?.ContainedEntities ?? [])
         {

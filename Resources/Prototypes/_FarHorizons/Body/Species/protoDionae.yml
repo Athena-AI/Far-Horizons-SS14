@@ -42,6 +42,7 @@
 
 - type: entity
   parent:
+  - ActiveCritBase
   - AppearanceProtoDionae
   - BaseMobProtoDionae
   id: MobProtoDionae
@@ -63,7 +64,12 @@
 - type: entity
   parent: [ OrganProtoDionaeExternal, OrganDionaTorso ]
   id: OrganProtoDionaeTorso
-
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.BodyCover
+    - enum.HumanoidVisualLayers.BodyCoverCover
+    
 - type: entity
   parent: [ OrganProtoDionaeExternal, OrganDionaHead ]
   id: OrganProtoDionaeHead

@@ -105,7 +105,6 @@
   - type: CombatMode
     canDisarm: true
   - type: LimbTargetting # Far Horizons
-    proto: LimbTargetHuman
   - type: MeleeWeapon
     soundHit:
       collection: Punch
@@ -152,6 +151,8 @@
       enum.ThavenMoodsUiKey.Key: # impstation edit
         type: ThavenMoodsBoundUserInterface
         requireInputValidation: false
+      enum.BackgroundTraitsUiKey.Key: #Far Horizons
+        type: BackgroundTraitsBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto

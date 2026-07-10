@@ -25,6 +25,12 @@
   id: BioSec
 
 - type: Tag
+  id: BorgModuleIPCCompatible
+
+- type: Tag
+  id: BorgModuleIPCIncompatible
+
+- type: Tag
   id: BorgModuleCentcomm
 
 - type: Tag
@@ -56,6 +62,9 @@
 
 - type: Tag
   id: CombatShotgun
+
+- type: Tag
+  id: CrusherMachete
 
 - type: Tag
   id: Cyclorite
@@ -96,6 +105,9 @@
 - type: Tag
   id: HeavySecSuitBoots
 
+- type: Tag
+  id: HoloflarePistol
+  
 - type: Tag
   id: IFV-50
 
@@ -152,6 +164,9 @@
  
 - type: Tag
   id: PocketFireExtinguish
+
+- type: Tag
+  id: PowerCellMicroreactor
 
 - type: Tag
   id: Protogen
@@ -236,7 +251,10 @@
 
 - type: Tag
   id: RocketAmmo120mmShrapnel
-  
+
+- type: Tag
+  id: SalvageFactory
+
 - type: Tag
   id: SalvageReactor
 

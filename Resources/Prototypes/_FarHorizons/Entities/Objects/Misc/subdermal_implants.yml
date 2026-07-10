@@ -69,3 +69,30 @@
   - type: RadioImplant
     radioChannels:
     - Lambda
+
+- type: entity
+  id: LanguageDatabaseImplant
+  name: Language Database Implant
+  description: A subdermal implant containing a database of languages.
+  parent: BaseSubdermalImplant
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionCustomTraitLanguageDatabase
+      permanent: true
+    - type: Store
+      name: custom-frame-trait-language-database-name 
+      categories:
+      - Languages 
+      currencyWhitelist:
+      - SiliconMemory
+      balance:
+        SiliconMemory: 5
+      refundAllowed: true
+      requireStartingMap: false
+      ownerOnly: true
+      buySuccessSound: /Audio/Machines/chime.ogg
+    - type: UserInterface
+      interfaces:
+        enum.StoreUiKey.Key:
+          type: StoreBoundUserInterface

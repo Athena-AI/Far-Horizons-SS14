@@ -204,4 +204,12 @@ public sealed partial class BloodstreamComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<AlertPrototype> BleedingAlert = "Bleed";
+
+    // Far Horizons Start
+    ///<summary>
+    /// Minimum damage before applying bleed to the target.
+    ///</summary>
+    [DataField]
+    public float minBloodDamage = 0f;
+    // Far Horizons End
 }

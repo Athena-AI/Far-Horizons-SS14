@@ -1,7 +1,6 @@
 ﻿using Content.Shared.Localizations;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions.Tags;
 
@@ -20,7 +19,6 @@ public sealed partial class HasAllTagsEntityConditionSystem : EntityConditionSys
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-[NetSerializable, Serializable] //Far Horizons
 public sealed partial class AllTagsCondition : EntityConditionBase<AllTagsCondition>
 {
     [DataField(required: true)]

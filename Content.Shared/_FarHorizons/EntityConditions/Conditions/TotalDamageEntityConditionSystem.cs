@@ -4,7 +4,6 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.EntityConditions;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.EntityConditions.Conditions;
 
@@ -24,7 +23,6 @@ public sealed partial class TotalDamageEntityConditionSystem : EntityConditionSy
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-[NetSerializable, Serializable] //Far Horizons
 public sealed partial class TotalDamageCondition : EntityConditionBase<TotalDamageCondition>
 {
     [DataField]

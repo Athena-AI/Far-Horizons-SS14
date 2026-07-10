@@ -2,7 +2,6 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions;
 
@@ -22,7 +21,6 @@ public sealed partial class ReagentEntityConditionSystem : EntityConditionSystem
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-[NetSerializable, Serializable] //Far Horizons
 public sealed partial class ReagentCondition : EntityConditionBase<ReagentCondition>
 {
     [DataField]

@@ -2,7 +2,6 @@
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions.Body;
 
@@ -20,7 +19,6 @@ public sealed partial class MobStateEntityConditionSystem : EntityConditionSyste
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-[NetSerializable, Serializable] //Far Horizons
 public sealed partial class MobStateCondition : EntityConditionBase<MobStateCondition>
 {
     [DataField]

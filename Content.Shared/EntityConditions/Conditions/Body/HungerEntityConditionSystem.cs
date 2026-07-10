@@ -1,7 +1,6 @@
 ﻿using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions.Body;
 
@@ -21,7 +20,6 @@ public sealed partial class TotalHungerEntityConditionSystem : EntityConditionSy
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-[NetSerializable, Serializable] //Far Horizons
 public sealed partial class HungerCondition : EntityConditionBase<HungerCondition>
 {
     [DataField]

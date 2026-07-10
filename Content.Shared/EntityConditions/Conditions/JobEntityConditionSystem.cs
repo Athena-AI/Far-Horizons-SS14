@@ -5,7 +5,6 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.EntityConditions.Conditions;
 
@@ -48,7 +47,6 @@ public sealed partial class HasJobEntityConditionSystem : EntityConditionSystem<
 }
 
 /// <inheritdoc cref="EntityCondition"/>
-[NetSerializable, Serializable] //Far Horizons
 public sealed partial class JobCondition : EntityConditionBase<JobCondition>
 {
     [DataField(required: true)] public List<ProtoId<JobPrototype>> Jobs = [];

@@ -137,7 +137,6 @@ public sealed partial class DoorComponent : Component
 
     #region Graphics
 
-
     public const string OpenKey = "door_animation_open";
 
     public const string CloseKey = "door_animation_close";

@@ -265,6 +265,11 @@ namespace Content.IntegrationTests.Tests
                 "TraitorCodePaperComponent", // FH - Prevets codeword system from freaking out
                 "ParadoxCloneRuleComponent", // FH - No people to clone in tests
                 "RevSupplyRift", // FH - I'm pretty sure revolutionary rift was breaking the game by spawning too many crates in tests, those crates weren't deleted properly and crashed tests
+                // ES start
+                "ESTimedDespawn",
+                "ESSparkOnTrigger",
+                // ES end
+                "BluespaceLocker", // Moff Station
             };
 
             Assert.That(server.CfgMan.GetCVar(CVars.NetPVS), Is.False);

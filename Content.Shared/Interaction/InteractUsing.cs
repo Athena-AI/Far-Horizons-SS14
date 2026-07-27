@@ -34,6 +34,11 @@ public sealed class InteractUsingEvent : HandledEntityEventArgs, IPowerArmorRela
 
     SlotFlags IInventoryRelayEvent.TargetSlots => SlotFlags.All; //Far Horizons
 
+    /// <summary>
+    ///     Stellar - set to false if this interaction shouldn't have an interaction particle
+    /// </summary>
+    public bool InteractionParticle = true;
+
     public InteractUsingEvent(EntityUid user, EntityUid used, EntityUid target, EntityCoordinates clickLocation)
     {
         // Interact using should not have the same used and target.

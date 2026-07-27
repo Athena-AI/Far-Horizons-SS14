@@ -217,7 +217,7 @@ public sealed partial class CriminalRecordsSystem : SharedCriminalRecordsSystem
 
         _cartridge.ActivateProgram(ent.Owner, programUid);
         Timer.Spawn(TimeSpan.FromMilliseconds(300), () => UpdateReaderUi((programUid, program), ent.Owner, metaComp.EntityName));
-        _activatableUISystem.InteractUIp(args.User, ent.Owner, activeComp);
+        _activatableUISystem.InteractUI(args.User, (ent.Owner, activeComp));
     }
     //FarHorizons End
 }

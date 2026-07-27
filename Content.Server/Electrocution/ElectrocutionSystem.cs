@@ -33,6 +33,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using PullableComponent = Content.Shared.Movement.Pulling.Components.PullableComponent;
 using PullerComponent = Content.Shared.Movement.Pulling.Components.PullerComponent;
+using Content.Shared._ES.Sparks;
+using Content.Shared.Interaction.Events;
 
 namespace Content.Server.Electrocution;
 
@@ -57,6 +59,7 @@ public sealed partial class ElectrocutionSystem : SharedElectrocutionSystem
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private LimbDamageSystem _limbDamage = default!; // Far Horizons
+    [Dependency] private ESSparksSystem _esSparks = default!; // ES
 
     private static readonly ProtoId<StatusEffectPrototype> StatusKeyIn = "Electrocution";
     private static readonly ProtoId<DamageTypePrototype> DamageType = "Shock";
@@ -366,6 +369,7 @@ public sealed partial class ElectrocutionSystem : SharedElectrocutionSystem
 
     private bool DoCommonElectrocutionAttempt(EntityUid uid, EntityUid? sourceUid, ref float siemensCoefficient, bool ignoreInsulation = false)
     {
+        TrySpark(uid, sourceUid); // ES
 
         var attemptEvent = new ElectrocutionAttemptEvent(uid, sourceUid, siemensCoefficient,
             ignoreInsulation ? SlotFlags.NONE : ~SlotFlags.POCKET);
@@ -378,6 +382,23 @@ public sealed partial class ElectrocutionSystem : SharedElectrocutionSystem
         siemensCoefficient = attemptEvent.SiemensCoefficient;
         return true;
     }
+
+    #region ES
+    private bool TrySpark(EntityUid uid, EntityUid? sourceUid)
+    {
+        if (!sourceUid.HasValue)
+            return false;
+
+        if (!TryComp<StatusEffectsComponent>(uid, out var statusEffects) ||
+            !_statusEffects.CanApplyEffect(uid, StatusKeyIn, statusEffects))
+        {
+            return false;
+        }
+
+        _esSparks.DoSparks(sourceUid.Value);
+        return true;
+    }
+    #endregion
 
     private bool DoCommonElectrocution(EntityUid uid, EntityUid? sourceUid,
         int? shockDamage, TimeSpan time, bool refresh, float siemensCoefficient = 1f,

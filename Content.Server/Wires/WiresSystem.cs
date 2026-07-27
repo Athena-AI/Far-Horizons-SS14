@@ -644,6 +644,8 @@ public sealed partial class WiresSystem : SharedWiresSystem
         if (wire == null)
             return;
 
+        _interactionSystem.DoContactInteraction(user, target, toolEntity, false); // Moffstation - Interaction particles
+
         switch (action)
         {
             case WiresAction.Cut:

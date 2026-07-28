@@ -233,6 +233,14 @@ public sealed partial class DoorComponent : Component
     /// </summary>
     public object EmaggingAnimation = default!;
 
+    #region Starlight
+    /// <summary>
+    /// Whether activating this door displays an interaction particle.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool ShowInteractionParticle = true;
+    #endregion
+
     #endregion Graphics
 
     #region Serialization

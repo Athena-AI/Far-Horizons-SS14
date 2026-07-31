@@ -1,0 +1,61 @@
+- type: entity
+  name: Plasma Cutter
+  parent: Welder
+  id: WeaponPlasmaCutter
+  description: "An experimental welder capable of self-fuel generation and less harmful to the eyes."
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
+    layers:
+    - state: plasmacutter_icon
+  - type: Item
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        reagents:
+        - ReagentId: Plasma
+          Quantity: 100
+        maxVol: 100
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    energy: 5
+    color: "#ff75ed"
+  - type: RequiresEyeProtection
+  - type: WelderSurgery
+    startSound:
+      /Audio/Items/welder.ogg
+    speed: 0.6
+  - type: Tool
+    speedModifier: 0.9
+  - type: Welder
+    fuelConsumption: 0.6
+    fuelLitCost: 0.3
+    fuelReagent: Plasma
+  - type: Gun
+    fireRate: 0.5
+    minAngle: 1
+    maxAngle: 20
+    angleIncrease: 8
+    angleDecay: 9
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+    projectileSpeed: 25
+  - type: SolutionAmmoProvider
+    solutionId: Welder
+    proto: BulletKinetic
+    maxShots: 1
+    fireCost: 10
+  - type: UseDelay
+    delay: 1
+  - type: ItemSlots
+    slots:
+      fuel_canister:
+        name: Fuel Canister
+        startingItem: PlasmaChemistryVial
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2

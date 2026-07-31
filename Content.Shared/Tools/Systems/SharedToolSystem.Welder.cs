@@ -124,6 +124,8 @@ public abstract partial class SharedToolSystem
             && SolutionContainerSystem.TryGetDrainableSolution(target, out var targetSoln, out var targetSolution)
             && SolutionContainerSystem.TryGetSolution(entity.Owner, entity.Comp.FuelSolutionName, out var solutionComp, out var welderSolution))
         {
+            if(!targetSolution.ContainsPrototype(entity.Comp.FuelReagent)) return;
+
             var trans = FixedPoint2.Min(welderSolution.AvailableVolume, targetSolution.Volume);
             if (trans > 0)
             {

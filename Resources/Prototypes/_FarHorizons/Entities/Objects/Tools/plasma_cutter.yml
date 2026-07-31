@@ -2,7 +2,7 @@
   name: Plasma Cutter
   parent: Welder
   id: WeaponPlasmaCutter
-  description: "An experimental welder capable of self-fuel generation and less harmful to the eyes."
+  description: You could use it to cut limbs off of xenos! Or, you know, mine stuff.
   components:
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
@@ -13,9 +13,6 @@
   - type: SolutionContainerManager
     solutions:
       Welder:
-        reagents:
-        - ReagentId: Plasma
-          Quantity: 100
         maxVol: 100
   - type: PointLight
     enabled: false
@@ -46,7 +43,7 @@
     projectileSpeed: 25
   - type: SolutionAmmoProvider
     solutionId: Welder
-    proto: BulletKinetic
+    proto: BulletPlasmaCutter
     maxShots: 1
     fireCost: 10
   - type: UseDelay
@@ -59,3 +56,5 @@
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
+  - type: ExternalSolution
+    solution: Welder

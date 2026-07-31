@@ -456,3 +456,39 @@
     state: high-sci
   - type: PointLight
     color: "#f870ff"
+
+# Plasmacutter Bolt
+- type: entity
+  name: Plasma Cutter Bolt
+  id: BulletPlasmaCutter
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state:  omnilaser
+      shader: unshaded
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.3,0.15,0.3"
+        mask:
+          - ItemMask # BulletImpassable
+  - type: Ammo
+    muzzleFlash: MuzzleFlashEffectOmnilaser
+  - type: Projectile
+    impactEffect: BulletImpactEffectOrangeDisabler
+    damage:
+      types:
+        Heat: 5
+        Slash: 10
+        Structural: 50

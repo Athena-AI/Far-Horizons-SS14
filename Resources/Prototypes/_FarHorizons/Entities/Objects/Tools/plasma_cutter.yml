@@ -8,6 +8,10 @@
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
     layers:
     - state: plasmacutter_icon
+    - state: welder_flame
+      visible: false
+      shader: unshaded
+      map: ["enum.ToggleableVisuals.Layer"]
   - type: Item
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
   - type: SolutionContainerManager
@@ -31,7 +35,7 @@
     fuelLitCost: 0.3
     fuelReagent: Plasma
   - type: Gun
-    fireRate: 0.5
+    fireRate: 1.0
     minAngle: 1
     maxAngle: 20
     angleIncrease: 8
@@ -58,3 +62,47 @@
         priority: 2
   - type: ExternalSolution
     solution: Welder
+
+- type: entity
+  name: Plasma Cutter Fuel Canister
+  parent: BaseItem
+  id: PlasmaCutterFuelCanisterEmpty
+  description: A canister that contains highly concentrated liquid plasma. Used typical to fuel the plasma cutter.
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
+    state: fuel_canister
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 300
+  - type: RefillableSolution
+    solution: beaker
+  - type: ExaminableSolution
+    solution: beaker
+  - type: SolutionItemStatus
+    solution: beaker
+  - type: Item
+    size: Small
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
+    state: fuel_canister
+    shape:
+    - 0,1,0,0
+  - type: StaticPrice
+    price: 100
+
+- type: entity
+  name: Plasma Cutter Fuel Canister
+  parent: PlasmaCutterFuelCanisterEmpty
+  id: PlasmaCutterFuelCanister
+  description: A canister that contains highly concentrated liquid plasma. Used typical to fuel the plasma cutter.
+  suffix: Full
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: Plasma
+          Quantity: 300
+        maxVol: 300

@@ -18,7 +18,7 @@ public sealed class SharedExternalSolutionSystem : EntitySystem
     }
     private void OnContainerInserted(Entity<ExternalSolutionComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
-        if(!_gameTiming.IsFirstTimePredicted || !_sharedSolution.TryGetDrainableSolution(args.Entity, out var externalSolutionComp, out var externalSolution)
+        if(!_gameTiming.IsFirstTimePredicted || !_sharedSolution.TryGetRefillableSolution(args.Entity, out var externalSolutionComp, out var externalSolution)
         || !_sharedSolution.ResolveSolution(ent.Owner, ent.Comp.Solution, ref ent.Comp.solutionComponent, out var internalSolution))
             return;
 
@@ -29,7 +29,7 @@ public sealed class SharedExternalSolutionSystem : EntitySystem
 
     private void OnContainerEjected(Entity<ExternalSolutionComponent> ent, ref EntRemovedFromContainerMessage args)
     {
-        if(!_gameTiming.IsFirstTimePredicted || !_sharedSolution.TryGetDrainableSolution(args.Entity, out var externalSolutionComp, out var externalSolution)
+        if(!_gameTiming.IsFirstTimePredicted || !_sharedSolution.TryGetRefillableSolution(args.Entity, out var externalSolutionComp, out var externalSolution)
         || !_sharedSolution.ResolveSolution(ent.Owner, ent.Comp.Solution, ref ent.Comp.solutionComponent, out var internalSolution))
             return;
 
@@ -40,7 +40,7 @@ public sealed class SharedExternalSolutionSystem : EntitySystem
 
     private void OnSolutionChanged(Entity<ExternalSolutionComponent> ent, ref SolutionContainerChangedEvent args)
     {
-        if(!_gameTiming.IsFirstTimePredicted || ent.Comp.ExternalContainer == null || !_sharedSolution.TryGetDrainableSolution(ent.Comp.ExternalContainer.Value, out var externalSolutionComp, out var externalSolution)
+        if(!_gameTiming.IsFirstTimePredicted || ent.Comp.ExternalContainer == null || !_sharedSolution.TryGetRefillableSolution(ent.Comp.ExternalContainer.Value, out var externalSolutionComp, out var externalSolution)
         || externalSolution.Volume <= 0 || !_sharedSolution.ResolveSolution(ent.Owner, ent.Comp.Solution, ref ent.Comp.solutionComponent, out var internalSolution))
             return;
 

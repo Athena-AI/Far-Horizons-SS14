@@ -176,7 +176,7 @@ public abstract partial class SharedToolSystem
         if (!SolutionContainerSystem.TryGetSolution(ent.Owner, ent.Comp.FuelSolutionName, out var solution))
             return;
 
-        SolutionContainerSystem.RemoveReagent(solution.Value, ent.Comp.FuelReagent, FixedPoint2.New(args.Fuel));
+        SolutionContainerSystem.RemoveReagent(solution.Value, ent.Comp.FuelReagent, FixedPoint2.New(args.Fuel)*ent.Comp.FuelDiscount); //Far Horizons
     }
 
     private void OnToggle(Entity<WelderComponent> entity, ref ItemToggledEvent args)

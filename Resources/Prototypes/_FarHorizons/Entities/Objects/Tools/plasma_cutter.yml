@@ -7,7 +7,7 @@
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
     layers:
-    - state: plasmacutter_icon
+    - state: icon
     - state: welder_flame
       visible: false
       shader: unshaded
@@ -31,9 +31,10 @@
   - type: Tool
     speedModifier: 0.9
   - type: Welder
-    fuelConsumption: 0.6
-    fuelLitCost: 0.3
+    fuelConsumption: 0.3
+    fuelLitCost: 0.165
     fuelReagent: Plasma
+    fuelDiscount: 0.3
   - type: Gun
     fireRate: 1.0
     minAngle: 1
@@ -49,14 +50,14 @@
     solutionId: Welder
     proto: BulletPlasmaCutter
     maxShots: 1
-    fireCost: 10
+    fireCost: 1
   - type: UseDelay
     delay: 1
   - type: ItemSlots
     slots:
       fuel_canister:
         name: Fuel Canister
-        startingItem: PlasmaChemistryVial
+        startingItem: PlasmaCutterFuelCanister
         insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
@@ -76,7 +77,7 @@
   - type: SolutionContainerManager
     solutions:
       beaker:
-        maxVol: 300
+        maxVol: 30
   - type: RefillableSolution
     solution: beaker
   - type: ExaminableSolution
@@ -104,5 +105,5 @@
       beaker:
         reagents:
         - ReagentId: Plasma
-          Quantity: 300
-        maxVol: 300
+          Quantity: 30
+        maxVol: 30

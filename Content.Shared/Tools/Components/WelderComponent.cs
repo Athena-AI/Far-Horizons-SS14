@@ -81,4 +81,14 @@ public sealed partial class WelderComponent : Component
     /// </summary>
     [DataField]
     public bool ComponentActive = true;
+
+    //Far Horizons Start
+
+    /// <summary>
+    /// A discount for fuel cost do afters
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public FixedPoint2 FuelDiscount = FixedPoint2.New(1.0f);
+
+    //Far Horizons End
 }

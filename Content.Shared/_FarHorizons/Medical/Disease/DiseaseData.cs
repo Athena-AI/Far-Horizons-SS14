@@ -1,4 +1,6 @@
+using System.Numerics;
 using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
+using Content.Shared.Metabolism;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -32,6 +34,24 @@ public sealed class DiseaseData
     public string StrainName = string.Empty;
 
     /// <summary>
+    /// Symptoms for this disease.
+    /// </summary>
+    [DataField]
+    public List<SymptomEntry> Symptoms { get; set; } = new List<SymptomEntry>();
+
+    /// <summary>
+    /// Optional list of cure steps for the disease. Each entry is a specific cure action.
+    /// </summary>
+    [DataField]
+    public List<CureStep> CureSteps { get; set; } = new List<CureStep>();
+
+    /// <summary>
+    /// Optional list of metabolizers that are affected by this disease.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes;
+
+    /// <summary>
     /// The total stats from summing all the symptom stats.
     /// </summary>
     [ViewVariables]
@@ -42,6 +62,7 @@ public sealed class DiseaseData
     /// </summary>
     [ViewVariables]
     public DiseaseStealthFlags Stealth { get; set; } = DiseaseStealthFlags.None;
+
     /// <summary>
     /// Spread vectors for this disease. Handled by Stats.
     /// </summary>
@@ -49,16 +70,16 @@ public sealed class DiseaseData
     public DiseaseSpreadPath SpreadPath { get; set; } = DiseaseSpreadPath.NonContagious;
 
     /// <summary>
-    /// Probability of progression through disease stages per tick. Handled by Stats.
+    /// Handles the two thresholds for the disease timer so disease don't advance at the same tick.
     /// </summary>
     [ViewVariables]
-    public float StageProb { get; set; } = 0.02f;
+    public Vector2 DiseaseTimerThresholds { get; set; } = new(0.70f, 1.3f);
 
     /// <summary>
     /// Default immunity strength granted after curing this disease (0-1).
     /// </summary>
     [DataField]
-    public float PostCureImmunity { get; set; } = 0.7f;
+    public float PostCureImmunity { get; set; } = 1.0f;
 
     /// <summary>
     /// Optional incubation time in seconds before symptoms/spread begin after infection.
@@ -97,18 +118,6 @@ public sealed class DiseaseData
     /// </summary>
     [DataField]
     public float AirborneRange { get; set; } = 3f;
-
-    /// <summary>
-    /// Symptoms for this disease.
-    /// </summary>
-    [DataField]
-    public List<SymptomEntry> Symptoms { get; set; } = new List<SymptomEntry>();
-
-    /// <summary>
-    /// Optional list of cure steps for the disease. Each entry is a specific cure action.
-    /// </summary>
-    [DataField]
-    public List<CureStep> CureSteps { get; set; } = new List<CureStep>();
 }
 
 [Serializable, NetSerializable]

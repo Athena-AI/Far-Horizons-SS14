@@ -16,7 +16,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -36,7 +36,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -54,7 +54,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -71,7 +71,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -97,7 +97,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -123,7 +123,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -144,7 +144,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -165,7 +165,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -186,7 +186,7 @@
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1
 
 - type: diseaseSymptom
@@ -201,10 +201,10 @@
     effects:
     - !type:AddReagentToSolution
       reagent: Ephedrine
-      solution: chemicals
+      solution: bloodstream
   level: 1
   stats:
     stealth: 1
     resistance: 1
-    stageSpeed: 1
+    speed: 1
     transmittable: 1

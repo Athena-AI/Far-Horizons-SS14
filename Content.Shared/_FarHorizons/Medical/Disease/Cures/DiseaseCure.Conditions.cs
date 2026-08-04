@@ -10,7 +10,7 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Cures;
 public sealed partial class CureConditions : CureStep
 {
     /// <summary>
-    /// Ticks since infection required before curing can occur.
+    /// List of conditions needed to meet to cure someone.
     /// </summary>
     [DataField]
     public List<CureStep> Conditions = new();
@@ -19,7 +19,7 @@ public sealed partial class CureConditions : CureStep
 public sealed partial class CureConditions
 {
     /// <summary>
-    /// Cures the disease after the infection has lasted a configured duration.
+    /// Cures the disease when meeting the conditions listed above.
     /// </summary>
     public override bool OnCure(EntityUid uid, DiseaseData disease)
         => Conditions.All(p => p.OnCure(uid, disease)); 

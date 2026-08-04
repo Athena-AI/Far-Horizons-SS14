@@ -37,13 +37,13 @@ public sealed partial class CauseDiseaseEntityEffectSystem : EntityEffectSystem<
         {
             case DiseaseSpreadPath.Contact:
                 {
-                    var probability = _disease.AdjustContactChanceForProtection(entity.Owner, proto.ContactInfect, disease);
+                    var probability = _disease.AdjustContactChanceForProtection(entity.Owner, disease.ContactInfect, disease);
                     _disease.TryInfectWithChance(entity.Owner, disease, stage, probability);
                     break;
                 }
             case DiseaseSpreadPath.Airborne:
                 {
-                    var probability = _disease.AdjustAirborneChanceForProtection(entity.Owner, proto.AirborneInfect, disease);
+                    var probability = _disease.AdjustAirborneChanceForProtection(entity.Owner, disease.AirborneInfect, disease);
                     _disease.TryInfectWithChance(entity.Owner, disease, stage, probability);
                     break;
                 }

@@ -5,6 +5,8 @@ using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using System.Linq;
+using Content.Shared._FarHorizons.Medical.Disease.Components;
 
 namespace Content.Server._FarHorizons.Medical.Disease.Commands;
 
@@ -59,7 +61,7 @@ public sealed class InfectCommand : LocalizedEntityCommands
     public override CompletionResult GetCompletion(IConsoleShell shell, string[] args) => args.Length switch
     {
         1 => CompletionResult.FromHintOptions(
-            CompletionHelper.NetEntities(args[0], EntityManager),
+            GetDiseaseCarrierOptions(),
             "<uid>"),
         2 => CompletionResult.FromHintOptions(
             CompletionHelper.PrototypeIDs<DiseasePrototype>(proto: _proto),
@@ -67,4 +69,14 @@ public sealed class InfectCommand : LocalizedEntityCommands
         3 => CompletionResult.FromHint("<stage>"),
         _ => CompletionResult.Empty,
     };
+
+    private IEnumerable<CompletionOption> GetDiseaseCarrierOptions()
+    {
+        var query = EntityManager.EntityQueryEnumerator<DiseaseCarrierComponent, MetaDataComponent>();
+        while (query.MoveNext(out var uid, out _, out var meta))
+        {
+            var netEntity = EntityManager.GetNetEntity(uid);
+            yield return new CompletionOption(netEntity.ToString(), string.IsNullOrEmpty(meta.EntityName) ? "unnamed" : meta.EntityName);
+        }
+    }
 }

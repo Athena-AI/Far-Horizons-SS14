@@ -18,6 +18,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Network;
+using Content.Shared.Metabolism;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Systems;
 
@@ -144,8 +145,10 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
         if (currentStage.AdvanceStageAt > _timing.CurTime)
             return currentStage;
-            
-        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( (float) stages[currentStage.Stage] - ((float) stages[currentStage.Stage] * disease.StageProb));
+
+        var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, currentStage.AdvanceStageAt.Microseconds, (int) stages[currentStage.Stage]);
+        var rand = new System.Random(seed);
+        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( (float) stages[currentStage.Stage] - ((float) stages[currentStage.Stage] * rand.NextFloat(disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y)));
         currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
         return currentStage; 
     }
@@ -284,6 +287,12 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         if (_mobState.IsDead(uid))
             return false;
 
+        if(diseaseId.MetabolizerTypes != null 
+            && TryComp<MetabolizerComponent>(uid, out var metabolizer)
+            && metabolizer.MetabolizerTypes != null
+            && !metabolizer.MetabolizerTypes.Overlaps(diseaseId.MetabolizerTypes))
+            return false;
+
         return true;
     }
 
@@ -325,6 +334,9 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         if (!TryComp<DiseaseCarrierComponent>(uid, out var carrier))
             return false;
 
+        if(!CanBeInfected(uid, disease))
+            return false;
+
         // Only initialize stage and incubation when this disease is first added to the carrier.
         if (carrier.ActiveDiseases.TryAdd(disease, stage))
         {
@@ -352,21 +364,51 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Name = proto.Name,
             Description = proto.Description,
             StrainName = GenerateStrainName(),
-            SpreadPath = DiseaseSpreadPath.NonContagious,
-            PostCureImmunity = proto.PostCureImmunity,
             IncubationSeconds = proto.IncubationSeconds,
-            ContactInfect = proto.ContactInfect,
-            ContactDeposit = proto.ContactDeposit,
-            AirborneInfect = proto.AirborneInfect,
-            AirborneRange = proto.AirborneRange,
             Symptoms = proto.Symptoms,
-            CureSteps = proto.CureSteps
+            CureSteps = proto.CureSteps,
+            MetabolizerTypes = proto.MetabolizerTypes
         };
 
-        disease.Stats = GenerateDiseaseStats(disease);
-        disease.StageProb = disease.Stats.StageSpeed/100f;
-        disease.SpreadPath = UpdateSpreadPath(disease);
-        disease.Stealth = UpdateStealth(disease);
+        return UpdateDisease(disease);
+    }
+
+    public DiseaseData? UpdateDisease(DiseaseData disease)
+    {
+        disease.Stats = GetTotalDiseaseStats(disease);
+        //Stealth 
+
+        disease.Stealth = disease.Stats.Stealth switch
+        {
+            > 3 => DiseaseStealthFlags.Hidden | DiseaseStealthFlags.VeryHidden,
+            > 2 => DiseaseStealthFlags.Hidden,
+            _   => DiseaseStealthFlags.None,
+        };
+
+        // Resistance
+        
+        disease.PostCureImmunity  = Math.Max(0f, disease.PostCureImmunity - (disease.Stats.Resistance / 20));
+
+        // Speed
+
+        var reduction = disease.Stats.Speed / 20f;
+        disease.DiseaseTimerThresholds -= new System.Numerics.Vector2(reduction, reduction);
+
+        // Transmittable
+
+        disease.SpreadPath = disease.Stats.Transmittable switch
+        {
+            > 99 => DiseaseSpreadPath.Special,
+            > 5  => DiseaseSpreadPath.Airborne,
+            > 2  => DiseaseSpreadPath.Contact,
+            > 0  => DiseaseSpreadPath.Blood,
+            _    => DiseaseSpreadPath.NonContagious,
+        };
+        
+        disease.ContactInfect = Math.Max(0f, disease.ContactInfect * (1 + (disease.Stats.Transmittable / 20)));
+        disease.ContactDeposit = Math.Max(0f, disease.ContactDeposit * (1 + (disease.Stats.Transmittable / 20f)));
+        disease.AirborneInfect = Math.Max(0f, disease.AirborneInfect * (1 + (disease.Stats.Transmittable / 20f)));
+        disease.AirborneRange = Math.Max(0f, disease.AirborneRange * (1 + (disease.Stats.Transmittable / 10f)));
 
         return disease;
     }
@@ -374,10 +416,11 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     public StageData? CreateStage(DiseaseData disease, int startStage=0)
     {   
         var stages = Enum.GetValues<DiseaseTimers>().Reverse().ToList();
+        var timerModifier = _random.NextFloat(disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y);
         var stage = new StageData
         {
             Stage = startStage,
-            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds((float) stages[startStage] - ((float) stages[startStage]* disease.StageProb))
+            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds((float) stages[startStage] - ((float) stages[startStage]* timerModifier))
         };
         return stage;
     }
@@ -385,7 +428,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     private string GenerateStrainName()
         => $"{_random.Pick(_prototypes.Index<LocalizedDatasetPrototype>(_firstStrainName))}-{_random.NextByte(99)} {_random.Pick(_prototypes.Index<LocalizedDatasetPrototype>(_secondStrainName))}";
 
-    private DiseaseStats GenerateDiseaseStats(DiseaseData disease)
+    private DiseaseStats GetTotalDiseaseStats(DiseaseData disease)
     {
         var stats = new DiseaseStats();
         foreach(var symptomID in disease.Symptoms)
@@ -395,36 +438,15 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             
             stats.Resistance += symptom.Stats.Resistance;
             stats.Stealth += symptom.Stats.Stealth;
-            stats.StageSpeed += symptom.Stats.StageSpeed;
+            stats.Speed += symptom.Stats.Speed;
             stats.Transmittable += symptom.Stats.Transmittable;
         }
+        stats.Resistance = Math.Clamp(stats.Resistance, -10, 10);
+        stats.Stealth = Math.Clamp(stats.Stealth, -10, 10);
+        stats.Speed = Math.Clamp(stats.Speed, -10, 10);
+        stats.Transmittable = Math.Clamp(stats.Transmittable, -10, 10);
 
         return stats;
-    }
-
-    private DiseaseSpreadPath UpdateSpreadPath(DiseaseData disease)
-    {
-        var transmitionStat = disease.Stats.Transmittable;
-        if(transmitionStat > 99)
-            return DiseaseSpreadPath.Special;
-        else if(transmitionStat > 5)
-            return DiseaseSpreadPath.Airborne;
-        else if(transmitionStat > 2)
-            return DiseaseSpreadPath.Contact;
-        else if(transmitionStat > 0)
-            return DiseaseSpreadPath.Blood;
-            
-        return DiseaseSpreadPath.NonContagious;
-    }
-    private DiseaseStealthFlags UpdateStealth(DiseaseData disease)
-    {
-        var stealthStat = disease.Stats.Stealth;
-        if(stealthStat > 3 )
-            return DiseaseStealthFlags.Hidden | DiseaseStealthFlags.VeryHidden;
-        else if(stealthStat > 2)
-            return DiseaseStealthFlags.Hidden;
-            
-        return DiseaseStealthFlags.None;
     }
 
     public void UpdateBloodData(Entity<DiseaseCarrierComponent> ent)
@@ -435,7 +457,15 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             || !_solution.ResolveSolution(ent.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution)) return;
 
         var bloodData = _bloodstream.GetEntityBloodData((ent.Owner, bloodstream));
-        var diseaseData = bloodData.OfType<DiseaseReagentData>().FirstOrDefault();
+        DiseaseReagentData? diseaseData = null;
+        foreach (var d in bloodData)
+        {
+            if (d is DiseaseReagentData dd)
+            {
+                diseaseData = dd;
+                break;
+            }
+        }
         if(diseaseData == null)
         {
             diseaseData = new DiseaseReagentData();
@@ -446,10 +476,14 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         diseaseData.Immunity = new Dictionary<DiseaseData, float>(ent.Comp.Immunity);
         bloodstream.BloodReferenceSolution.SetReagentData(bloodData);
 
+        var refPrototypes = bloodstream.BloodReferenceSolution.Contents
+            .Select(x => x.Reagent.Prototype)
+            .ToHashSet();
+
         for (var i = 0; i < bloodSolution.Contents.Count; i++)
         {
             var old = bloodSolution.Contents[i];
-            if(bloodstream.BloodReferenceSolution.Contents.Any(x => x.Reagent.Prototype == old.Reagent.Prototype))
+            if (refPrototypes.Contains(old.Reagent.Prototype))
                 bloodSolution.Contents[i] = new ReagentQuantity(new ReagentId(old.Reagent.Prototype, bloodData), old.Quantity);
         }
 

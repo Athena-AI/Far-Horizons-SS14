@@ -46,13 +46,6 @@
   onlyAlive: true
   stages: !type:DiseaseStageCondition
     min: 2
-  cureDuration: 120
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Charcoal
-      min: 5
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -70,18 +63,6 @@
   onlyAlive: true
   stages: !type:DiseaseStageCondition
     min: 1
-  cureDuration: 400
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Ethyloxyephedrine
-      min: 5
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Diphenylmethylamine
-      min: 3
   behaviors:
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectForcedSleeping
@@ -100,16 +81,6 @@
   onlyAlive: true
   stages: !type:DiseaseStageCondition
     min: 2
-  cureDuration: 180
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Haloperidol
-      min: 2
-    - !type:ReagentCondition
-      reagent: Synaptizine
-      min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -183,15 +154,6 @@
   onlyAlive: true
   stages: !type:DiseaseStageCondition
     min: 2
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Salbutamol
-      min: 2
-    - !type:ReagentCondition
-      reagent: Perfluorodecalin
-      min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:

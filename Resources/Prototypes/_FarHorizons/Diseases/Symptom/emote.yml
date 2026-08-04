@@ -7,13 +7,6 @@
   airborneBurst:
     rangeMultiplier: 1.75
     chanceMultiplier: 1.5
-  cureDuration: 120
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Salbutamol
-      min: 5
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -36,13 +29,6 @@
   airborneBurst:
     rangeMultiplier: 2.5
     chanceMultiplier: 2.5
-  cureDuration: 120
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: Salbutamol
-      min: 5
   behaviors:
   - !type:SymptomStatusEffect
     effects:

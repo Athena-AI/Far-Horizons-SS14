@@ -18,14 +18,13 @@
   - symptom: SymptomGib
   cureSteps:
   - !type:CureConditions
-    cureChance: 0.15 # Higher chance to cure, since two reagents are required.
     conditions:
-    - !type:ReagentCondition
+    - !type:CureReagent
       reagent: Diphenhydramine
-      min: 1
-    - !type:ReagentCondition
+      min: 5
+    - !type:CureReagent
       reagent: Sulfur
-      min: 1
+      min: 5
 
 - type: disease
   id: DiseaseHonkSyndrome
@@ -37,11 +36,9 @@
     - symptom: SymptomEmoteHonk
     - symptom: SymptomHonkShout
   cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: BananaHonk
-      min: 1
+  - !type:CureReagent
+    reagent: BananaHonk
+    min: 10
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest
@@ -60,14 +57,13 @@
   - symptom: SymptomSpeedBoost
   cureSteps:
   - !type:CureConditions
-    cureChance: 0.15 # Did you know cats hate the smell of citrus?
     conditions:
-    - !type:ReagentCondition
+    - !type:CureReagent
       reagent: JuiceLemon
-      min: 1
-    - !type:ReagentCondition
+      min: 5
+    - !type:CureReagent
       reagent: JuiceLime
-      min: 1
+      min: 5
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest

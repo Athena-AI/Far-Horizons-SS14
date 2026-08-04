@@ -17,12 +17,11 @@
   - symptom: SymptomTransitionToFlu
   cureSteps:
   - !type:CureConditions
-    cureChance: 0.15
     conditions:
-    - !type:ReagentCondition
+    - !type:CureReagent
       reagent: Spaceacillin
-      min: 1
-    - !type:TemperatureCondition
+      min: 10
+    - !type:CureTemperature
       max: 308.15
   - !type:CureWait
     requiredTicks: 900
@@ -47,14 +46,13 @@
   - symptom: SymptomFreeze
   cureSteps:
   - !type:CureConditions
-    cureChance: 0.15 # Higher chance to cure, since two reagents are required.
     conditions:
-    - !type:ReagentCondition
+    - !type:CureReagent
       reagent: Spaceacillin
-      min: 1
-    - !type:ReagentCondition
+      min: 5
+    - !type:CureReagent
       reagent: Leporazine
-      min: 1
+      min: 5
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest
@@ -73,14 +71,13 @@
     - symptom: SymptomToxin
   cureSteps:
   - !type:CureConditions
-    cureChance: 0.15
     conditions:
-    - !type:ReagentCondition
+    - !type:CureReagent
       reagent: Spaceacillin
-      min: 1
-    - !type:ReagentCondition
+      min: 5
+    - !type:CureReagent
       reagent: Salbutamol
-      min: 1
+      min: 5
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest

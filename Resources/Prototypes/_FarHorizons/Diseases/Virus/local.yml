@@ -14,12 +14,9 @@
       2: 0.2
   - symptom: SymptomVomiting
   cureSteps:
-  - !type:CureConditions
-    cureChance: 0.05
-    conditions:
-    - !type:ReagentCondition
-      reagent: Ipecac
-      min: 1
+  - !type:CureReagent
+    reagent: Ipecac
+    min: 10
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest
@@ -34,12 +31,9 @@
   symptoms:
   - symptom: SymptomNarcolepsy
   cureSteps:
-  - !type:CureConditions
-    cureChance: 0.05
-    conditions:
-    - !type:ReagentCondition
-      reagent: Haloperidol
-      min: 1
+  - !type:CureReagent
+    reagent: Haloperidol
+    min: 10
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest
@@ -57,11 +51,9 @@
   - symptom: SymptomMonkeyShout
   - symptom: SymptomGeneticDamage
   cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:ReagentCondition
-      reagent: JuiceBanana
-      min: 3
+  - !type:CureReagent
+    reagent: JuiceBanana
+    min: 10
   - !type:CureWait
     requiredTicks: 900
   - !type:CureBedrest

@@ -13,7 +13,7 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Cures;
 public sealed partial class CureReagent : CureStep
 {
     [DataField]
-    public FixedPoint2 Min = FixedPoint2.Zero;
+    public FixedPoint2 Min = 5;
 
     [DataField]
     public FixedPoint2 Max = FixedPoint2.MaxValue;

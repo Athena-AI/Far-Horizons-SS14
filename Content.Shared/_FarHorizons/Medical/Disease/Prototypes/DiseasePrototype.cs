@@ -48,12 +48,6 @@ public sealed partial class DiseasePrototype : IPrototype
     public List<SymptomEntry> Symptoms { get; private set; } = new List<SymptomEntry>();
 
     /// <summary>
-    /// Optional list of cure steps for the disease. Each entry is a specific cure action.
-    /// </summary>
-    [DataField]
-    public List<CureStep> CureSteps { get; private set; } = new List<CureStep>();
-
-    /// <summary>
     /// Optional list of metabolizers that are affected by this disease.
     /// </summary>
     [DataField]

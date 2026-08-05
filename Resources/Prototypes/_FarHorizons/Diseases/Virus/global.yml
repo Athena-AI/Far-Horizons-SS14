@@ -2,8 +2,6 @@
   id: DiseaseCold
   name: disease-DiseaseCold-name
   desc: disease-DiseaseCold-desc
-  spreadPath: [ Airborne ]
-  permeabilityMod: 0.5
   symptoms:
   - symptom: SymptomCough
     probability:
@@ -15,25 +13,11 @@
       2: 0.04
   - symptom: SymptomFever
   - symptom: SymptomTransitionToFlu
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:CureReagent
-      reagent: Spaceacillin
-      min: 10
-    - !type:CureTemperature
-      max: 308.15
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5
 
 - type: disease
   id: DiseaseCold9
   name: disease-DiseaseCold9-name
   desc: disease-DiseaseCold9-desc
-  spreadPath: [ Contact ]
   symptoms:
   - symptom: SymptomCough
     probability:
@@ -44,42 +28,12 @@
       1: 0.02
       2: 0.04
   - symptom: SymptomFreeze
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:CureReagent
-      reagent: Spaceacillin
-      min: 5
-    - !type:CureReagent
-      reagent: Leporazine
-      min: 5
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5
 
 - type: disease
   id: DiseaseFlu
   name: disease-DiseaseFlu-name
   desc: disease-DiseaseFlu-desc
-  spreadPath: [ Airborne ]
-  permeabilityMod: 0.75
   symptoms:
     - symptom: SymptomCough
     - symptom: SymptomSneeze
     - symptom: SymptomToxin
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:CureReagent
-      reagent: Spaceacillin
-      min: 5
-    - !type:CureReagent
-      reagent: Salbutamol
-      min: 5
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5

@@ -2,7 +2,6 @@
   id: DiseaseGBS
   name: disease-DiseaseGBS-name
   desc: disease-DiseaseGBS-desc
-  spreadPath: [ NonContagious ]
   symptoms: 
   - symptom: SymptomCough
     probability:
@@ -16,56 +15,22 @@
     probability:
       3: 0.05
   - symptom: SymptomGib
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:CureReagent
-      reagent: Diphenhydramine
-      min: 5
-    - !type:CureReagent
-      reagent: Sulfur
-      min: 5
 
 - type: disease
   id: DiseaseHonkSyndrome
   name: disease-DiseaseHonkSyndrome-name
   desc: disease-DiseaseHonkSyndrome-desc
-  spreadPath: [ NonContagious ]
   symptoms:
     - symptom: SymptomJitters
     - symptom: SymptomEmoteHonk
     - symptom: SymptomHonkShout
-  cureSteps:
-  - !type:CureReagent
-    reagent: BananaHonk
-    min: 10
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5
 
 - type: disease
   id: DiseaseOwOnavirus
   name: disease-DiseaseOwOnavirus-name
   desc: disease-DiseaseOwOnavirus-desc
-  spreadPath: [ NonContagious ]
   iconDisease: DiseaseIconBuff
   symptoms:
   - symptom: SymptomOwOAccent
   - symptom: SymptomEmoteCat
   - symptom: SymptomSpeedBoost
-  cureSteps:
-  - !type:CureConditions
-    conditions:
-    - !type:CureReagent
-      reagent: JuiceLemon
-      min: 5
-    - !type:CureReagent
-      reagent: JuiceLime
-      min: 5
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5

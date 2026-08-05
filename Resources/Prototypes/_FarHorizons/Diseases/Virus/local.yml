@@ -2,7 +2,6 @@
   id: DiseaseFoodPoisoning
   name: disease-DiseaseFoodPoisoning-name
   desc: disease-DiseaseFoodPoisoning-desc
-  spreadPath: [ NonContagious ]
   symptoms:
   - symptom: SymptomEmoteGroan
     probability: 
@@ -13,49 +12,18 @@
       1: 0.1
       2: 0.2
   - symptom: SymptomVomiting
-  cureSteps:
-  - !type:CureReagent
-    reagent: Ipecac
-    min: 10
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5
 
 - type: disease
   id: DiseaseNarcolepsySyndrome
   name: disease-DiseaseNarcolepsySyndrome-name
   desc: disease-DiseaseNarcolepsySyndrome-desc
-  spreadPath: [ NonContagious ]
   symptoms:
   - symptom: SymptomNarcolepsy
-  cureSteps:
-  - !type:CureReagent
-    reagent: Haloperidol
-    min: 10
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5
 
 - type: disease
   id: DiseaseAMIV
   name: disease-DiseaseAMIV-name
   desc: disease-DiseaseAMIV-desc
-  spreadPath: [ Contact ]
-  contactInfect: 0.005
-  contactDeposit: 0.05
   symptoms:
   - symptom: SymptomMonkeyShout
   - symptom: SymptomGeneticDamage
-  cureSteps:
-  - !type:CureReagent
-    reagent: JuiceBanana
-    min: 10
-  - !type:CureWait
-    requiredTicks: 900
-  - !type:CureBedrest
-      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
-      sleepMultiplier: 5

@@ -12,7 +12,6 @@ using Robust.Shared.Collections;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Popups;
 using Content.Shared.Dataset;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -34,8 +33,6 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedInternalsSystem _internals = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -366,7 +363,6 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             StrainName = GenerateStrainName(),
             IncubationSeconds = proto.IncubationSeconds,
             Symptoms = proto.Symptoms,
-            CureSteps = proto.CureSteps,
             MetabolizerTypes = proto.MetabolizerTypes
         };
 
@@ -388,6 +384,23 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         // Resistance
         
         disease.PostCureImmunity  = Math.Max(0f, disease.PostCureImmunity - (disease.Stats.Resistance / 20f));
+        var cures = _prototypes.EnumeratePrototypes<CurePrototype>().Where(p => p.Tier.Equals(disease.Stats.Resistance));
+        var maxCures = 2;
+        List<CureStep> SelectedCures = new List<CureStep>();
+
+        for (int i = 0; i < maxCures; i++)
+        {
+            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, disease.Stats.Resistance, disease.Stats.Stealth, disease.Stats.Speed, disease.Stats.Transmittable, i);
+            var rand = new System.Random(seed);
+            SelectedCures.Add(rand.PickAndTake(cures.ToList()).CureStep!);
+        }
+
+        disease.CureSteps = new List<CureStep>
+        {
+            new CureConditions {Conditions = SelectedCures},
+            new CureWait { RequiredTicks = 900 },
+            new CureBedrest { BedrestChance = 0.0033f, SleepMultiplier = 5f}
+        };
 
         // Speed
 
@@ -416,7 +429,11 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     public StageData? CreateStage(DiseaseData disease, int startStage=0)
     {   
         var stages = Enum.GetValues<DiseaseTimers>().Reverse().ToList();
-        var timerModifier = _random.NextFloat(disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y);
+
+        var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, startStage);
+        var rand = new System.Random(seed);
+
+        var timerModifier = rand.NextFloat(disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y);
         var stage = new StageData
         {
             Stage = startStage,
@@ -426,7 +443,20 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     }
 
     private string GenerateStrainName()
-        => $"{_random.Pick(_prototypes.Index<LocalizedDatasetPrototype>(_firstStrainName))}-{_random.NextByte(99)} {_random.Pick(_prototypes.Index<LocalizedDatasetPrototype>(_secondStrainName))}";
+    {
+        const int MaxValue = 99;
+        var seed = SharedRandomExtensions.HashCodeCombine((int) _timing.CurTick.Value, MaxValue);
+        var rand = new System.Random(seed);
+
+        var firstOptions = _prototypes.Index<LocalizedDatasetPrototype>(_firstStrainName).Values;
+        var secondOptions = _prototypes.Index<LocalizedDatasetPrototype>(_secondStrainName).Values;
+
+        var first = firstOptions[rand.Next(firstOptions.Count)];
+        var second = secondOptions[rand.Next(secondOptions.Count)];
+        var number = rand.Next(MaxValue);
+
+        return $"{first}-{number} {second}";
+    }
 
     private DiseaseStats GetTotalDiseaseStats(DiseaseData disease)
     {
@@ -441,10 +471,10 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             stats.Speed += symptom.Stats.Speed;
             stats.Transmittable += symptom.Stats.Transmittable;
         }
-        stats.Resistance = Math.Clamp(stats.Resistance, -10, 10);
-        stats.Stealth = Math.Clamp(stats.Stealth, -10, 10);
-        stats.Speed = Math.Clamp(stats.Speed, -10, 10);
-        stats.Transmittable = Math.Clamp(stats.Transmittable, -10, 10);
+        stats.Resistance = Math.Max(stats.Resistance, 0);
+        stats.Stealth = Math.Max(stats.Stealth, 0);
+        stats.Speed = Math.Max(stats.Speed, 0);
+        stats.Transmittable = Math.Max(stats.Transmittable, 0);
 
         return stats;
     }

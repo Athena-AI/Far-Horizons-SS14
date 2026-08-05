@@ -380,14 +380,14 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
         disease.Stealth = disease.Stats.Stealth switch
         {
-            > 3 => DiseaseStealthFlags.Hidden | DiseaseStealthFlags.VeryHidden,
-            > 2 => DiseaseStealthFlags.Hidden,
+            > 5 => DiseaseStealthFlags.Hidden | DiseaseStealthFlags.VeryHidden,
+            > 3 => DiseaseStealthFlags.Hidden,
             _   => DiseaseStealthFlags.None,
         };
 
         // Resistance
         
-        disease.PostCureImmunity  = Math.Max(0f, disease.PostCureImmunity - (disease.Stats.Resistance / 20));
+        disease.PostCureImmunity  = Math.Max(0f, disease.PostCureImmunity - (disease.Stats.Resistance / 20f));
 
         // Speed
 
@@ -405,7 +405,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             _    => DiseaseSpreadPath.NonContagious,
         };
         
-        disease.ContactInfect = Math.Max(0f, disease.ContactInfect * (1 + (disease.Stats.Transmittable / 20)));
+        disease.ContactInfect = Math.Max(0f, disease.ContactInfect * (1 + (disease.Stats.Transmittable / 20f)));
         disease.ContactDeposit = Math.Max(0f, disease.ContactDeposit * (1 + (disease.Stats.Transmittable / 20f)));
         disease.AirborneInfect = Math.Max(0f, disease.AirborneInfect * (1 + (disease.Stats.Transmittable / 20f)));
         disease.AirborneRange = Math.Max(0f, disease.AirborneRange * (1 + (disease.Stats.Transmittable / 10f)));

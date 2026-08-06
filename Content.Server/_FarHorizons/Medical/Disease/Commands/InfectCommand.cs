@@ -43,7 +43,7 @@ public sealed class InfectCommand : LocalizedEntityCommands
         if (args.Length >= 3 && int.TryParse(args[2], NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedStage))
             stage = Math.Max(0, parsedStage);
         
-        var disease = _disease.CreateDisease(diseaseId);
+        var disease = _disease.GenerateDisease(diseaseId);
         if(disease == null ) return;
         
         var stageData = _disease.CreateStage(disease, stage);

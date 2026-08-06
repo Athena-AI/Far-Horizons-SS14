@@ -2,6 +2,8 @@
   id: DiseaseCold
   name: disease-DiseaseCold-name
   desc: disease-DiseaseCold-desc
+  strainName: COVID-2077
+  strainId: covid2077
   symptoms:
   - symptom: SymptomCough
     probability:
@@ -13,11 +15,33 @@
       2: 0.04
   - symptom: SymptomFever
   - symptom: SymptomTransitionToFlu
+  cureSteps:
+  - !type:CureConditions
+    conditions:
+    - !type:CureReagent
+      reagent: Salbutamol
+      min: 10
+    - !type:CureTemperature
+      max: 308.15
+  - !type:CureWait
+    requiredTicks: 900
+  - !type:CureBedrest
+      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
+      sleepMultiplier: 5
+  stats:
+    resistance: 1
+    stealth: 1
+    speed: 1
+    transmittable: 1
+  stealth: [ Hidden ]
+  spreadPath: [ Airborne ]
 
 - type: disease
   id: DiseaseCold9
   name: disease-DiseaseCold9-name
   desc: disease-DiseaseCold9-desc
+  strainName: RSV-FRZN
+  strainId: rsvfrzn
   symptoms:
   - symptom: SymptomCough
     probability:
@@ -28,12 +52,55 @@
       1: 0.02
       2: 0.04
   - symptom: SymptomFreeze
+  cureSteps:
+  - !type:CureConditions
+    conditions:
+    - !type:CureReagent
+      reagent: Spaceacillin
+      min: 1
+    - !type:CureReagent
+      reagent: Leporazine
+      min: 1
+  - !type:CureWait
+    requiredTicks: 900
+  - !type:CureBedrest
+      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
+      sleepMultiplier: 5
+  stats:
+    resistance: 1
+    stealth: 1
+    speed: 1
+    transmittable: 1
+  stealth: [ Hidden ]
+  spreadPath: [ Contact ]
 
 - type: disease
   id: DiseaseFlu
   name: disease-DiseaseFlu-name
   desc: disease-DiseaseFlu-desc
+  strainName: INF-X
+  strainId: infx
   symptoms:
     - symptom: SymptomCough
     - symptom: SymptomSneeze
     - symptom: SymptomToxin
+  cureSteps:
+  - !type:CureConditions
+    conditions:
+    - !type:CureReagent
+      reagent: Spaceacillin
+    - !type:CureReagent
+      reagent: Salbutamol
+  - !type:CureWait
+    requiredTicks: 900
+  - !type:CureBedrest
+      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
+      sleepMultiplier: 5
+  stats:
+    resistance: 1
+    stealth: 1
+    speed: 1
+    transmittable: 1
+  stealth: [ Hidden ]
+  spreadPath: [ Airborne ]
+  permeabilityMod: 0.75

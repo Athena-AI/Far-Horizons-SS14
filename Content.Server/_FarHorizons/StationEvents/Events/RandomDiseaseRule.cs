@@ -29,7 +29,7 @@ public sealed class RandomDiseaseRule : StationEventSystem<RandomDiseaseRuleComp
         // Choose disease uniformly from pool.
         var chosenDisease = _random.Pick(comp.Disease).Id;
         
-        var disease = _disease.CreateDisease(chosenDisease);
+        var disease = _disease.GenerateDisease(chosenDisease);
         if(disease == null) return;
         var stage = _disease.CreateStage(disease);
         if(stage == null) return;

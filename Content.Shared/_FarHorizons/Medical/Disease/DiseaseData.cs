@@ -1,11 +1,15 @@
 using System.Numerics;
 using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared.Metabolism;
+using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Systems;
 
+/// <summary>
+/// Mutable Data of the disease.
+/// </summary>
 [Serializable, NetSerializable]
 public sealed class DiseaseData
 {
@@ -34,6 +38,12 @@ public sealed class DiseaseData
     public string StrainName = string.Empty;
 
     /// <summary>
+    /// Preset id of the strain
+    /// </summary>
+    [IdDataField]
+    public string? StrainId = string.Empty;
+
+    /// <summary>
     /// Symptoms for this disease.
     /// </summary>
     [DataField]
@@ -49,7 +59,7 @@ public sealed class DiseaseData
     /// Optional list of metabolizers that are affected by this disease.
     /// </summary>
     [DataField]
-    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes;
+    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes { get; set; }
 
     /// <summary>
     /// The total stats from summing all the symptom stats.
@@ -118,6 +128,12 @@ public sealed class DiseaseData
     /// </summary>
     [DataField]
     public float AirborneRange { get; set; } = 3f;
+
+    /// <summary>
+    /// Disease icon prototype to show on HUDs.
+    /// </summary>
+    [DataField]
+    public ProtoId<DiseaseIconPrototype>? IconDisease { get; set; } = "DiseaseIconIll";
 }
 
 [Serializable, NetSerializable]

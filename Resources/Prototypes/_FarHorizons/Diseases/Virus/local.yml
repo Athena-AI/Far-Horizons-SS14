@@ -2,6 +2,8 @@
   id: DiseaseFoodPoisoning
   name: disease-DiseaseFoodPoisoning-name
   desc: disease-DiseaseFoodPoisoning-desc
+  strainName: NoV.GII.42
+  strainId: novgii42
   symptoms:
   - symptom: SymptomEmoteGroan
     probability: 
@@ -12,6 +14,23 @@
       1: 0.1
       2: 0.2
   - symptom: SymptomVomiting
+  cureSteps:
+  - !type:CureConditions
+    conditions:
+    - !type:CureReagent
+      reagent: Ipecac
+      min: 10
+  - !type:CureWait
+    requiredTicks: 900
+  - !type:CureBedrest
+      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
+      sleepMultiplier: 5
+  stats:
+    resistance: 1
+    stealth: 1
+    speed: 1
+    transmittable: 1
+  spreadPath: [ NonContagious ]
 
 - type: disease
   id: DiseaseNarcolepsySyndrome
@@ -22,8 +41,27 @@
 
 - type: disease
   id: DiseaseAMIV
+  strainName: AMIV-1981
+  strainId: amiv1981
   name: disease-DiseaseAMIV-name
   desc: disease-DiseaseAMIV-desc
   symptoms:
   - symptom: SymptomMonkeyShout
   - symptom: SymptomGeneticDamage
+  cureSteps:
+  - !type:CureConditions
+    conditions:
+    - !type:CureReagent
+      reagent: JuiceBanana
+      min: 10
+  - !type:CureWait
+    requiredTicks: 900
+  - !type:CureBedrest
+      bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
+      sleepMultiplier: 5
+  stats:
+    resistance: 1
+    stealth: 1
+    speed: 1
+    transmittable: 1
+  spreadPath: [ NonContagious ]

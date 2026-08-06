@@ -19,7 +19,7 @@ public sealed partial class CauseDiseaseEntityEffectSystem : EntityEffectSystem<
         if(!_prototype.TryIndex(args.Effect.DiseaseId, out var proto))
             return;
 
-        var disease = _disease.CreateDisease(args.Effect.DiseaseId);
+        var disease = _disease.GenerateDisease(args.Effect.DiseaseId);
         if(disease == null) return; 
         var stage = _disease.CreateStage(disease);
         if(stage == null) return;

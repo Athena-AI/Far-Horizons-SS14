@@ -145,7 +145,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, currentStage.AdvanceStageAt.Microseconds, (int) stages[currentStage.Stage]);
         var rand = new System.Random(seed);
-        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( (float) stages[currentStage.Stage] - ((float) stages[currentStage.Stage] * rand.NextFloat(disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y)));
+        currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds( (float) stages[currentStage.Stage] * rand.NextFloat(disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y));
         currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
         return currentStage; 
     }
@@ -350,7 +350,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         return true;
     }
 
-    public DiseaseData? CreateDisease(string diseaseId)
+    public DiseaseData? GenerateDisease(string diseaseId)
     {
         if (!_prototypes.TryIndex<DiseasePrototype>(diseaseId, out var proto))
             return null;
@@ -360,12 +360,24 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Id = diseaseId,
             Name = proto.Name,
             Description = proto.Description,
-            IncubationSeconds = proto.IncubationSeconds,
+            StrainName = proto.StrainName,
+            StrainId = proto.StrainId,
             Symptoms = proto.Symptoms,
+            CureSteps = proto.CureSteps,
             MetabolizerTypes = proto.MetabolizerTypes,
-            StrainName = GenerateStrainName()
+            Stats = proto.Stats,
+            Stealth = proto.Stealth,
+            SpreadPath = proto.SpreadPath,
+            DiseaseTimerThresholds = proto.DiseaseTimerThresholds,
+            PostCureImmunity = proto.PostCureImmunity,
+            IncubationSeconds = proto.IncubationSeconds,       
+            PermeabilityMod = proto.PermeabilityMod,
+            ContactInfect = proto.ContactInfect,
+            ContactDeposit = proto.ContactDeposit,
+            AirborneInfect = proto.AirborneInfect,
+            AirborneRange = proto.AirborneRange,
+            IconDisease = proto.IconDisease     
         };
-        disease.Stats = GetTotalDiseaseStats(disease);
 
         return disease;
     }
@@ -376,7 +388,9 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         disease.Name = "Unknown Disease";
         disease.Description = "Unknown Disease";
 
-        disease.StrainName = GenerateStrainName();
+        var strainInfo = GenerateStrainName();
+        disease.StrainName = strainInfo.Item2;
+        disease.StrainId = strainInfo.Item1;
         disease.Stats = GetTotalDiseaseStats(disease);
 
         //Stealth 
@@ -444,12 +458,12 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         var stage = new StageData
         {
             Stage = startStage,
-            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds((float) stages[startStage] - ((float) stages[startStage]* timerModifier))
+            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds((float) stages[startStage] * timerModifier)
         };
         return stage;
     }
 
-    private string GenerateStrainName()
+    private (string, string) GenerateStrainName()
     {
         const int MaxValue = 99;
         var seed = SharedRandomExtensions.HashCodeCombine((int) _timing.CurTick.Value, MaxValue);
@@ -462,7 +476,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         var second = secondOptions[rand.Next(secondOptions.Count)];
         var number = rand.Next(MaxValue);
 
-        return $"{first}-{number} {second}";
+        return ($"{first}{number}{second}", $"{first}-{number} {second}");
     }
 
     private DiseaseStats GetTotalDiseaseStats(DiseaseData disease)

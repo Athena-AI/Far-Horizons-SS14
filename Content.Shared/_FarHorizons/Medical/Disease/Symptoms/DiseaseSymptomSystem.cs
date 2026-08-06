@@ -31,7 +31,7 @@ public sealed partial class SharedDiseaseSymptomSystem : EntitySystem
         void RunSingleBehavior(SymptomBehavior behavior)
         {
             deps.InjectDependencies(behavior);
-            behavior.OnSymptom(ent.Owner, disease);
+            behavior.OnSymptom(ent, disease, stage);
         }
 
         if (symptom.SingleBehavior && symptom.Behaviors.Count > 0)

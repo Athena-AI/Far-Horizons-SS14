@@ -1,6 +1,7 @@
 using Content.Shared.EntityEffects;
 using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared._FarHorizons.Medical.Disease.Systems;
+using Content.Shared._FarHorizons.Medical.Disease.Components;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -21,11 +22,15 @@ public sealed partial class SymptomStatusEffect
     /// <summary>
     /// Executes the status effects.
     /// </summary>
-    public override void OnSymptom(EntityUid uid, DiseaseData disease)
+    public override void OnSymptom(Entity<DiseaseCarrierComponent> entity, DiseaseData disease, StageData stage)
     {
         if (Effects.Length == 0)
             return;
 
-        _effects.ApplyEffects(uid, Effects);
+        foreach(var condition in Conditions)
+            if(!condition.Check(entity, disease, stage))
+                return;
+
+        _effects.ApplyEffects(entity, Effects);
     }
 }

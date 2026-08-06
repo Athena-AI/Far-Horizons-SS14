@@ -1,10 +1,9 @@
 - type: diseaseSymptom
   id: SymptomJitters
   name: disease-symptom-SymptomJitters-name
+  tier: 1
   probability: 0.1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -12,7 +11,9 @@
       amplitude: 2
       frequency: 6
       time: 3
-  level: 1
+    conditions:
+      stages: !type:DiseaseStageCondition
+      min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -22,17 +23,18 @@
 - type: diseaseSymptom
   id: SymptomTransitionToFlu
   name: disease-symptom-SymptomTransitionToFlu-name
+  tier: 1
   probability: 0.005
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:TransitionDisease
       fromDiseaseId: DiseaseCold
       toDiseaseId: DiseaseFlu
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -42,15 +44,17 @@
 - type: diseaseSymptom
   id: SymptomVomiting
   name: disease-symptom-SymptomVomiting-name
+  tier: 1
   probability: 0.05
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 2
+  singleBehavior: true
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:Vomit
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -60,14 +64,16 @@
 - type: diseaseSymptom
   id: SymptomNarcolepsy
   name: disease-symptom-SymptomNarcolepsy-name
+  tier: 1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
+  singleBehavior: true
   behaviors:
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectForcedSleeping
     time: 6
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -77,10 +83,9 @@
 - type: diseaseSymptom
   id: SymptomFever
   name: disease-symptom-SymptomFever-name
+  tier: 1
   probability: 1.0
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -93,7 +98,9 @@
       damage:
         types:
           Heat: 0.1
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -103,10 +110,9 @@
 - type: diseaseSymptom
   id: SymptomFreeze
   name: disease-symptom-SymptomFreeze-name
+  tier: 1
   probability: 1.0
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -119,7 +125,9 @@
       damage:
         types:
           Cold: 0.1
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -129,10 +137,10 @@
 - type: diseaseSymptom
   id: SymptomToxin
   name: disease-symptom-SymptomToxin-name
+  tier: 1
   probability: 0.05
+  singleBehavior: true
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -140,7 +148,9 @@
       damage:
         types:
           Poison: 3
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -150,10 +160,9 @@
 - type: diseaseSymptom
   id: SymptomGeneticDamage
   name: disease-symptom-SymptomGeneticDamage-name
+  tier: 1
   probability: 0.05
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 2
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -161,7 +170,9 @@
       damage:
         types:
           Cellular: 1
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 2
   stats:
     stealth: 1
     resistance: 1
@@ -171,10 +182,10 @@
 - type: diseaseSymptom
   id: SymptomGib
   name: disease-symptom-SymptomGib-name
+  tier: 1
   probability: 0.05
+  singleBehavior: true
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 4
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -182,7 +193,9 @@
       damage:
         types:
           Blunt: 9999
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 4
   stats:
     stealth: 1
     resistance: 1
@@ -192,17 +205,18 @@
 - type: diseaseSymptom
   id: SymptomSpeedBoost
   name: disease-symptom-SymptomSpeedBoost-name
+  tier: 1
   probability: 0.5
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 0
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:AddReagentToSolution
       reagent: Ephedrine
       solution: bloodstream
-  level: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 0
   stats:
     stealth: 1
     resistance: 1

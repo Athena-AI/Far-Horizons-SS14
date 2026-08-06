@@ -1,9 +1,8 @@
 - type: diseaseSymptom
   id: SymptomCough
   name: disease-symptom-SymptomCough-name
+  tier: 1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   airborneBurst:
     rangeMultiplier: 1.75
     chanceMultiplier: 1.5
@@ -13,7 +12,6 @@
     - !type:Emote
       emote: Cough
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -23,9 +21,8 @@
 - type: diseaseSymptom
   id: SymptomSneeze
   name: disease-symptom-SymptomSneeze-name
+  tier: 1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   airborneBurst:
     rangeMultiplier: 2.5
     chanceMultiplier: 2.5
@@ -35,7 +32,6 @@
     - !type:Emote
       emote: Sneeze
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -45,16 +41,14 @@
 - type: diseaseSymptom
   id: SymptomGasp
   name: disease-symptom-SymptomGasp-name
+  tier: 1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 3
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:Emote
       emote: Gasp
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -64,17 +58,15 @@
 - type: diseaseSymptom
   id: SymptomEmoteHonk
   name: disease-symptom-SymptomHonk-name
+  tier: 1
   probability: 0.05
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:Emote
       emote: Honk
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -84,11 +76,10 @@
 - type: diseaseSymptom
   id: SymptomEmoteCat
   name: disease-symptom-SymptomEmoteCat-name
+  tier: 1
   probability: 0.05
   singleBehavior: true
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 0
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -100,7 +91,6 @@
     - !type:Emote
       emote: CatHisses
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -110,16 +100,14 @@
 - type: diseaseSymptom
   id: SymptomEmoteGroan
   name: disease-symptom-SymptomEmoteGroan-name
+  tier: 1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:Emote
       emote: Groan
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -129,16 +117,14 @@
 - type: diseaseSymptom
   id: SymptomEmoteMoan
   name: disease-symptom-SymptomEmoteMoan-name
+  tier: 1
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:Emote
       emote: Moan
       showInChat: true
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -150,16 +136,14 @@
 - type: diseaseSymptom
   id: SymptomHonkShout
   name: disease-symptom-SymptomHonkShout-name
+  tier: 1
   probability: 0.05
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:SpeakDataset
       pack: DiseaseHonkShouts
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -169,16 +153,14 @@
 - type: diseaseSymptom
   id: SymptomMonkeyShout
   name: disease-symptom-SymptomMonkeyShout-name
+  tier: 1
   probability: 0.05
   onlyAlive: true
-  stages: !type:DiseaseStageCondition
-    min: 1
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:SpeakDataset
       pack: DiseaseMonkeyShouts
-  level: 1
   stats:
     stealth: 1
     resistance: 1
@@ -190,13 +172,11 @@
 - type: diseaseSymptom
   id: SymptomOwOAccent
   name: disease-symptom-SymptomOwOAccent-name
+  tier: 1
   probability: 1
-  stages: !type:DiseaseStageCondition
-    min: 0
   behaviors:
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectOwO
-  level: 1
   stats:
     stealth: 1
     resistance: 1

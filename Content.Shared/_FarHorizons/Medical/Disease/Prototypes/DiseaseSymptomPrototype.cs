@@ -1,3 +1,4 @@
+using Content.Shared._FarHorizons.Medical.Disease.Components;
 using Content.Shared._FarHorizons.Medical.Disease.Effects;
 using Content.Shared._FarHorizons.Medical.Disease.Systems;
 using Robust.Shared.Prototypes;
@@ -27,7 +28,7 @@ public sealed partial class DiseaseSymptomPrototype : IPrototype
     /// What level is this symptom? For the sake of mutations. Higher level = Higher Rarity
     /// </summary>
     [DataField]
-    public int Level { get; private set; } = 1;
+    public int Tier { get; private set; } = 1;
 
     /// <summary>
     /// The stats for this symptom this are added for the total stats of the disease.
@@ -35,20 +36,11 @@ public sealed partial class DiseaseSymptomPrototype : IPrototype
     [DataField]
     public DiseaseStats Stats { get; private set; } = default!;
 
-    [DataField]
-    public DiseaseStageCondition? Stages { get; private set;} = default!;
-
     /// <summary>
     /// Behavior variants configured by name. Each entry is a symptom effect with its own parameters.
     /// </summary>
     [DataField]
     public List<SymptomBehavior> Behaviors { get; private set; } = [];
-
-    /// <summary>
-    /// Probability per tick to trigger behavior when eligible (0-1).
-    /// </summary>
-    [DataField]
-    public float Probability { get; private set; } = 0.02f;
 
     /// <summary>
     /// If true, only a single randomly selected behavior from <see cref="Behaviors"/> will run when the symptom triggers.
@@ -105,11 +97,20 @@ public sealed partial class SymptomAirborneBurst
 /// </summary>
 public abstract partial class SymptomBehavior
 {
+    /// <summary>
+    /// Conditions needed to be met before trigger symptom
+    /// </summary>
     [DataField]
-    public IDiseaseCondition[]? Conditions = default;
+    public IDiseaseCondition[] Conditions { get; private set; } = [];
+
+    /// <summary>
+    /// Probability per tick to trigger behavior when eligible (0-1).
+    /// </summary>
+    [DataField]
+    public float Probability { get; private set; } = 0.02f;
 
     /// <summary>
     /// Called when the symptom is triggered on the carrier.
     /// </summary>
-    public virtual void OnSymptom(EntityUid uid, DiseaseData disease) { }
+    public virtual void OnSymptom(Entity<DiseaseCarrierComponent> entity, DiseaseData disease, StageData stage) { }
 }

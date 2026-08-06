@@ -3,6 +3,7 @@ using Content.Shared.StatusEffectNew.Components;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Prototypes;
 using Content.Shared._FarHorizons.Medical.Disease.Systems;
+using Content.Shared._FarHorizons.Medical.Disease.Components;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -42,25 +43,29 @@ public sealed partial class SymptomGenericStatusEffect
     /// <summary>
     /// Adds an effect status component to the entity.
     /// </summary>
-    public override void OnSymptom(EntityUid uid, DiseaseData disease)
+    public override void OnSymptom(Entity<DiseaseCarrierComponent> entity, DiseaseData disease, StageData stage)
     {
+        foreach(var condition in Conditions)
+            if(!condition.Check(entity, disease, stage))
+                return;
+
         var duration = TimeSpan.FromSeconds(Time);
 
         switch (Type)
         {
             case StatusEffectSymptomType.Add:
                 if (Refresh)
-                    _status.TryUpdateStatusEffectDuration(uid, EffectProto, duration);
+                    _status.TryUpdateStatusEffectDuration(entity, EffectProto, duration);
                 else
-                    _status.TryAddStatusEffectDuration(uid, EffectProto, duration);
+                    _status.TryAddStatusEffectDuration(entity, EffectProto, duration);
                 break;
 
             case StatusEffectSymptomType.Remove:
-                _status.TryAddTime(uid, EffectProto, -duration);
+                _status.TryAddTime(entity, EffectProto, -duration);
                 break;
 
             case StatusEffectSymptomType.Set:
-                _status.TrySetStatusEffectDuration(uid, EffectProto, duration);
+                _status.TrySetStatusEffectDuration(entity, EffectProto, duration);
                 break;
         }
     }

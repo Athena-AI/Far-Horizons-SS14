@@ -360,18 +360,25 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Id = diseaseId,
             Name = proto.Name,
             Description = proto.Description,
-            StrainName = GenerateStrainName(),
             IncubationSeconds = proto.IncubationSeconds,
             Symptoms = proto.Symptoms,
-            MetabolizerTypes = proto.MetabolizerTypes
+            MetabolizerTypes = proto.MetabolizerTypes,
+            StrainName = GenerateStrainName()
         };
+        disease.Stats = GetTotalDiseaseStats(disease);
 
-        return UpdateDisease(disease);
+        return disease;
     }
 
     public DiseaseData? UpdateDisease(DiseaseData disease)
     {
+        //Basic Info
+        disease.Name = "Unknown Disease";
+        disease.Description = "Unknown Disease";
+
+        disease.StrainName = GenerateStrainName();
         disease.Stats = GetTotalDiseaseStats(disease);
+
         //Stealth 
 
         disease.Stealth = disease.Stats.Stealth switch
@@ -418,10 +425,10 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             _    => DiseaseSpreadPath.NonContagious,
         };
         
-        disease.ContactInfect = Math.Max(0f, disease.ContactInfect * (1 + (disease.Stats.Transmittable / 20f)));
-        disease.ContactDeposit = Math.Max(0f, disease.ContactDeposit * (1 + (disease.Stats.Transmittable / 20f)));
-        disease.AirborneInfect = Math.Max(0f, disease.AirborneInfect * (1 + (disease.Stats.Transmittable / 20f)));
-        disease.AirborneRange = Math.Max(0f, disease.AirborneRange * (1 + (disease.Stats.Transmittable / 10f)));
+        disease.ContactInfect = Math.Clamp(disease.ContactInfect * (1 + (disease.Stats.Transmittable / 20f)), -20f, 99);
+        disease.ContactDeposit = Math.Clamp(disease.ContactDeposit * (1 + (disease.Stats.Transmittable / 20f)), -20f, 99);
+        disease.AirborneInfect = Math.Clamp(disease.AirborneInfect * (1 + (disease.Stats.Transmittable / 20f)), -20f, 99);
+        disease.AirborneRange = Math.Clamp(disease.AirborneRange * (1 + (disease.Stats.Transmittable / 20f)), -20f, 99);
 
         return disease;
     }
@@ -460,7 +467,14 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
     private DiseaseStats GetTotalDiseaseStats(DiseaseData disease)
     {
-        var stats = new DiseaseStats();
+        var stats = new DiseaseStats
+        {
+            Stealth = 0,
+            Resistance = 1,
+            Speed = 1,
+            Transmittable = 1  
+        };
+
         foreach(var symptomID in disease.Symptoms)
         {
             if(!_prototypes.TryIndex(symptomID.Symptom, out var symptom))    

@@ -5,8 +5,8 @@ using Content.Shared._FarHorizons.Medical.Disease.Components;
 using Robust.Shared.Timing;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 using System.Linq;
+using Robust.Shared.Network;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -24,13 +24,15 @@ public sealed partial class SymptomStatusEffect
 {
     [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     /// <summary>
     /// Executes the status effects.
     /// </summary>
     public override void OnSymptom(Entity<DiseaseCarrierComponent> entity, DiseaseData disease, StageData stage,  DiseaseSymptomPrototype symptom)
     {
-        if (Effects.Length == 0)
+        if (Effects.Length == 0  || _net.IsClient)
             return;
 
         foreach(var condition in Conditions)
@@ -40,8 +42,14 @@ public sealed partial class SymptomStatusEffect
         var probOverride = disease.Symptoms.FirstOrDefault(p => p.Symptom.Id == symptom.ID);
         if(probOverride != null && probOverride.Probability.TryGetValue(stage.Stage, out var stageProb))
             Probability = stageProb;
-            
-        var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, stage.AdvanceStageAt.Microseconds, stage.Stage, symptom.ID.GetHashCode());
+        var seed = SharedRandomExtensions.HashCodeCombine(
+            _timing.CurTime.Microseconds,
+            stage.AdvanceStageAt.Microseconds,
+            stage.Stage,
+            _entMan.GetNetEntity(entity.Owner).Id,
+            symptom.ID.GetHashCode(),
+            Index
+        );        
         var rand = new System.Random(seed);
         if(!rand.Prob(Probability))
             return;

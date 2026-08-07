@@ -33,7 +33,7 @@ public sealed class ShowDiseaseIconsSystem : EquipmentHudSystem<ShowDiseaseIcons
         var showDisease = carrier.ActiveDiseases.Any(x =>
         {
             var stages = Enum.GetValues<DiseaseTimers>();
-            var maxStage = stages.Count();
+            var maxStage = stages.Count()-1;
 
             if(x.Key.Stealth.HasFlag(DiseaseStealthFlags.Hidden) && x.Value.Stage < maxStage/2)
                 return false;

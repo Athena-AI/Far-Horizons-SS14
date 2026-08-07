@@ -10,7 +10,7 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 /// Describes information about a specific disease symptom.
 /// </summary>
 [Prototype]
-public sealed partial class DiseaseSymptomPrototype : IPrototype
+public sealed partial class DiseaseSymptomPrototype : IPrototype, ISerializationHooks
 {
     /// <summary>
     /// ID of the symptom.
@@ -73,6 +73,12 @@ public sealed partial class DiseaseSymptomPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<CureStep> CureSteps { get; private set; } = [];
+
+    void ISerializationHooks.AfterDeserialization()
+    {
+        for (var i = 0; i < Behaviors.Count; i++)
+            Behaviors[i].Index = i;
+    }
 }
 
 [DataDefinition]
@@ -97,11 +103,14 @@ public sealed partial class SymptomAirborneBurst
 /// </summary>
 public abstract partial class SymptomBehavior
 {
+    [ViewVariables]
+    public int Index { get; internal set; }
+
     /// <summary>
     /// Conditions needed to be met before trigger symptom
     /// </summary>
     [DataField]
-    public IDiseaseCondition[] Conditions { get; private set; } = [];
+    public ISymptomCondition[] Conditions { get; private set; } = [];
 
     /// <summary>
     /// Probability per tick to trigger behavior when eligible (0-1).

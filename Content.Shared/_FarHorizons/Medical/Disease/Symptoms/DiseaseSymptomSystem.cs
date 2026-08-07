@@ -3,6 +3,7 @@ using Content.Shared._FarHorizons.Medical.Disease.Systems;
 using Content.Shared._FarHorizons.Medical.Disease.Components;
 using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared.Random.Helpers;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -14,6 +15,7 @@ public sealed partial class SharedDiseaseSymptomSystem : EntitySystem
     [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly DiseaseAirborneSystem _airborneDisease = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     /// <summary>
     /// Executes the side-effects for a triggered symptom on a carrier.
@@ -37,7 +39,7 @@ public sealed partial class SharedDiseaseSymptomSystem : EntitySystem
         {
             // Run exactly one random behavior.
             // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seed = SharedRandomExtensions.HashCodeCombine([GetNetEntity(ent).Id, 0, 0, symptom.Behaviors.Count]);
+            var seed = SharedRandomExtensions.HashCodeCombine(_timing.CurTime.Microseconds, GetNetEntity(ent).Id, symptom.Behaviors.Count);
             var rand = new System.Random(seed);
             var behavior = symptom.Behaviors[rand.Next(0, symptom.Behaviors.Count)];
             RunSingleBehavior(behavior);

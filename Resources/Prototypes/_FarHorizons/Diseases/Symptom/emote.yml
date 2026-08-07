@@ -13,8 +13,18 @@
       emote: Cough
       showInChat: true
     conditions:
-  - !type:DiseaseStageCondition
-    min: 1
+    - !type:SymptomStageCondition
+      min: 1
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-throat-sore", "disease-sensation-throat-mucus" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 1
+    probability: 0.01
   stats:
     stealth: 1
     resistance: 1
@@ -36,7 +46,7 @@
       emote: Sneeze
       showInChat: true
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 1
   stats:
     stealth: 1
@@ -56,7 +66,7 @@
       emote: Gasp
       showInChat: true
     conditions:
-    - stages: !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 3
   stats:
     stealth: 1
@@ -77,7 +87,7 @@
       showInChat: true
     probability: 0.05
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 1
   stats:
     stealth: 1
@@ -104,7 +114,7 @@
       showInChat: true
     probability: 0.05
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 0
   stats:
     stealth: 1
@@ -124,7 +134,7 @@
       emote: Groan
       showInChat: true
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 1
   stats:
     stealth: 1
@@ -144,7 +154,7 @@
       emote: Moan
       showInChat: true
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 1
   stats:
     stealth: 1
@@ -183,7 +193,7 @@
       pack: DiseaseMonkeyShouts
     probability: 0.05
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 1
   stats:
     stealth: 1
@@ -202,7 +212,7 @@
     effectProto: StatusEffectOwO
     probability: 1
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 0
   stats:
     stealth: 1

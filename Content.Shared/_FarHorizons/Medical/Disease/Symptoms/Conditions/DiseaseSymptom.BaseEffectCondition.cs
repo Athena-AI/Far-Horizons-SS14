@@ -6,7 +6,7 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Effects;
 
 [Serializable, NetSerializable]
 [ImplicitDataDefinitionForInheritors]
-public abstract partial class IDiseaseCondition
+public abstract partial class ISymptomCondition
 {
     public abstract bool Check(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData stage);
 }

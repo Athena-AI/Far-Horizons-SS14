@@ -6,7 +6,7 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Effects;
 
 [Serializable, NetSerializable]
 [DataDefinition]
-public sealed partial class DiseaseStageCondition : IDiseaseCondition
+public sealed partial class SymptomStageCondition : ISymptomCondition
 {
     [DataField] public int Min = 0;
     [DataField] public int Max = 4;

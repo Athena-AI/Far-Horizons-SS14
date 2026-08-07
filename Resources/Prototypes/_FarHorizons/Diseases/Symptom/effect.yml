@@ -11,7 +11,7 @@
       frequency: 6
       time: 3
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 1
     probability: 0.1
   stats:
@@ -32,7 +32,7 @@
       fromDiseaseId: DiseaseCold
       toDiseaseId: DiseaseFlu
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
     probability: 0.005
   stats:
@@ -51,9 +51,31 @@
     effects:
     - !type:Vomit
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
     probability: 0.05
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-stomach-ache", "disease-sensation-stomach-weird", "disease-sensation-stomach-hurt" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 1
+      max: 1
+    probability: 0.01
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-nausea", "disease-sensation-queasy", "disease-sensation-stomach-weird" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+      max: 2
+    probability: 0.01
   stats:
     stealth: 1
     resistance: 1
@@ -70,8 +92,30 @@
     effectProto: StatusEffectForcedSleeping
     time: 6
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-sleepy", "disease-sensation-sleepy-2" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 1
+      max: 1
+    probability: 0.01
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-sleepy-3" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+      max: 2
+    probability: 0.01
   stats:
     stealth: 1
     resistance: 1
@@ -91,13 +135,22 @@
       - !type:TemperatureCondition
           max: 314.15
       amount: 10000
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+    probability: 1.0
+  - !type:SymptomStatusEffect
+    effects:
     - !type:HealthChange
       damage:
         types:
           Heat: 0.1
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
+    - !type:SymptomDamageCondition
+      types: [ Heat ]
+      max: 20
     probability: 1.0
   stats:
     stealth: 1
@@ -123,9 +176,19 @@
         types:
           Cold: 0.1
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
     probability: 1.0
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-stiff" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+    probability: 0.01
   stats:
     stealth: 1
     resistance: 1
@@ -145,9 +208,19 @@
         types:
           Poison: 3
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
     probability: 0.05
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-sick" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+    probability: 0.01
   stats:
     stealth: 1
     resistance: 1
@@ -167,7 +240,7 @@
         types:
           Cellular: 1
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 2
     probability: 0.05
   stats:
@@ -189,9 +262,49 @@
         types:
           Blunt: 9999
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 4
     probability: 0.05
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-headache" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 1
+    probability: 0.01
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-very-weak" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+    probability: 0.01
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-muscles-ache" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 3
+    probability: 0.01
+  - !type:SymptomStatusEffect
+    effects:
+    - !type:PopupMessage
+      type: Local
+      visualType: MediumCaution
+      messages: [ "disease-sensation-gib-itself" ]
+    conditions:
+    - !type:SymptomStageCondition
+      min: 4
+    probability: 0.01
   stats:
     stealth: 1
     resistance: 1
@@ -210,7 +323,7 @@
       reagent: Ephedrine
       solution: bloodstream
     conditions:
-    - !type:DiseaseStageCondition
+    - !type:SymptomStageCondition
       min: 0
     probability: 0.5
   stats:

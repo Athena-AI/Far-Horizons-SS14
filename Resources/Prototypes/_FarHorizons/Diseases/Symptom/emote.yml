@@ -12,6 +12,9 @@
     - !type:Emote
       emote: Cough
       showInChat: true
+    conditions:
+  - !type:DiseaseStageCondition
+    min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -32,6 +35,9 @@
     - !type:Emote
       emote: Sneeze
       showInChat: true
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -49,6 +55,9 @@
     - !type:Emote
       emote: Gasp
       showInChat: true
+    conditions:
+    - stages: !type:DiseaseStageCondition
+      min: 3
   stats:
     stealth: 1
     resistance: 1
@@ -59,7 +68,6 @@
   id: SymptomEmoteHonk
   name: disease-symptom-SymptomHonk-name
   tier: 1
-  probability: 0.05
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -67,6 +75,10 @@
     - !type:Emote
       emote: Honk
       showInChat: true
+    probability: 0.05
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -77,8 +89,6 @@
   id: SymptomEmoteCat
   name: disease-symptom-SymptomEmoteCat-name
   tier: 1
-  probability: 0.05
-  singleBehavior: true
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -86,11 +96,16 @@
     - !type:Emote
       emote: CatMeow
       showInChat: true
+    probability: 0.05
   - !type:SymptomStatusEffect
     effects:
     - !type:Emote
       emote: CatHisses
       showInChat: true
+    probability: 0.05
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 0
   stats:
     stealth: 1
     resistance: 1
@@ -108,6 +123,9 @@
     - !type:Emote
       emote: Groan
       showInChat: true
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -125,6 +143,9 @@
     - !type:Emote
       emote: Moan
       showInChat: true
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -137,13 +158,13 @@
   id: SymptomHonkShout
   name: disease-symptom-SymptomHonkShout-name
   tier: 1
-  probability: 0.05
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:SpeakDataset
       pack: DiseaseHonkShouts
+    probability: 0.05
   stats:
     stealth: 1
     resistance: 1
@@ -154,13 +175,16 @@
   id: SymptomMonkeyShout
   name: disease-symptom-SymptomMonkeyShout-name
   tier: 1
-  probability: 0.05
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
     effects:
     - !type:SpeakDataset
       pack: DiseaseMonkeyShouts
+    probability: 0.05
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 1
   stats:
     stealth: 1
     resistance: 1
@@ -173,10 +197,13 @@
   id: SymptomOwOAccent
   name: disease-symptom-SymptomOwOAccent-name
   tier: 1
-  probability: 1
   behaviors:
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectOwO
+    probability: 1
+    conditions:
+    - !type:DiseaseStageCondition
+      min: 0
   stats:
     stealth: 1
     resistance: 1

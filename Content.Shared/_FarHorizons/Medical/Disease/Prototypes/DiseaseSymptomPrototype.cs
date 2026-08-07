@@ -107,10 +107,10 @@ public abstract partial class SymptomBehavior
     /// Probability per tick to trigger behavior when eligible (0-1).
     /// </summary>
     [DataField]
-    public float Probability { get; private set; } = 0.02f;
+    public float Probability { get; set; } = 0.02f;
 
     /// <summary>
     /// Called when the symptom is triggered on the carrier.
     /// </summary>
-    public virtual void OnSymptom(Entity<DiseaseCarrierComponent> entity, DiseaseData disease, StageData stage) { }
+    public virtual void OnSymptom(Entity<DiseaseCarrierComponent> entity, DiseaseData disease, StageData stage, DiseaseSymptomPrototype symptom) { }
 }

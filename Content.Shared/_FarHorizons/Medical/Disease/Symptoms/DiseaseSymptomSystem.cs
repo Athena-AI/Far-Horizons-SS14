@@ -3,7 +3,6 @@ using Content.Shared._FarHorizons.Medical.Disease.Systems;
 using Content.Shared._FarHorizons.Medical.Disease.Components;
 using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared.Random.Helpers;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -31,7 +30,7 @@ public sealed partial class SharedDiseaseSymptomSystem : EntitySystem
         void RunSingleBehavior(SymptomBehavior behavior)
         {
             deps.InjectDependencies(behavior);
-            behavior.OnSymptom(ent, disease, stage);
+            behavior.OnSymptom(ent, disease, stage, symptom);
         }
 
         if (symptom.SingleBehavior && symptom.Behaviors.Count > 0)

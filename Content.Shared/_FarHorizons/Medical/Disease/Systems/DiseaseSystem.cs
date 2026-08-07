@@ -158,23 +158,9 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             if (!_prototypes.TryIndex(symptomId, out var symptom))
                 continue;
 
-            if(symptom.Stages != null && !symptom.Stages.Check(ent, disease, stage))
-                continue;
-
             if (ent.Comp.SuppressedSymptoms.TryGetValue(symptomId, out var value) && value > _timing.CurTime)
                 continue;
             
-            var prob = symptom.Probability; 
-            if (disease.Symptoms[i].Probability.TryGetValue(stage.Stage, out var overrideProb) && overrideProb >= 0f)
-            {
-                prob = overrideProb;
-            }
-            
-            // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, stage.AdvanceStageAt.Microseconds, stage.Stage, i);
-            var rand = new System.Random(seed);
-            if (!rand.Prob(prob))
-                continue;
             _symptoms.TriggerSymptom(ent, disease, stage, symptom);
         }
     }
@@ -405,7 +391,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         // Resistance
         
         disease.PostCureImmunity  = Math.Max(0f, disease.PostCureImmunity - (disease.Stats.Resistance / 20f));
-        var cures = _prototypes.EnumeratePrototypes<CurePrototype>().Where(p => p.Tier.Equals(disease.Stats.Resistance));
+        var cures = _prototypes.EnumeratePrototypes<CurePrototype>().Where(p => p.Tier.Equals(Math.Clamp(disease.Stats.Resistance, 0, 10)));
         var maxCures = 2;
         List<CureStep> SelectedCures = new List<CureStep>();
 

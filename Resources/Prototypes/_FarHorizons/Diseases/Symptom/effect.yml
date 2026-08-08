@@ -171,11 +171,19 @@
       - !type:TemperatureCondition
           min: 228.15
       amount: -10000
+    conditions:
+    - !type:SymptomStageCondition
+      min: 2
+  - !type:SymptomStatusEffect
+    effects:
     - !type:HealthChange
       damage:
         types:
           Cold: 0.1
     conditions:
+    - !type:SymptomDamageCondition
+      types: [ Cold ]
+      max: 20
     - !type:SymptomStageCondition
       min: 2
     probability: 1.0
@@ -208,6 +216,9 @@
         types:
           Poison: 3
     conditions:
+    - !type:SymptomDamageCondition
+      types: [ Poison ]
+      max: 20
     - !type:SymptomStageCondition
       min: 2
     probability: 0.05

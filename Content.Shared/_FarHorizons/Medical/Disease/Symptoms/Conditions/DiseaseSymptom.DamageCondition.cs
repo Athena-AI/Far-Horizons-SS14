@@ -13,16 +13,16 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Effects;
 [DataDefinition]
 public sealed partial class SymptomDamageCondition : ISymptomCondition
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
     [DataField] public List<ProtoId<DamageTypePrototype>> types = new();
     [DataField] public FixedPoint2 Min = FixedPoint2.Zero;
     [DataField] public FixedPoint2 Max = FixedPoint2.MaxValue;
 
     public override bool Check(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData stage)
     {
-        var damage = _entMan.System<DamageableSystem>();
+        var entMan = IoCManager.Resolve<IEntityManager>();
+        var damage = entMan.System<DamageableSystem>();
 
-        if(!_entMan.TryGetComponent<DamageableComponent>(ent, out var damageable))
+        if(!entMan.TryGetComponent<DamageableComponent>(ent, out var damageable))
             return false;
 
         

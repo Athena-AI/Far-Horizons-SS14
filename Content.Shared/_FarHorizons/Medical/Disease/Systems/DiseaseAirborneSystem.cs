@@ -67,7 +67,7 @@ public sealed class DiseaseAirborneSystem : EntitySystem
         var flags = sourceContained ? LookupFlags.All : LookupFlags.Uncontained;
         _lookup.GetEntitiesInRange(mapPos.MapId, mapPos.Position, range, _tmpTargets, flags);
 
-        // Chance now takes into account the disease our spatient
+        // Chance takes into account the patient's equipment
         var chance = Math.Clamp(disease.AirborneInfect * chanceMultiplier, 0f, 1f);
         chance = _disease.AdjustAirborneChanceForProtection(source, chance, disease);
         if (chance <= 0f) return;

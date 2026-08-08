@@ -4,6 +4,7 @@ using Robust.Shared.Serialization;
 using Content.Shared._FarHorizons.Medical.Disease.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Temperature.Components;
+using Content.Shared.Atmos;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Cures;
 
@@ -31,6 +32,6 @@ public sealed partial class CureTemperature : CureStep
 
     public override IEnumerable<string> BuildDiagnoserLines(IPrototypeManager prototypes)
     {
-        yield return Loc.GetString("diagnoser-cure-temp", ("max", Max));
+        yield return Loc.GetString("diagnoser-cure-temp", ("max", Max), ("maxC", Max-Atmospherics.T0C));
     }
 }

@@ -87,7 +87,7 @@ public sealed class DiseaseDiagnoserSystem : EntitySystem
             if (!_prototypes.TryIndex(diseaseData.Id, out DiseasePrototype? diseaseProto))
                 continue;
             
-            var displayName = Loc.GetString(diseaseData.Name);
+            var displayName = Loc.GetString(diseaseData.Name[0].ToString().ToUpper() + diseaseData.Name[1..]);
             var stage = stageData.Stage;
 
             var showStage = true;

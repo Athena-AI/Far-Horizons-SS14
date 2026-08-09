@@ -134,8 +134,8 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
     private StageData AdvanceStage(Entity<DiseaseCarrierComponent> ent, DiseaseData disease, StageData currentStage)
     {   
-        var stages = Enum.GetValues<DiseaseTimers>().Reverse().ToList();
-        var maxStage = stages.Count();
+        var stages = _prototypes.Index(disease.Vector).Timers;
+        var maxStage = stages.Count;
         
         if(currentStage.Stage == maxStage)
             return currentStage;
@@ -348,10 +348,10 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Description = proto.Description,
             StrainName = proto.StrainName,
             StrainId = proto.StrainId,
+            Vector = proto.Vector,
             Symptoms = proto.Symptoms,
             CureSteps = proto.CureSteps,
             MetabolizerTypes = proto.MetabolizerTypes,
-            Stats = proto.Stats,
             Stealth = proto.Stealth,
             SpreadPath = proto.SpreadPath,
             DiseaseTimerThresholds = proto.DiseaseTimerThresholds,
@@ -364,6 +364,8 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             AirborneRange = proto.AirborneRange,
             IconDisease = proto.IconDisease     
         };
+
+        disease.Stats = GetTotalDiseaseStats(disease);
 
         return disease;
     }
@@ -435,7 +437,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
     public StageData? CreateStage(DiseaseData disease, int startStage=0)
     {   
-        var stages = Enum.GetValues<DiseaseTimers>().Reverse().ToList();
+        var stages = _prototypes.Index(disease.Vector).Timers;
 
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, startStage);
         var rand = new System.Random(seed);
@@ -444,7 +446,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         var stage = new StageData
         {
             Stage = startStage,
-            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds((float) stages[startStage] * timerModifier)
+            AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(stages[startStage] * timerModifier)
         };
         return stage;
     }
@@ -467,13 +469,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
     private DiseaseStats GetTotalDiseaseStats(DiseaseData disease)
     {
-        var stats = new DiseaseStats
-        {
-            Stealth = 0,
-            Resistance = 1,
-            Speed = 1,
-            Transmittable = 1  
-        };
+        var stats = _prototypes.Index(disease.Vector).Stats;
 
         foreach(var symptomID in disease.Symptoms)
         {

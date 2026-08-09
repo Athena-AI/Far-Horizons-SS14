@@ -439,8 +439,8 @@ public abstract class SharedSuitSensorSystem : EntitySystem
         {
             status.ShowDisease = carrier.ActiveDiseases.Any(x =>
             {
-                var stages = Enum.GetValues<DiseaseTimers>();
-                var maxStage = stages.Count();
+                var stages = _proto.Index(x.Key.Vector).Timers;
+                var maxStage = stages.Count;
 
                 if(x.Key.Stealth.HasFlag(DiseaseStealthFlags.Hidden) && x.Value.Stage < maxStage/2)
                     return false;

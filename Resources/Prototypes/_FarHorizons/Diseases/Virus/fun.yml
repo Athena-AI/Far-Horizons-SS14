@@ -2,6 +2,9 @@
   id: DiseaseGBS
   name: disease-DiseaseGBS-name
   desc: disease-DiseaseGBS-desc
+  strainName: GBS-44
+  strainId: gbs44
+  vector: BioWeapon
   symptoms: 
   - symptom: SymptomCough
     probability:
@@ -11,7 +14,7 @@
     probability:
       1: 0.02
       2: 0.04
-  - symptom: SymptomGasp
+  - symptom: SymptomGaspa
     probability:
       3: 0.05
   - symptom: SymptomGib
@@ -29,11 +32,6 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stats:
-    resistance: 1
-    stealth: 1
-    speed: 1
-    transmittable: 1
   stealth: [ Hidden, VeryHidden ]
   spreadPath: [ NonContagious ]
 
@@ -41,6 +39,9 @@
   id: DiseaseHonkSyndrome
   name: disease-DiseaseHonkSyndrome-name
   desc: disease-DiseaseHonkSyndrome-desc
+  strainName: HONI<42
+  strainId: honi42
+  vector: Fungus
   symptoms:
     - symptom: SymptomJitters
     - symptom: SymptomEmoteHonk
@@ -56,11 +57,6 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stats:
-    resistance: 1
-    stealth: 1
-    speed: 1
-    transmittable: 1
   stealth: [ Hidden ]
   spreadPath: [ NonContagious ]
 
@@ -69,6 +65,9 @@
   name: disease-DiseaseOwOnavirus-name
   desc: disease-DiseaseOwOnavirus-desc
   iconDisease: DiseaseIconBuff
+  strainName: MAO-9
+  strainId: mao9
+  vector: Fungus
   symptoms:
   - symptom: SymptomOwOAccent
   - symptom: SymptomEmoteCat

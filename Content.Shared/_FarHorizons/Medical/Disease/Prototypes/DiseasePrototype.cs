@@ -43,6 +43,18 @@ public sealed partial class DiseasePrototype : IPrototype
     public string? StrainId = string.Empty;
 
     /// <summary>
+    /// The disease vector is what controls the disease's base stats and timers.
+    /// </summary>
+    [DataField]
+    public ProtoId<DiseaseVectorPrototype> Vector { get; set; } = default!;
+
+    /// <summary>
+    /// Optional list of metabolizers that are affected by this disease.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes;
+
+    /// <summary>
     /// Symptoms for this disease.
     /// </summary>
     [DataField]
@@ -53,18 +65,6 @@ public sealed partial class DiseasePrototype : IPrototype
     /// </summary>
     [DataField]
     public List<CureStep> CureSteps { get; private set; } = new List<CureStep>();
-
-    /// <summary>
-    /// Optional list of metabolizers that are affected by this disease.
-    /// </summary>
-    [DataField]
-    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes;
-
-    /// <summary>
-    /// The total stats from summing all the symptom stats.
-    /// </summary>
-    [DataField]
-    public DiseaseStats Stats { get; set; } = default!;
 
     /// <summary>
     /// The Stealth level of the disease. Handled by Stats.

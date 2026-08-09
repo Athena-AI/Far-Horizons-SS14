@@ -2,6 +2,11 @@
   id: SymptomCough
   name: disease-symptom-SymptomCough-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 3
+    speed: 1
+    transmittable: 2
   onlyAlive: true
   airborneBurst:
     rangeMultiplier: 1.75
@@ -25,16 +30,16 @@
     - !type:SymptomStageCondition
       min: 1
     probability: 0.01
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomSneeze
   name: disease-symptom-SymptomSneeze-name
   tier: 1
+  stats:
+    stealth: -2
+    resistance: 3
+    speed: 0
+    transmittable: 4
   onlyAlive: true
   airborneBurst:
     rangeMultiplier: 2.5
@@ -48,16 +53,16 @@
     conditions:
     - !type:SymptomStageCondition
       min: 1
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomGasp
   name: disease-symptom-SymptomGasp-name
-  tier: 1
+  tier: 4
+  stats:
+    stealth: -1
+    resistance: -1
+    speed: 0
+    transmittable: 0
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -68,16 +73,16 @@
     conditions:
     - !type:SymptomStageCondition
       min: 3
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomEmoteHonk
   name: disease-symptom-SymptomHonk-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 1
+    speed: 1
+    transmittable: 1
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -89,16 +94,16 @@
     conditions:
     - !type:SymptomStageCondition
       min: 1
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomEmoteCat
   name: disease-symptom-SymptomEmoteCat-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 1
+    speed: 1
+    transmittable: 1
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -116,16 +121,16 @@
     conditions:
     - !type:SymptomStageCondition
       min: 0
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomEmoteGroan
   name: disease-symptom-SymptomEmoteGroan-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 1
+    speed: 1
+    transmittable: 1
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -136,16 +141,16 @@
     conditions:
     - !type:SymptomStageCondition
       min: 1
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomEmoteMoan
   name: disease-symptom-SymptomEmoteMoan-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 1
+    speed: 1
+    transmittable: 1
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -156,11 +161,6 @@
     conditions:
     - !type:SymptomStageCondition
       min: 1
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 # Shout
 
@@ -168,6 +168,11 @@
   id: SymptomHonkShout
   name: disease-symptom-SymptomHonkShout-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 1
+    speed: 1
+    transmittable: 1
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -175,16 +180,16 @@
     - !type:SpeakDataset
       pack: DiseaseHonkShouts
     probability: 0.05
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomMonkeyShout
   name: disease-symptom-SymptomMonkeyShout-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 1
+    speed: 1
+    transmittable: 1
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -195,18 +200,18 @@
     conditions:
     - !type:SymptomStageCondition
       min: 1
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 # Accent
 
 - type: diseaseSymptom
   id: SymptomOwOAccent
   name: disease-symptom-SymptomOwOAccent-name
-  tier: 1
+  tier: 2
+  stats:
+    stealth: -2
+    resistance: 2
+    speed: 2
+    transmittable: 2
   behaviors:
   - !type:SymptomGenericStatusEffect
     effectProto: StatusEffectOwO
@@ -214,8 +219,3 @@
     conditions:
     - !type:SymptomStageCondition
       min: 0
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1

@@ -5,7 +5,6 @@ using Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
-using System.Linq;
 using Content.Shared._FarHorizons.Medical.Disease.Components;
 
 namespace Content.Server._FarHorizons.Medical.Disease.Commands;
@@ -41,7 +40,7 @@ public sealed class InfectCommand : LocalizedEntityCommands
 
         var stage = 0;
         if (args.Length >= 3 && int.TryParse(args[2], NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedStage))
-            stage = Math.Clamp(parsedStage, 0, 3);
+            stage = Math.Clamp(parsedStage, 0, 4);
         
         var disease = _disease.GenerateDisease(diseaseId);
         if(disease == null ) return;

@@ -3,15 +3,6 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Prototypes;
 
-[Serializable, NetSerializable]
-public enum DiseaseTimers : byte
-{
-    Stage01 = 240,
-    Stage12 = 180,
-    Stage23 = 120,
-    Stage34 = 60
-}
-
 /// <summary>
 /// Enumeration describing disease transmission vectors.
 /// TODO: only the Contact works and Airborne.
@@ -48,7 +39,7 @@ public enum DiseaseStealthFlags
 public static class DiseaseEffectiveness
 {
     // Airborne protection
-    public const float InternalsMultiplier = 0.4f;
+    public const float InternalsMultiplier = 1.0f;
 
     public static readonly (SlotFlags Slot, float Multiplier)[] AirborneSlots =
     [

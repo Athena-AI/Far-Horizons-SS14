@@ -2,6 +2,11 @@
   id: SymptomJitters
   name: disease-symptom-SymptomJitters-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 2
+    speed: 1
+    transmittable: 0
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -14,37 +19,16 @@
     - !type:SymptomStageCondition
       min: 1
     probability: 0.1
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
-
-- type: diseaseSymptom
-  id: SymptomTransitionToFlu
-  name: disease-symptom-SymptomTransitionToFlu-name
-  tier: 1
-  onlyAlive: true
-  behaviors:
-  - !type:SymptomStatusEffect
-    effects:
-    - !type:TransitionDisease
-      fromDiseaseId: DiseaseCold
-      toDiseaseId: DiseaseFlu
-    conditions:
-    - !type:SymptomStageCondition
-      min: 2
-    probability: 0.005
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomVomiting
   name: disease-symptom-SymptomVomiting-name
-  tier: 1
+  tier: 2
+  stats:
+    stealth: -2
+    resistance: -1
+    speed: -1
+    transmittable: 2
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -76,16 +60,16 @@
       min: 2
       max: 2
     probability: 0.01
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomNarcolepsy
   name: disease-symptom-SymptomNarcolepsy-name
-  tier: 1
+  tier: 6
+  stats:
+    stealth: -1
+    resistance: -2
+    speed: -3
+    transmittable: 0
   onlyAlive: true
   behaviors:
   - !type:SymptomGenericStatusEffect
@@ -116,16 +100,16 @@
       min: 2
       max: 2
     probability: 0.01
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomFever
   name: disease-symptom-SymptomFever-name
-  tier: 1
+  tier: 2
+  stats:
+    stealth: 0
+    resistance: 3
+    speed: 3
+    transmittable: 2
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -152,16 +136,16 @@
       types: [ Heat ]
       max: 20
     probability: 1.0
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomFreeze
   name: disease-symptom-SymptomFreeze-name
-  tier: 1
+  tier: 2
+  stats:
+    stealth: -3
+    resistance: 3
+    speed: -1
+    transmittable: 0
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -171,21 +155,16 @@
       - !type:TemperatureCondition
           min: 228.15
       amount: -10000
-    conditions:
-    - !type:SymptomStageCondition
-      min: 2
-  - !type:SymptomStatusEffect
-    effects:
     - !type:HealthChange
       damage:
         types:
           Cold: 0.1
     conditions:
+    - !type:SymptomStageCondition
+      min: 2
     - !type:SymptomDamageCondition
       types: [ Cold ]
       max: 20
-    - !type:SymptomStageCondition
-      min: 2
     probability: 1.0
   - !type:SymptomStatusEffect
     effects:
@@ -197,16 +176,16 @@
     - !type:SymptomStageCondition
       min: 2
     probability: 0.01
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomToxin
   name: disease-symptom-SymptomToxin-name
-  tier: 1
+  tier: 2
+  stats:
+    stealth: 0
+    resistance: 2
+    speed: -3
+    transmittable: -2
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -216,11 +195,11 @@
         types:
           Poison: 3
     conditions:
+    - !type:SymptomStageCondition
+      min: 2
     - !type:SymptomDamageCondition
       types: [ Poison ]
       max: 20
-    - !type:SymptomStageCondition
-      min: 2
     probability: 0.05
   - !type:SymptomStatusEffect
     effects:
@@ -232,16 +211,16 @@
     - !type:SymptomStageCondition
       min: 2
     probability: 0.01
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomGeneticDamage
   name: disease-symptom-SymptomGeneticDamage-name
-  tier: 1
+  tier: 3
+  stats:
+    stealth: -2
+    resistance: 0
+    speed: 4
+    transmittable: -2
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -253,18 +232,21 @@
     conditions:
     - !type:SymptomStageCondition
       min: 2
+    - !type:SymptomDamageCondition
+      types: [ Cellular ]
+      max: 20
     probability: 0.05
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomGib
   name: disease-symptom-SymptomGib-name
-  tier: 1
+  tier: 8
   onlyAlive: true
+  stats:
+    stealth: -1
+    resistance: -4
+    speed: 0
+    transmittable: -3
   behaviors:
   - !type:SymptomStatusEffect
     effects:
@@ -316,16 +298,16 @@
     - !type:SymptomStageCondition
       min: 4
     probability: 0.01
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1
 
 - type: diseaseSymptom
   id: SymptomSpeedBoost
   name: disease-symptom-SymptomSpeedBoost-name
   tier: 1
+  stats:
+    stealth: -1
+    resistance: 0
+    speed: 3
+    transmittable: 0
   onlyAlive: true
   behaviors:
   - !type:SymptomStatusEffect
@@ -337,8 +319,3 @@
     - !type:SymptomStageCondition
       min: 0
     probability: 0.5
-  stats:
-    stealth: 1
-    resistance: 1
-    speed: 1
-    transmittable: 1

@@ -4,6 +4,7 @@
   desc: disease-DiseaseFoodPoisoning-desc
   strainName: NoV.GII.42
   strainId: novgii42
+  vector: Bacteria
   symptoms:
   - symptom: SymptomEmoteGroan
     probability: 
@@ -25,24 +26,13 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stats:
-    resistance: 1
-    stealth: 1
-    speed: 1
-    transmittable: 1
   spreadPath: [ NonContagious ]
-
-- type: disease
-  id: DiseaseNarcolepsySyndrome
-  name: disease-DiseaseNarcolepsySyndrome-name
-  desc: disease-DiseaseNarcolepsySyndrome-desc
-  symptoms:
-  - symptom: SymptomNarcolepsy
 
 - type: disease
   id: DiseaseAMIV
   strainName: AMIV-1981
   strainId: amiv1981
+  vector: Virus
   name: disease-DiseaseAMIV-name
   desc: disease-DiseaseAMIV-desc
   symptoms:
@@ -59,9 +49,4 @@
   - !type:CureBedrest
       bedrestChance: 0.00066 #Abysmally Low to have an average of 300 ticks before a heal if they sleep
       sleepMultiplier: 5
-  stats:
-    resistance: 1
-    stealth: 1
-    speed: 1
-    transmittable: 1
   spreadPath: [ NonContagious ]

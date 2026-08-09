@@ -44,6 +44,18 @@ public sealed class DiseaseData
     public string? StrainId = string.Empty;
 
     /// <summary>
+    /// The disease vector is what controls the disease's base stats and timers.
+    /// </summary>
+    [DataField]
+    public ProtoId<DiseaseVectorPrototype> Vector { get; set; } = default!;
+
+    /// <summary>
+    /// Optional list of metabolizers that are affected by this disease.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes { get; set; }
+
+    /// <summary>
     /// Symptoms for this disease.
     /// </summary>
     [DataField]
@@ -54,12 +66,6 @@ public sealed class DiseaseData
     /// </summary>
     [DataField]
     public List<CureStep> CureSteps { get; set; } = new List<CureStep>();
-
-    /// <summary>
-    /// Optional list of metabolizers that are affected by this disease.
-    /// </summary>
-    [DataField]
-    public HashSet<ProtoId<MetabolizerTypePrototype>>? MetabolizerTypes { get; set; }
 
     /// <summary>
     /// The total stats from summing all the symptom stats.

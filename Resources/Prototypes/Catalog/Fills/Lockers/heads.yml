@@ -21,6 +21,7 @@
     - id: ShipLabeler # Far Horizons
     # - id: MiningShuttleConsoleCircuitboard #starlight
     # - id: EncryptionKeySalvage # Far Horizons - removed
+    - id: BookSecureTerminalManual # Starlight
     - id: PrintedDocumentGreenshiftAlert #SL
       conditions: #SL
       - !type:GamemodeCondition #SL
@@ -94,6 +95,7 @@
     - id: ClothingEyesGlassesCommand
     - id: ClothingEyesHudCommand
     # - id: EncryptionKeyExpedition # Far Horizons - removed
+    - id: BookSecureTerminalManual # Starlight
     - id: OrganSkeletonPersonHead # A skull to accompany your skeleton crew
       conditions:
       - !type:PlayerCountCondition
@@ -204,6 +206,7 @@
     #- id: RubberStampHop # FarHorizons - Dupes in the BoxHoPStamps
     - id: ClothingEyesHudCommand
     - id: ClothingEyesGlassesCommand #Far Horizons
+    - id: BookSecureTerminalManual # Starlight
     #- id: BoxFolderHoPClipboard #Starlight Change - #Far Horizons disabled - HoP already spawns with one.
     - id: PrintedDocumentGreenshiftAlert #SL
       conditions: #SL
@@ -255,6 +258,7 @@
     - id: IntegrityAnalyzer # Far Horizons
     - id: HullSenseCartridge # Far Horizons
     - id: ShipLabeler # Far Horizons
+    - id: BookSecureTerminalManual # Starlight
     - id: PrintedDocumentGreenshiftAlert #SL
       conditions: #SL
       - !type:GamemodeCondition #SL
@@ -318,6 +322,7 @@
     - id: MedTekCartridge
     - id: AutoMenderBurnFilled #Starlight
     - id: AutoMenderBruteFilled #Starlight
+    - id: BookSecureTerminalManual # Starlight
     - id: CMOLicense #STARLIGHT
     - id: DoorRemoteMedical #Far Horizons
     - id: PrintedDocumentGreenshiftAlert #SL
@@ -392,6 +397,7 @@
         - Sandbox #SL
     #region Starlight
     - id: RDDiploma
+    - id: BookSecureTerminalManual # Starlight
     #- id: PaperIonstormBorgs
     #  prob: 0.10 #1/10 rounds will have this paper that can be signed repeatedly for no discernable effect!
     #endregion Starlight
@@ -463,6 +469,7 @@
     - id: WantedListCartridge
     - id: DrinkHosFlask
     # - id: SecurityShuttleConsoleCircuitboard #FH - Moved to the BoxHoSCircuitboards
+    - id: BookSecureTerminalManual # Starlight
     - id: PrintedDocumentGreenshiftAlert #SL
       conditions: #SL
       - !type:GamemodeCondition #SL

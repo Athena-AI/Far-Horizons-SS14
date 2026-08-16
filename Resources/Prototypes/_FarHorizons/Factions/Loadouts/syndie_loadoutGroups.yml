@@ -191,6 +191,15 @@
   - CommandantHud
 
 - type: loadoutGroup
+  id: CommandantBackpack 
+  name: loadout-group-captain-backpack  # FH todo
+  loadouts:
+  - NSRBackpack
+  - NSRDuffel
+  - NSRSatchel
+  - LeatherSatchel # starlight
+
+- type: loadoutGroup
   id: CommandantNeck
   name: loadout-group-commandant-neck
   minLimit: 0
@@ -228,7 +237,7 @@
   name: loadout-group-pm-neck
   minLimit: 0
   loadouts:
-    - HoPCloak
+    #- HoPCloak
     - PMMantle
 
 - type: loadoutGroup
@@ -294,6 +303,23 @@
   loadouts:
     - MarshalArmoredTrenchCoat
     - MarshalArmoredWinterCoat
+
+- type: loadoutGroup
+  id: MarshalSidearm
+  name: loadout-group-security-sidearm
+  loadouts:
+  - SecurityPistolMk58
+  - SecurityRevolverInspectorM500
+  - SecurityRevolverInspector
+  - SecurityRevolverOathbreakerM500
+  - SecurityRevolverOathbreaker
+  - SecurityRevolverInstigatorM500
+  - SecurityRevolverInstigator
+  - SecurityPistolN1984
+  - SecurityPistolDueProcess
+  - SecurityPistolEnforcerFHNS
+  - SecurityPistolPathology
+  - SecurityPistolMk59
 
 # Foreman
 
@@ -409,8 +435,8 @@
   name: loadout-group-medical-director-neck
   minLimit: 0
   loadouts:
-  - ChiefMedicalOfficerCloak
-  - ChiefMedicalOfficerMantle
+  - ChiefMedicalOfficerCloak #Needs new ones for NS made.
+  - ChiefMedicalOfficerMantle #Needs new ones for NS made.
 
 - type: loadoutGroup
   id: MedicalDirectorShoes
@@ -969,6 +995,8 @@
 - type: loadoutGroup
   id: SecurityBeltSyndi
   name: loadout-group-security-belt
+  minLimit: 1
+  maxLimit: 2
   loadouts:
     - SecurityBeltSyndi
     - SecurityWebbingSyndi
@@ -980,6 +1008,24 @@
   - JackBootsSyndi
   - CombatBootsSyndi
   - HighHeelBootsFilled
+
+- type: loadoutGroup
+  id: SecurityNonLethalWeaponNS
+  name: loadout-group-security-non-lethal-weapon
+  loadouts:
+  - SecurityTaser
+  - SecurityDominatorNS
+
+- type: loadoutGroup
+  id: SecuritySidearmNS
+  name: loadout-group-security-sidearm
+  loadouts:
+  - SecurityPistolMk58
+  - SecurityPistolMk59 #NeoSol version
+  #- SecurityPistolDP //Far Horizons Change
+  #- SecurityPistolEnforcer //Far Horizons Change
+  - SecurityRevolverInstigatorM500 # FarHorizons
+  - SecurityRevolverInstigator # FarHorizons
 
 # Corpsman (Corpsman)
 
@@ -1026,6 +1072,16 @@
   loadouts:
     - ConstableArmoredCoat
     - ConstableArmoredWinterCoat
+
+- type: loadoutGroup
+  id: ConstableSidearm
+  name: loadout-group-security-sidearm
+  loadouts:
+  - SecurityPistolDueProcess
+  - SecurityPistolMk58
+  - SecurityPistolMk59
+  - SecurityRevolverInstigatorM500
+  - SecurityRevolverInstigator
 
 # Inspector (Detective)
 
@@ -1169,3 +1225,79 @@
   loadouts:
     - RecruitSuit
     - RecruitSkirt
+
+#region Service
+#Chef
+- type: loadoutGroup
+  id: ChefJumpsuitNS
+  name: loadout-group-chef-jumpsuit
+  loadouts:
+  - ChefJumpsuitNS
+  - ChefJumpskirtNS
+
+#Janitor
+- type: loadoutGroup
+  id: JanitorHeadNS
+  name: loadout-group-janitor-head
+  minLimit: 0
+  loadouts:
+  - JanitorHeadNS
+
+- type: loadoutGroup
+  id: JanitorMaskNS
+  name: loadout-group-janitor-mask
+  minLimit: 0
+  loadouts:
+  - JanitorMaskNS
+
+- type: loadoutGroup
+  id: JanitorJumpsuitNS
+  name: loadout-group-janitor-jumpsuit
+  loadouts:
+  - JanitorJumpsuitNS
+  - JanitorJumpskirtNS
+
+- type: loadoutGroup
+  id: JanitorGlovesNS
+  name: loadout-group-janitor-gloves
+  minLimit: 0
+  loadouts:
+  - JanitorRubberGlovesNS
+  - OrangeGloves
+  - PurpleGloves
+
+#Botanist
+- type: loadoutGroup
+  id: BotanistHeadNS
+  name: loadout-group-botanist-head
+  minLimit: 0
+  loadouts:
+  - BotanistHead
+  - BotanistBandanaNS
+  - BotanistRancherHatNS
+
+- type: loadoutGroup
+  id: BotanistJumpsuitNS
+  name: loadout-group-botanist-jumpsuit
+  loadouts:
+  - BotanistJumpsuitNS
+  - BotanistJumpskirtNS
+  - BotanistOverallsJumpsuitNS
+  - BotanistOverallsJumpskirtNS
+
+  #Clown
+
+- type: loadoutGroup
+  id: ClownJumpsuitNS
+  name: loadout-group-clown-jumpsuit
+  loadouts:
+  - ClownSuitNS
+  - JesterSuit
+  - JesterAltSuit
+
+- type: loadoutGroup
+  id: ClownShoesNS
+  name: loadout-group-clown-shoes
+  loadouts:
+  - ClownShoesNS
+  - JesterShoes

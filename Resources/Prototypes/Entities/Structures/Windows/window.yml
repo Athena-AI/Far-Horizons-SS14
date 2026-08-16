@@ -1,9 +1,9 @@
 - type: entity
-  id: Window
+  id: BaseWindow #FH, Paintable Windows
   parent: [BaseDeltaPressureGlass, BaseStructure, BaseStructureDissolvable] # Starlight-edit 
   name: Window #Far Horizons - The Great Capitalization Crusade
-  suffix: NT #FH
   description: Don't smudge up the glass down there.
+  abstract: true #FH, Paintable Windows
   placement:
     mode: SnapgridCenter
     snap:
@@ -99,14 +99,24 @@
   - type: StaticPrice
     price: 100
   - type: BlockWeather
-  - type: Paintable #FH start
+  - type: LineOfSightExclude # Far Horizons
+  - type: StructureOcclusion #Far Horizons
+    occlusionAmount: 0.8
+
+- type: entity #FH Start
+  id: Window
+  parent: BaseWindow
+  suffix: NT
+  components:
+  - type: Paintable
     group: Window 
   - type: GenericPaintable #FH end
 
 - type: entity
-  parent: Window
+  parent: BaseWindow #FH 
   id: TintedWindow
   name: Tinted Window #Far Horizons - The Great Capitalization Crusade
+  suffix: NT #Far Horizons
   description: Smart tinted window with state switching option. # Starlight
   components:
   - type: Sprite
@@ -133,7 +143,7 @@
 
 - type: entity
   id: WindowRCDResistant
-  parent: Window
+  parent: BaseWindow #FH 
   abstract: true
   components:
   - type: RCDDeconstructable
@@ -232,6 +242,9 @@
       sprite: Structures/Windows/cracks_directional.rsi
   - type: StaticPrice
     price: 15
+  - type: LineOfSightExclude # Far Horizons
+  - type: StructureOcclusion #Far Horizons
+    occlusionAmount: 0.25
 
 - type: entity
   id: WindowDirectionalRCDResistant
@@ -261,7 +274,7 @@
     price: 35
 
 - type: entity
-  parent: Window
+  parent: BaseWindow #FH 
   id: WindowDiagonal
   suffix: Diagonal #Far Horizons - The Great Capitalization Crusade
   placement:

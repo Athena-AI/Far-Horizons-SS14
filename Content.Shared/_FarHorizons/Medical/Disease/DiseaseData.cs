@@ -11,7 +11,8 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Systems;
 /// Mutable Data of the disease.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class DiseaseData
+[DataRecord]
+public partial record struct DiseaseData
 {
     /// <summary>
     /// The prototype for this disease.
@@ -22,14 +23,14 @@ public sealed class DiseaseData
     /// <summary>
     /// Displayed name of the disease.
     /// </summary>
-    [DataField]
-    public string Name { get; set; } = default!;
+    [DataField(required: true)]
+    public string Name = default!;
 
     /// <summary>
     /// Displayed description of the disease.
     /// </summary>
-    [DataField]
-    public string Description { get; set; } = default!;
+    [DataField(required: true)]
+    public string Description = default!;
 
     /// <summary>
     /// Randomized name for the strain of the disease.
@@ -83,57 +84,57 @@ public sealed class DiseaseData
     /// Spread vectors for this disease. Handled by Stats.
     /// </summary>
     [ViewVariables]
-    public DiseaseSpreadPath SpreadPath { get; set; } = DiseaseSpreadPath.NonContagious;
+    public DiseaseSpreadPath SpreadPath = DiseaseSpreadPath.NonContagious;
 
     /// <summary>
     /// Handles the two thresholds for the disease timer so disease don't advance at the same tick.
     /// </summary>
     [ViewVariables]
-    public Vector2 DiseaseTimerThresholds { get; set; } = new(0.70f, 1.3f);
+    public Vector2 DiseaseTimerThresholds = new(0.70f, 1.3f);
 
     /// <summary>
     /// Default immunity strength granted after curing this disease (0-1).
     /// </summary>
     [DataField]
-    public float PostCureImmunity { get; set; } = 1.0f;
+    public float PostCureImmunity = 1.0f;
 
     /// <summary>
     /// Optional incubation time in seconds before symptoms/spread begin after infection.
     /// </summary>
     [DataField]
-    public float IncubationSeconds { get; set; }
+    public float IncubationSeconds;
 
     /// <summary>
     /// Per-disease permeability multiplier (0-1) applied to PPE/internals effectiveness.
     /// Values > 1 reduce protection; values < 1 increase protection.
     /// </summary>
     [DataField]
-    public float PermeabilityMod { get; set; } = 1.0f;
+    public float PermeabilityMod = 1.0f;
 
     /// <summary>
     /// Base per-contact infection probability for this disease (0-1). Used when two entities make contact.
     /// </summary>
     [DataField]
-    public float ContactInfect { get; set; } = 0.025f;
+    public float ContactInfect = 0.025f;
 
     /// <summary>
     /// Amount of residue intensity deposited when a carrier with this disease contacts a surface.
     /// Expressed as (0-1) fraction added to per-disease residue intensity.
     /// </summary>
     [DataField]
-    public float ContactDeposit { get; set; } = 0.2f;
+    public float ContactDeposit = 0.2f;
 
     /// <summary>
     /// Base per-target airborne infection probability (0-1) before PPE adjustments.
     /// </summary>
     [DataField]
-    public float AirborneInfect { get; set; } = 0.025f;
+    public float AirborneInfect = 0.025f;
 
     /// <summary>
     /// Airborne infection radius in world units, used when <see cref="SpreadPath"/> contains Airborne.
     /// </summary>
     [DataField]
-    public float AirborneRange { get; set; } = 3f;
+    public float AirborneRange = 3f;
 
     /// <summary>
     /// Disease icon prototype to show on HUDs.

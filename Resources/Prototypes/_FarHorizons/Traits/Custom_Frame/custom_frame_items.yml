@@ -2,7 +2,7 @@
   parent: BaseItem
   id: CyborgModuleSelector
   name: Undetermined Cyborg Module
-  description: This is where your favorite thief's supplies lie. Try to remember which ones.
+  description: A small cyborg module with infinite possibilities.
   components:
   - type: Item
     storedRotation: -90
@@ -27,6 +27,8 @@
     sprite: Objects/Specific/Robotics/borgmodule.rsi
     state: generic
   - type: ThiefUndeterminedBackpack
+    toolName: custom-frame-trait-module-compatibility-menu-selection
+    toolDesc: custom-frame-trait-module-compatibility-menu-description
     maxSelectedSets: 1
     possibleSets:
     - ModuleCable
@@ -76,6 +78,7 @@
     state: icon-artistry
   content:
   - BorgModuleArtistry
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleTraversal
@@ -86,6 +89,7 @@
     state: icon-grappling-gun
   content:
   - BorgModuleTraversal
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleTool
@@ -96,6 +100,7 @@
     state: icon-tools
   content:
   - BorgModuleTool
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleInflatable
@@ -106,6 +111,7 @@
     state: icon-inflatable
   content:
   - BorgModuleInflatable
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleAppraisal
@@ -116,6 +122,7 @@
     state: icon-appraisal
   content:
   - BorgModuleAppraisal
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleMining
@@ -126,6 +133,7 @@
     state: icon-mining
   content:
   - BorgModuleMining
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleConstruction
@@ -136,6 +144,7 @@
     state: icon-construction
   content:
   - BorgModuleConstruction
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleCustodial
@@ -146,6 +155,7 @@
     state: icon-light-replacer
   content:
   - BorgModuleCustodial
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleCleaning
@@ -156,6 +166,7 @@
     state: icon-mop
   content:
   - BorgModuleCleaning
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleTopicals
@@ -166,6 +177,7 @@
     state: icon-treatment
   content:
   - BorgModuleTopicals
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleChemical
@@ -176,6 +188,7 @@
     state: icon-chemist
   content:
   - BorgModuleChemical
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleArtifact
@@ -186,6 +199,7 @@
     state: icon-artifacts
   content:
   - BorgModuleArtifact
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleAnomaly
@@ -196,6 +210,7 @@
     state: icon-anomalies
   content:
   - BorgModuleAnomaly
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleClowning
@@ -206,6 +221,7 @@
     state: icon-clown
   content:
   - BorgModuleClowning
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModulePaperwork
@@ -216,6 +232,7 @@
     state: icon-paperwork
   content:
   - BorgModulePaperwork
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleBartending
@@ -226,6 +243,7 @@
     state: icon-bartending
   content:
   - BorgModuleBartending
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleBooks
@@ -236,6 +254,7 @@
     state: icon-pen
   content:
   - BorgModuleBooks
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleBotany
@@ -246,6 +265,7 @@
     state: icon-gardening
   content:
   - BorgModuleBotany
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleCooking
@@ -256,6 +276,7 @@
     state: icon-cooking
   content:
   - BorgModuleCooking
+  - Screwdriver
 
 - type: thiefBackpackSet
   id: ModuleMail
@@ -266,3 +287,4 @@
     state: icon-mail
   content:
   - BorgModuleMail
+  - Screwdriver

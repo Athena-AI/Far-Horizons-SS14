@@ -43,10 +43,10 @@ public sealed partial class SymptomGenericStatusEffect : SymptomBehavior
 
 public sealed partial class SymptomGenericStatusEffect
 {
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly EntityManager _entMan = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private EntityManager _entMan = default!;
+    [Dependency] private INetManager _net = default!;
 
     /// <summary>
     /// Adds an effect status component to the entity.

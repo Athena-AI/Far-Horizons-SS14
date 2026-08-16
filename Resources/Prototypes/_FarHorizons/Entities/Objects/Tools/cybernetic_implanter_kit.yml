@@ -1,0 +1,211 @@
+- type: entity
+  parent: BaseItem
+  id: BaseCyberneticImplanterKit
+  abstract: true
+  components:
+    - type: Sprite
+      sprite: _FarHorizons/Objects/Tools/singular_eye_CIK.rsi
+      layers:
+      - state: icon
+        map: ["cyberneticImplanter"]
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.CyberneticImplanterVisuals.State:
+          cyberneticImplanter:
+            Icon: {state: icon}
+            Implant: {state: icon_implant}
+            Used: {state: icon_used}
+            Gored: {state: icon_gored}
+    - type: CyberneticImplanter
+      implantedOrgan: null
+      implantBeginSound:
+        path: "/Audio/_Starlight/Medical/Surgery/scalpel1.ogg"
+        params:
+          volume: 1.0
+          variation: 0.125
+      implantEndSound:
+        path: "/Audio/_Starlight/Medical/Surgery/scalpel2.ogg"
+        params:
+          volume: 1.0
+          variation: 0.125
+
+#region Syndicate
+
+- type: entity
+  parent: [BaseCyberneticImplanterKit, BaseSyndicateContraband]
+  id: BaseCyberneticImplanterKitSyndicate
+  name: Cybernetic Implanter Kit
+  description: A Cybernetic Implanter Kit for field installation of augments.
+  abstract: true
+
+- type: entity
+  parent: BaseCyberneticImplanterKitSyndicate
+  id: CyberneticImplanterKitSyndicateEyes
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Tools/eyes_CIK.rsi
+  - type: CyberneticImplanter
+    activationTime: 15
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BaseCyberneticImplanterKitSyndicate
+  id: CyberneticImplanterKitSyndicateEyeImplant
+  abstract: true
+  components:
+  - type: CyberneticImplanter
+    activationTime: 10
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: BaseCyberneticImplanterKitSyndicate
+  id: CyberneticImplanterKitSyndicateLimb
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Tools/limb_CIK.rsi
+  - type: CyberneticImplanter
+    activationTime: 20
+  - type: Item
+    size: Large
+
+- type: entity
+  parent: BaseCyberneticImplanterKitSyndicate
+  id: CyberneticImplanterKitSyndicateHand
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Tools/hand_CIK.rsi
+  - type: CyberneticImplanter
+    activationTime: 15
+  - type: Item
+    size: Normal
+
+#Eyes
+- type: entity
+  parent: CyberneticImplanterKitSyndicateEyes
+  id: CyberneticImplanterCyberEyeNightVision
+  name: Night Vision Cyber Eyes C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: CyberEyeNightVision
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateEyes
+  id: CyberneticImplanterCyberEyeThermal
+  name: Thermal Vision Cyber Eyes C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: CyberEyeThermal
+
+#Eye Implant
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateEyeImplant
+  id: CyberneticImplanterEyeImplantSyndie
+  name: Syndicate Eye Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: EyeImplantSyndie
+
+# Arm
+- type: entity
+  parent: CyberneticImplanterKitSyndicateLimb
+  id: CyberneticImplanterLeftArmCyberMantisBlade
+  name: Left Mantis Blade Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftArmCyberMantisBlade
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateLimb
+  id: CyberneticImplanterRightArmCyberMantisBlade
+  name: Right Mantis Blade Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: RightArmCyberMantisBlade
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateLimb
+  id: CyberneticImplanterLeftArmCyberIFA30
+  name: Left IFA-30 Cybernetic Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftArmCyberIFA30
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateLimb
+  id: CyberneticImplanterRightArmCyberIFA30
+  name: Right IFA-30 Cybernetic Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: RightArmCyberIFA30
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateLimb
+  id: CyberneticImplanterLeftArmCyberBunkerBreaker
+  name: Left Bunker Breaker Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftArmCyberBunkerBreaker
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateLimb
+  id: CyberneticImplanterRightArmCyberBunkerBreaker
+  name: Right Bunker Breaker Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: RightArmCyberBunkerBreaker
+
+#Hand Implant
+- type: entity
+  parent: CyberneticImplanterKitSyndicateHand
+  id: CyberneticImplanterLeftHandImplantClaws
+  name: Left Hand Claws Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftHandImplantClaws
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateHand
+  id: CyberneticImplanterRightHandImplantClaws
+  name: Right Hand Claws Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: RightHandImplantClaws
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateHand
+  id: CyberneticImplanterLeftHandImplantForensics
+  name: Left Hand Forensics Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftHandImplantForensics
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateHand
+  id: CyberneticImplanterRightHandImplantForensics
+  name: Right Hand Forensics Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: RightHandImplantForensics
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateHand
+  id: CyberneticImplanterLeftHandImplantHypoClaws
+  name: Left Hand Hypo Claws Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftHandImplantHypoClaws
+
+- type: entity
+  parent: CyberneticImplanterKitSyndicateHand
+  id: CyberneticImplanterRightHandImplantHypoClaws
+  name: Right Hand Hypo Claws Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: RightHandImplantHypoClaws

@@ -192,6 +192,22 @@
   equipment:
     head: ClothingHeadHatBeretNSR
 
+- type: loadout
+  id: JanitorHeadNS
+  equipment:
+    head: ClothingHeadHatJanitorNS
+
+#Botanist
+- type: loadout
+  id: BotanistBandanaNS
+  equipment:
+    head: ClothingHeadBandBotany
+
+- type: loadout
+  id: BotanistRancherHatNS
+  equipment:
+    head: ClothingHeadRancherHatNS
+
 #region Ears / Headsets
 
 # Command
@@ -441,10 +457,19 @@
 #region Mask 
 
 # Medical
+
 - type: loadout
   id: SterileMaskSyndi
   equipment:
     mask: ClothingMaskSterile
+
+#Service
+
+- type: loadout
+  id: JanitorMaskNS
+  equipment:
+    mask: ClothingMaskJanitorNS
+
 
 #region Jumpsuit
 
@@ -632,6 +657,7 @@
   id: AncientJumpskirtSyndi
   equipment:
     jumpsuit: ClothingUniformJumpskirtAncientSyndi
+
 # Engineering
 
 - type: loadout
@@ -948,6 +974,56 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtEliteRedSword
 
+#Chef
+- type: loadout
+  id: ChefJumpsuitNS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChefNS
+
+- type: loadout
+  id: ChefJumpskirtNS
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtChefNS
+
+#Janitor
+- type: loadout
+  id: JanitorJumpsuitNS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitJanitorNS
+
+- type: loadout
+  id: JanitorJumpskirtNS
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtJanitorNS
+
+#Botanist
+- type: loadout
+  id: BotanistJumpsuitNS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHydroponicsNS
+
+- type: loadout
+  id: BotanistJumpskirtNS
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtHydroponicsNS
+
+- type: loadout
+  id: BotanistOverallsJumpsuitNS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitOverallNS
+
+- type: loadout
+  id: BotanistOverallsJumpskirtNS
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtOverallsNS
+
+#Clown
+
+- type: loadout
+  id: ClownSuitNS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClownNS
+
 #region Hands
 
 # Medical
@@ -961,6 +1037,11 @@
   equipment:
     gloves: ClothingHandsGlovesNitrile
 
+#Janitor
+- type: loadout
+  id: JanitorRubberGlovesNS
+  equipment:
+    gloves: ClothingHandsGlovesJanitorNS
 
 #region Belt
 
@@ -1417,7 +1498,7 @@
   equipment:
     outerClothing: ClothingOuterCoatRedSword
 
-#region Boots
+#region Boots/Shoes
 
 - type: loadout
   id: BootsWinterSyndicate
@@ -1453,6 +1534,11 @@
   id: MedicalWinterBootsSyndi
   equipment:
     shoes: ClothingShoesBootsWinterMed
+
+- type: loadout
+  id: ClownShoesNS
+  equipment:
+    shoes: ClothingShoesClownNS
 
 # region PDA
 
@@ -1497,3 +1583,49 @@
     proto: SeniorResearcher
   equipment:
     id: SeniorResearcherPDA
+
+#region Weapons
+
+- type: loadout
+  id: SecurityDominatorNS 
+  equipment:
+    pocket2: WeaponDominatorNS
+
+- type: loadout
+  id: SecurityPistolMk59
+  dummyEntity: WeaponPistolMk59
+  storage:
+    back:
+    - WeaponPistolMk59
+    - MagazinePistolSP
+    - MagazinePistolRubber
+    - MagazinePistolRubber
+
+- type: loadout
+  id: SecurityPistolEnforcerFHNS
+  dummyEntity: WeaponPistolEnforcerTypeS
+  effects:
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:RoleTimeRequirement
+        role: JobHeadOfSecurity
+        time: 36000 # Needs to be earned
+  storage:
+    back:
+    - WeaponPistolEnforcerTypeS
+    - MagazinePistolSP
+    - MagazinePistolSP
+    - MagazinePistolRubber
+
+# Silicons
+- type: roleLoadout
+  id: JobBorgNS
+  nameDataset: NamesBorg
+  canCustomizeName: true
+  groups:
+  - SiliconBrainType
+
+- type: roleLoadout
+  id: JobStationAiNS
+  nameDataset: NamesAI
+  canCustomizeName: true

@@ -48,6 +48,7 @@ public abstract partial class SharedIPCSystem
         if(!_items.TryGetSlot(ent.Owner, ent.Comp.ModuleContainerId, out var slot) || slot.Whitelist == null || slot.Whitelist.Tags == null)
             return;
         slot.Whitelist.Tags.Add("BorgModuleSyndicate");
+        args.Handled = true;
     }
 
     /// <summary>

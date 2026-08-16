@@ -165,9 +165,10 @@
     magState: mag
     steps: 5
     zeroVisible: true
+  - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset # Holo-Sights
-    maxOffset: 0.5
-    pvsIncrease: 0.3
+    maxOffset: 2.5
+    pvsIncrease: 0.25
   - type: ChamberMagazineAmmoProvider
     autoEject: true
   - type: UseDelay # Grip
@@ -210,7 +211,7 @@
         allowMovement: true
       - name: 1.5x
         zoom: 1.5
-        offset: 7
+        offset: 0
         doAfter: 0
         allowMovement: true
   - type: ChamberMagazineAmmoProvider

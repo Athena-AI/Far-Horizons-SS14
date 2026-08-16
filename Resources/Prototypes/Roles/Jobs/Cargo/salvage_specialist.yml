@@ -16,6 +16,8 @@
   - Salvage
   - Maintenance
   - External
+  - MaintenanceNS  # Far Horizons
+  - ExternalNS  # Far Horizons
   extendedAccess:
   - Mining # Starlight
   special:

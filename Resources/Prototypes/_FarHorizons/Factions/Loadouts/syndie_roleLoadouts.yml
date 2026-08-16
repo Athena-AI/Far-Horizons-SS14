@@ -6,7 +6,7 @@
   - CommandantHead
   - CommandantNeck
   - CommandantJumpsuit
-  - CaptainBackpack
+  - CommandantBackpack
   - CommandantOuterClothing
   - CaptainShoes
   - CommandantEyewear
@@ -25,8 +25,9 @@
   - MarshalUniform
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
-  - SecurityNonLethalWeapon
+  - SecurityNonLethalWeaponNS
   - MarshalOuterClothing
+  - MarshalSidearm
   - SecurityShoesSyndi
   - SurvivalHeadOfSecurity
   - Trinkets
@@ -49,6 +50,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieChiefMedicalOfficer #Medical Director
@@ -59,13 +61,14 @@
   - MedicalGlovesSyndi
   - MedicalDirectorBackpack
   - MedicalDirectorOuterClothing
-  - MedicalDirectorNeck
+  #- MedicalDirectorNeck #Disabled currently due to no mantles/cloaks made for NS side.
   - MedicalDirectorShoes
   - MedicalEyewearSyndi
   - SurvivalChiefMedicalOfficer
   - Trinkets
   - Scarves 
   - Pens 
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieResearchDirector #Head of Research
@@ -82,6 +85,7 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieHeadOfPersonnel #Personnel Manager
@@ -97,6 +101,7 @@
   - Trinkets
   - Scarves 
   - HoPPens
+  - CivilianWeaponsNS
 
 
 - type: roleLoadout
@@ -110,6 +115,7 @@
   - CommandEyewearSyndi
   - Survival
   - Trinkets
+  - CivilianWeaponsFactionless
 
 #region Law
 
@@ -122,6 +128,7 @@
   - LawyerShoes
   - Trinkets
   - Survival
+  - CivilianWeaponsFactionless
 
 #region Civilian
 
@@ -142,6 +149,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 #region Engineering
 
@@ -158,6 +166,7 @@
   - Trinkets
   - Scarves 
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieStationEngineer #Station Engineer
@@ -173,6 +182,7 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieTechnicalAssistant #Technical Assistant
@@ -183,6 +193,7 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
   
 #region Medical
 
@@ -203,6 +214,7 @@
   - Scarves
   - SurgeonEquipmentGroup
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieChemist #Pharmacist
@@ -221,6 +233,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieParamedic #Medic
@@ -237,6 +250,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieMedicalDoctor #Clinician
@@ -254,6 +268,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieMedicalIntern #Nursing Assistant
@@ -265,6 +280,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndiePsychologist #Psychoanalyst
@@ -276,6 +292,7 @@
   - Survival
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 #region Science
 
@@ -293,6 +310,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieScientist #Researcher
@@ -310,6 +328,7 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
 
 - type: roleLoadout
   id: SyndieResearchAssistant #Undergraduate
@@ -321,6 +340,7 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
 
 #region Security
 
@@ -335,8 +355,8 @@
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
   - SecurityShoesSyndi
-  - WardenSidearm 
-  - SecurityNonLethalWeapon 
+  - ConstableSidearm
+  - SecurityNonLethalWeaponNS 
   - SurvivalSecurity
   - Trinkets
   - Scarves
@@ -355,8 +375,8 @@
     - CorpsmanSyndiBelt
     - CorpsmanGloves
     - SecurityShoesSyndi
-    - SecurityNonLethalWeapon
-    - CorpsmanSidearm
+    - SecurityNonLethalWeaponNS
+    - CorpsmanSidearm #Still needs new NS version
     - SurvivalSecurity
     - Trinkets
     - Scarves
@@ -374,8 +394,8 @@
     - BrigSyndiGloves
     - BrigSyndiBelt
     - SecurityShoesSyndi
-    - SecurityNonLethalWeapon
-    - BrigmedicSidearm # FarHorizons
+    - SecurityNonLethalWeaponNS
+    - BrigmedicSidearm #Still needs new NS versions
     - SurvivalSecurity
     - Trinkets
     - Scarves
@@ -392,8 +412,8 @@
   - SecurityBackpackSyndi
   - InspectorOuterClothing
   - InspectorShoes
-  - DetectiveSidearm
-  - SecurityNonLethalWeapon 
+  - DetectiveSidearm #Still needs new NS versions
+  - SecurityNonLethalWeaponNS
   - SurvivalSecurity
   - Trinkets
   - Scarves
@@ -411,8 +431,9 @@
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
   - SecurityPDA
-  - SecurityNonLethalWeapon #Starlight
-  - SecuritySidearm #Starlight
+  - SecurityNonLethalWeaponNS
+  - SecuritySidearmNS
+  - SecurityShoesSyndi
   - SurvivalSecurity
   - Trinkets
   - Scarves # Starlight
@@ -424,11 +445,76 @@
   groups:
   - RecruitUniform
   - SecurityBackpackSyndi
-  - SecurityNonLethalWeapon
+  - SecurityNonLethalWeaponNS
   - SurvivalSecurity
   - Trinkets
   - Scarves 
   - Pens
+
+#region Service
+- type: roleLoadout
+  id: SyndieChef
+  groups:
+  - ChefHead
+  - ChefMask
+  - ChefJumpsuitNS
+  - CommonBackpack
+  - ChefOuterClothing
+  - CivilianShoes 
+  - Glasses
+  - SurvivalService 
+  - Trinkets
+  - Scarves 
+  - Pens 
+  - CivilianWeaponsNS
+
+- type: roleLoadout
+  id: SyndieJanitor
+  groups:
+  - JanitorHeadNS
+  - JanitorMaskNS
+  - JanitorJumpsuitNS
+  - JanitorGlovesNS
+  - CommonBackpack
+  - JanitorOuterClothing
+  - Glasses
+  - SurvivalService 
+  - Trinkets
+  - Scarves
+  - Pens 
+  - JanitorJobTrinkets
+  - CivilianWeaponsNS
+
+- type: roleLoadout
+  id: SyndieBotanist
+  groups:
+  - BotanistHeadNS
+  - BotanistJumpsuitNS
+  - BotanistBackpack
+  - BotanistOuterClothing
+  - CivilianShoes
+  - Glasses
+  - SurvivalService 
+  - Trinkets
+  - Scarves 
+  - Pens 
+  - CivilianWeaponsNS
+
+- type: roleLoadout
+  id: SyndieClown
+  canCustomizeName: true
+  groups:
+  - ClownHead
+  - ClownJumpsuitNS
+  - ClownBackpack
+  - ClownOuterClothing
+  - ClownShoesNS
+  - Glasses
+  - SurvivalService #FH
+  - Trinkets
+  - Scarves
+  - ClownPens
+  - ClownJobTrinkets
 
 #region SHC
 
@@ -459,3 +545,4 @@
   - Scarves
   - NTRPens
   - SurvivalStationManagement
+  - CivilianWeaponsNS

@@ -1,5 +1,5 @@
 ﻿- type: entity
-  name: TOP SECRET classifier rubber stamp
+  name: TOP SECRET Classifier Rubber Stamp
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampSecret
   categories: [ DoNotMap ]
@@ -18,9 +18,10 @@
       state: stamp-secret
 
 - type: entity
-  name: Corpsman rubber stamp
+  name: Corpsman Rubber Stamp
   parent: [RubberStampBase, BaseSecurityContraband]
   id: RubberStampCorpsman
+  suffix: NT
   categories: [ DoNotMap ]
   components:
     - type: Stamp
@@ -30,3 +31,162 @@
     - type: Sprite
       sprite: _FarHorizons/Objects/Misc/stamps.rsi
       state: stamp-corpsman
+
+#region NeoSol
+
+
+- type: entity
+  name: Commandant's Rubber Stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampCommandant
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-commandant
+    stampedColor: "#3681bb"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    state: stamp-hos
+
+- type: entity
+  name: Syndicate High Command Rubber Stamp
+  parent: RubberStampBase
+  id: RubberStampSHC
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-shc
+    stampedColor: "#006600"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    state: stamp-syndicate
+
+- type: entity
+  name: Foreman's Rubber Stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampForeman
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-ce
+    stampedColor: "#c69b17"
+    stampState: "paper_stamp-ce"
+  - type: Sprite
+    state: stamp-ce
+
+- type: entity
+  name: Medical Director's Rubber Stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampMD
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-md
+    stampedColor: "#33ccff"
+    stampState: "paper_stamp-rd"
+  - type: Sprite
+    state: stamp-rd
+
+- type: entity
+  name: Personnel Manager's Rubber Stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampPM
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-pm
+    stampedColor: "#6ec0ea"
+    stampState: "paper_stamp-hos"
+  - type: Sprite
+    state: stamp-hos
+
+- type: entity
+  name: Marshal's Rubber Stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampMarshal
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-hos
+    stampedColor: "#cc0000"
+    stampState: "paper_stamp-hos"
+  - type: Sprite
+    state: stamp-hos
+
+- type: entity
+  name: Epistemics Provost's Rubber Stamp
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampEP
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-ep
+    stampedColor: "#1f66a0"
+    stampState: "paper_stamp-magistrate"
+  - type: Sprite
+    state: stamp-detective
+
+- type: entity
+  name: Constable's Rubber Stamp
+  parent: [RubberStampBase, BaseSecurityContraband]
+  id: RubberStampConstable
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-constable
+    stampedColor: "#5b0000"
+    stampState: "paper_stamp-warden"
+  - type: Sprite
+    state: stamp-warden
+
+- type: entity
+  name: Inspector's Rubber Stamp
+  parent: [RubberStampBase, BaseSecurityContraband]
+  id: RubberStampInspector
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-detective
+    stampedColor: "#754d36"
+    stampState: "paper_stamp-detective"
+  - type: Sprite
+    state: stamp-detective
+
+#SHC Stamps
+
+- type: entity
+  name: Red Sword Officer's Rubber Stamp
+  parent: [ RubberStampBase, BaseRepresentativesContraband ]
+  id: RubberStampRSO
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: "Red Sword Officer"
+    stampedColor: "#004281"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    state: stamp-syndicate
+
+- type: entity
+  name: NeoSol Representative's Rubber Stamp
+  parent: [ RubberStampBase, BaseRepresentativesContraband ]
+  id: RubberStampNSR
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: "NeoSol Representative"
+    stampedColor: "#004281"
+    stampState: "paper_stamp-syndicate"
+  - type: Sprite
+    state: stamp-syndicate

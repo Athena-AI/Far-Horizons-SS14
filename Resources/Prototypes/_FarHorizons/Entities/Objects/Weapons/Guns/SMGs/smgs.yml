@@ -326,3 +326,45 @@
   - type: Tag
     tags:
     - P291
+
+#region = Syndicate =
+
+
+
+
+
+#region IFA-30
+- type: entity
+  name: IFA-30 Submachine Gun
+  description: A modern IFA-30 SMG for mobile operations attached to your arm, Fires 9mm Magazines.
+  parent: [BaseWeaponSubMachineGun, BaseSyndicateContraband]
+  id: WeaponSubMachineGunCyberIFA30
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/SMGs/ifa30.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Gun
+    minAngle: 2
+    maxAngle: 12
+    fireRate: 6
+    angleIncrease: 3
+    angleDecay: 16
+    availableModes:
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/c-20r.ogg
+  - type: ChamberMagazineAmmoProvider
+    autoEject: false
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance
+  - type: Tag
+    tags:
+      - CyberHandItem

@@ -8,9 +8,9 @@ using Robust.Shared.Prototypes;
 namespace Content.Client.Store.Ui;
 
 [UsedImplicitly]
-public sealed class StoreBoundUserInterface : BoundUserInterface
+public sealed partial class StoreBoundUserInterface : BoundUserInterface
 {
-   [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // FH-Fix
+    [Dependency] private IPrototypeManager _prototypeManager = default!; // FH-Fix
 
     [ViewVariables]
     private StoreMenu? _menu;

@@ -12,7 +12,8 @@ namespace Content.Shared._FarHorizons.Factions;
 
 public abstract partial class SharedFactionManager : ISharedFactionManager
 {
-    [Dependency] protected readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] protected IPrototypeManager _prototypeManager = default!;
+    [Dependency] protected ILocalizationManager _locMan = default!;
 
     public static readonly string FallbackFaction = "FactionNT";
 
@@ -99,7 +100,10 @@ public abstract partial class SharedFactionManager : ISharedFactionManager
         faction = found.Count == 0 ? null : found.First();
 
         return faction != null;
-    }  
+    }
+
+    public string? GetMapPool() => 
+        GetCurrentFaction() is not { } faction ? null : faction.MapPool;
 
     public string OverrideLocalizedJobName(FactionJobAssignmentPrototype assignment) =>
         assignment.Override == null || assignment.Override.Name == null ?
@@ -120,6 +124,16 @@ public abstract partial class SharedFactionManager : ISharedFactionManager
         !TryGetJobAssignment(factionJob, out var assignment) ?
         _prototypeManager.Index(factionJob.job).LocalizedDescription :
         OverrideLocalizedJobDescription(assignment!);
+    
+    public string OverrideLocalizedJobSupervisors(FactionJobAssignmentPrototype assignment) =>
+        assignment.Override == null || assignment.Override.Supervisors == null ?
+            Loc.GetString(_prototypeManager.Index(assignment.Job).Supervisors) :
+            Loc.GetString(assignment.Override.Supervisors);
+
+    public string OverrideLocalizedJobSupervisors((ProtoId<FactionPrototype>? faction, ProtoId<JobPrototype> job) factionJob) =>
+        factionJob.faction is null || !TryGetJobAssignment((factionJob.faction.Value, factionJob.job), out var assignment) ?
+        Loc.GetString(_prototypeManager.Index(factionJob.job).Supervisors) :
+        OverrideLocalizedJobSupervisors(assignment!);
 
     public ProtoId<JobIconPrototype> OverrideJobIcon(FactionJobAssignmentPrototype assignment) =>
         assignment.Override == null || assignment.Override.Icon == null ?
@@ -214,11 +228,22 @@ public abstract partial class SharedFactionManager : ISharedFactionManager
     private (ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) GetDefaultIdsWithJob() =>
         (GetDefaultFaction(), SharedGameTicker.FallbackOverflowJob);
     private static bool TryGetFactionColor(FactionPrototype faction, out Color color) => Color.TryParse(faction.Color, out color);
-    private FactionJobAssignmentPrototype? GetJobAssignment((ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) factionJob) =>
+    public FactionJobAssignmentPrototype? GetJobAssignment((ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) factionJob) =>
         ListFactionJobs().FirstOrDefault(p => p.Faction == factionJob.faction && p.Job == factionJob.job);
-    
-    private bool TryGetJobAssignment((ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) factionJob, out FactionJobAssignmentPrototype? assignment){
+
+    public bool TryGetJobAssignment((ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) factionJob, out FactionJobAssignmentPrototype? assignment){
         assignment = GetJobAssignment(factionJob);
         return assignment != null;
+    }
+
+    public string GetAnnouncerSender(ProtoId<FactionPrototype> faction) => 
+        _locMan.TryGetString($"chat-announcer-sender-{faction}", out var sender)
+            ? sender
+            : _locMan.GetString("chat-announcer-sender-default");
+    
+    public string GetAnnouncerSender()
+    {
+        var faction = GetCurrentFaction() ?? GetDefaultFaction();
+        return GetAnnouncerSender(faction);
     }
 }

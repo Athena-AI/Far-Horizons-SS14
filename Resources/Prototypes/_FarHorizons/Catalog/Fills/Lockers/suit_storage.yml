@@ -358,8 +358,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillCommandantHardsuit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: cap
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: cap
   - type: AccessReader
-    access: [["Captain"]]
+    access: [["Commandant"]]
 
 - type: entityTable
   id: FillCommandantHardsuit
@@ -380,8 +397,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillPCHardsuit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: HoP
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: HoP
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+    access: [["PersonnelManager"]]
 
 - type: entityTable
   id: FillPCHardsuit
@@ -401,8 +435,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillMarshalHardsuit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: HoS
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: HoS
   - type: AccessReader
-    access: [["HeadOfSecurity"]]
+    access: [["Marshal"]]
 
 - type: entityTable
   id: FillMarshalHardsuit
@@ -422,8 +473,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillMedicalDirectorHardsuit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: CMO
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: CMO
   - type: AccessReader
-    access: [["ChiefMedicalOfficer"]]
+    access: [["MedicalDirector"]]
 
 - type: entityTable
   id: FillMedicalDirectorHardsuit
@@ -433,6 +501,128 @@
     - id: ClothingMaskBreath
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
+
+- type: entity
+  id: SuitStorageEP
+  parent: SuitStorageBase
+  name: Suit Storage Unit
+  description: A standard-issue suit storage unit. It has burns and explosion markings all over, are you sure it's a new one? 
+  suffix: Research Director
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillResearchDirectorHardsuitSyndi
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: base
+  - type: AccessReader
+    access: [["EpistemicsProvost"]]
+
+- type: entity
+  id: SuitStorageForeman
+  parent: SuitStorageBaseFH
+  name: High-Tech Suit Storage Unit
+  description: A high-tech suit storage unit, which has definitely seen some wear and tear over time.
+  suffix: Foreman
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillChiefEngineerHardsuitSyndi
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: CE
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: CE
+  - type: AccessReader
+    access: [["Foreman"]]
+
+#region Engineering
+
+- type: entity
+  id: SuitStorageAtmosSyndi
+  parent: SuitStorageBaseFH
+  suffix: NS, Atmospheric Technician
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillAtmosphericsHardsuitSyndi
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: Atmos_tech
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: screen-green
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: Atmos_tech
+  - type: AccessReader
+    access: [["AtmosphericsNS"]]
+
+- type: entity
+  id: SuitStorageEngiSyndi
+  parent: SuitStorageBaseFH
+  suffix: NS, Station Engineer
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillEngineerHardsuitSyndi
+  - type: Sprite 
+    sprite: _FarHorizons/Structures/Storage/suit_storage.rsi
+    layers:
+    - state: engi
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: screen-green
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: engi
+  - type: AccessReader
+    access: [["EngineeringNS"]]
 
 # region Security
 
@@ -445,8 +635,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillSecurityHardsuitSyndi
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: Secoff
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: Secoff
   - type: AccessReader
-    access: [["Security"]]
+    access: [["SecurityNS"]]
 
 - type: entityTable
   id: FillSecurityHardsuitSyndi
@@ -466,8 +673,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillConstableHarduit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: Warden
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: Warden
   - type: AccessReader
-    access: [["Armory"]]
+    access: [["ArmoryNS"]]
 
 - type: entityTable
   id: FillConstableHarduit
@@ -487,8 +711,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillBrigSyndiHarduit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: Brigmedic
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: Brigmedic
   - type: AccessReader
-    access: [["Brigmedic"]]
+    access: [["BrigmedicNS"]]
 
 - type: entityTable
   id: FillBrigSyndiHarduit
@@ -508,8 +749,25 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillCorpsmanSyndiHarduit
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Storage/NeoSol/suit_storage.rsi
+    layers:
+    - state: Brigmedic
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: welded
+      visible: false
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+    - state: animation
+      map: ["computerLayerScreen"]
+  - type: EntityStorageVisuals
+    stateDoorOpen: Brigmedic
   - type: AccessReader
-    access: [["Brigmedic"]]
+    access: [["BrigmedicNS"]]
 
 - type: entityTable
   id: FillCorpsmanSyndiHarduit

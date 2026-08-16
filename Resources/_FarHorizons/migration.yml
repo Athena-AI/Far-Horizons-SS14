@@ -180,10 +180,6 @@ LockerHeadOfSecurity: LockerHeadOfSecurityFH
 LockerHeadOfSecurityFilled: LockerHeadOfSecurityFHFilled
 LockerHeadOfSecurityFilledHardsuit: LockerHeadOfSecurityFHFilledHardsuit
 
-# of course no one puts datetimes... however
-# 17.10.2025 - new television
-WallmountTelevision: WallmountTelevisionRandomSpawner
-
 # I do! Well- Now I do anyway.
 # 2025-10-29 - Replace INFERIOR donut boxes with the DELUXE edition
 FoodBoxDonut: FHFoodBoxDonut
@@ -293,3 +289,19 @@ GirderSyndie: Girder
 ReinforcedGirderSyndie: ReinforcedGirder
 # 2026-06-15
 SpawnPointBrighteye: null
+
+# 2026-07-29 - Redid how ad signs work - Athena
+WallmountTelevision: BaseAdSignNT
+WallmountTelevisionRandomSpawner : BaseAdSignNT
+WallmountTelevisionNSRandomSpawner: BaseAdSignNS
+WallmountTelevisionCWS: AdSignCWS
+WallmountTelevisionSec: AdSignSec
+WallmountTelevisionGensys: AdSignGensys
+WallmountTelevisionLime: AdSignLimb
+WallmountTelevisionLMC: AdSignMiners
+WallmountTelevisionNTWorlds: AdSignNTWorlds
+WallmountTelevisionTelosmonkey: AdSignTelosMonkey
+WallmountTelevisionTelostext: AdSignTelosText
+WallmountTelevisionCSC: AdSignCSS
+WallmountTelevisionNSWorlds: AdSignNSWorlds
+WallmountTelevisionSecBigBrother: AdSignSecBigBrother

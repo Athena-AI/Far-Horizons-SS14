@@ -12,10 +12,11 @@ namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 /// </summary>
 public sealed partial class SharedDiseaseSymptomSystem : EntitySystem
 {
-    [Dependency] private readonly IEntitySystemManager _entitySystemManager = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly DiseaseAirborneSystem _airborneDisease = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IEntitySystemManager _entitySystemManager = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private DiseaseAirborneSystem _airborneDisease = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     /// <summary>
     /// Executes the side-effects for a triggered symptom on a carrier.

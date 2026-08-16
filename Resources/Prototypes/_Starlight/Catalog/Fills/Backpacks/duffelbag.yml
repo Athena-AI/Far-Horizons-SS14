@@ -20,17 +20,21 @@
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledMinotaurShotgun
   name: Minotaur bundle
-  description: "Lean and mean: Contains smooth, powerful, highly illegal Shotgun, 2 shotgun slug drums and two 12g buckshot drums." #FH
+  description: "Lean and mean: Contains smooth, powerful, highly illegal Shotgun & 2 shotgun Slug, Buckshot and Flechette drums." #FH
   components:
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
         children:
         - id: WeaponShotgunMinotaur
-        - id: MagazineShotgunSlug #FH
-        - id: MagazineShotgunSlug #FH
+#FH - Start
         - id: MagazineShotgun
-        - id: MagazineShotgun
+          amount: 2
+        - id: MagazineShotgunFlechette
+          amount: 2
+        - id: MagazineShotgunSlug 
+          amount: 1
+#FH - End
       
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -56,10 +60,8 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: RightArmCyberMantisBlade
-        - id: LeftArmCyberMantisBlade
-        - id: RightHandCyber
-        - id: LeftHandCyber
+        - id: CyberneticImplanterLeftArmCyberMantisBlade #FH
+        - id: CyberneticImplanterRightArmCyberMantisBlade #FH
     
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

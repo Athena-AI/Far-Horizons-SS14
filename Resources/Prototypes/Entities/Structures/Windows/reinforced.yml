@@ -59,6 +59,7 @@
   - type: Paintable #FH start
     group: ReinforcedWindow 
   - type: GenericPaintable #FH end
+  - type: StructureOcclusion #Far Horizons
 
 - type: entity
   id: WindowReinforcedDirectional
@@ -119,6 +120,8 @@
         acts: [ "Destruction" ]
   - type: StaticPrice
     price: 22.5
+  - type: StructureOcclusion #Far Horizons
+    occlusionAmount: 0.3
 
 - type: entity
   parent: ReinforcedWindow

@@ -13,19 +13,6 @@
     sprite: Structures/Windows/window.rsi
     state: full
 
-- type: entity
-  id: WindowSyndie
-  parent: Window
-  name: Window
-  suffix: NS
-  components:
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
-  - type: Icon
-    sprite: Structures/Windows/window.rsi
-    state: full
-
 # Reinforced
 
 - type: entity
@@ -33,18 +20,6 @@
   parent: ReinforcedWindow
   name: Reinforced Window
   suffix: ""
-  components:
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: Structures/Windows/reinforced_window.rsi
-  - type: Icon
-    sprite: Structures/Windows/reinforced_window.rsi
-
-- type: entity
-  id: ReinforcedWindowSyndie
-  parent: ReinforcedWindow
-  name: Reinforced Window 
-  suffix: NS
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -154,3 +129,58 @@
   - type: StaticPrice
     price: 100
   - type: BlockWeather
+  - type: LineOfSightExclude
+
+  #region NeoSol
+
+- type: entity
+  id: WindowSyndie
+  parent: Window
+  name: Window
+  suffix: NS
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: Structures/Windows/window.rsi
+  - type: Icon
+    sprite: Structures/Windows/window.rsi
+    state: full
+
+- type: entity
+  id: ReinforcedWindowSyndie
+  parent: ReinforcedWindow
+  name: Reinforced Window 
+  suffix: NS
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: Structures/Windows/reinforced_window.rsi
+  - type: Icon
+    sprite: Structures/Windows/reinforced_window.rsi
+
+- type: entity
+  parent: BaseWindow 
+  id: TintedWindowNeoSol
+  name: Tinted Window
+  suffix: NS
+  description: Smart tinted window with state switching option.
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _FarHorizons/Structures/Windows/tinted_window.rsi
+  - type: Icon
+    sprite: _FarHorizons/Structures/Windows/tinted_window.rsi
+  - type: IconSmooth
+    base: twindow
+  - type: Construction
+    graph: Window
+    node: tintedWindow
+  - type: Occluder
+  - type: StaticPrice
+    price: 70
+  - type: ToggleableOccluder
+  - type: DeviceLinkSink
+    ports:
+    - On
+    - Off
+    - Toggle

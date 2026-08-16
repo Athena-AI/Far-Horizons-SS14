@@ -4,8 +4,8 @@ meta:
   engineVersion: 272.0.1
   forkId: ""
   forkVersion: ""
-  time: 07/03/2026 23:46:22
-  entityCount: 33835
+  time: 08/09/2026 07:07:52
+  entityCount: 33832
 maps:
 - 1
 grids:
@@ -7006,12 +7006,12 @@ entities:
           -17,8:
             0: 251
             1: 32768
-            3: 12288
+            2: 12288
           -16,9:
             0: 65278
           -17,9:
             0: 61568
-            3: 115
+            2: 115
           -16,10:
             0: 65535
           -17,10:
@@ -7634,11 +7634,11 @@ entities:
           -17,1:
             1: 65280
           -16,2:
-            2: 4368
+            3: 4368
             0: 52416
           -17,2:
-            2: 52416
-            5: 4368
+            3: 52416
+            4: 4368
           -16,3:
             1: 240
             0: 61440
@@ -7653,7 +7653,7 @@ entities:
             1: 65280
           -15,2:
             0: 4368
-            3: 52416
+            2: 52416
           -15,3:
             1: 240
             0: 61440
@@ -7666,7 +7666,7 @@ entities:
           -14,1:
             1: 65280
           -14,2:
-            3: 4368
+            2: 4368
             1: 52428
           -14,3:
             1: 252
@@ -7744,17 +7744,17 @@ entities:
           -20,3:
             0: 61166
           -19,6:
-            3: 3967
+            2: 3967
           -19,7:
             0: 58623
           -19,3:
             0: 61811
             1: 136
           -19,4:
-            3: 60928
+            2: 60928
             0: 12
           -19,5:
-            4: 3808
+            5: 3808
           -19,8:
             0: 62703
           -18,6:
@@ -7770,7 +7770,7 @@ entities:
             0: 61166
           -18,8:
             0: 254
-            3: 57344
+            2: 57344
           -21,8:
             0: 29055
           -20,9:
@@ -7792,7 +7792,7 @@ entities:
           -18,10:
             0: 47342
           -18,9:
-            3: 238
+            2: 238
             0: 57344
           -24,5:
             1: 40704
@@ -7917,7 +7917,7 @@ entities:
             1: 65280
           -18,2:
             1: 4369
-            5: 52416
+            4: 52416
           -18,-1:
             1: 17544
             0: 2048
@@ -8545,19 +8545,19 @@ entities:
           moles: {}
         - volume: 2500
           temperature: 293.15
-          moles:
-            Nitrogen: 6666.982
-        - volume: 2500
-          temperature: 293.15
           moles: {}
         - volume: 2500
           temperature: 293.15
           moles:
-            Plasma: 6666.982
+            Nitrogen: 6666.982
         - volume: 2500
           temperature: 293.15
           moles:
             Oxygen: 6666.982
+        - volume: 2500
+          temperature: 293.15
+          moles:
+            Plasma: 6666.982
         chunkSize: 4
     - type: GasTileOverlay
     - type: IFF
@@ -16159,6 +16159,23 @@ entities:
     components:
     - type: Transform
       pos: 11.5,17.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+- proto: BaseAdSignNT
+  entities:
+  - uid: 29059
+    components:
+    - type: Transform
+      pos: 19.5,19.5
+      parent: 2
+    - type: Fixtures
+      fixtures: {}
+  - uid: 29060
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 6.5,13.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -80954,7 +80971,7 @@ entities:
     - type: Transform
       pos: 42.5,12.5
       parent: 2
-- proto: ClosetRadiationSuit
+- proto: ClosetRadiationSuitFilled
   entities:
   - uid: 13575
     components:
@@ -80996,8 +81013,6 @@ entities:
     - type: Transform
       pos: -77.5,33.5
       parent: 2
-- proto: ClosetRadiationSuitFilled
-  entities:
   - uid: 13583
     components:
     - type: Transform
@@ -81234,6 +81249,11 @@ entities:
     - type: Transform
       pos: -35.432983,14.566805
       parent: 2
+  - uid: 33837
+    components:
+    - type: Transform
+      pos: -35.436565,14.403773
+      parent: 2
 - proto: ClothingBeltUtilityFilled
   entities:
   - uid: 13617
@@ -81339,6 +81359,11 @@ entities:
     components:
     - type: Transform
       pos: -38.464233,14.535555
+      parent: 2
+  - uid: 33836
+    components:
+    - type: Transform
+      pos: -38.49249,14.690956
       parent: 2
 - proto: ClothingHandsGlovesCombat
   entities:
@@ -94599,12 +94624,6 @@ entities:
     - type: Transform
       pos: -34.5,58.5
       parent: 2
-  - uid: 15816
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -27.5,67.5
-      parent: 2
   - uid: 15817
     components:
     - type: Transform
@@ -97369,6 +97388,14 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -28.5,107.5
+      parent: 2
+- proto: FHAirlockSecurityGlassNoCadetLocked
+  entities:
+  - uid: 15816
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -27.5,67.5
       parent: 2
 - proto: FHAirlockSecurityLawyerLocked
   entities:
@@ -162186,6 +162213,8 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -31.5,70.5
       parent: 2
+- proto: PlasmaWindoorSecureSecurityLocked
+  entities:
   - uid: 24899
     components:
     - type: Transform
@@ -167989,12 +168018,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 10.5,54.5
       parent: 2
-  - uid: 25874
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -33.5,66.5
-      parent: 2
   - uid: 25875
     components:
     - type: Transform
@@ -168045,6 +168068,16 @@ entities:
     components:
     - type: Transform
       pos: -81.5,41.5
+      parent: 2
+  - uid: 27974
+    components:
+    - type: Transform
+      pos: -32.5,67.5
+      parent: 2
+  - uid: 27975
+    components:
+    - type: Transform
+      pos: -33.5,67.5
       parent: 2
 - proto: RadiationCollectorNoTank
   entities:
@@ -174675,6 +174708,20 @@ entities:
       - Experimental
       - CivilianServices
       - Biochemical
+- proto: SecurityTechFabAmmo
+  entities:
+  - uid: 25874
+    components:
+    - type: Transform
+      pos: -33.5,66.5
+      parent: 2
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
 - proto: SeedExtractor
   entities:
   - uid: 27055
@@ -178751,7 +178798,7 @@ entities:
       pos: 51.5,1.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -2329.6218
+      secondsUntilStateChange: -2754.8003
       state: Opening
 - proto: SpaceCash10
   entities:
@@ -180814,38 +180861,6 @@ entities:
     components:
     - type: Transform
       pos: -17.5,26.5
-      parent: 2
-- proto: Stunbaton
-  entities:
-  - uid: 27974
-    components:
-    - type: Transform
-      pos: -33.69297,66.81306
-      parent: 2
-  - uid: 27975
-    components:
-    - type: Transform
-      pos: -33.34922,66.81306
-      parent: 2
-  - uid: 27976
-    components:
-    - type: Transform
-      pos: -33.677345,66.43806
-      parent: 2
-  - uid: 27977
-    components:
-    - type: Transform
-      pos: -33.396095,66.42243
-      parent: 2
-  - uid: 27978
-    components:
-    - type: Transform
-      pos: -33.03672,66.48493
-      parent: 2
-  - uid: 27979
-    components:
-    - type: Transform
-      pos: -33.052345,66.85993
       parent: 2
 - proto: SubstationBasic
   entities:
@@ -184798,16 +184813,6 @@ entities:
     - type: Transform
       pos: -31.5,67.5
       parent: 2
-  - uid: 28510
-    components:
-    - type: Transform
-      pos: -32.5,67.5
-      parent: 2
-  - uid: 28511
-    components:
-    - type: Transform
-      pos: -33.5,67.5
-      parent: 2
   - uid: 28512
     components:
     - type: Transform
@@ -188358,23 +188363,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -29.5,109.5
-      parent: 2
-    - type: Fixtures
-      fixtures: {}
-- proto: WallmountTelevisionRandomSpawner
-  entities:
-  - uid: 29059
-    components:
-    - type: Transform
-      pos: 19.5,19.5
-      parent: 2
-    - type: Fixtures
-      fixtures: {}
-  - uid: 29060
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 6.5,13.5
       parent: 2
     - type: Fixtures
       fixtures: {}
@@ -211580,11 +211568,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -27.5,65.5
       parent: 2
-  - uid: 33320
-    components:
-    - type: Transform
-      pos: -33.5,67.5
-      parent: 2
   - uid: 33321
     components:
     - type: Transform
@@ -211630,22 +211613,22 @@ entities:
   - uid: 33328
     components:
     - type: Transform
-      pos: -32.80938,67.737206
+      pos: -32.575233,67.762215
       parent: 2
   - uid: 33329
     components:
     - type: Transform
-      pos: -32.71563,67.518456
+      pos: -32.52836,67.387215
       parent: 2
   - uid: 33330
     components:
     - type: Transform
-      pos: -33.517788,67.69033
+      pos: -32.543983,67.93409
       parent: 2
   - uid: 33331
     components:
     - type: Transform
-      pos: -33.377163,67.518456
+      pos: -32.512733,67.637215
       parent: 2
   - uid: 33332
     components:
@@ -211669,15 +211652,25 @@ entities:
       parent: 2
 - proto: WeaponDominator
   entities:
+  - uid: 27976
+    components:
+    - type: Transform
+      pos: -33.55961,67.84034
+      parent: 2
+  - uid: 27977
+    components:
+    - type: Transform
+      pos: -33.481483,67.668465
+      parent: 2
   - uid: 33336
     components:
     - type: Transform
-      pos: -31.90313,67.78408
+      pos: -33.543983,67.418465
       parent: 2
   - uid: 33337
     components:
     - type: Transform
-      pos: -31.77813,67.580956
+      pos: -33.49711,67.59034
       parent: 2
 - proto: WeaponEnergyTurretAI
   entities:

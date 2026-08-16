@@ -38,6 +38,8 @@ custom-frame-trait-repair-nanites-description = Your frame was built with an int
 
 custom-frame-trait-module-compatibility-name = Module Compatibility
 custom-frame-trait-module-compatibility-description = Your frame was built with the ability to support cyborg modules. (Allows cyborg modules to be installed)
+custom-frame-trait-module-compatibility-menu-selection = Cyborg Module Selection
+custom-frame-trait-module-compatibility-menu-description = So many possibilities..
 
 custom-frame-trait-overclocking-name = Overclocking
 custom-frame-trait-overclocking-description = Your frame was built with the ability to redirect power from your fans directly to your integrated servos, causing you to complete tasks faster. (Adds an ability that can improve your speed in things such as building, deconstructing, etc)

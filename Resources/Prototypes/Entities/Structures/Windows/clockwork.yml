@@ -2,7 +2,7 @@
   id: ClockworkWindow
   name: clockwork window
   description: Don't smudge up the brass down there.
-  parent: Window
+  parent: BaseWindow #FH 
   components:
   - type: Sprite
     drawdepth: WallTops

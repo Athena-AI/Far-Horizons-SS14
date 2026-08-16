@@ -61,16 +61,15 @@
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledShotgun
   name: Bulldog Bundle #FH
-  description: "Lean and mean: Contains the popular Bulldog Shotgun, three shotgun slug drums and a 12g buckshot drum." #, and a pair of Thermal Imaging Goggles.
+  description: "Lean and mean: Contains the popular Bulldog Shotgun & 2 shotgun Slug, Buckshot and Flechette drums." #FH" #, and a pair of Thermal Imaging Goggles.
   components:
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
         children:
         - id: WeaponShotgunBulldog
-        - id: MagazineShotgun #FH
-        - id: MagazineShotgunSlug
-          amount: 3 #FH
+        - id: AmmoSelection12GMagS #FH
+#       - id: MagazineShotgunSlug - FH
 #       - id: ThermalImagingGoggles
 
 - type: entity
@@ -185,16 +184,14 @@
         - id: MagazineCanisterPistolSP
         - id: MagazinePistolSubMachineGunSP
           amount: 5
-        - id: MagazineShotgun
-          amount: 3
         - id: MagazineRifle556SP
           amount: 4
         - id: MagazineMagnumRifleSP
           amount: 4
         - id: MagazineLightRifleBoxSP
           amount: 4
-        - id: MagazineShotgunSlug
-          amount: 4
+        - id: MagazineShotgunFlechette
+          amount: 7
         - id: SpeedLoaderMagnumAP
           amount: 2
         - id: SpeedLoaderMagnumSP

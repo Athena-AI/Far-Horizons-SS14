@@ -289,7 +289,7 @@
 - type: entity
   parent: DoorElectronicsNS
   id: DoorElectronicsNSDetective
-  suffix: Detective, NS, Locked
+  suffix: Inspector, NS, Locked
   components:
   - type: AccessReader
     access: [["DetectiveNS"]]

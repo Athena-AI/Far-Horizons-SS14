@@ -253,44 +253,6 @@
 
 
 
-#region General Armor
-
-- type: entity
-  parent: [ ClothingOuterArmorBaseFHSyndi, BaseSecurityContraband ]
-  id: ClothingOuterArmorReflectiveSyndi
-  name: Reflective Vest
-  suffix: NS
-  description: An armored vest with advanced shielding to protect against energy weapons.
-  components:
-  - type: Sprite
-    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/armor_reflec.rsi
-  - type: Clothing
-    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/armor_reflec.rsi
-  - type: Pierceable
-    level: Metal
-  - type: Armor
-    modifiers:
-      flatReductions:
-        Heat: 4
-      coefficients:
-        Blunt: 0.9
-        Slash: 0.9
-        Piercing: 0.9
-        Heat: 0.4 # this technically means it protects against fires pretty well? -heat is just for lasers and stuff, not atmos temperature
-  - type: LimbArmor
-    limbs:
-      ArmRight: {}
-      ArmLeft: {}
-      LegRight: {}
-      LegLeft: {}
-  - type: Reflect
-    reflectProb: 1
-    reflects:
-      - Energy
-    reflectingInHands: false
-  - type: Tag
-    tags:
-    - ReflectArmor
 
 #region Command
 
@@ -392,6 +354,8 @@
 - type: entity
   parent: [ BaseSecurityBartenderContraband, ClothingOuterArmorBaseFHSyndi ]
   id: ClothingOuterArmorBasicSyndi
+  name: Armor Vest
+  description: A standard Type I armored vest that provides decent protection against most types of damage.
   suffix: NS
   components:
   - type: Tag
@@ -535,6 +499,77 @@
       ArmLeft: {}
       LegRight: {}
       LegLeft: {}
+
+- type: entity
+  parent: [ ClothingOuterArmorBaseFHSyndi, BaseSecurityContraband ]
+  id: ClothingOuterArmorReflectiveSyndi
+  name: Reflective Vest
+  suffix: NS
+  description: An armored vest with advanced shielding to protect against energy weapons.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/armor_reflec.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/armor_reflec.rsi
+  - type: Pierceable
+    level: Metal
+  - type: Armor
+    modifiers:
+      flatReductions:
+        Heat: 4
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.4 # this technically means it protects against fires pretty well? -heat is just for lasers and stuff, not atmos temperature
+  - type: LimbArmor
+    limbs:
+      ArmRight: {}
+      ArmLeft: {}
+      LegRight: {}
+      LegLeft: {}
+  - type: Reflect
+    reflectProb: 1
+    reflects:
+      - Energy
+    reflectingInHands: false
+  - type: Tag
+    tags:
+    - ReflectArmor
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
+  id: ClothingOuterArmorRiotNeoSol
+  name: Riot Suit 
+  suffix: NS
+  description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/security.rsi ##Placeholder till Riot Armor resprited.
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/security.rsi ##Placeholder till Riot Armor resprited.
+  - type: Pierceable
+    level: Metal
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.7
+        Heat: 0.9
+        Caustic: 0.9
+  - type: LimbArmor
+    limbs:
+      ArmRight: {}
+      ArmLeft: {}
+      LegRight: {}
+      LegLeft: {}
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: GroupExamine
+  - type: Tag
+    tags:
+    - RiotArmor
 
 # Inspector (Detective)
 

@@ -194,7 +194,7 @@
 - type: listing
   id: UplinkHushpup
   name: uplink-hushpup-name
-  description: uplink-hushpup-desc
+  description: uplink-hushpup-desc-fh #FH
   icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/hushpup.rsi, state: icon }
   productEntity: BriefcaseWeaponHushpupFilled
   discountCategory: rareDiscounts
@@ -265,9 +265,9 @@
 - type: listing
   id: UplinkBulldogBundle
   name: uplink-bulldog-bundle-name
-  description: uplink-bulldog-bundle-desc
+  description: uplink-bulldog-bundle-desc-fh #FH
   icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
+  productEntity: BriefcaseWeaponBulldogFilled #FH
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 12

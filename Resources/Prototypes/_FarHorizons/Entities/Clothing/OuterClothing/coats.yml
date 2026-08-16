@@ -252,7 +252,7 @@
   - type: Sprite
     sprite: _FarHorizons/Clothing/OuterClothing/Coats/NeoSol/labcoat_chem.rsi 
   - type: Clothing
-    sprite: _FarHorizons/Clothing/OuterClothing/Coats//NeoSol/labcoat_chem.rsi 
+    sprite: _FarHorizons/Clothing/OuterClothing/Coats/NeoSol/labcoat_chem.rsi 
   - type: Pierceable
     level: Metal
   - type: Armor

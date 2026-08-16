@@ -1,3 +1,23 @@
+#region NanoTransen
+- type: entity
+  id: SecurityAmmoTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Security Ammo Techfab Machine Board
+  description: A machine printed circuit board for a Security Ammo Techfab.
+  suffix: NT
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: SecurityTechFabAmmo
+      stackRequirements:
+        Manipulator: 2
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+#region NeoSol
 - type: entity
   id: AutofabMachineCircuitboard
   parent: BaseMachineCircuitboard
@@ -158,3 +178,34 @@
     prototype: NSUniformPrinter
     stackRequirements:
       Manipulator: 3
+
+- type: entity
+  id: PrinterNSDocMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: NeoSol document printer machine board
+  description: A machine printed circuit board for an NeoSol document printer
+  components:
+    - type: MachineBoard
+      prototype: NSPrinterDoc
+      stackRequirements:
+        Steel: 3
+        Manipulator: 1
+        Glass: 1
+
+- type: entity
+  id: SecurityAmmoTechFabCircuitboardNS
+  parent: BaseMachineCircuitboard
+  name: Security Ammo Techfab Machine Board
+  description: A machine printed circuit board for a Security Ammo Techfab.
+  suffix: NS
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: SecurityTechFabAmmoNS
+      stackRequirements:
+        Manipulator: 2
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker

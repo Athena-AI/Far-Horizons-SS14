@@ -38116,7 +38116,7 @@ entities:
       - - Armory
       access:
       - - CentralCommand
-- proto: GunSafeShotgunEnforcer
+- proto: GunSafeShotgunSentinel
   entities:
   - uid: 5659
     components:

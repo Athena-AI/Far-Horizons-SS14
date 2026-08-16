@@ -1027,7 +1027,7 @@
 - type: entity
   parent: FHAirlockSyndicate
   id: FHAirlockLambdaLocked
-  suffix: Lambda, Locked
+  suffix: NT, Consortium, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1036,7 +1036,7 @@
 - type: entity
   parent: FHAirlockSyndicate
   id: FHAirlockLambdaSquadopLocked
-  suffix: Lambda SquadOp, Locked
+  suffix: NT, Lambda, SquadOp, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1045,7 +1045,7 @@
 - type: entity
   parent: FHAirlockExternal
   id: FHAirlockExternalLambdaLocked
-  suffix: External, Lambda, Locked
+  suffix: NT, External, Consortium, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1056,7 +1056,7 @@
 - type: entity
   parent: FHAirlockExternal
   id: FHAirlockExternalLambdaSquadopLocked
-  suffix: External, Squadop, Locked
+  suffix: NT, Lambda, External, SquadOp, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1457,7 +1457,7 @@
 - type: entity
   parent: FHAirlockSyndicateGlass
   id: FHAirlockLambdaGlassLocked
-  suffix: Lambda, Glass, Locked
+  suffix: NT, Consortium, Glass, Locked
   components:
     - type: ContainerFill
       containers:
@@ -1466,7 +1466,7 @@
 - type: entity
   parent: FHAirlockExternalGlass
   id: FHAirlockExternalGlassLambdaLocked
-  suffix: External, Glass, Lambda, Locked
+  suffix: NT, Consortium, External, Glass, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1477,7 +1477,7 @@
 - type: entity
   parent: FHAirlockSyndicateGlass
   id: FHAirlockLambdaSquadopGlassLocked
-  suffix: Squadop, Glass, Locked
+  suffix: NT, Lambda, SquadOp, Glass, Locked
   components:
     - type: ContainerFill
       containers:
@@ -1486,7 +1486,7 @@
 - type: entity
   parent: FHAirlockExternalGlass
   id: FHAirlockExternalGlassLambdaSquadopLocked
-  suffix: External, Glass, Squadop, Locked
+  suffix: NT, Lambda, External, Glass, SquadOp, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1803,7 +1803,7 @@
 - type: entity
   parent: FHAirlockNSNeoSolHighCommand
   id: FHAirlockNSNeoSolHighCommandLocked
-  suffix: NeiSolHighCommand, Locked
+  suffix: NeoSolHighCommand, Locked
   components:
   - type: ContainerFill
     containers:
@@ -2712,7 +2712,7 @@
 
 #region HighSecDoors
 - type: entity
-  parent: FHHighSecDoor
+  parent: FHHighSecDoorNeoSol
   id: FHHighSecNSNeoSolHighCommandLocked
   suffix: NeoSolHighCommand, NS, Locked
   components:
@@ -2721,7 +2721,7 @@
         board: [ DoorElectronicsNSHighCommand ]
 
 - type: entity
-  parent: FHHighSecDoor
+  parent: FHHighSecDoorNeoSol
   id: FHHighSecNSExecutiveLocked
   suffix: Executive, NS, Locked
   components:
@@ -2730,7 +2730,7 @@
         board: [ DoorElectronicsNSExecutive ]
 
 - type: entity
-  parent: FHHighSecDoor
+  parent: FHHighSecDoorNeoSol
   id: FHHighSecNSCommandantLocked
   suffix: Commandant, NS, Locked
   components:
@@ -2739,7 +2739,7 @@
         board: [ DoorElectronicsNSCommandant ]
 
 - type: entity
-  parent: FHHighSecDoor
+  parent: FHHighSecDoorNeoSol
   id: FHHighSecNSArmoryLocked
   suffix: Armory, NS, Locked
   components:
@@ -2763,6 +2763,15 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsExternal ]
+
+- type: entity
+  parent: FHAirlockShuttle
+  id: FHAirlockNSExternalShuttleLocked
+  suffix: NS, External, Docking, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNSExternal ]
 
 - type: entity
   parent: FHAirlockShuttleSyndicate
@@ -2804,6 +2813,15 @@
       board: [ DoorElectronicsExternal ]
 
 - type: entity
+  parent: FHAirlockGlassShuttle
+  id: FHAirlockNSExternalGlassShuttleLocked
+  suffix: NS, External, Glass, Docking, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNSExternal ]
+
+- type: entity
   parent: FHAirlockGlassShuttleSyndicate
   id: FHAirlockExternalGlassShuttleSyndicateLocked
   suffix: Syndicate, Locked, Glass
@@ -2834,6 +2852,17 @@
 
 - type: entity
   parent: FHAirlockGlassShuttle
+  id: FHAirlockNSExternalGlassShuttleEmergencyLocked
+  suffix: NS, External, Emergency, Glass, Docking, Locked
+  components:
+  - type: PriorityDock
+    tag: DockEmergency
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNSExternal ]
+
+- type: entity
+  parent: FHAirlockGlassShuttle
   id: FHAirlockExternalGlassShuttleArrivals
   suffix: External, Arrivals, Glass, Docking
   components:
@@ -2842,6 +2871,17 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsExternal ]
+
+- type: entity
+  parent: FHAirlockGlassShuttle
+  id: FHAirlockNSExternalGlassShuttleArrivals
+  suffix: NS, External, Arrivals, Glass, Docking
+  components:
+  - type: PriorityDock
+    tag: DockArrivals
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNSExternal ]
 
 - type: entity
   parent: FHAirlockGlassShuttle
@@ -2856,3 +2896,17 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsExternal ]
+
+- type: entity
+  parent: FHAirlockGlassShuttle
+  id: FHAirlockNSExternalGlassShuttleEscape
+  suffix: NS, External, Escape 3x4, Glass, Docking
+  components:
+  - type: GridFill
+    addComponents:
+    - type: IFF
+      flags:
+      - HideLabel
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNSExternal ]

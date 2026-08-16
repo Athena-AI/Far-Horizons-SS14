@@ -698,7 +698,40 @@
     tags:
     - UtilityBelt
     - WhitelistChameleon
-    
+
+#region Service
+- type: entity
+  parent: ClothingBeltChef
+  id: ClothingBeltChefNS
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Belt/NeoSol/chef.rsi 
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Belt/NeoSol/chef.rsi 
+
+- type: entity
+  parent: ClothingBeltJanitor
+  id: ClothingBeltJanitorNS
+  suffix: NS
+  description: A belt used to hold most janitorial supplies.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Belt/NeoSol/janitor.rsi 
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Belt/NeoSol/janitor.rsi 
+
+- type: entity
+  parent: ClothingBeltPlant
+  id: ClothingBeltPlantNS
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Belt/NeoSol/plant.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Belt/NeoSol/plant.rsi
+
+
 #region Security
 
 # Corpsman (Corpsman)
@@ -743,6 +776,55 @@
     sprite: _FarHorizons/Clothing/Belt/NeoSol/security.rsi
   - type: Clothing
     sprite: _FarHorizons/Clothing/Belt/NeoSol/security.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: Storage
+    grid: # Starlight
+    - 0,0,1,0 #left
+    - 0,1,0,1 #left - cube
+    - 3,0,10,1
+    - 12,0,13,0 #right
+    - 12,1,12,1 #right - cube
+    whitelist:
+      tags:
+      - CigPack
+      - Taser
+      - SecBeltEquip
+      - Radio
+      - Sidearm
+      - MagazinePistol
+      - MagazineMagnum
+      - CombatKnife
+      - Truncheon
+      - HandGrenade
+      components:
+      - Stunbaton
+      - FlashOnTrigger
+      - SmokeOnTrigger
+      - Flash
+      - Handcuff
+      - BallisticAmmoProvider
+      - CartridgeAmmo
+      - DoorRemote
+      - Whistle
+      - BalloonPopper
+      - Injector #FH
+  - type: ItemMapper
+    sprite: *BeltOverlay
+    mapLayers:
+      flashbang:
+        whitelist:
+          components:
+          - FlashOnTrigger
+      stunbaton:
+        whitelist:
+          components:
+          - Stunbaton
+      tear_gas_grenade:
+        whitelist:
+          components:
+          - SmokeOnTrigger
+  - type: Appearance
 
 # Syndicate Nukies
 

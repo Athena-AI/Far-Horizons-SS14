@@ -54,3 +54,25 @@ uplink-uzi-bundle-desc = Contains the Type U3 Uzi loaded with 9mm SP and an Ammo
 
 uplink-ammo-bundle-name-fh = Ammo Bundle Selector
 uplink-ammo-bundle-desc-fh = Reloading! Contains 4-5 magazines and one canister each of your choice for all nuclear operative weapons, except for the China-Lake and M81A1
+
+uplink-nightvision-eyes-desc-fh = Allows you to see in the dark but makes you more vulnerable to flashes. 
+uplink-thermalvision-eyes-desc-fh = Allows you to see in the dark and detect creatures through walls but makes you more vulnerable to flashes. 
+uplink-mantis-blade-arms-desc-fh = Originally used as a simple construction tool, now turned into hidden blades that can extend from your arm while still keeping its destructive prying skill. Truly a sight to behold. 
+uplink-advanced-claws-desc-fh = A cybernetic implant for hands. Allows an agent to extend sharp plasteel claws at will, and hide them away just as quickly. 
+uplink-forensics-implant-desc-fh = A cybernetic implant for hands. Removes an agent's fingerprints so as to not leave evidence of a crime. Does not work through gloves. 
+uplink-syndie-implant-desc-fh = A cybernetic eye implant. Enables an agent to see information about the station crew, humanoids and syndicate without any glasses. 
+
+uplink-bulldog-bundle-desc-fh = Lean and mean: Contains the popular Bulldog Shotgun and an Ammo Selector.
+uplink-minotaur-desc-fh = Lean and mean: Contains smooth, powerful, highly illegal Shotgun and an Ammo Selector.
+
+uplink-hypo-claws-left-name = Left Hand HypoClaws Implant 
+uplink-hypo-claws-right-name = Right Hand HypoClaws Implant 
+uplink-hypo-claws-desc = Sharp, retractable plasteel claws, with hypo injector technology to inject chems into victims. Can be retracted and hidden on demand.
+uplink-bunker-breaker-arm-left-name = Left Bunker Breaker Arm
+uplink-bunker-breaker-arm-right-name = Right Bunker Breaker Arm
+uplink-bunker-breaker-desc = Augmented arm with all the tools needed to go where you dont belong, including a jaws of death.
+uplink-ifa30-left-arm-name = Left IFA-30 Case
+uplink-ifa30-right-arm-name = Right IFA-30 Case
+uplink-ifa30-arms-desc = A modern IFA-30 SMG for mobile operations integrated into a Cybernetic Arm, comes with an Ammo Selector.
+
+uplink-hushpup-desc-fh = A powerful silenced shotgun with a low magazine capacity. Uses .50 shotgun ammo. Comes with an Ammo Selector.

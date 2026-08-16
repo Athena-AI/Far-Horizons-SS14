@@ -192,7 +192,7 @@
 - type: entity
   id: SuitStorageEngi
   parent: SuitStorageBaseFH # FH
-  suffix: Station Engineer
+  suffix: NT, Station Engineer #FH
   components:
   - type: EntityTableContainerFill
     containers:
@@ -224,7 +224,7 @@
 - type: entity
   id: SuitStorageAtmos
   parent: SuitStorageBaseFH # FH
-  suffix: Atmospheric Technician
+  suffix: NT, Atmospheric Technician #FH
   components:
   - type: EntityTableContainerFill
     containers:

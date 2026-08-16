@@ -274,7 +274,7 @@
   parent: ClothingBeltWebbingBase
   id: ClothingBeltSecurityWebbingSyndi
   name: Security Carrier
-  description: Unique and versatile chest rig, can hold security gear.
+  description: Unique and versatile chest rig, can hold spare magazines.
   suffix: NS
   components:
   - type: Sprite

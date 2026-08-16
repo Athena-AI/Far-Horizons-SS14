@@ -97,7 +97,7 @@
   - type: SolutionContainerManager
     solutions:
       hypospray:
-        maxVol: 20 #FH-Edit
+        maxVol: 10
   - type: RefillableSolution
     solution: hypospray
   - type: SolutionContainerVisuals
@@ -106,13 +106,6 @@
     solutionName: hypospray
   - type: UseDelay
     delay: 0.5
-  #FH Start
-  - type: Injector
-    activeModeProtoId: AdvancedJetInjectorDynamicMode
-    allowedModes:
-    - AdvancedJetInjectorDynamicMode
-    - AdvancedJetInjectorInjectMode
-  #FH End
 
 - type: entity
   parent: BaseHypospray

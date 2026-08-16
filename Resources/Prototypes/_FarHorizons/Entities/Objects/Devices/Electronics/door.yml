@@ -10,14 +10,8 @@
       state: syndicate_door_electronics
     - type: DoorElectronics
       accessGroups:
-      - GeneralNS
-      - SecurityNS
-      - Cargo
-      - Executive
-      - ResearchNS
-      - MedicalNS
-      - ServiceNS
-      - EngineeringNS
+      - AllAccess
+      - AllAccessNS
 
 - type: entity
   id: BaseDoorElectronicsHighCommand
@@ -25,14 +19,7 @@
   name: High Command Door Electronics
   description: An electronics board used in doors and airlocks.
   components:
-    - type: DoorElectronics
-      accessGroups:
-      - GeneralNS
-      - SecurityNS
-      - Cargo
-      - Executive
-      - ResearchNS
-      - MedicalNS
-      - ServiceNS
-      - EngineeringNS
-      - NSHighCommand
+  - type: DoorElectronics
+    accessGroups:
+    - AllAccess
+    - AllAccessNS

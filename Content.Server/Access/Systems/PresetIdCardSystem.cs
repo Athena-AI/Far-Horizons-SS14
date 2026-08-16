@@ -10,13 +10,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Access.Systems;
 
-public sealed class PresetIdCardSystem : EntitySystem
+public sealed partial class PresetIdCardSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IdCardSystem _cardSystem = default!;
-    [Dependency] private readonly SharedAccessSystem _accessSystem = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly IServerFactionManager _factions = default!; // Far Horizons
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IdCardSystem _cardSystem = default!;
+    [Dependency] private SharedAccessSystem _accessSystem = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private IServerFactionManager _factions = default!; // Far Horizons
     public override void Initialize()
     {
         SubscribeLocalEvent<PresetIdCardComponent, MapInitEvent>(OnMapInit);
@@ -88,8 +88,13 @@ public sealed class PresetIdCardSystem : EntitySystem
         _cardSystem.TryChangeJobTitle(uid, jobName);
         _cardSystem.TryChangeJobDepartment(uid, job);
 
-        // Far Horizons faction job icon override
+        // Far Horizons start
+        // Faction job icon override
         if (_prototypeManager.Resolve(_factions.OverrideJobIcon((faction, job)), out var jobIcon))
             _cardSystem.TryChangeJobIcon(uid, jobIcon);
+        
+        // SetFaction
+        _cardSystem.TryChangeFaction(uid, id.Faction);
+        // Far Horizons end
     }
 }

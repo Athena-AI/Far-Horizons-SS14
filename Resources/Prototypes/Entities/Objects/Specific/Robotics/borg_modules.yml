@@ -772,6 +772,7 @@
           - PowerCell
           - PowerCellSmall
           - PowerCage
+          - PowerCellMicroreactor #FH
         #STARLIGHT end
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
@@ -933,7 +934,27 @@
     hands:
     - item: DefibrillatorOneHandedUnpowered
     - item: HandheldHealthAnalyzer
-    - item: AdvancedJetInjector
+    #FH Start
+    - item: JetInjector
+    - item: ChemistryEmptyBottle01
+      hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: ChemistryEmptyBottle01
+        whitelist:
+          components:
+          - FitsInDispenser
+          tags:
+          - Bottle
+    - item: ChemistryEmptyBottle01
+      hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: ChemistryEmptyBottle01
+        whitelist:
+          components:
+          - FitsInDispenser
+          tags:
+          - Bottle
+    #FH End
     - item: Gauze
       hand:
         emptyLabel: borg-slot-topicals-empty
@@ -1055,7 +1076,7 @@
   - type: ItemBorgModule
     hands:
     - item: HandheldHealthAnalyzer
-    - item: BorgHypo
+    - item: AdvancedJetInjector #FH
     - item: AutoMenderBrute
     - item: AutoMenderBurn
     - item: Syringe

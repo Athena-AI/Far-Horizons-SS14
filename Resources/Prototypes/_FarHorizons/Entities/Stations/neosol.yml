@@ -1,0 +1,92 @@
+﻿- type: entity
+  id: BaseNeosolHighCommand
+  abstract: true
+  components:
+    - type: StationCentcomm
+      maps:
+        - "/Maps/_FarHorizons/SHCs/shc.yml"
+        
+- type: entity
+  abstract: true
+  id: BaseStationNeoSol
+  components:
+    - type: NpcFactionMember
+      factions:
+        - NeoSol
+    - type: FactionalAccess
+      equivalentAccessList: 
+        EmergencyShuttleRepealAll: EmergencyShuttleRepealAllNS 
+        Captain: Commandant
+        HeadOfPersonnel: PersonnelManager
+        ChiefEngineer: Foreman
+        ChiefMedicalOfficer: MedicalDirector
+        HeadOfSecurity: Marshal
+        ResearchDirector: EpistemicsProvost
+        Command: Executive
+        Cryogenics: CryogenicsNS
+        Security: SecurityNS
+        Detective: DetectiveNS
+        Armory: ArmoryNS
+        Brig: BrigNS
+        Lawyer: LawyerNS
+        Engineering: EngineeringNS
+        Medical: MedicalNS
+        Research: ResearchNS
+        Service: ServiceNS
+        Maintenance: MaintenanceNS
+        External: ExternalNS
+        Janitor: JanitorNS
+        Theatre: TheatreNS
+        Bar: BarNS
+        Chemistry: ChemistryNS
+        Kitchen: KitchenNS
+        Chapel: ChapelNS
+        Hydroponics: HydroponicsNS
+        Atmospherics: AtmosphericsNS
+        GenpopEnter: GenpopEnterNS
+        GenpopLeave: GenpopLeaveNS
+        Cadet: CadetNS
+        Ntrep: NSRep
+        Brigmedic: BrigmedicNS
+        BlueShield: RedSword
+        Robotics: RoboticsNS
+        Surgery: SurgeryNS
+        Paramedic: ParamedicNS
+
+- type: entity
+  id: StandardNeosolStation
+  parent:
+    - BaseStation
+    - BaseStationNews
+    - BaseStationCargo
+    - BaseStationJobsSpawning
+    - BaseStationRecords
+    - BaseStationArrivals
+    - BaseStationGateway
+    - BaseStationShuttles
+    - BaseNeosolHighCommand
+    - BaseStationEvacuation
+    - BaseStationAlertLevels
+    - BaseStationMagnet
+    - BaseStationExpeditions
+    - BaseStationSalvageJobs
+    - BaseStationSiliconLawCrewsimov
+    - BaseStationAllEventsEligible
+    - BaseStationNeoSol
+    - BaseStationDeliveries
+    - BaseStationCryoTeleportation #Starlight
+    - BaseStationAlertArmories #Starlight
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Transform
+
+- type: entity
+  id: NeosolHighCommand
+  parent:
+    - BaseStation
+    - BaseStationAlertLevels
+    - BaseStationNeoSol
+    - BaseStationCryoTeleportation
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Transform

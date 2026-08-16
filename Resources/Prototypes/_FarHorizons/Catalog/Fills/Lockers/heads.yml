@@ -162,7 +162,7 @@
     - id: PinpointerNuclear
     - id: PlushieNuke
       prob: 0.1
-    - id: RubberStampCaptain
+    - id: RubberStampCommandant
     - id: SpaceCash1000
     - id: ClothingEyesGlassesCommandSyndi
     - id: ClothingEyesHudCommandSyndi
@@ -185,7 +185,7 @@
   table: !type:AllSelector
     children:
     - !type:NestedSelector
-      tableId: LockerFillCaptainNoLaser
+      tableId: LockerFillCommandantNoLaser
     - id: WeaponAntiqueLaser
 
 - type: entity
@@ -240,16 +240,16 @@
       prob: 0.25
     - id: ClothingBackpackIan
       prob: 0.5
-    - id: ClothingHeadsetHoP
+    - id: ClothingHeadsetPMNS
     - id: ClothingNeckGoldmedal
     - id: DoorRemoteServiceNS
-    - id: HoPIDCard
+    - id: PersonnelManagerIDCard
     - id: IDComputerCircuitboardNS
     - id: FundingAllocationComputerCircuitboard
     - id: CargoRequestServiceComputerCircuitboard
     - id: RubberStampApproved
     - id: RubberStampDenied
-    - id: RubberStampHop
+    - id: RubberStampPM
     - id: ClothingEyesGlassesCommandSyndi
     - id: ClothingEyesHudCommandSyndi
     - id: PrintedDocumentGreenshiftAlert
@@ -296,7 +296,7 @@
     - id: SheetSteel
     - id: SheetGlass
     - id: RCDAmmo
-    - id: RubberStampCE
+    - id: RubberStampForeman
     - id: MetalFoamGrenade
     - id: PlushieMatthew
       prob: 0.15
@@ -373,7 +373,7 @@
         presets: 
         - Greenshift 
         - Sandbox 
-    - id: RubberStampCMO 
+    - id: RubberStampMD
     - id: PlushieLizardJobChiefmedicalofficer
       prob: 0.02
 
@@ -428,7 +428,7 @@
     - id: ClothingHeadsetAltScience
     - id: DoorRemoteResearchNS
     - id: HandTeleporter
-    - id: RubberStampRd
+    - id: RubberStampEP
     - id: RDDiploma 
     - id: PrintedDocumentGreenshiftAlert 
       conditions: 
@@ -500,8 +500,9 @@
     - id: ClothingShoesBootsJackSyndiFilled
     - id: DoorRemoteSecurityNS
     - id: HoloprojectorSecurity
-    - id: RubberStampHos
+    - id: RubberStampMarshal
     - id: SecurityTechFabCircuitboard
+    - id: SecurityAmmoTechFabCircuitboardNS
     - id: CargoRequestSecurityComputerCircuitboard
     - id: WeaponDisabler
     - id: WantedListCartridge
@@ -583,7 +584,7 @@
         - id: WeaponDisabler
         - id: LuxuryPen
         - id: BoxFolderClipboardFilled
-        - id: PrinterDocFlatpack
+        - id: NSDocPrinterFlatpack
         - id: FaxMachineFlatpack
         - id: PlushieEmmie
         - id: ClothingOuterHardsuitNtrepSyndi
@@ -628,9 +629,9 @@
         - id: HandheldGPSBasic
         - id: ClothingNeckCloakRsoElite
         - id: ClothingNeckCloakRsoElite
-        - id: RadioHandheldSecurity
+        - id: RadioHandheldSecurityNS
         - id: ClothingOuterCoatRedSword
-        - id: RubberStampBSO
+        - id: RubberStampRSO
 
 - type: entity
   id: LockerRSOFilledBluespaced
@@ -641,3 +642,11 @@
   - type: TriggerOnSpawn
   - type: SpawnOnTrigger
     proto: EffectFlashBluespace
+
+- type: entity
+  id: LockerFreezerNSVaultFilled
+  suffix: NS, Vault, Filled
+  parent: LockerFreezerVaultFilled
+  components:
+  - type: AccessReader
+    access: [ [ "Executive" ] ]

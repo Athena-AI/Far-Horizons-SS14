@@ -433,6 +433,42 @@
     tags:
     - SecurityHelmet
 
+- type: entity
+  parent: [ClothingHeadHelmetBase, BaseSecurityContraband]
+  id: ClothingHeadHelmetRiotNS
+  name: Light Riot Helmet
+  suffix: NS
+  description: It's a helmet specifically designed to protect against close range attacks.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/security.rsi ##Placeholder till Riot Armor resprited.
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/security.rsi ##Placeholder till Riot Armor resprited.
+  - type: IngestionBlocker
+  - type: Pierceable
+    level: Metal
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.95
+  - type: LimbArmor
+    limbs:
+      Head:
+        coefficients:
+          Blunt: 0.4
+          Slash: 0.4
+          Piercing: 0.7
+          Heat: 0.9
+          Caustic: 0.9
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+  - type: Tag
+    tags:
+    - RiotArmor
+
 # SWAT Helmet
 
 - type: entity

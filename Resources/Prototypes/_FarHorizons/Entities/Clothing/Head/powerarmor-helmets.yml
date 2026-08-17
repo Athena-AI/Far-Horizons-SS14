@@ -1,0 +1,59 @@
+- type: entity
+  id: PowerArmorHelmetNaked
+  name: Power Armor Helmet
+  components:
+  - type: Item
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Head/PowerArmor/powerarmor.rsi
+    layers:
+    - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
+      state: underarmor-helmet
+    - map: [ "enum.PowerArmorVisualLayers.Head" ]
+  - type: Clothing
+    equipSound: /Audio/Mecha/mechmove03.ogg
+    unequipSound: /Audio/Mecha/mechmove03.ogg
+    quickEquip: false
+    slots: [ HEAD ]
+    clothingVisuals: 
+      head:
+      - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
+        state: underarmor-helmet
+      - map: [ "enum.PowerArmorVisualLayers.Head" ]
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
+  - type: Pierceable
+    level: Metal
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.90
+        Radiation: 0.25
+  - type: LimbArmor
+    limbs:
+      Head: {}
+  - type: ContainerContainer
+    containers:
+      head: !type:ContainerSlot {}
+  - type: GroupExamine
+  - type: IngestionBlocker
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+    - FacialHair
+  - type: PowerArmor

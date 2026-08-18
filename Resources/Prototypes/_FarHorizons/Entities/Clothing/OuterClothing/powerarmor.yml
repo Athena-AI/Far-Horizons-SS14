@@ -65,11 +65,8 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
-      chest: !type:ContainerSlot {}
-      rarm: !type:ContainerSlot {}
-      larm: !type:ContainerSlot {}
-      rleg: !type:ContainerSlot {}
-      lleg: !type:ContainerSlot {}
+      parts: !type:Container
+        ents: []
   - type: GroupExamine
   - type: Tag
     tags:
@@ -100,3 +97,11 @@
   components:
   - type: ToggleableClothing
     clothingPrototype: PowerArmorHelmetNTJuggernautFilled
+  - type: ContainerFill
+    containers:
+      parts:
+        - PowerArmorChestNTJuggernaut
+        - PowerArmorLArmNTJuggernaut
+        - PowerArmorRArmNTJuggernaut
+        - PowerArmorLLegNTJuggernaut
+        - PowerArmorRLegNTJuggernaut

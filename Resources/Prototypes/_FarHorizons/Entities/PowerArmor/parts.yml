@@ -8,12 +8,12 @@
   - type: Clickable
   - type: Appearance
   - type: Sprite
-    sprite: _FarHorizons/Clothing/Head/PowerArmor/powerarmor.rsi
+    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
   - type: PowerArmorPart
     partType: Head
   - type: Damageable
 
-#region Head
+#region Base Parts
 - type: entity
   id: PowerArmorHelmetBase
   parent: PowerArmorPartBase
@@ -23,15 +23,52 @@
     partType: Head
 
 - type: entity
-  id: PowerArmorHelmetNTJuggernaut
-  parent: PowerArmorHelmetBase
-  name: NanoTrasen Heavy Hardsuit Helmet
-  description: A helmet developed by Telos Industries made of pure plasteel that can take excessive amounts of punishment before requiring repairs.
+  id: PowerArmorChestBase
+  parent: PowerArmorPartBase
+  abstract: true
   components:
-  - type: Sprite
-    layers: 
-    - map: [ "enum.PowerArmorVisualLayers.Head"]
-      state: equipped-head
+  - type: PowerArmorPart
+    partType: Chest
+
+- type: entity
+  id: PowerArmorLArmBase
+  parent: PowerArmorPartBase
+  abstract: true
+  components:
+  - type: PowerArmorPart
+    partType: LArm
+
+- type: entity
+  id: PowerArmorRArmBase
+  parent: PowerArmorPartBase
+  abstract: true
+  components:
+  - type: PowerArmorPart
+    partType: RArm
+
+- type: entity
+  id: PowerArmorLLegBase
+  parent: PowerArmorPartBase
+  abstract: true
+  components:
+  - type: PowerArmorPart
+    partType: LLeg
+
+- type: entity
+  id: PowerArmorRLegBase
+  parent: PowerArmorPartBase
+  abstract: true
+  components:
+  - type: PowerArmorPart
+    partType: RLeg
+
+#region NanoTrasen
+- type: entity
+  id: PowerArmorNTJuggernaut
+  parent: PowerArmorPartBase
+  name: NanoTrasen Heavy Hardsuit
+  abstract: true
+  components:
   - type: PowerArmorPart
     modifiers:
       flatReductions:
@@ -56,8 +93,71 @@
       - !type:DoActsBehavior
         acts: ["Breakage"]
 
+#region Head
+
+- type: entity
+  id: PowerArmorHelmetNTJuggernaut
+  parent: [ PowerArmorHelmetBase, PowerArmorNTJuggernaut]
+  name: NanoTrasen Heavy Hardsuit Helmet
+  description: A helmet developed by Telos Industries made of pure plasteel that can take excessive amounts of punishment before requiring repairs.
+  components:
+  - type: Sprite
+    layers: 
+    - map: [ "enum.PowerArmorVisualLayers.Head"]
+      state: equipped-head
+
 #region Chest
+
+- type: entity
+  id: PowerArmorChestNTJuggernaut
+  parent: [PowerArmorChestBase, PowerArmorNTJuggernaut]
+  name: NanoTrasen Heavy Hardsuit Chest
+  components:
+  - type: Sprite
+    layers: 
+    - map: [ "enum.PowerArmorVisualLayers.Chest"]
+      state: chest
 
 #region Arms
 
+- type: entity
+  id: PowerArmorLArmNTJuggernaut
+  parent: [PowerArmorLArmBase, PowerArmorNTJuggernaut]
+  name: NanoTrasen Heavy Hardsuit Left Arm
+  components:
+  - type: Sprite
+    layers: 
+    - map: [ "enum.PowerArmorVisualLayers.LArm"]
+      state: larm
+
+- type: entity
+  id: PowerArmorRArmNTJuggernaut
+  parent: [PowerArmorRArmBase, PowerArmorNTJuggernaut]
+  name: NanoTrasen Heavy Hardsuit Right Arm
+  components:
+  - type: Sprite
+    layers: 
+    - map: [ "enum.PowerArmorVisualLayers.RArm"]
+      state: rarm
+
 #region Legs
+
+- type: entity
+  id: PowerArmorLLegNTJuggernaut
+  parent: [PowerArmorLLegBase, PowerArmorNTJuggernaut]
+  name: NanoTrasen Heavy Hardsuit Left Leg
+  components:
+  - type: Sprite
+    layers: 
+    - map: [ "enum.PowerArmorVisualLayers.LLeg"]
+      state: lleg
+
+- type: entity
+  id: PowerArmorRLegNTJuggernaut
+  parent: [PowerArmorRLegBase, PowerArmorNTJuggernaut]
+  name: NanoTrasen Heavy Hardsuit Right Leg
+  components:
+  - type: Sprite
+    layers: 
+    - map: [ "enum.PowerArmorVisualLayers.RLeg"]
+      state: rleg

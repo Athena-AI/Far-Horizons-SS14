@@ -7,9 +7,9 @@
   - type: InteractionOutline
   - type: Appearance
   - type: Sprite
-    sprite: _FarHorizons/Clothing/Head/PowerArmor/powerarmor.rsi
+    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
     layers:
-    - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
+    - map: [ "enum.PowerArmorVisualLayers.UnderArmorHelmet" ]
       state: underarmor-helmet
     - map: [ "enum.PowerArmorVisualLayers.Head" ]
   - type: Clothing
@@ -19,7 +19,7 @@
     slots: [ HEAD ]
     clothingVisuals: 
       head:
-      - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
+      - map: [ "enum.PowerArmorVisualLayers.UnderArmorHelmet" ]
         state: underarmor-helmet
       outerClothing:
       - map: [ "enum.PowerArmorVisualLayers.Head" ]
@@ -44,7 +44,8 @@
       Head: {}
   - type: ContainerContainer
     containers:
-      head: !type:ContainerSlot {}
+      parts: !type:Container
+        ents: []
   - type: GroupExamine
   - type: IngestionBlocker
   - type: Tag
@@ -67,5 +68,5 @@
   components:
   - type: ContainerFill
     containers:
-      head:
+      parts:
       - PowerArmorHelmetNTJuggernaut

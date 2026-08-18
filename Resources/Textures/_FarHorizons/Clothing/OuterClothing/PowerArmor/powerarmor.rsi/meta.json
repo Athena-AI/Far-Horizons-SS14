@@ -8,11 +8,39 @@
   },
   "states": [
     {
+        "name": "underarmor-helmet",
+        "directions": 4
+    },
+    {
         "name": "underarmor",
         "directions": 4
     },
     {
+        "name": "equipped-head",
+        "directions": 4
+    },
+    {
+        "name": "equipped-head-light",
+        "directions": 4
+    },
+    {
         "name": "chest",
+        "directions": 4
+    },
+    {
+        "name": "larm",
+        "directions": 4
+    },
+    {
+        "name": "rarm",
+        "directions": 4
+    },
+    {
+        "name": "lleg",
+        "directions": 4
+    },
+    {
+        "name": "rleg",
         "directions": 4
     }
 ]

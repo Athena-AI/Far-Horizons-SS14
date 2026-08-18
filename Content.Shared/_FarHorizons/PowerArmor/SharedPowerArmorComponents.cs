@@ -1,5 +1,6 @@
 
 using Content.Shared.Damage;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
@@ -10,7 +11,7 @@ public sealed partial class PowerArmorComponent : Component
     
 }
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PowerArmorPartComponent : Component
 {
     /// <summary>
@@ -21,12 +22,16 @@ public sealed partial class PowerArmorPartComponent : Component
 
     [DataField(required: true)]
     public PowerArmorVisualLayers PartType = default;
+
+    [ViewVariables, AutoNetworkedField]
+    public bool isBroken = false;
 }
 
 [Serializable, NetSerializable]
 public enum PowerArmorVisualLayers : byte
 {
     UnderArmor,
+    UnderArmorHelmet,
     Chest,
     Head,
     RArm,

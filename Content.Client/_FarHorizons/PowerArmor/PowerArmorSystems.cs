@@ -2,7 +2,7 @@
 using Content.Client.Clothing;
 using Content.Client.Items.Systems;
 using Content.Shared._FarHorizons.PowerArmor;
-using Content.Shared.Item;
+using Content.Shared.Destructible;
 using Robust.Client.GameObjects;
 using Robust.Shared.Containers;
 
@@ -12,41 +12,30 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private ItemSystem _item = default!;
-
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<PowerArmorComponent, EntInsertedIntoContainerMessage>(OnInserted, before: [typeof(ClientClothingSystem)]);
-        SubscribeLocalEvent<PowerArmorComponent, EntRemovedFromContainerMessage>(OnRemoved, before: [typeof(ClientClothingSystem)]);
-        SubscribeLocalEvent<PowerArmorComponent, VisualsChangedEvent>(OnUpdate, before: [typeof(ClientClothingSystem)]);
+        SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnInserted);
+        SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnRemoved);
     }
 
-    private void OnInserted(Entity<PowerArmorComponent> ent, ref EntInsertedIntoContainerMessage args) 
-        => HandleReparent(ent, args.Entity);
+    private void OnInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args) 
+        => HandleReparent(ent, args.Container.Owner);
 
-    private void OnRemoved(Entity<PowerArmorComponent> ent, ref EntRemovedFromContainerMessage args) 
-        => HandleReparent(ent, args.Entity, true);
+    private void OnRemoved(Entity<PowerArmorPartComponent> ent, ref EntGotRemovedFromContainerMessage args) 
+        => HandleReparent(ent, args.Container.Owner, true);
 
-    private void HandleReparent(Entity<PowerArmorComponent> ent, EntityUid part, bool remove=false)
+    private void HandleReparent(Entity<PowerArmorPartComponent> ent, EntityUid powerArmor, bool remove=false)
     {
-        if (!TryComp<PowerArmorPartComponent>(part, out var papComp))
-            return;
-
-        if(!remove && _sprite.TryGetLayer(part, papComp.PartType, out var spriteData, false))
+        
+        if(!remove && _sprite.TryGetLayer(ent.Owner, ent.Comp.PartType, out var spriteData, false) && !ent.Comp.isBroken)
         {
-            _sprite.LayerSetVisible(ent.Owner, papComp.PartType, true);
-            _sprite.LayerSetRsi(ent.Owner, papComp.PartType, spriteData.RSI, spriteData.State);
+            _sprite.LayerSetVisible(powerArmor, ent.Comp.PartType, true);
+            _sprite.LayerSetRsi(powerArmor, ent.Comp.PartType, spriteData.RSI, spriteData.State);
         }
         else
         {
-            _sprite.LayerSetVisible(ent.Owner, papComp.PartType, false);
+            _sprite.LayerSetVisible(powerArmor, ent.Comp.PartType, false);
         }
-
-        _item.VisualsChanged(ent.Owner);
-    }
-
-    private void OnUpdate(Entity<PowerArmorComponent> ent, ref VisualsChangedEvent args)
-    {
-        
     }
 }

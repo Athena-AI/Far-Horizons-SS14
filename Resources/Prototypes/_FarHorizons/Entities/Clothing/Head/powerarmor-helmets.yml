@@ -5,6 +5,7 @@
   - type: Item
   - type: Clickable
   - type: InteractionOutline
+  - type: Appearance
   - type: Sprite
     sprite: _FarHorizons/Clothing/Head/PowerArmor/powerarmor.rsi
     layers:
@@ -20,6 +21,7 @@
       head:
       - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
         state: underarmor-helmet
+      outerClothing:
       - map: [ "enum.PowerArmorVisualLayers.Head" ]
   - type: PressureProtection
     highPressureMultiplier: 0.3
@@ -57,3 +59,13 @@
     - HeadSide
     - FacialHair
   - type: PowerArmor
+
+- type: entity
+  parent: PowerArmorHelmetNaked
+  id: PowerArmorHelmetNTJuggernautFilled
+  suffix: NT, Filled
+  components:
+  - type: ContainerFill
+    containers:
+      head:
+      - PowerArmorHelmetNTJuggernaut

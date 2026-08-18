@@ -6,6 +6,7 @@
   - type: Item
   - type: Clickable
   - type: InteractionOutline
+  - type: Appearance
   - type: Sprite
     sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
     layers: 
@@ -91,3 +92,11 @@
   - type: ToggleableClothing
     clothingPrototype: PowerArmorHelmetNaked
   - type: PowerArmor
+
+- type: entity
+  parent: PowerArmorNaked
+  id: PowerArmorNTJuggernautFilled
+  suffix: NT, Filled
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: PowerArmorHelmetNTJuggernautFilled

@@ -1,14 +1,18 @@
 
+using System.Linq;
 using Content.Shared._FarHorizons.LimbDamage.Components;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Inventory;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
 
-public sealed partial class SharedPowerArmorSystem : EntitySystem
+public abstract partial class SharedPowerArmorSystem : EntitySystem
 {
-    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] protected SharedContainerSystem _container = default!;
+    [Dependency] protected DamageableSystem _damageable = default!;
+    [Dependency] protected SharedAppearanceSystem _appearance = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -20,11 +24,17 @@ public sealed partial class SharedPowerArmorSystem : EntitySystem
     private void OnDamage(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<DamageModifyEvent> args)
     {
         if(!_container.TryGetContainer(ent.Owner, "chest", out var armor)) return;
+        if(armor == null || !TryComp<PowerArmorPartComponent>(armor.ContainedEntities.FirstOrDefault(), out var papComp)) return;
+
+        DamageModifierSet modifiers = papComp.Modifiers;
+
+        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers, args.Args.ArmorPenetration, args.Args.CanHeal);
+        _damageable.TryChangeDamage(armor.ContainedEntities.FirstOrDefault(), args.Args.Damage);
     }
 
     private void OnLimbDamage(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<LimbDamageModifyEvent> args)
     {
-        BaseContainer? armor = null;
+        BaseContainer? armor;
         switch (args.Args.Target.Id)
         {
             case "Head":
@@ -43,8 +53,13 @@ public sealed partial class SharedPowerArmorSystem : EntitySystem
                 if(!_container.TryGetContainer(ent.Owner, "rleg", out armor)) return;
                 break;
             default:
-                break;
+                return;
         }
-        if(armor == null) return;
+        if(armor == null || !TryComp<PowerArmorPartComponent>(armor.ContainedEntities.FirstOrDefault(), out var papComp)) return;
+
+        DamageModifierSet modifiers = papComp.Modifiers;
+
+        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers, args.Args.ArmorPenetration, args.Args.CanHeal);
+        _damageable.TryChangeDamage(armor.ContainedEntities.FirstOrDefault(), args.Args.Damage);
     }
 }

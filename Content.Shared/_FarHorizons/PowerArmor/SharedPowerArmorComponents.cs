@@ -5,10 +5,14 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PowerArmorComponent : Component
 {
-    
+    /// <summary>
+    /// The total speed penalty applied by this power armor.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public float TotalSpeedModifier = 1.0f;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -26,11 +30,29 @@ public sealed partial class PowerArmorPartComponent : Component
     [DataField(required: true)]
     public DamageModifierSet BrokenModifiers = default!;
 
+    /// <summary>
+    /// The speed penalty applied by this part.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float SpeedModifier = 1.0f;
+
+    /// <summary>
+    /// The type of part this part is.
+    /// </summary>
     [DataField(required: true)]
     public PowerArmorVisualLayers PartType = default;
 
+    /// <summary>
+    /// Determines if the part is broken.
+    /// </summary>
     [ViewVariables, AutoNetworkedField]
     public bool isBroken = false;
+}
+
+[Serializable, NetSerializable]
+public enum PowerArmorMenuUiKey : byte
+{
+    Key
 }
 
 [Serializable, NetSerializable]

@@ -3,11 +3,32 @@
   name: Power Armor
   description: A modular hardsuit that is able to add or remove parts. It has a powered exoskeleton underneath in order to assist user moving the extra weight.
   components:
+  - type: Animateable
   - type: Clickable
   - type: InteractionOutline
+  - type: MovedByPressure
+  - type: CollisionWake
+  - type: GravityAffected
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 500
+        mask:
+        - ItemMask
+        restitution: 0.3  # fite me
+        friction: 0.2
+  - type: Pullable
+  - type: DamageExaminable
   - type: Appearance
   - type: Sprite
     sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
+    drawdepth: Items
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
       state: underarmor
@@ -70,12 +91,25 @@
   - type: ToggleableClothing
     clothingPrototype: PowerArmorHelmetNaked
   - type: PowerArmor
+  - type: ActivatableUI
+    key: enum.PowerArmorMenuUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PowerArmorMenuUiKey.Key:
+        type: PowerArmorBoundUserInterface
 
 - type: entity
   parent: PowerArmorNaked
   id: PowerArmorNTJuggernautFilled
   suffix: NT, Filled
   components:
+  - type: IdClothingBlocker
+    allowedJobs:
+      - Security
+      - Armory
+      - HeadOfSecurity
+      - Captain
+      - Detective
   - type: ToggleableClothing
     clothingPrototype: PowerArmorHelmetNTJuggernautFilled
   - type: ContainerFill

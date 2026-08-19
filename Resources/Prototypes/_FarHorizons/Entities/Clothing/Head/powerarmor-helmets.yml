@@ -2,8 +2,17 @@
   id: PowerArmorHelmetNaked
   name: Power Armor Helmet
   components:
+  - type: Animateable
   - type: Clickable
   - type: InteractionOutline
+  - type: MovedByPressure
+  - type: CollisionWake
+  - type: GravityAffected
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Pullable
+  - type: DamageExaminable
   - type: Appearance
   - type: Sprite
     sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi

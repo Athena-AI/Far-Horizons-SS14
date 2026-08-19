@@ -1,6 +1,7 @@
 - type: entity
   id: PowerArmorPartBase
   name: Power Armor Part Base
+  parent: BaseItem
   abstract: true
   components:
   - type: Item
@@ -119,11 +120,12 @@
         Piercing: 0.70 
         Heat: 0.80
         Radiation: 0.25
+    speedModifier: 0.09
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 10 #For Debug Purposes
       behaviors:
       - !type:PlaySoundBehavior
         sound:

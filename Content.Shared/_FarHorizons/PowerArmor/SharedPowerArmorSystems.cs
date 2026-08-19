@@ -5,6 +5,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
@@ -18,6 +19,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected SharedAppearanceSystem _appearance = default!;
     [Dependency] protected SharedInteractionSystem _interaction = default!;
     [Dependency] protected InventorySystem _inventory = default!;
+    [Dependency] protected MovementSpeedModifierSystem _movement = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -25,13 +27,17 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, GetVerbsEvent<AlternativeVerb>>(OnEquipVerb);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<LimbDamageModifyEvent>>(OnLimbDamage);
+        SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMoveSpeed);
+        SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
+        SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
         SubscribeLocalEvent<PowerArmorPartComponent, BreakageEventArgs>(OnPartBroken);
     }
 
     private void OnEquipVerb(Entity<PowerArmorComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanComplexInteract 
-        || !_interaction.InRangeAndAccessible(args.User, args.Target))
+        || !_interaction.InRangeAndAccessible(args.User, args.Target)
+        || _container.IsEntityInContainer(args.Target))
             return;    
 
         var user = args.User;
@@ -109,15 +115,54 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         _damageable.ChangeDamage(part.Value, args.Args.Damage);
     }
 
+    private void OnRefreshMoveSpeed(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
+        => args.Args.ModifySpeed(ent.Comp.TotalSpeedModifier);
+
+    protected virtual void OnPartInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args)
+    {
+        var powerArmor = args.Container.Owner;
+
+        if(!TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
+        paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier - ent.Comp.SpeedModifier, 2);
+
+        var wearer = Transform(powerArmor).ParentUid;
+        var gridUid = Transform(powerArmor).GridUid;
+        if(wearer == gridUid) return;
+
+        _movement.RefreshMovementSpeedModifiers(wearer);
+    }
+
+    protected virtual void OnPartEjected(Entity<PowerArmorPartComponent> ent, ref EntGotRemovedFromContainerMessage args)
+    {
+        var powerArmor = args.Container.Owner;
+
+        if(!TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
+        paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier + ent.Comp.SpeedModifier, 2);
+
+        var wearer = Transform(powerArmor).ParentUid;
+        var gridUid = Transform(powerArmor).GridUid;
+        if(wearer == gridUid) return;
+
+        _movement.RefreshMovementSpeedModifiers(wearer);
+    }
+
     public void OnPartBroken(Entity<PowerArmorPartComponent> ent, ref BreakageEventArgs args)
     {
         var powerArmor = Transform(ent.Owner).ParentUid;
         var gridUid = Transform(ent.Owner).GridUid;
-        if(powerArmor == gridUid) return;
+        if(powerArmor == gridUid || !TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
+
+        paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier + ent.Comp.SpeedModifier, 2);
         
         _appearance.SetData(ent.Owner, PowerArmorPartVisuals.PowerArmor, GetNetEntity(powerArmor));
         _appearance.SetData(ent.Owner, PowerArmorPartVisuals.Visible, false);
         ent.Comp.isBroken = true;
         Dirty(ent);
+
+        var wearer = Transform(powerArmor).ParentUid;
+        gridUid = Transform(powerArmor).GridUid;
+        if(wearer == gridUid) return;
+
+        _movement.RefreshMovementSpeedModifiers(wearer);
     }
 }

@@ -16,12 +16,11 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
     {
         base.Initialize();
         SubscribeLocalEvent<PowerArmorPartComponent, AppearanceChangeEvent>(OnAppearanceChange);
-        SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
-        SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
     }
 
-    private void OnPartInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args)
+    protected override void OnPartInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
+        base.OnPartInserted(ent, ref args);
         var powerArmor = args.Container.Owner;
 
         if(!HasComp<PowerArmorComponent>(powerArmor) 
@@ -40,8 +39,9 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
         }
     }
 
-    private void OnPartEjected(Entity<PowerArmorPartComponent> ent, ref EntGotRemovedFromContainerMessage args)
+    protected override void OnPartEjected(Entity<PowerArmorPartComponent> ent, ref EntGotRemovedFromContainerMessage args)
     {
+        base.OnPartEjected(ent, ref args);
         var powerArmor = args.Container.Owner;
         if(!HasComp<PowerArmorComponent>(powerArmor)) return;
 

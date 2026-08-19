@@ -1,0 +1,90 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      MinSize="600 650"
+                      MaxSize="600 650"
+                      Title="{Loc 'power-armor-control-panel'}">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            
+            <PanelContainer StyleClasses="PanelDark" SetWidth="285" SetHeight="175" Margin="10 10">
+                <BoxContainer Name="SuitStatus" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <Label Name="SuitStatusLabel" Text="Suit Status" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                    <PanelContainer StyleClasses="HighDivider" />
+                        <BoxContainer Orientation="Horizontal"> 
+                            <RichTextLabel Text="Charge: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control SetSize="200 25" Margin="5 10 0 0">
+                                <ProgressBar Name="HealthBar" MinValue="0" MaxValue="100" Value="50"/>
+                                <RichTextLabel Name="HealthPercent" Text="50%" HorizontalAlignment="Left" Margin="5 0 0 0"/>
+                            </Control>   
+                        </BoxContainer>
+                </BoxContainer>
+            </PanelContainer>
+
+            <PanelContainer StyleClasses="PanelDark" SetWidth="285" SetHeight="175" Margin="0 10 10 10">
+                <BoxContainer Name="UserStatus" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                    <Label Name="UserStatusLabel" Text="User Status" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                    <PanelContainer StyleClasses="HighDivider" />
+                </BoxContainer>
+            </PanelContainer>
+        </BoxContainer>
+
+        <PanelContainer StyleClasses="PanelDark" SetWidth="580" SetHeight="200" Margin="10 0 10 10">
+            <BoxContainer Name="Modules" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                <Label Name="ModulesLabel" Text="Modules" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                <PanelContainer StyleClasses="HighDivider" />
+                <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                    <BoxContainer Name="ModulesPanel" Orientation="Vertical">
+
+                    </BoxContainer>
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
+        
+        <PanelContainer StyleClasses="PanelDark" SetWidth="580" SetHeight="200" Margin="10 0 10 10">
+            <BoxContainer Name="Hardware" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+                <Label Name="HardwareLabel" Text="Hardware" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                <PanelContainer StyleClasses="HighDivider" />
+                <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                    <BoxContainer Name="HardwarePanel" Orientation="Vertical">
+                        <BoxContainer Orientation="Horizontal" Name="HeadRow"> 
+                            <RichTextLabel Text="Head: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control>
+                                
+                            </Control>   
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" Name="ChestRow"> 
+                            <RichTextLabel Text="Chest: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control>
+                                
+                            </Control>   
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" Name="LArmRow"> 
+                            <RichTextLabel Text="Left Arm: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control>
+                                
+                            </Control>   
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" Name="RArmRow"> 
+                            <RichTextLabel Text="Right Arm: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control>
+                                
+                            </Control>   
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" Name="LLegRow"> 
+                            <RichTextLabel Text="Left Leg: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control>
+                                
+                            </Control>   
+                        </BoxContainer>
+                        <BoxContainer Orientation="Horizontal" Name="RLegRow"> 
+                            <RichTextLabel Text="Right Leg: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                            <Control>
+                                
+                            </Control>   
+                        </BoxContainer>
+                    </BoxContainer>
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>

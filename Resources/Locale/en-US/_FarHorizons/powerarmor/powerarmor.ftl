@@ -1,0 +1,1 @@
+power-armor-verb-equip = Enter Power Armor

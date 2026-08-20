@@ -10,12 +10,18 @@
                 <BoxContainer Name="SuitStatus" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
                     <Label Name="SuitStatusLabel" Text="Suit Status" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
                     <PanelContainer StyleClasses="HighDivider" />
-                        <BoxContainer Orientation="Horizontal"> 
-                            <RichTextLabel Text="Charge: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control SetSize="200 25" Margin="5 10 0 0">
-                                <ProgressBar Name="HealthBar" MinValue="0" MaxValue="100" Value="50"/>
-                                <RichTextLabel Name="HealthPercent" Text="50%" HorizontalAlignment="Left" Margin="5 0 0 0"/>
-                            </Control>   
+                        <BoxContainer Orientation="Vertical"> 
+                            <BoxContainer Orientation="Horizontal">
+                                <RichTextLabel Text="Charge: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                                <Control SetSize="200 25" Margin="5 10 0 0">
+                                    <ProgressBar Name="ChargeBar" MinValue="0" MaxValue="100" Value="50" Margin="0 0 5 0"/>
+                                    <RichTextLabel Name="ChargePercent" Text="50%" HorizontalAlignment="Right" Margin="0 0 15 0"/>
+                                </Control>   
+                            </BoxContainer>
+                            <BoxContainer>
+                                <RichTextLabel Text="Panel Status:" HorizontalAlignment="Left" Margin="10 5 0 0"/>
+                                <RichTextLabel Name="PanelStatus" Text="Closed" HorizontalAlignment="Left" Margin="5 5 0 0"/>
+                            </BoxContainer>   
                         </BoxContainer>
                 </BoxContainer>
             </PanelContainer>
@@ -46,42 +52,49 @@
                 <PanelContainer StyleClasses="HighDivider" />
                 <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="HardwarePanel" Orientation="Vertical">
-                        <BoxContainer Orientation="Horizontal" Name="HeadRow"> 
-                            <RichTextLabel Text="Head: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control>
-                                
-                            </Control>   
-                        </BoxContainer>
-                        <BoxContainer Orientation="Horizontal" Name="ChestRow"> 
-                            <RichTextLabel Text="Chest: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control>
-                                
-                            </Control>   
-                        </BoxContainer>
-                        <BoxContainer Orientation="Horizontal" Name="LArmRow"> 
-                            <RichTextLabel Text="Left Arm: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control>
-                                
-                            </Control>   
-                        </BoxContainer>
-                        <BoxContainer Orientation="Horizontal" Name="RArmRow"> 
-                            <RichTextLabel Text="Right Arm: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control>
-                                
-                            </Control>   
-                        </BoxContainer>
-                        <BoxContainer Orientation="Horizontal" Name="LLegRow"> 
-                            <RichTextLabel Text="Left Leg: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control>
-                                
-                            </Control>   
-                        </BoxContainer>
-                        <BoxContainer Orientation="Horizontal" Name="RLegRow"> 
-                            <RichTextLabel Text="Right Leg: " HorizontalAlignment="Left" Margin="10 10 0 0"/>
-                            <Control>
-                                
-                            </Control>   
-                        </BoxContainer>
+
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
+                            <BoxContainer Orientation="Horizontal" Name="HeadRow" HorizontalExpand="True" SetHeight="30">
+                                <RichTextLabel Text="Head: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
+                                <RichTextLabel Name="HeadLabel" Text="Empty" HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="300 0"/>
+                            </BoxContainer>
+                        </PanelContainer>
+
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
+                            <BoxContainer Orientation="Horizontal" Name="ChestRow" HorizontalExpand="True" SetHeight="30">
+                                <RichTextLabel Text="Chest: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
+                                <RichTextLabel Name="ChestLabel" Text="Empty" HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="300 0"/>
+                            </BoxContainer>
+                        </PanelContainer>
+
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
+                            <BoxContainer Orientation="Horizontal" Name="RArmRow" HorizontalExpand="True" SetHeight="30">
+                                <RichTextLabel Text="Right Arm: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
+                                <RichTextLabel Name="RArmLabel" Text="Empty" HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="300 0"/>
+                            </BoxContainer>
+                        </PanelContainer>
+
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
+                            <BoxContainer Orientation="Horizontal" Name="LArmRow" HorizontalExpand="True" SetHeight="30">
+                                <RichTextLabel Text="Left Arm: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
+                                <RichTextLabel Name="LArmLabel" Text="Empty" HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="300 0"/>
+                            </BoxContainer>
+                        </PanelContainer>
+
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
+                            <BoxContainer Orientation="Horizontal" Name="RLegRow" HorizontalExpand="True" SetHeight="30">
+                                <RichTextLabel Text="Right Leg: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
+                                <RichTextLabel Name="RLegLabel" Text="Empty" HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="300 0"/>
+                            </BoxContainer>
+                        </PanelContainer>
+
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 5">
+                            <BoxContainer Orientation="Horizontal" Name="LLegRow" HorizontalExpand="True" SetHeight="30">
+                                <RichTextLabel Text="Left Leg: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
+                                <RichTextLabel Name="LLegLabel" Text="Empty" HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="300 0"/>
+                            </BoxContainer>
+                        </PanelContainer>
+
                     </BoxContainer>
                 </ScrollContainer>
             </BoxContainer>

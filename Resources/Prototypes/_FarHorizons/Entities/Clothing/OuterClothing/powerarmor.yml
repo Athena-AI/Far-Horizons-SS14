@@ -9,6 +9,8 @@
   - type: MovedByPressure
   - type: CollisionWake
   - type: GravityAffected
+  - type: WiresPanel
+    openDelay: 5
   - type: Physics
     bodyType: Dynamic
     fixedRotation: false
@@ -64,11 +66,16 @@
   - type: HeldSpeedModifier
   - type: Pierceable
     level: Metal
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
       parts: !type:Container
         ents: []
+      cell_slot: !type:ContainerSlot {}
   - type: GroupExamine
   - type: Tag
     tags:

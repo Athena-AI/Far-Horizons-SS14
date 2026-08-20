@@ -98,6 +98,12 @@
   - type: ToggleableClothing
     clothingPrototype: PowerArmorHelmetNaked
   - type: PowerArmor
+    parts:
+      Chest: null
+      RArm: null
+      LArm: null
+      RLeg: null
+      LLeg: null
   - type: ActivatableUI
     key: enum.PowerArmorMenuUiKey.Key
   - type: UserInterface

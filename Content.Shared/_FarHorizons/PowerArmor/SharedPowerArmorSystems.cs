@@ -28,11 +28,13 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<LimbDamageModifyEvent>>(OnLimbDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMoveSpeed);
+
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
         SubscribeLocalEvent<PowerArmorPartComponent, BreakageEventArgs>(OnPartBroken);
     }
 
+    #region Power Armor
     private void OnEquipVerb(Entity<PowerArmorComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanComplexInteract 
@@ -53,21 +55,13 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     private void OnDamage(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<DamageModifyEvent> args)
     {
-        if (!_container.TryGetContainer(ent.Owner, "parts", out var parts))
-            return;
-        parts.ContainedEntities.TryFirstOrNull(x =>
-        {
-            if (!TryComp<PowerArmorPartComponent>(x, out var papComp))
-                return false;
-
-            return papComp.PartType == PowerArmorVisualLayers.Chest;
-        }, out var part);
-
-        if (part == null || !TryComp<PowerArmorPartComponent>(part, out var papComp) || papComp.isBroken)
+        if (!ent.Comp.Parts.TryGetValue(PowerArmorVisualLayers.Chest, out var part)
+            || part == null
+            || !TryComp<PowerArmorPartComponent>(part, out var papComp))
             return;
 
         var modifiers = papComp.Modifiers;
-        if(papComp.isBroken)
+        if (papComp.isBroken)
             modifiers = papComp.BrokenModifiers;
 
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers, args.Args.ArmorPenetration, args.Args.CanHeal);
@@ -76,40 +70,26 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     private void OnLimbDamage(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<LimbDamageModifyEvent> args)
     {
-        if (!_container.TryGetContainer(ent.Owner, "parts", out var parts))
-            return;
-
         var limb = args.Args.Target.Id;
 
         var partType = limb switch
         {
             "Head" => PowerArmorVisualLayers.Head,
-
             "ArmLeft" or "HandLeft" => PowerArmorVisualLayers.LArm,
             "ArmRight" or "HandRight" => PowerArmorVisualLayers.RArm,
-
             "LegLeft" or "FootLeft" => PowerArmorVisualLayers.LLeg,
             "LegRight" or "FootRight" => PowerArmorVisualLayers.RLeg,
-
             _ => (PowerArmorVisualLayers?) null
         };
 
-        if (partType == null)
-            return;
-
-        parts.ContainedEntities.TryFirstOrNull(x =>
-        {
-            if (!TryComp<PowerArmorPartComponent>(x, out var papComp))
-                return false;
-
-            return papComp.PartType == partType.Value;
-        }, out var part);
-
-        if (part == null || !TryComp<PowerArmorPartComponent>(part, out var papComp) || papComp.isBroken)
+        if (partType == null
+            || !ent.Comp.Parts.TryGetValue(partType.Value, out var part)
+            || part == null
+            || !TryComp<PowerArmorPartComponent>(part, out var papComp))
             return;
 
         var modifiers = papComp.Modifiers;
-        if(papComp.isBroken)
+        if (papComp.isBroken)
             modifiers = papComp.BrokenModifiers;
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers, args.Args.ArmorPenetration, args.Args.CanHeal);
         _damageable.ChangeDamage(part.Value, args.Args.Damage);
@@ -118,12 +98,17 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     private void OnRefreshMoveSpeed(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
         => args.Args.ModifySpeed(ent.Comp.TotalSpeedModifier);
 
+    #endregion
+    #region Power Armor Parts
+
     protected virtual void OnPartInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
         var powerArmor = args.Container.Owner;
 
         if(!TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
         paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier - ent.Comp.SpeedModifier, 2);
+
+        paComp.Parts[ent.Comp.PartType] = ent.Owner;
 
         var wearer = Transform(powerArmor).ParentUid;
         var gridUid = Transform(powerArmor).GridUid;
@@ -138,6 +123,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         if(!TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
         paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier + ent.Comp.SpeedModifier, 2);
+
+        paComp.Parts[ent.Comp.PartType] = null;
 
         var wearer = Transform(powerArmor).ParentUid;
         var gridUid = Transform(powerArmor).GridUid;
@@ -165,4 +152,5 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         _movement.RefreshMovementSpeedModifiers(wearer);
     }
+    #endregion
 }

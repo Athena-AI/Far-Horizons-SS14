@@ -67,6 +67,8 @@
     - HeadSide
     - FacialHair
   - type: PowerArmor
+    parts:
+      Head: null
 
 - type: entity
   parent: PowerArmorHelmetNaked

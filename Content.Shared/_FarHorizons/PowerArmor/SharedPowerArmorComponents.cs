@@ -1,5 +1,6 @@
 
 using Content.Shared.Damage;
+using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
@@ -13,6 +14,15 @@ public sealed partial class PowerArmorComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public float TotalSpeedModifier = 1.0f;
+
+    /// <summary>
+    /// All the parts assigned to this power armor
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Dictionary<PowerArmorVisualLayers, EntityUid?> Parts = new();
+
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid OtherHalf;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -41,6 +51,12 @@ public sealed partial class PowerArmorPartComponent : Component
     /// </summary>
     [DataField(required: true)]
     public PowerArmorVisualLayers PartType = default;
+
+    /// <summary>
+    /// The max integrity of a part.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public FixedPoint2 MaxIntegrity = FixedPoint2.Zero;
 
     /// <summary>
     /// Determines if the part is broken.

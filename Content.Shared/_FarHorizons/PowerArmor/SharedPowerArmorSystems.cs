@@ -1,5 +1,6 @@
 
 using Content.Shared._FarHorizons.LimbDamage.Components;
+using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
@@ -8,7 +9,6 @@ using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
 
@@ -25,6 +25,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<PowerArmorComponent, GetVerbsEvent<AlternativeVerb>>(OnEquipVerb);
+        SubscribeLocalEvent<PowerArmorComponent, ClothingGotEquippedEvent>(OnEquip);
+        SubscribeLocalEvent<PowerArmorComponent, ClothingGotUnequippedEvent>(OnUnequip);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<LimbDamageModifyEvent>>(OnLimbDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMoveSpeed);
@@ -53,6 +55,18 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         args.Verbs.Add(equip);
     }
 
+    private void OnEquip(Entity<PowerArmorComponent> ent, ref ClothingGotEquippedEvent args)
+    {
+        ent.Comp.Wearer = args.Wearer;
+        Dirty(ent);
+    }
+
+    private void OnUnequip(Entity<PowerArmorComponent> ent, ref ClothingGotUnequippedEvent args)
+    {
+        ent.Comp.Wearer = null;
+        Dirty(ent);
+    }
+    
     private void OnDamage(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<DamageModifyEvent> args)
     {
         if (!ent.Comp.Parts.TryGetValue(PowerArmorVisualLayers.Chest, out var part)
@@ -96,41 +110,45 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     }
 
     private void OnRefreshMoveSpeed(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
-        => args.Args.ModifySpeed(ent.Comp.TotalSpeedModifier);
+    {
+        if (!ent.Comp.IsPrimary)
+            return;
+
+        var total = ent.Comp.TotalSpeedModifier;
+        if (TryComp<PowerArmorComponent>(ent.Comp.OtherHalf, out var otherComp))
+            total -= 1.0f-otherComp.TotalSpeedModifier;
+
+        args.Args.ModifySpeed(total);
+    }
 
     #endregion
     #region Power Armor Parts
 
     protected virtual void OnPartInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
-        var powerArmor = args.Container.Owner;
-
-        if(!TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
+        ent.Comp.AttachedTo = args.Container.Owner;
+        
+        if(!TryComp<PowerArmorComponent>(ent.Comp.AttachedTo, out var paComp)) return;
         paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier - ent.Comp.SpeedModifier, 2);
 
         paComp.Parts[ent.Comp.PartType] = ent.Owner;
 
-        var wearer = Transform(powerArmor).ParentUid;
-        var gridUid = Transform(powerArmor).GridUid;
-        if(wearer == gridUid) return;
+        if(paComp.Wearer == null) return;
 
-        _movement.RefreshMovementSpeedModifiers(wearer);
+        _movement.RefreshMovementSpeedModifiers(paComp.Wearer.Value);
     }
 
     protected virtual void OnPartEjected(Entity<PowerArmorPartComponent> ent, ref EntGotRemovedFromContainerMessage args)
     {
-        var powerArmor = args.Container.Owner;
-
-        if(!TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
+        if(!TryComp<PowerArmorComponent>(ent.Comp.AttachedTo, out var paComp)) return;
         paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier + ent.Comp.SpeedModifier, 2);
 
         paComp.Parts[ent.Comp.PartType] = null;
+        ent.Comp.AttachedTo = null;
 
-        var wearer = Transform(powerArmor).ParentUid;
-        var gridUid = Transform(powerArmor).GridUid;
-        if(wearer == gridUid) return;
+        if(paComp.Wearer == null) return;
 
-        _movement.RefreshMovementSpeedModifiers(wearer);
+        _movement.RefreshMovementSpeedModifiers(paComp.Wearer.Value);
     }
 
     public void OnPartBroken(Entity<PowerArmorPartComponent> ent, ref BreakageEventArgs args)
@@ -146,11 +164,9 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         ent.Comp.isBroken = true;
         Dirty(ent);
 
-        var wearer = Transform(powerArmor).ParentUid;
-        gridUid = Transform(powerArmor).GridUid;
-        if(wearer == gridUid) return;
+        if(paComp.Wearer == null) return;
 
-        _movement.RefreshMovementSpeedModifiers(wearer);
+        _movement.RefreshMovementSpeedModifiers(paComp.Wearer.Value);
     }
     #endregion
 }

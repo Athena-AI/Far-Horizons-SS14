@@ -120,7 +120,7 @@
         Piercing: 0.70 
         Heat: 0.80
         Radiation: 0.25
-    speedModifier: 0.09
+    speedModifier: 0.085 #Its Additive Per Piece also remember there is already a 40% speed reduc from the poweramor itself
   - type: Destructible
     thresholds:
     - trigger:

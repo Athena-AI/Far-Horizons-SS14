@@ -23,6 +23,12 @@ public sealed partial class PowerArmorComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public EntityUid OtherHalf;
+
+    [AutoNetworkedField]
+    public bool IsPrimary = true;
+
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? Wearer;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -63,6 +69,9 @@ public sealed partial class PowerArmorPartComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public bool isBroken = false;
+
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? AttachedTo;
 }
 
 [Serializable, NetSerializable]

@@ -1,8 +1,6 @@
 
 using Content.Server.Destructible;
 using Content.Shared._FarHorizons.PowerArmor;
-using Content.Shared.Clothing.Components;
-using Content.Shared.Clothing.EntitySystems;
 using Robust.Shared.Containers;
 
 namespace Content.Server._FarHorizons.PowerArmor;
@@ -14,7 +12,7 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
     {
         base.Initialize();
         SubscribeLocalEvent<PowerArmorPartComponent, MapInitEvent>(OnPAPInit);
-        SubscribeLocalEvent<PowerArmorComponent, MapInitEvent>(OnPAInit, after:[typeof(ToggleableClothingSystem)]);
+        SubscribeLocalEvent<PowerArmorComponent, EntGotInsertedIntoContainerMessage>(OnPAInsert);
     }
 
     private void OnPAPInit(Entity<PowerArmorPartComponent> ent, ref MapInitEvent args)
@@ -23,23 +21,19 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
         Dirty(ent);
     }
 
-    private void OnPAInit(Entity<PowerArmorComponent> ent, ref MapInitEvent args)
+    private void OnPAInsert(Entity<PowerArmorComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
-        if(TryComp<AttachedClothingComponent>(ent.Owner, out var acComp))
-            ent.Comp.OtherHalf = acComp.AttachedUid;
+        var PowerArmor = args.Container.Owner;
+        if(!TryComp<PowerArmorComponent>(PowerArmor, out var PAComp))
+            return;
 
-        else if (_container.TryGetContainer(ent.Owner, "toggleable-clothing", out var tcContainer))
-        {
-            foreach (var item in tcContainer.ContainedEntities)
-            {
-                if (TryComp<PowerArmorComponent>(item, out var paComp1)
-                    && paComp1.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart))
-                {
-                    ent.Comp.OtherHalf = item;
-                }
-            }
-        }
+        ent.Comp.OtherHalf = PowerArmor;
+        PAComp.OtherHalf = ent.Owner;
 
+        ent.Comp.IsPrimary = false;
+        PAComp.IsPrimary = true;
+
+        Dirty(PowerArmor, PAComp);
         Dirty(ent);
     }
 

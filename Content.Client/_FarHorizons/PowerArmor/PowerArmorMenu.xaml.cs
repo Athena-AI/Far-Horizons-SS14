@@ -23,6 +23,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
     private DamageableSystem _damageable;
 
     private EntityUid _entity;
+    private EntityUid? _headPart, _chestPart, _rArmPart, _lArmPart, _rLegPart, _lLegPart;
 
     public PowerArmorMenu()
     {
@@ -51,7 +52,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
             var charge = (int)Math.Round(_battery.GetChargeLevel((cellSlot.ContainedEntities.First(), battery)) * 100f); 
             ChargePercent.Text = $"{charge}%";
             ChargeBar.Value = charge;
-            ChargeBar.ModulateSelfOverride = Color.InterpolateBetween(Color.Red, Color.LimeGreen, charge / 100);
+            ChargeBar.ModulateSelfOverride = Color.InterpolateBetween(Color.Red, Color.LimeGreen, charge / 100f);
             ChargePercent.ModulateSelfOverride = Color.White;
         }
         else
@@ -67,47 +68,27 @@ public sealed partial class PowerArmorMenu : FancyWindow
             PanelStatus.ModulateSelfOverride = wirePanel.Open ? Color.LimeGreen : Color.Red;
         }
         
-        EntityUid? head = null, chest = null, rArm = null, lArm = null, rLeg = null, lLeg = null;
 
-        if (_container.TryGetContainer(_entity, "toggleable-clothing", out var tcContainer))
+        if (_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var paComp))
         {
-            foreach (var item in tcContainer.ContainedEntities)
-            {
-                if (_entityManager.TryGetComponent<PowerArmorComponent>(item, out var paComp1)
-                    && paComp1.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart))
-                {
-                    head = headPart;
-                }
-            }
+            if (_entityManager.EntityExists(paComp.OtherHalf) &&_entityManager.TryGetComponent<PowerArmorComponent>(paComp.OtherHalf, out var paComp2))
+                if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart)) _headPart = headPart;
+
+            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.Chest, out var chestPart)) _chestPart = chestPart;
+            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.RArm, out var rArmPart)) _rArmPart = rArmPart;
+            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.LArm, out var lArmPart)) _lArmPart = lArmPart;
+            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.RLeg, out var rLegPart)) _rLegPart = rLegPart;
+            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.LLeg, out var lLegPart)) _lLegPart = lLegPart;
         }
 
-        if (_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var paComp2))
-        {
-            if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.Chest, out var chestPart)) chest = chestPart;
-            if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.RArm, out var rArmPart)) rArm = rArmPart;
-            if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.LArm, out var lArmPart)) lArm = lArmPart;
-            if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.RLeg, out var rLegPart)) rLeg = rLegPart;
-            if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.LLeg, out var lLegPart)) lLeg = lLegPart;
-        }
-
-        SetPartLabel(HeadLabel, HeadBar, HeadPercent, head);
-        SetPartLabel(ChestLabel, ChestBar, ChestPercent, chest);
-        SetPartLabel(RArmLabel, RArmBar, RArmPercent, rArm);
-        SetPartLabel(LArmLabel, LArmBar, LArmPercent, lArm);
-        SetPartLabel(RLegLabel, RLegBar, RLegPercent, rLeg);
-        SetPartLabel(LLegLabel, LLegBar, LLegPercent, lLeg);
+        UpdateParts(HeadLabel, HeadBar, HeadPercent, _headPart);
+        UpdateParts(ChestLabel, ChestBar, ChestPercent, _chestPart);
+        UpdateParts(RArmLabel, RArmBar, RArmPercent, _rArmPart);
+        UpdateParts(LArmLabel, LArmBar, LArmPercent, _lArmPart);
+        UpdateParts(RLegLabel, RLegBar, RLegPercent, _rLegPart);
+        UpdateParts(LLegLabel, LLegBar, LLegPercent, _lLegPart);
     }
-
-    private static T? TryGetAssignComp<T>(IEntityManager entSys, EntityUid ent, ref T? assign) where T : Component
-    {
-        if(!entSys.TryGetComponent<T>(ent, out var comp))
-            return null;
-
-        assign = comp;
-        return comp;
-    }
-
-    private void SetPartLabel(Button button, ProgressBar bar, RichTextLabel progressLabel, EntityUid? part)
+    private void UpdateParts(Button button, ProgressBar bar, RichTextLabel progressLabel, EntityUid? part)
     {
         if(part != null)
         {
@@ -115,15 +96,21 @@ public sealed partial class PowerArmorMenu : FancyWindow
                 return;
 
             if (_entityManager.TryGetComponent<MetaDataComponent>(part.Value, out var metaData))
+            {
                 button.Text = metaData.EntityName;
+                button.Disabled = false;
+            }
             else
+            {
                 button.Text = "Empty";
+                button.Disabled = true;
+            }
 
             if(_entityManager.TryGetComponent<DamageableComponent>(part.Value, out var damageComp))
             {
                 var integrity = Math.Clamp((int) ((papComp.MaxIntegrity-_damageable.GetPositiveDamage((part.Value, damageComp)).GetTotal()) / papComp.MaxIntegrity * 100), 0, 100);
                 bar.Value = integrity;
-                bar.ModulateSelfOverride = Color.InterpolateBetween(Color.Red, Color.LimeGreen, integrity / 100);
+                bar.ModulateSelfOverride = Color.InterpolateBetween(Color.Red, Color.LimeGreen, integrity / 100f);
                 bar.Visible = true;
                 progressLabel.Text = $"{integrity}%";
                 progressLabel.Visible = true;
@@ -137,6 +124,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
         else
         {
             button.Text = "Empty";
+            button.Disabled = true;
             bar.Visible = false;
             progressLabel.Visible = false;
         }

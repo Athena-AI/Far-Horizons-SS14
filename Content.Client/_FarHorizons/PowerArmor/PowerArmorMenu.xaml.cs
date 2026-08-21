@@ -11,6 +11,9 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Robust.Client.UserInterface.Controls;
+using Robust.Client.Graphics;
+using Robust.Client.UserInterface;
+using System.Numerics;
 
 namespace Content.Client._FarHorizons.PowerArmor;
 
@@ -23,7 +26,19 @@ public sealed partial class PowerArmorMenu : FancyWindow
     private DamageableSystem _damageable;
 
     private EntityUid _entity;
-    private EntityUid? _headPart, _chestPart, _rArmPart, _lArmPart, _rLegPart, _lLegPart;
+    private readonly Dictionary<PowerArmorVisualLayers, EntityUid?> _parts = new();
+    private readonly Dictionary<PowerArmorVisualLayers, PartControls> _partControls = new();
+    private BoxContainer? _openDetails;
+    private float _updateTimer;
+    private readonly StyleBoxFlat _barBackground = new() { BackgroundColor = Color.Black };
+    private readonly StyleBoxFlat _barForeground = new();
+    private readonly record struct PartControls(
+        Button PartButton,
+        ProgressBar Bar,
+        RichTextLabel Percent,
+        BoxContainer Details,
+        RichTextLabel Description,
+        Button UninstallButton);
 
     public PowerArmorMenu()
     {
@@ -33,13 +48,55 @@ public sealed partial class PowerArmorMenu : FancyWindow
         _container = _entityManager.System<SharedContainerSystem>();
         _battery = _entityManager.System<SharedBatterySystem>();
         _damageable = _entityManager.System<DamageableSystem>();
+
+        _parts = new()
+        {
+            [PowerArmorVisualLayers.Head] = null,
+            [PowerArmorVisualLayers.Chest] = null,
+            [PowerArmorVisualLayers.RArm] = null,
+            [PowerArmorVisualLayers.LArm] = null,
+            [PowerArmorVisualLayers.RLeg] = null,
+            [PowerArmorVisualLayers.LLeg] = null,
+        };
+
+        var panelsByLayer = new Dictionary<PowerArmorVisualLayers, PanelContainer>
+        {
+            [PowerArmorVisualLayers.Head] = Head,
+            [PowerArmorVisualLayers.Chest] = Chest,
+            [PowerArmorVisualLayers.RArm] = RArm,
+            [PowerArmorVisualLayers.LArm] = LArm,
+            [PowerArmorVisualLayers.RLeg] = RLeg,
+            [PowerArmorVisualLayers.LLeg] = LLeg,
+        };
+
+        foreach (var (layer, panel) in panelsByLayer)
+        {
+            var controls = GeneratePanel(panel);
+            _partControls[layer] = controls;
+
+            controls.PartButton.OnPressed += _ => ToggleContainer(controls.Details, _parts[layer]);
+            controls.UninstallButton.OnPressed += _ =>
+            {
+                if (_parts[layer] is { } part)
+                    OnUninstallPart?.Invoke(layer, part);
+            };
+        }
     }
+
+    public event Action<PowerArmorVisualLayers, EntityUid>? OnUninstallPart;
 
     public void SetEntity(EntityUid entity) => _entity = entity;
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
         base.FrameUpdate(args);
+
+        _updateTimer -= args.DeltaSeconds;
+
+        if (_updateTimer > 0)
+            return;
+
+        _updateTimer = 0.1f;
         UpdateWindow();
     }
 
@@ -52,7 +109,10 @@ public sealed partial class PowerArmorMenu : FancyWindow
             var charge = (int)Math.Round(_battery.GetChargeLevel((cellSlot.ContainedEntities.First(), battery)) * 100f); 
             ChargePercent.Text = $"{charge}%";
             ChargeBar.Value = charge;
-            ChargeBar.ModulateSelfOverride = Color.InterpolateBetween(Color.Red, Color.LimeGreen, charge / 100f);
+            _barForeground.BackgroundColor = Color.InterpolateBetween(Color.Red, Color.Green, charge / 100f);
+
+            ChargeBar.BackgroundStyleBoxOverride = _barBackground;
+            ChargeBar.ForegroundStyleBoxOverride = _barForeground;
             ChargePercent.ModulateSelfOverride = Color.White;
         }
         else
@@ -67,66 +127,198 @@ public sealed partial class PowerArmorMenu : FancyWindow
             PanelStatus.Text = wirePanel.Open ? "Open" : "Closed";
             PanelStatus.ModulateSelfOverride = wirePanel.Open ? Color.LimeGreen : Color.Red;
         }
-        
 
         if (_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var paComp))
         {
-            if (_entityManager.EntityExists(paComp.OtherHalf) &&_entityManager.TryGetComponent<PowerArmorComponent>(paComp.OtherHalf, out var paComp2))
-                if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart)) _headPart = headPart;
+            foreach (var layer in _parts.Keys.ToList())
+                if (paComp.Parts.TryGetValue(layer, out var part)) _parts[layer] = part;
 
-            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.Chest, out var chestPart)) _chestPart = chestPart;
-            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.RArm, out var rArmPart)) _rArmPart = rArmPart;
-            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.LArm, out var lArmPart)) _lArmPart = lArmPart;
-            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.RLeg, out var rLegPart)) _rLegPart = rLegPart;
-            if (paComp.Parts.TryGetValue(PowerArmorVisualLayers.LLeg, out var lLegPart)) _lLegPart = lLegPart;
+            if (_entityManager.EntityExists(paComp.OtherHalf) && _entityManager.TryGetComponent<PowerArmorComponent>(paComp.OtherHalf, out var paComp2))
+                if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart)) _parts[PowerArmorVisualLayers.Head] = headPart;
         }
 
-        UpdateParts(HeadLabel, HeadBar, HeadPercent, _headPart);
-        UpdateParts(ChestLabel, ChestBar, ChestPercent, _chestPart);
-        UpdateParts(RArmLabel, RArmBar, RArmPercent, _rArmPart);
-        UpdateParts(LArmLabel, LArmBar, LArmPercent, _lArmPart);
-        UpdateParts(RLegLabel, RLegBar, RLegPercent, _rLegPart);
-        UpdateParts(LLegLabel, LLegBar, LLegPercent, _lLegPart);
+        foreach (var (layer, controls) in _partControls)
+            UpdateParts(controls, _parts[layer]);
     }
-    private void UpdateParts(Button button, ProgressBar bar, RichTextLabel progressLabel, EntityUid? part)
+
+    private void UpdateParts(PartControls controls, EntityUid? part)
     {
-        if(part != null)
+        if (part != null)
         {
-            if(!_entityManager.TryGetComponent<PowerArmorPartComponent>(part.Value, out var papComp))
+            if (!_entityManager.TryGetComponent<PowerArmorPartComponent>(part.Value, out var papComp))
                 return;
 
             if (_entityManager.TryGetComponent<MetaDataComponent>(part.Value, out var metaData))
             {
-                button.Text = metaData.EntityName;
-                button.Disabled = false;
+                controls.PartButton.Text = metaData.EntityName;
+                controls.PartButton.Disabled = false;
+                controls.Description.Text = metaData.EntityDescription;
             }
             else
             {
-                button.Text = "Empty";
-                button.Disabled = true;
+                controls.PartButton.Text = "Empty";
+                controls.PartButton.Disabled = true;
             }
 
-            if(_entityManager.TryGetComponent<DamageableComponent>(part.Value, out var damageComp))
+            if (_entityManager.TryGetComponent<DamageableComponent>(part.Value, out var damageComp))
             {
-                var integrity = Math.Clamp((int) ((papComp.MaxIntegrity-_damageable.GetPositiveDamage((part.Value, damageComp)).GetTotal()) / papComp.MaxIntegrity * 100), 0, 100);
-                bar.Value = integrity;
-                bar.ModulateSelfOverride = Color.InterpolateBetween(Color.Red, Color.LimeGreen, integrity / 100f);
-                bar.Visible = true;
-                progressLabel.Text = $"{integrity}%";
-                progressLabel.Visible = true;
-            } 
+                var integrity = Math.Clamp((int) ((papComp.MaxIntegrity - _damageable.GetPositiveDamage((part.Value, damageComp)).GetTotal()) / papComp.MaxIntegrity * 100), 0, 100);
+                controls.Bar.Value = integrity;
+                _barForeground.BackgroundColor = Color.InterpolateBetween(Color.Red, Color.Green, integrity / 100f);
+
+                controls.Bar.BackgroundStyleBoxOverride = _barBackground;
+                controls.Bar.ForegroundStyleBoxOverride = _barForeground;
+
+                controls.Bar.Visible = true;
+                controls.Percent.Text = $"{integrity}%";
+                controls.Percent.Visible = true;
+            }
             else
             {
-                bar.Visible = false;
-                progressLabel.Visible = false;
-            }  
+                controls.Bar.Visible = false;
+                controls.Percent.Visible = false;
+                controls.Bar.BackgroundStyleBoxOverride = _barBackground;
+            }
         }
         else
         {
-            button.Text = "Empty";
-            button.Disabled = true;
-            bar.Visible = false;
-            progressLabel.Visible = false;
+            controls.PartButton.Text = "Empty";
+            controls.PartButton.Disabled = true;
+            controls.Bar.Visible = false;
+            controls.Percent.Visible = false;
+
+            if (controls.Details.Visible)
+                controls.Details.Visible = false;
+            if (_openDetails == controls.Details)
+                _openDetails = null;
         }
+    }
+
+    private PartControls GeneratePanel(PanelContainer panel)
+    {
+        var box1 = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            HorizontalExpand = true
+        };
+
+        var box11 = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            Name = $"{panel.Name}Row",
+            HorizontalExpand = true,
+            SetHeight = 30
+        };
+        box1.AddChild(box11);
+
+        var label11 = new RichTextLabel
+        {
+            Text = $"{panel.Name}: ",
+            HorizontalAlignment = HAlignment.Left,
+            VerticalAlignment = VAlignment.Center,
+            MinSize = new Vector2(90, 0)
+        };
+        box11.AddChild(label11);
+
+        var button11 = new Button
+        {
+            Name = $"{panel.Name}Label",
+            Text = "Empty",
+            StyleClasses = { "CrossButtonRed" },
+            HorizontalAlignment = HAlignment.Left,
+            VerticalAlignment = VAlignment.Center,
+            SetWidth = 350
+        };
+        box11.AddChild(button11);
+
+        var control11 = new Control
+        {
+            HorizontalExpand = true,
+            Margin = new Thickness(5, 0, 5, 0)
+        };
+        box11.AddChild(control11);
+
+        var progressBar11 = new ProgressBar
+        {
+            Name = $"{panel.Name}Bar",
+            MinValue = 0,
+            MaxValue = 100,
+            Value = 50,
+            SetHeight = 25
+        };
+        control11.AddChild(progressBar11);
+
+        var label12 = new RichTextLabel
+        {
+            Name = $"{panel.Name}Percent",
+            Text = "50%",
+            HorizontalAlignment = HAlignment.Center,
+            Margin = new Thickness(5, 0, 0, 0)
+        };
+        control11.AddChild(label12);
+
+        panel.AddChild(box1);
+
+        var box12 = new BoxContainer
+        {
+            Name = $"{panel.Name}Details",
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            HorizontalExpand = true,
+            Visible = false,
+            Margin = new Thickness(10, 5, 10, 5)
+        };
+
+        var panelContainer121 = new PanelContainer
+        {
+            StyleClasses = { "LowDivider" },
+            SetHeight = 1,
+            Margin = new Thickness(0, 0, 0, 5)
+        };
+        box12.AddChild(panelContainer121);
+
+        var box121 = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical
+        };
+        box12.AddChild(box121);
+
+        var label121 = new RichTextLabel
+        {
+            Name = $"{panel.Name}Description",
+            HorizontalAlignment = HAlignment.Left,
+            Margin = new Thickness(0, 0, 0, 5)
+        };
+        box121.AddChild(label121);
+
+        var button121 = new Button
+        {
+            Name = $"{panel.Name}UninstallButton",
+            Text = "Uninstall",
+            StyleClasses = { "CrossButtonRed" },
+            HorizontalAlignment = HAlignment.Left
+        };
+        box121.AddChild(button121);
+
+        box1.AddChild(box12);
+
+        return new PartControls(button11, progressBar11, label12, box12, label121, button121);
+    }
+
+    private void ToggleContainer(BoxContainer container, EntityUid? part)
+    {
+        if (part == null)
+            return;
+
+        if (_openDetails == container)
+        {
+            container.Visible = false;
+            _openDetails = null;
+            return;
+        }
+
+        _openDetails?.Visible = false;
+
+        container.Visible = true;
+        _openDetails = container;
     }
 }

@@ -8,7 +8,16 @@
             
             <PanelContainer StyleClasses="PanelDark" SetWidth="285" SetHeight="175" Margin="10 10">
                 <BoxContainer Name="SuitStatus" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-                    <Label Name="SuitStatusLabel" Text="Suit Status" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Name="SuitStatusLabel" Text="Suit Status" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                        <Control HorizontalExpand="True"/>
+                        <Button Name="ActivationButton" StyleClasses="CrossButtonRed" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
+                            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+                                <TextureRect StyleClasses="ButtonSquare" TexturePath="/Textures/Interface/VerbIcons/Spare/poweronoff.svg.192dpi.png" Stretch="KeepAspectCentered" SetSize="16 16" Margin="0 2 4 0"/>
+                                <RichTextLabel Text="Activate" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </BoxContainer>
+                        </Button>
+                    </BoxContainer>
                     <PanelContainer StyleClasses="HighDivider" />
                         <BoxContainer Orientation="Vertical"> 
                             <BoxContainer Orientation="Horizontal">
@@ -36,7 +45,11 @@
 
         <PanelContainer StyleClasses="PanelDark" SetWidth="580" SetHeight="200" Margin="10 0 10 10">
             <BoxContainer Name="Modules" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-                <Label Name="ModulesLabel" Text="Modules" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <Label Name="ModulesLabel" Text="Modules" StyleClasses="LabelKeyText" HorizontalAlignment="Left" Margin="10 10 0 0"/>
+                    <Control HorizontalExpand="True"/>
+                    <Label Name="ModulesComplexity" Text="0 of 20 complexity used" HorizontalAlignment="Right" Margin="0 10 10 0"/>
+                </BoxContainer>
                 <PanelContainer StyleClasses="HighDivider" />
                 <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="ModulesPanel" Orientation="Vertical">
@@ -52,72 +65,18 @@
                 <PanelContainer StyleClasses="HighDivider" />
                 <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="HardwarePanel" Orientation="Vertical">
+                        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                            <Label Text="Part" StyleClasses="LabelKeyText" Margin="115 0 0 0" HorizontalAlignment="Left"/>
+                            <Control HorizontalExpand="True"/>
+                            <Label Text="Integrity" StyleClasses="LabelKeyText" Margin="0 0 30 0" HorizontalAlignment="Right"/>
+                        </BoxContainer>
 
-                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
-                            <BoxContainer Orientation="Horizontal" Name="HeadRow" HorizontalExpand="True" SetHeight="30">
-                                <RichTextLabel Text="Head: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
-                                <Button Name="HeadLabel" Text="Empty" StyleClasses="CrossButtonRed" HorizontalAlignment="Left" VerticalAlignment="Center" SetWidth="350"/>
-                                <Control HorizontalExpand="True" Margin="5 0 5 0">
-                                    <ProgressBar Name="HeadBar" MinValue="0" MaxValue="100" Value="75" SetHeight="25"/>
-                                    <RichTextLabel Name="HeadPercent" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                                </Control>  
-                            </BoxContainer>
-                        </PanelContainer>
-
-                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
-                            <BoxContainer Orientation="Horizontal" Name="ChestRow" HorizontalExpand="True" SetHeight="30">
-                                <RichTextLabel Text="Chest: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
-                                <Button Name="ChestLabel" Text="Empty" StyleClasses="CrossButtonRed" HorizontalAlignment="Left" VerticalAlignment="Center" SetWidth="350"/>
-                                <Control HorizontalExpand="True" Margin="5 0 5 0">
-                                    <ProgressBar Name="ChestBar" MinValue="0" MaxValue="100" Value="75" SetHeight="25"/>
-                                    <RichTextLabel Name="ChestPercent" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                                </Control>  
-                            </BoxContainer>
-                        </PanelContainer>
-
-                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
-                            <BoxContainer Orientation="Horizontal" Name="RArmRow" HorizontalExpand="True" SetHeight="30">
-                                <RichTextLabel Text="Right Arm: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
-                                <Button Name="RArmLabel" Text="Empty" StyleClasses="CrossButtonRed" HorizontalAlignment="Left" VerticalAlignment="Center" SetWidth="350"/>
-                                <Control HorizontalExpand="True" Margin="5 0 5 0">
-                                    <ProgressBar Name="RArmBar" MinValue="0" MaxValue="100" Value="75" SetHeight="25"/>
-                                    <RichTextLabel Name="RArmPercent" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                                </Control>  
-                            </BoxContainer>
-                        </PanelContainer>
-
-                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
-                            <BoxContainer Orientation="Horizontal" Name="LArmRow" HorizontalExpand="True" SetHeight="30">
-                                <RichTextLabel Text="Left Arm: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
-                                <Button Name="LArmLabel" Text="Empty" StyleClasses="CrossButtonRed" HorizontalAlignment="Left" VerticalAlignment="Center" SetWidth="350"/>
-                            <Control HorizontalExpand="True" Margin="5 0 5 0">
-                                    <ProgressBar Name="LArmBar" MinValue="0" MaxValue="100" Value="75" SetHeight="25"/>
-                                    <RichTextLabel Name="LArmPercent" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                                </Control>  
-                            </BoxContainer>
-                        </PanelContainer>
-
-                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 0">
-                            <BoxContainer Orientation="Horizontal" Name="RLegRow" HorizontalExpand="True" SetHeight="30">
-                                <RichTextLabel Text="Right Leg: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
-                                <Button Name="RLegLabel" Text="Empty" StyleClasses="CrossButtonRed" HorizontalAlignment="Left" VerticalAlignment="Center" SetWidth="350"/>
-                                <Control HorizontalExpand="True" Margin="5 0 5 0">
-                                    <ProgressBar Name="RLegBar" MinValue="0" MaxValue="100" Value="75" SetHeight="25"/>
-                                    <RichTextLabel Name="RLegPercent" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                                </Control>  
-                            </BoxContainer>
-                        </PanelContainer>
-
-                        <PanelContainer StyleClasses="BackgroundPanel" Margin="10 5 10 5">
-                            <BoxContainer Orientation="Horizontal" Name="LLegRow" HorizontalExpand="True" SetHeight="30">
-                                <RichTextLabel Text="Left Leg: " HorizontalAlignment="Left" VerticalAlignment="Center" MinSize="90 0"/>
-                                <Button Name="LLegLabel" Text="Empty" StyleClasses="CrossButtonRed" HorizontalAlignment="Left" VerticalAlignment="Center" SetWidth="350"/>
-                                <Control HorizontalExpand="True" Margin="5 0 5 0">
-                                    <ProgressBar Name="LLegBar" MinValue="0" MaxValue="100" Value="75" SetHeight="25"/>
-                                    <RichTextLabel Name="LLegPercent" HorizontalAlignment="Center" Margin="5 0 0 0"/>
-                                </Control>  
-                            </BoxContainer>
-                        </PanelContainer>
+                        <PanelContainer Name="Head" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>
+                        <PanelContainer Name="Chest" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>
+                        <PanelContainer Name="RArm" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>
+                        <PanelContainer Name="LArm" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>
+                        <PanelContainer Name="RLeg" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>
+                        <PanelContainer Name="LLeg" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>
 
                     </BoxContainer>
                 </ScrollContainer>

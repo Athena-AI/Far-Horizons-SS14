@@ -133,3 +133,5 @@
         - PowerArmorRArmNTJuggernaut
         - PowerArmorLLegNTJuggernaut
         - PowerArmorRLegNTJuggernaut
+      cell_slot:
+        - PowerCellMedium

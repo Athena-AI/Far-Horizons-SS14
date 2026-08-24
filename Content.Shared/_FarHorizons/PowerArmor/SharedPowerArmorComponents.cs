@@ -29,6 +29,9 @@ public sealed partial class PowerArmorComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public EntityUid? Wearer;
+
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? UninstallTarget;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -98,4 +101,16 @@ public enum PowerArmorVisualLayers : byte
     LArm,
     RLeg,
     LLeg
+}
+
+[Serializable, NetSerializable]
+public sealed class UninstallArmorPartMessage : BoundUserInterfaceMessage
+{
+    public readonly PowerArmorVisualLayers PartType;
+    public readonly NetEntity Part;
+    public UninstallArmorPartMessage(PowerArmorVisualLayers partType, NetEntity part)
+    {
+        PartType = partType;
+        Part = part;
+    }
 }

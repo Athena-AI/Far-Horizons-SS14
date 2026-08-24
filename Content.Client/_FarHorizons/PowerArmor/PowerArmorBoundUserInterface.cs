@@ -1,3 +1,4 @@
+using Content.Shared._FarHorizons.PowerArmor;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._FarHorizons.PowerArmor;
@@ -14,6 +15,9 @@ public sealed class PowerArmorBoundUserInterface : BoundUserInterface
         base.Open();
         _menu = this.CreateWindow<PowerArmorMenu>();
         _menu.SetEntity(Owner);
+
+        _menu.OnUninstallPart += (layer, part) =>
+            SendMessage(new UninstallArmorPartMessage(layer, part));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

@@ -30,10 +30,18 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<DamageModifyEvent>>(OnDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<LimbDamageModifyEvent>>(OnLimbDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMoveSpeed);
+        SubscribeLocalEvent<PowerArmorComponent, UninstallArmorPartMessage>(OnUninstallMessage);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
         SubscribeLocalEvent<PowerArmorPartComponent, BreakageEventArgs>(OnPartBroken);
+    }
+
+    private void OnUninstallMessage(Entity<PowerArmorComponent> ent, ref UninstallArmorPartMessage args)
+    {
+        var partUid = GetEntity(args.Part);
+        ent.Comp.UninstallTarget = partUid;
+        Dirty(ent);
     }
 
     #region Power Armor

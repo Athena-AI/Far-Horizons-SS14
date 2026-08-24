@@ -28,12 +28,15 @@ public sealed partial class PowerArmorMenu : FancyWindow
     private EntityUid _entity;
     private readonly Dictionary<PowerArmorVisualLayers, EntityUid?> _parts = new();
     private readonly Dictionary<PowerArmorVisualLayers, PartControls> _partControls = new();
-    private BoxContainer? _openDetails;
+    private PartControls? _openDetails;
     private float _updateTimer;
     private readonly StyleBoxFlat _barBackground = new() { BackgroundColor = Color.Black };
     private readonly StyleBoxFlat _barForeground = new();
+    public event Action<PowerArmorVisualLayers, NetEntity>? OnUninstallPart;
     private readonly record struct PartControls(
         Button PartButton,
+        RichTextLabel PartButtonLabel,
+        TextureRect PartButtonArrow,
         ProgressBar Bar,
         RichTextLabel Percent,
         BoxContainer Details,
@@ -74,17 +77,14 @@ public sealed partial class PowerArmorMenu : FancyWindow
             var controls = GeneratePanel(panel);
             _partControls[layer] = controls;
 
-            controls.PartButton.OnPressed += _ => ToggleContainer(controls.Details, _parts[layer]);
+            controls.PartButton.OnPressed += _ => ToggleContainer(_partControls[layer], _parts[layer]);
             controls.UninstallButton.OnPressed += _ =>
             {
                 if (_parts[layer] is { } part)
-                    OnUninstallPart?.Invoke(layer, part);
+                    OnUninstallPart?.Invoke(layer, _entityManager.GetNetEntity(part));
             };
         }
     }
-
-    public event Action<PowerArmorVisualLayers, EntityUid>? OnUninstallPart;
-
     public void SetEntity(EntityUid entity) => _entity = entity;
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -150,7 +150,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
             if (_entityManager.TryGetComponent<MetaDataComponent>(part.Value, out var metaData))
             {
-                controls.PartButton.Text = metaData.EntityName;
+                controls.PartButtonLabel.Text = metaData.EntityName;
                 controls.PartButton.Disabled = false;
                 controls.Description.Text = metaData.EntityDescription;
             }
@@ -182,63 +182,88 @@ public sealed partial class PowerArmorMenu : FancyWindow
         }
         else
         {
-            controls.PartButton.Text = "Empty";
+            controls.PartButtonLabel.Text = "Empty";
             controls.PartButton.Disabled = true;
             controls.Bar.Visible = false;
             controls.Percent.Visible = false;
 
             if (controls.Details.Visible)
                 controls.Details.Visible = false;
-            if (_openDetails == controls.Details)
+            if (_openDetails == controls)
                 _openDetails = null;
         }
     }
 
     private PartControls GeneratePanel(PanelContainer panel)
     {
-        var box1 = new BoxContainer
+        var MainBoxContainer = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
             HorizontalExpand = true
         };
 
-        var box11 = new BoxContainer
+        var PartNameIntegrityBox = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Horizontal,
             Name = $"{panel.Name}Row",
             HorizontalExpand = true,
             SetHeight = 30
         };
-        box1.AddChild(box11);
 
-        var label11 = new RichTextLabel
+        var PartTypeLabel = new RichTextLabel
         {
             Text = $"{panel.Name}: ",
             HorizontalAlignment = HAlignment.Left,
             VerticalAlignment = VAlignment.Center,
-            MinSize = new Vector2(90, 0)
+            MinSize = new Vector2(60, 0)
         };
-        box11.AddChild(label11);
 
-        var button11 = new Button
+        PartNameIntegrityBox.AddChild(PartTypeLabel);
+
+        var PartNameButton = new Button
         {
-            Name = $"{panel.Name}Label",
-            Text = "Empty",
             StyleClasses = { "CrossButtonRed" },
             HorizontalAlignment = HAlignment.Left,
             VerticalAlignment = VAlignment.Center,
-            SetWidth = 350
+            MinWidth = 350
         };
-        box11.AddChild(button11);
 
-        var control11 = new Control
+        var PartNameBox = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+            VerticalExpand = true
+        };
+
+        var PartNameArrow = new TextureRect
+        {
+            StyleClasses = new StyleClassCollection("ButtonSquare"),
+            TexturePath = "/Textures/Interface/VerbIcons/group.svg.192dpi.png",
+            Stretch = TextureRect.StretchMode.KeepAspectCentered,
+            SetSize = new Vector2(16, 16),
+            Margin = new Thickness(0, 2, 4, 0)
+        };
+        PartNameBox.AddChild(PartNameArrow);
+
+        var PartNameLabel = new RichTextLabel
+        {
+            Name = $"{panel.Name}Label",
+            Text="Emtpty",
+            HorizontalAlignment = HAlignment.Left,
+            VerticalAlignment = VAlignment.Center
+        };
+        PartNameBox.AddChild(PartNameLabel);
+
+        PartNameButton.AddChild(PartNameBox);
+        PartNameIntegrityBox.AddChild(PartNameButton);
+
+        var PartIntegrityControl = new Control
         {
             HorizontalExpand = true,
             Margin = new Thickness(5, 0, 5, 0)
         };
-        box11.AddChild(control11);
 
-        var progressBar11 = new ProgressBar
+        var PartIntegrityBar = new ProgressBar
         {
             Name = $"{panel.Name}Bar",
             MinValue = 0,
@@ -246,20 +271,21 @@ public sealed partial class PowerArmorMenu : FancyWindow
             Value = 50,
             SetHeight = 25
         };
-        control11.AddChild(progressBar11);
+        PartIntegrityControl.AddChild(PartIntegrityBar);
 
-        var label12 = new RichTextLabel
+        var PartPercentLabel = new RichTextLabel
         {
             Name = $"{panel.Name}Percent",
             Text = "50%",
             HorizontalAlignment = HAlignment.Center,
             Margin = new Thickness(5, 0, 0, 0)
         };
-        control11.AddChild(label12);
+        PartIntegrityControl.AddChild(PartPercentLabel);
 
-        panel.AddChild(box1);
+        PartNameIntegrityBox.AddChild(PartIntegrityControl);
+        MainBoxContainer.AddChild(PartNameIntegrityBox);
 
-        var box12 = new BoxContainer
+        var DetailsBox = new BoxContainer
         {
             Name = $"{panel.Name}Details",
             Orientation = BoxContainer.LayoutOrientation.Vertical,
@@ -268,57 +294,67 @@ public sealed partial class PowerArmorMenu : FancyWindow
             Margin = new Thickness(10, 5, 10, 5)
         };
 
-        var panelContainer121 = new PanelContainer
+        var DetailsDivider = new PanelContainer
         {
             StyleClasses = { "LowDivider" },
             SetHeight = 1,
             Margin = new Thickness(0, 0, 0, 5)
         };
-        box12.AddChild(panelContainer121);
+        DetailsBox.AddChild(DetailsDivider);
 
-        var box121 = new BoxContainer
+        var DescriptionUninstallBox = new BoxContainer
         {
-            Orientation = BoxContainer.LayoutOrientation.Vertical
+            Orientation = BoxContainer.LayoutOrientation.Horizontal
         };
-        box12.AddChild(box121);
 
-        var label121 = new RichTextLabel
+        var DescriptionLabel = new RichTextLabel
         {
             Name = $"{panel.Name}Description",
             HorizontalAlignment = HAlignment.Left,
-            Margin = new Thickness(0, 0, 0, 5)
+            Margin = new Thickness(10, 0),
+            MaxWidth = 400
         };
-        box121.AddChild(label121);
+        DescriptionUninstallBox.AddChild(DescriptionLabel);
 
-        var button121 = new Button
+        var UninstallButton = new Button
         {
             Name = $"{panel.Name}UninstallButton",
             Text = "Uninstall",
             StyleClasses = { "CrossButtonRed" },
-            HorizontalAlignment = HAlignment.Left
+            HorizontalAlignment = HAlignment.Right,
+            Margin = new Thickness(10,0, 0, 0)
         };
-        box121.AddChild(button121);
+        DescriptionUninstallBox.AddChild(UninstallButton);
 
-        box1.AddChild(box12);
+        DetailsBox.AddChild(DescriptionUninstallBox);
+        MainBoxContainer.AddChild(DetailsBox);
 
-        return new PartControls(button11, progressBar11, label12, box12, label121, button121);
+        panel.AddChild(MainBoxContainer);
+
+        return new PartControls(PartNameButton, PartNameLabel, PartNameArrow, PartIntegrityBar, PartPercentLabel, DetailsBox, DescriptionLabel, UninstallButton);
     }
 
-    private void ToggleContainer(BoxContainer container, EntityUid? part)
+    private void ToggleContainer(PartControls container, EntityUid? part)
     {
         if (part == null)
             return;
 
         if (_openDetails == container)
         {
-            container.Visible = false;
+            container.Details.Visible = false;
+            container.PartButtonArrow.TexturePath = "/Textures/Interface/VerbIcons/group.svg.192dpi.png"; 
             _openDetails = null;
             return;
         }
 
-        _openDetails?.Visible = false;
+        if (_openDetails != null)
+        {
+            _openDetails.Value.Details.Visible  = false;
+            _openDetails.Value.PartButtonArrow.TexturePath = "/Textures/Interface/VerbIcons/group.svg.192dpi.png"; 
+        }
 
-        container.Visible = true;
+        container.Details.Visible = true;
+        container.PartButtonArrow.TexturePath = "/Textures/_FarHorizons/Interface/VerbIcons/group90.svg.192dpi.png";
         _openDetails = container;
     }
-}
+    }

@@ -18,6 +18,8 @@ public sealed class PowerArmorBoundUserInterface : BoundUserInterface
 
         _menu.OnUninstallPart += (layer, part) =>
             SendMessage(new UninstallArmorPartMessage(layer, part));
+        _menu.OnTogglePowerArmor += () =>
+            SendMessage(new TogglePowerArmorMessage());
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

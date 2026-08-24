@@ -66,9 +66,9 @@
                 <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="HardwarePanel" Orientation="Vertical">
                         <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-                            <Label Text="Part" StyleClasses="LabelKeyText" Margin="115 0 0 0" HorizontalAlignment="Left"/>
+                            <Label Text="Part" StyleClasses="LabelKeyText" Margin="90 0 0 0" HorizontalAlignment="Left"/>
                             <Control HorizontalExpand="True"/>
-                            <Label Text="Integrity" StyleClasses="LabelKeyText" Margin="0 0 30 0" HorizontalAlignment="Right"/>
+                            <Label Text="Integrity" StyleClasses="LabelKeyText" Margin="0 0 50 0" HorizontalAlignment="Right"/>
                         </BoxContainer>
 
                         <PanelContainer Name="Head" StyleClasses="BackgroundPanel" Margin="10 5 10 0"/>

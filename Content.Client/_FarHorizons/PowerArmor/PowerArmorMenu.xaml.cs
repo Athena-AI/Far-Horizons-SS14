@@ -33,6 +33,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
     private readonly StyleBoxFlat _barBackground = new() { BackgroundColor = Color.Black };
     private readonly StyleBoxFlat _barForeground = new();
     public event Action<PowerArmorVisualLayers, NetEntity>? OnUninstallPart;
+    public event Action? OnTogglePowerArmor;
     private readonly record struct PartControls(
         Button PartButton,
         RichTextLabel PartButtonLabel,
@@ -84,6 +85,8 @@ public sealed partial class PowerArmorMenu : FancyWindow
                     OnUninstallPart?.Invoke(layer, _entityManager.GetNetEntity(part));
             };
         }
+
+        ActivationButton.OnPressed += _ => OnTogglePowerArmor?.Invoke();
     }
     public void SetEntity(EntityUid entity) => _entity = entity;
 
@@ -312,9 +315,15 @@ public sealed partial class PowerArmorMenu : FancyWindow
             Name = $"{panel.Name}Description",
             HorizontalAlignment = HAlignment.Left,
             Margin = new Thickness(10, 0),
-            MaxWidth = 400
+            MaxWidth = 350
         };
         DescriptionUninstallBox.AddChild(DescriptionLabel);
+
+        var spacingControl = new Control
+        {
+            HorizontalExpand = true
+        };
+        DescriptionUninstallBox.AddChild(spacingControl);
 
         var UninstallButton = new Button
         {

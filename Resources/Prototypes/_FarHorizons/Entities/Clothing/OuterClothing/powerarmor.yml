@@ -70,6 +70,10 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+        whitelist:
+          tags:
+            - PowerCell
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
@@ -106,6 +110,8 @@
       LLeg: null
   - type: ActivatableUI
     key: enum.PowerArmorMenuUiKey.Key
+  - type: SimpleToolUsage
+    quality: Prying
   - type: UserInterface
     interfaces:
       enum.PowerArmorMenuUiKey.Key:

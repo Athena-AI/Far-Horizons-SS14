@@ -1,12 +1,17 @@
 
+using System.Linq;
 using Content.Shared._FarHorizons.LimbDamage.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
+using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Popups;
+using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 
@@ -20,6 +25,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected SharedInteractionSystem _interaction = default!;
     [Dependency] protected InventorySystem _inventory = default!;
     [Dependency] protected MovementSpeedModifierSystem _movement = default!;
+    [Dependency] protected SharedPopupSystem _popUp = default!;
+    [Dependency] protected SharedDoAfterSystem _doAfter = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -31,17 +38,16 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<LimbDamageModifyEvent>>(OnLimbDamage);
         SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent>>(OnRefreshMoveSpeed);
         SubscribeLocalEvent<PowerArmorComponent, UninstallArmorPartMessage>(OnUninstallMessage);
+        SubscribeLocalEvent<PowerArmorComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<PowerArmorComponent, AttemptSimpleToolUseEvent>(OnToolAttempt);
+        SubscribeLocalEvent<PowerArmorComponent, SimpleToolDoAfterEvent>(ToolDoAfterComplete);
+        SubscribeLocalEvent<PowerArmorComponent, InstallPartDoAfter>(AfterInstallDoAfter);
+        SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorMessage>(OnPowerToggle);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
         SubscribeLocalEvent<PowerArmorPartComponent, BreakageEventArgs>(OnPartBroken);
-    }
-
-    private void OnUninstallMessage(Entity<PowerArmorComponent> ent, ref UninstallArmorPartMessage args)
-    {
-        var partUid = GetEntity(args.Part);
-        ent.Comp.UninstallTarget = partUid;
-        Dirty(ent);
+        SubscribeLocalEvent<PowerArmorPartComponent, AfterInteractEvent>(OnInteractUsing);
     }
 
     #region Power Armor
@@ -129,6 +135,61 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         args.Args.ModifySpeed(total);
     }
 
+    private void OnUninstallMessage(Entity<PowerArmorComponent> ent, ref UninstallArmorPartMessage args)
+    {
+        var partUid = GetEntity(args.Part);
+        ent.Comp.UninstallTarget = partUid;
+        Dirty(ent);
+    }
+
+    private void OnExamine(Entity<PowerArmorComponent> ent, ref ExaminedEvent args)
+    {
+        if(ent.Comp.UninstallTarget == null) return;
+        args.PushMarkup("Use a crowbar to uninstall part.");
+    }
+
+    private void OnToolAttempt(Entity<PowerArmorComponent> ent, ref AttemptSimpleToolUseEvent args)
+    {
+        if(ent.Comp.UninstallTarget != null) return;
+        _popUp.PopupClient("No Uninstall Target on this armor.", args.User);
+        args.Cancelled = true;
+    }
+
+    private void ToolDoAfterComplete(Entity<PowerArmorComponent> ent, ref SimpleToolDoAfterEvent args)
+    {
+        if(!Exists(ent.Comp.UninstallTarget)) return;
+
+        _container.TryRemoveFromContainer(ent.Comp.UninstallTarget.Value);
+        ent.Comp.UninstallTarget = null;
+        Dirty(ent);
+    }
+
+    private void AfterInstallDoAfter(Entity<PowerArmorComponent> ent, ref InstallPartDoAfter args)
+    {
+        var part = GetEntity(args.Part);
+        if(!HasComp<PowerArmorPartComponent>(part)) return;
+        if(args.PartType == PowerArmorVisualLayers.Head 
+        && _container.TryGetContainer(ent.Comp.OtherHalf, "parts", out var headPartContainer)
+        && TryComp<PowerArmorComponent>(ent.Comp.OtherHalf, out var paComp))
+        {
+            _container.InsertOrDrop(part, headPartContainer);
+            paComp.Parts[args.PartType] = part;
+            Dirty(ent.Comp.OtherHalf, paComp);
+        }
+        else if(_container.TryGetContainer(ent.Owner, "parts", out var partContainer))
+        {
+            _container.InsertOrDrop(part, partContainer);
+            ent.Comp.Parts[args.PartType] = part;
+            Dirty(ent);
+        }
+    }
+
+    private void OnPowerToggle(Entity<PowerArmorComponent> ent, ref TogglePowerArmorMessage args)
+    {
+        ent.Comp.IsPowered = !ent.Comp.IsPowered;
+        Dirty(ent);
+    }
+
     #endregion
     #region Power Armor Parts
 
@@ -176,5 +237,42 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         _movement.RefreshMovementSpeedModifiers(paComp.Wearer.Value);
     }
+
+    private void OnInteractUsing(Entity<PowerArmorPartComponent> ent, ref AfterInteractEvent args)
+    {
+        if(!TryComp<PowerArmorComponent>(args.Target, out var PAComp)
+        || !PAComp.IsPrimary) 
+            return;
+
+        foreach(var part in PAComp.Parts)
+        {
+            if(ent.Comp.PartType == part.Key && part.Value != null)
+            {
+                _popUp.PopupClient("This piece is already installed.", args.User);
+                return;
+            }
+        }
+
+        if(Exists(PAComp.OtherHalf))
+        {
+            if(TryComp<PowerArmorComponent>(PAComp.OtherHalf, out var PAComp2))
+            if(ent.Comp.PartType == PAComp2.Parts.First().Key && PAComp2.Parts.First().Value != null)
+            {
+                _popUp.PopupClient("This piece is already installed.", args.User);
+                return;
+            }
+        }
+
+        var InstallDoAfter = new InstallPartDoAfter(ent.Comp.PartType , GetNetEntity(args.Used));
+        var installDoAfter = new DoAfterArgs(EntityManager, args.User, ent.Comp.InstallTime, InstallDoAfter, args.Target)
+        {
+            BreakOnDamage = true,
+            BreakOnMove = true,
+            BreakOnWeightlessMove = true
+        };
+        _doAfter.TryStartDoAfter(installDoAfter);
+        args.Handled = true;   
+    }
+
     #endregion
 }

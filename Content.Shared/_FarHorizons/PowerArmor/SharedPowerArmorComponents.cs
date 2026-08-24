@@ -1,5 +1,6 @@
 
 using Content.Shared.Damage;
+using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -26,6 +27,9 @@ public sealed partial class PowerArmorComponent : Component
 
     [AutoNetworkedField]
     public bool IsPrimary = true;
+
+    [ViewVariables, AutoNetworkedField]
+    public bool IsPowered = false;
 
     [ViewVariables, AutoNetworkedField]
     public EntityUid? Wearer;
@@ -60,6 +64,9 @@ public sealed partial class PowerArmorPartComponent : Component
     /// </summary>
     [DataField(required: true)]
     public PowerArmorVisualLayers PartType = default;
+
+    [DataField]
+    public TimeSpan InstallTime = TimeSpan.FromSeconds(5);
 
     /// <summary>
     /// The max integrity of a part.
@@ -114,3 +121,18 @@ public sealed class UninstallArmorPartMessage : BoundUserInterfaceMessage
         Part = part;
     }
 }
+
+[Serializable, NetSerializable]
+public sealed partial class InstallPartDoAfter : SimpleDoAfterEvent
+{
+    public readonly PowerArmorVisualLayers PartType;
+    public readonly NetEntity Part;
+    public InstallPartDoAfter(PowerArmorVisualLayers partType, NetEntity part)
+    {
+        PartType = partType;
+        Part = part;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class TogglePowerArmorMessage : BoundUserInterfaceMessage;

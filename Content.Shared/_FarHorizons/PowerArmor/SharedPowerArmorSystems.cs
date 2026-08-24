@@ -48,6 +48,9 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
         SubscribeLocalEvent<PowerArmorPartComponent, BreakageEventArgs>(OnPartBroken);
         SubscribeLocalEvent<PowerArmorPartComponent, AfterInteractEvent>(OnInteractUsing);
+
+        SubscribeLocalEvent<PowerArmorModuleComponent, EntGotInsertedIntoContainerMessage>(OnModuleInstalled);
+        SubscribeLocalEvent<PowerArmorModuleComponent, EntGotRemovedFromContainerMessage>(OnModuleUninstalled);
     }
 
     #region Power Armor
@@ -274,5 +277,21 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         args.Handled = true;   
     }
 
+    #endregion
+    #region Power Armor Modules
+    private void OnModuleInstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotInsertedIntoContainerMessage args)
+    {
+        foreach (var comp in (ent.Comp.Components ?? []).Values)
+            if (!HasComp(args.Entity, comp.Component.GetType()))
+                AddComp(args.Entity, comp.Component);
+    }
+
+    private void OnModuleUninstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotRemovedFromContainerMessage args)
+    {
+        foreach (var comp in (ent.Comp.Components ?? []).Values)
+            if (HasComp(args.Entity, comp.Component.GetType()))
+                RemComp(args.Entity, EntityManager.GetComponent(args.Entity, comp.Component.GetType()));
+    }
+    
     #endregion
 }

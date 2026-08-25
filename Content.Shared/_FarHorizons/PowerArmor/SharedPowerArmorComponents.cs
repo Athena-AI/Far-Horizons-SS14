@@ -1,9 +1,7 @@
-
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
@@ -83,20 +81,6 @@ public sealed partial class PowerArmorPartComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public EntityUid? AttachedTo;
-}
-
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class PowerArmorModuleComponent : Component
-{
-    [DataField]
-    public TimeSpan InstallTime = TimeSpan.FromSeconds(5);
-
-    [ViewVariables, AutoNetworkedField]
-    public bool isActive = false;
-    
-    [DataField("comps")]
-    public ComponentRegistry? Components;
-    
 }
 
 [Serializable, NetSerializable]

@@ -11,8 +11,11 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.PowerCell;
+using Content.Shared.PowerCell.Components;
 using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
+using Content.Shared.Wires;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
@@ -27,6 +30,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected MovementSpeedModifierSystem _movement = default!;
     [Dependency] protected SharedPopupSystem _popUp = default!;
     [Dependency] protected SharedDoAfterSystem _doAfter = default!;
+    [Dependency] protected PowerCellSystem _powerCell = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -148,13 +152,25 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     private void OnExamine(Entity<PowerArmorComponent> ent, ref ExaminedEvent args)
     {
         if(ent.Comp.UninstallTarget == null) return;
-        args.PushMarkup("Use a crowbar to uninstall part.");
+        if(TryComp<WiresPanelComponent>(ent.Owner, out var wires) && !wires.Open)
+            args.PushMarkup("Open maintenance panel first.");
+        else
+            args.PushMarkup("Use a crowbar to uninstall part.");
     }
 
     private void OnToolAttempt(Entity<PowerArmorComponent> ent, ref AttemptSimpleToolUseEvent args)
     {
-        if(ent.Comp.UninstallTarget != null) return;
-        _popUp.PopupClient("No Uninstall Target on this armor.", args.User);
+        if(!TryComp<WiresPanelComponent>(ent.Owner, out var wire))
+            return;
+
+        if(ent.Comp.UninstallTarget != null || wire.Open)
+            return;
+            
+        if(ent.Comp.UninstallTarget == null)
+            _popUp.PopupClient("No uninstall target on this armor.", args.User);
+        if(!wire.Open)
+            _popUp.PopupClient("Open wire panel first.", args.User);
+
         args.Cancelled = true;
     }
 
@@ -189,6 +205,9 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     private void OnPowerToggle(Entity<PowerArmorComponent> ent, ref TogglePowerArmorMessage args)
     {
+        if(!TryComp<PowerCellDrawComponent>(ent.Owner, out var drawComp)) return;
+
+        _powerCell.SetDrawEnabled(ent.Owner, !drawComp.Enabled);
         ent.Comp.IsPowered = !ent.Comp.IsPowered;
         Dirty(ent);
     }
@@ -281,16 +300,28 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     #region Power Armor Modules
     private void OnModuleInstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
-        foreach (var comp in (ent.Comp.Components ?? []).Values)
-            if (!HasComp(args.Entity, comp.Component.GetType()))
-                AddComp(args.Entity, comp.Component);
+        if(!TryComp<PowerCellDrawComponent>(args.Entity, out var drawComp)) return;
+
+        if(TryComp<PowerArmorPassiveModuleComponent>(ent.Owner, out var components))
+        {
+            foreach (var comp in (components.Components ?? []).Values)
+                if (!HasComp(args.Entity, comp.Component.GetType()))
+                    AddComp(args.Entity, comp.Component);
+            _powerCell.SetDrawRate(args.Entity, drawComp.DrawRate + ent.Comp.PowerDrain);
+        }
     }
 
     private void OnModuleUninstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotRemovedFromContainerMessage args)
     {
-        foreach (var comp in (ent.Comp.Components ?? []).Values)
-            if (HasComp(args.Entity, comp.Component.GetType()))
-                RemComp(args.Entity, EntityManager.GetComponent(args.Entity, comp.Component.GetType()));
+        if(!TryComp<PowerCellDrawComponent>(args.Entity, out var drawComp)) return;
+
+        if(TryComp<PowerArmorPassiveModuleComponent>(ent.Owner, out var components))
+        {
+            foreach (var comp in (components.Components ?? []).Values)
+                if (HasComp(args.Entity, comp.Component.GetType()))
+                    RemComp(args.Entity, EntityManager.GetComponent(args.Entity, comp.Component.GetType()));
+            _powerCell.SetDrawRate(args.Entity, drawComp.DrawRate - ent.Comp.PowerDrain);
+        }
     }
     
     #endregion

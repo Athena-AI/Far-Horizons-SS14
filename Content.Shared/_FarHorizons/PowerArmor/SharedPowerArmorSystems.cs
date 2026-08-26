@@ -300,28 +300,50 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     #region Power Armor Modules
     private void OnModuleInstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
-        if(!TryComp<PowerCellDrawComponent>(args.Entity, out var drawComp)) return;
+        if(TerminatingOrDeleted(args.Entity)) return;
+
+        if(!TryComp<PowerArmorComponent>(args.Container.Owner, out var PAComp) 
+        || !TryComp<PowerCellDrawComponent>(args.Container.Owner, out var drawComp)) return;
 
         if(TryComp<PowerArmorPassiveModuleComponent>(ent.Owner, out var components))
-        {
             foreach (var comp in (components.Components ?? []).Values)
-                if (!HasComp(args.Entity, comp.Component.GetType()))
-                    AddComp(args.Entity, comp.Component);
-            _powerCell.SetDrawRate(args.Entity, drawComp.DrawRate + ent.Comp.PowerDrain);
-        }
+                if (!HasComp(args.Container.Owner, comp.Component.GetType()))
+                    AddComp(args.Container.Owner, comp.Component);
+
+        if(ent.Comp.IdlePowerDrain > 0)
+            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate + ent.Comp.IdlePowerDrain);
+        if(ent.Comp.ActivePowerDrain > 0 && ent.Comp.isEnabled)
+            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate + ent.Comp.ActivePowerDrain);
+
+        PAComp.Modules.Add(ent.Owner);
+        Dirty(args.Container.Owner, PAComp);
     }
 
     private void OnModuleUninstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotRemovedFromContainerMessage args)
     {
-        if(!TryComp<PowerCellDrawComponent>(args.Entity, out var drawComp)) return;
+        if(TerminatingOrDeleted(args.Entity)) return;
+        
+        if(!TryComp<PowerArmorComponent>(args.Container.Owner, out var PAComp) 
+        || !TryComp<PowerCellDrawComponent>(args.Container.Owner, out var drawComp)) return;
 
         if(TryComp<PowerArmorPassiveModuleComponent>(ent.Owner, out var components))
-        {
             foreach (var comp in (components.Components ?? []).Values)
-                if (HasComp(args.Entity, comp.Component.GetType()))
-                    RemComp(args.Entity, EntityManager.GetComponent(args.Entity, comp.Component.GetType()));
-            _powerCell.SetDrawRate(args.Entity, drawComp.DrawRate - ent.Comp.PowerDrain);
+                if (HasComp(args.Container.Owner, comp.Component.GetType()))
+                    RemComp(args.Container.Owner, EntityManager.GetComponent(args.Entity, comp.Component.GetType()));
+
+        if(PAComp.Modules.Contains(ent.Owner))
+        {
+            PAComp.Modules.Remove(ent.Owner);
+            Dirty(args.Container.Owner, PAComp);
         }
+
+        if(ent.Comp.IdlePowerDrain > 0)
+            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate - ent.Comp.IdlePowerDrain);
+        if(ent.Comp.ActivePowerDrain > 0)
+            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate - ent.Comp.ActivePowerDrain);
+
+        if(ent.Comp.isEnabled) ent.Comp.isEnabled = false;
+        Dirty(ent);
     }
     
     #endregion

@@ -79,6 +79,8 @@
       toggleable-clothing: !type:ContainerSlot {}
       parts: !type:Container
         ents: []
+      modules: !type:Container
+        ents: []
       cell_slot: !type:ContainerSlot {}
   - type: GroupExamine
   - type: Tag
@@ -128,17 +130,12 @@
   id: PowerArmorNTJuggernautFilled
   suffix: NT, Filled
   components:
-  - type: IdClothingBlocker
-    allowedJobs:
-      - Security
-      - Armory
-      - HeadOfSecurity
-      - Captain
-      - Detective
   - type: ToggleableClothing
     clothingPrototype: PowerArmorHelmetNTJuggernautFilled
   - type: ContainerFill
     containers:
+      modules: 
+        - PowerArmorModuleIDLockSecurityNT
       parts:
         - PowerArmorChestNTJuggernaut
         - PowerArmorLArmNTJuggernaut

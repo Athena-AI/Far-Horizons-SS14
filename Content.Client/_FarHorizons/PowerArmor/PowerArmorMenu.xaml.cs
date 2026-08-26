@@ -44,6 +44,13 @@ public sealed partial class PowerArmorMenu : FancyWindow
         RichTextLabel Description,
         Button UninstallButton);
 
+    private readonly HashSet<EntityUid> _moduleEntities = new();
+    private readonly Dictionary<EntityUid, ModuleControls> _moduleControls = new();
+    public event Action<NetEntity>? OnUninstallModule;
+
+    private readonly record struct ModuleControls(
+        PanelContainer Panel);
+
     public PowerArmorMenu()
     {
         RobustXamlLoader.Load(this);
@@ -142,6 +149,117 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
         foreach (var (layer, controls) in _partControls)
             UpdateParts(controls, _parts[layer]);
+
+        UpdateModules();
+    }
+
+    private void UpdateModules()
+    {
+        if (!_container.TryGetContainer(_entity, "modules", out var moduleSlot))
+            return;
+
+        foreach (var module in moduleSlot.ContainedEntities)
+        {
+            if (_moduleEntities.Contains(module))
+                continue;
+
+            _moduleEntities.Add(module);
+            AddModulePanel(module);
+        }
+
+        foreach (var tracked in _moduleEntities.ToList())
+        {
+            if (moduleSlot.ContainedEntities.Contains(tracked))
+                continue;
+
+            RemoveModulePanel(tracked);
+            _moduleEntities.Remove(tracked);
+        }
+}
+
+    private void AddModulePanel(EntityUid module)
+    {
+        var row = new PanelContainer
+        {
+            Name = $"{module}",
+            StyleClasses = { "BackgroundPanel" },
+            Margin = new Thickness(10, 5, 10, 0)
+        };
+
+        var box = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+            HorizontalExpand = true
+        };
+
+        box.AddChild(new Button
+        {
+            Name = $"{module}-Enabled",
+            StyleClasses = { "ButtonSquare" },
+            Text = "T",
+            Margin = new Thickness(0, 2, 2, 2)
+        });
+
+        box.AddChild(new Button
+        {
+            Name = $"{module}-Uninstall",
+            StyleClasses = { "ButtonSquare" },
+            Text = "T",
+            Margin = new Thickness(0, 2, 2, 2)
+        });
+
+        box.AddChild(new Button
+        {
+            Name = $"{module}-Label",
+            StyleClasses = { "ButtonSquare" },
+            Text = _entityManager.TryGetComponent<MetaDataComponent>(module, out var meta)
+                ? meta.EntityName
+                : "Unknown Module",
+            Margin = new Thickness(0, 2, 2, 2),
+            HorizontalExpand = true
+        });
+
+        box.AddChild(new Button
+        {
+            Name = $"{module}-IdleDrain",
+            StyleClasses = { "ButtonSquare" },
+            Text = "0",
+            Margin = new Thickness(0, 2, 2, 2)
+        });
+        box.AddChild(new Button
+        {
+            Name = $"{module}-ActiveDrain",
+            StyleClasses = { "ButtonSquare" },
+            Text = "0",
+            Margin = new Thickness(0, 2, 2, 2)
+        });
+        box.AddChild(new Button
+        {
+            Name = $"{module}-OnUseDrain",
+            StyleClasses = { "ButtonSquare" },
+            Text = "0",
+            Margin = new Thickness(0, 2, 2, 2)
+        });
+        box.AddChild(new Button
+        {
+            Name = $"{module}-Complexity",
+            StyleClasses = { "ButtonSquare" },
+            Text = "0",
+            Margin = new Thickness(0, 2, 2, 2)
+        });
+
+        row.AddChild(box);
+        ModulesPanel.AddChild(row);
+
+        _moduleControls[module] = new ModuleControls(row);
+    }
+
+    private void RemoveModulePanel(EntityUid module)
+    {
+        if (!_moduleControls.Remove(module, out var controls))
+            return;
+
+        ModulesPanel.RemoveChild(controls.Panel);
     }
 
     private void UpdateParts(PartControls controls, EntityUid? part)

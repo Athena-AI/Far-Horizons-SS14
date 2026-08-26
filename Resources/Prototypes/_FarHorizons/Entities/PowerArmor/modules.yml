@@ -1,0 +1,23 @@
+- type: entity
+  id: PowerArmorModuleBase
+  name: Power Armor Module Base
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: InteractionOutline
+  - type: Clickable
+  - type: PowerArmorModule
+
+- type: entity
+  id: PowerArmorModuleIDLockSecurityNT
+  name: ID Lock Power Module
+  suffix: NT, Security
+  parent: PowerArmorModuleBase
+  components:
+  - type: PowerArmorPassiveModule
+    comps:
+      - type: IdClothingBlocker
+        allowedJobs:
+          - Security

@@ -35,6 +35,9 @@ public sealed partial class PowerArmorComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public EntityUid? UninstallTarget;
+
+    [ViewVariables, AutoNetworkedField]
+    public List<EntityUid> Modules = new();
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]

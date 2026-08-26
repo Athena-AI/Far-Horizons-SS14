@@ -53,7 +53,15 @@
                 <PanelContainer StyleClasses="HighDivider" />
                 <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="ModulesPanel" Orientation="Vertical">
-
+                        <BoxContainer Orientation="Horizontal" Margin="0 5 25 0"> 
+                            <Label Text="Actions" Margin="20 0 0 0" HorizontalAlignment="Left"/>
+                            <Label Text="Name" Margin="10 0 0 0" HorizontalAlignment="Left"/>
+                            <Control HorizontalExpand="True"/>
+                            <Button StyleClasses="ButtonSquare" Text="T" Margin="0 2 2 2" Disabled="true"/>
+                            <Button StyleClasses="ButtonSquare" Text="T" Margin="0 2 2 2" Disabled="true"/>
+                            <Button StyleClasses="ButtonSquare" Text="T" Margin="0 2 2 2" Disabled="true"/>
+                            <Button StyleClasses="ButtonSquare" Text="T" Margin="0 2 2 2" Disabled="true"/>
+                        </BoxContainer>
                     </BoxContainer>
                 </ScrollContainer>
             </BoxContainer>

@@ -56,6 +56,8 @@ public sealed partial class CyberLimbSystem : EntitySystem
                 _hands.AddHand((args.Performer, hands), handId, HandLocation.Functional, whitelist: ent.Comp.HandWhitelist);
                 _hands.DoPickup(args.Performer, handId, item, hands);
                 EnsureComp<UnremoveableComponent>(item);
+                if (storage.ItemEntities.Count == 1) //FH, if this cybernetic only has one item, set it to active hand
+                    _hands.SetActiveHand((args.Performer, hands), handId); //FH, this makes combat cybernetics with weapons much stronger
             }
         }
         else

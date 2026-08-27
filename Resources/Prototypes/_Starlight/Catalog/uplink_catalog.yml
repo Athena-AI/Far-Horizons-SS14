@@ -175,7 +175,7 @@
       sprite: /Textures/_Starlight/Objects/Specific/Medical/implants.rsi,
       state: eyes_night,
     }
-  productEntity: CyberneticImplanterCyberEyeNightVision #FH
+  productEntity: CyberneticImplanterSyndicateCyberEyeNightVision #FH
   discountDownTo:
     Telecrystal: 2
   cost:
@@ -192,7 +192,7 @@
       sprite: /Textures/_Starlight/Objects/Specific/Medical/implants.rsi,
       state: eyes_thermal,
     }
-  productEntity: CyberneticImplanterCyberEyeThermal #FH
+  productEntity: CyberneticImplanterSyndicateCyberEyeThermal #FH
   discountDownTo:
     Telecrystal: 4
   cost:

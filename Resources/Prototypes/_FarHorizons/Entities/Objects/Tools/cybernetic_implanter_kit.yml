@@ -126,19 +126,14 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterLeftArmCyberIFA30
-  name: Left IFA-30 Cybernetic Arm C.I.K.
+  id: CyberneticImplanterArmCyberIFA30
+  name: IFA-30 Cybernetic Arm C.I.K.
   components:
   - type: CyberneticImplanter
     implantedOrgan: LeftArmCyberIFA30
-
-- type: entity
-  parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterRightArmCyberIFA30
-  name: Right IFA-30 Cybernetic Arm C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: RightArmCyberIFA30
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftArmCyberIFA30
+    rightOrgan: RightArmCyberIFA30
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb

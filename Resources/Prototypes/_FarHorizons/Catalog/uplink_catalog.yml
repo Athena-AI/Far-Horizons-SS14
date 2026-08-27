@@ -397,32 +397,14 @@
 
 - type: listing
   id: UplinkIFA30LeftArm
-  name: uplink-ifa30-left-arm-name
+  name: uplink-ifa30-arm-name
   description: uplink-ifa30-arms-desc
   icon:
     {
       sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/SMGs/ifa30.rsi,
       state: icon,
     }
-  productEntity: BriefcaseWeaponIFA30LeftFilled
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 14
-  cost:
-    Telecrystal: 20
-  categories:
-    - UplinkCybernetics
-
-- type: listing
-  id: UplinkIFA30RightArm
-  name: uplink-ifa30-right-arm-name
-  description: uplink-ifa30-arms-desc
-  icon:
-    {
-      sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/SMGs/ifa30.rsi,
-      state: icon,
-    }
-  productEntity: BriefcaseWeaponIFA30RightFilled
+  productEntity: BriefcaseWeaponIFA30Filled
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 14

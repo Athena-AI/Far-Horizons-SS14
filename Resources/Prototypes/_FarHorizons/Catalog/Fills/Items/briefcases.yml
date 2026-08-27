@@ -171,7 +171,7 @@
         - id: AmmoSelection9mmSMGS
 
 - type: entity
-  id: BriefcaseWeaponIFA30LeftFilled
+  id: BriefcaseWeaponIFA30Filled
   parent: BriefcaseWeaponSmall
   name: Secure IFA-30 Case
   suffix: Filled, Left
@@ -180,20 +180,6 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: CyberneticImplanterLeftArmCyberIFA30
-        - id: TreasureCoinIron
-        - id: AmmoSelection9mmSMGS
-
-- type: entity
-  id: BriefcaseWeaponIFA30RightFilled
-  parent: BriefcaseWeaponSmall
-  name: Secure IFA-30 Case
-  suffix: Filled, Right
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: CyberneticImplanterRightArmCyberIFA30
+        - id: CyberneticImplanterArmCyberIFA30
         - id: TreasureCoinIron
         - id: AmmoSelection9mmSMGS

@@ -111,6 +111,8 @@ public sealed partial class CyberneticImplanterSystem : SharedCyberneticImplante
 
         args.Handled = true;
 
+        if (TryComp<CyberneticImplanterModeComponent>(entity, out _))
+            RemCompDeferred<CyberneticImplanterModeComponent>(entity); //Also remove the mode selector if we have it
         RemCompDeferred<CyberneticImplanterComponent>(entity); //cyber da world, my final message, goodbye
     }
 }

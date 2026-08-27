@@ -29,5 +29,5 @@ public sealed partial class CyberneticImplanterModeComponent : Component
     /// Sound played when mode is toggled.
     /// </summary>
     [DataField]
-    public SoundSpecifier ModeSwitchSound = new SoundPathSpecifier("/Audio/Items/Medical/healthscanner.ogg"); //TODO: find better sound
+    public SoundSpecifier ModeSwitchSound = new SoundPathSpecifier("/Audio/Machines/quickbeep.ogg", AudioParams.Default.WithVolume(1.5f));
 }

@@ -71,8 +71,7 @@ uplink-hypo-claws-desc = Sharp, retractable plasteel claws, with hypo injector t
 uplink-bunker-breaker-arm-left-name = Left Bunker Breaker Arm
 uplink-bunker-breaker-arm-right-name = Right Bunker Breaker Arm
 uplink-bunker-breaker-desc = Augmented arm with all the tools needed to go where you dont belong, including a jaws of death.
-uplink-ifa30-left-arm-name = Left IFA-30 Case
-uplink-ifa30-right-arm-name = Right IFA-30 Case
+uplink-ifa30-arm-name = IFA-30 Case
 uplink-ifa30-arms-desc = A modern IFA-30 SMG for mobile operations integrated into a Cybernetic Arm, comes with an Ammo Selector.
 
 uplink-hushpup-desc-fh = A powerful silenced shotgun with a low magazine capacity. Uses .50 shotgun ammo. Comes with an Ammo Selector.

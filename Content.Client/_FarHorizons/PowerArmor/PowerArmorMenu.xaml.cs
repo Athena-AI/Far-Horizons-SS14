@@ -192,60 +192,109 @@ public sealed partial class PowerArmorMenu : FancyWindow
             HorizontalExpand = true
         };
 
-        box.AddChild(new Button
+        var powerButton = new Button
         {
             Name = $"{module}-Enabled",
             StyleClasses = { "ButtonSquare" },
-            Text = "T",
-            Margin = new Thickness(0, 2, 2, 2)
-        });
+            Margin = new Thickness(0, 2, 2, 2),
+            SetSize = new Vector2(32)
+        };
 
-        box.AddChild(new Button
+        var powerTexture = new TextureRect
+        {
+            TexturePath = "/Textures/Interface/VerbIcons/Spare/poweronoff.svg.192dpi.png",
+            Stretch = TextureRect.StretchMode.KeepAspectCentered,
+            SetSize = new Vector2(16)
+        };
+        powerButton.AddChild(powerTexture);
+
+        box.AddChild(powerButton);
+
+        var uninstallButton = new Button
         {
             Name = $"{module}-Uninstall",
             StyleClasses = { "ButtonSquare" },
-            Text = "T",
-            Margin = new Thickness(0, 2, 2, 2)
-        });
+            Margin = new Thickness(0, 2, 2, 2),
+            SetSize = new Vector2(32)
+        };
 
-        box.AddChild(new Button
+        var uninstallTexture = new TextureRect
+        {
+            TexturePath = "/Textures/Interface/VerbIcons/drop.svg.192dpi.png",
+            Stretch = TextureRect.StretchMode.KeepAspectCentered,
+            SetSize = new Vector2(20)
+        };
+        uninstallButton.AddChild(uninstallTexture);
+
+        box.AddChild(uninstallButton);
+
+        var moduleNameButton = new Button
         {
             Name = $"{module}-Label",
             StyleClasses = { "ButtonSquare" },
+            Margin = new Thickness(0, 2, 2, 2),
+            HorizontalExpand = true
+        };
+
+        var moduleNamecontainer = new BoxContainer
+        {
+            HorizontalAlignment = HAlignment.Left
+        };
+
+        var moduleNameArrow = new TextureRect
+        {
+            StyleClasses = new StyleClassCollection("ButtonSquare"),
+            TexturePath = "/Textures/Interface/VerbIcons/group.svg.192dpi.png",
+            Stretch = TextureRect.StretchMode.KeepAspectCentered,
+            SetSize = new Vector2(16, 16),
+            Margin = new Thickness(0, 2, 4, 0)
+        };
+        moduleNamecontainer.AddChild(moduleNameArrow);
+
+        var moduleNameLabel = new RichTextLabel
+        {
             Text = _entityManager.TryGetComponent<MetaDataComponent>(module, out var meta)
                 ? meta.EntityName
                 : "Unknown Module",
-            Margin = new Thickness(0, 2, 2, 2),
-            HorizontalExpand = true
-        });
+            HorizontalAlignment = HAlignment.Left,
+            VerticalAlignment = VAlignment.Center
+        };
+        moduleNamecontainer.AddChild(moduleNameLabel);
+
+        moduleNameButton.AddChild(moduleNamecontainer);
+        box.AddChild(moduleNameButton);
 
         box.AddChild(new Button
         {
             Name = $"{module}-IdleDrain",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
-            Margin = new Thickness(0, 2, 2, 2)
+            Margin = new Thickness(0, 2, 2, 2),
+            SetSize = new Vector2(32)
         });
         box.AddChild(new Button
         {
             Name = $"{module}-ActiveDrain",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
-            Margin = new Thickness(0, 2, 2, 2)
+            Margin = new Thickness(0, 2, 2, 2),
+            SetSize = new Vector2(32)
         });
         box.AddChild(new Button
         {
             Name = $"{module}-OnUseDrain",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
-            Margin = new Thickness(0, 2, 2, 2)
+            Margin = new Thickness(0, 2, 2, 2),
+            SetSize = new Vector2(32)
         });
         box.AddChild(new Button
         {
             Name = $"{module}-Complexity",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
-            Margin = new Thickness(0, 2, 2, 2)
+            Margin = new Thickness(0, 2, 2, 2),
+            SetSize = new Vector2(32)
         });
 
         row.AddChild(box);
@@ -481,7 +530,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
         }
 
         container.Details.Visible = true;
-        container.PartButtonArrow.TexturePath = "/Textures/_FarHorizons/Interface/VerbIcons/group90.svg.192dpi.png";
+        container.PartButtonArrow.TexturePath = "/Textures/_FarHorizons/Interface/group90.svg.192dpi.png";
         _openDetails = container;
     }
     }

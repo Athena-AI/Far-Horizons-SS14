@@ -60,8 +60,8 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: CyberneticImplanterLeftArmCyberMantisBlade #FH
-        - id: CyberneticImplanterRightArmCyberMantisBlade #FH
+        - id: CyberneticImplanterArmCyberMantisBlade #FH
+        - id: CyberneticImplanterArmCyberMantisBlade #FH
     
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle

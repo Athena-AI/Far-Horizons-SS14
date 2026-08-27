@@ -115,19 +115,14 @@
 # Arm
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterLeftArmCyberMantisBlade
-  name: Left Mantis Blade Arm C.I.K.
+  id: CyberneticImplanterArmCyberMantisBlade
+  name: Mantis Blade Arm C.I.K.
   components:
   - type: CyberneticImplanter
     implantedOrgan: LeftArmCyberMantisBlade
-
-- type: entity
-  parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterRightArmCyberMantisBlade
-  name: Right Mantis Blade Arm C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: RightArmCyberMantisBlade
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftArmCyberMantisBlade
+    rightOrgan: RightArmCyberMantisBlade
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb

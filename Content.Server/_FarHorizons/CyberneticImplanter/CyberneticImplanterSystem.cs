@@ -4,7 +4,6 @@ using Content.Shared._FarHorizons.CyberneticImplanter;
 using Content.Shared.Body;
 using Content.Shared.Forensics;
 using Content.Shared.Popups;
-using Content.Shared.Verbs;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;

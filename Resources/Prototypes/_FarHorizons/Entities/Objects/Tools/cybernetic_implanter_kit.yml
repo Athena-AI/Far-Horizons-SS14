@@ -137,19 +137,14 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterLeftArmCyberBunkerBreaker
-  name: Left Bunker Breaker Arm C.I.K.
+  id: CyberneticImplanterArmCyberBunkerBreaker
+  name: Bunker Breaker Arm C.I.K.
   components:
   - type: CyberneticImplanter
     implantedOrgan: LeftArmCyberBunkerBreaker
-
-- type: entity
-  parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterRightArmCyberBunkerBreaker
-  name: Right Bunker Breaker Arm C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: RightArmCyberBunkerBreaker
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftArmCyberBunkerBreaker
+    rightOrgan: RightArmCyberBunkerBreaker
 
 #Hand Implant
 - type: entity

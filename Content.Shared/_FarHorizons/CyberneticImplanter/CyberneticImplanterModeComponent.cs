@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._FarHorizons.CyberneticImplanter;
 
-[RegisterComponent, NetworkedComponent] //This component is used to give a Cyberenetic Implanter, the ability to toggle between 2 versions of a cybernetic (left/right)
+[RegisterComponent, NetworkedComponent] //This component is used to give a CyberneticImplanterComponent, the ability to toggle between 2 versions of a cybernetic (left/right)
 public sealed partial class CyberneticImplanterModeComponent : Component
 {
     /// <summary>

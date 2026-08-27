@@ -368,25 +368,11 @@
   - UplinkCybernetics
 
 - type: listing
-  id: UplinkLeftArmCyberBunkerBreaker
-  name: uplink-bunker-breaker-arm-left-name 
+  id: UplinkArmCyberBunkerBreaker
+  name: uplink-bunker-breaker-arm-name 
   description: uplink-bunker-breaker-desc 
   icon: { sprite:  _FarHorizons/Objects/Tools/limb_CIK.rsi, state: icon }
-  productEntity: CyberneticImplanterLeftArmCyberBunkerBreaker 
-  discountCategory: rareDiscounts
-  discountDownTo:
-    Telecrystal: 3
-  cost:
-    Telecrystal: 5
-  categories:
-  - UplinkCybernetics
-
-- type: listing
-  id: UplinkRightArmCyberBunkerBreaker
-  name: uplink-bunker-breaker-arm-right-name 
-  description: uplink-bunker-breaker-desc 
-  icon: { sprite:  _FarHorizons/Objects/Tools/limb_CIK.rsi, state: icon }
-  productEntity: CyberneticImplanterRightArmCyberBunkerBreaker 
+  productEntity: CyberneticImplanterArmCyberBunkerBreaker 
   discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 3

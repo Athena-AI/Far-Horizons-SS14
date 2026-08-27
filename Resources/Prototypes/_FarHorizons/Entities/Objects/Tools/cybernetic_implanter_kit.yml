@@ -36,7 +36,7 @@
   parent: [BaseCyberneticImplanterKit, BaseSyndicateContraband]
   id: BaseCyberneticImplanterKitSyndicate
   name: Cybernetic Implanter Kit
-  description: A Cybernetic Implanter Kit for field installation of augments.
+  description: A Syndicate Cybernetic Implanter Kit for field installation of augments.
   abstract: true
 
 - type: entity
@@ -176,7 +176,7 @@
   parent: [BaseCyberneticImplanterKit, BaseSyndicateContraband]
   id: BaseCyberneticImplanterKitConsortium
   name: Cybernetic Implanter Kit
-  description: A Cybernetic Implanter Kit for field installation of augments.
+  description: A Consortium Cybernetic Implanter Kit for field installation of augments.
   abstract: true
 
 - type: entity

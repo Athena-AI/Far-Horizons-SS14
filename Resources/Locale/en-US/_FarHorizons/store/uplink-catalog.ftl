@@ -65,8 +65,9 @@ uplink-syndie-implant-desc-fh = A cybernetic eye implant. Enables an agent to se
 uplink-bulldog-bundle-desc-fh = Lean and mean: Contains the popular Bulldog Shotgun and an Ammo Selector.
 uplink-minotaur-desc-fh = Lean and mean: Contains smooth, powerful, highly illegal Shotgun and an Ammo Selector.
 
-uplink-hypo-claws-left-name = Left Hand HypoClaws Implant 
-uplink-hypo-claws-right-name = Right Hand HypoClaws Implant 
+uplink-forensics-implant-name = Forensics Implant
+
+uplink-hypo-claws-name = HypoClaws Implant 
 uplink-hypo-claws-desc = Sharp, retractable plasteel claws, with hypo injector technology to inject chems into victims. Can be retracted and hidden on demand.
 uplink-bunker-breaker-arm-name = Bunker Breaker Arm
 uplink-bunker-breaker-desc = Augmented arm with all the tools needed to go where you dont belong, including a jaws of death.

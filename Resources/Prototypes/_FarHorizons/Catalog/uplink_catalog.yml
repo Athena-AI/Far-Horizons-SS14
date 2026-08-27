@@ -340,25 +340,11 @@
 # Cybernetics
 
 - type: listing
-  id: UplinkHypoLeftClawsImplant 
-  name: uplink-hypo-claws-left-name 
+  id: UplinkHypoClawsImplant 
+  name: uplink-hypo-claws-name 
   description: uplink-hypo-claws-desc 
   icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: l_hand_implant_claws }
-  productEntity: CyberneticImplanterLeftHandImplantHypoClaws 
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 5
-  cost:
-    Telecrystal: 8
-  categories:
-  - UplinkCybernetics
-
-- type: listing
-  id: UplinkHypoRightClawsImplant 
-  name: uplink-hypo-claws-right-name 
-  description: uplink-hypo-claws-desc 
-  icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: r_hand_implant_claws }
-  productEntity: CyberneticImplanterRightHandImplantHypoClaws 
+  productEntity: CyberneticImplanterHandImplantHypoClaws 
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 5
@@ -382,7 +368,7 @@
   - UplinkCybernetics
 
 - type: listing
-  id: UplinkIFA30LeftArm
+  id: UplinkIFA30Arm
   name: uplink-ifa30-arm-name
   description: uplink-ifa30-arms-desc
   icon:

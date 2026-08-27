@@ -147,50 +147,25 @@
     rightOrgan: RightArmCyberBunkerBreaker
 
 #Hand Implant
-- type: entity
-  parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterLeftHandImplantClaws
-  name: Left Hand Claws Implant C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: LeftHandImplantClaws
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterRightHandImplantClaws
-  name: Right Hand Claws Implant C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: RightHandImplantClaws
-
-- type: entity
-  parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterLeftHandImplantForensics
-  name: Left Hand Forensics Implant C.I.K.
+  id: CyberneticImplanterHandImplantForensics
+  name: Forensics Implant C.I.K.
   components:
   - type: CyberneticImplanter
     implantedOrgan: LeftHandImplantForensics
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftHandImplantForensics
+    rightOrgan: RightHandImplantForensics
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterRightHandImplantForensics
-  name: Right Hand Forensics Implant C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: RightHandImplantForensics
-
-- type: entity
-  parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterLeftHandImplantHypoClaws
-  name: Left Hand Hypo Claws Implant C.I.K.
+  id: CyberneticImplanterHandImplantHypoClaws
+  name: Hypo Claws Implant C.I.K.
   components:
   - type: CyberneticImplanter
     implantedOrgan: LeftHandImplantHypoClaws
-
-- type: entity
-  parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterRightHandImplantHypoClaws
-  name: Right Hand Hypo Claws Implant C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: RightHandImplantHypoClaws
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftHandImplantHypoClaws
+    rightOrgan: RightHandImplantHypoClaws

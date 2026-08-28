@@ -47,9 +47,15 @@ public sealed partial class PowerArmorMenu : FancyWindow
     private readonly HashSet<EntityUid> _moduleEntities = new();
     private readonly Dictionary<EntityUid, ModuleControls> _moduleControls = new();
     public event Action<NetEntity>? OnUninstallModule;
-
+    public event Action<NetEntity>? OnToggleModule;
     private readonly record struct ModuleControls(
-        PanelContainer Panel);
+        PanelContainer Panel,
+        Button PowerToggle,
+        Button Uninstall,
+        Button IdleDrain, 
+        Button ActiveDrain,
+        Button OnUseDrain,
+        Button Complexity);
 
     public PowerArmorMenu()
     {
@@ -153,30 +159,6 @@ public sealed partial class PowerArmorMenu : FancyWindow
         UpdateModules();
     }
 
-    private void UpdateModules()
-    {
-        if (!_container.TryGetContainer(_entity, "modules", out var moduleSlot))
-            return;
-
-        foreach (var module in moduleSlot.ContainedEntities)
-        {
-            if (_moduleEntities.Contains(module))
-                continue;
-
-            _moduleEntities.Add(module);
-            AddModulePanel(module);
-        }
-
-        foreach (var tracked in _moduleEntities.ToList())
-        {
-            if (moduleSlot.ContainedEntities.Contains(tracked))
-                continue;
-
-            RemoveModulePanel(tracked);
-            _moduleEntities.Remove(tracked);
-        }
-}
-
     private void AddModulePanel(EntityUid module)
     {
         var row = new PanelContainer
@@ -194,7 +176,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
         var powerButton = new Button
         {
-            Name = $"{module}-Enabled",
+            Name = $"{module}-Toggle",
             StyleClasses = { "ButtonSquare" },
             Margin = new Thickness(0, 2, 2, 2),
             SetSize = new Vector2(32)
@@ -264,43 +246,63 @@ public sealed partial class PowerArmorMenu : FancyWindow
         moduleNameButton.AddChild(moduleNamecontainer);
         box.AddChild(moduleNameButton);
 
-        box.AddChild(new Button
+        var idleDrainbutton = new Button
         {
             Name = $"{module}-IdleDrain",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
             Margin = new Thickness(0, 2, 2, 2),
-            SetSize = new Vector2(32)
-        });
-        box.AddChild(new Button
+            SetSize = new Vector2(32),
+            Disabled = true
+        };
+
+        box.AddChild(idleDrainbutton);
+
+        var activeDrainButton = new Button
         {
             Name = $"{module}-ActiveDrain",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
             Margin = new Thickness(0, 2, 2, 2),
-            SetSize = new Vector2(32)
-        });
-        box.AddChild(new Button
+            SetSize = new Vector2(32),
+            Disabled = true
+        };
+
+        box.AddChild(activeDrainButton);
+        
+        var onUseDrainButton = new Button
         {
             Name = $"{module}-OnUseDrain",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
             Margin = new Thickness(0, 2, 2, 2),
-            SetSize = new Vector2(32)
-        });
-        box.AddChild(new Button
+            SetSize = new Vector2(32),
+            Disabled = true
+        };
+
+        box.AddChild(onUseDrainButton);
+
+        var complexityButton = new Button
         {
             Name = $"{module}-Complexity",
             StyleClasses = { "ButtonSquare" },
             Text = "0",
             Margin = new Thickness(0, 2, 2, 2),
-            SetSize = new Vector2(32)
-        });
+            SetSize = new Vector2(32),
+            Disabled = true
+        };
+
+        box.AddChild(complexityButton);
 
         row.AddChild(box);
         ModulesPanel.AddChild(row);
 
-        _moduleControls[module] = new ModuleControls(row);
+        _moduleControls[module] = new ModuleControls(row, powerButton, uninstallButton, idleDrainbutton, activeDrainButton, onUseDrainButton, complexityButton);
+
+        var netModule = _entityManager.GetNetEntity(module);
+
+        powerButton.OnPressed += _ => OnToggleModule?.Invoke(netModule);
+        uninstallButton.OnPressed += _ => OnUninstallModule?.Invoke(netModule);
     }
 
     private void RemoveModulePanel(EntityUid module)
@@ -309,6 +311,30 @@ public sealed partial class PowerArmorMenu : FancyWindow
             return;
 
         ModulesPanel.RemoveChild(controls.Panel);
+    }
+
+    private void UpdateModules()
+    {
+        if (!_container.TryGetContainer(_entity, "modules", out var moduleSlot))
+            return;
+
+        foreach (var module in moduleSlot.ContainedEntities)
+        {
+            if (_moduleEntities.Contains(module))
+                continue;
+
+            _moduleEntities.Add(module);
+            AddModulePanel(module);
+        }
+
+        foreach (var tracked in _moduleEntities.ToList())
+        {
+            if (moduleSlot.ContainedEntities.Contains(tracked))
+                continue;
+
+            RemoveModulePanel(tracked);
+            _moduleEntities.Remove(tracked);
+        }
     }
 
     private void UpdateParts(PartControls controls, EntityUid? part)
@@ -533,4 +559,4 @@ public sealed partial class PowerArmorMenu : FancyWindow
         container.PartButtonArrow.TexturePath = "/Textures/_FarHorizons/Interface/group90.svg.192dpi.png";
         _openDetails = container;
     }
-    }
+}

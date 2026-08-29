@@ -431,3 +431,61 @@
   - type: Tag
     tags:
       - CyberHandItem
+
+#region = consortium =
+
+#region consortium
+
+- type: entity
+  name: Type H6 Uzi
+  parent: [BaseWeaponSubMachineGun, BaseMajorContraband]
+  id: WeaponSubMachineGunH6Uzi
+  description: An over engineered version of the classic Uzi that has single or 4 round firing modes.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/SMGs/h6_uzi.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Gun
+    fireRate: 5
+    minAngle: 1
+    maxAngle: 20
+    angleIncrease: 8
+    angleDecay: 5
+    selectedMode: FullAuto
+    shotsPerBurst: 4
+    availableModes:
+    - SemiAuto
+    - Burst
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Starlight/Weapons/Guns/Gunshots/uzi.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolSubMachineGunSP
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGunSP
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistolSP
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol

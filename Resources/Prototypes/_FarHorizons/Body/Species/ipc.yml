@@ -169,6 +169,11 @@
   - BaseMobIPC
   id: MobIPC
   name: Urist McRobot
+  components:
+    - type: FluidFootprintSpreader
+      footprint: Robot
+      stepSpacing: 0.2
+      lateralOffset: 0.15
 
 # Organs
 

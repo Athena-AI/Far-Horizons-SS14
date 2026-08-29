@@ -2,10 +2,10 @@ meta:
   format: 7
   category: Map
   engineVersion: 288.1.0
-  forkId: ""
-  forkVersion: ""
-  time: 08/20/2026 02:39:35
-  entityCount: 23603
+  forkId: farhorizons
+  forkVersion: 9ae8c8a636
+  time: 08/29/2026 12:44:14
+  entityCount: 23611
 maps:
 - 1
 grids:
@@ -17732,13 +17732,22 @@ entities:
     - type: Transform
       parent: 2
       pos: 24.5,-4.5
-- proto: Autolathe
+- proto: Autofab
   entities:
   - uid: 1138
     components:
     - type: Transform
       parent: 2
       pos: -4.5,-21.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+- proto: Autolathe
+  entities:
   - uid: 1139
     components:
     - type: Transform
@@ -19307,13 +19316,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -13.270403,-23.536297
-- proto: BoxZiptie
-  entities:
-  - uid: 1395
-    components:
-    - type: Transform
-      parent: 2
-      pos: -17.469866,29.561756
 - proto: BrbSign
   entities:
   - uid: 1396
@@ -61011,6 +61013,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 21.504559,-48.362946
+- proto: ClothingOuterHardsuitRedSword
+  entities:
+  - uid: 23608
+    components:
+    - type: Transform
+      parent: 2
+      pos: -9.49893,-33.464417
 - proto: ClothingOuterHardsuitSecuritySyndi
   entities:
   - uid: 23524
@@ -61161,6 +61170,16 @@ entities:
     - type: Transform
       parent: 2
       pos: 26.487904,-35.599136
+- proto: ClothingShoesBootsMagBSO
+  entities:
+  - uid: 23611
+    components:
+    - type: MetaData
+      name: redsword magboots
+      desc: A pair of standard magnetic boots, issued alongside the RSO Hardsuit.
+    - type: Transform
+      parent: 2
+      pos: -9.514555,-33.370667
 - proto: ClothingShoesBootsMagSec
   entities:
   - uid: 23536
@@ -61802,18 +61821,27 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 21.5,-22.5
-- proto: ComputerAnalysisConsole
+- proto: ComputerAnalysisConsoleNS
   entities:
-  - uid: 9136
+  - uid: 9150
     components:
     - type: Transform
       parent: 2
       pos: 76.5,-15.5
-  - uid: 9137
+    - type: AnalysisConsole
+      analyzerEntity: 1395
+    - type: DeviceLinkSource
+      linkedPorts:
+        1395:
+        - - ArtifactAnalyzerSender
+          - ArtifactAnalyzerReceiver
+  - uid: 15374
     components:
     - type: Transform
       parent: 2
       pos: 76.5,-11.5
+    - type: AnalysisConsole
+      analyzerEntity: 15535
     - type: DeviceLinkSource
       linkedPorts:
         15535:
@@ -61888,6 +61916,9 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 35.5,-38.5
+    - type: AccessReader
+      accessListsOriginal:
+      - - Cargo
   - uid: 9146
     components:
     - type: Transform
@@ -61900,98 +61931,92 @@ entities:
     - type: Transform
       parent: 2
       pos: 6.5,-17.5
-- proto: ComputerCargoOrdersMedical
+- proto: ComputerCargoOrdersMedicalNS
   entities:
-  - uid: 23481
+  - uid: 9151
     components:
     - type: Transform
       parent: 2
       pos: 49.5,15.5
-- proto: ComputerCargoOrdersScience
+- proto: ComputerCargoOrdersScienceNS
   entities:
-  - uid: 23482
+  - uid: 9175
     components:
     - type: Transform
       parent: 2
       pos: 63.5,-11.5
-- proto: ComputerCargoOrdersSecurity
+- proto: ComputerCargoOrdersSecurityNS
   entities:
-  - uid: 23486
+  - uid: 9159
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 5.5,23.5
-- proto: ComputerComms
-  entities:
-  - uid: 9150
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: 40.5,-38.5
-  - uid: 9151
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: 37.5,-30.5
-- proto: ComputerCrewMonitoring
+- proto: ComputerCommsNS
   entities:
   - uid: 9152
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
-      pos: 44.5,-38.5
+      pos: 40.5,-38.5
   - uid: 9153
     components:
     - type: Transform
       parent: 2
-      pos: -12.5,-33.5
-  - uid: 9154
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: 45.5,1.5
-  - uid: 9155
+      rot: -1.5707963267948966 rad
+      pos: 37.5,-30.5
+- proto: ComputerCrewMonitoringNS
+  entities:
+  - uid: 9137
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 53.5,6.5
-  - uid: 9156
+  - uid: 9154
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 44.5,-38.5
+  - uid: 9157
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 45.5,1.5
+  - uid: 9174
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 0.5,32.5
-- proto: ComputerCriminalRecords
-  entities:
-  - uid: 9157
+  - uid: 9183
     components:
     - type: Transform
       parent: 2
-      pos: 38.5,-32.5
+      pos: -12.5,-33.5
+- proto: ComputerCriminalRecords
+  entities:
   - uid: 9158
     components:
     - type: Transform
       parent: 2
       pos: 2.5,25.5
-  - uid: 9159
+- proto: ComputerCriminalRecordsNS
+  entities:
+  - uid: 9167
     components:
     - type: Transform
       parent: 2
       pos: -2.5,34.5
-- proto: ComputerId
-  entities:
-  - uid: 9161
+  - uid: 15379
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
-      pos: 41.5,-38.5
+      pos: 38.5,-32.5
 - proto: ComputerIdNS
   entities:
   - uid: 7101
@@ -62006,6 +62031,12 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 37.5,-28.5
+  - uid: 9164
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 41.5,-38.5
 - proto: ComputerMassMedia
   entities:
   - uid: 9163
@@ -62014,21 +62045,21 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -54.5,-27.5
-- proto: ComputerMedicalRecords
+- proto: ComputerMedicalRecordsNS
   entities:
-  - uid: 9164
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: 43.5,-38.5
-  - uid: 9165
+  - uid: 9156
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: 46.5,1.5
-  - uid: 9166
+  - uid: 9165
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 43.5,-38.5
+  - uid: 9182
     components:
     - type: Transform
       parent: 2
@@ -62036,33 +62067,35 @@ entities:
       pos: 3.5,35.5
 - proto: ComputerPowerMonitoring
   entities:
-  - uid: 9167
-    components:
-    - type: Transform
-      parent: 2
-      pos: -9.5,-17.5
   - uid: 9168
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -1.5,-27.5
+- proto: ComputerPowerMonitoringNS
+  entities:
   - uid: 9169
     components:
     - type: Transform
       parent: 2
-      pos: 39.5,-32.5
+      pos: -8.5,-17.5
   - uid: 9170
-    components:
-    - type: Transform
-      parent: 2
-      pos: 3.5,-34.5
-  - uid: 9171
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 16.5,-70.5
+  - uid: 9171
+    components:
+    - type: Transform
+      parent: 2
+      pos: 3.5,-34.5
+  - uid: 9184
+    components:
+    - type: Transform
+      parent: 2
+      pos: 39.5,-32.5
 - proto: ComputerRadar
   entities:
   - uid: 9172
@@ -62076,27 +62109,27 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 41.5,20.5
-- proto: ComputerResearchAndDevelopment
+- proto: ComputerResearchAndDevelopmentNS
   entities:
-  - uid: 9174
+  - uid: 9177
     components:
     - type: Transform
       parent: 2
       pos: 42.5,-32.5
-  - uid: 9175
+  - uid: 15381
     components:
     - type: Transform
       parent: 2
       pos: 64.5,-22.5
-  - uid: 9176
+  - uid: 15401
     components:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 57.5,-12.5
-- proto: ComputerRoboticsControl
+- proto: ComputerRoboticsControlNS
   entities:
-  - uid: 9177
+  - uid: 9136
     components:
     - type: Transform
       parent: 2
@@ -62144,28 +62177,30 @@ entities:
       pos: 27.5,20.5
 - proto: ComputerSolarControl
   entities:
-  - uid: 9180
-    components:
-    - type: Transform
-      parent: 2
-      pos: -8.5,-17.5
   - uid: 9181
     components:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
       pos: -2.5,-27.5
-  - uid: 9182
-    components:
-    - type: Transform
-      parent: 2
-      pos: 41.5,-32.5
-  - uid: 9183
+- proto: ComputerSolarControlNS
+  entities:
+  - uid: 9155
     components:
     - type: Transform
       parent: 2
       pos: 2.5,-34.5
-  - uid: 9184
+  - uid: 9180
+    components:
+    - type: Transform
+      parent: 2
+      pos: -9.5,-17.5
+  - uid: 9189
+    components:
+    - type: Transform
+      parent: 2
+      pos: 41.5,-32.5
+  - uid: 16001
     components:
     - type: Transform
       parent: 2
@@ -62196,17 +62231,19 @@ entities:
     - type: Transform
       parent: 2
       pos: 1.5,25.5
-  - uid: 9189
-    components:
-    - type: Transform
-      parent: 2
-      pos: 27.5,-41.5
-  - uid: 9190
+- proto: ComputerSurveillanceCameraMonitorNS
+  entities:
+  - uid: 9161
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 0.5,33.5
+  - uid: 9176
+    components:
+    - type: Transform
+      parent: 2
+      pos: 27.5,-41.5
 - proto: ComputerTelevision
   entities:
   - uid: 9191
@@ -62987,6 +63024,20 @@ entities:
     - type: Transform
       parent: 2
       pos: 62.5,26.5
+- proto: CybersunAssembler
+  entities:
+  - uid: 9166
+    components:
+    - type: Transform
+      parent: 2
+      pos: 63.5,-26.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
 - proto: d20Dice
   entities:
   - uid: 9316
@@ -70442,13 +70493,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 14.5,-29.5
-- proto: ExosuitFabricator
-  entities:
-  - uid: 10577
-    components:
-    - type: Transform
-      parent: 2
-      pos: 63.5,-26.5
 - proto: ExplosivesSignMed
   entities:
   - uid: 10578
@@ -70996,7 +71040,7 @@ entities:
       pos: 61.5,24.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -8719.752
+      secondsUntilStateChange: -15814.672
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -71671,7 +71715,7 @@ entities:
       pos: -2.5,26.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -17017.258
+      secondsUntilStateChange: -24112.178
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -71963,7 +72007,7 @@ entities:
       pos: -4.5,-9.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -16820.4
+      secondsUntilStateChange: -23915.32
     - type: DeviceLinkSink
       invokeCounter: 1
     - type: DeviceLinkSource
@@ -72229,7 +72273,7 @@ entities:
       invokeCounter: 1
     - type: Door
       state: Opening
-      secondsUntilStateChange: -8535.485
+      secondsUntilStateChange: -15630.405
     - type: DeviceLinkSource
       linkedPorts:
         9283:
@@ -73324,7 +73368,7 @@ entities:
       pos: 10.5,38.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -33762.188
+      secondsUntilStateChange: -40857.11
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -75904,7 +75948,7 @@ entities:
       pos: -26.5,-14.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -84580.8
+      secondsUntilStateChange: -91675.72
     - type: Firelock
       emergencyCloseCooldown: 7916.7587519
   - uid: 10954
@@ -76574,7 +76618,7 @@ entities:
       pos: -2.5,26.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -17018.625
+      secondsUntilStateChange: -24113.545
   - uid: 11076
     components:
     - type: Transform
@@ -77496,7 +77540,7 @@ entities:
       pos: 11.5,36.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -90839.02
+      secondsUntilStateChange: -97933.945
   - uid: 11226
     components:
     - type: Transform
@@ -108533,17 +108577,9 @@ entities:
     - type: Transform
       parent: 2
       pos: 55.587376,-35.573986
-- proto: IntercomAll
+- proto: IntercomNSAll
   entities:
-  - uid: 15374
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: 41.5,-31.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15375
+  - uid: 10577
     components:
     - type: Transform
       parent: 2
@@ -108551,33 +108587,33 @@ entities:
       pos: 18.5,-73.5
     - type: Fixtures
       fixtures: {}
-- proto: IntercomCommand
-  entities:
-  - uid: 15376
+  - uid: 15377
     components:
     - type: Transform
       parent: 2
-      pos: 31.5,-26.5
+      rot: 3.141592653589793 rad
+      pos: 41.5,-31.5
     - type: Fixtures
       fixtures: {}
-  - uid: 15377
+- proto: IntercomNSCommand
+  entities:
+  - uid: 15375
     components:
     - type: Transform
       parent: 2
       pos: 49.5,-26.5
     - type: Fixtures
       fixtures: {}
-- proto: IntercomCommon
-  entities:
-  - uid: 15378
+  - uid: 15389
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
-      pos: 9.5,18.5
+      pos: 31.5,-26.5
     - type: Fixtures
       fixtures: {}
-  - uid: 15379
+- proto: IntercomNSCommon
+  entities:
+  - uid: 15376
     components:
     - type: Transform
       parent: 2
@@ -108589,72 +108625,17 @@ entities:
     - type: Transform
       parent: 2
       rot: 1.5707963267948966 rad
-      pos: 40.5,-8.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15381
-    components:
-    - type: Transform
-      parent: 2
-      pos: 23.5,5.5
+      pos: -52.5,-30.5
     - type: Fixtures
       fixtures: {}
   - uid: 15382
     components:
     - type: Transform
       parent: 2
-      rot: 3.141592653589793 rad
-      pos: -3.5,18.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15383
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: -27.5,-5.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15384
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: -51.5,-7.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15385
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: -52.5,-30.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15386
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: -36.5,-34.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15387
-    components:
-    - type: Transform
-      parent: 2
       pos: 3.5,-28.5
     - type: Fixtures
       fixtures: {}
-  - uid: 15388
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: -3.5,42.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15389
+  - uid: 15383
     components:
     - type: Transform
       parent: 2
@@ -108662,65 +108643,27 @@ entities:
       pos: 0.5,42.5
     - type: Fixtures
       fixtures: {}
-- proto: IntercomEngineering
-  entities:
-  - uid: 15390
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: -10.5,-22.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15391
+  - uid: 15384
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
-      pos: 3.5,-16.5
+      pos: -3.5,42.5
     - type: Fixtures
       fixtures: {}
-  - uid: 15392
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: -6.5,-34.5
-    - type: Fixtures
-      fixtures: {}
-- proto: IntercomMedical
-  entities:
   - uid: 15393
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
-      pos: 58.5,0.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15394
-    components:
-    - type: Transform
-      parent: 2
       rot: 3.141592653589793 rad
-      pos: 60.5,-8.5
+      pos: -36.5,-34.5
     - type: Fixtures
       fixtures: {}
-- proto: IntercomSecurity
-  entities:
   - uid: 15395
     components:
     - type: Transform
       parent: 2
-      pos: 0.5,34.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15396
-    components:
-    - type: Transform
-      parent: 2
-      rot: 3.141592653589793 rad
-      pos: -8.5,25.5
+      pos: 23.5,5.5
     - type: Fixtures
       fixtures: {}
   - uid: 15397
@@ -108728,27 +108671,120 @@ entities:
     - type: Transform
       parent: 2
       rot: 3.141592653589793 rad
-      pos: 3.5,22.5
+      pos: -3.5,18.5
     - type: Fixtures
       fixtures: {}
-- proto: IntercomService
-  entities:
   - uid: 15398
     components:
     - type: Transform
       parent: 2
       rot: -1.5707963267948966 rad
-      pos: -12.5,7.5
+      pos: -51.5,-7.5
     - type: Fixtures
       fixtures: {}
   - uid: 15399
     components:
     - type: Transform
       parent: 2
-      pos: -33.5,18.5
+      rot: 3.141592653589793 rad
+      pos: -27.5,-5.5
     - type: Fixtures
       fixtures: {}
   - uid: 15400
+    components:
+    - type: Transform
+      parent: 2
+      pos: -32.5,-23.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 15405
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 9.5,18.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 23604
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 40.5,-8.5
+    - type: Fixtures
+      fixtures: {}
+- proto: IntercomNSEngineering
+  entities:
+  - uid: 15385
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: -10.5,-22.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 15386
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: 3.5,-16.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 15404
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: -6.5,-34.5
+    - type: Fixtures
+      fixtures: {}
+- proto: IntercomNSMedical
+  entities:
+  - uid: 9190
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 60.5,-8.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 15378
+    components:
+    - type: Transform
+      parent: 2
+      rot: 1.5707963267948966 rad
+      pos: 58.5,0.5
+    - type: Fixtures
+      fixtures: {}
+- proto: IntercomNSSecurity
+  entities:
+  - uid: 19191
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: -8.5,25.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 20924
+    components:
+    - type: Transform
+      parent: 2
+      rot: 3.141592653589793 rad
+      pos: 3.5,22.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 23481
+    components:
+    - type: Transform
+      parent: 2
+      pos: 0.5,34.5
+    - type: Fixtures
+      fixtures: {}
+- proto: IntercomNSService
+  entities:
+  - uid: 15390
     components:
     - type: Transform
       parent: 2
@@ -108756,30 +108792,7 @@ entities:
       pos: -14.5,12.5
     - type: Fixtures
       fixtures: {}
-  - uid: 15401
-    components:
-    - type: Transform
-      parent: 2
-      pos: -21.5,-11.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15402
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: -35.5,-20.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15403
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: -30.5,-20.5
-    - type: Fixtures
-      fixtures: {}
-  - uid: 15404
+  - uid: 15391
     components:
     - type: Transform
       parent: 2
@@ -108787,15 +108800,46 @@ entities:
       pos: -26.5,-20.5
     - type: Fixtures
       fixtures: {}
-- proto: IntercomSupply
-  entities:
-  - uid: 15405
+  - uid: 15392
     components:
     - type: Transform
       parent: 2
-      pos: -32.5,-23.5
+      rot: -1.5707963267948966 rad
+      pos: -12.5,7.5
     - type: Fixtures
       fixtures: {}
+  - uid: 15394
+    components:
+    - type: Transform
+      parent: 2
+      pos: -33.5,18.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 15396
+    components:
+    - type: Transform
+      parent: 2
+      pos: -21.5,-11.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 23482
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: -30.5,-20.5
+    - type: Fixtures
+      fixtures: {}
+  - uid: 23486
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: -35.5,-20.5
+    - type: Fixtures
+      fixtures: {}
+- proto: IntercomSupply
+  entities:
   - uid: 15406
     components:
     - type: Transform
@@ -108812,6 +108856,27 @@ entities:
       pos: 29.5,10.5
     - type: Fixtures
       fixtures: {}
+  - uid: 15596
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,16.5
+    - type: Fixtures
+      fixtures: {}
+- proto: InterdyneTechFab
+  entities:
+  - uid: 15388
+    components:
+    - type: Transform
+      parent: 2
+      pos: 53.5,4.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
 - proto: JanitorialTrolley
   entities:
   - uid: 15408
@@ -109212,6 +109277,14 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 48.5,3.5
+    - type: DeviceLinkSource
+      linkedPorts:
+        182:
+        - - Pressed
+          - Toggle
+        284:
+        - - Pressed
+          - Toggle
     - type: Fixtures
       fixtures: {}
 - proto: LockerAtmosphericsFilledHardsuitSyndi
@@ -109784,6 +109857,11 @@ entities:
       pos: 71.5,-12.5
 - proto: MachineArtifactAnalyzer
   entities:
+  - uid: 1395
+    components:
+    - type: Transform
+      parent: 2
+      pos: 80.5,-17.5
   - uid: 15535
     components:
     - type: Transform
@@ -110210,13 +110288,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 50.5,-2.5
-- proto: MedicalTechFab
-  entities:
-  - uid: 15596
-    components:
-    - type: Transform
-      parent: 2
-      pos: 53.5,4.5
 - proto: MedkitAdvancedFilled
   entities:
   - uid: 15597
@@ -110781,6 +110852,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -0.5,5.5
+- proto: NitrogenTankFilled
+  entities:
+  - uid: 23610
+    components:
+    - type: Transform
+      parent: 2
+      pos: -9.31143,-33.495667
 - proto: NitrousOxideCanister
   entities:
   - uid: 15692
@@ -110798,6 +110876,118 @@ entities:
       pos: -23.5,12.5
     - type: Fixtures
       fixtures: {}
+- proto: NSPrinterDoc
+  entities:
+  - uid: 16374
+    components:
+    - type: Transform
+      parent: 2
+      pos: 57.5,-13.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 16375
+    components:
+    - type: Transform
+      parent: 2
+      pos: 50.5,15.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 16376
+    components:
+    - type: Transform
+      parent: 2
+      pos: -21.5,29.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 16377
+    components:
+    - type: Transform
+      parent: 2
+      pos: 45.5,-33.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 16378
+    components:
+    - type: Transform
+      parent: 2
+      pos: -43.5,-17.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 23605
+    components:
+    - type: Transform
+      parent: 2
+      pos: -7.5,29.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 23606
+    components:
+    - type: Transform
+      parent: 2
+      pos: -56.5,-28.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+  - uid: 23607
+    components:
+    - type: Transform
+      parent: 2
+      pos: -5.5,-27.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
+- proto: NSUniformPrinter
+  entities:
+  - uid: 15403
+    components:
+    - type: Transform
+      parent: 2
+      pos: 40.5,-25.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
 - proto: NTDefaultCircuitBoard
   entities:
   - uid: 15694
@@ -111080,6 +111270,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -16.5,40.5
+- proto: OxygenTankFilled
+  entities:
+  - uid: 23609
+    components:
+    - type: Transform
+      parent: 2
+      pos: -9.62393,-33.401917
 - proto: PackPaperRollingFilters
   entities:
   - uid: 15737
@@ -112419,6 +112616,11 @@ entities:
       fixtures: {}
 - proto: PottedPlantRandom
   entities:
+  - uid: 15402
+    components:
+    - type: Transform
+      parent: 2
+      pos: 23.5,23.5
   - uid: 15950
     components:
     - type: Transform
@@ -112669,11 +112871,6 @@ entities:
     - type: Transform
       parent: 2
       pos: 34.5,10.5
-  - uid: 16001
-    components:
-    - type: Transform
-      parent: 2
-      pos: 23.5,23.5
   - uid: 16002
     components:
     - type: Transform
@@ -115882,32 +116079,6 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 45.5,-24.5
-  - uid: 16374
-    components:
-    - type: Transform
-      parent: 2
-      pos: 57.5,-13.5
-  - uid: 16375
-    components:
-    - type: Transform
-      parent: 2
-      pos: 50.5,15.5
-  - uid: 16376
-    components:
-    - type: Transform
-      parent: 2
-      pos: -21.5,29.5
-  - uid: 16377
-    components:
-    - type: Transform
-      parent: 2
-      rot: -1.5707963267948966 rad
-      pos: 45.5,-33.5
-  - uid: 16378
-    components:
-    - type: Transform
-      parent: 2
-      pos: -43.5,-17.5
   - uid: 20827
     components:
     - type: Transform
@@ -115930,6 +116101,18 @@ entities:
       pos: 5.6095495,26.000034
 - proto: Protofab
   entities:
+  - uid: 16381
+    components:
+    - type: Transform
+      parent: 2
+      pos: -5.5,-21.5
+    - type: TechnologyDatabase
+      supportedDisciplines:
+      - Industrial
+      - Arsenal
+      - Experimental
+      - CivilianServices
+      - Biochemical
   - uid: 17762
     components:
     - type: Transform
@@ -115942,13 +116125,6 @@ entities:
       - Experimental
       - CivilianServices
       - Biochemical
-- proto: Protolathe
-  entities:
-  - uid: 16381
-    components:
-    - type: Transform
-      parent: 2
-      pos: -5.5,-21.5
 - proto: ProtolatheMachineCircuitboard
   entities:
   - uid: 16383
@@ -134788,20 +134964,6 @@ entities:
     - type: Transform
       parent: 22818
       pos: 8.5,3.5
-- proto: UniformPrinter
-  entities:
-  - uid: 19191
-    components:
-    - type: Transform
-      parent: 2
-      pos: 40.5,-25.5
-    - type: TechnologyDatabase
-      supportedDisciplines:
-      - Industrial
-      - Arsenal
-      - Experimental
-      - CivilianServices
-      - Biochemical
 - proto: UniformShortsRedWithTop
   entities:
   - uid: 19192
@@ -135491,6 +135653,12 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 69.5,17.5
+  - uid: 15387
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: -6.5,-34.5
   - uid: 15767
     components:
     - type: Transform
@@ -142376,12 +142544,6 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: -10.5,-28.5
-  - uid: 20924
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: -6.5,-34.5
   - uid: 20925
     components:
     - type: Transform
@@ -154817,7 +154979,7 @@ entities:
         DoorStatus: True
     - type: Door
       state: Opening
-      secondsUntilStateChange: -48916.44
+      secondsUntilStateChange: -56011.363
     - type: Airlock
       autoClose: False
   - uid: 22606

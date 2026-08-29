@@ -1423,11 +1423,12 @@
   id: SHCPDA
   name: SHC PDA
   description: A red sign of walking bureaucracy.
+  suffix: NS
   components:
   - type: Pda
     id: SHCIDCard
     penSlot:
-      startingItem: PenCentcom
+      startingItem: CyberPen
       priority: -1
       whitelist:
         tags:
@@ -1456,5 +1457,49 @@
       - AstroNavCartridge
       - HullSenseCartridge
       - NanoChatCartridge
+
+- type: entity
+  parent: SHCPDA
+  id: COAOfficialPDA
+  name: COA Official PDA
+  components: 
+  - type: Pda
+    id: HCCOAIDCard
+    penSlot:
+      startingItem: CyberPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+
+- type: entity
+  parent: SHCPDA
+  id: GWSOfficialPDA
+  name: GWS Official PDA
+  components: 
+  - type: Pda
+    id: HCGWSIDCard
+    penSlot:
+      startingItem: CyberPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+
+- type: entity
+  parent: SHCPDA
+  id: DCIOfficialPDA
+  name: DCI Official PDA
+  components: 
+  - type: Pda
+    id: HCDCIIDCard
+    penSlot:
+      startingItem: CyberPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+
+
 
 #endregion

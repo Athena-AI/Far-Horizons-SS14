@@ -1482,3 +1482,40 @@
     - SyndiService
   - type: AccessReader
     access: [["ServiceNS"]]
+
+- type: entity
+  parent: ComputerComms
+  id: HighCommandComputerComms
+  name: High Command Communications Computer
+  suffix: NS
+  description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_logs
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: AccessReader
+    access: [[ "NSHighCommand" ]]
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-nshc
+    color: "#ff0000"
+    canShuttle: false
+    global: true
+  - type: Computer
+    board: CentcommCommsComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#00FF00"
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      pai_slot: !type:ContainerSlot #FH

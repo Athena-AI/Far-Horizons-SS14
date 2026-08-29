@@ -117,7 +117,7 @@
 # Arm
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterArmCyberMantisBlade
+  id: CyberneticImplanterSyndicateArmCyberMantisBlade
   name: Mantis Blade Arm C.I.K.
   components:
   - type: CyberneticImplanter
@@ -128,7 +128,7 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterArmCyberIFA30
+  id: CyberneticImplanterSyndicateArmCyberIFA30
   name: IFA-30 Cybernetic Arm C.I.K.
   components:
   - type: CyberneticImplanter
@@ -139,7 +139,7 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateLimb
-  id: CyberneticImplanterArmCyberBunkerBreaker
+  id: CyberneticImplanterSyndicateArmCyberBunkerBreaker
   name: Bunker Breaker Arm C.I.K.
   components:
   - type: CyberneticImplanter
@@ -152,7 +152,7 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterHandImplantForensics
+  id: CyberneticImplanterSyndicateHandImplantForensics
   name: Forensics Implant C.I.K.
   components:
   - type: CyberneticImplanter
@@ -163,7 +163,7 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateHand
-  id: CyberneticImplanterHandImplantHypoClaws
+  id: CyberneticImplanterSyndicateHandImplantHypoClaws
   name: Hypo Claws Implant C.I.K.
   components:
   - type: CyberneticImplanter
@@ -255,3 +255,22 @@
   components:
   - type: CyberneticImplanter
     implantedOrgan: EyeImplantAgent
+
+# Arm
+
+#hey jimmy, gimmie a C.I.K with nothin
+
+#nothin? (need to add some Consortium arm cybernetics)
+
+#Hand Implant
+
+- type: entity
+  parent: CyberneticImplanterKitConsortiumHand
+  id: CyberneticImplanterConsortiumHandImplantForensics
+  name: Forensics Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftHandImplantForensics
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftHandImplantForensics
+    rightOrgan: RightHandImplantForensics

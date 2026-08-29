@@ -50,6 +50,9 @@
     - RadioImplantTrinary #FH
     - RadioImplantNexus #FH
     - VoiceMaskImplant
+    - MindShieldImplantNS # FH
+    - MindShieldImplantGSL # FH
+    - FakeMindShieldImplantNS # FH
     deimplantFailureDamage:
       types:
         Cellular: 20 #FH
@@ -303,7 +306,7 @@
 
 - type: entity
   id: FakeMindShieldImplanter
-  name: fake mindshield implanter
+  name: Fake Mindshield Implanter (NT) #FH
   parent: BaseImplantOnlyImplanterSyndi
   components:
   - type: Implanter
@@ -313,7 +316,7 @@
 
 - type: entity
   id: MindShieldImplanter
-  name: mindshield implanter
+  name: MindShield Implanter (NT) #FH
   parent: BaseImplantOnlyImplanter
   components:
   - type: Implanter

@@ -22,7 +22,16 @@
   id: AmmoBoxRevolver38
 
 - type: Tag
+  id: AmmoBoxMagnum44
+
+- type: Tag
+  id: AmmoBoxShotgun12g
+
+- type: Tag
   id: BioSec
+
+- type: Tag
+  id: BorgModuleAccess
 
 - type: Tag
   id: BorgModuleIPCCompatible
@@ -139,6 +148,9 @@
   id: MagazinePistol38
 
 - type: Tag
+  id: MagazinePistolCivilian
+
+- type: Tag
   id: MagazinePistolDouble
 
 - type: Tag
@@ -154,6 +166,12 @@
   id: NT
 
 - type: Tag
+  id: OathBreaker
+
+- type: Tag
+  id: OathBreakerM500
+
+- type: Tag
   id: OilPack
 
 - type: Tag
@@ -161,6 +179,9 @@
 
 - type: Tag
   id: Pin
+
+- type: Tag
+  id: PKSUpgrade
  
 - type: Tag
   id: PocketFireExtinguish
@@ -218,6 +239,12 @@
 
 - type: Tag
   id: ProtogenCybernetics
+
+- type: Tag
+  id: PowerCellMedium
+
+- type: Tag
+  id: PowerCellHigh
 
 - type: Tag
   id: RamChip
@@ -286,6 +313,9 @@
   id: ShotgunBoxAmmo
 
 - type: Tag
+  id: ShuttleRailgunRod
+
+- type: Tag
   id: SiliconEmotesFH
 
 - type: Tag
@@ -293,7 +323,7 @@
 
 - type: Tag
   id: SpeedLoaderRevolver38
-
+  
 - type: Tag
   id: STVKeys
 
@@ -323,6 +353,12 @@
 
 - type: Tag
   id: TrueProtogen
+
+- type: Tag
+  id: WallmountSubstationElectronicsShip
+
+- type: Tag
+  id: WallmountSubstationElectronicsShuttle
 
 - type: Tag
   id: VehicleLightArmor

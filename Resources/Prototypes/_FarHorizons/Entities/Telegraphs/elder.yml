@@ -852,8 +852,9 @@
     - type: TelegraphDealDamageOnTrigger
       damage:
         types:
-          Slash: 125
-          Cold: 75
+          Slash: 30
+          Blunt: 40
+          Cold: 130
           Structural: 200
     - type: TelegraphElderBossHealingDecoy
       decoy: MobElderDecoy

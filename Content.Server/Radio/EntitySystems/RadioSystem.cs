@@ -44,15 +44,15 @@ namespace Content.Server.Radio.EntitySystems;
 /// Far Horizons - made partial
 public sealed partial class RadioSystem : EntitySystem
 {
-    [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly IReplayRecordingManager _replay = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly RadioChimeSystem _chime = default!; //🌟Starlight🌟
-    [Dependency] private readonly LanguageSystem _language = default!; // Starlight
+    [Dependency] private INetManager _netMan = default!;
+    [Dependency] private IReplayRecordingManager _replay = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private AccessReaderSystem _accessReader = default!;
+    [Dependency] private RadioChimeSystem _chime = default!; //🌟Starlight🌟
+    [Dependency] private LanguageSystem _language = default!; // Starlight
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
@@ -176,11 +176,11 @@ public sealed partial class RadioSystem : EntitySystem
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
 
-        var msg = new ChatMessage(ChatChannel.Radio, content, wrappedMessage, NetEntity.Invalid, null); // Starlight
+        var msg = new ChatMessage(ChatChannel.Radio, content, wrappedMessage, NetEntity.Invalid, null, radioPrefix: channel.ChatPrefix); // Starlight; radioPrefix - Far Horizons
 
         var obfuscated = _language.ObfuscateSpeech(content, language);
         var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, true);
-        var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, NetEntity.Invalid, null) { Chime = chime, };
+        var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, NetEntity.Invalid, null, radioPrefix: channel.ChatPrefix) { Chime = chime, }; // radioPrefix - Far Horizons
         var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource, []);
         // Starlight - End
 

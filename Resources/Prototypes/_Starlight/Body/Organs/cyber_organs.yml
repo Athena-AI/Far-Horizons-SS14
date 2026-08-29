@@ -2,8 +2,12 @@
   id: CyberEyeNightVision
   name: Night Vision Cyber Eyes #FH CRUSADE
   description: Enables you to see in the dark.
-  parent: [ OrganCyber, OrganHumanEyes ]
+  parent: [ OrganCyber, OrganHumanEyes, OrganCyberExternal ] #FH
   components:
+  - type: VisualOrgan #FH Start
+    data: 
+      sprite: _FarHorizons/Mobs/Species/Cyberlimbs/parts.rsi #all of the organs in this file probably need to be reparented, using the Human Parents is giving them all stuff they shouldnt have
+      state: eyes_night #FH End
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/implants.rsi
     layers:
@@ -28,8 +32,12 @@
   id: CyberEyeThermal
   name: Thermal Vision Cyber Eyes #FH CRUSADE
   description: Enables you to see in the dark and detect warm objects through walls.
-  parent: [ OrganCyber, OrganHumanEyes ]
+  parent: [ OrganCyber, OrganHumanEyes, OrganCyberExternal ] #FH
   components:
+  - type: VisualOrgan #FH Start
+    data: 
+      sprite: _FarHorizons/Mobs/Species/Cyberlimbs/parts.rsi
+      state: eyes_thermal #FH End
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/implants.rsi
     layers:
@@ -54,7 +62,7 @@
   id: BudgetCyberEyes
   name: Budget CyberEyes
   description: Cold and soulless. Just as depressing to look out of as to look into.
-  parent: [ OrganCyber, OrganHumanEyes ]
+  parent: [ OrganCyber, OrganHumanEyes, OrganCyberExternal ] #FH
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Specific/Medical/budget_cyber_organs.rsi
@@ -178,7 +186,7 @@
     air:
       volume: 2.5
       temperature: 293.15
-    outputPressure: 21.3
+    releasePressure: 21.3
   - type: OrganGasTankFillable
     targetPressure: 1000.0
   - type: UseDelay

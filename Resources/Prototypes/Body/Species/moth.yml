@@ -4,10 +4,10 @@
   onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Hair:
-      limit: 0
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.FacialHair:
-      limit: 0
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.Tail:
       limit: 1
@@ -216,9 +216,16 @@
       - DoorBumpOpener
       - AnomalyHost
       - Moth
-  - type: VisionOrganRequiredForVision # Far Horizons
-  - type: LimbDamageable # Far Horizons
+  # Far Horizons start
+  - type: VisionOrganRequiredForVision
+  - type: LimbDamageable
     proto: LimbTargetMoth
+  - type: FluidFootprintSpreader
+    footprint: Insect
+    footprintSize: 0.75
+    stepSpacing: 0.2
+    lateralOffset: 0.1
+  # Far Horizons end
 
 - type: entity
   parent: OrganBase

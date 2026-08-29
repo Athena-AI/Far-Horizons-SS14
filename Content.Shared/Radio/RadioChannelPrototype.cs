@@ -49,6 +49,9 @@ public sealed partial class RadioChannelPrototype : IPrototype
 
     [DataField] 
     public RadioChannelType RadioChannelType = RadioChannelType.Radio;
+
+    [DataField]
+    public string? ChatPrefix = null;
     // Far Horizons end
 }
 

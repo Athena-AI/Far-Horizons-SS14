@@ -41,6 +41,7 @@
       - id: Screwdriver
       - id: Wirecutter
       - id: Welder
+      - id: ClothingHeadHatWelding 
       - id: Multitool
 
 - type: entity
@@ -150,6 +151,7 @@
         - id: Screwdriver
         - id: Wirecutter
         - id: Welder
+        - id: ClothingHeadHatWelding
         - id: NetworkConfigurator
 
 - type: entity
@@ -167,6 +169,7 @@
         - id: Wirecutter
         - id: Welder
         - id: Multitool
+        - id: GasAnalyzer
 
 #region Medical
 
@@ -242,7 +245,17 @@
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector
-        tableId: BeltSecurityEntityTable
+        tableId: BeltSecurityEntityTableNS
+
+- type: entityTable
+  id: BeltSecurityEntityTableNS
+  table: !type:AllSelector
+    children:
+    - id: Stunbaton
+    - id: Handcuffs
+      amount: 2
+    - id: HoloprojectorSecurity
+    - id: RadioHandheldSecurityNS
 
 #region Service
 - type: entity

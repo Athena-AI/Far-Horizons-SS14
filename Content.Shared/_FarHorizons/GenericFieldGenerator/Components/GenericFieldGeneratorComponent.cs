@@ -4,6 +4,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.DeviceLinking;
+using Robust.Shared.Audio;
 
 namespace Content.Shared._FarHorizons.GenericFieldGenerator.Components;
 
@@ -83,6 +84,18 @@ public sealed partial class GenericFieldGeneratorComponent : Component
     /// Used to retry connection when fully charged, but not connected
     /// </summary>
     public bool Removing = false;
+
+    /// <summary>
+    /// Sound played on field creation.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? PowerUpSound;
+
+    /// <summary>
+    /// Sound played on field fizzle.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? PowerDownSound;
 
     //Ports
     [DataField]

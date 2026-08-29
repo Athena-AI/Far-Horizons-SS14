@@ -285,14 +285,12 @@
         - id: MagazinePistolSubMachineGunHP
           amount: 9
         - id: MagazineShotgun
-          amount: 3
+          amount: 7
         - id: MagazineRifle556HP
           amount: 4
         - id: MagazineMagnumRifleSP #no HP counterpart
           amount: 4
         - id: MagazineLightRifleBoxSP #no HP counterpart
-          amount: 4
-        - id: MagazineShotgunSlug
           amount: 4
         - id: SpeedLoaderMagnumAP
           amount: 2

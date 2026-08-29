@@ -457,16 +457,19 @@
 #region Mask 
 
 # Medical
+
 - type: loadout
   id: SterileMaskSyndi
   equipment:
     mask: ClothingMaskSterile
 
-#Janitor
+#Service
+
 - type: loadout
   id: JanitorMaskNS
   equipment:
     mask: ClothingMaskJanitorNS
+
 
 #region Jumpsuit
 
@@ -654,6 +657,7 @@
   id: AncientJumpskirtSyndi
   equipment:
     jumpsuit: ClothingUniformJumpskirtAncientSyndi
+
 # Engineering
 
 - type: loadout
@@ -1012,6 +1016,13 @@
   id: BotanistOverallsJumpskirtNS
   equipment:
     jumpsuit: ClothingUniformJumpskirtOverallsNS
+
+#Clown
+
+- type: loadout
+  id: ClownSuitNS
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClownNS
 
 #region Hands
 
@@ -1487,7 +1498,7 @@
   equipment:
     outerClothing: ClothingOuterCoatRedSword
 
-#region Boots
+#region Boots/Shoes
 
 - type: loadout
   id: BootsWinterSyndicate
@@ -1523,6 +1534,11 @@
   id: MedicalWinterBootsSyndi
   equipment:
     shoes: ClothingShoesBootsWinterMed
+
+- type: loadout
+  id: ClownShoesNS
+  equipment:
+    shoes: ClothingShoesClownNS
 
 # region PDA
 
@@ -1567,3 +1583,49 @@
     proto: SeniorResearcher
   equipment:
     id: SeniorResearcherPDA
+
+#region Weapons
+
+- type: loadout
+  id: SecurityDominatorNS 
+  equipment:
+    pocket2: WeaponDominatorNS
+
+- type: loadout
+  id: SecurityPistolMk59
+  dummyEntity: WeaponPistolMk59
+  storage:
+    back:
+    - WeaponPistolMk59
+    - MagazinePistolSP
+    - MagazinePistolRubber
+    - MagazinePistolRubber
+
+- type: loadout
+  id: SecurityPistolEnforcerFHNS
+  dummyEntity: WeaponPistolEnforcerTypeS
+  effects:
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:RoleTimeRequirement
+        role: JobHeadOfSecurity
+        time: 36000 # Needs to be earned
+  storage:
+    back:
+    - WeaponPistolEnforcerTypeS
+    - MagazinePistolSP
+    - MagazinePistolSP
+    - MagazinePistolRubber
+
+# Silicons
+- type: roleLoadout
+  id: JobBorgNS
+  nameDataset: NamesBorg
+  canCustomizeName: true
+  groups:
+  - SiliconBrainType
+
+- type: roleLoadout
+  id: JobStationAiNS
+  nameDataset: NamesAI
+  canCustomizeName: true

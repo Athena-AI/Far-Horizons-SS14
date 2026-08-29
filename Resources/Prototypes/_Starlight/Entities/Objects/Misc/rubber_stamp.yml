@@ -1,6 +1,6 @@
 # NT stamps
 - type: entity
-  name: concord liaison stamp #Far Horizons
+  name: Concord Liaison Rubber Stamp #Far Horizons
   parent: [ RubberStampBase, BaseCommandContraband ]
   id: RubberStampMagistrate
   suffix: DO NOT MAP
@@ -14,7 +14,7 @@
     state: stamp-magistrate
 
 - type: entity
-  name: NT representative's rubber stamp
+  name: NT Representative's Rubber Stamp #Far Horizons
   parent: [ RubberStampBase, BaseRepresentativesContraband ] # FH
   id: RubberStampNtrep
   suffix: DO NOT MAP
@@ -42,7 +42,7 @@
       state: stamp-iaa
 
 - type: entity
-  name: blueshield officer's rubber stamp
+  name: Blueshield Officer's Rubber Stamp #Far Horizons
   parent: [ RubberStampBase, BaseRepresentativesContraband ] # FH
   id: RubberStampBSO
   suffix: DO NOT MAP
@@ -57,7 +57,7 @@
 
 # Brigmedic stamp
 - type: entity
-  name: Brigmedic's rubber stamp
+  name: Brigmedic's Rubber Stamp #Far Horizons
   parent: [RubberStampBase, BaseSecurityContraband] #FH change
   id: RubberStampBrigmedic
   suffix: DO NOT MAP
@@ -72,7 +72,7 @@
 
 # CC Division Stamps
 - type: entity
-  name: Central Administration Division rubber stamp
+  name: Central Administration Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCAD
   categories: [ DoNotMap ]
@@ -85,7 +85,7 @@
     state: stamp-cap
 
 - type: entity
-  name: Central Cargo Division rubber stamp
+  name: Central Cargo Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCCD
   categories: [ DoNotMap ]
@@ -98,7 +98,7 @@
     state: stamp-detective
 
 - type: entity
-  name: Central Engineering Division rubber stamp
+  name: Central Engineering Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCED
   categories: [ DoNotMap ]
@@ -111,7 +111,7 @@
     state: stamp-ce
 
 - type: entity
-  name: Central Intelligence Division rubber stamp
+  name: Central Intelligence Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCID
   categories: [ DoNotMap ]
@@ -124,7 +124,7 @@
     state: stamp-rd
 
 - type: entity
-  name: Central Medical Division rubber stamp
+  name: Central Medical Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCMD
   categories: [ DoNotMap ]
@@ -137,7 +137,7 @@
     state: stamp-cmo
 
 - type: entity
-  name: Central Research Division rubber stamp
+  name: Central Research Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCRD
   categories: [ DoNotMap ]
@@ -150,7 +150,7 @@
     state: stamp-wizard
 
 - type: entity
-  name: Central Domestic Division rubber stamp
+  name: Central Domestic Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCDD
   categories: [ DoNotMap ]
@@ -163,7 +163,7 @@
     state: stamp-centcom
 
 - type: entity
-  name: Central Special Operations Division rubber stamp
+  name: Central Special Operations Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCSOD
   suffix: DO NOT MAP
@@ -177,7 +177,7 @@
     state: stamp-magistrate
 
 - type: entity
-  name: Central Security Division rubber stamp
+  name: Central Security Division Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampCSD
   categories: [ DoNotMap ]
@@ -190,7 +190,7 @@
     state: stamp-hos
 
 - type: entity
-  name: cc department stamps box
+  name: CC Department Stamps Box #Far Horizons
   parent: BoxCardboard
   id: BoxStampsCCDepartments
   components:
@@ -223,7 +223,7 @@
     
 # CC Administrative Stamps
 - type: entity
-  name: ACKNOWLEDGED rubber stamp
+  name: ACKNOWLEDGED Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampAcknowledged
   suffix: DO NOT MAP
@@ -237,7 +237,7 @@
     state: stamp-acknowledged
       
 - type: entity
-  name: MISSING STAMPS rubber stamp
+  name: MISSING STAMPS Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampMissingStamps
   suffix: DO NOT MAP
@@ -251,7 +251,7 @@
     state: stamp-missingstamps
 
 - type: entity
-  name: INCORRECT STAMPS rubber stamp
+  name: INCORRECT STAMPS Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampIncorrectStamps
   suffix: DO NOT MAP
@@ -265,7 +265,7 @@
     state: stamp-missingstamps
 
 - type: entity
-  name: INCORRECT FORM rubber stamp
+  name: INCORRECT FORM Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampIncorrectForm
   suffix: DO NOT MAP
@@ -279,7 +279,7 @@
     state: stamp-incorrectform
 
 - type: entity
-  name: INCOMPLETE FORM rubber stamp
+  name: INCOMPLETE FORM Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampIncompleteForm
   suffix: DO NOT MAP
@@ -293,7 +293,7 @@
     state: stamp-incorrectform
 
 - type: entity
-  name: SENT TO ATS rubber stamp
+  name: SENT TO ATS Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampSentToATS
   suffix: DO NOT MAP
@@ -307,7 +307,7 @@
     state: stamp-senttoATS
   
 - type: entity
-  name: DEFER TO COMMAND rubber stamp
+  name: DEFER TO COMMAND Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampDeferToCommand
   suffix: DO NOT MAP
@@ -321,7 +321,7 @@
     state: stamp-ntrep
 
 - type: entity
-  name: STANDBY rubber stamp
+  name: STANDBY Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampStandby
   suffix: DO NOT MAP
@@ -335,7 +335,7 @@
     state: stamp-standby
 
 - type: entity
-  name: cc administrative stamps box
+  name: CC Administrative Stamps Box #Far Horizons
   parent: BoxCardboard
   id: BoxStampsCCAdministrative
   components:
@@ -368,7 +368,7 @@
 
 # Salvage stamp
 - type: entity
-  name: Salvage Lead's rubber stamp
+  name: Salvage Lead's Rubber Stamp #Far Horizons
   parent: RubberStampBase
   id: RubberStampSalvageLead
   suffix: DO NOT MAP

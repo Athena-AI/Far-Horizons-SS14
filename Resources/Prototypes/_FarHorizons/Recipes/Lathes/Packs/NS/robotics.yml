@@ -1,0 +1,21 @@
+- type: latheRecipePack
+  id: RoboticsStaticNS
+  recipes:
+  - MMI
+  - PositronicBrain
+  - SciFlash
+  - CyborgEndoskeletonNS
+  - MechAirTank 
+  - MechThruster
+  - AiInterfaceCube
+
+#- type: latheRecipePack
+#  id: BorgModulesStaticNS
+#  recipes:
+#  - BorgModuleTool
+#  - BorgModuleCable
+#  - BorgModuleFireExtinguisher
+#  - BorgModuleInflatable
+#  - BorgModuleArtistry
+#  - BorgModuleUppies
+#  - BorgModuleAccessNS

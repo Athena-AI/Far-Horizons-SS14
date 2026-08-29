@@ -37240,7 +37240,7 @@ entities:
     - type: Transform
       pos: -26.5,75.5
       parent: 1
-- proto: GunSafeShotgunEnforcer
+- proto: GunSafeShotgunSentinel
   entities:
   - uid: 5226
     components:

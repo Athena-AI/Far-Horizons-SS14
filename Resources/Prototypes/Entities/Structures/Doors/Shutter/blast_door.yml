@@ -14,6 +14,7 @@
     - state: welded
       map: ["enum.WeldableLayers.BaseWelded"]
   - type: Door
+    performCollisionCheck: false #FH - Allows for forceful door closing.
     closeTimeOne: 0.4
     closeTimeTwo: 0.4
     openTimeOne: 0.4
@@ -50,6 +51,8 @@
     messagePerceivedByOthers: comp-window-knock
     interactSuccessSound:
       path: /Audio/Effects/glass_knock.ogg
+  - type: StructureOcclusion #Far Horizons
+    occlusionAmount: 2.0
 
 - type: entity
   id: BlastDoorOpen

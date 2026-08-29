@@ -1,3 +1,43 @@
+#region NanoTransen
+- type: entity
+  id: SecurityAmmoTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Security Ammo Techfab Machine Board
+  description: A machine printed circuit board for a Security Ammo Techfab.
+  suffix: NT
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: SecurityTechFabAmmo
+      stackRequirements:
+        Manipulator: 2
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+
+- type: entity
+  id: GeneratorAcmanMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: A.C.M.A.N.-type generator machine board
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: GeneratorAcman
+      stackRequirements:
+        Manipulator: 4
+        CableHV: 20
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 200
+      chemicalComposition:
+        Silicon: 20
+    - type: StaticPrice
+      price: 40
+
+#region NeoSol
 - type: entity
   id: AutofabMachineCircuitboard
   parent: BaseMachineCircuitboard
@@ -158,3 +198,120 @@
     prototype: NSUniformPrinter
     stackRequirements:
       Manipulator: 3
+
+#region NT
+- type: entity
+  id: SMESShipMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Ship SMES Circuit Board
+  description: A machine printed circuit board for an ship-grade SMES.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: power_mod
+  - type: MachineBoard
+    prototype: SMESShipEmpty
+    stackRequirements:
+      Manipulator: 4
+      CableHV: 40
+    componentRequirements:
+      PowerCell:
+        amount: 4
+        defaultPrototype: PowerCellHigh
+
+- type: entity
+  id: SMESShuttleMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Shuttle SMES Circuit Board
+  description: A machine printed circuit board for an shuttle-grade SMES.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: power_mod
+  - type: MachineBoard
+    prototype: SMESShuttleEmpty
+    stackRequirements:
+      Manipulator: 3
+      CableHV: 30
+    componentRequirements:
+      PowerCell:
+        amount: 2
+        defaultPrototype: PowerCellHigh
+
+- type: entity
+  id: SubstationShipMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Ship Substation Machine Board
+  description: A machine printed circuit board for a substation.
+  components:
+    - type: MachineBoard
+      prototype: SubstationShipEmpty
+      stackRequirements:
+        Manipulator: 3
+        CableMV: 15
+        CableHV: 15
+      componentRequirements:
+        PowerCell:
+          amount: 1
+          defaultPrototype: PowerCellHigh
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 200
+      chemicalComposition:
+        Silicon: 20
+    - type: StaticPrice
+      price: 58
+
+- type: entity
+  id: SubstationShuttleMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Shuttle Substation Machine Board
+  description: A machine printed circuit board for a substation.
+  components:
+    - type: MachineBoard
+      prototype: SubstationShuttleEmpty
+      stackRequirements:
+        Manipulator: 2
+        CableMV: 10
+        CableHV: 10
+      componentRequirements:
+        PowerCell:
+          amount: 1
+          defaultPrototype: PowerCellMedium
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 200
+      chemicalComposition:
+        Silicon: 20
+    - type: StaticPrice
+      price: 58
+- type: entity
+  id: PrinterNSDocMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: NeoSol document printer machine board
+  description: A machine printed circuit board for an NeoSol document printer
+  components:
+    - type: MachineBoard
+      prototype: NSPrinterDoc
+      stackRequirements:
+        Steel: 3
+        Manipulator: 1
+        Glass: 1
+
+- type: entity
+  id: SecurityAmmoTechFabCircuitboardNS
+  parent: BaseMachineCircuitboard
+  name: Security Ammo Techfab Machine Board
+  description: A machine printed circuit board for a Security Ammo Techfab.
+  suffix: NS
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: SecurityTechFabAmmoNS
+      stackRequirements:
+        Manipulator: 2
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker

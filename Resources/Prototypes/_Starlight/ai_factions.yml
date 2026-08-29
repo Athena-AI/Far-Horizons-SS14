@@ -19,6 +19,10 @@
     - AllHostile
     - Gorilla
     - Abductor
+    #Far Horizons Start
+    - NeoSol
+    - NeoSolSilicon 
+    #Far Horizons End
 
 - type: npcFaction
   id: DungeonSoviet
@@ -38,6 +42,10 @@
     - AllHostile
     - Gorilla
     - Abductor
+    #Far Horizons Start
+    - NeoSol
+    - NeoSolSilicon 
+    #Far Horizons End
 
 - type: npcFaction
   id: DungeonSyndicate
@@ -58,6 +66,10 @@
     - AllHostile
     - Gorilla
     - Abductor
+    #Far Horizons Start #Gotta pretend no affiliation
+    - NeoSol
+    - NeoSolSilicon 
+    #Far Horizons End
 
 - type: npcFaction
   id: Gorilla
@@ -81,6 +93,10 @@
     - DungeonSoviet
     - DungeonSyndicate
     - Abductor
+    #Far Horizons Start
+    - NeoSol
+    - NeoSolSilicon 
+    #Far Horizons End
 
 - type: npcFaction
   id: NanoTrasenSilicon # purely making this so zombies STOP ATTACKING FUCKING SILICONS
@@ -121,6 +137,10 @@
     - Dragon
     - Gorilla
     - Abductor
+    #Far Horizons Start # Gotta pretend no affiliation
+    - NeoSol
+    - NeoSolSilicon 
+    #Far Horizons End
 
 - type: npcFaction
   id: Abductor
@@ -147,6 +167,10 @@
   # New
   - Dragon
   - SimpleHostile
+  #Far Horizons Start
+  - NeoSol
+  - NeoSolSilicon 
+  #Far Horizons End
 
 - type: npcFaction
   id: PointDefenseTarget

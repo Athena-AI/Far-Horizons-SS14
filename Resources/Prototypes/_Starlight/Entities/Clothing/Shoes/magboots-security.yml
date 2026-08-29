@@ -1,7 +1,7 @@
 - type: entity
   parent: [ClothingShoesBootsMagBase, BaseSecurityContraband, ClothingShoesMilitaryBase]
   id: ClothingShoesBootsMagSec
-  name: security magboots
+  name: Security Magboots #FH
   description: A pair of standard magnetic boots, issued alongside the Security Hardsuit.
   components:
   - type: Sprite

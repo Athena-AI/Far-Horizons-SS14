@@ -65,8 +65,18 @@
 
 - type: entity
   name: Cyborg Dominator
+  suffix: NT
   parent: WeaponDominator
   id: BorgWeaponDominator
+  components:
+  - type: BatterySelfRecharger
+    autoRechargeRate: 25
+
+- type: entity
+  name: Cyborg Dominator
+  suffix: NS
+  parent: WeaponDominatorNS
+  id: BorgWeaponDominatorNS
   components:
   - type: BatterySelfRecharger
     autoRechargeRate: 25
@@ -261,6 +271,7 @@
   name: Dominator Pistol
   parent: [ BaseWeaponBatterySmall, BaseSecurityContraband ]
   id: WeaponDominator
+  suffix: NT
   description: A high-tech pistol typically used in planetside law enforcement, it boasts 3 modes that are tied into the alert level of the station; Stun, Lethal and Destroy.
   components:
   - type: Sprite
@@ -359,7 +370,7 @@
   - type: Clothing
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_shotgun.rsi
   - type: Gun
-    fireRate: 1 # bring back to 2 when bullet spread is a thing
+    fireRate: 2 
     spread: 10
     soundGunshot:
       path: /Audio/_Starlight/Weapons/Energy/laser_shotgun.ogg
@@ -379,7 +390,12 @@
       fireCost: 150 # ~ 8 shots 
       visualState: lethal
       magState: lethal
-      heldPrefix: lethal 
+      heldPrefix: lethal
+    - proto: BoltPlasmaSingle
+      fireCost: 200 # ~ 6 shots 
+      visualState: lethal
+      magState: lethal
+      heldPrefix: lethal
   - type: Item
     size: Large
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_shotgun_inhands_64x.rsi
@@ -420,7 +436,7 @@
   - type: Clothing
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/laser_shotgun.rsi
   - type: Gun
-    fireRate: 1 # bring back to 2 when bullet spread is a thing
+    fireRate: 2
     spread: 10
     soundGunshot:
       path: /Audio/_Starlight/Weapons/Energy/laser_shotgun.ogg
@@ -447,6 +463,17 @@
         - gamma
     - proto: RedLaserBeamSpread
       fireCost: 150 # ~ 16 shots 
+      visualState: lethal
+      magState: lethal
+      heldPrefix: lethal
+      conditions:
+      - !type:AlertLevelCondition
+        alertLevels:
+        - violet
+        - red
+        - gamma
+    - proto: RedLaserBeamSingle
+      fireCost: 300 # ~ 8 shots 
       visualState: lethal
       magState: lethal
       heldPrefix: lethal
@@ -537,6 +564,7 @@
       - HoloflarePistol
   - type: StaticPrice
     price: 50
+  - type: PacifismAllowedGun
 
 - type: entity
   id: WeaponHoloflarePistolSec
@@ -648,3 +676,84 @@
       fireCost: 150
       visualState: high-unshaded
       heldPrefix: high
+
+#region Neosol
+
+- type: entity
+  name: Dominator Pistol
+  parent: [ BaseWeaponBatterySmall, BaseSecurityContraband ]
+  id: WeaponDominatorNS
+  suffix: NS
+  description: A high-tech pistol typically used in planetside law enforcement, it boasts 3 modes that are tied into the alert level of the station; Stun, Lethal and Destroy.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/dominator_pistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: stun
+      map: ["enum.FireModesLayers.FireMode"]
+    - state: stun-unshaded-3
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Appearance
+  - type: Item
+    heldPrefix: stun
+  - type: Clothing
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/dominator_pistol.rsi
+  - type: MagazineVisuals
+    magState: stun
+    steps: 4
+    zeroVisible: true
+  - type: Lock
+    autoUnlock: true
+    autoLock: true
+  - type: AccessReader
+    access: [["SecurityNS"]]
+  - type: BatteryAmmoProvider
+    proto: BoltTaserFH
+    fireCost: 500
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BoltTaserFH
+      fireCost: 500
+      visualState: stun
+      magState: stun
+      heldPrefix: stun
+      conditions:
+      - !type:AlertLevelCondition
+        alertLevels:
+        - green
+        - blue
+        - violet
+        - yellow
+        - red
+        - gamma
+    - proto: RedLaserBeamDominator
+      fireCost: 50 
+      visualState: lethal
+      magState: lethal
+      heldPrefix: lethal
+      conditions:
+      - !type:AlertLevelCondition
+        alertLevels:
+        - blue
+        - violet
+        - yellow
+        - red
+        - gamma
+    - proto: DestroyBeamDominator
+      fireCost: 250
+      visualState: destroy
+      magState: destroy
+      heldPrefix: destroy
+      conditions:
+      - !type:AlertLevelCondition
+        alertLevels:
+        - violet
+        - red
+        - gamma
+  - type: Tag
+    tags:
+    - Sidearm
+    - Dominator

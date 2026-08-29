@@ -100,8 +100,8 @@
     - HighRiskItem
   - type: StaticPrice
     price: 750
-  #- type: StealTarget - Disabling for now because I can't be bothered to go through the steal target list currently.
-  #  stealGroup: ClothingShoesBootsMagAdv
+  - type: StealTarget
+    stealGroup: ClothingShoesBootsMagAdv
 
 - type: entity
   parent: [ClothingShoesBootsMagBase]
@@ -131,7 +131,7 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: GasTank
-    outputPressure: 42.6
+    releasePressure: 42.6
     air:
       # 2 minutes of thrust
       volume: 0.75

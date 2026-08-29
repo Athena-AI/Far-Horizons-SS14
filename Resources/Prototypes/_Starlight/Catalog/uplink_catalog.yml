@@ -19,8 +19,8 @@
 - type: listing
   id: uplinkWeaponShotgunMinotaur
   name: uplink-minotaur-name
-  description: uplink-minotaur-desc
-  productEntity: ClothingBackpackDuffelSyndicateFilledMinotaurShotgun
+  description: uplink-minotaur-desc-fh #FH
+  productEntity: BriefcaseWeaponMinotaurFilled #FH
   icon:
     {
       sprite: /Textures/_Starlight/Objects/Weapons/Guns/Shotguns/minotaur.rsi,

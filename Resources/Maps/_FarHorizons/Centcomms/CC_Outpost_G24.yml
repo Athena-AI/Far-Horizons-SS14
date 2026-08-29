@@ -53857,7 +53857,7 @@ entities:
     - type: Transform
       pos: -3.5,36.5
       parent: 1
-- proto: GunSafeShotgunEnforcer
+- proto: GunSafeShotgunSentinel
   entities:
   - uid: 11186
     components:

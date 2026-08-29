@@ -1,5 +1,5 @@
 - type: entity
-  parent: Window
+  parent: BaseWindow #FH 
   id: BarWindow
   name: bar window
   suffix: "" #FH

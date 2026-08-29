@@ -227,7 +227,7 @@
         - proto: EyeImplantDiagnostic
           prob: 0.2
           cost: 5
-        - proto: EyeImplantSyndie
+        - proto: EyeImplantAgent
           prob: 0.1
           cost: 10
 

@@ -254,7 +254,7 @@
   name: uplink-syndie-implant-name
   description: uplink-syndie-implant-desc-fh #FH
   icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: eye_implant_syndicate }
-  productEntity: CyberneticImplanterEyeImplantSyndie #FH
+  productEntity: CyberneticImplanterEyeImplantAgent #FH
   discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 2

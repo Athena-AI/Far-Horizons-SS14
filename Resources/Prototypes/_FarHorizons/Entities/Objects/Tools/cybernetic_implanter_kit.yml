@@ -4,7 +4,7 @@
   abstract: true
   components:
     - type: Sprite
-      sprite: _FarHorizons/Objects/Tools/singular_eye_CIK.rsi
+      sprite: _FarHorizons/Objects/Tools/syndicate_singular_eye_CIK.rsi #TODO: faction neutral version?
       layers:
       - state: icon
         map: ["cyberneticImplanter"]
@@ -45,7 +45,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _FarHorizons/Objects/Tools/eyes_CIK.rsi
+    sprite: _FarHorizons/Objects/Tools/syndicate_eyes_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 15
   - type: Item
@@ -56,6 +56,8 @@
   id: CyberneticImplanterKitSyndicateEyeImplant
   abstract: true
   components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Tools/syndicate_singular_eye_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 10
   - type: Item
@@ -67,7 +69,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _FarHorizons/Objects/Tools/limb_CIK.rsi
+    sprite: _FarHorizons/Objects/Tools/syndicate_limb_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 20
   - type: Item
@@ -79,7 +81,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _FarHorizons/Objects/Tools/hand_CIK.rsi
+    sprite: _FarHorizons/Objects/Tools/syndicate_hand_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 15
   - type: Item
@@ -106,11 +108,11 @@
 
 - type: entity
   parent: CyberneticImplanterKitSyndicateEyeImplant
-  id: CyberneticImplanterEyeImplantSyndie
-  name: Syndicate Eye Implant C.I.K.
+  id: CyberneticImplanterSyndicateEyeImplantAgent
+  name: Agent Eye Implant C.I.K.
   components:
   - type: CyberneticImplanter
-    implantedOrgan: EyeImplantSyndie
+    implantedOrgan: EyeImplantAgent
 
 # Arm
 - type: entity
@@ -185,7 +187,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _FarHorizons/Objects/Tools/eyes_CIK.rsi
+    sprite: _FarHorizons/Objects/Tools/consortium_eyes_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 15
   - type: Item
@@ -196,6 +198,8 @@
   id: CyberneticImplanterKitConsortiumEyeImplant
   abstract: true
   components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Tools/consortium_singular_eye_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 10
   - type: Item
@@ -207,7 +211,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _FarHorizons/Objects/Tools/limb_CIK.rsi
+    sprite: _FarHorizons/Objects/Tools/consortium_limb_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 20
   - type: Item
@@ -219,7 +223,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _FarHorizons/Objects/Tools/hand_CIK.rsi
+    sprite: _FarHorizons/Objects/Tools/consortium_hand_CIK.rsi
   - type: CyberneticImplanter
     activationTime: 15
   - type: Item
@@ -241,3 +245,13 @@
   components:
   - type: CyberneticImplanter
     implantedOrgan: CyberEyeThermal
+
+#Eye Implant
+
+- type: entity
+  parent: CyberneticImplanterKitConsortiumEyeImplant
+  id: CyberneticImplanterConsortiumEyeImplantAgent
+  name: Agent Eye Implant C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: EyeImplantAgent

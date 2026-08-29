@@ -321,3 +321,7 @@ WallSolidStandard: WallSolidGeneric
 WallReinforcedStandard: WallReinforcedGeneric
 WindowStandard: WindowGeneric
 ReinforcedWindowStandard: ReinforcedWindowGeneric
+
+# 2026-8-30 - Consortium C.I.Ks/Rework
+EyeImplantSyndie: EyeImplantAgent
+CyberneticImplanterEyeImplantSyndie: CyberneticImplanterEyeImplantAgent

@@ -258,7 +258,7 @@
   name: Holographic Field
   description: A Holographic Field that blocks airflow.
   suffix: DO NOT MAP
-  categories: [ HideSpawnMenu, DoNotMap ]
+  categories: [ DoNotMap ]
   placement:
     mode: SnapgridCenter
   components:
@@ -311,7 +311,7 @@
   name: Holographic Barrier
   description: A Holographic Barrier that blocks projectiles and crew.
   suffix: DO NOT MAP
-  categories: [ HideSpawnMenu, DoNotMap ]
+  categories: [ DoNotMap ]
   placement:
     mode: SnapgridCenter
   components:

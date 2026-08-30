@@ -36,6 +36,7 @@
   parent: [BaseCyberneticImplanterKit, BaseSyndicateContraband]
   id: BaseCyberneticImplanterKitSyndicate
   name: Cybernetic Implanter Kit
+  suffix: S
   description: A Syndicate Cybernetic Implanter Kit for field installation of augments.
   abstract: true
 
@@ -178,6 +179,7 @@
   parent: [BaseCyberneticImplanterKit, BaseSyndicateContraband]
   id: BaseCyberneticImplanterKitConsortium
   name: Cybernetic Implanter Kit
+  suffix: C
   description: A Consortium Cybernetic Implanter Kit for field installation of augments.
   abstract: true
 
@@ -258,9 +260,16 @@
 
 # Arm
 
-#hey jimmy, gimmie a C.I.K with nothin
-
-#nothin? (need to add some Consortium arm cybernetics)
+- type: entity
+  parent: CyberneticImplanterKitConsortiumLimb
+  id: CyberneticImplanterConsortiumArmCyberMantisBlade
+  name: Mantis Blade Arm C.I.K.
+  components:
+  - type: CyberneticImplanter
+    implantedOrgan: LeftArmCyberMantisBlade
+  - type: CyberneticImplanterMode
+    leftOrgan: LeftArmCyberMantisBlade
+    rightOrgan: RightArmCyberMantisBlade
 
 #Hand Implant
 

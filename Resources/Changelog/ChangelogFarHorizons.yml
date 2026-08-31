@@ -18913,5 +18913,20 @@ Entries:
   id: 146912
   time: '2026-08-31T21:00:49.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: princess_gurchi
+  changes:
+  - message: Dragging things through a blood puddle or other sticky liquids will now
+      leave a trail
+    type: Add
+  id: 165700
+  time: '2026-08-31T21:19:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1657
+- author: princess_gurchi
+  changes:
+  - message: Additional optimization for footprint memory/network performance
+    type: Tweak
+  id: 165701
+  time: '2026-08-31T21:19:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1657
 Order: -1
 

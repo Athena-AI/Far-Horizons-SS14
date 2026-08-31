@@ -151,6 +151,15 @@
   id: MagazinePistolCivilian
 
 - type: Tag
+  id: MagazineBatteryUA
+
+- type: Tag
+  id: CartridgeUA
+
+- type: Tag
+  id: CartridgeBatteryUA
+
+- type: Tag
   id: MagazinePistolDouble
 
 - type: Tag

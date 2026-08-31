@@ -130,3 +130,15 @@
     - type: FakeMindShield # TODO: put the component on the implant and use implant relay events for the status icon
       mindShieldStatusIcon: MindShieldIconNS
   - type: FakeMindShieldImplant
+
+
+- type: entity
+  parent: DeathRattleImplant
+  id: DeathRattleImplantNSHC
+  name: NSHC Death Rattle Implant
+  suffix: NS
+  description: This implant will inform the NSHC radio channel should the user fall into critical condition or die.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RattleOnTrigger
+    radioChannel: SHC

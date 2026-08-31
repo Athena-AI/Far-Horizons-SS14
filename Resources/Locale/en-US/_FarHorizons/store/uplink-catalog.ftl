@@ -1,3 +1,4 @@
+# FH gear
 uplink-M81A1-fissure-crate-teleporter-name = M81A1 "Fissure" Bundle
 uplink-M81A1-fissure-crate-teleporter-desc = For when you need extra BOOM in your operations, comes included with a M81 rocket loader chest rig that is equipped with seven 120mm rockets. "This is guranteed to blow up in your face... gorlex approved!" - Random Lone Operative 
 
@@ -74,5 +75,8 @@ uplink-bunker-breaker-desc = Augmented arm with all the tools needed to go where
 uplink-ifa30-left-arm-name = Left IFA-30 Case
 uplink-ifa30-right-arm-name = Right IFA-30 Case
 uplink-ifa30-arms-desc = A modern IFA-30 SMG for mobile operations integrated into a Cybernetic Arm, comes with an Ammo Selector.
+
+uplink-knives-kit-name-fh = Throwing Knives Kit
+uplink-knives-kit-desc-fh = A set of 8 throwing knives, perfect for embedding into the body of your victims. Capable of ignoring armor entirely when thrown.
 
 uplink-hushpup-desc-fh = A powerful silenced shotgun with a low magazine capacity. Uses .50 shotgun ammo. Comes with an Ammo Selector.

@@ -190,3 +190,72 @@
     stampState: "paper_stamp-syndicate"
   - type: Sprite
     state: stamp-syndicate
+
+- type: entity
+  name: Cybersun Ops & Admin Rubber Stamp
+  parent: RubberStampBase
+  id: RubberStampCOA
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-coa
+    stampedColor: "#00CC00"
+    stampState: "paper_stamp-cap"
+  - type: Sprite
+    state: stamp-cap
+
+- type: entity
+  name: Gorlex Weapons & Security Rubber Stamp
+  parent: RubberStampBase
+  id: RubberStampGWS
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-gws
+    stampedColor: "#FF0000"
+    stampState: "paper_stamp-hos"
+  - type: Sprite
+    state: stamp-hos
+
+- type: entity
+  name: Donk Co Intelligence Rubber Stamp
+  parent: RubberStampBase
+  id: RubberStampDCI
+  suffix: NS
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-dci
+    stampedColor: "#0000FF"
+    stampState: "paper_stamp-rd"
+  - type: Sprite
+    state: stamp-rd
+
+- type: entity
+  name: NSHC Department Stamps Box #Far Horizons
+  suffix: NS
+  parent: BoxCardboard
+  id: BoxStampsNSDepartments
+  components:
+    - type: Storage
+      maxItemSize: Small
+      grid:
+        - 0,0,4,4
+      whitelist:
+        components:
+          - Stamp
+    - type: EntityTableContainerFill
+      containers:
+        storagebase: !type:AllSelector
+          children:
+            - id: RubberStampSHC
+            - id: RubberStampCOA
+            - id: RubberStampGWS
+            - id: RubberStampDCI
+    - type: Sprite
+      sprite: _Starlight/Objects/Storage/boxes.rsi
+      layers:
+        - state: box-cc
+        - state: stamp-cc-departments

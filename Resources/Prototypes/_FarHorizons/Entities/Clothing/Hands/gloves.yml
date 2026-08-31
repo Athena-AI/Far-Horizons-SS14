@@ -274,3 +274,75 @@
     sprite: _FarHorizons/Clothing/Hands/Gloves/NeoSol/leather.rsi
   - type: Clothing
     sprite: _FarHorizons/Clothing/Hands/Gloves/NeoSol/leather.rsi
+
+# Consortium Weapons
+
+- type: entity
+  parent: [ClothingHandsBase, BaseSyndicateContraband]
+  id: ClothingHandsKnuckleDustersConsortium
+  name: Consortium Knuckle Dusters
+  description: "Plastitanium knuckle dusters branded with the blood-blue C. A real man beats someone to death with these."
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Hands/Gloves/consortium_knuckle_duster.rsi
+    state: consortium-knuckle-duster
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Hands/Gloves/consortium_knuckle_duster.rsi
+  - type: MeleeWeapon
+    attackRate: 1.5
+    damage:
+      types:
+        Blunt: 8
+        Piercing: 8
+    soundHit:
+      collection: Knuckles
+      params:
+        variation: 0.125
+    animation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - Kangaroo
+  - type: StaticPrice
+    price: 2000
+
+- type: entity
+  parent: [ClothingHandsButcherable, BaseSyndicateContraband]
+  id: ClothingHandsPoweredGloves
+  name: Powered Gloves
+  description: These gloves allow you to punch incredibly Hard.
+  components:
+  - type: Sprite
+    sprite: _Starlight/Clothing/Hands/Gloves/power_fist.rsi
+  - type: Clothing
+    sprite: _Starlight/Clothing/Hands/Gloves/power_fist.rsi
+  - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 1
+    damage:
+      types:
+       Blunt: 32
+    soundHit:
+      collection: Knuckles
+      params:
+        variation: 0.125
+    mustBeEquippedToUse: true
+  - type: Fiber
+    fiberMaterial: fibers-leather
+    fiberColor: fibers-black
+  - type: FingerprintMask
+  - type: MeleeSpeech
+  - type: ActivatableUI
+    key: enum.MeleeSpeechUiKey.Key
+    verbOnly: true
+  - type: Actions
+  - type: UserInterface
+    interfaces:
+      enum.MeleeSpeechUiKey.Key:
+        type: MeleeSpeechBoundUserInterface
+  - type: StaticPrice
+    price: 2500
+  - type: Tag
+    tags:
+    - WhitelistChameleon

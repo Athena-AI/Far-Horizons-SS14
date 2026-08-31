@@ -186,6 +186,34 @@
       types:
         Heat: 18
 
+# Laser for UA - Corona
+- type: entity
+  id: RedLaserBeamCorona
+  name: Laser Beam
+  parent: LaserTrace
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 35
+
+# AP Laser for UA - Corona
+- type: entity
+  id: RedLaserBeamCoronaAP
+  name: Laser Beam
+  parent: LaserTrace
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 25
+
 - type: entity
   parent: BasicHitscan
   id: RedShuttleLightLaser

@@ -906,6 +906,7 @@
   parent: ComputerComms
   id: CentcommComputerComms
   name: Central Command Communications Computer #Far Horizons - The Great Capitalization Crusade
+  suffix: NT #FH
   description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
   components:
   - type: Sprite

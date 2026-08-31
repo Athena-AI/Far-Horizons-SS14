@@ -177,6 +177,43 @@
     walkModifier: 0.95
     sprintModifier: 0.95
 
+#region consortium Lecter Type-T
+
+- type: entity
+  name: Lecter Type-T
+  parent: WeaponRifleLecter
+  id: WeaponRifleLecterC
+  description: "A modifed Lecter platform utilized by NanoTrasen with a simple angled grip and holographic sights for easy target acquisition, as well as electronic status lights. Feeds from 5.56 Magazines."
+  suffix: C
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/Rifles/nt_lecter.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+    - state: mag-0
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: GunWieldBonus #1-5 Deviation / Holo-Sights
+    minAngle: -20
+    maxAngle: -27
+  - type: Clothing
+    sprite: _FarHorizons/Objects/Weapons/Guns/Rifles/nt_lecter.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset # Holo-Sights
+    maxOffset: 2.5
+    pvsIncrease: 0.25
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+  - type: UseDelay # Grip
+    delay: 0.5
+  - type: SpeedModifiedOnWield # Light Stock
+    walkModifier: 0.95
+    sprintModifier: 0.95
+
 #region IFV-50-T
 - type: entity
   name: IFV-50-T

@@ -2003,11 +2003,53 @@
   components:
   - type: Sprite
     layers:
-    - state: idsyndicatehighcommand
+    - state: elite
     - state: idsyndicatehighcommand
   - type: Item
     heldPrefix: elite
   - type: PresetIdCard
-    job: CentralCommandOfficial
+    job: HighCommandOfficial
+
+- type: entity
+  parent: IDCardNeoSolStandard
+  id: HCCOAIDCard
+  name: COA Officer ID Card
+  components:
+  - type: Sprite
+    layers:
+    - state: elite
+    - state: idsyndicatehighcommand
+  - type: Item
+    heldPrefix: elite
+  - type: PresetIdCard
+    job: HC-COAOfficial
+
+- type: entity
+  parent: IDCardNeoSolStandard
+  id: HCGWSIDCard
+  name: GWS Officer ID Card
+  components:
+  - type: Sprite
+    layers:
+    - state: elite
+    - state: idsyndicatehighcommand
+  - type: Item
+    heldPrefix: elite
+  - type: PresetIdCard
+    job: HC-GWSOfficial
+
+- type: entity
+  parent: IDCardNeoSolStandard
+  id: HCDCIIDCard
+  name: DCI Officer ID Card
+  components:
+  - type: Sprite
+    layers:
+    - state: elite
+    - state: idsyndicatehighcommand
+  - type: Item
+    heldPrefix: elite
+  - type: PresetIdCard
+    job: HC-DCIOfficial
 
 #endregion

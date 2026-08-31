@@ -172,3 +172,12 @@
   components:
   - type: Implanter
     implant: FakeMindShieldImplantNS
+
+- type: entity
+  id: DeathRattleImplanterNSHC
+  name: NSHC Death Rattle Implanter
+  parent: BaseImplantOnlyImplanter
+  suffix: NS
+  components:
+  - type: Implanter
+    implant: DeathRattleImplantNSHC

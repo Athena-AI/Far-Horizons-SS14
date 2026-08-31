@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared._FarHorizons.Fluids.Components;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Fluids.Components;
+using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Stunnable;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Events;
@@ -20,7 +21,8 @@ public abstract partial class SharedFluidFootprintSystem
             !TryComp<FluidFootprintSourceComponent>(args.OtherEntity, out var source) ||
             !TryComp<PuddleComponent>(args.OtherEntity, out var puddle) ||
             !Solution.ResolveSolution(args.OtherEntity, puddle.SolutionName, ref puddle.Solution) ||
-            puddle.Solution == null)
+            puddle.Solution == null ||
+            !_timing.IsFirstTimePredicted)
             return;
         
         var solution = puddle.Solution.Value.Comp.Solution;
@@ -35,7 +37,7 @@ public abstract partial class SharedFluidFootprintSystem
         if (numFootprints <= activeSpreader.RemainingFootprints)
             return;
         
-        var removeQt = ent.Comp.TakeSolutionUnits / solution.Contents.Count;
+        var removeQt = source.TakeSolutionUnits / solution.Contents.Count;
         Solution.RemoveEachReagent(puddle.Solution.Value, removeQt);
 
         var color = solution.GetColor(ProtoMan);
@@ -45,7 +47,54 @@ public abstract partial class SharedFluidFootprintSystem
         activeSpreader.LastPosition = TransformSys.GetMapCoordinates(ent);
         activeSpreader.Color = color;
         activeSpreader.OpacityStep = 1f / (numFootprints + 1);
-    } 
+        activeSpreader.FootprintRate = ent.Comp.FootprintRate;
+        activeSpreader.StepSpacing = ent.Comp.StepSpacing;
+        activeSpreader.FootprintSize = ent.Comp.FootprintSize;
+        activeSpreader.Footprint = ent.Comp.Footprint;
+        activeSpreader.LateralOffset = ent.Comp.LateralOffset;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnEndCollideDragged(Entity<PullableComponent> ent, ref EndCollideEvent args)
+    {
+        if (TerminatingOrDeleted(ent) || TerminatingOrDeleted(args.OtherEntity) ||
+            !ent.Comp.BeingPulled ||
+            (HasComp<FluidFootprintSpreaderComponent>(ent) && !HasComp<KnockedDownComponent>(ent)) ||
+            !TryComp<FluidFootprintSourceComponent>(args.OtherEntity, out var source) ||
+            !TryComp<PuddleComponent>(args.OtherEntity, out var puddle) ||
+            !Solution.ResolveSolution(args.OtherEntity, puddle.SolutionName, ref puddle.Solution) ||
+            puddle.Solution == null ||
+            !_timing.IsFirstTimePredicted)
+            return;
+        
+        var solution = puddle.Solution.Value.Comp.Solution;
+        if (!solution.FootprintEligible(ProtoMan)) return;
+        
+        var numFootprints = ResolveNumFootprints((args.OtherEntity, source, puddle));
+
+        if (numFootprints <= 0)
+            return;
+
+        var activeSpreader = EnsureComp<ActiveFluidFootprintSpreaderComponent>(ent);
+        if (numFootprints <= activeSpreader.RemainingFootprints)
+            return;
+        
+        var removeQt = source.TakeSolutionUnits / solution.Contents.Count;
+        Solution.RemoveEachReagent(puddle.Solution.Value, removeQt);
+
+        var color = solution.GetColor(ProtoMan);
+
+        activeSpreader.RemainingFootprints = numFootprints;
+        activeSpreader.StopAt = _timing.CurTime + source.StopAfter;
+        activeSpreader.LastPosition = TransformSys.GetMapCoordinates(ent);
+        activeSpreader.Color = color;
+        activeSpreader.OpacityStep = 1f / (numFootprints + 1);
+        activeSpreader.FootprintRate = source.DraggingFootprintRate;
+        activeSpreader.StepSpacing = source.DraggingStepSpacing;
+        activeSpreader.FootprintSize = source.DraggingFootprintSize;
+        activeSpreader.Footprint = source.DraggingFootprint;
+        activeSpreader.LateralOffset = 0f;
+    }
 
     public override void Update(float frameTime)
     {
@@ -53,13 +102,11 @@ public abstract partial class SharedFluidFootprintSystem
 
         if (!_timing.IsFirstTimePredicted) return;
 
-        var query = EntityQueryEnumerator<ActiveFluidFootprintSpreaderComponent, FluidFootprintSpreaderComponent, TransformComponent>();
-        while (query.MoveNext(out var uid, out var activeSpreader, out var spreader, out var xform))
+        var query = EntityQueryEnumerator<ActiveFluidFootprintSpreaderComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var activeSpreader, out var xform))
         {
             if (_timing.CurTime < activeSpreader.NextStep)
                 continue;
-            
-            activeSpreader.NextStep = _timing.CurTime + spreader.FootprintRate;
 
             if (activeSpreader.StopAt <= _timing.CurTime ||
                 activeSpreader.RemainingFootprints <= 0)
@@ -67,6 +114,14 @@ public abstract partial class SharedFluidFootprintSystem
                 RemCompDeferred<ActiveFluidFootprintSpreaderComponent>(uid);
                 continue;
             }
+
+            if (activeSpreader.FootprintRate == null ||
+                activeSpreader.StepSpacing == null ||
+                activeSpreader.Footprint == null ||
+                activeSpreader.LateralOffset == null)
+                continue;
+            
+            activeSpreader.NextStep = _timing.CurTime + activeSpreader.FootprintRate.Value;
 
             var currentPos = TransformSys.GetMapCoordinates(uid, xform);
             var lastPos = activeSpreader.LastPosition ?? currentPos;
@@ -81,7 +136,7 @@ public abstract partial class SharedFluidFootprintSystem
             if (distance < 0.1f)
                 continue;
             
-            var stepSpacing = spreader.StepSpacing;
+            var stepSpacing = activeSpreader.StepSpacing.Value;
             var totalSteps = Math.Min(activeSpreader.RemainingFootprints, (int) Math.Floor(distance / stepSpacing));
 
             if (totalSteps <= 0)
@@ -92,7 +147,7 @@ public abstract partial class SharedFluidFootprintSystem
             var pathVector = currentPos.Position - lastPos.Position;
             var angle = pathVector.ToAngle();
 
-            var ev = new BootFootprintModifyEvent(spreader.Footprint);
+            var ev = new BootFootprintModifyEvent(activeSpreader.Footprint.Value);
             RaiseLocalEvent(uid, ref ev);
             var footprint = ev.Footprint;
 
@@ -102,7 +157,7 @@ public abstract partial class SharedFluidFootprintSystem
                 var interpolatedPos = Vector2.Lerp(lastPos.Position, currentPos.Position, t);
 
                 var mapCoords = new MapCoordinates(interpolatedPos, currentPos.MapId);
-                DoStep((uid, spreader, activeSpreader), mapCoords, angle, footprint);
+                DoStep((uid, activeSpreader), mapCoords, angle, footprint);
 
                 activeSpreader.RemainingFootprints--;
                 if (activeSpreader.RemainingFootprints <= 0)
@@ -111,12 +166,18 @@ public abstract partial class SharedFluidFootprintSystem
         }
     }
 
-    public void DoStep(Entity<FluidFootprintSpreaderComponent, ActiveFluidFootprintSpreaderComponent> ent, MapCoordinates mapCoords, Angle angle, ProtoId<FootprintTypePrototype> footprintType)
+    public void DoStep(Entity<ActiveFluidFootprintSpreaderComponent> ent, MapCoordinates mapCoords, Angle angle, ProtoId<FootprintTypePrototype> footprintType)
     {
         if (!_map.TryFindGridAt(mapCoords, out var gridUid, out var gridComp))
             return;
         
-        var proto = ProtoMan.Index(ent.Comp1.Footprint);
+        if (ent.Comp.FootprintRate == null ||
+            ent.Comp.StepSpacing == null ||
+            ent.Comp.Footprint == null ||
+            ent.Comp.LateralOffset == null)
+            return;
+        
+        var proto = ProtoMan.Index(ent.Comp.Footprint.Value);
         var finalPos = mapCoords.Position;
 
         if (proto.Alternating)
@@ -124,8 +185,8 @@ public abstract partial class SharedFluidFootprintSystem
             var moveDir = angle.ToVec();
             var leftPerpendicular = new Vector2(-moveDir.Y, moveDir.X).Normalized();
 
-            var sideMultiplier = ent.Comp2.Left ? 1f : -1f;
-            var offsetAmount = ent.Comp1.LateralOffset;
+            var sideMultiplier = ent.Comp.Left ? 1f : -1f;
+            var offsetAmount = ent.Comp.LateralOffset.Value;
 
             finalPos += leftPerpendicular * (offsetAmount * sideMultiplier);
         }
@@ -140,19 +201,19 @@ public abstract partial class SharedFluidFootprintSystem
         var tileCenter = _map.GridTileToLocal(gridUid, gridComp, tileIndices);
         var relativePos = gridLocalCoords.Position - tileCenter.Position;
 
-        var flipped = proto.Alternating && !ent.Comp2.Left;
+        var flipped = proto.Alternating && !ent.Comp.Left;
 
         if (tile != null)
         {
-            tile!.Value.Comp.AddFootprint(relativePos, angle, footprintType, ent.Comp1.FootprintSize, ent.Comp2.Color, flipped, ent.Comp2.Opacity);
+            tile!.Value.Comp.AddFootprint(relativePos, angle, footprintType, ent.Comp.FootprintSize, ent.Comp.Color, flipped, ent.Comp.Opacity);
             UpdateSprite(tile.Value);
             Dirty(tile.Value);
         }
         
-        var opacity = MathF.Max(0f, ent.Comp2.Opacity - ent.Comp2.OpacityStep);
-        ent.Comp2.Opacity = opacity;
+        var opacity = MathF.Max(0f, ent.Comp.Opacity - ent.Comp.OpacityStep);
+        ent.Comp.Opacity = opacity;
         if (proto.Alternating)
-            ent.Comp2.Left = !ent.Comp2.Left;
+            ent.Comp.Left = !ent.Comp.Left;
     }
 
     public int ResolveNumFootprints(Entity<FluidFootprintSourceComponent, PuddleComponent> ent)

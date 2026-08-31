@@ -11,5 +11,4 @@ public sealed partial class FluidFootprintSpreaderComponent : Component
     [DataField] public float FootprintSize = 1f;
     [DataField(required: true)] public float StepSpacing = default!;
     [DataField(required: true)] public float LateralOffset = default!;
-    [DataField] public float TakeSolutionUnits = 1f;
 }

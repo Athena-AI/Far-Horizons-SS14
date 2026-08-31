@@ -567,7 +567,7 @@
   icon:
     sprite: *icon-rsi
     state: Nanotrasen
-  jobName: job-name-centcommoff
+  jobName: fh-job-name-centcommoff
 
 - type: jobIcon
   parent: JobIcon

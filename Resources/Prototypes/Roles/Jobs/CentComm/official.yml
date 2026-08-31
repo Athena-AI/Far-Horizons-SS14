@@ -1,6 +1,6 @@
 - type: job
   id: CentralCommandOfficial
-  name: job-name-centcommoff
+  name: fh-job-name-centcommoff
   description: job-description-centcommoff
   playTimeTracker: JobCentralCommandOfficial
   requirements:

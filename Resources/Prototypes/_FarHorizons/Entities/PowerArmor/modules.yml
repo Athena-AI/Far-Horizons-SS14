@@ -4,6 +4,8 @@
   parent: BaseItem
   abstract: true
   components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
   - type: Item
     size: Small
   - type: InteractionOutline
@@ -16,8 +18,15 @@
   suffix: NT, Security
   parent: PowerArmorModuleBase
   components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-tools
   - type: PowerArmorPassiveModule
     comps:
       - type: IdClothingBlocker
         allowedJobs:
           - Security
+      - type: AccessReader
+        access: [["Security"]]
+  - type: PowerArmorModule

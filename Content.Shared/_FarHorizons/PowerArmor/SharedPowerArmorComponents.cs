@@ -24,7 +24,7 @@ public sealed partial class PowerArmorComponent : Component
     [ViewVariables, AutoNetworkedField]
     public EntityUid OtherHalf;
 
-    [AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool IsPrimary = true;
 
     [ViewVariables, AutoNetworkedField]
@@ -38,6 +38,9 @@ public sealed partial class PowerArmorComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public List<EntityUid> Modules = new();
+
+    [DataField]
+    public int MaxComplexity = 20;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -140,20 +143,16 @@ public sealed partial class InstallPartDoAfter : SimpleDoAfterEvent
 public sealed class PowerArmorUninstallModuleMessage : BoundUserInterfaceMessage
 {
     public readonly NetEntity Module;
-    public PowerArmorUninstallModuleMessage(NetEntity module)
-    {
-        Module = module;
-    }
+    public PowerArmorUninstallModuleMessage(NetEntity module) 
+        => Module = module;
 }
 
 [Serializable, NetSerializable]
 public sealed class PowerArmorToggleModuleMessage : BoundUserInterfaceMessage
 {
     public readonly NetEntity Module;
-    public PowerArmorToggleModuleMessage(NetEntity module)
-    {
-        Module = module;
-    }
+    public PowerArmorToggleModuleMessage(NetEntity module) 
+        => Module = module;
 }
 
 [Serializable, NetSerializable]

@@ -9,6 +9,9 @@ public sealed partial class PowerArmorModuleComponent : Component
     [DataField]
     public TimeSpan InstallTime = TimeSpan.FromSeconds(5);
 
+    [DataField]
+    public bool canBeToggled = true;
+
     [ViewVariables, AutoNetworkedField]
     public bool isEnabled = false;
 

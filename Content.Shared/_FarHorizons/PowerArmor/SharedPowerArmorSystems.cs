@@ -1,12 +1,14 @@
 
 using System.Linq;
 using Content.Shared._FarHorizons.LimbDamage.Components;
+using Content.Shared.Access.Systems;
 using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
@@ -17,6 +19,7 @@ using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Wires;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
 
@@ -31,6 +34,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected SharedPopupSystem _popUp = default!;
     [Dependency] protected SharedDoAfterSystem _doAfter = default!;
     [Dependency] protected PowerCellSystem _powerCell = default!;
+    [Dependency] protected SharedHandsSystem _hands = default!;
+    [Dependency] protected AccessReaderSystem _access = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -47,6 +52,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, SimpleToolDoAfterEvent>(ToolDoAfterComplete);
         SubscribeLocalEvent<PowerArmorComponent, InstallPartDoAfter>(AfterInstallDoAfter);
         SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorMessage>(OnPowerToggle);
+        SubscribeLocalEvent<PowerArmorComponent, PowerArmorUninstallModuleMessage>(OnModuleUninstalledMessage);
+        SubscribeLocalEvent<PowerArmorComponent, PowerArmorToggleModuleMessage>(OnModuleToggleMessage);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
@@ -55,6 +62,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         SubscribeLocalEvent<PowerArmorModuleComponent, EntGotInsertedIntoContainerMessage>(OnModuleInstalled);
         SubscribeLocalEvent<PowerArmorModuleComponent, EntGotRemovedFromContainerMessage>(OnModuleUninstalled);
+        SubscribeLocalEvent<PowerArmorModuleComponent, AfterInteractEvent>(OnModuleInteract);
     }
 
     #region Power Armor
@@ -209,7 +217,54 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         _powerCell.SetDrawEnabled(ent.Owner, !drawComp.Enabled);
         ent.Comp.IsPowered = !ent.Comp.IsPowered;
+        var modules = ent.Comp.Modules.ToList(); 
+        foreach(var module in modules)
+        {
+            if(!TryComp<PowerArmorModuleComponent>(module, out var moduleComp) || !moduleComp.canBeToggled)
+                continue;
+                
+            if(ent.Comp.IsPowered)
+                TurnOnArmorModule((module, moduleComp), ent.Owner);
+            else if(!ent.Comp.IsPowered)
+                TurnOffArmorModule((module, moduleComp), ent.Owner);
+        }
+
         Dirty(ent);
+    }
+
+    private void OnModuleUninstalledMessage(Entity<PowerArmorComponent> ent, ref PowerArmorUninstallModuleMessage args)
+    {
+        var module = GetEntity(args.Module);
+        if(!HasComp<PowerArmorModuleComponent>(module)) return;
+        if(TryComp<WiresPanelComponent>(ent.Owner, out var wireComp) && !wireComp.Open)
+        {
+            _popUp.PopupEntity("Maintenance Panel is currently closed.", ent.Owner, args.Actor, PopupType.SmallCaution);
+            return;
+        }
+        if(!_access.IsAllowed(args.Actor, ent.Owner))
+        {
+            _popUp.PopupEntity("Unauthorized Access Detected.", ent.Owner, args.Actor, PopupType.SmallCaution);
+            return;
+        }
+
+        _container.TryRemoveFromContainer(module, false, out _);
+        _hands.TryPickupAnyHand(args.Actor, module);
+    }
+
+    private void OnModuleToggleMessage(Entity<PowerArmorComponent> ent, ref PowerArmorToggleModuleMessage args)
+    {
+        var module = GetEntity(args.Module);
+        if(!TryComp<PowerArmorModuleComponent>(module, out var moduleComp)) return;
+        if(!_access.IsAllowed(args.Actor, ent.Owner))
+        {
+            _popUp.PopupEntity("Unauthorized Access Detected.", ent.Owner, args.Actor, PopupType.SmallCaution);
+            return;
+        }
+
+        if(moduleComp.isEnabled)
+            TurnOffArmorModule((module, moduleComp), ent.Owner);
+        else if(!moduleComp.isEnabled)
+            TurnOnArmorModule((module, moduleComp), ent.Owner);
     }
 
     #endregion
@@ -300,51 +355,91 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     #region Power Armor Modules
     private void OnModuleInstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
-        if(TerminatingOrDeleted(args.Entity)) return;
-
-        if(!TryComp<PowerArmorComponent>(args.Container.Owner, out var PAComp) 
-        || !TryComp<PowerCellDrawComponent>(args.Container.Owner, out var drawComp)) return;
-
-        if(TryComp<PowerArmorPassiveModuleComponent>(ent.Owner, out var components))
-            foreach (var comp in (components.Components ?? []).Values)
-                if (!HasComp(args.Container.Owner, comp.Component.GetType()))
-                    AddComp(args.Container.Owner, comp.Component);
-
-        if(ent.Comp.IdlePowerDrain > 0)
-            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate + ent.Comp.IdlePowerDrain);
-        if(ent.Comp.ActivePowerDrain > 0 && ent.Comp.isEnabled)
-            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate + ent.Comp.ActivePowerDrain);
-
+        if(TerminatingOrDeleted(args.Entity) || !TryComp<PowerArmorComponent>(args.Container.Owner, out var PAComp)) return;
         PAComp.Modules.Add(ent.Owner);
         Dirty(args.Container.Owner, PAComp);
+        TurnOnArmorModule(ent, args.Container.Owner);
     }
 
     private void OnModuleUninstalled(Entity<PowerArmorModuleComponent> ent, ref EntGotRemovedFromContainerMessage args)
     {
-        if(TerminatingOrDeleted(args.Entity)) return;
-        
-        if(!TryComp<PowerArmorComponent>(args.Container.Owner, out var PAComp) 
-        || !TryComp<PowerCellDrawComponent>(args.Container.Owner, out var drawComp)) return;
-
-        if(TryComp<PowerArmorPassiveModuleComponent>(ent.Owner, out var components))
-            foreach (var comp in (components.Components ?? []).Values)
-                if (HasComp(args.Container.Owner, comp.Component.GetType()))
-                    RemComp(args.Container.Owner, EntityManager.GetComponent(args.Entity, comp.Component.GetType()));
-
+        if(TerminatingOrDeleted(args.Entity) || !TryComp<PowerArmorComponent>(args.Container.Owner, out var PAComp)) return;
+        TurnOffArmorModule(ent, args.Container.Owner);
         if(PAComp.Modules.Contains(ent.Owner))
         {
             PAComp.Modules.Remove(ent.Owner);
             Dirty(args.Container.Owner, PAComp);
         }
-
-        if(ent.Comp.IdlePowerDrain > 0)
-            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate - ent.Comp.IdlePowerDrain);
-        if(ent.Comp.ActivePowerDrain > 0)
-            _powerCell.SetDrawRate(args.Container.Owner, drawComp.DrawRate - ent.Comp.ActivePowerDrain);
-
-        if(ent.Comp.isEnabled) ent.Comp.isEnabled = false;
-        Dirty(ent);
     }
-    
+
+    private void OnModuleInteract(Entity<PowerArmorModuleComponent> ent, ref AfterInteractEvent args)
+    {
+        if (args.Target is not { } powerArmor)
+            return;
+
+        if (!TryComp<WiresPanelComponent>(powerArmor, out var wires) || !TryComp<PowerArmorComponent>(powerArmor, out var paComp))
+            return;
+
+        if (!wires.Open)
+        {
+            _popUp.PopupEntity("Open maintenance panel first.", args.User);
+            return;
+        }
+
+        var moduleMeta = MetaData(ent.Owner);
+        foreach (var module in paComp.Modules)
+        {
+            var otherProto = MetaData(module).EntityPrototype;
+            if (otherProto == null)
+                continue;
+
+            if (otherProto.ID == moduleMeta.EntityPrototype?.ID)
+            {
+                _popUp.PopupEntity("This module is already installed.", args.User);
+                return;
+            }
+        }
+
+        if (_container.TryGetContainer(powerArmor, "modules", out var moduleContainer))
+        {
+            _container.Insert(ent.Owner, moduleContainer);
+            args.Handled = true;
+        }
+    }
+
+    private void TurnOnArmorModule(Entity<PowerArmorModuleComponent> module, EntityUid PowerArmor)
+    {
+        if(!TryComp<PowerArmorComponent>(PowerArmor, out var PAComp) 
+        || !TryComp<PowerCellDrawComponent>(PowerArmor, out var drawComp)) return;
+
+        if(TryComp<PowerArmorPassiveModuleComponent>(module.Owner, out var components) && components.Components != null)
+            EntityManager.AddComponents(PowerArmor, components.Components);
+
+        if(module.Comp.IdlePowerDrain > 0)
+            _powerCell.SetDrawRate(PowerArmor, drawComp.DrawRate + module.Comp.IdlePowerDrain);
+        if(module.Comp.ActivePowerDrain > 0 && module.Comp.isEnabled)
+            _powerCell.SetDrawRate(PowerArmor, drawComp.DrawRate + module.Comp.ActivePowerDrain);
+
+        if(!module.Comp.isEnabled) module.Comp.isEnabled = true;
+        Dirty(module);
+        Dirty(PowerArmor, PAComp);
+    }
+
+    private void TurnOffArmorModule(Entity<PowerArmorModuleComponent> module, EntityUid PowerArmor)
+    {
+        if(!TryComp<PowerArmorComponent>(PowerArmor, out var PAComp) 
+        || !TryComp<PowerCellDrawComponent>(PowerArmor, out var drawComp)) return;
+
+        if (TryComp<PowerArmorPassiveModuleComponent>(module.Owner, out var components) && components.Components != null)
+            EntityManager.RemoveComponents(PowerArmor, components.Components);
+
+        if(module.Comp.IdlePowerDrain > 0)
+            _powerCell.SetDrawRate(PowerArmor, drawComp.DrawRate - module.Comp.IdlePowerDrain);
+        if(module.Comp.ActivePowerDrain > 0)
+            _powerCell.SetDrawRate(PowerArmor, drawComp.DrawRate - module.Comp.ActivePowerDrain);
+
+        if(module.Comp.isEnabled) module.Comp.isEnabled = false;
+        Dirty(module);
+    }
     #endregion
 }

@@ -26,6 +26,8 @@ public sealed partial class PowerArmorMenu : FancyWindow
     private DamageableSystem _damageable;
 
     private EntityUid _entity;
+    private int _currComplexity = 0;
+    private int _maxComplexity = 0;
     private readonly Dictionary<PowerArmorVisualLayers, EntityUid?> _parts = new();
     private readonly Dictionary<PowerArmorVisualLayers, PartControls> _partControls = new();
     private PartControls? _openDetails;
@@ -99,9 +101,17 @@ public sealed partial class PowerArmorMenu : FancyWindow
             };
         }
 
-        ActivationButton.OnPressed += _ => OnTogglePowerArmor?.Invoke();
+        ActivationButton.OnPressed += _ =>
+        {
+            OnTogglePowerArmor?.Invoke();  
+        };
     }
-    public void SetEntity(EntityUid entity) => _entity = entity;
+    public void SetEntity(EntityUid entity)
+    {
+        _entity = entity;
+        if(_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var PAComp))
+           _maxComplexity = PAComp.MaxComplexity;
+    }
 
     protected override void FrameUpdate(FrameEventArgs args)
     {
@@ -161,6 +171,9 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
     private void AddModulePanel(EntityUid module)
     {
+        if(!_entityManager.TryGetComponent<PowerArmorModuleComponent>(module, out var moduleComp))
+            return;
+
         var row = new PanelContainer
         {
             Name = $"{module}",
@@ -179,7 +192,8 @@ public sealed partial class PowerArmorMenu : FancyWindow
             Name = $"{module}-Toggle",
             StyleClasses = { "ButtonSquare" },
             Margin = new Thickness(0, 2, 2, 2),
-            SetSize = new Vector2(32)
+            SetSize = new Vector2(32),
+            Disabled = !moduleComp.canBeToggled
         };
 
         var powerTexture = new TextureRect
@@ -250,7 +264,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
         {
             Name = $"{module}-IdleDrain",
             StyleClasses = { "ButtonSquare" },
-            Text = "0",
+            Text = $"{moduleComp.IdlePowerDrain}",
             Margin = new Thickness(0, 2, 2, 2),
             SetSize = new Vector2(32),
             Disabled = true
@@ -262,7 +276,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
         {
             Name = $"{module}-ActiveDrain",
             StyleClasses = { "ButtonSquare" },
-            Text = "0",
+            Text = $"{moduleComp.ActivePowerDrain}",
             Margin = new Thickness(0, 2, 2, 2),
             SetSize = new Vector2(32),
             Disabled = true
@@ -286,7 +300,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
         {
             Name = $"{module}-Complexity",
             StyleClasses = { "ButtonSquare" },
-            Text = "0",
+            Text = $"{moduleComp.ComplexityCost}",
             Margin = new Thickness(0, 2, 2, 2),
             SetSize = new Vector2(32),
             Disabled = true
@@ -303,6 +317,19 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
         powerButton.OnPressed += _ => OnToggleModule?.Invoke(netModule);
         uninstallButton.OnPressed += _ => OnUninstallModule?.Invoke(netModule);
+
+        UpdateModuleButtonColor(module);
+    }
+
+    private void UpdateModuleButtonColor(EntityUid module)
+    {
+        if (!_moduleControls.TryGetValue(module, out var controls))
+            return;
+
+        if (!_entityManager.TryGetComponent<PowerArmorModuleComponent>(module, out var moduleComp))
+            return;
+
+        controls.PowerToggle.ModulateSelfOverride = moduleComp.isEnabled ? Color.LimeGreen : null;
     }
 
     private void RemoveModulePanel(EntityUid module)
@@ -320,21 +347,34 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
         foreach (var module in moduleSlot.ContainedEntities)
         {
-            if (_moduleEntities.Contains(module))
+            if(!_entityManager.TryGetComponent<PowerArmorModuleComponent>(module, out var moduleComp))
                 continue;
 
+            if (_moduleEntities.Contains(module))
+            {
+                UpdateModuleButtonColor(module);
+                continue;
+            }
+
+            _currComplexity+=moduleComp.ComplexityCost;
             _moduleEntities.Add(module);
             AddModulePanel(module);
         }
 
         foreach (var tracked in _moduleEntities.ToList())
         {
+            if(!_entityManager.TryGetComponent<PowerArmorModuleComponent>(tracked, out var moduleComp))
+                continue;
+
             if (moduleSlot.ContainedEntities.Contains(tracked))
                 continue;
 
+            _currComplexity-=moduleComp.ComplexityCost;
             RemoveModulePanel(tracked);
             _moduleEntities.Remove(tracked);
         }
+
+        ModulesComplexity.Text = $"{_currComplexity} of {_maxComplexity} complexity used";
     }
 
     private void UpdateParts(PartControls controls, EntityUid? part)

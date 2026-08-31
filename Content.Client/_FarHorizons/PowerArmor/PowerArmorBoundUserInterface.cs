@@ -20,7 +20,6 @@ public sealed class PowerArmorBoundUserInterface : BoundUserInterface
             SendMessage(new UninstallArmorPartMessage(layer, part));
         _menu.OnTogglePowerArmor += () =>
             SendMessage(new TogglePowerArmorMessage());
-
         _menu.OnUninstallModule += netEntity => 
             SendMessage(new PowerArmorUninstallModuleMessage(netEntity));
         _menu.OnToggleModule += netEntity => 

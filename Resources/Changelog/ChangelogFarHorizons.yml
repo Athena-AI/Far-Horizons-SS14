@@ -18817,5 +18817,101 @@ Entries:
   id: 165400
   time: '2026-08-31T19:29:40.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1654
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 7 resomi Ear Markings on head(side) layer.
+    type: Add
+  id: 146900
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 18 new tail markings for the resomi including damaged and prosthetic
+      tails.
+    type: Add
+  id: 146901
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 3 new head markings for the resomi.
+    type: Add
+  id: 146902
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 6 new body markings for the resomi.
+    type: Add
+  id: 146903
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 14 new arm markings for the resomi.
+    type: Add
+  id: 146904
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 12 new leg markings for the resomi.
+    type: Add
+  id: 146905
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 8 jewelry markings for the resomi.
+    type: Add
+  id: 146906
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Added 3 new fixed versions of old hairstyles, preserved old ones for
+      existing appearances.
+    type: Add
+  id: 146907
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Removed default tail markings as the defaultMarkings bakes it into the
+      default sprite rather then "equipping" a marking.
+    type: Remove
+  id: 146908
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Changed number of points for sprites per category due to how markings
+      layer.
+    type: Tweak
+  id: 146909
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Fixed resomi HeadTop and HeadSide hide when a helmet is equipped.
+    type: Fix
+  id: 146910
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Fixed resomi losing their ears when turning sideways.
+    type: Fix
+  id: 146911
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
+- author: Aegisshielddev, Fasuh
+  changes:
+  - message: Fixed displacement maps having a massive hole in the jumpsuit and back
+      layers.
+    type: Fix
+  id: 146912
+  time: '2026-08-31T21:00:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1469
 Order: -1
 

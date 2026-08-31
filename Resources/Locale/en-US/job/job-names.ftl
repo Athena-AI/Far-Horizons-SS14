@@ -11,6 +11,7 @@ job-name-captain = Captain
 job-name-cargotech = Cargo Technician
 job-name-cburn = Centcomm Quarantine Officer
 job-name-ce = Chief Engineer
+job-name-centcomoff = CentComm Official #test
 job-name-centcomoperator = CentComm Operator
 job-name-chaplain = Chaplain
 job-name-chef = Chef

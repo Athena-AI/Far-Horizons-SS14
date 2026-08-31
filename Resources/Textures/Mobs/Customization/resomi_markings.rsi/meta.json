@@ -120,7 +120,11 @@
       "directions": 4
     },
     {
-      "name": "resomi_stripe_groin",
+      "name": "resomi_stripe_groin_l_leg",
+      "directions": 4
+    },
+    {
+      "name": "resomi_stripe_groin_r_leg",
       "directions": 4
     },
     {
@@ -325,7 +329,7 @@
     },
     {
       "name": "resomi_swoop_head",
-      "directions":  4
+      "directions": 4
     }
   ]
 }

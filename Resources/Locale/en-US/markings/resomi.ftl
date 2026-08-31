@@ -64,8 +64,11 @@ marking-ResomiFluffGroin-resomi_fluff_groin = Groin
 marking-ResomiFluffTorso = Upper Body Fluff
 marking-ResomiFluffTorso-resomi_fluff_torso = Torso
 
-marking-ResomiStripeGroin = Lower Body Stripe
-marking-ResomiStripeGroin-resomi_stripe_groin = Groin
+marking-ResomiStripeGroinLLeg = Lower Body Stripe (Left)
+marking-ResomiStripeGroinLLeg-resomi_stripe_groin_l_leg = Left Side
+
+marking-ResomiStripeGroinRLeg = Lower Body Stripe (Right)
+marking-ResomiStripeGroinRLeg-resomi_stripe_groin_r_leg = Right Side
 
 marking-ResomiStripeTorso = Upper Body Stripe
 marking-ResomiStripeTorso-resomi_stripe_torso = Torso
@@ -184,17 +187,17 @@ marking-ResomiEarringCombined-resomi_earring_combined_1 = Top
 marking-ResomiEarringCombined-resomi_earring_combined_2 = Bottom
 
 marking-ResomiEarringStuds = Earrings Stud
-marking-ResomiEarringStuds-resomi_earring_studs = Earring
+marking-ResomiEarringStuds-resomi_earring_combined_1 = Earring
 
 marking-ResomiTailbandOne = Tail Band One
-marking-ResomiTailbandOne-resomi_tailband_1_1 = Top
-marking-ResomiTailbandOne-resomi_tailband_1_2 = Middle
-marking-ResomiTailbandOne-resomi_tailband_1_3 = Bottom
+marking-ResomiTailbandOne-resomi_tailbands_1_1 = Top
+marking-ResomiTailbandOne-resomi_tailbands_1_2 = Middle
+marking-ResomiTailbandOne-resomi_tailbands_1_3 = Bottom
 
 marking-ResomiTailbandTwo = Tail Band Two
-marking-ResomiTailbandTwo-resomi_tailband_2_1 = Top
-marking-ResomiTailbandTwo-resomi_tailband_2_2 = Middle
-marking-ResomiTailbandTwo-resomi_tailband_2_3 = Bottom
+marking-ResomiTailbandTwo-resomi_tailbands_2_1 = Top
+marking-ResomiTailbandTwo-resomi_tailbands_2_2 = Middle
+marking-ResomiTailbandTwo-resomi_tailbands_2_3 = Bottom
 
 marking-ResomiDamaged = Damaged Tail
 marking-ResomiDamaged-resomi_damaged = Tail

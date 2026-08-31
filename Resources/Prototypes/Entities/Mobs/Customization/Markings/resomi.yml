@@ -102,7 +102,7 @@
 
 - type: marking
   id: ResomiEarMarkingOne
-  bodyPart: HeadSide
+  bodyPart: HeadTop
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -110,7 +110,7 @@
 
 - type: marking
   id: ResomiEarMarkingTwo
-  bodyPart: HeadSide
+  bodyPart: HeadTop
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -118,7 +118,7 @@
 
 - type: marking
   id: ResomiEarMarkingThree
-  bodyPart: HeadSide
+  bodyPart: HeadTop
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -126,7 +126,7 @@
 
 - type: marking
   id: ResomiEarMarkingFour
-  bodyPart: HeadSide
+  bodyPart: HeadTop
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -134,7 +134,7 @@
 
 - type: marking
   id: ResomiEarMarkingFive
-  bodyPart: HeadSide
+  bodyPart: HeadTop
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -142,7 +142,7 @@
 
 - type: marking
   id: ResomiEarMarkingSix
-  bodyPart: HeadSide
+  bodyPart: HeadTop
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -152,7 +152,7 @@
 
 - type: marking
   id: ResomiTailOne
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -160,7 +160,7 @@
 
 - type: marking
   id: ResomiTailTwo
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -168,7 +168,7 @@
 
 - type: marking
   id: ResomiTailThree
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -176,7 +176,7 @@
 
 - type: marking
   id: ResomiTailFour
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -184,7 +184,7 @@
 
 - type: marking
   id: ResomiTailFive
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -218,7 +218,7 @@
 
 - type: marking
   id: ResomiCoatRArm
-  bodyPart: LArm
+  bodyPart: RArm
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -318,7 +318,7 @@
 
 - type: marking
   id: ResomiLineLArm
-  bodyPart: RHand
+  bodyPart: LArm
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -342,7 +342,7 @@
 
 - type: marking
   id: ResomiLineRArm
-  bodyPart: RHand
+  bodyPart: RArm
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -409,12 +409,20 @@
 # Resomi Stripe Markings
 
 - type: marking
-  id: ResomiStripeGroin
-  bodyPart: Chest
+  id: ResomiStripeGroinLLeg
+  bodyPart: LLeg
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
-    state: resomi_stripe_groin
+    state: resomi_stripe_groin_l_leg
+
+- type: marking
+  id: ResomiStripeGroinRLeg
+  bodyPart: RLeg
+  groupWhitelist: [Resomi, ProtoResomi] #FH
+  sprites:
+  - sprite: Mobs/Customization/resomi_markings.rsi
+    state: resomi_stripe_groin_r_leg
 
 - type: marking
   id: ResomiStripeHead
@@ -526,7 +534,7 @@
 
 - type: marking
   id: ResomiTailbandOne
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -538,7 +546,7 @@
 
 - type: marking
   id: ResomiTailbandTwo
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -607,7 +615,7 @@
 
 - type: marking
   id: ResomiDamagedFeathers
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -616,7 +624,7 @@
 
 - type: marking
   id: ResomiNoPlumeFeathers
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi
@@ -648,7 +656,7 @@
 
 - type: marking
   id: ResomiStubbyFeathers
-  bodyPart: Tail
+  bodyPart: TailCover
   groupWhitelist: [Resomi, ProtoResomi] #FH
   sprites:
   - sprite: Mobs/Customization/resomi_markings.rsi

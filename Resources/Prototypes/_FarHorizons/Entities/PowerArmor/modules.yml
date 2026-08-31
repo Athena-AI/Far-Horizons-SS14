@@ -14,7 +14,7 @@
 
 - type: entity
   id: PowerArmorModuleIDLockSecurityNT
-  name: ID Lock Power Module
+  name: ID Lock Module
   suffix: NT, Security
   parent: PowerArmorModuleBase
   components:
@@ -28,5 +28,27 @@
         allowedJobs:
           - Security
       - type: AccessReader
-        access: [["Security"]]
+        access: [["Armory"]]
   - type: PowerArmorModule
+    canBeToggled: false
+
+- type: entity
+  id: PowerArmorModuleSecurityVisor
+  name: Security Visor Module
+  suffix: Security
+  parent: PowerArmorModuleBase
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-tools
+  - type: PowerArmorPassiveModule
+    comps:
+    - type: ShowJobIcons
+    - type: ShowMindShieldIcons
+    - type: ShowCriminalRecordIcons
+    - type: ShowContrabandDetails
+  - type: PowerArmorModule
+    addToOtherHalf: true
+    activePowerDrain: 1.5
+    complexity: 2

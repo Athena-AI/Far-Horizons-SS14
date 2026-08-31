@@ -23,6 +23,9 @@ public sealed partial class PowerArmorModuleComponent : Component
 
     [DataField]
     public int ComplexityCost = 1;
+
+    [DataField]
+    public bool addToOtherHalf = false;
 }
 
 [RegisterComponent, NetworkedComponent]

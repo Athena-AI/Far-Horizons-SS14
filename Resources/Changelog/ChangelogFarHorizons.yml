@@ -18810,5 +18810,12 @@ Entries:
   id: 165300
   time: '2026-08-31T19:26:07.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1653
+- author: Vonte(Displacements), Fasuh(Port)
+  changes:
+  - message: Fixed avali displacement maps.
+    type: Fix
+  id: 165400
+  time: '2026-08-31T19:29:40.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1654
 Order: -1
 

@@ -52,6 +52,12 @@
   rsiState: robot
   alternating: true
 
+- type: footprintType
+  id: DraggingTrail
+  rsiPath: /Textures/_FarHorizons/Mobs/footprints.rsi
+  rsiState: dragging_trail
+  alternating: false
+
 - type: entity
   name: Prints
   id: FluidFootprintContainer

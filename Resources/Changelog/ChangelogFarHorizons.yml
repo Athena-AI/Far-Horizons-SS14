@@ -18803,5 +18803,12 @@ Entries:
   id: 165002
   time: '2026-08-30T10:25:03.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1650
+- author: Mizuki
+  changes:
+  - message: CC Official's job now has its name
+    type: Fix
+  id: 165300
+  time: '2026-08-31T19:26:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1653
 Order: -1
 

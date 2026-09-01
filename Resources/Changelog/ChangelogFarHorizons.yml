@@ -19012,5 +19012,36 @@ Entries:
   id: 166002
   time: '2026-09-01T23:12:52.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1660
+- author: princess_gurchi
+  changes:
+  - message: Fire, temperature, explosions and salvage boss now damage limbs for less
+      total damage and spread that damage around randomly
+    type: Add
+  id: 166200
+  time: '2026-09-01T23:28:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1662
+- author: princess_gurchi
+  changes:
+  - message: Salvage boss' lingering attacks will no longer damage limbs at all
+    type: Remove
+  id: 166201
+  time: '2026-09-01T23:28:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1662
+- author: princess_gurchi
+  changes:
+  - message: IPC head is no longer vital (pretty sure taking head off wouldn't kill
+      you before, but now it won't try)
+    type: Tweak
+  id: 166202
+  time: '2026-09-01T23:28:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1662
+- author: princess_gurchi
+  changes:
+  - message: Base IPC limbs have higher damage at which they will ash to account for
+      heat weakness
+    type: Tweak
+  id: 166203
+  time: '2026-09-01T23:28:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1662
 Order: -1
 

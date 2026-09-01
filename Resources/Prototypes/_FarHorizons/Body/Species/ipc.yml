@@ -239,7 +239,7 @@
       - Inorganic
 
 - type: entity
-  parent: [ DamageableLimbVisualsIPC, OrganBaseHeadVitalNonEdible, OrganIPCExternal ]
+  parent: [ DamageableLimbVisualsIPC, OrganBaseHeadNonVitalNonEdible, OrganIPCExternal ]
   id: OrganIPCHead
   components:
   - type: Sprite
@@ -252,6 +252,21 @@
   - type: Tag
     tags:
       - Inorganic
+  - type: LimbDamageEffect
+    effects:
+      - effect: !type:LimbEffectDetach
+        condition: !type:LimbConditionSpecificDamage
+          damageType: Slash
+          damageAmount: 100 # -50 over base since it's non vital
+      - effect: !type:LimbEffectDestroy
+        condition: !type:LimbConditionOr
+          conditions:
+            - !type:LimbConditionSpecificDamage
+              damageType: Blunt
+              damageAmount: 250
+            - !type:LimbConditionSpecificDamage
+              damageType: Heat
+              damageAmount: 2000 # +500 over base
 
 - type: entity
   parent: [ DamageableLimbVisualsIPC, OrganBaseArmLeftNonEdible, OrganIPCExternal ]
@@ -280,7 +295,7 @@
               damageAmount: 250
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 500
+              damageAmount: 750 # + 250 over base
   - type: Tag
     tags:
       - Inorganic
@@ -312,7 +327,7 @@
               damageAmount: 250
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 500
+              damageAmount: 750 # + 250 over base
   - type: Tag
     tags:
       - Inorganic
@@ -344,7 +359,7 @@
               damageAmount: 150
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 300
+              damageAmount: 500 # +200 over base
   - type: Tag
     tags:
       - Inorganic
@@ -376,7 +391,7 @@
               damageAmount: 150
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 300
+              damageAmount: 500 # +200 over base
   - type: Tag
     tags:
       - Inorganic
@@ -411,7 +426,7 @@
               damageAmount: 250
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 500
+              damageAmount: 750 # + 250 over base
   - type: Tag
     tags:
       - Inorganic
@@ -446,7 +461,7 @@
               damageAmount: 250
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 500
+              damageAmount: 750 # + 250 over base
   - type: Tag
     tags:
       - Inorganic
@@ -481,7 +496,7 @@
               damageAmount: 150
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 300
+              damageAmount: 500 # +200 over base
   - type: Tag
     tags:
       - Inorganic
@@ -516,7 +531,7 @@
               damageAmount: 150
             - !type:LimbConditionSpecificDamage
               damageType: Heat
-              damageAmount: 300
+              damageAmount: 500 # +200 over base
   - type: Tag
     tags:
       - Inorganic

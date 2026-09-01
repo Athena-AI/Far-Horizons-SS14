@@ -60,6 +60,8 @@ namespace Content.Server.Atmos.EntitySystems
 
         private readonly Dictionary<Entity<FlammableComponent>, float> _fireEvents = new();
 
+        private const float LIMB_DAMAGE_MULTIPLIER = 2f; // Far Horizons - deal this much more damage to limbs as dealt to torso (damage is randomly split between all available limbs)
+
         public override void Initialize()
         {
             UpdatesAfter.Add(typeof(AtmosphereSystem));
@@ -464,7 +466,7 @@ namespace Content.Server.Atmos.EntitySystems
                         _inventory.RelayEvent((uid, inv), ref ev);
 
                     _damageableSystem.TryChangeDamage(uid, flammable.Damage * flammable.FireStacks * ev.Multiplier, interruptsDoAfters: false);
-                    _limbDamage.ChangeDamageAll(uid, flammable.Damage * flammable.FireStacks * ev.Multiplier, interruptsDoAfters: false); // Far Horizons
+                    _limbDamage.ChangeDamageRandom(uid, flammable.Damage * flammable.FireStacks * ev.Multiplier * LIMB_DAMAGE_MULTIPLIER, interruptsDoAfters: false); // Far Horizons
 
                     AdjustFireStacks(uid, flammable.FirestackFade * (flammable.Resisting ? 15f : 1f), flammable, flammable.OnFire);
                 }

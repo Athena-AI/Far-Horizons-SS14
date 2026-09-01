@@ -127,10 +127,10 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
         AlternativeVerb verb = new()
         {
             Act = () => ToggleMode(uid, component, args.User),
-            Text = Loc.GetString("gun-selector-verb", ("mode", //TODO: LOC
+            Text = Loc.GetString("gun-selector-verb", ("mode",
                 component.Mode
-                    ? "Left"
-                    : "Right")),
+                    ? Loc.GetString("comp-cyberneticimplantermode-left")
+                    : Loc.GetString("comp-cyberneticimplantermode-right"))),
             Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/fold.svg.192dpi.png")),
         };
 
@@ -145,6 +145,9 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
             comp.ImplantedOrgan = component.Mode ? component.RightOrgan : component.LeftOrgan;
 
         _audio.PlayPredicted(component.ModeSwitchSound, uid, user);
-        _popupSystem.PopupClient(Loc.GetString("gun-selected-mode", ("mode", component.Mode ? "Right" : "Left")), uid, user);
+        _popupSystem.PopupClient(Loc.GetString("gun-selected-mode", ("mode", component.Mode 
+            ? Loc.GetString("comp-cyberneticimplantermode-right") 
+            : Loc.GetString("comp-cyberneticimplantermode-left"))),
+            uid, user);
     }
 }

@@ -18928,5 +18928,66 @@ Entries:
   id: 165701
   time: '2026-08-31T21:19:36.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1657
+- author: KarusKardin
+  changes:
+  - message: Added a Component for Cybernetic Implanters for having 2 versions of
+      a cybernetic (left/right)
+    type: Add
+  id: 163000
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: Added Consortium Versions of several C.I.Ks
+    type: Add
+  id: 163001
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: Removed Advanced Claws Implant C.I.K from Syndicate uplink
+    type: Remove
+  id: 163002
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: Combined all C.I.Ks with Left and Right variants to greatly reduce the
+      number of uplink listings
+    type: Tweak
+  id: 163003
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: Modified LimbItemDeployerComponent so that it automatically sets the
+      deployed item to the active hand if it is the only item
+    type: Tweak
+  id: 163004
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: renamed the Syndicate Agent Eye Implant to the Agent Eye Implant
+    type: Tweak
+  id: 163005
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: replaced the Agent Eye Implant C.I.K in the Chameleon Thief Kit with
+      the Consortium version for flavor
+    type: Tweak
+  id: 163006
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: gave the Cybernetics Category in the Syndicate and Consortium Uplink
+      a priority, it should no longer appear at the top of the list
+    type: Tweak
+  id: 163007
+  time: '2026-09-01T20:20:16.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
 Order: -1
 

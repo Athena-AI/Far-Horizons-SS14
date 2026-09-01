@@ -40,21 +40,26 @@
   priority: 7
 
 - type: storeCategory
+  id: ConsortiumUplinkCybernetics
+  name: Cybernetics
+  priority: 8
+
+- type: storeCategory
   id: ConsortiumUplinkAllies
   name: store-category-allies
-  priority: 8
+  priority: 9
 
 - type: storeCategory
   id: ConsortiumUplinkJob
   name: store-category-job
-  priority: 9
+  priority: 10
 
 - type: storeCategory
   id: ConsortiumUplinkPointless
   name: store-category-pointless
-  priority: 10
+  priority: 11
 
 - type: storeCategory
   id: ConsortiumUplinkVehicles
   name: construction-category-vehicles # bear with me, it literally just says Vehicles. No point to duplicate.
-  priority: 11
+  priority: 12

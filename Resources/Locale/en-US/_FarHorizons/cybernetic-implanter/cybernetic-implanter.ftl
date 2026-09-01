@@ -8,3 +8,4 @@ comp-cyberneticimplanter-organdestroyed = The {$implanter} destroys the {$destro
 
 comp-cyberneticimplantermode-left = Left
 comp-cyberneticimplantermode-right = Right
+gun-cyberneticimplantermode-examine = Current selected mode is [color=cyan]{$mode}[/color].

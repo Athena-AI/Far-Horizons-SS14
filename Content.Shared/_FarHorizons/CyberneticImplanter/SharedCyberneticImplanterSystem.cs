@@ -31,6 +31,7 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
         SubscribeLocalEvent<CyberneticImplanterComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<CyberneticImplanterComponent, ExaminedEvent>(OnExamineUnused);
         SubscribeLocalEvent<UsedCyberneticImplanterComponent, ExaminedEvent>(OnExamineUsed);
+        SubscribeLocalEvent<CyberneticImplanterModeComponent, ExaminedEvent>(OnExamineMode);
         SubscribeLocalEvent<CyberneticImplanterModeComponent, GetVerbsEvent<AlternativeVerb>>(OnAltVerb);
     }
 
@@ -50,8 +51,17 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        if (component.Organ != null)
-            args.PushMarkup(Loc.GetString("comp-usedcyberneticimplanter-examine", ("species", component.Species), ("organ", component.Organ)));
+        args.PushMarkup(Loc.GetString("comp-usedcyberneticimplanter-examine", ("species", component.Species), ("organ", component.Organ)));
+    }
+
+    private void OnExamineMode(EntityUid entity, CyberneticImplanterModeComponent component, ExaminedEvent args) //used to show a description of the selected mode
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        args.PushMarkup(Loc.GetString("gun-cyberneticimplantermode-examine", ("mode", component.Mode
+            ? Loc.GetString("comp-cyberneticimplantermode-right")
+            : Loc.GetString("comp-cyberneticimplantermode-left"))));
     }
 
     //using on self

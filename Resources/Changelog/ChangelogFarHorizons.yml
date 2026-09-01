@@ -18989,5 +18989,28 @@ Entries:
   id: 163007
   time: '2026-09-01T20:20:16.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1630
+- author: KarusKardin
+  changes:
+  - message: Swapped Ninja's Headset back to their original green headset
+    type: Tweak
+  id: 166000
+  time: '2026-09-01T23:12:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1660
+- author: KarusKardin
+  changes:
+  - message: Gave Ninja's Headset an EncryptionKeySyndiCommon and slightly increased
+      the number of encryption keys it can fit
+    type: Tweak
+  id: 166001
+  time: '2026-09-01T23:12:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1660
+- author: KarusKardin
+  changes:
+  - message: replaced EncryptionKeyStationMaster used by Abductors and Wizards with
+      EncryptionKeyBlackmarket
+    type: Tweak
+  id: 166002
+  time: '2026-09-01T23:12:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1660
 Order: -1
 

@@ -344,7 +344,7 @@
   name: uplink-hypo-claws-name 
   description: uplink-hypo-claws-desc 
   icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: l_hand_implant_claws }
-  productEntity: CyberneticImplanterHandImplantHypoClaws 
+  productEntity: CyberneticImplanterSyndicateHandImplantHypoClaws 
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 5
@@ -358,7 +358,7 @@
   name: uplink-bunker-breaker-arm-name 
   description: uplink-bunker-breaker-desc 
   icon: { sprite:  _FarHorizons/Objects/Tools/syndicate_limb_CIK.rsi, state: icon }
-  productEntity: CyberneticImplanterArmCyberBunkerBreaker 
+  productEntity: CyberneticImplanterSyndicateArmCyberBunkerBreaker 
   discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 3

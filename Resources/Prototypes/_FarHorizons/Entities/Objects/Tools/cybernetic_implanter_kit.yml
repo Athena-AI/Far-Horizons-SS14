@@ -260,16 +260,8 @@
 
 # Arm
 
-- type: entity
-  parent: CyberneticImplanterKitConsortiumLimb
-  id: CyberneticImplanterConsortiumArmCyberMantisBlade
-  name: Mantis Blade Arm C.I.K.
-  components:
-  - type: CyberneticImplanter
-    implantedOrgan: LeftArmCyberMantisBlade
-  - type: CyberneticImplanterMode
-    leftOrgan: LeftArmCyberMantisBlade
-    rightOrgan: RightArmCyberMantisBlade
+# hey jimmmy gimmie a C.I.K with nothing
+# nothin?
 
 #Hand Implant
 

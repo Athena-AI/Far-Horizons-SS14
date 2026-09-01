@@ -174,7 +174,7 @@
   id: BriefcaseWeaponIFA30Filled
   parent: BriefcaseWeaponSmall
   name: Secure IFA-30 Case
-  suffix: Filled, Left
+  suffix: Filled
   components:
   - type: EntityTableContainerFill
     containers:

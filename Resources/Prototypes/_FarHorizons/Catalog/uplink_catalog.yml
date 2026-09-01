@@ -357,7 +357,7 @@
   id: UplinkArmCyberBunkerBreaker
   name: uplink-bunker-breaker-arm-name 
   description: uplink-bunker-breaker-desc 
-  icon: { sprite:  _FarHorizons/Objects/Tools/limb_CIK.rsi, state: icon }
+  icon: { sprite:  _FarHorizons/Objects/Tools/syndicate_limb_CIK.rsi, state: icon }
   productEntity: CyberneticImplanterArmCyberBunkerBreaker 
   discountCategory: rareDiscounts
   discountDownTo:

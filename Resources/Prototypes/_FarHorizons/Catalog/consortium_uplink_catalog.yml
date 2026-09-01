@@ -2702,93 +2702,63 @@
 # Cybernetics
 
 - type: listing
-  id: ConsortiumUplinkHypoLeftClawsImplant 
-  name: uplink-consortium-hypo-claws-left-name 
-  description: uplink-consortium-hypo-claws-desc 
-  icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: l_hand_implant_claws }
-  productEntity: CyberneticImplanterLeftHandImplantHypoClaws 
-  discountCategory: usualDiscounts
+  id: ConsortiumUplinkCyberEyeNightVision
+  name: uplink-nightvision-eyes
+  description: uplink-nightvision-eyes-desc-fh  #FH
+  icon:
+    {
+      sprite: /Textures/_Starlight/Objects/Specific/Medical/implants.rsi,
+      state: eyes_night,
+    }
+  productEntity: CyberneticImplanterConsortiumCyberEyeNightVision #FH
   discountDownTo:
-    Refinedbluespacecrystal: 5
+    Refinedbluespacecrystal: 2
+  cost:
+    Refinedbluespacecrystal: 4
+  categories:
+    - ConsortiumUplinkCybernetics
+
+- type: listing
+  id: ConsortiumUplinkCyberEyeThermal
+  name: uplink-thermalvision-eyes
+  description: uplink-thermalvision-eyes-desc-fh #FH
+  icon:
+    {
+      sprite: /Textures/_Starlight/Objects/Specific/Medical/implants.rsi,
+      state: eyes_thermal,
+    }
+  productEntity: CyberneticImplanterConsortiumCyberEyeThermal #FH
+  discountDownTo:
+    Refinedbluespacecrystal: 4
   cost:
     Refinedbluespacecrystal: 8
   categories:
-  - UplinkCybernetics
+    - ConsortiumUplinkCybernetics
 
 - type: listing
-  id: ConsortiumUplinkHypoRightClawsImplant 
-  name: uplink-consortium-hypo-claws-right-name 
-  description: uplink-consortium-hypo-claws-desc 
-  icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: r_hand_implant_claws }
-  productEntity: CyberneticImplanterRightHandImplantHypoClaws 
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Refinedbluespacecrystal: 5
-  cost:
-    Refinedbluespacecrystal: 8
-  categories:
-  - UplinkCybernetics
-
-- type: listing
-  id: ConsortiumUplinkLeftArmCyberBunkerBreaker
-  name: uplink-consortium-bunker-breaker-arm-left-name 
-  description: uplink-consortium-bunker-breaker-desc 
-  icon: { sprite:  _FarHorizons/Objects/Tools/limb_CIK.rsi, state: icon }
-  productEntity: CyberneticImplanterLeftArmCyberBunkerBreaker 
+  id: ConsortiumUplinkForensicsImplant #FH
+  name: uplink-forensics-implant-name #FH
+  description: uplink-forensics-implant-desc-fh #FH
+  icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: l_hand_implant_forensics } #FH
+  productEntity: CyberneticImplanterConsortiumHandImplantForensics #FH
   discountCategory: rareDiscounts
   discountDownTo:
-    Refinedbluespacecrystal: 3
+    Refinedbluespacecrystal: 1
   cost:
-    Refinedbluespacecrystal: 5
+    Refinedbluespacecrystal: 2
   categories:
-  - UplinkCybernetics
+  - ConsortiumUplinkCybernetics
 
 - type: listing
-  id: ConsortiumUplinkRightArmCyberBunkerBreaker
-  name: uplink-consortium-bunker-breaker-arm-right-name 
-  description: uplink-consortium-bunker-breaker-desc 
-  icon: { sprite:  _FarHorizons/Objects/Tools/limb_CIK.rsi, state: icon }
-  productEntity: CyberneticImplanterRightArmCyberBunkerBreaker 
+  id: ConsortiumUplinkAgentEyeImplant #FH
+  name: uplink-agent-implant-name
+  description: uplink-agent-implant-desc #FH
+  icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: eye_implant_syndicate }
+  productEntity: CyberneticImplanterConsortiumEyeImplantAgent #FH
   discountCategory: rareDiscounts
   discountDownTo:
-    Refinedbluespacecrystal: 3
+    Refinedbluespacecrystal: 2
   cost:
     Refinedbluespacecrystal: 5
   categories:
-  - UplinkCybernetics
-
-- type: listing
-  id: ConsortiumUplinkIFA30LeftArm
-  name: uplink-consortium-ifa30-left-arm-name
-  description: uplink-consortium-ifa30-arms-desc
-  icon:
-    {
-      sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/SMGs/ifa30.rsi,
-      state: icon,
-    }
-  productEntity: BriefcaseWeaponIFA30LeftFilled
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Refinedbluespacecrystal: 14
-  cost:
-    Refinedbluespacecrystal: 20
-  categories:
-    - UplinkCybernetics
-
-- type: listing
-  id: ConsortiumUplinkIFA30RightArm
-  name: uplink-consortium-ifa30-right-arm-name
-  description: uplink-consortium-ifa30-arms-desc
-  icon:
-    {
-      sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/SMGs/ifa30.rsi,
-      state: icon,
-    }
-  productEntity: BriefcaseWeaponIFA30RightFilled
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Refinedbluespacecrystal: 14
-  cost:
-    Refinedbluespacecrystal: 20
-  categories:
-    - UplinkCybernetics
+  - ConsortiumUplinkCybernetics

@@ -240,7 +240,7 @@
   name: uplink-forensics-implant-name #FH
   description: uplink-forensics-implant-desc-fh #FH
   icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: l_hand_implant_forensics } #FH
-  productEntity: CyberneticImplanterHandImplantForensics #FH
+  productEntity: CyberneticImplanterSyndicateHandImplantForensics #FH
   discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 1
@@ -250,9 +250,9 @@
   - UplinkCybernetics
 
 - type: listing
-  id: UplinkSyndieEyeImplant
-  name: uplink-syndie-implant-name
-  description: uplink-syndie-implant-desc-fh #FH
+  id: UplinkAgentEyeImplant #FH
+  name: uplink-agent-implant-name #FH
+  description: uplink-agent-implant-desc #FH
   icon: { sprite: _Starlight/Objects/Specific/Medical/implants.rsi, state: eye_implant_syndicate }
   productEntity: CyberneticImplanterSyndicateEyeImplantAgent #FH
   discountCategory: rareDiscounts

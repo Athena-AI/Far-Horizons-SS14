@@ -8,14 +8,6 @@
   },
   "states": [
     {
-        "name": "underarmor-helmet",
-        "directions": 4
-    },
-    {
-        "name": "underarmor",
-        "directions": 4
-    },
-    {
         "name": "equipped-head",
         "directions": 4
     },

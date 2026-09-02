@@ -29,7 +29,7 @@
   - type: DamageExaminable
   - type: Appearance
   - type: Sprite
-    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
+    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/underarmor.rsi
     drawdepth: Items
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]

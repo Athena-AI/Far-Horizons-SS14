@@ -9,8 +9,6 @@
   - type: InteractionOutline
   - type: Clickable
   - type: Appearance
-  - type: Sprite
-    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
   - type: PowerArmorPart
     partType: Head
   - type: Damageable
@@ -101,6 +99,8 @@
   name: NanoTrasen Heavy Hardsuit
   abstract: true
   components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/ntjuggsuit.rsi
   - type: PowerArmorPart
     modifiers:
       flatReductions:

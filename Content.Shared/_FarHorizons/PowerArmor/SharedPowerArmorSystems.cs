@@ -254,11 +254,6 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     {
         var module = GetEntity(args.Module);
         if (!TryComp<PowerArmorModuleComponent>(module, out var moduleComp)) return;
-        if (!_access.IsAllowed(args.Actor, ent.Owner))
-        {
-            _popUp.PopupEntity("Unauthorized Access Detected.", ent.Owner, args.Actor, PopupType.SmallCaution);
-            return;
-        }
         if (!ent.Comp.IsPowered)
         {
             _popUp.PopupEntity("Turn on suit before toggling modules.", ent.Owner, args.Actor, PopupType.SmallCaution);
@@ -330,6 +325,12 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         if(!TryComp<PowerArmorComponent>(args.Target, out var PAComp)
         || !PAComp.IsPrimary) 
             return;
+
+        if(!_access.IsAllowed(args.User, ent.Owner))
+        {
+            _popUp.PopupEntity("Unauthorized Access Detected.", ent.Owner, args.User, PopupType.SmallCaution);
+            return;
+        }
 
         foreach(var part in PAComp.Parts)
         {

@@ -1,4 +1,5 @@
 - type: entity
+  parent: ClothingHeadSuitWithLightBase
   id: PowerArmorHelmetNaked
   name: Power Armor Helmet
   components:
@@ -15,11 +16,14 @@
   - type: DamageExaminable
   - type: Appearance
   - type: Sprite
-    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/powerarmor.rsi
+    sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/underarmor.rsi
     layers:
     - map: [ "enum.PowerArmorVisualLayers.UnderArmorHelmet" ]
       state: underarmor-helmet
     - map: [ "enum.PowerArmorVisualLayers.Head" ]
+    - map: [ "light" ]
+      visible: false
+      shader: unshaded
   - type: Clothing
     equipSound: /Audio/Mecha/mechmove03.ogg
     unequipSound: /Audio/Mecha/mechmove03.ogg
@@ -30,6 +34,11 @@
       - map: [ "enum.PowerArmorVisualLayers.UnderArmorHelmet" ]
         state: underarmor-helmet
       - map: [ "enum.PowerArmorVisualLayers.Head" ]
+        shader: unshaded
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+        - shader: unshaded
   - type: PressureProtection
     highPressureMultiplier: 0.3
     lowPressureMultiplier: 1000
@@ -69,6 +78,10 @@
   - type: PowerArmor
     parts:
       Head: null
+  - type: PointLight
+    color: "#ffeead"
+    radius: 7
+    energy: 3
 
 - type: entity
   parent: PowerArmorHelmetNaked

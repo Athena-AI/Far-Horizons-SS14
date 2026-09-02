@@ -19066,5 +19066,12 @@ Entries:
   id: 166302
   time: '2026-09-02T02:30:36.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1663
+- author: KarusKardin
+  changes:
+  - message: Added GSL ID Computer
+    type: Add
+  id: 166600
+  time: '2026-09-02T02:35:03.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1666
 Order: -1
 

@@ -19043,5 +19043,28 @@ Entries:
   id: 166203
   time: '2026-09-01T23:28:39.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1662
+- author: Mizuki
+  changes:
+  - message: Added PM Bureaucratic Digi-Board
+    type: Add
+  id: 166300
+  time: '2026-09-02T02:30:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1663
+- author: Mizuki
+  changes:
+  - message: Added Universal Bureaucratic Digi-Board, which spawns in aghost's Bag
+      of Administration
+    type: Add
+  id: 166301
+  time: '2026-09-02T02:30:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1663
+- author: Mizuki
+  changes:
+  - message: Fixed Locale IDs for Bureaucratic Digi-Boards and the Universal ID Card
+      Console
+    type: Fix
+  id: 166302
+  time: '2026-09-02T02:30:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1663
 Order: -1
 

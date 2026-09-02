@@ -132,7 +132,7 @@
         IdCardConsole-targetId: !type:ContainerSlot
 
 - type: entity
-  id: UniversalBeurocraticDigiBoard
+  id: UniversalBureaucraticDigiBoard
   parent: [BoxFolderClipboard]
   name: Universal Bureaucratic Digi-Board
   suffix: Admin, Filled

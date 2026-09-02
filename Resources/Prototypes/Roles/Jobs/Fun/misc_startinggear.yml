@@ -156,7 +156,7 @@
     - RubberStampStandby
     - RubberStampApproved 
     - RubberStampDenied #starlight end
-    - UniversalBeurocraticDigiBoard #FH
+    - UniversalBureaucraticDigiBoard #FH
 
 #Gladiator with spear
 - type: startingGear

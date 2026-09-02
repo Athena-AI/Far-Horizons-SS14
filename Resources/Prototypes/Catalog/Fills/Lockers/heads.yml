@@ -17,6 +17,7 @@
     - id: RadioHandheldExpedition #starlight 
     - id: ClothingBeltSalvage #Far Horizons
     - id: ClothingBeltSalvageWebbing #Far Horizons
+    - id: IDComputerCircuitboardGSL #FH
     # - id: SalvageShuttleConsoleCircuitboard #starlight
     - id: ShipLabeler # Far Horizons
     # - id: MiningShuttleConsoleCircuitboard #starlight

@@ -166,3 +166,18 @@ public sealed class PowerArmorToggleModuleMessage : BoundUserInterfaceMessage
 public sealed class TogglePowerArmorMessage : BoundUserInterfaceMessage;
 
 public sealed partial class TogglePowerArmorModuleActionEvent : InstantActionEvent;
+
+public interface IPowerArmorRelayedEvent;
+
+public sealed class PowerArmorRelayedEvent<TEvent> : EntityEventArgs
+{
+    public TEvent Args;
+
+    public EntityUid Owner;
+
+    public PowerArmorRelayedEvent(TEvent args, EntityUid owner)
+    {
+        Args = args;
+        Owner = owner;
+    }
+}

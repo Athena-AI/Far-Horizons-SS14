@@ -1,3 +1,4 @@
+using Content.Shared._FarHorizons.PowerArmor;
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
@@ -8,7 +9,7 @@ namespace Content.Shared.Interaction;
 ///     Raised when a target entity is interacted with by a user while holding an object in their hand.
 /// </summary>
 [PublicAPI]
-public sealed class InteractUsingEvent : HandledEntityEventArgs
+public sealed class InteractUsingEvent : HandledEntityEventArgs, IPowerArmorRelayedEvent
 {
     /// <summary>
     ///     Entity that triggered the interaction.

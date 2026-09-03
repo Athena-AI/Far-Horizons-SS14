@@ -59,6 +59,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorModuleActionEvent>(OnPowerAmorModuleToggleAction);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
+        SubscribeLocalEvent<PowerArmorComponent, InteractUsingEvent>(RefRelayPAPartsEvent);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
@@ -313,6 +314,21 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
             args.Cancelled = true;
     }
 
+    protected void RefRelayPAPartsEvent<T>(EntityUid uid, PowerArmorComponent component, ref T args) where T : IPowerArmorRelayedEvent
+        => RelayEvent((uid, component), ref args);
+
+    public void RelayEvent<T>(Entity<PowerArmorComponent> powerArmor, ref T args) where T : IPowerArmorRelayedEvent
+    {
+        var ev = new PowerArmorRelayedEvent<T>(args, powerArmor.Owner);
+        foreach (var module in powerArmor.Comp.Parts)
+        {
+            if(module.Value == null) continue;
+
+            RaiseLocalEvent(module.Value.Value, ev);
+        }
+
+        args = ev.Args;
+    }
     #endregion
     #region Power Armor Parts
 

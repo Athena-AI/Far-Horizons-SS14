@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared._FarHorizons.LimbDamage;
 using Content.Shared._FarHorizons.LimbDamage.Components;
+using Content.Shared._FarHorizons.PowerArmor;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body;
 using Content.Shared.Damage;
@@ -28,6 +29,7 @@ public sealed partial class RepairableSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<RepairableComponent, InteractUsingEvent>(Repair);
+        SubscribeLocalEvent<RepairableComponent, PowerArmorRelayedEvent<InteractUsingEvent>>(RepairRelayed);
         SubscribeLocalEvent<RepairableComponent, RepairDoAfterEvent>(OnRepairDoAfter);
     }
 
@@ -164,6 +166,11 @@ public sealed partial class RepairableSystem : EntitySystem
         _adminLogger.Add(LogType.Healed, $"{ToPrettyString(user):user} repaired {ToPrettyString(ent.Owner):target} back to full health");
     }
 
+    // Far Horizons start
+    private void RepairRelayed(Entity<RepairableComponent> ent, ref PowerArmorRelayedEvent<InteractUsingEvent> args) 
+        => Repair(ent, ref args.Args);
+    // Far Horizons End
+    
     private void Repair(Entity<RepairableComponent> ent, ref InteractUsingEvent args)
     {
         if (args.Handled)

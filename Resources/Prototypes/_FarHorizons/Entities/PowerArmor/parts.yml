@@ -13,6 +13,8 @@
     partType: Head
   - type: Damageable
     damageContainer: LimbDamageContainer
+  - type: Repairable
+    
 
 #region Base Parts
 - type: entity

@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Shared._FarHorizons.LimbDamage.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Clothing;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
@@ -35,6 +36,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected PowerCellSystem _powerCell = default!;
     [Dependency] protected SharedHandsSystem _hands = default!;
     [Dependency] protected AccessReaderSystem _access = default!;
+    [Dependency] protected SharedUserInterfaceSystem _uiSystem = default!;
+    [Dependency] protected ItemSlotsSystem _items = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -53,6 +56,9 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorMessage>(OnPowerToggle);
         SubscribeLocalEvent<PowerArmorComponent, PowerArmorUninstallModuleMessage>(OnModuleUninstalledMessage);
         SubscribeLocalEvent<PowerArmorComponent, PowerArmorToggleModuleMessage>(OnModuleToggleMessage);
+        SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorModuleActionEvent>(OnPowerAmorModuleToggleAction);
+        SubscribeLocalEvent<PowerArmorComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
+        SubscribeLocalEvent<PowerArmorComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
@@ -270,6 +276,41 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
             moduleComp.isEnabled = true;
             InstallModule((module, moduleComp), ent.Owner);
         }
+    }
+
+    private void OnPowerAmorModuleToggleAction(Entity<PowerArmorComponent> ent, ref TogglePowerArmorModuleActionEvent args)
+    {
+        if (!TryComp<UserInterfaceComponent>(ent, out var userInterfaceComp))
+            return;
+
+        if (!_uiSystem.IsUiOpen((ent, userInterfaceComp), PowerArmorRadialMenuUiKey.Key, args.Performer))
+            _uiSystem.OpenUi((ent, userInterfaceComp), PowerArmorRadialMenuUiKey.Key, args.Performer);
+    }
+
+    private void OnItemSlotEjectAttempt(Entity<PowerArmorComponent> ent, ref ItemSlotEjectAttemptEvent args)
+    {
+        if (args.Cancelled ||
+            !TryComp<PowerCellSlotComponent>(ent, out var cellSlotComp) ||
+            !TryComp<WiresPanelComponent>(ent, out var panel) ||
+            !_items.TryGetSlot(ent, cellSlotComp.CellSlotId, out var cellSlot) ||
+            cellSlot != args.Slot)
+            return;
+
+        if (!panel.Open)
+            args.Cancelled = true;
+    }
+
+    private void OnItemSlotInsertAttempt(Entity<PowerArmorComponent> ent, ref ItemSlotInsertAttemptEvent args)
+    {
+        if (args.Cancelled ||
+            !TryComp<PowerCellSlotComponent>(ent, out var cellSlotComp) ||
+            !TryComp<WiresPanelComponent>(ent, out var panel) ||
+            !_items.TryGetSlot(ent, cellSlotComp.CellSlotId, out var cellSlot) ||
+            cellSlot != args.Slot)
+            return;
+
+        if (!panel.Open)
+            args.Cancelled = true;
     }
 
     #endregion

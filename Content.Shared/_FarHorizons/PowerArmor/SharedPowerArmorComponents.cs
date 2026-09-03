@@ -1,3 +1,4 @@
+using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -96,6 +97,12 @@ public enum PowerArmorMenuUiKey : byte
 }
 
 [Serializable, NetSerializable]
+public enum PowerArmorRadialMenuUiKey : byte
+{
+    Key
+}
+
+[Serializable, NetSerializable]
 public enum PowerArmorPartVisuals : byte
 {
     PowerArmor,
@@ -157,3 +164,5 @@ public sealed class PowerArmorToggleModuleMessage : BoundUserInterfaceMessage
 
 [Serializable, NetSerializable]
 public sealed class TogglePowerArmorMessage : BoundUserInterfaceMessage;
+
+public sealed partial class TogglePowerArmorModuleActionEvent : InstantActionEvent;

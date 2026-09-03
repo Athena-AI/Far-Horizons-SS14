@@ -1,0 +1,11 @@
+- type: entity
+  id: ActionOpenPowerArmorRadialMenu
+  name: Toggle Modules
+  description: Opens an inbuilt user interface to toggle your suit's module on the go.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -20
+    icon: { sprite : Interface/Actions/changeling.rsi, state: "transform" }
+  - type: InstantAction
+    event: !type:TogglePowerArmorModuleActionEvent

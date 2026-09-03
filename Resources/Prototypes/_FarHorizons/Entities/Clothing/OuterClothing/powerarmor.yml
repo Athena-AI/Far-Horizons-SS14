@@ -118,12 +118,21 @@
     interfaces:
       enum.PowerArmorMenuUiKey.Key:
         type: PowerArmorBoundUserInterface
+      enum.PowerArmorRadialMenuUiKey.Key:
+        type: PowerArmorRadialBoundUserInterface
   - type: PowerCellSlot
     cellSlotId: cell_slot
     fitsInCharger: false
   - type: PowerCellDraw
     enabled: false
     drawRate: 0
+  - type: ActionGrant
+    actions:
+    - ActionOpenPowerArmorRadialMenu
+  - type: ItemActionGrant
+    actions:
+    - ActionOpenPowerArmorRadialMenu
+    activeIfWorn: true
 
 - type: entity
   parent: PowerArmorNaked

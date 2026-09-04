@@ -3,7 +3,9 @@ using Content.Client.Items.Systems;
 using Content.Client.Toggleable;
 using Content.Shared._FarHorizons.PowerArmor;
 using Content.Shared.Clothing.Components;
+using Content.Shared.PowerCell.Components;
 using Robust.Client.GameObjects;
+using Robust.Client.Player;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
 
@@ -14,12 +16,58 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private ClientClothingSystem _clothing = default!;
     [Dependency] private ItemSystem _item = default!;
+    [Dependency] private IPlayerManager _player = default!;
+
+    private static readonly TimeSpan _alertUpdateDelay = TimeSpan.FromSeconds(0.5f);
+    private TimeSpan _nextAlertUpdate;
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<PowerArmorPartComponent, AppearanceChangeEvent>(OnAppearanceChange);
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_player.LocalEntity is not { } localPlayer)
+            return;
+
+        var curTime = _timing.CurTime;
+
+        if (curTime < _nextAlertUpdate)
+            return;
+
+        _nextAlertUpdate = curTime + _alertUpdateDelay;
+
+        if(!TryComp<PowerArmorUserComponent>(localPlayer, out var PAUComp))
+            return;
+            
+        UpdateBatteryAlert((localPlayer, PAUComp));
+    }
+
+    private void UpdateBatteryAlert(Entity<PowerArmorUserComponent> ent)
+    {
+        if(!TryComp<PowerArmorComponent>(ent.Comp.Wearing, out var PAComp)
+            || !TryComp<PowerCellSlotComponent>(ent.Comp.Wearing, out var powerCell))
+            return;
+
+        if (!_powerCell.TryGetBatteryFromSlot((ent.Comp.Wearing, powerCell), out var battery))
+        {
+            _alerts.ShowAlert(ent.Owner, ent.Comp.NoBatteryAlert);
+            return;
+        }
+
+        var chargeLevel = (short)MathF.Round(_battery.GetChargeLevel(battery.Value.AsNullable()) * 10f);
+
+        if (chargeLevel == 0 && _powerCell.HasDrawCharge((ent.Comp.Wearing, null, powerCell)))
+        {
+            chargeLevel = 1;
+        }
+
+        _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargeLevel);
+    }
     protected override void OnPartInserted(Entity<PowerArmorPartComponent> ent, ref EntGotInsertedIntoContainerMessage args)
     {
         base.OnPartInserted(ent, ref args);

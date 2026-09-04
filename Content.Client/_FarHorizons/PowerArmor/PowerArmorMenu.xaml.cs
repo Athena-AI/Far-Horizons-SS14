@@ -101,10 +101,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
             };
         }
 
-        ActivationButton.OnPressed += _ =>
-        {
-            OnTogglePowerArmor?.Invoke();  
-        };
+        ActivationButton.OnPressed += _ => OnTogglePowerArmor?.Invoke();
     }
     public void SetEntity(EntityUid entity)
     {

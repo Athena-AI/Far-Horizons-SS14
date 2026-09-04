@@ -1,8 +1,8 @@
 - type: entity
   id: ActionOpenPowerArmorRadialMenu
-  name: Toggle Modules
+  name: Quick Modular Armor Toggle
   parent: BaseAction
-  description: Opens an inbuilt user interface to toggle your suit's module on the go.
+  description: Opens an inbuilt user interface to toggle features or activate your modular armor system on the go.
   components:
   - type: Action
     itemIconStyle: BigItem

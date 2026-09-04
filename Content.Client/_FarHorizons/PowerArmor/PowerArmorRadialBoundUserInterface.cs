@@ -3,6 +3,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Shared._FarHorizons.PowerArmor;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Changeling.UI;
 
@@ -30,15 +31,27 @@ public sealed partial class PowerArmorRadialBoundUserInterface(EntityUid owner, 
         if (!EntMan.TryGetComponent<PowerArmorComponent>(Owner, out var PAComp))
             return;
 
-        var models = ConvertToButtons(PAComp.Modules);
+        var models = ConvertToButtons((Owner, PAComp));
 
         _menu.SetButtons(models);
     }
 
-    private IEnumerable<RadialMenuOptionBase> ConvertToButtons(List<EntityUid> Modules)
+    private IEnumerable<RadialMenuOptionBase> ConvertToButtons(Entity<PowerArmorComponent> ent)
     {
         var buttons = new List<RadialMenuOptionBase>();
-        foreach (var module in Modules)
+
+        var ToggleOption = new RadialMenuActionOption<NetEntity>(SendArmorToggle, EntMan.GetNetEntity(ent.Owner))
+        {
+            IconSpecifier = RadialMenuIconSpecifier.With(
+                new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/Spare/poweronoff.svg.192dpi.png"))
+            ),
+            ToolTip = ent.Comp.IsPowered ? "Deactivate Power Armor" : "Activate Power Armor",
+            BackgroundColor = ent.Comp.IsPowered ? _selectedOptionBackground : null,
+            HoverBackgroundColor = ent.Comp.IsPowered ? _selectedOptionHoverBackground : null
+        };
+        buttons.Add(ToggleOption);
+
+        foreach (var module in ent.Comp.Modules)
         {
             if (!EntMan.TryGetComponent<PowerArmorModuleComponent>(module, out var PAMComp)
             || !PAMComp.canBeToggled
@@ -60,4 +73,7 @@ public sealed partial class PowerArmorRadialBoundUserInterface(EntityUid owner, 
 
     private void SendModuleToggle(NetEntity moduleEntity) 
         => SendPredictedMessage(new PowerArmorToggleModuleMessage(moduleEntity));
+
+    private void SendArmorToggle(NetEntity _) 
+        => SendPredictedMessage(new TogglePowerArmorMessage());
 }

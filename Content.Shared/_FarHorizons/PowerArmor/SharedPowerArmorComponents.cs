@@ -1,11 +1,32 @@
 using Content.Shared.Actions;
+using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class PowerArmorUserComponent : Component
+{
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid Wearing;
+
+    /// <summary>
+    /// The battery charge alert.
+    /// </summary>
+    [DataField]
+    public ProtoId<AlertPrototype> BatteryAlert = "BorgBattery";
+
+    /// <summary>
+    /// The alert for a missing battery.
+    /// </summary>
+    [DataField]
+    public ProtoId<AlertPrototype> NoBatteryAlert = "BorgBatteryNone";
+}
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class PowerArmorComponent : Component

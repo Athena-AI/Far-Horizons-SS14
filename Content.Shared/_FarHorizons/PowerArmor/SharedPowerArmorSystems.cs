@@ -2,10 +2,10 @@
 using System.Linq;
 using Content.Shared._FarHorizons.LimbDamage.Components;
 using Content.Shared.Access.Systems;
+using Content.Shared.Alert;
 using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
@@ -15,6 +15,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Repairable;
@@ -22,6 +23,7 @@ using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Wires;
 using Robust.Shared.Containers;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._FarHorizons.PowerArmor;
 
@@ -40,6 +42,10 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected AccessReaderSystem _access = default!;
     [Dependency] protected SharedUserInterfaceSystem _uiSystem = default!;
     [Dependency] protected ItemSlotsSystem _items = default!;
+    [Dependency] protected IGameTiming _timing = default!;
+    [Dependency] protected AlertsSystem _alerts = default!;
+    [Dependency] protected SharedBatterySystem _battery = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -62,7 +68,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
         SubscribeLocalEvent<PowerArmorComponent, InteractUsingEvent>(RefRelayPAPartsEvent);
-        SubscribeLocalEvent<TransformComponent, InventoryRelayedEvent<InteractUsingEvent>>(OnInteractUsing);
+        SubscribeLocalEvent<PowerArmorUserComponent, InventoryRelayedEvent<InteractUsingEvent>>(OnInteractUsing);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
@@ -100,10 +106,30 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     {
         ent.Comp.Wearer = args.Wearer;
         Dirty(ent);
+
+        if (_timing.ApplyingState)
+            return;
+
+        if(ent.Comp.IsPrimary)
+        {
+            var wearerComp = EnsureComp<PowerArmorUserComponent>(args.Wearer);
+            wearerComp.Wearing = ent.Owner;
+            Dirty(args.Wearer, wearerComp);
+        }
     }
 
     private void OnUnequip(Entity<PowerArmorComponent> ent, ref ClothingGotUnequippedEvent args)
-    {
+    {        
+        if(TryComp<PowerArmorUserComponent>(ent.Comp.Wearer, out var PAUComp))
+        {
+            if(_alerts.IsShowingAlert(ent.Comp.Wearer.Value, PAUComp.BatteryAlert))
+                _alerts.ClearAlert(ent.Comp.Wearer.Value, PAUComp.BatteryAlert);
+            if(_alerts.IsShowingAlert(ent.Comp.Wearer.Value, PAUComp.NoBatteryAlert))
+                _alerts.ClearAlert(ent.Comp.Wearer.Value, PAUComp.NoBatteryAlert);
+
+            RemCompDeferred<PowerArmorUserComponent>(ent.Comp.Wearer.Value);
+        }
+
         ent.Comp.Wearer = null;
         Dirty(ent);
     }
@@ -227,6 +253,12 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     {
         if(!TryComp<PowerCellDrawComponent>(ent.Owner, out var drawComp)) return;
 
+        if(!_access.IsAllowed(args.Actor, ent.Owner))
+        {
+            _popUp.PopupEntity("Unauthorized Access Detected.", ent.Owner, args.Actor, PopupType.SmallCaution);
+            return;
+        }
+
         _powerCell.SetDrawEnabled(ent.Owner, !drawComp.Enabled);
         ent.Comp.IsPowered = !ent.Comp.IsPowered;
         var modules = ent.Comp.Modules.ToList(); 
@@ -343,7 +375,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         args = ev.Args;
     }
 
-    private void OnInteractUsing(Entity<TransformComponent> ent, ref InventoryRelayedEvent<InteractUsingEvent> args)
+    private void OnInteractUsing(Entity<PowerArmorUserComponent> ent, ref InventoryRelayedEvent<InteractUsingEvent> args)
     {
         if(!TryComp<PowerArmorComponent>(ent, out var PAComp))
             return;

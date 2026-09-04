@@ -86,8 +86,6 @@
 - type: entity
   id: BoltPlasmaSpread
   name: Split Plasma Bolt
-  parent: BaseItem #i dont know why but it doesn't work if you parent off of anything else, tried figuring out what's in base item that makes it work and was unable to
-  abstract: true
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBasicDamage # this doesn't actually do anything, it only exists to allow you to inspect the gun to see damage values
@@ -131,8 +129,6 @@
 - type: entity
   id: RedLaserBeamSpread
   name:  Split Laser Beam
-  parent: BaseItem #i dont know why but it doesn't work if you parent off of anything else, tried figuring out what's in base item that makes it work and was unable to
-  abstract: true
   components:
   - type: HitscanBasicDamage # this doesn't actually do anything, it only exists to allow you to inspect the gun to see damage values
     damage:

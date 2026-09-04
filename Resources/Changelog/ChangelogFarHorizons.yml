@@ -19090,5 +19090,19 @@ Entries:
   id: 167100
   time: '2026-09-03T20:03:12.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1671
+- author: rain_enjoyer
+  changes:
+  - message: My hatred for energy shotgun yml.
+    type: Add
+  id: 167400
+  time: '2026-09-04T02:56:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1674
+- author: rain_enjoyer
+  changes:
+  - message: Energy shotgun spread now works... again.
+    type: Fix
+  id: 167401
+  time: '2026-09-04T02:56:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1674
 Order: -1
 

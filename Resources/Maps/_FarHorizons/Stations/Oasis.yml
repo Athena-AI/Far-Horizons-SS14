@@ -4,8 +4,8 @@ meta:
   engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 08/20/2026 02:37:02
-  entityCount: 33996
+  time: 09/03/2026 06:43:16
+  entityCount: 33997
 maps:
 - 1
 grids:
@@ -91391,6 +91391,15 @@ entities:
     - type: Transform
       parent: 2
       pos: -6.5,7.5
+  - uid: 33997
+    components:
+    - type: Transform
+      parent: 2
+      pos: -19.5,-3.5
+    - type: NavMapBeacon
+      text: Zookeepers Office
+    - type: WarpPoint
+      location: Zookeepers Office
 - proto: DefaultStationBeaconSingularity
   entities:
   - uid: 9550

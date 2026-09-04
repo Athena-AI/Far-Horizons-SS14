@@ -189,8 +189,17 @@ public sealed partial class RepairableSystem : EntitySystem
                              limbDamage.Sum(p => (float)p.Value) > 0;
         }
 
-        // Only try repair the target if it is damaged
-        if (!shouldHealLimb && _damageableSystem.GetTotalDamage(ent.Owner) == 0)
+        // Only try repair the target if it is damaged and damage matches repair type
+        if (!TryComp<DamageableComponent>(ent.Owner, out var damage))
+            return;
+
+        var positiveDamage = _damageableSystem.GetPositiveDamage((ent, damage));
+
+        var hasRepairableDamage = ent.Comp.Damage != null
+            ? positiveDamage.DamageDict.Any(kv => kv.Value > 0 && ent.Comp.Damage.DamageDict.ContainsKey(kv.Key))
+            : positiveDamage.GetTotal() > 0;
+
+        if (!shouldHealLimb && !hasRepairableDamage)
             return;
         // Far Horizons end
 

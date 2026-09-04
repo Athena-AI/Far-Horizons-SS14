@@ -36,7 +36,8 @@ using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
 using Content.Shared._Starlight.ScanGate; // Starlight
-using Content.Shared._Starlight.Body.Events; // Starlight
+using Content.Shared._Starlight.Body.Events;
+using Content.Shared.Interaction; // Starlight
 
 namespace Content.Shared.Inventory;
 
@@ -92,6 +93,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RadiateHeatAttemptEvent>(RefRelayInventoryEvent); // Starlight
         SubscribeLocalEvent<InventoryComponent, PickupableArmorSpeedRelayEvent>(RefRelayInventoryEvent); // Far Horizons
         SubscribeLocalEvent<InventoryComponent, LimbDamageModifyEvent>(RefRelayInventoryEvent); // Far Horizons
+        SubscribeLocalEvent<InventoryComponent, InteractUsingEvent>(RefRelayInventoryEvent); // Far Horizons
 
         // Eye/vision events
         SubscribeLocalEvent<InventoryComponent, CanSeeAttemptEvent>(RelayInventoryEvent);

@@ -1,4 +1,5 @@
 using Content.Shared._FarHorizons.PowerArmor;
+using Content.Shared.Inventory; // Far Horizons 
 using JetBrains.Annotations;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
@@ -9,7 +10,7 @@ namespace Content.Shared.Interaction;
 ///     Raised when a target entity is interacted with by a user while holding an object in their hand.
 /// </summary>
 [PublicAPI]
-public sealed class InteractUsingEvent : HandledEntityEventArgs, IPowerArmorRelayedEvent
+public sealed class InteractUsingEvent : HandledEntityEventArgs, IPowerArmorRelayedEvent, IInventoryRelayEvent // Far Horizons 
 {
     /// <summary>
     ///     Entity that triggered the interaction.
@@ -30,6 +31,8 @@ public sealed class InteractUsingEvent : HandledEntityEventArgs, IPowerArmorRela
     ///     The original location that was clicked by the user.
     /// </summary>
     public EntityCoordinates ClickLocation { get; }
+
+    SlotFlags IInventoryRelayEvent.TargetSlots => SlotFlags.All; //Far Horizons
 
     public InteractUsingEvent(EntityUid user, EntityUid used, EntityUid target, EntityCoordinates clickLocation)
     {

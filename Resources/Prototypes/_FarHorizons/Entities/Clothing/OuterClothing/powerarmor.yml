@@ -31,6 +31,7 @@
   - type: Sprite
     sprite: _FarHorizons/Clothing/OuterClothing/PowerArmor/underarmor.rsi
     drawdepth: Items
+    noRot: true
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.UnderArmor" ]
       state: underarmor

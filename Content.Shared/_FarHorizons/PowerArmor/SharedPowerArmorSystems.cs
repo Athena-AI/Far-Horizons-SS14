@@ -5,6 +5,7 @@ using Content.Shared.Access.Systems;
 using Content.Shared.Clothing;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
@@ -16,6 +17,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Repairable;
 using Content.Shared.Tools.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Wires;
@@ -60,15 +62,19 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
         SubscribeLocalEvent<PowerArmorComponent, InteractUsingEvent>(RefRelayPAPartsEvent);
+        SubscribeLocalEvent<TransformComponent, InventoryRelayedEvent<InteractUsingEvent>>(OnInteractUsing);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
         SubscribeLocalEvent<PowerArmorPartComponent, BreakageEventArgs>(OnPartBroken);
+        SubscribeLocalEvent<PowerArmorPartComponent, RepairedEvent>(OnRepair);
         SubscribeLocalEvent<PowerArmorPartComponent, AfterInteractEvent>(OnInteractUsing);
 
         SubscribeLocalEvent<PowerArmorModuleComponent, EntGotInsertedIntoContainerMessage>(OnModuleInstalled);
         SubscribeLocalEvent<PowerArmorModuleComponent, EntGotRemovedFromContainerMessage>(OnModuleUninstalled);
         SubscribeLocalEvent<PowerArmorModuleComponent, AfterInteractEvent>(OnModuleInteract);
+        SubscribeLocalEvent<PowerArmorPartComponent, AccessibleOverrideEvent>(AccessibleOverride);
+        SubscribeLocalEvent<PowerArmorPartComponent, InRangeOverrideEvent>(InRangeOverride);
     }
 
     #region Power Armor
@@ -320,15 +326,30 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     public void RelayEvent<T>(Entity<PowerArmorComponent> powerArmor, ref T args) where T : IPowerArmorRelayedEvent
     {
         var ev = new PowerArmorRelayedEvent<T>(args, powerArmor.Owner);
-        foreach (var module in powerArmor.Comp.Parts)
+        foreach (var part in powerArmor.Comp.Parts)
         {
-            if(module.Value == null) continue;
-
-            RaiseLocalEvent(module.Value.Value, ev);
+            if(part.Value == null) continue;
+            RaiseLocalEvent(part.Value.Value, ev);
         }
+
+        if(TryComp<PowerArmorComponent>(powerArmor, out var hPAComp))
+            foreach (var part in hPAComp.Parts)
+            {
+                if(part.Value == null) continue;
+
+                RaiseLocalEvent(part.Value.Value, ev);
+            }
 
         args = ev.Args;
     }
+
+    private void OnInteractUsing(Entity<TransformComponent> ent, ref InventoryRelayedEvent<InteractUsingEvent> args)
+    {
+        if(!TryComp<PowerArmorComponent>(ent, out var PAComp))
+            return;
+        RelayEvent((ent.Owner, PAComp), ref args.Args);
+    }
+
     #endregion
     #region Power Armor Parts
 
@@ -361,15 +382,31 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     public void OnPartBroken(Entity<PowerArmorPartComponent> ent, ref BreakageEventArgs args)
     {
-        var powerArmor = Transform(ent.Owner).ParentUid;
-        var gridUid = Transform(ent.Owner).GridUid;
-        if(powerArmor == gridUid || !TryComp<PowerArmorComponent>(powerArmor, out var paComp)) return;
+        if(!_container.TryGetContainingContainer(ent.Owner, out var container) 
+        || !TryComp<PowerArmorComponent>(container.Owner, out var paComp)) return;
 
         paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier + ent.Comp.SpeedModifier, 2);
         
-        _appearance.SetData(ent.Owner, PowerArmorPartVisuals.PowerArmor, GetNetEntity(powerArmor));
+        _appearance.SetData(ent.Owner, PowerArmorPartVisuals.PowerArmor, GetNetEntity(container.Owner));
         _appearance.SetData(ent.Owner, PowerArmorPartVisuals.Visible, false);
         ent.Comp.isBroken = true;
+        Dirty(ent);
+
+        if(paComp.Wearer == null) return;
+
+        _movement.RefreshMovementSpeedModifiers(paComp.Wearer.Value);
+    }
+
+    private void OnRepair(Entity<PowerArmorPartComponent> ent, ref RepairedEvent args)
+    {
+        if(!_container.TryGetContainingContainer(ent.Owner, out var container) 
+        || !TryComp<PowerArmorComponent>(container.Owner, out var paComp)) return;
+
+        paComp.TotalSpeedModifier = (float) Math.Round(paComp.TotalSpeedModifier - ent.Comp.SpeedModifier, 2);
+        
+        _appearance.SetData(ent.Owner, PowerArmorPartVisuals.PowerArmor, GetNetEntity(container.Owner));
+        _appearance.SetData(ent.Owner, PowerArmorPartVisuals.Visible, true);
+        ent.Comp.isBroken = false;
         Dirty(ent);
 
         if(paComp.Wearer == null) return;
@@ -417,6 +454,22 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         };
         _doAfter.TryStartDoAfter(installDoAfter);
         args.Handled = true;   
+    }
+
+    private void InRangeOverride(Entity<PowerArmorPartComponent> ent, ref InRangeOverrideEvent args)
+    {
+        if(!_container.TryGetOuterContainer(args.Target, Transform(args.Target), out var container))
+            return;
+        args.InRange = _interaction.InRangeUnobstructed(args.User, container.Owner, args.Range, args.CollisionMask, args.Predicate, args.Popup, args.OverlapCheck);
+        args.Handled = true;
+    }
+
+    private void AccessibleOverride(Entity<PowerArmorPartComponent> ent, ref AccessibleOverrideEvent args)
+    {
+        if(!_container.TryGetOuterContainer(args.Target, Transform(args.Target), out var container))
+            return;
+        args.Accessible = _interaction.IsAccessible(args.User, container.Owner);
+        args.Handled = true;
     }
 
     #endregion

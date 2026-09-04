@@ -19125,5 +19125,33 @@ Entries:
   id: 167600
   time: '2026-09-04T17:06:07.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1676
+- author: KarusKardin, mogaiskii
+  changes:
+  - message: removed the pre-mapped holo-barriers.
+    type: Remove
+  id: 168000
+  time: '2026-09-04T18:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1680
+- author: KarusKardin, mogaiskii
+  changes:
+  - message: plasma and a guaranteed arti spawner to sci.
+    type: Add
+  id: 168001
+  time: '2026-09-04T18:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1680
+- author: KarusKardin, mogaiskii
+  changes:
+  - message: replaced nt ai core with ns ai core, as well as ai doors.
+    type: Fix
+  id: 168002
+  time: '2026-09-04T18:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1680
+- author: KarusKardin, mogaiskii
+  changes:
+  - message: put regular lights to chemistry.
+    type: Tweak
+  id: 168003
+  time: '2026-09-04T18:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1680
 Order: -1
 

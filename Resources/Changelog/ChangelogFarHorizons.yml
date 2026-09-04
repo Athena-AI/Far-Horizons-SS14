@@ -19111,5 +19111,12 @@ Entries:
   id: 167800
   time: '2026-09-04T17:00:26.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1678
+- author: idkAnAlliasYetTbh
+  changes:
+  - message: (META) Added a Station Beacon to the Zookeepers office.
+    type: Add
+  id: 167700
+  time: '2026-09-04T17:03:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1677
 Order: -1
 

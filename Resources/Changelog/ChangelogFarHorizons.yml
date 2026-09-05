@@ -19160,5 +19160,27 @@ Entries:
   id: 168700
   time: '2026-09-05T04:23:27.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1687
+- author: KarusKardin
+  changes:
+  - message: Marked HolographicField as DO NOT MAP
+    type: Tweak
+  id: 165200
+  time: '2026-09-05T04:25:24.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1652
+- author: KarusKardin
+  changes:
+  - message: Marked HolographicFieldBarrier as DO NOT MAP
+    type: Tweak
+  id: 165201
+  time: '2026-09-05T04:25:24.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1652
+- author: KarusKardin
+  changes:
+  - message: The Holographic Generator cannot be stopped by your weak flesh, only
+      a solid wall of steel can stop it. (Impassable Mask)
+    type: Tweak
+  id: 165202
+  time: '2026-09-05T04:25:24.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1652
 Order: -1
 

@@ -448,7 +448,7 @@
     tags:
     - GasTank
     #Starlight end
-  - type: AtmosDevice
+  - type: AtmosDevice #FH
     requireAnchored: false
 
 - type: entity

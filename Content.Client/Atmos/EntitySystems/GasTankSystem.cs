@@ -38,6 +38,7 @@ public sealed partial class GasTankSystem : SharedGasTankSystem
             bui.Update<GasTankBoundUserInterfaceState>();
         }
         // Starlight edit start - Show simplified UI for when the breathing organ is inaccessible
+        // Far Horizons - Edit Uncommented
         if (UI.TryGetOpenUi(ent.Owner, SharedGasTankUiKey.OrganKey, out var organBui))
         {
              organBui.Update<GasTankBoundUserInterfaceState>();

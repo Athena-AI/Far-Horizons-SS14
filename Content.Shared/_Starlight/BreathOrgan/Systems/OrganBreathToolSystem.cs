@@ -83,6 +83,7 @@ public sealed partial class OrganBreathToolSystem : EntitySystem
         
         if (TryComp<GasTankComponent>(ent.Owner, out var gasTank))
         {            
+            //Far Horizons Start
             // Add action to toggle internals
             _actionContainer.EnsureAction(ent.Owner, ref gasTank.ToggleActionEntity, ent.Comp.ToggleAction);
             
@@ -98,6 +99,7 @@ public sealed partial class OrganBreathToolSystem : EntitySystem
             {
                 _actions.AddAction(args.Target, ent.Comp.ViewGasTankActionEntity.Value, container: ent.Owner);
             }
+            //Far Horizons End
             
             Dirty(ent);
             

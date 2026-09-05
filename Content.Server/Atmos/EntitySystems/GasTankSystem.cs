@@ -60,9 +60,11 @@ public sealed partial class GasTankSystem : SharedGasTankSystem
 
         Atmos.React(entity.Comp.Air, entity.Comp);
 
+        //Far Horizons Start
         if ((entity.Comp.IsConnected || entity.Comp.ReleaseValveOpen) &&
             (UI.IsUiOpen(entity.Owner, SharedGasTankUiKey.Key) || UI.IsUiOpen(entity.Owner, SharedGasTankUiKey.OrganKey)))
             UpdateUserInterface(entity);
+        //Far Horizons End
     }
 
     public override void UpdateUserInterface(Entity<GasTankComponent> ent)

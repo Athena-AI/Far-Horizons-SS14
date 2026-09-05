@@ -61,6 +61,12 @@
       - Screwing
     useSound:
       collection: Screwdriver
+  #FH Start
+  #- type: RandomSprite
+  #  available:
+  #    - enum.DamageStateVisualLayers.Base:
+  #        screwdriver: Rainbow
+  #FH End
   - type: PhysicalComposition
     materialComposition:
       Steel: 100

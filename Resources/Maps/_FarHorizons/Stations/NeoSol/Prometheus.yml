@@ -4,7 +4,7 @@ meta:
   engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/06/2026 16:44:49
+  time: 09/06/2026 17:14:40
   entityCount: 31237
 maps:
 - 1
@@ -86929,16 +86929,6 @@ entities:
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
-  - uid: 6447
-    components:
-    - type: Transform
-      parent: 2
-      rot: 1.5707963267948966 rad
-      pos: -15.5,-3.5
-    - type: AccessReader
-      accessListsOriginal: []
-      access:
-      - - Service
   - uid: 6517
     components:
     - type: Transform
@@ -87977,6 +87967,12 @@ entities:
       pos: 91.5,-80.5
 - proto: FHAirlockNSServiceLocked
   entities:
+  - uid: 6447
+    components:
+    - type: Transform
+      parent: 2
+      rot: -1.5707963267948966 rad
+      pos: -15.5,-3.5
   - uid: 11793
     components:
     - type: Transform

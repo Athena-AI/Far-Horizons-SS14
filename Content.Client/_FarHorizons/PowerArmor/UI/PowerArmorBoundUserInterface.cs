@@ -1,7 +1,7 @@
 using Content.Shared._FarHorizons.PowerArmor;
 using Robust.Client.UserInterface;
 
-namespace Content.Client._FarHorizons.PowerArmor;
+namespace Content.Client._FarHorizons.PowerArmor.UI;
 
 public sealed class PowerArmorBoundUserInterface : BoundUserInterface
 {

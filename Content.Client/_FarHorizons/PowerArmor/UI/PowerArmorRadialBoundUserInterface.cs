@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Shared.Utility;
 
-namespace Content.Client.Changeling.UI;
+namespace Content.Client._FarHorizons.PowerArmor.UI;
 
 [UsedImplicitly]
 public sealed partial class PowerArmorRadialBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)

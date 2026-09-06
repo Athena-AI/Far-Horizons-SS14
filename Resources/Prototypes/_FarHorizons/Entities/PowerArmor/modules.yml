@@ -28,7 +28,7 @@
         allowedJobs:
           - Security
       - type: AccessReader
-        access: [["Armory"]]
+        access: [["Security"]]
   - type: PowerArmorModule
     canBeToggled: false
 

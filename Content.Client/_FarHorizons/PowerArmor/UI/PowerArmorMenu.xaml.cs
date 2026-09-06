@@ -14,26 +14,37 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using System.Numerics;
+using Robust.Shared.Prototypes;
+using Content.Shared.Body;
+using Robust.Client.ResourceManagement;
+using Robust.Client.GameObjects;
+using Content.Shared._FarHorizons.LimbDamage.Components;
+using Content.Shared._FarHorizons.LimbDamage;
+using Content.Shared.Damage.Prototypes;
+using Content.Shared.FixedPoint;
 
-namespace Content.Client._FarHorizons.PowerArmor;
+namespace Content.Client._FarHorizons.PowerArmor.UI;
 
 [GenerateTypedNameReferences]
 public sealed partial class PowerArmorMenu : FancyWindow
 {
     [Dependency] private IEntityManager _entityManager = default!;
-    private SharedContainerSystem _container;
-    private SharedBatterySystem _battery;
-    private DamageableSystem _damageable;
+    private readonly SharedContainerSystem _container;
+    private readonly SharedBatterySystem _battery;
+    private readonly DamageableSystem _damageable;
+    private readonly LimbDamageSystem _limbDamage;
+    private readonly IPrototypeManager _prototypes;
+    private readonly IResourceCache _cache;
+    private readonly SpriteSystem _spriteSystem;
 
     private EntityUid _entity;
+    private EntityUid? _entityWearer;
     private int _currComplexity = 0;
     private int _maxComplexity = 0;
     private readonly Dictionary<PowerArmorVisualLayers, EntityUid?> _parts = new();
     private readonly Dictionary<PowerArmorVisualLayers, PartControls> _partControls = new();
     private PartControls? _openDetails;
     private float _updateTimer;
-    private readonly StyleBoxFlat _barBackground = new() { BackgroundColor = Color.Black };
-    private readonly StyleBoxFlat _barForeground = new();
     public event Action<PowerArmorVisualLayers, NetEntity>? OnUninstallPart;
     public event Action? OnTogglePowerArmor;
     private readonly record struct PartControls(
@@ -44,21 +55,30 @@ public sealed partial class PowerArmorMenu : FancyWindow
         RichTextLabel Percent,
         BoxContainer Details,
         RichTextLabel Description,
-        Button UninstallButton);
+        Button UninstallButton,
+        StyleBoxFlat BarForeground);
 
     private readonly HashSet<EntityUid> _moduleEntities = new();
     private readonly Dictionary<EntityUid, ModuleControls> _moduleControls = new();
+    private ModuleControls? _openDetailsModules;
+    private readonly Dictionary<ProtoId<DamageGroupPrototype>, Button> _damageGroupButtons = new();
     public event Action<NetEntity>? OnUninstallModule;
     public event Action<NetEntity>? OnToggleModule;
+    private ProtoId<OrganCategoryPrototype> _currTarget = "Torso";
+    private readonly static ProtoId<OrganCategoryPrototype> _defaultLimb = "Torso";
+    private readonly StyleBoxFlat _chargeBarForeground = new();
     private readonly record struct ModuleControls(
         PanelContainer Panel,
+        Button ModuleButton,
+        TextureRect PartButtonArrow,
         Button PowerToggle,
         Button Uninstall,
         Button IdleDrain, 
         Button ActiveDrain,
         Button OnUseDrain,
-        Button Complexity);
-
+        Button Complexity,
+        BoxContainer Details,
+        RichTextLabel Description);
     public PowerArmorMenu()
     {
         RobustXamlLoader.Load(this);
@@ -67,6 +87,12 @@ public sealed partial class PowerArmorMenu : FancyWindow
         _container = _entityManager.System<SharedContainerSystem>();
         _battery = _entityManager.System<SharedBatterySystem>();
         _damageable = _entityManager.System<DamageableSystem>();
+        _limbDamage = _entityManager.System<LimbDamageSystem>();
+        _spriteSystem = _entityManager.System<SpriteSystem>();
+
+        var dependencies = IoCManager.Instance!;
+        _prototypes = dependencies.Resolve<IPrototypeManager>();
+        _cache = dependencies.Resolve<IResourceCache>();
 
         _parts = new()
         {
@@ -102,12 +128,26 @@ public sealed partial class PowerArmorMenu : FancyWindow
         }
 
         ActivationButton.OnPressed += _ => OnTogglePowerArmor?.Invoke();
+        LimbTargettingDisplay.OnSelectedLimb += SetLimbTarget;
+
+        UnpoweredOverlay.PanelOverride = new StyleBoxFlat
+        {
+            BackgroundColor = new Color(0f, 0f, 0f, 0.6f)
+        };
+
+        ChargeBar.BackgroundStyleBoxOverride = new StyleBoxFlat { BackgroundColor = Color.DimGray };
+        ChargeBar.ForegroundStyleBoxOverride = _chargeBarForeground;
     }
+
     public void SetEntity(EntityUid entity)
     {
         _entity = entity;
-        if(_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var PAComp))
-           _maxComplexity = PAComp.MaxComplexity;
+        if(!_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var PAComp)) return;
+        
+        _maxComplexity = PAComp.MaxComplexity;
+        
+        if(PAComp.Wearer != null)
+            _entityWearer = PAComp.Wearer.Value;
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -123,6 +163,13 @@ public sealed partial class PowerArmorMenu : FancyWindow
         UpdateWindow();
     }
 
+    private void SetLimbTarget(ProtoId<OrganCategoryPrototype> target)
+    {
+        _currTarget = target;
+        LimbTargettingDisplay.UpdateLimb(_currTarget);
+        UpdateWindow();
+    }
+
     public void UpdateWindow()
     {
         if(_container.TryGetContainer(_entity, "cell_slot", out var cellSlot) 
@@ -132,10 +179,8 @@ public sealed partial class PowerArmorMenu : FancyWindow
             var charge = (int)Math.Round(_battery.GetChargeLevel((cellSlot.ContainedEntities.First(), battery)) * 100f); 
             ChargePercent.Text = $"{charge}%";
             ChargeBar.Value = charge;
-            _barForeground.BackgroundColor = Color.InterpolateBetween(Color.Red, Color.Green, charge / 100f);
+            _chargeBarForeground.BackgroundColor = Color.InterpolateBetween(Color.Red, Color.Green, charge / 100f);
 
-            ChargeBar.BackgroundStyleBoxOverride = _barBackground;
-            ChargeBar.ForegroundStyleBoxOverride = _barForeground;
             ChargePercent.ModulateSelfOverride = Color.White;
         }
         else
@@ -151,19 +196,68 @@ public sealed partial class PowerArmorMenu : FancyWindow
             PanelStatus.ModulateSelfOverride = wirePanel.Open ? Color.LimeGreen : Color.Red;
         }
 
-        if (_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var paComp))
-        {
-            foreach (var layer in _parts.Keys.ToList())
-                if (paComp.Parts.TryGetValue(layer, out var part)) _parts[layer] = part;
+        if (!_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var paComp))
+            return;
 
-            if (_entityManager.EntityExists(paComp.OtherHalf) && _entityManager.TryGetComponent<PowerArmorComponent>(paComp.OtherHalf, out var paComp2))
-                if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart)) _parts[PowerArmorVisualLayers.Head] = headPart;
-        }
+        foreach (var layer in _parts.Keys.ToList())
+            if (paComp.Parts.TryGetValue(layer, out var part)) _parts[layer] = part;
+
+        if (_entityManager.EntityExists(paComp.OtherHalf) && _entityManager.TryGetComponent<PowerArmorComponent>(paComp.OtherHalf, out var paComp2))
+            if (paComp2.Parts.TryGetValue(PowerArmorVisualLayers.Head, out var headPart)) _parts[PowerArmorVisualLayers.Head] = headPart;
+    
 
         foreach (var (layer, controls) in _partControls)
             UpdateParts(controls, _parts[layer]);
 
         UpdateModules();
+
+        _entityWearer = paComp.Wearer;
+        if (_entityWearer != null && paComp.IsPowered)
+        {
+            if (!_entityManager.TryGetComponent<LimbDamageableComponent>(_entityWearer, out var limbDamageable))
+            {
+                NoUserLabel.Text = "NO USER DETECTED";
+                UnpoweredOverlay.Visible = true;
+                return;
+            }
+
+            ProtoId<LimbTargettingPrototype> limbTargetVisuals = "LimbTargetHuman";
+            limbTargetVisuals = limbDamageable.Proto;
+
+            LimbTargettingDisplay.InitTarget(_prototypes, _cache, _spriteSystem, limbTargetVisuals);
+            LimbTargettingDisplay.Visible = true;
+            LimbTargettingDisplay.ModulateSelfOverride = null;
+
+            var fullBodyDamage = _limbDamage.TryGetFullBodyDamage(_entityWearer.Value);
+            var fullBodyDamageGroups = _limbDamage.TryGetFullBodyDamageGroups(_entityWearer.Value);
+
+            if (fullBodyDamage == null || fullBodyDamageGroups == null)
+                return;
+
+            if (!fullBodyDamage.ContainsKey(_currTarget))
+                _currTarget = _defaultLimb;
+
+            LimbTargettingDisplay.SetHealth(fullBodyDamage.ToDictionary(p => p.Key, p => p.Value.Sum(e => (float)e.Value)));
+            IReadOnlyDictionary<ProtoId<DamageTypePrototype>, FixedPoint2> damagePerType = fullBodyDamage[_currTarget];
+        
+            var groupOrder = new List<string> { "Burn", "Brute", "Airloss", "Toxin", "Genetic" };
+            var sortedGroups = fullBodyDamageGroups[_currTarget]
+                .OrderBy(g => groupOrder.IndexOf(g.Key))
+                .ToDictionary(g => g.Key, g => g.Value);
+
+            UpdateDamageInfo(sortedGroups);
+            DamageInfoPanel.Visible = true;
+
+            UnpoweredOverlay.Visible = false;
+        }
+        else
+        {
+            NoUserLabel.Text = paComp.IsPowered ? "NO USER DETECTED" : "SUIT UNPOWERED";
+            UnpoweredOverlay.Visible = true;
+            LimbTargettingDisplay.Visible = false;
+            LimbTargettingDisplay.ModulateSelfOverride = Color.White.WithAlpha(0.3f);
+            DamageInfoPanel.Visible = false;
+        }
     }
 
     private void AddModulePanel(EntityUid module)
@@ -303,17 +397,53 @@ public sealed partial class PowerArmorMenu : FancyWindow
             Disabled = true
         };
 
-        box.AddChild(complexityButton);
+        var mainBoxContainer = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            HorizontalExpand = true
+        };
+        mainBoxContainer.AddChild(box);
 
-        row.AddChild(box);
+        var detailsBox = new BoxContainer
+        {
+            Name = $"{module}Details",
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            HorizontalExpand = true,
+            Visible = false,
+            Margin = new Thickness(10, 5, 10, 5)
+        };
+
+        var detailsDivider = new PanelContainer
+        {
+            StyleClasses = { "LowDivider" },
+            SetHeight = 1,
+            Margin = new Thickness(0, 0, 0, 5)
+        };
+        detailsBox.AddChild(detailsDivider);
+
+        var descriptionLabel = new RichTextLabel
+        {
+            Name = $"{module}Description",
+            Text = _entityManager.TryGetComponent<MetaDataComponent>(module, out var descMeta)
+                ? descMeta.EntityDescription
+                : string.Empty,
+            HorizontalAlignment = HAlignment.Left,
+            Margin = new Thickness(10, 0),
+            MaxWidth = 350
+        };
+        detailsBox.AddChild(descriptionLabel);
+
+        mainBoxContainer.AddChild(detailsBox);
+        row.AddChild(mainBoxContainer);
         ModulesPanel.AddChild(row);
 
-        _moduleControls[module] = new ModuleControls(row, powerButton, uninstallButton, idleDrainbutton, activeDrainButton, onUseDrainButton, complexityButton);
+        _moduleControls[module] = new ModuleControls(row, moduleNameButton, moduleNameArrow, powerButton, uninstallButton, idleDrainbutton, activeDrainButton, onUseDrainButton, complexityButton, detailsBox, descriptionLabel);
 
         var netModule = _entityManager.GetNetEntity(module);
 
         powerButton.OnPressed += _ => OnToggleModule?.Invoke(netModule);
         uninstallButton.OnPressed += _ => OnUninstallModule?.Invoke(netModule);
+        moduleNameButton.OnPressed += _ => ToggleModuleDescription(_moduleControls[module]);
 
         UpdateModuleButtonColor(module);
     }
@@ -397,10 +527,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
             {
                 var integrity = Math.Clamp((int) ((papComp.MaxIntegrity - _damageable.GetPositiveDamage((part.Value, damageComp)).GetTotal()) / papComp.MaxIntegrity * 100), 0, 100);
                 controls.Bar.Value = integrity;
-                _barForeground.BackgroundColor = Color.InterpolateBetween(Color.Red, Color.Green, integrity / 100f);
-
-                controls.Bar.BackgroundStyleBoxOverride = _barBackground;
-                controls.Bar.ForegroundStyleBoxOverride = _barForeground;
+                controls.BarForeground.BackgroundColor = Color.InterpolateBetween(Color.Red, Color.Green, integrity / 100f);
 
                 controls.Bar.Visible = true;
                 controls.Percent.Text = $"{integrity}%";
@@ -410,7 +537,6 @@ public sealed partial class PowerArmorMenu : FancyWindow
             {
                 controls.Bar.Visible = false;
                 controls.Percent.Visible = false;
-                controls.Bar.BackgroundStyleBoxOverride = _barBackground;
             }
         }
         else
@@ -425,6 +551,42 @@ public sealed partial class PowerArmorMenu : FancyWindow
             if (_openDetails == controls)
                 _openDetails = null;
         }
+    }
+
+    private void UpdateDamageInfo(Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2> groups)
+    {
+        foreach (var (key, value) in groups)
+        {
+            if (_damageGroupButtons.TryGetValue(key, out var button))
+            {
+                button.Text = $"{key}: {value} ";
+            }
+            else
+            {
+                var newButton = new Button
+                {
+                    Text = $"{key}: {value} ",
+                    Disabled = true,
+                    MaxWidth = 120
+                };
+                DamageInfo.AddChild(newButton);
+                _damageGroupButtons[key] = newButton;
+            }
+        }
+
+        foreach (var damageGroup in _damageGroupButtons.Keys.ToList())
+        {
+            if (groups.TryGetValue(damageGroup, out var value) && value > 0)
+                continue;
+
+            DamageInfo.RemoveChild(_damageGroupButtons[damageGroup]);
+            _damageGroupButtons.Remove(damageGroup);
+        }
+
+        if(_damageGroupButtons.Count() == 0)
+            NoDamageDetected.Visible = true;
+        else
+            NoDamageDetected.Visible = false;
     }
 
     private PartControls GeneratePanel(PanelContainer panel)
@@ -504,6 +666,11 @@ public sealed partial class PowerArmorMenu : FancyWindow
             Value = 50,
             SetHeight = 25
         };
+
+        var barForeground = new StyleBoxFlat();
+        PartIntegrityBar.BackgroundStyleBoxOverride = new StyleBoxFlat { BackgroundColor = Color.DimGray };
+        PartIntegrityBar.ForegroundStyleBoxOverride = barForeground;
+        
         PartIntegrityControl.AddChild(PartIntegrityBar);
 
         var PartPercentLabel = new RichTextLabel
@@ -570,7 +737,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
 
         panel.AddChild(MainBoxContainer);
 
-        return new PartControls(PartNameButton, PartNameLabel, PartNameArrow, PartIntegrityBar, PartPercentLabel, DetailsBox, DescriptionLabel, UninstallButton);
+        return new PartControls(PartNameButton, PartNameLabel, PartNameArrow, PartIntegrityBar, PartPercentLabel, DetailsBox, DescriptionLabel, UninstallButton, barForeground);    
     }
 
     private void ToggleContainer(PartControls container, EntityUid? part)
@@ -595,5 +762,26 @@ public sealed partial class PowerArmorMenu : FancyWindow
         container.Details.Visible = true;
         container.PartButtonArrow.TexturePath = "/Textures/_FarHorizons/Interface/group90.svg.192dpi.png";
         _openDetails = container;
+    }
+
+    private void ToggleModuleDescription(ModuleControls container)
+    {    
+        if (_openDetailsModules == container)
+        {
+            container.Details.Visible = false;
+            container.PartButtonArrow.TexturePath = "/Textures/Interface/VerbIcons/group.svg.192dpi.png"; 
+            _openDetailsModules = null;
+            return;
+        }
+
+        if (_openDetailsModules != null)
+        {
+            _openDetailsModules.Value.Details.Visible  = false;
+            _openDetailsModules.Value.PartButtonArrow.TexturePath = "/Textures/Interface/VerbIcons/group.svg.192dpi.png"; 
+        }
+
+        container.Details.Visible = true;
+        container.PartButtonArrow.TexturePath = "/Textures/_FarHorizons/Interface/group90.svg.192dpi.png";
+        _openDetailsModules = container;
     }
 }

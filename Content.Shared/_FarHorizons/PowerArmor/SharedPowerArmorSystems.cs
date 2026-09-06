@@ -68,7 +68,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
         SubscribeLocalEvent<PowerArmorComponent, InteractUsingEvent>(RefRelayPAPartsEvent);
-        SubscribeLocalEvent<PowerArmorUserComponent, InventoryRelayedEvent<InteractUsingEvent>>(OnInteractUsing);
+        SubscribeLocalEvent<PowerArmorComponent, InventoryRelayedEvent<InteractUsingEvent>>(OnInteractUsing);
 
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotInsertedIntoContainerMessage>(OnPartInserted);
         SubscribeLocalEvent<PowerArmorPartComponent, EntGotRemovedFromContainerMessage>(OnPartEjected);
@@ -104,22 +104,23 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     private void OnEquip(Entity<PowerArmorComponent> ent, ref ClothingGotEquippedEvent args)
     {
+        if(!ent.Comp.IsPrimary) return;
+
         ent.Comp.Wearer = args.Wearer;
         Dirty(ent);
 
         if (_timing.ApplyingState)
             return;
 
-        if(ent.Comp.IsPrimary)
-        {
-            var wearerComp = EnsureComp<PowerArmorUserComponent>(args.Wearer);
-            wearerComp.Wearing = ent.Owner;
-            Dirty(args.Wearer, wearerComp);
-        }
+        var wearerComp = EnsureComp<PowerArmorUserComponent>(args.Wearer);
+        wearerComp.Wearing = ent.Owner;
+        Dirty(args.Wearer, wearerComp);
     }
 
     private void OnUnequip(Entity<PowerArmorComponent> ent, ref ClothingGotUnequippedEvent args)
     {        
+        if(!ent.Comp.IsPrimary) return;
+
         if(TryComp<PowerArmorUserComponent>(ent.Comp.Wearer, out var PAUComp))
         {
             if(_alerts.IsShowingAlert(ent.Comp.Wearer.Value, PAUComp.BatteryAlert))
@@ -146,7 +147,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
             modifiers = papComp.BrokenModifiers;
 
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers, args.Args.ArmorPenetration, args.Args.CanHeal);
-        _damageable.ChangeDamage(part.Value, args.Args.Damage);
+        if (!papComp.isBroken)
+            _damageable.ChangeDamage(part.Value, args.Args.Damage);
     }
 
     private void OnLimbDamage(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<LimbDamageModifyEvent> args)
@@ -173,7 +175,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         if (papComp.isBroken)
             modifiers = papComp.BrokenModifiers;
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers, args.Args.ArmorPenetration, args.Args.CanHeal);
-        _damageable.ChangeDamage(part.Value, args.Args.Damage);
+        if (!papComp.isBroken)
+            _damageable.ChangeDamage(part.Value, args.Args.Damage);
     }
 
     private void OnRefreshMoveSpeed(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<RefreshMovementSpeedModifiersEvent> args)
@@ -375,7 +378,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         args = ev.Args;
     }
 
-    private void OnInteractUsing(Entity<PowerArmorUserComponent> ent, ref InventoryRelayedEvent<InteractUsingEvent> args)
+    private void OnInteractUsing(Entity<PowerArmorComponent> ent, ref InventoryRelayedEvent<InteractUsingEvent> args)
     {
         if(!TryComp<PowerArmorComponent>(ent, out var PAComp))
             return;

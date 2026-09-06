@@ -134,7 +134,13 @@
     actions:
     - ActionOpenPowerArmorRadialMenu
     activeIfWorn: true
-
+  - type: FootstepModifier # STARLIGHT
+    footstepSoundCollection:
+      collection: TechMarch
+      params:
+        pitch: 0.9
+        variation: 0.09
+        
 - type: entity
   parent: PowerArmorNaked
   id: PowerArmorNTJuggernautFilled

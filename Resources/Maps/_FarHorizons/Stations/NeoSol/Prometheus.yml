@@ -87930,10 +87930,6 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -19.5,-3.5
-    - type: AccessReader
-      accessListsOriginal: []
-      access:
-      - - Security
   - uid: 11670
     components:
     - type: Transform
@@ -87979,10 +87975,6 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -17.5,-2.5
-    - type: AccessReader
-      accessListsOriginal: []
-      access:
-      - - Service
   - uid: 12943
     components:
     - type: Transform
@@ -87999,10 +87991,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -17.5,-4.5
-    - type: AccessReader
-      accessListsOriginal: []
-      access:
-      - - Service
   - uid: 23797
     components:
     - type: Transform

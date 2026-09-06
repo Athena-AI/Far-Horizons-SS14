@@ -4,8 +4,8 @@ meta:
   engineVersion: 288.1.0
   forkId: ""
   forkVersion: ""
-  time: 09/06/2026 16:15:20
-  entityCount: 31233
+  time: 09/06/2026 16:44:49
+  entityCount: 31237
 maps:
 - 1
 grids:
@@ -23715,6 +23715,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 49.687096,-50.33218
+- proto: BoxShellTranquilizer
+  entities:
+  - uid: 29189
+    components:
+    - type: Transform
+      parent: 2
+      pos: -16.496723,-3.5820599
 - proto: BoxTearGas
   entities:
   - uid: 2976
@@ -73395,6 +73402,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 38.5,-26.5
+- proto: ClothingOuterArmorBasicSlimSyndi
+  entities:
+  - uid: 30708
+    components:
+    - type: Transform
+      parent: 2
+      pos: -16.97216,-3.5874777
 - proto: ClothingOuterHardsuitMining
   entities:
   - uid: 9428
@@ -86921,6 +86935,10 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: -15.5,-3.5
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Service
   - uid: 6517
     components:
     - type: Transform
@@ -87922,6 +87940,10 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -19.5,-3.5
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Security
   - uid: 11670
     components:
     - type: Transform
@@ -87961,6 +87983,10 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: -17.5,-2.5
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Service
   - uid: 12943
     components:
     - type: Transform
@@ -87977,6 +88003,10 @@ entities:
     - type: Transform
       parent: 2
       pos: -17.5,-4.5
+    - type: AccessReader
+      accessListsOriginal: []
+      access:
+      - - Service
   - uid: 23797
     components:
     - type: Transform
@@ -148777,6 +148807,13 @@ entities:
         -	The grill is wired up correctly
 
         -	The death row inmate is handcuffed
+  - uid: 29190
+    components:
+    - type: Transform
+      parent: 2
+      pos: -18.505623,-3.3698072
+    - type: Paper
+      content: Sorry for this sorry state of an office. Do what you can to make do for now.
 - proto: PaperWritten
   entities:
   - uid: 15354
@@ -196505,6 +196542,14 @@ entities:
       pos: 72.08302,-39.542492
     - type: Battery
       lastCharge: 1500
+- proto: WeaponShotgunDoubleBarreledRubber
+  entities:
+  - uid: 29188
+    components:
+    - type: Transform
+      parent: 2
+      pos: -16.674068,-3.1866355
+    - type: LimbAimedThrow
 - proto: WebBed
   entities:
   - uid: 3558

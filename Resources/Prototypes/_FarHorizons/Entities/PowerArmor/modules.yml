@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    sprite: _FarHorizons/Objects/Misc/PowerArmor/modules.rsi
   - type: Item
     size: Small
   - type: InteractionOutline
@@ -20,8 +20,7 @@
   components:
   - type: Sprite
     layers:
-    - state: generic
-    - state: icon-tools
+    - state: dnalock
   - type: PowerArmorPassiveModule
     comps:
       - type: IdClothingBlocker
@@ -40,8 +39,7 @@
   components:
   - type: Sprite
     layers:
-    - state: generic
-    - state: icon-tools
+    - state: sechud_visor
   - type: PowerArmorPassiveModule
     comps:
     - type: ShowJobIcons

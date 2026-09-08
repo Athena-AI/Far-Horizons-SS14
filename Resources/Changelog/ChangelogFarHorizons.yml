@@ -19348,5 +19348,12 @@ Entries:
   id: 170000
   time: '2026-09-06T15:40:28.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1700
+- author: RubiconLocked
+  changes:
+  - message: RedSword Operatives now spawn with a X-01 with the proper RSO access.
+    type: Fix
+  id: 170600
+  time: '2026-09-08T14:54:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1706
 Order: -1
 

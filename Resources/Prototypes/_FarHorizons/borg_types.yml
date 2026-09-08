@@ -123,6 +123,16 @@
   radioChannels:
   - SyndiEngi
   - SyndiSci
+  
+   # Starlight start: Engiborg hud, access
+  addComponents:
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+    - Robotic #FH
+  - type: ShowAccessReaderSettings
+  # Starlight end
 
   # Visual
   inventoryTemplateId: borgShort

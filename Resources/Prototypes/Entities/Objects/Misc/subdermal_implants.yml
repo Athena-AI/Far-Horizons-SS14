@@ -79,7 +79,7 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: TrackingImplant
-  name: tracking implant
+  name: Tracking Implant (NT) #FH
   description: This implant has a tracking device attached to the suit sensor network, as well as a condition monitor for the Security radio channel.
   categories: [ HideSpawnMenu ]
   components:
@@ -101,7 +101,7 @@
     #region Starlight Tracker rattle
     - type: TriggerOnMobstateChange
       mobState:
-      - Critical
+      - ActiveCritical #FH
     - type: RattleOnTrigger
       targetUser: true
       radioChannel: Security

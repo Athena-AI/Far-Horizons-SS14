@@ -102,6 +102,7 @@
     - type: TriggerOnMobstateChange
       mobState:
       - ActiveCritical #FH
+      - Critical
     - type: RattleOnTrigger
       targetUser: true
       radioChannel: Security

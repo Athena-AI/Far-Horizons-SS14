@@ -170,6 +170,7 @@
     - type: TriggerOnMobstateChange
       mobState:
       - ActiveCritical
+      - Critical
     - type: RattleOnTrigger
       targetUser: true
       radioChannel: SyndiSec

@@ -19378,5 +19378,26 @@ Entries:
   id: 170800
   time: '2026-09-08T15:00:29.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1708
+- author: KarusKardin
+  changes:
+  - message: Added NS variants of the Encryption Key Boxes
+    type: Add
+  id: 171000
+  time: '2026-09-08T15:06:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1710
+- author: KarusKardin
+  changes:
+  - message: Fixed Mailtech not having maintenance access on NS stations
+    type: Fix
+  id: 171001
+  time: '2026-09-08T15:06:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1710
+- author: KarusKardin
+  changes:
+  - message: Fixed EyeImplantDiagnostic not having Robotic in ShowHealthBars Component
+    type: Fix
+  id: 171002
+  time: '2026-09-08T15:06:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1710
 Order: -1
 

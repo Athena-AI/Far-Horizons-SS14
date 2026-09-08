@@ -31,6 +31,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        InitializeMultiple(); //Far Horizons
 
         SubscribeLocalEvent<ToggleableClothingComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<ToggleableClothingComponent, MapInitEvent>(OnMapInit);
@@ -120,7 +121,10 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
     private void OnGetAttachedStripVerbsEvent(EntityUid uid, AttachedClothingComponent component, GetVerbsEvent<EquipmentVerb> args)
     {
         // redirect to the attached entity.
-        OnGetVerbs(component.AttachedUid, Comp<ToggleableClothingComponent>(component.AttachedUid), args);
+        if(HasComp<ToggleableClothingComponent>(component.AttachedUid))
+            OnGetVerbs(component.AttachedUid, Comp<ToggleableClothingComponent>(component.AttachedUid), args);
+        else if(HasComp<ToggleableClothingMultipleComponent>(component.AttachedUid))
+            OnGetVerbs(component.AttachedUid, Comp<ToggleableClothingMultipleComponent>(component.AttachedUid), args);
     }
 
     private void OnDoAfterComplete(EntityUid uid, ToggleableClothingComponent component, ToggleClothingDoAfterEvent args)
@@ -136,14 +140,29 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (!TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleCom)
-            || toggleCom.Container == null)
-            return;
+        if (TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleCom))
+        {
+            if(toggleCom.Container == null)
+                return;
 
-        if (!_inventorySystem.TryUnequip(Transform(uid).ParentUid, toggleCom.Slot, force: true))
-            return;
+            if (!_inventorySystem.TryUnequip(Transform(uid).ParentUid, toggleCom.Slot, force: true))
+                return;
 
-        _containerSystem.Insert(uid, toggleCom.Container);
+            _containerSystem.Insert(uid, toggleCom.Container);
+        }
+        else if (TryComp(component.AttachedUid, out ToggleableClothingMultipleComponent? toggleMulti))
+        {
+            if(toggleMulti.Container == null)
+                return;
+
+            if (!_inventorySystem.TryUnequip(Transform(uid).ParentUid, component.Slot, force: true))
+                return;
+
+            _containerSystem.Insert(uid, toggleMulti.Container);
+            toggleMulti.ClothingUids.Add(component.Slot, uid);
+            Dirty(component.AttachedUid, toggleMulti);
+        }
+
         args.Handled = true;
     }
 
@@ -188,14 +207,22 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         // still be left with a suit that was simply missing a helmet. There is currently no way to fix a partially
         // broken suit like this.
 
-        if (!TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleComp))
-            return;
+        if (TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleComp))
+        {
+            if (toggleComp.LifeStage > ComponentLifeStage.Running)
+                return;
 
-        if (toggleComp.LifeStage > ComponentLifeStage.Running)
-            return;
+            _actionsSystem.RemoveAction(toggleComp.ActionEntity);
+            RemComp(component.AttachedUid, toggleComp);
+        }
+        else if (TryComp(component.AttachedUid, out ToggleableClothingMultipleComponent? toggleMulti))
+        {
+            if (toggleMulti.LifeStage > ComponentLifeStage.Running || toggleMulti.ClothingUids.Count != 0)
+                return;
 
-        _actionsSystem.RemoveAction(toggleComp.ActionEntity);
-        RemComp(component.AttachedUid, toggleComp);
+            _actionsSystem.RemoveAction(toggleMulti.ActionEntity);
+            RemComp(component.AttachedUid, toggleMulti);
+        }
     }
 
     /// <summary>
@@ -210,16 +237,26 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         if (component.LifeStage > ComponentLifeStage.Running)
             return;
 
-        if (!TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleComp))
-            return;
+        if (TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleComp))
+        {
+            if (LifeStage(component.AttachedUid) > EntityLifeStage.MapInitialized)
+                return;
 
-        if (LifeStage(component.AttachedUid) > EntityLifeStage.MapInitialized)
-            return;
+            // As unequipped gets called in the middle of container removal, we cannot call a container-insert without causing issues.
+            // So we delay it and process it during a system update:
+            if (toggleComp.ClothingUid != null && toggleComp.Container != null)
+                _containerSystem.Insert(toggleComp.ClothingUid.Value, toggleComp.Container);
+        }
+        else if (TryComp(component.AttachedUid, out ToggleableClothingMultipleComponent? toggleMulti))
+        {
+            if (LifeStage(component.AttachedUid) > EntityLifeStage.MapInitialized)
+                return;
 
-        // As unequipped gets called in the middle of container removal, we cannot call a container-insert without causing issues.
-        // So we delay it and process it during a system update:
-        if (toggleComp.ClothingUid != null && toggleComp.Container != null)
-            _containerSystem.Insert(toggleComp.ClothingUid.Value, toggleComp.Container);
+            if (toggleMulti.ClothingUids.TryGetValue(component.Slot, out var clothing) && clothing != null && toggleMulti.Container != null)
+            {
+                _containerSystem.Insert(clothing.Value, toggleMulti.Container);
+            }
+        }
     }
 
     /// <summary>
@@ -307,4 +344,6 @@ public sealed partial class ToggleClothingEvent : InstantActionEvent
 [Serializable, NetSerializable]
 public sealed partial class ToggleClothingDoAfterEvent : SimpleDoAfterEvent
 {
+    [DataField] //Far Horizons
+    public string Slot = string.Empty;
 }

@@ -77,7 +77,8 @@
             - PowerCell
   - type: ContainerContainer
     containers:
-      toggleable-clothing: !type:ContainerSlot {}
+      toggleable-clothing: !type:Container
+        ents: []
       parts: !type:Container
         ents: []
       modules: !type:Container
@@ -102,8 +103,10 @@
   - type: ArmorSparkEffect
   - type: SpaceRescuePingSender 
   - type: HeatRadiationBlocker
-  - type: ToggleableClothing
-    clothingPrototype: PowerArmorHelmetNaked
+  - type: ToggleableClothingMultiple
+    clothingPrototypes: 
+      head: PowerArmorHelmetNaked
+      gloves: ClothingHandsGlovesSecurityPowered
   - type: PowerArmor
     parts:
       Chest: null
@@ -121,6 +124,8 @@
         type: PowerArmorBoundUserInterface
       enum.PowerArmorRadialMenuUiKey.Key:
         type: PowerArmorRadialBoundUserInterface
+      enum.ClothingToggleRadialMenuUiKey.Key:
+        type: ToggleableClothingRadialMultipleBoundUserInterface
   - type: PowerCellSlot
     cellSlotId: cell_slot
     fitsInCharger: false
@@ -146,8 +151,10 @@
   id: PowerArmorNTJuggernautFilled
   suffix: NT, Filled
   components:
-  - type: ToggleableClothing
-    clothingPrototype: PowerArmorHelmetNTJuggernautFilled
+  - type: ToggleableClothingMultiple
+    clothingPrototypes: 
+      head: PowerArmorHelmetNTJuggernautFilled
+      gloves: ClothingHandsGlovesSecurityPowered
   - type: ContainerFill
     containers:
       modules: 

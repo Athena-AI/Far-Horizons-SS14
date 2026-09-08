@@ -19371,5 +19371,12 @@ Entries:
   id: 170701
   time: '2026-09-08T14:57:38.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1707
+- author: mogaiskii
+  changes:
+  - message: Actually added NSHC2 to the rotation this time. Point and laugh.
+    type: Fix
+  id: 170800
+  time: '2026-09-08T15:00:29.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1708
 Order: -1
 

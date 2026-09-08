@@ -190,7 +190,7 @@
 
 - type: entity
   id: TrackingImplanter
-  name: tracking implanter
+  name: Tracking Implant (NT) #FH
   parent: BaseImplantOnlyImplanter
   components:
   - type: Implanter

@@ -19399,5 +19399,40 @@ Entries:
   id: 171002
   time: '2026-09-08T15:06:49.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1710
+- author: Mizuki
+  changes:
+  - message: Added NS Tracking implant
+    type: Add
+  id: 171100
+  time: '2026-09-08T15:15:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1711
+- author: Mizuki
+  changes:
+  - message: Added NS Tracking implant crate, which can be bought through GSL
+    type: Add
+  id: 171101
+  time: '2026-09-08T15:15:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1711
+- author: Mizuki
+  changes:
+  - message: NS Implanter Crate now contains NS tracking implanters
+    type: Tweak
+  id: 171102
+  time: '2026-09-08T15:15:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1711
+- author: Mizuki
+  changes:
+  - message: Tracking implanter crates use their faction's access only
+    type: Tweak
+  id: 171103
+  time: '2026-09-08T15:15:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1711
+- author: Mizuki
+  changes:
+  - message: Active crit will now trigger rattler
+    type: Fix
+  id: 171104
+  time: '2026-09-08T15:15:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1711
 Order: -1
 

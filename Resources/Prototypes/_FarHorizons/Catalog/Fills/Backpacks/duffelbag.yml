@@ -367,3 +367,129 @@
         - id: Scalpel
         - id: BoneGel
         - id: BoneSetter
+  
+#region Consortium
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateAmmo
+  id: ClothingBackpackDuffelConsortiumAmmoFilledHP
+  name: Hollow-Point Ammo Bundle
+  description: Reloading! Contains 4-5 hollow-point magazines and one canister for all available nuclear operative weapons, minus the China-Lake.
+  suffix: C
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: MagazineCanisterRevolver38HP
+        - id: MagazineCanisterMagnumHP
+        - id: MagazineCanisterRifle556HP
+        - id: MagazineCanisterLightRifleHP
+        - id: MagazineCanisterPistolHP
+        - id: MagazinePistolSubMachineGunHP
+          amount: 9
+        - id: MagazineShotgun
+          amount: 7
+        - id: MagazineRifle556HP
+          amount: 4
+        - id: MagazineMagnumRifleSP #no HP counterpart
+          amount: 4
+        - id: MagazineLightRifleBoxSP #no HP counterpart
+          amount: 4
+        - id: MagazineBatteryUAAP
+          amount: 2
+        - id: MagazineBatteryUA
+          amount: 2
+        - id: MagazinePistolCaselessRifle
+          amount: 5
+        - id: MagazinePistolHP
+          amount: 5
+        - id: MagazinePistol38HP
+          amount: 5
+        - id: MagazineBoxAntiMateriel
+          amount: 4
+        - id: MagazineMagnum
+          amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateAmmo
+  id: ClothingBackpackDuffelConsortiumAmmoFilledFMJ
+  name: Full Metal Jacket Ammo Bundle
+  description: Reloading! Contains 4-5 full metal jacket magazines and one canister for all avaliable nuclear operative weapons, minus the China-Lake.
+  suffix: C
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: MagazineCanisterRevolver38FMJ
+        - id: MagazineCanisterMagnumFMJ
+        - id: MagazineCanisterRifle556FMJ
+        - id: MagazineCanisterLightRifleFMJ
+        - id: MagazineCanisterPistolFMJ
+        - id: MagazinePistolSubMachineGunFMJ
+          amount: 9
+        - id: MagazineRifle556FMJ
+          amount: 4
+        - id: MagazineMagnumRifleSP #no FMJ counterpart
+          amount: 4
+        - id: MagazineLightRifleBoxSP #no FMJ counterpart
+          amount: 4
+        - id: MagazineShotgunSlug
+          amount: 7
+        - id: MagazineBatteryUAAP
+          amount: 2
+        - id: MagazineBatteryUA
+          amount: 2
+        - id: MagazinePistolCaselessRifle
+          amount: 5
+        - id: MagazinePistolFMJ
+          amount: 5
+        - id: MagazinePistol38FMJ
+          amount: 5
+        - id: MagazineBoxAntiMateriel
+          amount: 4
+        - id: MagazineMagnumFMJ
+          amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateAmmo
+  id: ClothingBackpackDuffelConsortiumAmmoFilled
+  name: Soft-Point Ammo Bundle
+  description: "Reloading! Contains 4-5 soft-point magazines and one canister for all avaliable nuclear operative weapons, minus the China-Lake." #FH
+  suffix: C
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: MagazineCanisterRevolver38SP
+        - id: MagazineCanisterMagnumSP
+        - id: MagazineCanisterRifle556SP
+        - id: MagazineCanisterLightRifleSP
+        - id: MagazineCanisterPistolSP
+        - id: MagazinePistolSubMachineGunSP
+          amount: 5
+        - id: MagazineRifle556SP
+          amount: 4
+        - id: MagazineMagnumRifleSP
+          amount: 4
+        - id: MagazineLightRifleBoxSP
+          amount: 4
+        - id: MagazineShotgunFlechette
+          amount: 7
+        - id: MagazineBatteryUAAP
+          amount: 2
+        - id: MagazineBatteryUA
+          amount: 2
+        - id: MagazinePistolCaselessRifle
+          amount: 5
+        - id: MagazinePistolSP
+          amount: 5
+        - id: MagazinePistol38SP
+          amount: 5
+        - id: MagazinePistolSubMachineGunSP
+          amount: 4
+        - id: MagazineBoxAntiMateriel
+          amount: 4
+        - id: MagazineMagnum
+          amount: 4

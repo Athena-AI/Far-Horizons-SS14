@@ -389,7 +389,7 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: FakeMindShieldImplant
-  name: fake mindshield implant
+  name: Fake Mindshield Implant (NT) # FH
   description: This implant allows the implanter to produce a fake signal that security huds use to identify individuals implanted with a mindshield. # FH
   categories: [ HideSpawnMenu ]
   components:

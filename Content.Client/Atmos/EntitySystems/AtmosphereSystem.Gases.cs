@@ -21,18 +21,18 @@ public sealed partial class AtmosphereSystem
         throw new NotImplementedException();
     }
 
-    public override bool IsMixtureFuel(GasMixture mixture, float epsilon = Atmospherics.Epsilon)
+    public override bool IsMixtureFuel(GasMixture mixture, float epsilon = 0.01f) // Far Horizons change default epsilon
     {
         var tmp = new float[Atmospherics.AdjustedNumberOfGases];
         TensorPrimitives.Multiply(mixture.Moles, GasFuelMask, tmp);
-        return TensorPrimitives.Sum(tmp) > epsilon;
+        return TensorPrimitives.Max(tmp) > epsilon; // Far Horizons - switched sum to max
     }
 
-    public override bool IsMixtureOxidizer(GasMixture mixture, float epsilon = Atmospherics.Epsilon)
+    public override bool IsMixtureOxidizer(GasMixture mixture, float epsilon = 0.01f) // Far Horizons change default epsilon
     {
         var tmp = new float[Atmospherics.AdjustedNumberOfGases];
         TensorPrimitives.Multiply(mixture.Moles, GasOxidizerMask, tmp);
-        return TensorPrimitives.Sum(tmp) > epsilon;
+        return TensorPrimitives.Max(tmp) > epsilon; // Far Horizons - switched sum to max
     }
 
     public override float GetMass(GasMixture mix)

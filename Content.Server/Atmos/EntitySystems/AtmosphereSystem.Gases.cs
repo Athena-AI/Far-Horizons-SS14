@@ -59,18 +59,18 @@ namespace Content.Server.Atmos.EntitySystems
             return MathF.Max(TensorPrimitives.Sum(tmp), Atmospherics.MinimumHeatCapacity);
         }
 
-        public override bool IsMixtureFuel(GasMixture mixture, float epsilon = Atmospherics.Epsilon)
+        public override bool IsMixtureFuel(GasMixture mixture, float epsilon = 0.01f) // Far Horizons change default epsilon
         {
             Span<float> tmp = stackalloc float[Atmospherics.AdjustedNumberOfGases];
             TensorPrimitives.Multiply(mixture.Moles, GasFuelMask, tmp);
-            return TensorPrimitives.Sum(tmp) > epsilon;
+            return TensorPrimitives.Max(tmp) > epsilon; // Far Horizons - switched sum to max
         }
 
-        public override bool IsMixtureOxidizer(GasMixture mixture, float epsilon = Atmospherics.Epsilon)
+        public override bool IsMixtureOxidizer(GasMixture mixture, float epsilon = 0.01f) // Far Horizons change default epsilon
         {
             Span<float> tmp = stackalloc float[Atmospherics.AdjustedNumberOfGases];
             TensorPrimitives.Multiply(mixture.Moles, GasOxidizerMask, tmp);
-            return TensorPrimitives.Sum(tmp) > epsilon;
+            return TensorPrimitives.Max(tmp) > epsilon; // Far Horizons - switched sum to max
         }
 
         /// <summary>

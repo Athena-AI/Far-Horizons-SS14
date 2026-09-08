@@ -370,7 +370,7 @@
   - type: Clothing
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_shotgun.rsi
   - type: Gun
-    fireRate: 1 # bring back to 2 when bullet spread is a thing
+    fireRate: 2 
     spread: 10
     soundGunshot:
       path: /Audio/_Starlight/Weapons/Energy/laser_shotgun.ogg
@@ -390,7 +390,12 @@
       fireCost: 150 # ~ 8 shots 
       visualState: lethal
       magState: lethal
-      heldPrefix: lethal 
+      heldPrefix: lethal
+    - proto: BoltPlasmaSingle
+      fireCost: 200 # ~ 6 shots 
+      visualState: lethal
+      magState: lethal
+      heldPrefix: lethal
   - type: Item
     size: Large
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_shotgun_inhands_64x.rsi
@@ -431,7 +436,7 @@
   - type: Clothing
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/laser_shotgun.rsi
   - type: Gun
-    fireRate: 1 # bring back to 2 when bullet spread is a thing
+    fireRate: 2
     spread: 10
     soundGunshot:
       path: /Audio/_Starlight/Weapons/Energy/laser_shotgun.ogg
@@ -458,6 +463,17 @@
         - gamma
     - proto: RedLaserBeamSpread
       fireCost: 150 # ~ 16 shots 
+      visualState: lethal
+      magState: lethal
+      heldPrefix: lethal
+      conditions:
+      - !type:AlertLevelCondition
+        alertLevels:
+        - violet
+        - red
+        - gamma
+    - proto: RedLaserBeamSingle
+      fireCost: 300 # ~ 8 shots 
       visualState: lethal
       magState: lethal
       heldPrefix: lethal
@@ -548,6 +564,7 @@
       - HoloflarePistol
   - type: StaticPrice
     price: 50
+  - type: PacifismAllowedGun
 
 - type: entity
   id: WeaponHoloflarePistolSec

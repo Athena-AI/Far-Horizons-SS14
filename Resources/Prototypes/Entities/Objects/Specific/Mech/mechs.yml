@@ -385,10 +385,10 @@
   parent: MechPaddyBattery
   suffix: Battery, Air, Filled
   components:
-  - type: Mech
-#    startingEquipment:
-#      - WeaponMechCombatDisabler
-#      - WeaponMechCombatFlashbangLauncher
+    - type: Mech
+      startingEquipment:
+      - WeaponMechCombatTaser
+      - WeaponMechCombatFlashbangLauncher
 #      - MechEquipmentSecGrabber
 
 # Clarke

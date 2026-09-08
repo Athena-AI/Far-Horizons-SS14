@@ -26,7 +26,7 @@
   id: BaseTraitorStealObjective
   components:
   - type: StealCondition
-    verifyMapExistence: false
+    verifyMapExistence: true #FH
   - type: Objective
     difficulty: 1.5 #Starlight edit, this was way too high and it made stuff like hypo, crew monitor, license and diploma cost 2.75 which is odd
   - type: ObjectiveLimit
@@ -325,6 +325,7 @@
   - type: ObjectiveLimit
     limit: 3 # ian only has 2 slices, 3 obj for drama
   - type: StealCondition
+    verifyMapExistence: false #FH
     stealGroup: FoodMeatCorgi
     owner: objective-condition-steal-Ian
 

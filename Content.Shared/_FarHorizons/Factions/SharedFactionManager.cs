@@ -225,6 +225,16 @@ public abstract partial class SharedFactionManager : ISharedFactionManager
         _prototypeManager.Index(factionJob.job).ExtendedAccessGroups :
         OverrideJobExtendedAccessGroups(assignment!);
 
+    public JobSpecial[] OverrideJobSpecial(FactionJobAssignmentPrototype assignment) =>
+        assignment.Override == null || assignment.Override.Special == null ?
+            _prototypeManager.Index(assignment.Job).Special :
+            assignment.Override.Special;
+
+    public JobSpecial[] OverrideJobSpecial((ProtoId<FactionPrototype>? faction, ProtoId<JobPrototype> job) factionJob) =>
+        factionJob.faction is null || !TryGetJobAssignment((factionJob.faction.Value, factionJob.job), out var assignment) ? 
+        _prototypeManager.Index(factionJob.job).Special :
+        OverrideJobSpecial(assignment!);
+
     private (ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) GetDefaultIdsWithJob() =>
         (GetDefaultFaction(), SharedGameTicker.FallbackOverflowJob);
     private static bool TryGetFactionColor(FactionPrototype faction, out Color color) => Color.TryParse(faction.Color, out color);

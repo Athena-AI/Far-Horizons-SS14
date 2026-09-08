@@ -245,7 +245,17 @@
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector
-        tableId: BeltSecurityEntityTable
+        tableId: BeltSecurityEntityTableNS
+
+- type: entityTable
+  id: BeltSecurityEntityTableNS
+  table: !type:AllSelector
+    children:
+    - id: Stunbaton
+    - id: Handcuffs
+      amount: 2
+    - id: HoloprojectorSecurity
+    - id: RadioHandheldSecurityNS
 
 #region Service
 - type: entity

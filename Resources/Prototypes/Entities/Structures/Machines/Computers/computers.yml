@@ -34,10 +34,6 @@
           2: { state: alert-1 }
           3: { state: alert-2 }
           4: { state: alert-2 }
-      enum.WiresVisuals.MaintenancePanelState:
-        enum.WiresVisualLayers.MaintenancePanel:
-          True: { visible: false }
-          False: { visible: true }
       # Starlight Start
       enum.EdgeConnectionVisuals.ConnectionMask:
         computerLayerBody:
@@ -910,6 +906,7 @@
   parent: ComputerComms
   id: CentcommComputerComms
   name: Central Command Communications Computer #Far Horizons - The Great Capitalization Crusade
+  suffix: NT #FH
   description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
   components:
   - type: Sprite
@@ -1434,10 +1431,6 @@
           computerLayerKeys:
             True: { visible: true, shader: unshaded }
             False: { visible: true }
-        enum.WiresVisuals.MaintenancePanelState:
-          enum.WiresVisualLayers.MaintenancePanel:
-            True: { visible: false }
-            False: { visible: true }
         # Starlight Start
         enum.EdgeConnectionVisuals.ConnectionMask:
           computerLayerBody:
@@ -1887,10 +1880,6 @@
           Occupied: { state: ai-fixer-full }
           Rebooting: { state: ai-fixer-404 }
           Dead: { state: ai-fixer-404 }
-      enum.WiresVisuals.MaintenancePanelState:
-        enum.WiresVisualLayers.MaintenancePanel:
-          True: { visible: false }
-          False: { visible: true }
       # Starlight Start
       enum.EdgeConnectionVisuals.ConnectionMask:
         computerLayerBody:

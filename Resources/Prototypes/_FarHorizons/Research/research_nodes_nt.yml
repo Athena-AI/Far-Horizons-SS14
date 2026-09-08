@@ -250,6 +250,7 @@
     - PortableGeneratorPacmanMachineCircuitboard
     - PortableGeneratorSuperPacmanMachineCircuitboard
     - PortableGeneratorJrPacmanMachineCircuitboard
+    - GeneratorAcmanMachineCircuitboard
     - SolarControlComputerCircuitboard
     - SolarTrackerElectronics
     - EmitterCircuitboard
@@ -768,8 +769,14 @@
     - ThrusterMachineCircuitboard
     - GyroscopeMachineCircuitboard
     - MiniGravityGeneratorCircuitboard
+    - SMESShipMachineCircuitboard
+    - SMESShuttleMachineCircuitboard
+    - WallmountSubstationElectronicsShip
+    - WallmountSubstationElectronicsShuttle
+    - SubstationShipMachineCircuitboard
+    - SubstationShuttleMachineCircuitboard
   announceTo:
-    - GSL # Far Horizons
+    - GSL
     - Engineering
 
 - type: researchTreeNode

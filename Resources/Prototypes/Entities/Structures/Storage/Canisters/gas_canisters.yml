@@ -149,7 +149,7 @@
       maxIntegrity: 25 # 5 times stronger than a gas tank
       integrity: 25
       maxReleasePressure: 1013.25
-      safetyPressure: 7599.375 # High enough that liquid tanks don't burst immediately
+      safetyPressure: 18100 # Far Horizons - increased to accomodate for volumetric pumps pumping 16k just on their own
       overpressure: 20265 # Purposefully high because cans react really fucking fast, may need to redo this value if reactions change!
       gasTankSlot:
         name: comp-gas-canister-slot-name-gas-tank

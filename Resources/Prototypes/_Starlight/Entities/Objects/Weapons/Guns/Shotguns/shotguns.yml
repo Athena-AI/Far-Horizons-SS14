@@ -258,7 +258,7 @@
   name: Makeshift Shotgun #Far Horizons - The Great Capitalization Crusade
   parent: [WeaponFlareGunSecurity, BaseMinorContraband]
   id: WeaponShotgunMakeshift
-  description: A small hand-cannon that fires .50 shotgun shells. Has no cloth to hold it together, so it has a high chance of falling apart with every shot.
+  description: A small hand-cannon that fires 12 gauge shotgun shells. Has no cloth to hold it together, so it has a high chance of falling apart with every shot.
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Weapons/Guns/Shotguns/makeshift_shotgun.rsi

@@ -108,6 +108,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_FarHorizons/Centcomms/CC_Outpost_G24.yml", //starlight centcomm map edited for FarHorizons
             "/Maps/_FarHorizons/Centcomms/CC_Outpost_SC17.yml", //starlight centcomm map edited for FarHorizons
             "/Maps/_FarHorizons/SHCs/shc.yml", //Syndicate high command
+            "/Maps/_FarHorizons/SHCs/NSHC2.yml", //NeoSol high command 2
             "/Maps/_FarHorizons/Non-Stations/GSL.yml", //Gemini Stellar Logistics
             "/Maps/_FarHorizons/Non-Stations/ListeningOutpost.yml", //the all new listen ops :ear emoji:
             "/Maps/_FarHorizons/Shuttles/GMN-Starbreaker-Battleship.yml", //Syndicate Battleship
@@ -135,6 +136,8 @@ namespace Content.IntegrationTests.Tests
             "FHCore",
             "FHUnity",
             "SHC",
+            "FHPrometheus",
+            "NSHC2",
         };
         private static readonly ResPath[] AllMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/_FarHorizons", "*.yml");
         private static readonly ResPath[] ShuttleMapFiles = GameDataScrounger.FilesInDirectoryInVfs("/Maps/_FarHorizons/Shuttles", "*.yml");

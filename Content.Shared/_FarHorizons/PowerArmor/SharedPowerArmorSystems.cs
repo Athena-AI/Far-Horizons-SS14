@@ -473,10 +473,15 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         if(Exists(PAComp.OtherHalf))
         {
             if(TryComp<PowerArmorComponent>(PAComp.OtherHalf, out var PAComp2))
-            if(ent.Comp.PartType == PAComp2.Parts.First().Key && PAComp2.Parts.First().Value != null)
             {
-                _popUp.PopupClient("This piece is already installed.", args.User);
-                return;
+                foreach(var part in PAComp2.Parts)
+                {
+                    if(ent.Comp.PartType == part.Key && part.Value != null)
+                    {
+                        _popUp.PopupClient("This piece is already installed.", args.User);
+                        return;
+                    }
+                }
             }
         }
 
@@ -544,30 +549,44 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     private void OnModuleInteract(Entity<PowerArmorModuleComponent> ent, ref AfterInteractEvent args)
     {
-        if (args.Target is not { } powerArmor)
-            return;
 
-        if (!TryComp<WiresPanelComponent>(powerArmor, out var wires) || !TryComp<PowerArmorComponent>(powerArmor, out var paComp))
+        if (args.Target is not { } powerArmor 
+        || !TryComp<WiresPanelComponent>(powerArmor, out var wires) 
+        || !TryComp<PowerArmorComponent>(powerArmor, out var paComp))
+        {
+            args.Handled = true;
             return;
+        }
 
         if (!wires.Open)
         {
             _popUp.PopupEntity("Open maintenance panel first.", args.User);
+            args.Handled = true;
             return;
         }
 
         var moduleMeta = MetaData(ent.Owner);
+        var totalComplexity = 0;
         foreach (var module in paComp.Modules)
         {
             var otherProto = MetaData(module).EntityPrototype;
-            if (otherProto == null)
+            if (!TryComp<PowerArmorModuleComponent>(module, out var pamComp) || otherProto == null)
                 continue;
 
             if (otherProto.ID == moduleMeta.EntityPrototype?.ID)
             {
                 _popUp.PopupEntity("This module is already installed.", args.User);
+                args.Handled = true;
                 return;
             }
+            totalComplexity+=pamComp.ComplexityCost;
+        }
+
+        if(totalComplexity > paComp.MaxComplexity)
+        {
+            _popUp.PopupEntity("Unable to install due exceeding modding capacity.", args.User);
+            args.Handled = true;
+            return;
         }
 
         if (_container.TryGetContainer(powerArmor, "modules", out var moduleContainer))

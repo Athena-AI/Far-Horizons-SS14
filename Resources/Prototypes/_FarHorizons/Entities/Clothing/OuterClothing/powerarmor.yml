@@ -1,7 +1,7 @@
 - type: entity
   id: PowerArmorNaked
   name: Power Armor
-  description: A modular hardsuit that is able to add or remove parts. It has a powered exoskeleton underneath in order to assist user moving the extra weight.
+  description: A modular hardsuit that is able to add or remove parts. It has a powered exoskeleton underneath in order to assist user moving the extra weight. Some assembly required.
   components:
   - type: Animateable
   - type: Clickable
@@ -134,7 +134,7 @@
     actions:
     - ActionOpenPowerArmorRadialMenu
     activeIfWorn: true
-  - type: FootstepModifier # STARLIGHT
+  - type: FootstepModifier
     footstepSoundCollection:
       collection: TechMarch
       params:
@@ -152,7 +152,6 @@
     containers:
       modules: 
         - PowerArmorModuleIDLockSecurityNT
-        - PowerArmorModuleSecurityVisor
       parts:
         - PowerArmorChestNTJuggernaut
         - PowerArmorLArmNTJuggernaut

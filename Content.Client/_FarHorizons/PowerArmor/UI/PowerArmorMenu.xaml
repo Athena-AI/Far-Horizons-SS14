@@ -32,6 +32,7 @@
                                 <RichTextLabel Text="Panel Status:" HorizontalAlignment="Left" Margin="10 5 0 0"/>
                                 <RichTextLabel Name="PanelStatus" Text="Closed" HorizontalAlignment="Left" Margin="5 5 0 0"/>
                             </BoxContainer>   
+                            <RichTextLabel Name="PowerDrain" Text="Total Power Drain: 0" HorizontalAlignment="Left" Margin="10 5 0 0"/>
                         </BoxContainer>
                 </BoxContainer>
             </PanelContainer>

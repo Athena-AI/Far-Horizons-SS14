@@ -22,6 +22,7 @@ using Content.Shared._FarHorizons.LimbDamage.Components;
 using Content.Shared._FarHorizons.LimbDamage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
+using Content.Shared.PowerCell.Components;
 
 namespace Content.Client._FarHorizons.PowerArmor.UI;
 
@@ -258,6 +259,8 @@ public sealed partial class PowerArmorMenu : FancyWindow
             LimbTargettingDisplay.ModulateSelfOverride = Color.White.WithAlpha(0.3f);
             DamageInfoPanel.Visible = false;
         }
+        if(_entityManager.TryGetComponent<PowerCellDrawComponent>(_entity, out var pcdComp))
+            PowerDrain.Text = $"Total Power Drain: {pcdComp.DrawRate}";
     }
 
     private void AddModulePanel(EntityUid module)

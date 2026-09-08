@@ -102,6 +102,7 @@
   id: PowerArmorNTJuggernaut
   parent: PowerArmorPartBase
   name: NanoTrasen Heavy Hardsuit
+  description: A piece of Powered Armor, if you're looking at this, you've either made a brand new piece or something has gone horribly wrong. Some Assembly Required.
   abstract: true
   components:
   - type: Sprite
@@ -126,11 +127,17 @@
         Heat: 0.80
         Radiation: 0.25
     speedModifier: 0.085 #Its Additive Per Piece also remember there is already a 40% speed reduc from the poweramor itself
+
+- type: entity
+  id: PowerArmorNTJuggernautLimbs
+  parent: PowerArmorNTJuggernaut
+  abstract: true
+  components:
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 10 #For Debug Purposes
+        damage: 100
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -144,7 +151,18 @@
   id: PowerArmorHelmetNTJuggernaut
   parent: [ PowerArmorHelmetBase, PowerArmorNTJuggernaut]
   name: NanoTrasen Heavy Hardsuit Helmet
-  description: A helmet developed by Telos Industries made of pure plasteel that can take excessive amounts of punishment before requiring repairs.
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
 
 #region Chest
 
@@ -152,27 +170,39 @@
   id: PowerArmorChestNTJuggernaut
   parent: [PowerArmorChestBase, PowerArmorNTJuggernaut]
   name: NanoTrasen Heavy Hardsuit Chest
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
 
 #region Arms
 
 - type: entity
   id: PowerArmorLArmNTJuggernaut
-  parent: [PowerArmorLArmBase, PowerArmorNTJuggernaut]
+  parent: [PowerArmorLArmBase, PowerArmorNTJuggernautLimbs]
   name: NanoTrasen Heavy Hardsuit Left Arm
 
 - type: entity
   id: PowerArmorRArmNTJuggernaut
-  parent: [PowerArmorRArmBase, PowerArmorNTJuggernaut]
+  parent: [PowerArmorRArmBase, PowerArmorNTJuggernautLimbs]
   name: NanoTrasen Heavy Hardsuit Right Arm
 
 #region Legs
 
 - type: entity
   id: PowerArmorLLegNTJuggernaut
-  parent: [PowerArmorLLegBase, PowerArmorNTJuggernaut]
+  parent: [PowerArmorLLegBase, PowerArmorNTJuggernautLimbs]
   name: NanoTrasen Heavy Hardsuit Left Leg
 
 - type: entity
   id: PowerArmorRLegNTJuggernaut
-  parent: [PowerArmorRLegBase, PowerArmorNTJuggernaut]
+  parent: [PowerArmorRLegBase, PowerArmorNTJuggernautLimbs]
   name: NanoTrasen Heavy Hardsuit Right Leg

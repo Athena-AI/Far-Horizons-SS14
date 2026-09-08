@@ -38,29 +38,50 @@ public sealed partial class PowerArmorComponent : Component
     public float TotalSpeedModifier = 1.0f;
 
     /// <summary>
+    /// Basically the helmet or the suit depending on which one you are looking at.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid OtherHalf;
+
+    /// <summary>
+    /// Basically is this the suit or not.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public bool IsPrimary = true;
+
+    /// <summary>
+    /// Checks if the suit is powered.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public bool IsPowered = false;
+
+    /// <summary>
+    /// Who is wearing the suit
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? Wearer;
+
+    /// <summary>
+    /// Which part is the player aiming to uninstall
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? UninstallTarget;
+
+    /// <summary>
+    /// List of all currently installed modules.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public List<EntityUid> Modules = new();
+
+    /// <summary>
     /// All the parts assigned to this power armor
     /// </summary>
     [DataField, AutoNetworkedField]
     public Dictionary<PowerArmorVisualLayers, EntityUid?> Parts = new();
 
-    [ViewVariables, AutoNetworkedField]
-    public EntityUid OtherHalf;
-
-    [ViewVariables, AutoNetworkedField]
-    public bool IsPrimary = true;
-
-    [ViewVariables, AutoNetworkedField]
-    public bool IsPowered = false;
-
-    [ViewVariables, AutoNetworkedField]
-    public EntityUid? Wearer;
-
-    [ViewVariables, AutoNetworkedField]
-    public EntityUid? UninstallTarget;
-
-    [ViewVariables, AutoNetworkedField]
-    public List<EntityUid> Modules = new();
-
+    /// <summary>
+    /// Max Modding capacity for a suit.
+    /// </summary>
     [DataField]
     public int MaxComplexity = 20;
 }
@@ -107,6 +128,9 @@ public sealed partial class PowerArmorPartComponent : Component
     [ViewVariables, AutoNetworkedField]
     public bool isBroken = false;
 
+    /// <summary>
+    /// Is the part installed and if so to whom
+    /// </summary>
     [ViewVariables, AutoNetworkedField]
     public EntityUid? AttachedTo;
 }

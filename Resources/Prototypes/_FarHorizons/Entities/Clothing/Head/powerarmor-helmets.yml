@@ -2,6 +2,7 @@
   parent: ClothingHeadSuitWithLightBase
   id: PowerArmorHelmetNaked
   name: Power Armor Helmet
+  description: Some assembly required.
   components:
   - type: Animateable
   - type: Clickable

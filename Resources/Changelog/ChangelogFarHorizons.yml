@@ -19355,5 +19355,21 @@ Entries:
   id: 170600
   time: '2026-09-08T14:54:20.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1706
+- author: Killer Tamashi
+  changes:
+  - message: Fixed WT500 spawner spawning with WT500 mags (we don't use them) instead
+      of SMG mags.
+    type: Fix
+  id: 170700
+  time: '2026-09-08T14:57:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1707
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Mention of "Disabler" in code blue sop in the guidebook. It now
+      says taser.
+    type: Fix
+  id: 170701
+  time: '2026-09-08T14:57:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1707
 Order: -1
 

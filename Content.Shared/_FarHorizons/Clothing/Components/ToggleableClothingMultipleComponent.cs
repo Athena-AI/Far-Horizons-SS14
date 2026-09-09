@@ -72,6 +72,12 @@ public sealed partial class ToggleableClothingMultipleComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Dictionary<string, string?> VerbTexts = new();
+
+    /// <summary>
+    ///    
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Dictionary<string, bool> ReplaceExistingClothing = new();
 }
 
 public sealed partial class OpenClothingToggleRadial : InstantActionEvent;

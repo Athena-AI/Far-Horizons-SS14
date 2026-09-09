@@ -126,7 +126,7 @@
         Piercing: 0.70 
         Heat: 0.80
         Radiation: 0.25
-    speedModifier: 0.085 #Its Additive Per Piece also remember there is already a 40% speed reduc from the poweramor itself
+    speedModifier: 0.085 #Formula for this speed reduction would be like 0.6 (Armor) * (0.085 * Parts installed) with 6 = 0.306
 
 - type: entity
   id: PowerArmorNTJuggernautLimbs

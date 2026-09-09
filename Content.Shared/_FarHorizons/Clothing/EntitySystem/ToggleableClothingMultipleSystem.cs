@@ -97,9 +97,6 @@ public sealed partial class ToggleableClothingSystem
         {
             BreakOnDamage = true,
             BreakOnMove = true,
-            // This should just re-use the BUI range checks & cancel the do after if the BUI closes. But that is all
-            // server-side at the moment.
-            // TODO BUI REFACTOR.
             DistanceThreshold = 2,
         };
 
@@ -159,21 +156,44 @@ public sealed partial class ToggleableClothingSystem
             return;
 
         var parent = Transform(target).ParentUid;
+        var replace = component.ReplaceExistingClothing.GetValueOrDefault(slot);
+        var isItOccuppied = _inventorySystem.TryGetSlotEntity(parent, slot, out var existing);
+
+        var occupiedByOther = isItOccuppied && existing != null && existing.Value != clothing.Value;
+
+        if (occupiedByOther && !replace)
+        {
+            _popupSystem.PopupClient(Loc.GetString("toggleable-clothing-remove-first", ("entity", existing!.Value)), user, user);
+            return;
+        }
+
         if (component.isActiveList[slot])
         {
             _inventorySystem.TryUnequip(user, parent, slot, force: true);
             component.isActiveList[slot] = false;
-        }
-        else if (_inventorySystem.TryGetSlotEntity(parent, slot, out var existing))
-        {
-            _popupSystem.PopupClient(Loc.GetString("toggleable-clothing-remove-first", ("entity", existing)),
-                user, user);
+
+            if (occupiedByOther)
+            {
+                _inventorySystem.TryEquip(user, clothing.Value, slot, force: true, triggerHandContact: true);
+                _containerSystem.Insert(existing!.Value, component.Container);
+                component.ClothingUids[slot] = existing;
+            }
+            else
+                _containerSystem.Insert(clothing.Value, component.Container);
         }
         else
         {
-            _inventorySystem.TryEquip(user, clothing.Value, slot, triggerHandContact:true);
+            if (occupiedByOther)
+            {
+                _inventorySystem.TryUnequip(user, parent, slot, force: true);
+                _containerSystem.Insert(existing!.Value, component.Container);
+                component.ClothingUids[slot] = existing;
+            }
+
+            _inventorySystem.TryEquip(user, clothing.Value, slot, triggerHandContact: true);
             component.isActiveList[slot] = true;
         }
+
         Dirty(target, component);
     }
 

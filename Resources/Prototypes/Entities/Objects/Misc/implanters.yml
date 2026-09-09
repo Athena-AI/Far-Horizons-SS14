@@ -311,6 +311,12 @@
   components:
   - type: Implanter
     implant: FakeMindShieldImplant
+    blacklist: 
+      components:
+      - Guardian
+      - FakeMindShield #FH
+      tags:
+      - Unimplantable
 
 # Security and Command implanters
 
@@ -321,6 +327,12 @@
   components:
   - type: Implanter
     implant: MindShieldImplant
+    blacklist: 
+      components:
+      - Guardian
+      - MindShield #FH
+      tags:
+      - Unimplantable
 
 # Centcomm implanters
 

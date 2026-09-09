@@ -154,6 +154,12 @@
   components:
   - type: Implanter
     implant: MindShieldImplantGSL
+    blacklist:
+      components:
+      - Guardian
+      - MindShield
+      tags:
+      - Unimplantable
 
 #NeoSol
 - type: entity
@@ -163,6 +169,12 @@
   components:
   - type: Implanter
     implant: MindShieldImplantNS
+    blacklist:
+      components:
+      - Guardian
+      - MindShield
+      tags:
+      - Unimplantable
 
 #Fake
 - type: entity
@@ -172,6 +184,12 @@
   components:
   - type: Implanter
     implant: FakeMindShieldImplantNS
+    blacklist:
+      components:
+      - Guardian
+      - FakeMindShield
+      tags:
+      - Unimplantable
 
 - type: entity
   id: DeathRattleImplanterNSHC

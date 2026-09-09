@@ -100,7 +100,7 @@
 - type: entity
   parent: MindShieldImplant
   id: MindShieldImplantNS
-  name: mindshield implant (NS)
+  name: Mindshield Implant (NS)
   description: This implant will ensure protection against mind control devices. # FH
   categories: [ HideSpawnMenu ]
   components:
@@ -110,7 +110,7 @@
 - type: entity
   parent: MindShieldImplant
   id: MindShieldImplantGSL
-  name: mindshield implant (GSL)
+  name: Mindshield Implant (GSL)
   description: This implant will ensure protection against mind control devices. # FH
   categories: [ HideSpawnMenu ]
   components:

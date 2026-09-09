@@ -405,7 +405,7 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: MindShieldImplant
-  name: mindshield implant
+  name: Mindshield Implant (NT) # FH
   description: This implant will ensure protection against mind control devices. # FH
   categories: [ HideSpawnMenu ]
   components:

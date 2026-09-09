@@ -121,10 +121,12 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
     private void OnGetAttachedStripVerbsEvent(EntityUid uid, AttachedClothingComponent component, GetVerbsEvent<EquipmentVerb> args)
     {
         // redirect to the attached entity.
+        // FarHorizons Start
         if(HasComp<ToggleableClothingComponent>(component.AttachedUid))
             OnGetVerbs(component.AttachedUid, Comp<ToggleableClothingComponent>(component.AttachedUid), args);
         else if(HasComp<ToggleableClothingMultipleComponent>(component.AttachedUid))
             OnGetVerbs(component.AttachedUid, Comp<ToggleableClothingMultipleComponent>(component.AttachedUid), args);
+        // FarHorizons End
     }
 
     private void OnDoAfterComplete(EntityUid uid, ToggleableClothingComponent component, ToggleClothingDoAfterEvent args)
@@ -140,6 +142,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         if (args.Handled)
             return;
 
+        // FarHorizons Start
         if (TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleCom))
         {
             if(toggleCom.Container == null)
@@ -162,7 +165,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
             toggleMulti.ClothingUids.Add(component.Slot, uid);
             Dirty(component.AttachedUid, toggleMulti);
         }
-
+        // FarHorizons End
         args.Handled = true;
     }
 
@@ -207,6 +210,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         // still be left with a suit that was simply missing a helmet. There is currently no way to fix a partially
         // broken suit like this.
 
+        // FarHorizons Start
         if (TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleComp))
         {
             if (toggleComp.LifeStage > ComponentLifeStage.Running)
@@ -223,6 +227,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
             _actionsSystem.RemoveAction(toggleMulti.ActionEntity);
             RemComp(component.AttachedUid, toggleMulti);
         }
+        // FarHorizons End
     }
 
     /// <summary>
@@ -237,6 +242,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
         if (component.LifeStage > ComponentLifeStage.Running)
             return;
 
+        // FarHorizons Start
         if (TryComp(component.AttachedUid, out ToggleableClothingComponent? toggleComp))
         {
             if (LifeStage(component.AttachedUid) > EntityLifeStage.MapInitialized)
@@ -257,6 +263,7 @@ public sealed partial class ToggleableClothingSystem : EntitySystem
                 _containerSystem.Insert(clothing.Value, toggleMulti.Container);
             }
         }
+        // FarHorizons End
     }
 
     /// <summary>

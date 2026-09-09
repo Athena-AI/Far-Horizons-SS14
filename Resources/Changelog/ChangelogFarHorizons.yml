@@ -19472,5 +19472,12 @@ Entries:
   id: 170402
   time: '2026-09-09T17:46:54.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1704
+- author: RubiconLocked
+  changes:
+  - message: SKB Implants can now extract all Mindshield types.
+    type: Fix
+  id: 171900
+  time: '2026-09-09T17:50:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1719
 Order: -1
 

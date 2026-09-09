@@ -19441,5 +19441,13 @@ Entries:
   id: 171200
   time: '2026-09-08T15:21:08.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1712
+- author: RubiconLocked
+  changes:
+  - message: NeoSol engineering cyborgs now have a diagnostic HUD, like their NanoTrasen
+      counterparts.
+    type: Fix
+  id: 172000
+  time: '2026-09-09T17:39:34.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1720
 Order: -1
 

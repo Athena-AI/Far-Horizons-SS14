@@ -19449,5 +19449,28 @@ Entries:
   id: 172000
   time: '2026-09-09T17:39:34.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1720
+- author: idkAnAlliasYetTbh
+  changes:
+  - message: (PROMETHEUS) Added a Station Beacon to the Zookeepers 'office'.
+    type: Add
+  id: 170400
+  time: '2026-09-09T17:46:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1704
+- author: idkAnAlliasYetTbh
+  changes:
+  - message: (PROMETHEUS) Tweaked the zookeeper spawn point to have standard zookeeper
+      job equipment nearby.
+    type: Tweak
+  id: 170401
+  time: '2026-09-09T17:46:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1704
+- author: idkAnAlliasYetTbh
+  changes:
+  - message: (PROMETHEUS) Penguins now have an air scrubber and vent in their exhibit.
+      No more corpses on display! Hopefully...
+    type: Fix
+  id: 170402
+  time: '2026-09-09T17:46:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1704
 Order: -1
 

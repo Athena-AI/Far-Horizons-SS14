@@ -19509,5 +19509,13 @@ Entries:
   id: 172902
   time: '2026-09-10T20:12:40.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1729
+- author: RubiconLocked
+  changes:
+  - message: The ZOZ Shotgun that spawns with a extended magazine now only accepts
+      ZOZ magazines and sounds like a regular ZOZ would.
+    type: Fix
+  id: 173100
+  time: '2026-09-10T22:26:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1731
 Order: -1
 

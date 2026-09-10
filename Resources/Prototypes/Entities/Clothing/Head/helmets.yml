@@ -24,9 +24,9 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.9 
+#FH start
+        Piercing: 0.9
         Heat: 0.9
-#FarHorizons - Start
   - type: LimbArmor
     limbs:
       Head:

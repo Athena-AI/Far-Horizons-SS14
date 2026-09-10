@@ -1623,8 +1623,8 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  - DeputyDuster
-  - DeputyCoat
+  - DeputyDuster #FH
+  - DeputyCoat #FH
 
 - type: loadoutGroup
   id: DetectiveJobTrinkets

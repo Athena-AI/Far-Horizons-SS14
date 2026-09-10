@@ -164,6 +164,7 @@
     containers:
       modules: 
         - PowerArmorModuleIDLockSecurityNT
+        - PowerArmorModuleSecurityVisor
       parts:
         - PowerArmorChestNTJuggernaut
         - PowerArmorLArmNTJuggernaut

@@ -432,7 +432,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
                 : string.Empty,
             HorizontalAlignment = HAlignment.Left,
             Margin = new Thickness(10, 0),
-            MaxWidth = 350
+            MaxWidth = 480
         };
         detailsBox.AddChild(descriptionLabel);
 

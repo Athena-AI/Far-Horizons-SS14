@@ -45,6 +45,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected IGameTiming _timing = default!;
     [Dependency] protected AlertsSystem _alerts = default!;
     [Dependency] protected SharedBatterySystem _battery = default!;
+    [Dependency] protected SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -225,13 +226,17 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
     private void ToolDoAfterComplete(Entity<PowerArmorComponent> ent, ref SimpleToolDoAfterEvent args)
     {
-        if(!Exists(ent.Comp.UninstallTarget)) return;
+        var target = ent.Comp.UninstallTarget;
+        if (target == null || !Exists(target)) return;
 
-        _container.TryRemoveFromContainer(ent.Comp.UninstallTarget.Value);
+        if (_container.TryGetContainingContainer(target.Value, out var container))
+            _container.Remove(target.Value, container, reparent: false, force: true);
+
+         _transform.DropNextTo(target.Value, ent.Owner);
+
         ent.Comp.UninstallTarget = null;
         Dirty(ent);
     }
-
     private void AfterInstallDoAfter(Entity<PowerArmorComponent> ent, ref InstallPartDoAfter args)
     {
         var part = GetEntity(args.Part);

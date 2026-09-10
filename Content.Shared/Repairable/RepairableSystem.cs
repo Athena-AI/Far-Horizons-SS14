@@ -1,7 +1,7 @@
 using System.Linq;
-using Content.Shared._FarHorizons.LimbDamage;
-using Content.Shared._FarHorizons.LimbDamage.Components;
-using Content.Shared._FarHorizons.PowerArmor;
+using Content.Shared._FarHorizons.LimbDamage;  // Far Horizons
+using Content.Shared._FarHorizons.LimbDamage.Components;  // Far Horizons
+using Content.Shared._FarHorizons.PowerArmor;  // Far Horizons
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body;
 using Content.Shared.Damage;
@@ -29,7 +29,7 @@ public sealed partial class RepairableSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<RepairableComponent, InteractUsingEvent>(Repair);
-        SubscribeLocalEvent<RepairableComponent, PowerArmorRelayedEvent<InteractUsingEvent>>(RepairRelayed);
+        SubscribeLocalEvent<RepairableComponent, PowerArmorRelayedEvent<InteractUsingEvent>>(RepairRelayed); // Far Horizons
         SubscribeLocalEvent<RepairableComponent, RepairDoAfterEvent>(OnRepairDoAfter);
     }
 

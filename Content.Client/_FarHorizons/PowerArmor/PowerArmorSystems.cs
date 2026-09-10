@@ -77,9 +77,12 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
         || !_sprite.TryGetLayer(ent.Owner, ent.Comp.PartType, out var spriteData, false) 
         || spriteData.ActualState is null) return;
 
-        _sprite.LayerSetVisible(powerArmor, ent.Comp.PartType, true);
-        _sprite.LayerSetRsi(powerArmor, ent.Comp.PartType, spriteData.ActualState.RSI, spriteData.ActualState.StateId);
-        if(ent.Comp.PartType == PowerArmorVisualLayers.Head)
+        if (_sprite.LayerMapTryGet(powerArmor, ent.Comp.PartType, out _, false))
+        {
+            _sprite.LayerSetVisible(powerArmor, ent.Comp.PartType, true);
+            _sprite.LayerSetRsi(powerArmor, ent.Comp.PartType, spriteData.ActualState.RSI, spriteData.ActualState.StateId);
+        }
+        if (ent.Comp.PartType == PowerArmorVisualLayers.Head && _sprite.LayerMapTryGet(powerArmor, "light", out _, false))
             _sprite.LayerSetRsi(powerArmor, "light", spriteData.ActualState.RSI, new Robust.Client.Graphics.RSI.StateId($"{spriteData.ActualState.StateId}-light"));
 
         if(TryComp<ClothingComponent>(powerArmor, out var clothingComp) && spriteData.ActualState.StateId.Name != null)

@@ -1,4 +1,4 @@
-using Content.Shared._FarHorizons.PowerArmor;
+using Content.Shared._FarHorizons.PowerArmor; // Far Horizons
 using Content.Shared.Inventory; // Far Horizons 
 using JetBrains.Annotations;
 using Robust.Shared.Map;

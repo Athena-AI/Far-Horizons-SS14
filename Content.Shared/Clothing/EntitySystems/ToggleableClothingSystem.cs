@@ -351,6 +351,6 @@ public sealed partial class ToggleClothingEvent : InstantActionEvent
 [Serializable, NetSerializable]
 public sealed partial class ToggleClothingDoAfterEvent : SimpleDoAfterEvent
 {
-    [DataField] //Far Horizons
-    public string Slot = string.Empty;
+    [DataField] 
+    public string Slot = string.Empty;//Far Horizons
 }

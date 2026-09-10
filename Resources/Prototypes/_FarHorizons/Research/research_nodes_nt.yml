@@ -478,6 +478,8 @@
     - RightLegCyber
     - LeftFootCyber
     - RightFootCyber
+    - LeftLegCyberHydraulic
+    - RightLegCyberHydraulic
   announceTo:
     - Medical
 
@@ -1202,8 +1204,6 @@
   - RightArmCyberHerakles
   - LeftArmCyberRipper
   - RightArmCyberRipper
-  - LeftLegCyberHydraulic
-  - RightLegCyberHydraulic
   - LeftLegCyberCargo
   - RightLegCyberCargo
 

@@ -13,6 +13,7 @@
   - type: Physics
     bodyType: Dynamic
     fixedRotation: false
+    canCollide: false
   - type: Pullable
   - type: DamageExaminable
   - type: Appearance

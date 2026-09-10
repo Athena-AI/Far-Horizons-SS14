@@ -49,4 +49,4 @@
   - type: PowerArmorModule
     addToOtherHalf: true
     activePowerDrain: 1.5
-    complexity: 2
+    complexityCost: 2

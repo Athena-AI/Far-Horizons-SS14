@@ -348,3 +348,10 @@
     slots:
       gun_magazine:
         startingItem: MagazineShotgunTozExtended
+        priority: 2 #FH
+        whitelist: #FH
+          tags: #FH
+          - MagazineShotgunToz #FH
+        whitelistFailPopup: gun-magazine-whitelist-fail #FH
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg #FH
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg #FH

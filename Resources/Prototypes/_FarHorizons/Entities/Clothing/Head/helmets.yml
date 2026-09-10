@@ -227,7 +227,7 @@
   - type: Sprite
     sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/deputy_hat_armored_red.rsi
   - type: Clothing
-    sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/deputy_hat_armored_red
+    sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/deputy_hat_armored_red.rsi
 
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband, ClothingHeadSuitWithLightBase ]

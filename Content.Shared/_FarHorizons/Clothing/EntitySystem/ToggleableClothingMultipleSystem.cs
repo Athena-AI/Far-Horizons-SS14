@@ -126,10 +126,10 @@ public sealed partial class ToggleableClothingSystem
         if (_timing.ApplyingState)
             return;
 
-        foreach(var clothing in component.ClothingUids)
+        foreach (var clothing in component.ClothingUids)
         {
-            if (component.Container != null && clothing.Value != null)
-                _inventorySystem.TryUnequip(args.Equipee, clothing.Key, force: true, triggerHandContact: true);
+            if (component.Container != null && clothing.Value != null && component.isActiveList.GetValueOrDefault(clothing.Key))
+                ToggleClothing(args.Equipee, uid, component, clothing.Key, args.Equipee);
         }
     }
 
@@ -150,12 +150,12 @@ public sealed partial class ToggleableClothingSystem
     private void OnToggleClothing(EntityUid uid, ToggleableClothingMultipleComponent component, ClothingSlotToggle args) 
         => ToggleClothing(args.Actor, uid, component, args.Slot);
 
-    private void ToggleClothing(EntityUid user, EntityUid target, ToggleableClothingMultipleComponent component, string slot)
+    private void ToggleClothing(EntityUid user, EntityUid target, ToggleableClothingMultipleComponent component, string slot, EntityUid? wearer = null)
     {
         if (component.Container == null || !component.ClothingUids.TryGetValue(slot, out var clothing) || clothing == null)
             return;
 
-        var parent = Transform(target).ParentUid;
+        var parent = wearer ?? Transform(target).ParentUid;
         var replace = component.ReplaceExistingClothing.GetValueOrDefault(slot);
         var isItOccuppied = _inventorySystem.TryGetSlotEntity(parent, slot, out var existing);
 

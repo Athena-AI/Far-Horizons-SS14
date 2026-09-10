@@ -155,11 +155,11 @@
     clothingPrototypes: 
       head: PowerArmorHelmetNTJuggernautFilled
       gloves: ClothingHandsGlovesSecurityPowered
-      feet: ClothingShoesBootsMagAdvSec
+      shoes: ClothingShoesBootsMagAdvSec
     replaceExistingClothing: 
       head: true
       gloves: true
-      feet: true
+      shoes: true
   - type: ContainerFill
     containers:
       modules: 

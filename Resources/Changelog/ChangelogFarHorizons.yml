@@ -19517,5 +19517,55 @@ Entries:
   id: 173100
   time: '2026-09-10T22:26:23.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1731
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'Unity: warden office rework.'
+    type: Tweak
+  id: 173200
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'Unity: new medicine lockers, new trackers.'
+    type: Tweak
+  id: 173201
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'Core: new medicine lockers, new trackers.'
+    type: Tweak
+  id: 173202
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'Core: solar airlocks linked, medbay buttons linked'
+    type: Fix
+  id: 173203
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'Prometheus: new medicine lockers, new trackers.'
+    type: Tweak
+  id: 173204
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'Prometheus: some external airlocks linked, salv dock aligned, crew server
+      installed, arti pipes fixed, theater access fixed'
+    type: Fix
+  id: 173205
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: AngelCastle, Crecc, Erophosea, qriqii, mogaiskii
+  changes:
+  - message: 'unity-evac: new medicine lockers.'
+    type: Tweak
+  id: 173206
+  time: '2026-09-10T22:36:15.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
 Order: -1
 

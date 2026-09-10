@@ -241,7 +241,6 @@
   id: ClothingBeltSecurityDeputyWeb
   name: Deputy Belt Bags
   description: Small series of belt bags that attach seamlessly with the Deputy Belt, allowing for quick grenade and magazine storage.
-  suffix: NT
   components:
   - type: Sprite
     sprite: _FarHorizons/Clothing/Belt/deputy_webbing.rsi
@@ -254,7 +253,6 @@
   id: ClothingBeltSecurityDeputyMedicalWeb
   name: Deputy Medical Belt Bags
   description: Small series of belt bags that attach seamlessly with the Deputy Medical Belt, allowing for quick storage of medical supplies.
-  suffix: NT
   components:
   - type: Sprite
     sprite: _FarHorizons/Clothing/Belt/deputy_webbing_medical.rsi

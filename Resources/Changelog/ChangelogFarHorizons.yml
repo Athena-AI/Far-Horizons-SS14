@@ -19479,5 +19479,12 @@ Entries:
   id: 171900
   time: '2026-09-09T17:50:00.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1719
+- author: Mizuki
+  changes:
+  - message: Multiple faction mindshields can no longer be implanted in the same entity
+    type: Fix
+  id: 172400
+  time: '2026-09-10T15:54:00.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1724
 Order: -1
 

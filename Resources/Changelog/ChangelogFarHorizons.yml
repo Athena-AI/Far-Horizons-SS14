@@ -19486,5 +19486,28 @@ Entries:
   id: 172400
   time: '2026-09-10T15:54:00.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1724
+- author: princess_gurchi
+  changes:
+  - message: Hydraulic leg is no longer roundstart implantable. It became a meta selection
+      that people felt they had to take because others took it, and this was never
+      an intention for roundstart cybernetics.
+    type: Remove
+  id: 172900
+  time: '2026-09-10T20:12:40.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1729
+- author: princess_gurchi
+  changes:
+  - message: Hydraulic leg moved to earlier research until it's reworked
+    type: Tweak
+  id: 172901
+  time: '2026-09-10T20:12:40.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1729
+- author: princess_gurchi
+  changes:
+  - message: Higher chance for station to spawn at planets other than gas giant
+    type: Tweak
+  id: 172902
+  time: '2026-09-10T20:12:40.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1729
 Order: -1
 

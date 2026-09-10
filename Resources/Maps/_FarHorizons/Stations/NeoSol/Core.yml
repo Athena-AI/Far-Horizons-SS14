@@ -3,9 +3,9 @@ meta:
   category: Map
   engineVersion: 288.1.0
   forkId: farhorizons
-  forkVersion: 9ae8c8a636
-  time: 08/29/2026 12:44:14
-  entityCount: 23611
+  forkVersion: cad0c7445d
+  time: 09/10/2026 21:49:54
+  entityCount: 23613
 maps:
 - 1
 grids:
@@ -59055,11 +59055,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -53.5,-56.5
-  - uid: 8757
-    components:
-    - type: Transform
-      parent: 2
-      pos: 52.5,-7.5
   - uid: 8758
     components:
     - type: Transform
@@ -59169,11 +59164,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -45.5,-32.5
-  - uid: 8779
-    components:
-    - type: Transform
-      parent: 2
-      pos: 48.5,-7.5
   - uid: 8780
     components:
     - type: Transform
@@ -70866,6 +70856,13 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: 37.5,18.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        366:
+        - - DoorStatus
+          - DoorBolt
 - proto: FHAirlockExternalGlass
   entities:
   - uid: 203
@@ -70946,6 +70943,13 @@ entities:
     - type: Transform
       parent: 2
       pos: 39.5,19.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        325:
+        - - DoorStatus
+          - DoorBolt
     - type: AccessReader
       accessListsOriginal: []
   - uid: 367
@@ -71040,7 +71044,7 @@ entities:
       pos: 61.5,24.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -15814.672
+      secondsUntilStateChange: -18776.959
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -71715,7 +71719,7 @@ entities:
       pos: -2.5,26.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -24112.178
+      secondsUntilStateChange: -27074.465
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -72007,7 +72011,7 @@ entities:
       pos: -4.5,-9.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -23915.32
+      secondsUntilStateChange: -26877.607
     - type: DeviceLinkSink
       invokeCounter: 1
     - type: DeviceLinkSource
@@ -72273,7 +72277,7 @@ entities:
       invokeCounter: 1
     - type: Door
       state: Opening
-      secondsUntilStateChange: -15630.405
+      secondsUntilStateChange: -18592.691
     - type: DeviceLinkSource
       linkedPorts:
         9283:
@@ -72331,6 +72335,13 @@ entities:
       parent: 2
       rot: -1.5707963267948966 rad
       pos: -23.5,37.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        321:
+        - - DoorStatus
+          - DoorBolt
   - uid: 273
     components:
     - type: Transform
@@ -72351,11 +72362,25 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 72.5,-33.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        214:
+        - - DoorStatus
+          - DoorBolt
   - uid: 319
     components:
     - type: Transform
       parent: 2
       pos: -58.5,-20.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        186:
+        - - DoorStatus
+          - DoorBolt
   - uid: 320
     components:
     - type: Transform
@@ -72366,6 +72391,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -21.5,39.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        185:
+        - - DoorStatus
+          - DoorBolt
   - uid: 7111
     components:
     - type: Transform
@@ -72452,6 +72484,8 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 73.5,5.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
   - uid: 7311
     components:
     - type: Transform
@@ -72558,6 +72592,13 @@ entities:
     - type: Transform
       parent: 2
       pos: -58.5,-18.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        319:
+        - - DoorStatus
+          - DoorBolt
   - uid: 190
     components:
     - type: Transform
@@ -72594,6 +72635,13 @@ entities:
       parent: 2
       rot: 3.141592653589793 rad
       pos: 72.5,-36.5
+    - type: DeviceLinkSink
+      invokeCounter: 1
+    - type: DeviceLinkSource
+      linkedPorts:
+        213:
+        - - DoorStatus
+          - DoorBolt
     - type: AccessReader
       accessListsOriginal: []
   - uid: 323
@@ -73368,7 +73416,7 @@ entities:
       pos: 10.5,38.5
     - type: Door
       state: Opening
-      secondsUntilStateChange: -40857.11
+      secondsUntilStateChange: -43819.395
     - type: DeviceLinkSource
       lastSignals:
         DoorStatus: True
@@ -75948,7 +75996,7 @@ entities:
       pos: -26.5,-14.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -91675.72
+      secondsUntilStateChange: -94638.01
     - type: Firelock
       emergencyCloseCooldown: 7916.7587519
   - uid: 10954
@@ -76618,7 +76666,7 @@ entities:
       pos: -2.5,26.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -24113.545
+      secondsUntilStateChange: -27075.832
   - uid: 11076
     components:
     - type: Transform
@@ -77540,7 +77588,7 @@ entities:
       pos: 11.5,36.5
     - type: Door
       state: Closing
-      secondsUntilStateChange: -97933.945
+      secondsUntilStateChange: -100896.234
   - uid: 11226
     components:
     - type: Transform
@@ -109269,6 +109317,14 @@ entities:
     - type: Transform
       parent: 2
       pos: 50.5,0.5
+    - type: DeviceLinkSource
+      linkedPorts:
+        199:
+        - - Pressed
+          - Toggle
+        198:
+        - - Pressed
+          - Toggle
     - type: Fixtures
       fixtures: {}
   - uid: 15460
@@ -109541,6 +109597,18 @@ entities:
           ent: null
           showEnts: False
           occludes: True
+- proto: LockerMedicineNSFilled
+  entities:
+  - uid: 8757
+    components:
+    - type: Transform
+      parent: 2
+      pos: 48.5,-7.5
+  - uid: 8779
+    components:
+    - type: Transform
+      parent: 2
+      pos: 52.5,-7.5
 - proto: LockerMime
   entities:
   - uid: 8927
@@ -123365,7 +123433,7 @@ entities:
       pos: 7.681739,-15.46398
     - type: Stack
       count: 15
-- proto: ShelfArmoryIFV-50SLargeFilled
+- proto: ShelfArmoryHannibalSLargeFilled
   entities:
   - uid: 15481
     components:
@@ -134706,6 +134774,18 @@ entities:
     - type: Transform
       parent: 2
       pos: 0.7634096,47.159733
+- proto: TrackingImplanterNS
+  entities:
+  - uid: 23612
+    components:
+    - type: Transform
+      parent: 2
+      pos: -11.590269,-33.231403
+  - uid: 23613
+    components:
+    - type: Transform
+      parent: 2
+      pos: -11.574644,-33.37203
 - proto: TrashBag
   entities:
   - uid: 19180
@@ -154979,7 +155059,7 @@ entities:
         DoorStatus: True
     - type: Door
       state: Opening
-      secondsUntilStateChange: -56011.363
+      secondsUntilStateChange: -58973.65
     - type: Airlock
       autoClose: False
   - uid: 22606

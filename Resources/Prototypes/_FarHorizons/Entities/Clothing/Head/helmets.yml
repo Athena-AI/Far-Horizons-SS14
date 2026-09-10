@@ -154,6 +154,20 @@
 
 
 
+#region Security
+
+- type: entity
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband ]
+  id: ClothingHeadHelmetSecurityDeputy
+  name: Deputy Helmet
+  suffix: NT
+  description: The hat doesn't come off.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Head/Helmets/deputy_hat_armored.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Head/Helmets/deputy_hat_armored.rsi
+
 #region ## NeoSol ##
 
 
@@ -202,6 +216,18 @@
   - type: BreathMask
 
 #region Security
+
+- type: entity
+  parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband ]
+  id: ClothingHeadHelmetSecurityDeputySyndi
+  name: Deputy Helmet
+  suffix: NS
+  description: The hat doesn't come off.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/deputy_hat_armored_red.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Head/Helmets/NeoSol/deputy_hat_armored_red
 
 - type: entity
   parent: [ClothingHeadHelmetArmoredBase, BaseSecurityContraband, ClothingHeadSuitWithLightBase ]

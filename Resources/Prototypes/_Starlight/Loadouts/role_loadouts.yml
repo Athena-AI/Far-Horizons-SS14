@@ -147,6 +147,7 @@
     - Trinkets
     - Scarves
     - Pens
+    - SecurityJobTrinkets #FH
 
 - type: roleLoadout
   id: JobSalvageLead

@@ -359,6 +359,7 @@
   - CowboyBootsWhiteFilled
   - Heels
   - HighHeelBootsFilled
+  - CombatShoes #FH
 
 - type: loadoutGroup
   id: CivilianShoes

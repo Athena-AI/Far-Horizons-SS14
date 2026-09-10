@@ -99,6 +99,28 @@
     - Silicon
     - Robotic
 
+- type: entity
+  parent: ClothingEyesGlassesBrigmedic
+  id: ClothingEyesGlassesDeputyMedical
+  name: Deputy Medical Glasses
+  description: Shows health status icons and crew id icons alike.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+
+- type: entity
+  parent: ClothingEyesGlassesSecurity
+  id: ClothingEyesGlassesDeputy
+  name: Deputy Glasses
+  description: Exact same thing as normal Security Glasses, except it has a different paintjob. Sylish!
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+  
 #region ## NanoTrasen ##
 
 

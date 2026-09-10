@@ -71,7 +71,16 @@ public sealed partial class ToggleableClothingMultipleComponent : Component
     ///     Text shown in the toggle-clothing verb. Defaults to using the name of the <see cref="ActionEntity"/> action.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<string, string?> VerbTexts = new();
+    public Dictionary<string, string?> VerbTexts = new()
+    {
+        {"head", "Toggle Head Cover"},
+        {"gloves", "Toggle Gloves"},
+        {"mask", "Toggle Mask"},
+        {"outerClothing", "Toggle Outer Clothing"},
+        {"shoes", "Toggle Shoes"},
+        {"eyes", "Toggle Eye Cover"}
+    };
+    
 
     /// <summary>
     ///    

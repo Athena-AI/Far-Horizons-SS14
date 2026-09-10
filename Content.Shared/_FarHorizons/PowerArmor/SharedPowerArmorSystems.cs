@@ -13,6 +13,7 @@ using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Item;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
@@ -82,6 +83,8 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorModuleComponent, AfterInteractEvent>(OnModuleInteract);
         SubscribeLocalEvent<PowerArmorPartComponent, AccessibleOverrideEvent>(AccessibleOverride);
         SubscribeLocalEvent<PowerArmorPartComponent, InRangeOverrideEvent>(InRangeOverride);
+
+        SubscribeLocalEvent<PowerArmorUserComponent, GettingPickedUpAttemptEvent>(OnGettingPickedUp);
     }
 
     #region Power Armor
@@ -643,4 +646,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         Dirty(module);
     }
     #endregion
+
+    private void OnGettingPickedUp(Entity<PowerArmorUserComponent> ent, ref GettingPickedUpAttemptEvent args)
+        => args.Cancel();
 }

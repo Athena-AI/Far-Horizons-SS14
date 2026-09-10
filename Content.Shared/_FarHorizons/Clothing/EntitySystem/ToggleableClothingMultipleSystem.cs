@@ -48,6 +48,8 @@ public sealed partial class ToggleableClothingSystem
         if (!args.CanAccess || !args.CanInteract || args.Hands == null || component.ClothingUids.Count == 0 || component.Container == null)
             return;
 
+        var verbCat = new VerbCategory("Toggle Equipment", "/Textures/Interface/VerbIcons/outfit.svg.192dpi.png");
+
         foreach(var clothing in component.ClothingUids)
         {
             var text = component.VerbTexts.GetValueOrDefault(clothing.Key) ?? (component.ActionEntity == null ? null : Name(component.ActionEntity.Value));
@@ -65,6 +67,7 @@ public sealed partial class ToggleableClothingSystem
             {
                 Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/outfit.svg.192dpi.png")),
                 Text = Loc.GetString(text),
+                Category = verbCat
             };
 
             if (args.User == wearer)
@@ -112,10 +115,10 @@ public sealed partial class ToggleableClothingSystem
 
     private void OnDoAfterComplete(EntityUid uid, ToggleableClothingMultipleComponent component, ToggleClothingDoAfterEvent args)
     {
-        if (args.Cancelled)
+        if (args.Cancelled || args.Target == null)
             return;
 
-        ToggleClothing(args.User, uid, component, args.Slot);
+        ToggleClothing(args.Target.Value, uid, component, args.Slot);
     }
 
     /// <summary>
@@ -167,14 +170,12 @@ public sealed partial class ToggleableClothingSystem
             return;
         }
 
-        if (component.isActiveList[slot])
+        if (component.isActiveList[slot] && _inventorySystem.TryUnequip(user, parent, slot, force: true))
         {
-            _inventorySystem.TryUnequip(user, parent, slot, force: true);
             component.isActiveList[slot] = false;
 
-            if (occupiedByOther)
+            if (occupiedByOther && _inventorySystem.TryEquip(user, clothing.Value, slot, force: true, triggerHandContact: true))
             {
-                _inventorySystem.TryEquip(user, clothing.Value, slot, force: true, triggerHandContact: true);
                 _containerSystem.Insert(existing!.Value, component.Container);
                 component.ClothingUids[slot] = existing;
             }
@@ -183,15 +184,14 @@ public sealed partial class ToggleableClothingSystem
         }
         else
         {
-            if (occupiedByOther)
+            if (occupiedByOther && _inventorySystem.TryUnequip(user, parent, slot, force: true))
             {
-                _inventorySystem.TryUnequip(user, parent, slot, force: true);
                 _containerSystem.Insert(existing!.Value, component.Container);
                 component.ClothingUids[slot] = existing;
             }
 
-            _inventorySystem.TryEquip(user, clothing.Value, slot, triggerHandContact: true);
-            component.isActiveList[slot] = true;
+            if(_inventorySystem.TryEquip(user, clothing.Value, slot, triggerHandContact: true))
+                component.isActiveList[slot] = true;
         }
 
         Dirty(target, component);

@@ -3,6 +3,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Shared.Clothing.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.Clothing;
 
@@ -41,12 +42,13 @@ public sealed partial class ToggleableClothingRadialMultipleBoundUserInterface(E
 
         foreach (var clothing in ent.Comp.ClothingUids)
         {
-            if (!EntMan.TryGetComponent<MetaDataComponent>(clothing.Value, out var metadata))
+            if (!EntMan.TryGetComponent<MetaDataComponent>(clothing.Value, out var metadata)
+                || metadata.EntityPrototype is not { } proto)
                 continue;
 
             var option = new RadialMenuActionOption<string>(SendModuleToggle, clothing.Key)
             {
-                IconSpecifier = RadialMenuIconSpecifier.With(clothing.Value),
+                IconSpecifier = RadialMenuIconSpecifier.With((EntProtoId) proto.ID),
                 ToolTip = metadata.EntityName,
                 BackgroundColor = ent.Comp.isActiveList.GetValueOrDefault(clothing.Key) ? _selectedOptionBackground : null,
                 HoverBackgroundColor = ent.Comp.isActiveList.GetValueOrDefault(clothing.Key) ? _selectedOptionHoverBackground : null

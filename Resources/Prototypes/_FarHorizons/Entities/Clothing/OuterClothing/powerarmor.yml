@@ -131,7 +131,7 @@
     fitsInCharger: false
   - type: PowerCellDraw
     enabled: false
-    drawRate: 0
+    drawRate: 0.5
   - type: ActionGrant
     actions:
     - ActionOpenPowerArmorRadialMenu

@@ -19648,5 +19648,19 @@ Entries:
   id: 173800
   time: '2026-09-11T10:36:14.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1738
+- author: AthenaAI
+  changes:
+  - message: Adds new modular armor system.
+    type: Add
+  id: 172700
+  time: '2026-09-11T15:51:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1727
+- author: AthenaAI
+  changes:
+  - message: Updated the security juggernaut suit to the new modular armor system.
+    type: Tweak
+  id: 172701
+  time: '2026-09-11T15:51:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1727
 Order: -1
 

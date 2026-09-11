@@ -50,6 +50,10 @@
     {
       "name": "resomi_fluff_head",
       "directions": 4
+    },
+    {
+      "name": "resomi_ears_none",
+      "directions": 1
     }
   ]
 }

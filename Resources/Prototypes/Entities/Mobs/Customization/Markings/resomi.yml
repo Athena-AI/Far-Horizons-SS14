@@ -100,6 +100,14 @@
   - sprite: Mobs/Customization/resomi_parts.rsi
     state: resomi_ears
 
+- type: marking # FH
+  id: ResomiEarsNone
+  bodyPart: HeadSide
+  groupWhitelist: [Resomi, ProtoResomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: resomi_ears_none
+
 - type: marking
   id: ResomiEarMarkingOne
   bodyPart: HeadTop

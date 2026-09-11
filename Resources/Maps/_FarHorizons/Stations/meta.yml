@@ -162292,7 +162292,7 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
+      rot: 0
       pos: -5.5,42.5
     - type: Fixtures
       fixtures: {}

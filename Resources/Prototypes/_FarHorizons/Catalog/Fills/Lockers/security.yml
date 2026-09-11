@@ -1106,9 +1106,7 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingOuterHardsuitSecurityHeavy
-    - id: ClothingHandsGlovesSecurityPowered
-    - id: ClothingShoesBootsMagAdvSec
+    - id: PowerArmorNTJuggernautFilled
     - id: ClothingMaskGasSecurityNoHailer
     - id: WeaponLightMachineGunM492
     - id: Rifle556HeavyMagazineSP

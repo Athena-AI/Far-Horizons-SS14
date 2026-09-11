@@ -113,6 +113,9 @@ public sealed partial class VehicleComponent : Component
     public EntityWhitelist? RiderWhitelist;
 
     [DataField]
+    public EntityWhitelist? RiderBlacklist;
+
+    [DataField]
     public string? BaseState;
 
     [DataField]

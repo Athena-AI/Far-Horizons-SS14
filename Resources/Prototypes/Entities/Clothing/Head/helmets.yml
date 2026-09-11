@@ -24,11 +24,21 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
+#FH start
         Piercing: 0.9
         Heat: 0.9
-  - type: LimbArmor # Far Horizons
+  - type: LimbArmor
     limbs:
-      Head: {}
+      Head:
+        flatReductions:
+          Piercing: 5
+          Heat: 4
+        coefficients:
+          Blunt: 0.7
+          Slash: 0.7
+          Piercing: 0.7
+          Heat: 0.7
+#FarHorizons - End
 
 #Basic Helmet (Security Helmet)
 - type: entity

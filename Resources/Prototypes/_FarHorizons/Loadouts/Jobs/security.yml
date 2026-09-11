@@ -1,3 +1,13 @@
+# Deputy Time
+- type: loadoutEffectGroup
+  id: DeputyOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 50h
+
 #region General
 
 - type: loadout
@@ -5,7 +15,109 @@
   equipment:
     eyes: ClothingEyesVisorSecurity
 
+- type: loadout
+  id: MedicalRigDeputy
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    rig: ClothingBeltSecurityDeputyMedicalWeb
 
+- type: loadout
+  id: MedicalBeltDeputy
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    belt: ClothingBeltSecurityDeputyMedicalFilled
+
+- type: loadout
+  id: DeputyRig
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    rig: ClothingBeltSecurityDeputyWeb
+  
+- type: loadout
+  id: DeputyBelt
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    belt: ClothingBeltSecurityDeputyFilled
+
+- type: loadout
+  id: DeputyBadge
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    pin: BadgeDeputy
+
+- type: loadout
+  id: DeputyUniform
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecDeputy
+
+- type: loadout
+  id: DeputyHat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    head: ClothingHeadHatSecurityDeputy
+
+- type: loadout
+  id: DeputyHelmet
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    head: ClothingHeadHelmetSecurityDeputy
+
+- type: loadout
+  id: DeputyDuster
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterCoatDusterSecurityDeputy
+
+- type: loadout
+  id: DeputyCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputy
+
+- type: loadout
+  id: CombatShoes
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    shoes: ClothingShoesCombat
+
+- type: loadout
+  id: DeputyGlasses
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    eyes: ClothingEyesGlassesDeputy
+
+- type: loadout
+  id: DeputyMedicalGlasses
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    eyes: ClothingEyesGlassesDeputyMedical
 
 #region Brigmedic
 
@@ -15,6 +127,15 @@
   id: BrigmedicVisor
   equipment:
     eyes: ClothingEyesVisorBrigmedic
+
+# OuterClothing
+- type: loadout
+  id: DeputyBrigmedicCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputyBrigmedic
 
 # Sidearm
 
@@ -126,6 +247,11 @@
   equipment:
     belt: ClothingBeltCorpsmanFilled
 
+- type: loadout
+  id: CorpsmanRig
+  equipment:
+    rig: ClothingBeltCorpsmanWeb
+
 # Gloves
 
 - type: loadout
@@ -145,6 +271,16 @@
   id: CorpsmanCoat
   equipment:
     outerClothing: ClothingOuterCoatCorpsmanFH
+
+- type: loadout
+  id: DeputySheriffCorpsmanCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputySheriffCorpsman
+
+# Eyes
 
 - type: loadout
   id: CorpsmanGlasses
@@ -303,3 +439,23 @@
     - MagazinePistol38Rubber
     - MagazinePistol38SP
     - MagazinePistol38SP
+
+# OuterClothing
+- type: loadout
+  id: DeputySheriffWardenCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputySheriffWarden
+
+#region Head of Security
+
+# OuterClothing
+- type: loadout
+  id: SheriffHOSCoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecuritySheriffHoS

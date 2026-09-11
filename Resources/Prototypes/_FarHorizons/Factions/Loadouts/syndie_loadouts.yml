@@ -197,6 +197,22 @@
   equipment:
     head: ClothingHeadHatJanitorNS
 
+- type: loadout
+  id: DeputyHatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    head: ClothingHeadHatSecurityDeputySyndi
+
+- type: loadout
+  id: DeputyHelmetRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    head: ClothingHeadHelmetSecurityDeputySyndi
+
 #Botanist
 - type: loadout
   id: BotanistBandanaNS
@@ -1017,6 +1033,14 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtOverallsNS
 
+- type: loadout
+  id: DeputyUniformRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecDeputySyndi
+
 #Clown
 
 - type: loadout
@@ -1497,6 +1521,54 @@
   id: RSOArmorCoat
   equipment:
     outerClothing: ClothingOuterCoatRedSword
+
+- type: loadout
+  id: DeputyDusterRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterCoatDusterSecurityDeputySyndi
+
+- type: loadout
+  id: DeputyCoatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputySyndi
+
+- type: loadout
+  id: DeputyBrigmedicCoatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputyBrigmedicSyndi
+
+- type: loadout
+  id: DeputySheriffCorpsmanCoatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputySheriffCorpsmanSyndi
+
+- type: loadout
+  id: DeputySheriffWardenCoatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecurityDeputySheriffWardenSyndi
+
+- type: loadout
+  id: SheriffHOSCoatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: DeputyOfficer
+  equipment:
+    outerClothing: ClothingOuterWinterSecuritySheriffHoSSyndi
 
 #region Boots/Shoes
 

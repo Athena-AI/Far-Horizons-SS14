@@ -493,6 +493,8 @@
   loadouts:
   - SecurityHelmet
   - CorpsmanBeret
+  - DeputyHat
+  - DeputyHelmet
 
 - type: loadoutGroup
   id: CorpsmanJumpsuit
@@ -500,6 +502,7 @@
   loadouts:
   - JumpsuitCorpsman
   - JumpskirtCorpsman
+  - DeputyUniform
 
 - type: loadoutGroup
   id: CorpsmanBackpack
@@ -515,6 +518,7 @@
   loadouts:
   - SecurityOfficerWintercoat
   - CorpsmanCoat
+  - DeputySheriffCorpsmanCoat
 
 - type: loadoutGroup
   id: CorpsmanEyewear
@@ -523,12 +527,14 @@
   - CorpsmanGlasses
   - CorpsmanHud
   - CorpsmanVisor
+  - DeputyMedicalGlasses
 
 - type: loadoutGroup
   id: CorpsmanBelt
   name: loadout-group-corpsman-belt
   loadouts:
   - CorpsmanBelt
+  - CorpsmanRig
 
 - type: loadoutGroup
   id: CorpsmanGloves

@@ -19567,5 +19567,79 @@ Entries:
   id: 173206
   time: '2026-09-10T22:36:15.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1732
+- author: Killer Tamashi
+  changes:
+  - message: Added Deputy/Sheriff themed clothing for NS/NT Security. Locked behind
+      general sec time of 50 hours.
+    type: Add
+  id: 172600
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Added Missing chestrigs for BSO/Corps (and added those things into their
+      lockers as well)
+    type: Add
+  id: 172601
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Changed Corpsman's blue colors to be more vibrant. Also redid the belt,
+      it bugged the hell out of me.
+    type: Tweak
+  id: 172602
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Changed Brigmedic's rig to actually have.. brigmedic colors.
+    type: Tweak
+  id: 172603
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Replaced Brigmedic's belt with new FH sprite.
+    type: Tweak
+  id: 172604
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Medical Chest Rigs now hold medical items. Revolutionary, I know.
+    type: Tweak
+  id: 172605
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Lowered hour requirement for Senior Security clothes to 30.
+    type: Tweak
+  id: 172606
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Lowered hour requirement for the stickynote star to 20.
+    type: Tweak
+  id: 172607
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Helmet to have flats and proper % reductions
+    type: Fix
+  id: 172608
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Captain's Hardsuit Helmet also not having flats. And a weirdly
+      high rad resist stronger than the main suit.
+    type: Fix
+  id: 172609
+  time: '2026-09-11T08:14:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
 Order: -1
 

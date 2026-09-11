@@ -19641,5 +19641,12 @@ Entries:
   id: 172609
   time: '2026-09-11T08:14:52.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1726
+- author: Fasuh
+  changes:
+  - message: Changed resomi to allow them to not have ears.
+    type: Tweak
+  id: 173800
+  time: '2026-09-11T10:36:14.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1738
 Order: -1
 

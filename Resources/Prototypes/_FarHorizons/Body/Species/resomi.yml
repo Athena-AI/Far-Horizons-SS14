@@ -11,7 +11,8 @@
       required: false
     enum.HumanoidVisualLayers.HeadSide:
       limit: 1
-      required: false
+      required: true
+      default: [ ResomiEars ]
     enum.HumanoidVisualLayers.HeadTop:
       limit: 4
       required: false

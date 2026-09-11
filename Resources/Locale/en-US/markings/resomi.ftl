@@ -37,6 +37,9 @@ marking-ResomiLineHead-resomi_line_head = Head
 marking-ResomiEars = Base Ears
 marking-ResomiEars-resomi_ears = Ear
 
+marking-ResomiEarsNone = No Ears
+marking-ResomiEarsNone-resomi_ears_none = None
+
 marking-ResomiEarMarkingOne = Ear Stripes
 marking-ResomiEarMarkingOne-resomi_ears_marking_1 = Ear
 

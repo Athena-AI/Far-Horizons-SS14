@@ -1102,10 +1102,12 @@
 
 - type: entity
   id: ShelfArmoryHeavyArms
-  parent: ShelfArmoryBase
+  parent: LockerLargeBaseSecure
   name: Heavy Security Arms Rack
-  description: Holds the Heavy Security Suit with it's gauntlets and magboots as well as the M492.
+  description: Holds the Heavy Security Suit with the M492.
   components:
+  - type: Sprite
+    sprite: Structures/Storage/closet.rsi
   - type: EntityStorageVisuals
     stateBaseClosed: shotguncase
     stateDoorOpen: shotguncase_open
@@ -1127,21 +1129,6 @@
 #  - type: StorageFillVisualizer
 #    maxFillLevels: 3
 #    fillBaseName: laser
-  - type: Storage
-    maxItemSize: Ginormous
-    grid:
-    - 0,0,5,5
-    - 7,1,8,3
-    - 8,3,8,4
-    - 10,0,14,3
-    - 10,4,13,5
-    whitelist:
-      tags:
-        - HeavySecSuit
-        - HeavySecSuitGloves
-        - HeavySecSuitBoots
-        - SLMG
-        - Rifle556Heavy
 
 #region =NeoSol=
 

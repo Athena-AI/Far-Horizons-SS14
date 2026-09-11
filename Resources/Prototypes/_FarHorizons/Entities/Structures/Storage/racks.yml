@@ -1107,7 +1107,6 @@
   description: Holds the Heavy Security Suit with the M492.
   components:
   - type: Sprite
-    noRot: false
     sprite: Structures/Storage/closet.rsi
   - type: EntityStorageVisuals
     stateBaseClosed: shotguncase

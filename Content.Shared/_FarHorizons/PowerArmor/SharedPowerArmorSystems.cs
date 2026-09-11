@@ -47,6 +47,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
     [Dependency] protected AlertsSystem _alerts = default!;
     [Dependency] protected SharedBatterySystem _battery = default!;
     [Dependency] protected SharedTransformSystem _transform = default!;
+    [Dependency] protected ClothingSpeedModifierSystem _clothSpeed = default!;
 
     public override void Initialize()
     {
@@ -67,6 +68,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
         SubscribeLocalEvent<PowerArmorComponent, PowerArmorUninstallModuleMessage>(OnModuleUninstalledMessage);
         SubscribeLocalEvent<PowerArmorComponent, PowerArmorToggleModuleMessage>(OnModuleToggleMessage);
         SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorModuleActionEvent>(OnPowerAmorModuleToggleAction);
+        SubscribeLocalEvent<PowerArmorComponent, TogglePowerArmorMenu>(OnPowerArmorMenuToggle);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
         SubscribeLocalEvent<PowerArmorComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
         SubscribeLocalEvent<PowerArmorComponent, InteractUsingEvent>(RefRelayPAPartsEvent);
@@ -272,6 +274,7 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         _powerCell.SetDrawEnabled(ent.Owner, !drawComp.Enabled);
         ent.Comp.IsPowered = !ent.Comp.IsPowered;
+        _clothSpeed.TrySetSpeedModifier(ent, args.Actor, ent.Comp.IsPowered ? ent.Comp.PoweredMovementSpeedModifier : ent.Comp.UnpoweredMovementSpeedModifier);
         var modules = ent.Comp.Modules.ToList(); 
         foreach(var module in modules)
         {
@@ -335,6 +338,15 @@ public abstract partial class SharedPowerArmorSystem : EntitySystem
 
         if (!_uiSystem.IsUiOpen((ent, userInterfaceComp), PowerArmorRadialMenuUiKey.Key, args.Performer))
             _uiSystem.OpenUi((ent, userInterfaceComp), PowerArmorRadialMenuUiKey.Key, args.Performer);
+    }
+
+    private void OnPowerArmorMenuToggle(Entity<PowerArmorComponent> ent, ref TogglePowerArmorMenu args)
+    {
+        if (!TryComp<UserInterfaceComponent>(ent, out var userInterfaceComp))
+            return;
+
+        if (!_uiSystem.IsUiOpen((ent, userInterfaceComp), PowerArmorMenuUiKey.Key, args.Performer))
+            _uiSystem.OpenUi((ent, userInterfaceComp), PowerArmorMenuUiKey.Key, args.Performer);
     }
 
     private void OnItemSlotEjectAttempt(Entity<PowerArmorComponent> ent, ref ItemSlotEjectAttemptEvent args)

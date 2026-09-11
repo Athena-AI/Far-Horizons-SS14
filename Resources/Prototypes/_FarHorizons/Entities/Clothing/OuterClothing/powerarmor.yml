@@ -61,9 +61,9 @@
   - type: TemperatureProtection
     heatingCoefficient: 0.01
     coolingCoefficient: 0.01
-  - type: ClothingSpeedModifier
-    walkModifier: 0.6
-    sprintModifier: 0.6
+  - type: ClothingSpeedModifier #Basically unpowered speed
+    walkModifier: 0.4
+    sprintModifier: 0.4
   - type: HeldSpeedModifier
   - type: Pierceable
     level: Metal
@@ -135,6 +135,7 @@
   - type: ActionGrant
     actions:
     - ActionOpenPowerArmorRadialMenu
+    - ActionOpenPowerArmorMenu
   - type: ItemActionGrant
     actions:
     - ActionOpenPowerArmorRadialMenu

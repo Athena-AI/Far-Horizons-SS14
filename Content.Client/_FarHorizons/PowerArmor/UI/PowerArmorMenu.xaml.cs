@@ -200,6 +200,7 @@ public sealed partial class PowerArmorMenu : FancyWindow
         if (!_entityManager.TryGetComponent<PowerArmorComponent>(_entity, out var paComp))
             return;
 
+        ActivationButton.ModulateSelfOverride = paComp.IsPowered ? Color.Green : null;
         foreach (var layer in _parts.Keys.ToList())
             if (paComp.Parts.TryGetValue(layer, out var part)) _parts[layer] = part;
 

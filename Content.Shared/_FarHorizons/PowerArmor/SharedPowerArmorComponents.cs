@@ -84,6 +84,18 @@ public sealed partial class PowerArmorComponent : Component
     /// </summary>
     [DataField]
     public int MaxComplexity = 20;
+
+    /// <summary>
+    /// Movement speed when suit is powered
+    /// </summary>
+    [DataField]
+    public float PoweredMovementSpeedModifier = 0.6f;
+
+    /// <summary>
+    /// Movement speed when suit is unpowered
+    /// </summary>
+    [DataField]
+    public float UnpoweredMovementSpeedModifier = 0.4f;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -211,6 +223,7 @@ public sealed class PowerArmorToggleModuleMessage : BoundUserInterfaceMessage
 public sealed class TogglePowerArmorMessage : BoundUserInterfaceMessage;
 
 public sealed partial class TogglePowerArmorModuleActionEvent : InstantActionEvent;
+public sealed partial class TogglePowerArmorMenu : InstantActionEvent;
 
 public interface IPowerArmorRelayedEvent;
 

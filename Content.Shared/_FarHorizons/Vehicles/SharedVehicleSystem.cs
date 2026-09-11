@@ -466,7 +466,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
                 _gun.RefreshModifiers(item);
         }
 
-        if(_whitelist.IsWhitelistFail(vehicleComp.RiderWhitelist, rider)) return;
+        if(_whitelist.IsWhitelistFail(vehicleComp.RiderWhitelist, rider) || _whitelist.IsWhitelistPass(vehicleComp.RiderBlacklist, rider)) return;
         if(!vehicleComp.hasKeys && vehicleComp.RequireIgnition) return;
         if(vehicleComp.Rider != null) return;
         

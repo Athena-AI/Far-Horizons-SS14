@@ -162,7 +162,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
             RaiseLocalEvent(jobEntity, ref jobEntityGearEv);
             // Starlight End
 
-            DoJobSpecials(job, jobEntity);
+            DoJobSpecials(faction, job, jobEntity); // Far Horizons factions
             _identity.QueueIdentityUpdate(jobEntity);
             return jobEntity;
         }
@@ -225,7 +225,7 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
             SetPdaAndIdCardData(entity.Value, metaData.EntityName, factionProto, prototype, station); // Far Horizons
         }
 
-        DoJobSpecials(job, entity.Value);
+        DoJobSpecials(faction, job, entity.Value); // Far Horizons factions
         _identity.QueueIdentityUpdate(entity.Value);
 
         #region StarlightStats
@@ -255,12 +255,12 @@ public sealed partial class StationSpawningSystem : SharedStationSpawningSystem
         return entity.Value;
     }
 
-    private void DoJobSpecials(ProtoId<JobPrototype>? job, EntityUid entity)
+    private void DoJobSpecials(ProtoId<FactionPrototype>? faction, ProtoId<JobPrototype>? job, EntityUid entity) // Far Horizons factions
     {
         if (!_prototypeManager.Resolve(job, out JobPrototype? prototype))
             return;
 
-        foreach (var jobSpecial in prototype.Special)
+        foreach (var jobSpecial in _factions.OverrideJobSpecial((faction, prototype.ID))) // Far Horizons factions
         {
             jobSpecial.AfterEquip(entity);
         }

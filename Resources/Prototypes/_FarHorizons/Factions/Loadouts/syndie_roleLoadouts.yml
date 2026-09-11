@@ -371,7 +371,7 @@
     - SecMedEyesSyndi
     - CorpsmanJumpsuit
     - CorpsmanBackpack
-    - CorpsmanOuterClothing
+    - CorpsmanSyndiOuterClothing
     - CorpsmanSyndiBelt
     - CorpsmanGloves
     - SecurityShoesSyndi
@@ -381,6 +381,7 @@
     - Trinkets
     - Scarves
     - Pens
+    - SecurityJobTrinkets
 
 - type: roleLoadout
   id: SyndieBrigmedic #Brigmedic
@@ -400,6 +401,7 @@
     - Trinkets
     - Scarves
     - Pens
+    - SecurityJobTrinkets
 
 - type: roleLoadout
   id: SyndieDetective #Inspector

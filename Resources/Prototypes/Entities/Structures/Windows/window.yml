@@ -27,9 +27,9 @@
       - Window
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window.rsi
+    sprite: _FarHorizons/Structures/Windows/NanoTrasen/window.rsi #FH
   - type: Icon
-    sprite: Structures/Windows/window.rsi
+    sprite: _FarHorizons/Structures/Windows/NanoTrasen/window.rsi #FH
     state: full
   - type: Physics
     bodyType: Static
@@ -276,7 +276,7 @@
 - type: entity
   parent: BaseWindow #FH 
   id: WindowDiagonal
-  suffix: Diagonal #Far Horizons - The Great Capitalization Crusade
+  suffix: Diagonal, NT #Far Horizons - The Great Capitalization Crusade
   placement:
     mode: SnapgridCenter
     snap:
@@ -284,7 +284,7 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _FarHorizons/Structures/Windows/NanoTrasen/window_diagonal.rsi #FH
     state: state0
   - type: Tag
     tags:
@@ -292,10 +292,10 @@
     - Window
   - type: IconSmooth
     mode: Diagonal
-    key: windows
+    key: walls #FH
     base: state
   - type: Icon
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _FarHorizons/Structures/Windows/NanoTrasen/window_diagonal.rsi #FH
     state: state0
   - type: Fixtures
     fixtures:
@@ -321,3 +321,6 @@
   - type: Construction
     graph: WindowDiagonal
     node: windowDiagonal
+  - type: Paintable #FH start
+    group: WindowDiagonal 
+  - type: GenericPaintable #FH end

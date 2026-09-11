@@ -43,6 +43,9 @@
       riderWhitelist:
         tags:
           - CanPilot
+      riderBlacklist:
+        components:
+          - PowerArmorUser
       disallowWielding: true
       allowGunKnockback: true
       soundHit:
@@ -106,6 +109,11 @@
     - Secway
     - DoorBumpOpener
     - FootstepSound
+  - type: FluidFootprintSpreader
+    footprint: TireDual
+    footprintSize: 0.5
+    stepSpacing: 0.05
+    lateralOffset: 0.15
 
 - type: entity
   id: VehicleSecwayFilled
@@ -262,6 +270,11 @@
           name: power-cell-slot-component-slot-name-default
           disableEject: true
           swap: true
+    - type: FluidFootprintSpreader
+      footprint: TireDual
+      footprintSize: 0.5
+      stepSpacing: 0.05
+      lateralOffset: 0.15
 
 - type: entity
   id: VehicleSegwayNSTFilled
@@ -336,6 +349,11 @@
           whitelist:
             tags:
               - VehicleLightArmor
+    - type: FluidFootprintSpreader
+      footprint: TireDual
+      footprintSize: 0.5
+      stepSpacing: 0.05
+      lateralOffset: 0.15
 
 - type: entity
   id: VehicleSegwayFilled

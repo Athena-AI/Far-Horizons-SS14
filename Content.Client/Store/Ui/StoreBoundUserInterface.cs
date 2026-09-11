@@ -92,5 +92,6 @@ public sealed partial class StoreBoundUserInterface : BoundUserInterface
         }
         _menu.PopulateStoreCategoryButtons(filteredListings);
         _menu.UpdateListing(filteredListings.ToList());
+        _menu.SetWithdraw(filteredListings.Any()); // Far Horizons - if we have no listings, we likely don't have access to the store, withdraw button is disabled
     }
 }

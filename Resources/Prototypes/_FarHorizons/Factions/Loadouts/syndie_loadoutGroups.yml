@@ -256,7 +256,7 @@
   loadouts:
     - PMCoat
 
-# Marshal (Head of Security)
+#region Marshal (Head of Security)
 
 - type: loadoutGroup
   id: MarshalHead
@@ -266,6 +266,8 @@
     - MarshalHat
     - MarshalSheriff
     - MarshalBeret
+    - DeputyHatRed
+    - DeputyHelmetRed
 
 - type: loadoutGroup
   id: MarshalHeadset
@@ -295,6 +297,7 @@
     - MarshalFormalSuit
     - MarshalFormalSkirt
     - MarshalParade
+    - DeputyUniformRed
 
 - type: loadoutGroup
   id: MarshalOuterClothing
@@ -303,23 +306,24 @@
   loadouts:
     - MarshalArmoredTrenchCoat
     - MarshalArmoredWinterCoat
+    - SheriffHOSCoatRed
 
 - type: loadoutGroup
   id: MarshalSidearm
   name: loadout-group-security-sidearm
   loadouts:
   - SecurityPistolMk58
-  - SecurityRevolverInspectorM500
+  - SecurityRevolverInspectorcustom
   - SecurityRevolverInspector
-  - SecurityRevolverOathbreakerM500
+  - SecurityRevolverOathbreakercustom
   - SecurityRevolverOathbreaker
-  - SecurityRevolverInstigatorM500
+  - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
   - SecurityPistolN1984
   - SecurityPistolDueProcess
   - SecurityPistolEnforcerFHNS
   - SecurityPistolPathology
-  - SecurityPistolMk59
+  - SecurityPistolMKS
 
 # Foreman
 
@@ -973,6 +977,7 @@
     - SecHUDSyndi
     - SecHUDEyepatchSyndi
     - SecVisorSyndi
+    - DeputyGlasses
 
 - type: loadoutGroup
   id: SecMedEyesSyndi
@@ -982,6 +987,7 @@
     - SecMedHUDSyndi
     - SecMedHUDEyepatchSyndi
     - SecMedVisorSyndi
+    - DeputyMedicalGlasses
 
 - type: loadoutGroup
   id: SecurityBackpackSyndi
@@ -1008,6 +1014,7 @@
   - JackBootsSyndi
   - CombatBootsSyndi
   - HighHeelBootsFilled
+  - CombatShoes 
 
 - type: loadoutGroup
   id: SecurityNonLethalWeaponNS
@@ -1021,13 +1028,13 @@
   name: loadout-group-security-sidearm
   loadouts:
   - SecurityPistolMk58
-  - SecurityPistolMk59 #NeoSol version
+  - SecurityPistolMKS #NeoSol version
   #- SecurityPistolDP //Far Horizons Change
   #- SecurityPistolEnforcer //Far Horizons Change
-  - SecurityRevolverInstigatorM500 # FarHorizons
+  - SecurityRevolverInstigatorcustom # FarHorizons
   - SecurityRevolverInstigator # FarHorizons
 
-# Corpsman (Corpsman)
+#region Corpsman
 
 - type: loadoutGroup
   id: CorpsmanSyndiBelt
@@ -1042,7 +1049,14 @@
   - SecHelmetSyndi
   - CorpsmanSyndiBeret
 
-# Constable (Warden)
+- type: loadoutGroup
+  id: CorpsmanSyndiOuterClothing
+  name: loadout-group-corpsman-outerclothing
+  loadouts:
+  - CorpsmanCoat
+  - DeputySheriffCorpsmanCoatRed
+
+#region Constable (Warden)
 
 - type: loadoutGroup
   id: ConstableHead
@@ -1051,6 +1065,8 @@
   loadouts:
     - ConstableBeret
     - ConstableCap
+    - DeputyHatRed
+    - DeputyHelmetRed
 
 - type: loadoutGroup
   id: ConstableHeadset
@@ -1065,6 +1081,7 @@
   loadouts:
     - ConstableSuit
     - ConstableSkirt
+    - DeputyUniformRed
 
 - type: loadoutGroup
   id: ConstableOuterClothing
@@ -1072,6 +1089,7 @@
   loadouts:
     - ConstableArmoredCoat
     - ConstableArmoredWinterCoat
+    - DeputySheriffWardenCoatRed
 
 - type: loadoutGroup
   id: ConstableSidearm
@@ -1079,11 +1097,11 @@
   loadouts:
   - SecurityPistolDueProcess
   - SecurityPistolMk58
-  - SecurityPistolMk59
-  - SecurityRevolverInstigatorM500
+  - SecurityPistolMKS
+  - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
 
-# Inspector (Detective)
+#region Inspector (Detective)
 
 - type: loadoutGroup
   id: InspectorHead
@@ -1092,6 +1110,8 @@
   loadouts:
   - BlackRedFedora
   - DetectiveFedoraGrey
+  - DeputyHatRed
+  - DeputyHelmetRed
 
 - type: loadoutGroup
   id: InspectorNeck
@@ -1107,6 +1127,7 @@
     - InspectorHardWornSkirt
     - InspectorNoirSuit
     - InspectorNoirSkirt
+    - DeputyUniformRed
 
 - type: loadoutGroup
   id: InspectorOuterClothing
@@ -1116,6 +1137,8 @@
     - InspectorVest
     - InspectorTrench
     - InspectorNoirTrench
+    - DeputyDusterRed
+    - DeputyCoatRed
 
 - type: loadoutGroup
   id: InspectorShoes
@@ -1128,8 +1151,9 @@
   - CowboyBootsWhiteFilled
   - CombatBootsSyndi
   - HighHeelBootsFilled
+  - CombatShoes 
 
-# Enforcer (Security Officer)
+#region Enforcer (Security Officer)
 
 - type: loadoutGroup
   id: SecurityHeadSyndi
@@ -1137,12 +1161,14 @@
   minLimit: 0
   loadouts:
   - SecHelmetSyndi
+  - DeputyHelmetRed
   - SecHelmetPlateSyndi
   - SecHelmetStabproofSyndi
   - SecHelmetHeatAbsorbSyndi
   - SecurityBeretSyndi
   - SecurityCapSyndi
   - SecurityTrooperHatSyndi
+  - DeputyHatRed
 
 - type: loadoutGroup
   id: EnforcerUniform
@@ -1156,6 +1182,7 @@
     - EnforcerTrooperSkirt
     - EnforcerSeniorSuit
     - EnforcerSeniorSkirt
+    - DeputyUniformRed
 
 - type: loadoutGroup
   id: EnforcerOuterClothing
@@ -1169,9 +1196,11 @@
   - EnforcerWindbreaker
   - EnforcerBomber
   #- EnforcerWintercoat -Omega: Disabled currently because it's blue from incorrect base texture folder.
+  - DeputyCoatRed
+  - DeputyDusterRed
 
 
-# Brigmedic (Brigmedic)
+#region Brigmedic
 
 - type: loadoutGroup
   id: BrigSyndiHead
@@ -1180,6 +1209,8 @@
   loadouts:
     - BrigSyndiBeret
     - SecHelmetSyndi
+    - DeputyHatRed
+    - DeputyHelmetRed
 
 - type: loadoutGroup
   id: BrigSyndiUniform
@@ -1187,6 +1218,7 @@
   loadouts:
     - BrigSyndiSuit
     - BrigSyndiSkirt
+    - DeputyUniformRed
 
 - type: loadoutGroup
   id: BrigSyndiOuterClothing
@@ -1194,6 +1226,7 @@
   minLimit: 0
   loadouts:
     - BrigSyndiArmoredMedGown
+    - DeputyBrigmedicCoatRed
 
 - type: loadoutGroup
   id: BrigmedicSyndiBackpack
@@ -1215,7 +1248,9 @@
   name: loadout-group-brigsyndi-belt
   loadouts:
     - BrigSyndiBelt
+    - MedicalBeltDeputy
     - BrigSyndiWebbing
+    - MedicalRigDeputy
 
 # Recruit (Security Cadet)
 

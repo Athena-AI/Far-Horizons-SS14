@@ -1,5 +1,4 @@
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Piping.Components;
 using Content.Server.Body.Systems;
 using Content.Shared._FarHorizons.Vehicles.Components;
 using Content.Shared.Atmos;

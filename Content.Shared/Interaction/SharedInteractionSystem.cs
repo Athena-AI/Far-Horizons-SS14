@@ -715,7 +715,7 @@ namespace Content.Shared.Interaction
             if (!Resolve(other, ref other.Comp))
                 return false;
 
-            var ev = new InRangeOverrideEvent(origin, other, true); // Far Horizons
+            var ev = new InRangeOverrideEvent(origin, other, range, collisionMask, predicate, popup, overlapCheck, true); // Far Horizons
             RaiseLocalEvent(origin, ref ev);
 
             if (ev.Handled)
@@ -1587,11 +1587,20 @@ namespace Content.Shared.Interaction
     /// Override event raised directed on a user to check InRangeUnoccluded AND InRangeUnobstructed to the target if you require custom logic.
     /// </summary>
     [ByRefEvent]
-    public record struct InRangeOverrideEvent(EntityUid User, EntityUid Target, bool Action = false) // Far Horizons
+    public record struct InRangeOverrideEvent(EntityUid User, EntityUid Target, 
+        float Range = SharedInteractionSystem.InteractionRange, CollisionGroup CollisionMask = SharedInteractionSystem.InRangeUnobstructedMask, // Far Horizons
+        SharedInteractionSystem.Ignored? Predicate = null, bool Popup = false, bool OverlapCheck = true, bool Action = false) // Far Horizons
     {
         public readonly EntityUid User = User;
         public readonly EntityUid Target = Target;
-        public readonly bool Action = Action; // Far Horizons
+        // Far Horizons Start
+        public readonly float Range = Range;
+        public readonly CollisionGroup CollisionMask = CollisionMask;
+        public readonly SharedInteractionSystem.Ignored? Predicate = Predicate;
+        public readonly bool Popup = Popup;
+        public readonly bool OverlapCheck = OverlapCheck;
+        public readonly bool Action = Action;
+        // Far Horizons End
 
         public bool Handled;
         public bool InRange = false;

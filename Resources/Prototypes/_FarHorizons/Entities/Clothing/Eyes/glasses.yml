@@ -48,7 +48,7 @@
 - type: entity
   parent: [ClothingEyesBase, BaseSalvageContraband]
   id: ClothingEyesGlassesScrapper
-  name: Scrapper Objective Glasses 
+  name: Salvage Objective Glasses 
   description: A pair of glasses that helps tracking down the mission objective for salvage.
   suffix: GSL
   components:
@@ -70,7 +70,7 @@
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons, BaseSalvageContraband]
   id: ClothingEyesGlassesScrapperMedical
-  name: Scrapper Medical Glasses 
+  name: Salvage Medical Glasses 
   description: A modified pair of medical glasses with objective tracking. Trademarked by GSL.
   suffix: GSL
   components:
@@ -99,6 +99,28 @@
     - Silicon
     - Robotic
 
+- type: entity
+  parent: ClothingEyesGlassesBrigmedic
+  id: ClothingEyesGlassesDeputyMedical
+  name: Deputy Medical Glasses
+  description: Shows health status icons and crew id icons alike.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+
+- type: entity
+  parent: ClothingEyesGlassesSecurity
+  id: ClothingEyesGlassesDeputy
+  name: Deputy Glasses
+  description: Exact same thing as normal Security Glasses, except it has a different paintjob. Sylish!
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Eyes/Glasses/deputy.rsi
+  
 #region ## NanoTrasen ##
 
 

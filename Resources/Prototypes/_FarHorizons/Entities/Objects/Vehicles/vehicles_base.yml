@@ -168,6 +168,9 @@
       riderWhitelist:
         tags:
           - CanPilot
+      riderBlacklist:
+        components:
+          - PowerArmorUser
       hornSound: 
         path: /Audio/Effects/Vehicle/bicyclebell.ogg
       soundHit:

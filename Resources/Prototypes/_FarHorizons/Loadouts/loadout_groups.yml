@@ -295,18 +295,18 @@
   id: HoSSidearm
   name: loadout-group-security-sidearm
   loadouts:
-  - SecurityRevolverInspectorM500
+  - SecurityRevolverInspectorcustom
   - SecurityRevolverInspector
-  - SecurityRevolverOathbreakerM500
+  - SecurityRevolverOathbreakercustom
   - SecurityRevolverOathbreaker
-  - SecurityRevolverInstigatorM500
+  - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
   - SecurityPistolN1984
   - SecurityPistolDueProcess
   - SecurityPistolEnforcerFH
   - SecurityPistolPathology
   - SecurityPistolMk58
-  - SecurityMk78
+  - SecurityMKT
 
 - type: loadoutGroup
   id: SurvivalHeadOfSecurity
@@ -468,11 +468,11 @@
   id: BrigmedicSidearm  
   name: loadout-group-security-sidearm
   loadouts:
-  - SecurityRevolverOathbreakerM500
+  - SecurityRevolverOathbreakercustom
   - SecurityRevolverOathbreaker
   - SecurityPistolMk58
-  - SecurityMk78
-  - SecurityRevolverInstigatorM500
+  - SecurityMKT
+  - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
 
 # Cadet
@@ -493,6 +493,8 @@
   loadouts:
   - SecurityHelmet
   - CorpsmanBeret
+  - DeputyHat
+  - DeputyHelmet
 
 - type: loadoutGroup
   id: CorpsmanJumpsuit
@@ -500,6 +502,7 @@
   loadouts:
   - JumpsuitCorpsman
   - JumpskirtCorpsman
+  - DeputyUniform
 
 - type: loadoutGroup
   id: CorpsmanBackpack
@@ -515,6 +518,7 @@
   loadouts:
   - SecurityOfficerWintercoat
   - CorpsmanCoat
+  - DeputySheriffCorpsmanCoat
 
 - type: loadoutGroup
   id: CorpsmanEyewear
@@ -523,12 +527,14 @@
   - CorpsmanGlasses
   - CorpsmanHud
   - CorpsmanVisor
+  - DeputyMedicalGlasses
 
 - type: loadoutGroup
   id: CorpsmanBelt
   name: loadout-group-corpsman-belt
   loadouts:
   - CorpsmanBelt
+  - CorpsmanRig
 
 - type: loadoutGroup
   id: CorpsmanGloves
@@ -543,8 +549,8 @@
   loadouts:
   - SecurityPistolPathology
   - SecurityPistolMk58
-  - SecurityMk78
-  - SecurityRevolverInstigatorM500
+  - SecurityMKT
+  - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
 
 - type: loadoutGroup
@@ -560,7 +566,7 @@
   id: DetectiveSidearm 
   name: loadout-group-security-sidearm
   loadouts:
-  - SecurityRevolverInspectorM500
+  - SecurityRevolverInspectorcustom
   - SecurityRevolverInspector
   - SecurityRevolverInstigatorDet
 
@@ -572,8 +578,8 @@
   loadouts:
   - SecurityPistolDueProcess
   - SecurityPistolMk58
-  - SecurityMk78
-  - SecurityRevolverInstigatorM500
+  - SecurityMKT
+  - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
 
 #region Service
@@ -661,10 +667,10 @@
   id: CivilianWeaponsNT
   parent: CivilianWeaponsFactionless
   loadouts:
-  - Mk78Civ
+  - MKTCiv
 
 - type: loadoutGroup
   id: CivilianWeaponsNS
   parent: CivilianWeaponsFactionless
   loadouts:
-  - Mk59Civ
+  - MKSCiv

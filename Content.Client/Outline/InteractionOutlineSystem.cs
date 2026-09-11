@@ -5,6 +5,7 @@ using Content.Client.Graphics;
 using Content.Client.Viewport;
 using Content.Shared.CCVar;
 using Content.Shared.Interaction;
+using Content.Shared.Stealth.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -193,6 +194,8 @@ public sealed partial class InteractionOutlineSystem : EntitySystem
 
     private void AddOutline(Entity<InteractionOutlineComponent> ent, bool inInteractionRange, int renderScale)
     {
+        if (HasComp<StealthComponent>(ent)) return; // Far Horizons, don't reveal stealth
+
         ent.Comp.LastRenderScale = renderScale;
         ent.Comp.InRange = inInteractionRange;
         ent.Comp.Active = true;

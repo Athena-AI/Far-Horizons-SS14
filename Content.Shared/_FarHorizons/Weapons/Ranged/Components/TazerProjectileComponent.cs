@@ -28,7 +28,11 @@ public sealed partial class TazerComponent : Component
 /// 
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class TazerProjectileComponent : Component;
+public sealed partial class TazerProjectileComponent : Component
+{
+    [DataField]
+    public float CuttingTime = 1f;
+}
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class TazedComponent: Component

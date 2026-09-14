@@ -2,14 +2,18 @@ using System.Linq;
 using Content.Shared._FarHorizons.Weapons.Ranged.Components;
 using Content.Shared.Body;
 using Content.Shared.Damage.Systems;
+using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Jittering;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
 using Content.Shared.Stunnable;
+using Content.Shared.Tools.Components;
+using Content.Shared.Tools.Systems;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Audio;
+using Robust.Shared.Containers;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -24,6 +28,8 @@ public sealed partial class TazerProjectileSystem : EntitySystem
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private SharedProjectileSystem _projectile = default!;
     [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
 
     public override void Update(float frameTime)
     {
@@ -39,6 +45,7 @@ public sealed partial class TazerProjectileSystem : EntitySystem
         }
     }
 
+    #region TazerComponent
     [SubscribeLocalEvent]
     private void OnShot(Entity<TazerComponent> ent, ref AmmoShotEvent args)
     {
@@ -62,6 +69,25 @@ public sealed partial class TazerProjectileSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnFireModechanged(Entity<TazerComponent> ent, ref UseInHandEvent args)
+    {
+        if(ent.Comp.CurrentProjectiles.Count == 0 || args.Handled) 
+            return;
+
+        foreach(var projectile in ent.Comp.CurrentProjectiles)
+            _projectile.EmbedDetach(projectile, null);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnContainerChange(Entity<TazerComponent> ent, ref EntGotInsertedIntoContainerMessage _)
+    {
+        foreach(var projectile in ent.Comp.CurrentProjectiles)
+            _projectile.EmbedDetach(projectile, null);
+    }
+    #endregion
+
+    #region TazerProjectileComponent
+    [SubscribeLocalEvent]
     private void OnHit(Entity<TazerProjectileComponent> ent, ref ProjectileEmbedEvent args)
     {
         if (args.Weapon == null || args.Shooter == null || args.Embedded == args.Shooter.Value
@@ -79,6 +105,39 @@ public sealed partial class TazerProjectileSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnInteract(Entity<TazerProjectileComponent> ent, ref InteractUsingEvent args)
+    {
+        var quality = "Slicing";
+        if(!_tool.HasQuality(args.Used, quality))
+            return;
+
+        var doAfterArgs = new DoAfterArgs(EntityManager, args.User, ent.Comp.CuttingTime, new SimpleToolDoAfterEvent(), ent, ent, args.Used)
+        {
+            BreakOnDamage = true,
+            BreakOnDropItem = true,
+            BreakOnMove = true,
+            BreakOnHandChange = true,
+            NeedHand = true,
+        };
+        _doAfter.TryStartDoAfter(doAfterArgs);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnDoAfter(Entity<TazerProjectileComponent> ent, ref SimpleToolDoAfterEvent _)
+    {
+        if(!TryComp<EmbeddableProjectileComponent>(ent.Owner, out var embed) 
+        || !TryComp<TazedComponent>(embed.EmbeddedIntoUid, out var tazedComponent)) 
+            return;
+
+        if(tazedComponent.Sources.Count == 0)
+            RemComp<TazedComponent>(embed.EmbeddedIntoUid.Value);
+    
+        _projectile.EmbedDetach(ent, null);
+    }
+    #endregion
+
+    #region TazedComponent
+    [SubscribeLocalEvent]
     private void OnStunned(Entity<TazedComponent> ent, ref StunnedEvent _)
     {
         RemComp<TazedComponent>(ent.Owner);
@@ -92,16 +151,6 @@ public sealed partial class TazerProjectileSystem : EntitySystem
             foreach(var projectile in projectiles)
                 _projectile.EmbedDetach(projectile, null);
         }
-    }
-
-    [SubscribeLocalEvent]
-    private void OnFireModechanged(Entity<TazerComponent> ent, ref UseInHandEvent args)
-    {
-        if(ent.Comp.CurrentProjectiles.Count == 0 || args.Handled) 
-            return;
-
-        foreach(var projectile in ent.Comp.CurrentProjectiles)
-            _projectile.EmbedDetach(projectile, null);
     }
 
     private void Taze(Entity<TazedComponent> ent)
@@ -134,4 +183,5 @@ public sealed partial class TazerProjectileSystem : EntitySystem
             _jitter.DoJitter(ent.Owner, TimeSpan.FromSeconds(1.0), true);
         }
     }
+    #endregion
 }

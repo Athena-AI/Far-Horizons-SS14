@@ -322,42 +322,44 @@
     - 12,1,12,1 #right - cube
     whitelist:
       tags:
-        - SecBeltEquip
-        - BrigmedicBeltEquip
-        - CigPack
-        - Taser
-        - Wrench
-        - Bottle
-        - Spray
-        - Brutepack
-        - Bloodpack
-        - AmmoniaPack
-        - Gauze
-        - Ointment
-        - PillCanister
-        - Radio
-        - DiscreteHealthAnalyzer
-        - SurgeryTool
-        - Dropper
-        - Truncheon
-        - Sidearm
-        - MagazinePistol
-        - MagazineMagnum
-        - Hypospray
-        - Medkit
-        - Vial
-        - ExternalContainerInjectorVial
+      - SecBeltEquip
+      - BrigmedicBeltEquip
+      - CigPack
+      - Taser
+      - Wrench
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - AmmoniaPack
+      - Gauze
+      - Ointment
+      - PillCanister
+      - Radio
+      - DiscreteHealthAnalyzer
+      - SurgeryTool
+      - Dropper
+      - Truncheon
+      - Sidearm
+      - MagazinePistol
+      - MagazineMagnum
+      - Hypospray
+      - Medkit
+      - Vial
+      - ExternalContainerInjectorVial
+      - HoloflarePistol # FH
       components:
-        - Stunbaton
-        - FlashOnTrigger
-        - SmokeOnTrigger
-        - Flash
-        - Handcuff
-        - BallisticAmmoProvider
-        - Ammo
-        - Injector
-        - Pill
-        - HandLabeler
+      - Stunbaton
+      - FlashOnTrigger
+      - SmokeOnTrigger
+      - Flash
+      - Handcuff
+      - BallisticAmmoProvider
+      - Ammo
+      - Injector
+      - Pill
+      - HandLabeler
+      - Blocking # FH
   - type: Appearance
   - type: ExplosionResistance
     damageCoefficient: 0

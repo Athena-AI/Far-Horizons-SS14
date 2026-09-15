@@ -37,12 +37,12 @@
     steps: 5
     zeroVisible: true
   - type: BatteryAmmoProvider
-    proto: DisablerBolt
-    fireCost: 100
+    proto: TaserProjectileRifle
+    fireCost: 500
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: DisablerBolt
-      fireCost: 100
+    - proto: TaserProjectileRifle
+      fireCost: 500
       magState: disable
       visualState: disable-unshaded
     - proto: RedLaserBeam
@@ -820,12 +820,12 @@
     steps: 5
     zeroVisible: true
   - type: BatteryAmmoProvider
-    proto: TaserBolt
-    fireCost: 100
+    proto: TaserProjectileRifle
+    fireCost: 500
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: TaserBolt
-      fireCost: 100
+    - proto: TaserProjectileRifle
+      fireCost: 500
       magState: stun
       visualState: stun-unshaded
     - proto: RedLaserBeam

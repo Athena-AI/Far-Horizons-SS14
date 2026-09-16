@@ -154,13 +154,13 @@ public sealed partial class CCVars
         CVarDef.Create("atmos.heat_scale", 8f, CVar.REPLICATED | CVar.SERVER);
 
     /// <summary>
-    ///     Maximum explosion radius for explosions caused by bursting a gas tank ("max caps").
-    ///     Setting this to zero disables the explosion but still allows the tank to burst and leak.
+    ///     Maximum explosion intensity for explosions caused by bursting a gas tank ("max caps").
+    ///     Setting this to zero disables the limits.
     ///    Adjusted for STARLIGHT use
     /// </summary>
     public static readonly CVarDef<float> AtmosTankFragment =
-        CVarDef.Create("atmos.max_explosion_range", 15f, CVar.SERVERONLY);
-    
+        CVarDef.Create("atmos.max_explosion_range", 15f, CVar.SERVER);
+
     /// <summary>
     /// Whether atmospherics will process delta-pressure damage on entities with a DeltaPressureComponent.
     /// Entities with this component will take damage if they are exposed to a pressure difference

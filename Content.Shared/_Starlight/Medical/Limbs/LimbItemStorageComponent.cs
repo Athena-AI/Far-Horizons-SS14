@@ -25,6 +25,12 @@ public enum LimbItemToggleMenuUiKey : byte
 }
 
 public sealed partial class ToggleCyberlimbMenuEvent : InstantActionEvent;
+[Serializable, NetSerializable]
+public sealed class RefreshLimbUIMessage(NetEntity ent, bool value) : BoundUserInterfaceMessage
+{
+    public NetEntity Ent = ent;
+    public bool Value = value;
+}
 
 [Serializable, NetSerializable]
 public sealed class LimbToggleMessage : BoundUserInterfaceMessage;

@@ -124,6 +124,11 @@ public sealed partial class SimpleRadialMenu : RadialMenu
         var button = settings.UseSectors
             ? ConvertToButtonWithSector(model, settings)
             : new RadialMenuButton();
+
+        //FH-Edit: remember button <-> model pairing for sector buttons so colors can be refreshed later
+        if (button is RadialMenuButtonWithSector sectorButton)
+            _sectorButtons.Add((sectorButton, model));
+
         button.SetSize = new Vector2(64f, 64f);
         button.ToolTip = model.ToolTip;
         var imageControl = model.IconSpecifier switch
@@ -229,6 +234,8 @@ public sealed partial class SimpleRadialMenu : RadialMenu
         {
             Children.Remove(control);
         }
+
+        _sectorButtons.Clear(); //FH-Edit
     }
 
     #region target entity tracking

@@ -41,9 +41,10 @@ public sealed partial class CyberLimbSystem : EntitySystem
     }
 
     private void OnLimbToggle(Entity<LimbItemDeployerComponent> ent, ref ToggleLimbEvent args)
-        => LimbToggle(ent, args.Performer);
+        => LimbToggle(ent, args.Performer); //Far Horizons Edit
 
-    private void LimbToggle(Entity<LimbItemDeployerComponent> ent, EntityUid Performer)
+    //Far Horizons Start
+    private void LimbToggle(Entity<LimbItemDeployerComponent> ent, EntityUid Performer) 
     {
         if (!TryComp<LimbItemStorageComponent>(ent, out var storage))
             return;
@@ -54,7 +55,7 @@ public sealed partial class CyberLimbSystem : EntitySystem
         {
             foreach (var item in storage.ItemEntities)
             {
-                if(!item.Value)
+                if(!item.Value) //FH-Edit
                     continue;
 
                 var handId = $"{ent.Owner}_{item.Key}";
@@ -88,6 +89,7 @@ public sealed partial class CyberLimbSystem : EntitySystem
 
         Dirty(ent);
     }
+    //Far Horizons End
 
     private void OnCyberneticsDisrupted(Entity<LimbItemDeployerComponent> ent, ref BodyRelayedEvent<CyberneticDisruptionEvent> args)
     {
@@ -102,30 +104,5 @@ public sealed partial class CyberLimbSystem : EntitySystem
             };
             RaiseLocalEvent(ent, ev);
         }
-    }
-
-    [SubscribeLocalEvent]
-    private void OnToggleLimbMessage(Entity<LimbItemDeployerComponent> ent, ref LimbToggleMessage args)
-        => LimbToggle(ent, args.Actor);
-
-    [SubscribeLocalEvent]
-    private void OnToggleLimbItemMessage(Entity<LimbItemStorageComponent> ent, ref LimbItemToggleMessage args)
-    {
-        var item = GetEntity(args.Item);
-        if(!ent.Comp.ItemEntities.TryGetValue(item, out var value))
-            return;
-        
-        ent.Comp.ItemEntities[item] = !value;
-        Dirty(ent);
-    }
-
-    [SubscribeLocalEvent]
-    private void OnLimbItemToggleMenu(Entity<LimbItemDeployerComponent> ent, ref ToggleCyberlimbMenuEvent args)
-    {
-        if (!TryComp<UserInterfaceComponent>(ent, out var userInterfaceComp))
-            return;
-
-        if (!_uiSystem.IsUiOpen((ent, userInterfaceComp), LimbItemToggleMenuUiKey.Key, args.Performer))
-            _uiSystem.OpenUi((ent, userInterfaceComp), LimbItemToggleMenuUiKey.Key, args.Performer);
     }
 }

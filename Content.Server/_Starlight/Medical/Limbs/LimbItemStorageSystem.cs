@@ -28,9 +28,11 @@ public sealed partial class LimbItemStorageSystem : EntitySystem
         if (limb.Comp.ItemEntities?.Count == limb.Comp.Items.Count) return;
         var container = _container.EnsureContainer<Container>(limb.Owner, limb.Comp.ContainerId, out _);
 
+        //Far Horizons Start
         if(limb.Comp.ItemEntities != null)
             foreach(var item in limb.Comp.Items)
-                limb.Comp.ItemEntities.Add(EnsureItem(item), false);
+                limb.Comp.ItemEntities.Add(EnsureItem(item), true);
+        //Far Horizons End
 
         Dirty(limb);
 

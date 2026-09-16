@@ -12,6 +12,7 @@ namespace Content.Client._Starlight.Medical.Limbs;
 public sealed partial class CyberLimbSystemItemsRadial(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
     private SimpleRadialMenu? _menu;
+    private Dictionary<EntityUid, RadialMenuOptionBase> _buttons = new();
     private static readonly Color _selectedOptionBackground = Palettes.Green.Element.WithAlpha(128);
     private static readonly Color _selectedOptionHoverBackground = Palettes.Green.HoveredElement.WithAlpha(128);
 
@@ -20,11 +21,36 @@ public sealed partial class CyberLimbSystemItemsRadial(EntityUid owner, Enum uiK
         base.Open();
 
         _menu = this.CreateWindow<SimpleRadialMenu>();
-        Update();
+        _buttons.Clear();
+        CreateButtons();
         _menu.OpenOverMouseScreenPosition();
     }
 
-    public override void Update()
+    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
+    {
+        base.ReceiveMessage(message);
+
+        if (_menu == null)
+            return;
+
+        if (message is not RefreshLimbUIMessage msg)
+            return;
+
+        UpdateButton(msg.Ent, msg.Value);
+    }
+
+    private void UpdateButton(NetEntity ent, bool value)
+    {
+        var entity = EntMan.GetEntity(ent);
+        if (!_buttons.TryGetValue(entity, out var button)
+        || _menu == null)
+            return;
+
+        button.BackgroundColor =  value ? _selectedOptionBackground : null;
+        button.HoverBackgroundColor = value ? _selectedOptionHoverBackground : null;
+        _menu.UpdateBackgroundColors(_buttons.Values);
+    }
+    private void CreateButtons()
     {
         if (_menu == null)
             return;
@@ -39,8 +65,6 @@ public sealed partial class CyberLimbSystemItemsRadial(EntityUid owner, Enum uiK
 
     private IEnumerable<RadialMenuOptionBase> ConvertToButtons(Entity<LimbItemStorageComponent, LimbItemDeployerComponent> ent)
     {
-        var buttons = new List<RadialMenuOptionBase>();
-
         var ToggleOption = new RadialMenuActionOption<NetEntity>(SendLimbToggle, EntMan.GetNetEntity(ent.Owner))
         {
             IconSpecifier = RadialMenuIconSpecifier.With(
@@ -50,7 +74,7 @@ public sealed partial class CyberLimbSystemItemsRadial(EntityUid owner, Enum uiK
             BackgroundColor = ent.Comp2.Toggled ? _selectedOptionBackground : null,
             HoverBackgroundColor = ent.Comp2.Toggled ? _selectedOptionHoverBackground : null
         };
-        buttons.Add(ToggleOption);
+        _buttons.Add(ent.Owner, ToggleOption);
 
         foreach (var item in ent.Comp1.ItemEntities)
         {
@@ -66,15 +90,15 @@ public sealed partial class CyberLimbSystemItemsRadial(EntityUid owner, Enum uiK
                 HoverBackgroundColor = item.Value ? _selectedOptionHoverBackground : null,
                 KeepOpen = true
             };
-            buttons.Add(option);
+            _buttons.Add(item.Key, option);
         }
 
-        return buttons;
+        return _buttons.Values;
     }
 
     private void SendLimbToggle(NetEntity _) 
         => SendPredictedMessage(new LimbToggleMessage());
 
-    private void SendLimbItemToggle(NetEntity item) 
+    private void SendLimbItemToggle(NetEntity item)
         => SendPredictedMessage(new LimbItemToggleMessage(item));
 }

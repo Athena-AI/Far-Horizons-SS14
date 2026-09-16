@@ -93,7 +93,7 @@ public sealed class GasTankSystem : SharedGasTankSystem
 
         // Clear the gas tank
         ent.Comp.Air.Clear();
-        CheckStatus(ent);
+        CheckStatus(ent, 1);
 
         // Clear moles in the component
         ent.Comp.TotalMoles = 0;

@@ -1,11 +1,4 @@
 ﻿Entries:
-- author: TrixxedHeart
-  changes:
-  - message: Vox can now have up to 4 head markings.
-    type: Fix
-  id: 9142
-  time: '2025-10-21T14:16:02.0000000+00:00'
-  url: https://github.com/space-wizards/space-station-14/pull/40542
 - author: Princess-Cheeseballs
   changes:
   - message: You can now get drunk again.
@@ -4046,3 +4039,15 @@
   id: 9653
   time: '2026-04-20T02:39:57.0000000+00:00'
   url: https://github.com/space-wizards/space-station-14/pull/43647
+- author: B_Kirill
+  changes:
+  - message: NPCs can now wield and activate melee weapons.
+    type: Add
+  - message: NPCs can now wield guns and close their bolts.
+    type: Add
+  - message: NPCs can now reload guns without a cartridge in the chamber, provided
+      there are cartridges in the clip.
+    type: Add
+  id: 9654
+  time: '2026-04-21T04:37:45.0000000+00:00'
+  url: https://github.com/space-wizards/space-station-14/pull/40900

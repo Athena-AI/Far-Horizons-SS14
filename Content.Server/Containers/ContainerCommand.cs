@@ -84,4 +84,181 @@ public sealed class ContainerCommand : ToolshedCommand
 
         return _container.GetAllContainers(ent);
     }
+
+#region Starlight
+    #region insert implementations
+
+    [CommandImplementation("insert")]
+    public EntityUid ContainerInsert([PipedArgument] EntityUid target, string containerId, EntityUid uid)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        var container = _container.GetContainer(target, containerId);
+        _container.InsertOrDrop(uid, container);
+        return target;
+    }
+
+    [CommandImplementation("insert")]
+    public IEnumerable<EntityUid> ContainerInsert([PipedArgument] IEnumerable<EntityUid> target, string containerId, EntityUid uid) =>
+        target.Select(x => ContainerInsert(x, containerId, uid));
+
+    [CommandImplementation("insertmany")]
+    public IEnumerable<EntityUid> ContainerInsertMany([PipedArgument] IEnumerable<EntityUid> entities, string containerId,
+        EntityUid target) =>
+        entities.Select(entity => ContainerInsert(target, containerId, entity));
+    #endregion
+
+    #region create implementations
+
+    [CommandImplementation("create")]
+    public EntityUid Create([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        _container.MakeContainer<Container>(target, containerId);
+        return target;
+    }
+
+    [CommandImplementation("create")]
+    public IEnumerable<EntityUid> Create([PipedArgument] IEnumerable<EntityUid> target, string containerId) =>
+        target.Select(x => Create(x, containerId));
+
+    #endregion
+
+    #region delete implementations
+
+    [CommandImplementation("delete")]
+    public EntityUid Delete([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        var container = _container.GetContainer(target, containerId);
+        _container.ShutdownContainer(container);
+        return target;
+    }
+
+    [CommandImplementation("delete")]
+    public void Delete([PipedArgument] BaseContainer container)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        _container.ShutdownContainer(container);
+    }
+
+    [CommandImplementation("delete")]
+    public IEnumerable<EntityUid> Delete([PipedArgument] IEnumerable<EntityUid> target, string containerId) =>
+        target.Select(x => Delete(x, containerId));
+
+    #endregion
+
+    #region drop implementation
+
+    [CommandImplementation("drop")]
+    public EntityUid Drop([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        var container = _container.GetContainer(target, containerId);
+        _container.EmptyContainer(container);
+        return target;
+    }
+
+    [CommandImplementation("drop")]
+    public BaseContainer Drop([PipedArgument] BaseContainer container)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        _container.EmptyContainer(container);
+        return container;
+    }
+
+    [CommandImplementation("dropandget")]
+    public IEnumerable<EntityUid> DropGetEntities([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        var container = _container.GetContainer(target, containerId);
+        return _container.EmptyContainer(container);
+    }
+
+    [CommandImplementation("dropandget")]
+    public IEnumerable<EntityUid>? DropGetEntities([PipedArgument] BaseContainer container)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        return _container.EmptyContainer(container);
+    }
+
+    [CommandImplementation("dropanddelete")]
+    public EntityUid DropAndDelete([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        var container = _container.GetContainer(target, containerId);
+        _container.ShutdownContainer(container);
+        return target;
+    }
+
+    [CommandImplementation("dropanddelete")]
+    public void DropAndDelete([PipedArgument] BaseContainer container)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        _container.ShutdownContainer(container);
+    }
+
+    [CommandImplementation("drop")]
+    public IEnumerable<EntityUid> Drop([PipedArgument] IEnumerable<EntityUid> target, string containerId) =>
+        target.Select(x => Drop(x, containerId));
+
+    [CommandImplementation("dropandget")]
+    public IEnumerable<EntityUid> DropGetEntities([PipedArgument] IEnumerable<EntityUid> target, string containerId) =>
+        target.SelectMany(x=>DropGetEntities(x, containerId));
+
+    [CommandImplementation("dropanddelete")]
+    public IEnumerable<EntityUid> DropAndDelete([PipedArgument] IEnumerable<EntityUid> target, string containerId) =>
+        target.Select(x => DropAndDelete(x, containerId));
+
+    #endregion
+
+    #region get implementations
+
+    [CommandImplementation("get")]
+    public BaseContainer Get([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        return _container.GetContainer(target, containerId);
+    }
+
+    [CommandImplementation("getentities")]
+    public IEnumerable<EntityUid> GetEntities([PipedArgument] EntityUid target, string containerId)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        var container = _container.GetContainer(target, containerId);
+        return container.ContainedEntities;
+    }
+
+    [CommandImplementation("getcontaining")]
+    public IEnumerable<BaseContainer> GetContaining([PipedArgument] EntityUid target)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        List<BaseContainer> containers = [];
+        containers.AddRange(_container.GetContainingContainers(target).Select(container => container));
+        return containers;
+    }
+
+    [CommandImplementation("getoutercontainer")]
+    public BaseContainer GetOuterContainer([PipedArgument] EntityUid target)
+    {
+        _container ??= GetSys<SharedContainerSystem>();
+        return _container.GetContainingContainers(target).Last();
+    }
+
+    [CommandImplementation("getowner")]
+    public EntityUid? GetOwner([PipedArgument] BaseContainer container) => container.Owner;
+
+    [CommandImplementation("getentities")]
+    public IEnumerable<EntityUid> GetEntities([PipedArgument] IEnumerable<EntityUid> target, string containerId) =>
+        target.SelectMany(x => GetEntities(x, containerId));
+
+    [CommandImplementation("getoutercontainer")]
+    public IEnumerable<BaseContainer> GetOuterContainer([PipedArgument] IEnumerable<EntityUid> target) =>
+        target.Select(GetOuterContainer);
+
+    [CommandImplementation("getowner")]
+    public IEnumerable<EntityUid?> GetOwner([PipedArgument] IEnumerable<BaseContainer> container) =>
+        container.Select(GetOwner);
+
+    #endregion
+#endregion Starlight
 }

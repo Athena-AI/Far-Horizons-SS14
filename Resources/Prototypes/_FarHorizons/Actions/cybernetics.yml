@@ -37,7 +37,7 @@
         state: icon
       itemIconStyle: NoItem
     - type: InstantAction
-      event: !type:ToggleLimbEvent
+      event: !type:ToggleCyberlimbMenuEvent
 
 - type: entity
   id: ActionToggleCyberIFA30Right
@@ -51,4 +51,4 @@
         state: icon
       itemIconStyle: NoItem
     - type: InstantAction
-      event: !type:ToggleLimbEvent
+      event: !type:ToggleCyberlimbMenuEvent

@@ -10,7 +10,7 @@
         state: cyber-hand-left
       itemIconStyle: BigItem
     - type: InstantAction
-      event: !type:ToggleLimbEvent
+      event: !type:ToggleCyberlimbMenuEvent
 
 - type: entity
   id: ActionToggleCyberHandLeft
@@ -24,7 +24,7 @@
         state: cyber-hand-left
       itemIconStyle: BigItem
     - type: InstantAction
-      event: !type:ToggleLimbEvent
+      event: !type:ToggleCyberlimbMenuEvent
 
 - type: entity
   id: ActionToggleCyberHandRight
@@ -38,7 +38,7 @@
         state: cyber-hand-right
       itemIconStyle: BigItem
     - type: InstantAction
-      event: !type:ToggleLimbEvent
+      event: !type:ToggleCyberlimbMenuEvent
 
 
 - type: entity

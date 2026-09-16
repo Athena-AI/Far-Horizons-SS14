@@ -142,7 +142,7 @@ public sealed partial class SimpleRadialMenu : RadialMenu
             button.OnPressed += _ =>
             {
                 actionOption.OnPressed?.Invoke();
-                if (!haveNested)
+                if (!haveNested && !model.KeepOpen) //FH-Edit
                     Close();
             };
         }
@@ -334,6 +334,13 @@ public abstract class RadialMenuOptionBase
     /// Specifier that describes icon to be used for radial menu button.
     /// </summary>
     public RadialMenuIconSpecifier? IconSpecifier { get; set; }
+
+    //Far Horizons Start
+    /// <summary>
+    /// If true, pressing this option will not close the radial menu.
+    /// </summary>
+    public bool KeepOpen { get; init; } = false;
+    //Far Horizons End
 }
 
 /// <summary> Base type for model of radial menu button with some action on button pressed. </summary>

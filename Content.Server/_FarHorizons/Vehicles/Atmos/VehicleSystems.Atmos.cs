@@ -174,7 +174,7 @@ public sealed class VehicleAtmosphereSystem : EntitySystem
 
         if (external == null
             || external.Pressure <= MinExternalPressure
-            || tankAir.Pressure >= tankComp.MaxOutputPressure - PressureTolerance)
+            || tankAir.Pressure >= Atmospherics.MaxOutputPressure - PressureTolerance)
         {
             SetFanState(ent, fanModule, FanState.Idle);
             return false;

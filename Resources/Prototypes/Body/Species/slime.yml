@@ -166,7 +166,7 @@
     bloodReferenceSolution: # TODO Color slime blood based on their slime color or smth
       reagents:
       - ReagentId: Slime
-        Quantity: 300
+        Quantity: 600
   - type: Barotrauma
     damage:
       types:
@@ -357,11 +357,10 @@
     category: SentientCore
 #FarHorizons - Moving metabolizer/stomach to entire body, instead of core.
 #  components:
-#  - type: SolutionContainerManager
+#  - type: SolutionManager
 #    solutions:
 #      food: {}
-#      stomach:
-#        maxVol: 50.0
+#    - SolutionStomach
 #  - type: Stomach
 #  - type: Metabolizer
 #    maxReagents: 6

@@ -1,3 +1,5 @@
+using Content.Shared._Starlight.Speech;
+
 namespace Content.Shared.Speech.EntitySystems;
 
 /// <summary>
@@ -5,8 +7,7 @@ namespace Content.Shared.Speech.EntitySystems;
 /// </summary>
 public sealed class AllCapsAccentSystem : RelayAccentSystem<Components.AllCapsAccentComponent>
 {
-    protected override string AccentuateInternal(EntityUid uid, Components.AllCapsAccentComponent comp, string message)
-    {
-        return message.ToUpperInvariant();
-    }
+    // Far Horizons - we changed this from string to SpeechMessage
+    protected override SpeechMessage AccentuateInternal(EntityUid uid, Components.AllCapsAccentComponent comp, SpeechMessage message)
+        => new SpeechMessage() { Text = message.Text.ToUpperInvariant(), Tts = message.Tts, Modifier = message.Modifier };
 }

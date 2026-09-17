@@ -1,11 +1,12 @@
 using Content.Shared.Speech.Components;
 using Content.Shared.Speech.EntitySystems;
+using Content.Shared._Starlight.Speech;
 
 namespace Content.Client.Speech.EntitySystems;
 
 public sealed class StutteringSystem : SharedStutteringSystem
 {
-    protected override string AccentuateInternal(EntityUid uid, StutteringAccentComponent comp, string message)
+    protected override SpeechMessage AccentuateInternal(EntityUid uid, StutteringAccentComponent comp, SpeechMessage message)
     {
         return message;
     }

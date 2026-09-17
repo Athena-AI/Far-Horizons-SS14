@@ -1,5 +1,6 @@
 using Content.Shared.Speech;
 using Content.Shared.StatusEffectNew;
+using Content.Shared._Starlight.Speech;
 
 namespace Content.Shared.Speech.EntitySystems;
 
@@ -18,12 +19,12 @@ public abstract class RelayAccentSystem<T> : EntitySystem where T : Component
     /// <summary>
     /// Applies the accent transformation to the provided message.
     /// </summary>
-    private string Accentuate(EntityUid uid, T comp, string message)
+    private SpeechMessage Accentuate(EntityUid uid, T comp, SpeechMessage message) // FH - string to SpeechMessage
     {
         return AccentuateInternal(uid, comp, message);
     }
 
-    protected abstract string AccentuateInternal(EntityUid uid, T comp, string message);
+    protected abstract SpeechMessage AccentuateInternal(EntityUid uid, T comp, SpeechMessage message); // FH - string to SpeechMessage
 
     private void OnAccent(Entity<T> ent, ref AccentGetEvent args)
     {

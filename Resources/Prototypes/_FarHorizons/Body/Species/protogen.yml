@@ -361,7 +361,7 @@
       6:
         glitchDuration: 5.0
         additionalEffects:
-          StatusEffectBlinded: 2.0
+          StatusEffectBlindness: 2.0
 
 - type: entity
   parent: [ OrganBaseTongue, OrganProtogenInternal ]

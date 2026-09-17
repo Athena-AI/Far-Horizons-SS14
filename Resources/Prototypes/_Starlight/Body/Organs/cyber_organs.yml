@@ -26,7 +26,7 @@
       6:
         glitchDuration: 5.0
         additionalEffects:
-          StatusEffectBlinded: 2.0
+          StatusEffectBlindness: 2.0
 
 - type: entity
   id: CyberEyeThermal
@@ -56,7 +56,7 @@
       6:
         glitchDuration: 5.0
         additionalEffects:
-          StatusEffectBlinded: 2.0
+          StatusEffectBlindness: 2.0
 
 - type: entity
   id: BudgetCyberEyes
@@ -83,7 +83,7 @@
       6:
         glitchDuration: 5.0
         additionalEffects:
-          StatusEffectBlinded: 2.0
+          StatusEffectBlindness: 2.0
   # FH start
   - type: RoundstartImplantable
     cost: 0

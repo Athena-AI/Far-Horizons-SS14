@@ -114,8 +114,9 @@
       baseWeightlessFriction: 1
       baseWeightlessModifier: 1
     - type: Damageable
-      damageContainer: Biological
       damageModifierSet: Avali
+    - type: Injurable
+      damageContainer: Biological
     - type: DamageVisuals
       damageOverlayGroups:
         Brute:

@@ -102,8 +102,9 @@
   - type: AccessReader
     access: [["Medical"]]
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Inflatable
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

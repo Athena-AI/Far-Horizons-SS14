@@ -47,8 +47,9 @@
   - type: LimbTargetting # Far Horizons
   - type: Body
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: TerrorSpider
+  - type: Injurable
+    damageContainer: Biological
   - type: MobThresholds
     thresholds:
       0: Alive

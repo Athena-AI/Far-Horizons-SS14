@@ -362,6 +362,7 @@
 #         - Xenoborg
 #         - Mouse
 #     - type: Damageable
+#     - type: Injurable
 #       damageContainer: Silicon
 #     - type: Destructible
 #       thresholds:

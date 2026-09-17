@@ -26,6 +26,7 @@
     sprite: _Starlight/Objects/Fun/Pinatas/clown.rsi
     state: pinata
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
 
 - type: entity

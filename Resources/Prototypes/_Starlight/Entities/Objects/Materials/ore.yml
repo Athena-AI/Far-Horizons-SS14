@@ -80,6 +80,7 @@
       heldPrefix: bluespace
     - type: Appearance
     - type: Damageable
+    - type: Injurable
       damageContainer: Inorganic
     - type: DamageOnLand
       damage:

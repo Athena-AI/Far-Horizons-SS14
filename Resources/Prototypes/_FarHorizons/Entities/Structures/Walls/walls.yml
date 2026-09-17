@@ -42,8 +42,9 @@
   description: This wall feels.. hollow. Some signage reads "Break in event of Emergency!"
   components:
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: FlimsyMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -102,8 +103,9 @@
   description: This wall feels.. hollow. Some signage reads "Break in event of Emergency!"
   components:
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: FlimsyMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:

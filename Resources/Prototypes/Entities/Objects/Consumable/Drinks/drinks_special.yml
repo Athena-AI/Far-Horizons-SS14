@@ -24,7 +24,7 @@
   description: A special bucket of refreshy ice. Prohibited use for challenge with the same name!
   components:
   - type: Item
-    size: Large
+    size: Normal # Starlight
   - type: Solution
     solution:
       reagents:
@@ -33,8 +33,6 @@
   - type: Sprite
     sprite: Objects/Consumable/Drinks/icebucket.rsi
     state: icon
-  - type: Item # Starlight
-    size: Normal # Starlight
   - type: PhysicalComposition
     materialComposition:
       Steel: 75

@@ -43,15 +43,23 @@ public sealed partial class CyberLimbSystem
             _hands.RemoveHand(args.Actor, handId);
         }
 
-        _audio.PlayPvs(lidComp.Sound, args.Actor);
+        if(lidComp.Toggled)
+            _audio.PlayPvs(lidComp.Sound, args.Actor);
     }
 
     [SubscribeLocalEvent]
     private void OnLimbItemToggleMenu(Entity<LimbItemDeployerComponent> ent, ref ToggleCyberlimbMenuEvent args)
     {
         if (!TryComp<UserInterfaceComponent>(ent, out var userInterfaceComp) 
-        || HasComp<CyberneticDisruptionComponent>(args.Performer))
+        || HasComp<CyberneticDisruptionComponent>(args.Performer)
+        || !TryComp<LimbItemStorageComponent>(ent, out var lisComp))
             return;
+
+        if(lisComp.ItemEntities.Count == 1)
+        {
+            LimbToggle(ent, args.Performer);
+            return;
+        }
 
         if (!_uiSystem.IsUiOpen((ent, userInterfaceComp), LimbItemToggleMenuUiKey.Key, args.Performer))
             _uiSystem.OpenUi((ent, userInterfaceComp), LimbItemToggleMenuUiKey.Key, args.Performer);

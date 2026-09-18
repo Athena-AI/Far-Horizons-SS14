@@ -143,6 +143,8 @@ namespace Content.Client.Hands.Systems
             if (handName != hands.ActiveHandId && (pressedEntity == null || HasComp<UnremoveableComponent>(pressedEntity))) //FH-Edit
             {
                 // change active hand
+                if(HasComp<UnremoveableComponent>(pressedEntity)) //FH-Edit Else you wouldnt be able to reload gun based cybernetics
+                    RaisePredictiveEvent(new RequestHandInteractUsingEvent(handName)); 
                 RaisePredictiveEvent(new RequestSetHandEvent(handName));
                 return;
             }

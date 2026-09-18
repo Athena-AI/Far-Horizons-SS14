@@ -6,6 +6,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
+using Content.Shared.Mobs;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.StatusEffectNew;
@@ -110,6 +111,17 @@ public sealed partial class OverclockingTraitSystem : IPCToggleActionTraitSystem
             _status.TryRemoveStatusEffect(ent.Owner, "StatusEffectIPCFanDisabled");
         }
     }
+
+    [SubscribeLocalEvent]
+    private void OnDeath(Entity<OverclockingTraitComponent> ent, ref MobStateChangedEvent args)
+    {
+        if(args.NewMobState != MobState.Dead || !ent.Comp.Toggled
+        || !TryComp<PowerCellDrawComponent>(ent.Owner, out var pcdComp))
+            return;
+
+        _power.SetDrawRate( ent.Owner, pcdComp.DrawRate / ent.Comp.drawRateMultiplier);
+        _status.TryRemoveStatusEffect(ent.Owner, "StatusEffectIPCFanDisabled");
+    }
 }
 
 public sealed partial class RepairNanitesTraitSystem : IPCToggleActionTraitSystem<RepairNanitesTraitComponent, RepairNanitesTraitEvent>
@@ -150,6 +162,22 @@ public sealed partial class RepairNanitesTraitSystem : IPCToggleActionTraitSyste
             psdComp.AllowedStates = ent.Comp2.oldAllowedStates;
             Dirty(ent.Owner, psdComp);
         }
+    }
+
+    [SubscribeLocalEvent]
+    private void OnDeath(Entity<RepairNanitesTraitComponent> ent, ref MobStateChangedEvent args)
+    {
+        if(args.NewMobState != MobState.Dead || !ent.Comp.Toggled
+        || !TryComp<PowerCellDrawComponent>(ent.Owner, out var pcdComp) 
+        || !TryComp<PassiveDamageComponent>(ent.Owner, out var psdComp))
+            return;
+
+        _power.SetDrawRate( ent.Owner, pcdComp.DrawRate / ent.Comp.drawRateMultiplier);
+        _status.TryRemoveStatusEffect(ent.Owner, "StatusEffectIPCFanDisabled");
+        psdComp.Damage = ent.Comp.oldDamage;
+        psdComp.DamageCap = ent.Comp.oldDamageCap;
+        psdComp.AllowedStates = ent.Comp.oldAllowedStates;
+        Dirty(ent.Owner, psdComp);
     }
 }
 

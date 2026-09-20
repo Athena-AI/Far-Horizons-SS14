@@ -1,5 +1,6 @@
 using Content.Shared._FarHorizons.Banking.Components;
 using Content.Shared.Alert;
+using Content.Shared.DragDrop;
 using Content.Shared.Hands.Components;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
@@ -96,7 +97,30 @@ public abstract partial class SharedBankingSystem
     [SubscribeLocalEvent]
     private void OnCredstickInit(Entity<CredstickComponent> ent, ref MapInitEvent args) =>
         CredstickUpdateAppearance(ent.AsNullable());
+
+    [SubscribeLocalEvent]
+    private void OnCanDragCredstick(Entity<CredstickComponent> ent, ref CanDragEvent args) => 
+        args.Handled = true;
     
+    [SubscribeLocalEvent]
+    private void OnCredstickCanDrop(Entity<CredstickComponent> ent, ref CanDropDraggedEvent args)
+    {
+        if (!ItemSlots.TryGetAvailableSlot(args.Target, ent, null, out _))
+            return;
+
+        args.CanDrop = true;
+        args.Handled = true;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnCredstickDragged(Entity<CredstickComponent> ent, ref DragDropDraggedEvent args)
+    {
+        if (!ItemSlots.TryGetAvailableSlot(args.Target, ent, null, out var slot))
+            return;
+        
+        ItemSlots.TryInsert(args.Target, slot, ent, null);
+    }
+
     [SubscribeLocalEvent]
     private void OnCreditsTransfer(Entity<CredstickComponent> ent, ref CredstickTransferDialogConfirmed args)
     {

@@ -8,7 +8,7 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/HoloTables/holotable.rsi
       layers:
-        - state: Medical Holotable
+        - state: Medical-Holotable
           type: Icon
           sprite: _FarHorizons/Structures/Machines/HoloTables/medical_holotable.rsi
         - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -72,7 +72,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/HoloTables/holotable.rsi
     layers:
-      - state: Medical Holotable
+      - state: Medical-Holotable
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/medical_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -95,7 +95,7 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -129,18 +129,18 @@
 - type: entity
   id: SolarsHolotable
   parent: HolotableBase
-  name: Solars Holotable
+  name: Solar Holotable
   suffix: NT
   description: Holographic display table. Used to control the station's solar panel arrays.
   components:
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        state: Solar Holotable
+        state: Solar-Holotable
         shader: unshaded
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
@@ -170,11 +170,11 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        state: Atmos Holotable
+        state: Atmos-Holotable
         shader: unshaded
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
@@ -206,11 +206,11 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        state: Reactor Holotable
+        state: Reactor-Holotable
         shader: unshaded
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/engineering_holotable.rsi
@@ -246,7 +246,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/HoloTables/medical_holotable.rsi
     layers:
-      - state: Medical Holotable
+      - state: Medical-Holotable
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/medical_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -268,7 +268,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/HoloTables/sec_holotables.rsi
     layers:
-      - state: Table Frame
+      - state: Table-Frame
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/sec_holotables.rsi
       - map: [ "enum.TextScreenVisuals.AlertLevel" ]
@@ -294,7 +294,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/HoloTables/sec_holotables.rsi
     layers:
-      - state: Table Frame
+      - state: Table-Frame
         type: Icon
         sprite: _FarHorizons/Structures/Machines/HoloTables/sec_holotables.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -319,7 +319,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/NS/HoloTables/medical_holotable.rsi
     layers:
-      - state: Medical Holotable
+      - state: Medical-Holotable
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/medical_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -341,7 +341,7 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
@@ -360,7 +360,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/NS/HoloTables/sec_holotables.rsi
     layers:
-      - state: Table Frame
+      - state: Table-Frame
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/sec_holotables.rsi
       - map: [ "enum.TextScreenVisuals.AlertLevel" ]
@@ -378,19 +378,19 @@
     powerLoad: 0
 
 - type: entity
-  id: SolarsHolotableNS
+  id: SolarHolotableNS
   parent: SolarsHolotable
-  name: Solars Holotable
+  name: Solar Holotable
   suffix: NS
   components:
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        state: Solar Holotable
+        state: Solar-Holotable
         shader: unshaded
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
@@ -404,11 +404,11 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        state: Atmos Holotable
+        state: Atmos-Holotable
         shader: unshaded
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
@@ -422,11 +422,11 @@
     - type: Sprite
       sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       layers:
-      - state: Engineering Table
+      - state: Engineering-Table
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        state: Reactor Holotable
+        state: Reactor-Holotable
         shader: unshaded
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/engineering_holotable.rsi
@@ -443,7 +443,7 @@
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/NS/HoloTables/sec_holotables.rsi
     layers:
-      - state: Table Frame
+      - state: Table-Frame
         type: Icon
         sprite: _FarHorizons/Structures/Machines/NS/HoloTables/sec_holotables.rsi
       - map: [ "enum.PowerDeviceVisualLayers.Powered" ]

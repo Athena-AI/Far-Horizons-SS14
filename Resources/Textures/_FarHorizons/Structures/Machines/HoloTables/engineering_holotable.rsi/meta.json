@@ -8,7 +8,7 @@
   },
   "states": [
     {
-      "name": "Engineering Table"
+      "name": "Engineering-Table"
     },
     {
       "name": "engiholo",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "name":"Atmos Holotable",
+      "name":"Atmos-Holotable",
       "delays": [
         [
           0.1,
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "name":"Reactor Holotable",
+      "name":"Reactor-Holotable",
       "delays": [
         [
           0.1,
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "name":"Solar Holotable",
+      "name":"Solar-Holotable",
       "delays": [
         [
           0.1,

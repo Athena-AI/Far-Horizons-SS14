@@ -20856,5 +20856,50 @@ Entries:
   id: 178500
   time: '2026-09-20T09:32:26.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1785
+- author: princess_gurchi
+  changes:
+  - message: Alt-clicking PDA now prioritizes taking out ID again and not credstick.
+    type: Tweak
+  id: 178600
+  time: '2026-09-20T13:31:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
+- author: princess_gurchi
+  changes:
+  - message: Due to ongoing class action litigation, air grenades will no longer be
+      sold on GSL Now!
+    type: Remove
+  id: 178601
+  time: '2026-09-20T13:31:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
+- author: princess_gurchi
+  changes:
+  - message: Space hazard hardsuit is no longer considered GSL contra.
+    type: Tweak
+  id: 178602
+  time: '2026-09-20T13:31:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
+- author: princess_gurchi
+  changes:
+  - message: Desktop computers can now be used for accessing Frontier Bank and GSL
+      Now! store. They also have Credstick slot for full app functionality.
+    type: Add
+  id: 178603
+  time: '2026-09-20T13:31:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
+- author: princess_gurchi
+  changes:
+  - message: Credsticks can be dragged and dropped into devices that accept them so
+      they can be used without hands.
+    type: Add
+  id: 178604
+  time: '2026-09-20T13:31:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
+- author: princess_gurchi
+  changes:
+  - message: People can be picked up again
+    type: Fix
+  id: 178605
+  time: '2026-09-20T13:31:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
 Order: -1
 

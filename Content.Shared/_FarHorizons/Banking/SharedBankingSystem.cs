@@ -1,6 +1,7 @@
 using Content.Shared._FarHorizons.Banking.Components;
 using Content.Shared.Alert;
 using Content.Shared.CartridgeLoader;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
@@ -12,6 +13,7 @@ namespace Content.Shared._FarHorizons.Banking;
 
 public abstract partial class SharedBankingSystem : EntitySystem
 {
+    [Dependency] protected ItemSlotsSystem ItemSlots = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private InventorySystem _inventory = default!;

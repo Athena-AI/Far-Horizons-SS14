@@ -187,7 +187,7 @@
 
 #Space Hazard Suit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
+  parent: [ ClothingOuterHardsuitBase ] # Far Horizons - removed contra base
   id: ClothingOuterHardsuitSpaceHazard
   name: space hazard hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Specifically for the dangers of space mining.

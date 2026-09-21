@@ -403,21 +403,30 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         disease.PostCureImmunity  = Math.Max(0f, disease.PostCureImmunity - (disease.Stats.Resistance / 20f));
         var cures = _prototypes.EnumeratePrototypes<CurePrototype>().Where(p => p.Tier.Equals(Math.Clamp(disease.Stats.Resistance, 0, 10)));
         var maxCures = 2;
-        List<CureStep> SelectedCures = new List<CureStep>();
+        List<CureStep> selectedCures = new();
 
-        for (int i = 0; i < maxCures; i++)
+        var possibleCures = cures.Select(c => c.CureStep).OfType<CureStep>().ToList();
+
+        for (int i = 0; i < maxCures && possibleCures.Count > 0; i++)
         {
-            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, disease.Stats.Resistance, disease.Stats.Stealth, disease.Stats.Speed, disease.Stats.Transmittable, i);
+            var seed = SharedRandomExtensions.HashCodeCombine(
+                (int) _timing.CurTick.Value,
+                disease.Stats.Resistance,
+                disease.Stats.Stealth,
+                disease.Stats.Speed,
+                disease.Stats.Transmittable,
+                i);
+
             var rand = new System.Random(seed);
-            var pool = cures.ToList();
-            var idx = rand.Next(pool.Count);
-            SelectedCures.Add(pool[idx]);
-            pool.RemoveAt(idx);
+            var idx = rand.Next(possibleCures.Count);
+
+            selectedCures.Add(possibleCures[idx]);
+            possibleCures.RemoveAt(idx);
         }
 
         disease.CureSteps = new List<CureStep>
         {
-            new CureConditions {Conditions = SelectedCures},
+            new CureConditions {Conditions = selectedCures},
             new CureWait { RequiredTicks = 900 },
             new CureBedrest { BedrestChance = 0.0033f, SleepMultiplier = 5f}
         };

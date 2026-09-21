@@ -411,7 +411,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             var rand = new System.Random(seed);
             var pool = cures.ToList();
             var idx = rand.Next(pool.Count);
-            var picked = pool[idx];
+            SelectedCures.Add(pool[idx]);
             pool.RemoveAt(idx);
         }
 

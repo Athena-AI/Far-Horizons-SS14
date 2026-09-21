@@ -20908,5 +20908,19 @@ Entries:
   id: 179200
   time: '2026-09-21T18:27:21.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1792
+- author: Mizuki
+  changes:
+  - message: New alert displays for alert holotables added.
+    type: Add
+  id: 178900
+  time: '2026-09-21T18:32:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1789
+- author: Mizuki
+  changes:
+  - message: Solar, Reactor, and Atmos Holotables added.
+    type: Add
+  id: 178901
+  time: '2026-09-21T18:32:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1789
 Order: -1
 

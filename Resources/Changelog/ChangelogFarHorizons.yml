@@ -20901,5 +20901,12 @@ Entries:
   id: 178605
   time: '2026-09-20T13:31:55.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1786
+- author: KarusKardin
+  changes:
+  - message: Fixed the GSL ID computer board not being in QM locker
+    type: Fix
+  id: 179200
+  time: '2026-09-21T18:27:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1792
 Order: -1
 

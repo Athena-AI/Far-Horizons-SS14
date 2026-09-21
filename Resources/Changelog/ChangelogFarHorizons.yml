@@ -20922,5 +20922,13 @@ Entries:
   id: 178901
   time: '2026-09-21T18:32:37.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1789
+- author: Poke
+  changes:
+  - message: Corpsmen belt maxlimit in the loadout + Fixed "Truama" spelling mistake
+      to "Trauma"
+    type: Fix
+  id: 179100
+  time: '2026-09-21T18:37:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1791
 Order: -1
 

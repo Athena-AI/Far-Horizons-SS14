@@ -257,6 +257,11 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             if (TryGetInventoryEntity(target, slot, out _))
                 protection += (1f - mult) * permeability;
         }
+
+        var zombificationResistanceEv = new ZombificationResistanceQueryEvent(DiseaseEffectiveness.InfectionProtectionSlots);
+        RaiseLocalEvent(target, zombificationResistanceEv);
+        protection += 1f * (1f - zombificationResistanceEv.TotalCoefficient);
+        
         return MathF.Max(0f, baseChance * (1f - MathF.Min(1f, protection)));
     }
 

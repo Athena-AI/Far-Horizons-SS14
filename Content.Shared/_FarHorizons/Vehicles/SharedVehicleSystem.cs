@@ -40,7 +40,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Emp;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Hands;
-using Content.Shared._FarHorizons.ReagentDraw.EntitySystems;
+using Content.Shared._FarHorizons.ReagentDraw;
 
 namespace Content.Shared._FarHorizons.Vehicles;
 
@@ -86,7 +86,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         SubscribeLocalEvent<VehicleComponent, ItemSlotEjectEvent>(OnEjectEvent, before: [typeof(SharedHandsSystem)]);
         SubscribeLocalEvent<VehicleComponent, EjectKeysDoAfter>(OnEjectKeysDoAfter);
         SubscribeLocalEvent<VehicleComponent, TurnKeysDoAfter>(OnTurnKeysDoAfter);
-        SubscribeLocalEvent<VehicleComponent, ReagantContainerSlotEmptyEvent>(OnEmptyReagantContainer);
+        SubscribeLocalEvent<VehicleComponent, ReagentContainerSlotEmptyEvent>(OnEmptyReagentContainer);
         SubscribeLocalEvent<VehicleComponent, PowerCellSlotEmptyEvent>(OnPowerCellEmpty);
         SubscribeLocalEvent<VehicleComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<VehicleComponent, BreakageEventArgs>(OnBreakageEvent);
@@ -240,7 +240,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         if(!ent.Comp.Started)
         {
             if((ent.Comp.CellPowered && HasComp<PowerCellDrawComponent>(ent.Owner) && !_powerCell.HasDrawCharge(ent.Owner)) 
-            ^ (!ent.Comp.CellPowered && HasComp<ReagentDrawComponent>(ent.Owner) && !_reagentDraw.HasDrawReagant(ent.Owner)))
+            ^ (!ent.Comp.CellPowered && HasComp<ReagentDrawComponent>(ent.Owner) && !_reagentDraw.HasDrawReagent(ent.Owner)))
                 return;
 
             for (var i = 0; i < ent.Comp.HandsNeeded; i++)
@@ -282,7 +282,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         args.Entities.Add(ent.Comp.Rider.Value);
     }
 
-    private void OnEmptyReagantContainer(Entity<VehicleComponent> ent, ref ReagantContainerSlotEmptyEvent args)
+    private void OnEmptyReagentContainer(Entity<VehicleComponent> ent, ref ReagentContainerSlotEmptyEvent args)
     {
         if(!ent.Comp.CellPowered)
             TurnOffVehicle(ent.Owner, ent.Comp);

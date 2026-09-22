@@ -66,7 +66,7 @@
   - type: ReagentDraw
     enabled: false
     solutionContainer: fueltank
-    whitelistedReagants: 
+    whitelistedReagents: 
     - WeldingFuel
     drainRate: 0.25
   - type: Fixtures

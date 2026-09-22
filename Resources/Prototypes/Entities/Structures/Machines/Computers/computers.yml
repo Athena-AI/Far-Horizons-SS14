@@ -1060,6 +1060,7 @@
   - type: GuideHelp
     guides:
     - Cargo
+  - type: CredstickDirectTransferTarget # Far Horizons
 
 # Request console variants.
 - type: entity

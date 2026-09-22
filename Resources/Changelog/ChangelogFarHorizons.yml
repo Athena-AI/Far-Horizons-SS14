@@ -20930,5 +20930,43 @@ Entries:
   id: 179100
   time: '2026-09-21T18:37:57.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1791
+- author: AthenaAI
+  changes:
+  - message: Fixes Lings not being able to eat their favorite banana flavored snacks.
+    type: Fix
+  id: 179300
+  time: '2026-09-22T18:37:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1793
+- author: AthenaAI
+  changes:
+  - message: Fixes RNG for diseases.
+    type: Fix
+  id: 179301
+  time: '2026-09-22T18:37:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1793
+- author: AthenaAI
+  changes:
+  - message: Tweaks Infection resistance for zombies to be additive instead of having
+      a 0.09 chance to be infected.
+    type: Tweak
+  id: 179302
+  time: '2026-09-22T18:37:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1793
+- author: AthenaAI
+  changes:
+  - message: Tweaks Infections resistances from the zombie system to work with diseases.
+      This means biosuits are full immunity now.
+    type: Tweak
+  id: 179303
+  time: '2026-09-22T18:37:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1793
+- author: AthenaAI
+  changes:
+  - message: Tweaks Airborne diseases to be unable to be spread if the host or target
+      have internals on. Breathe your nasty ass viruses away from me.
+    type: Tweak
+  id: 179304
+  time: '2026-09-22T18:37:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1793
 Order: -1
 

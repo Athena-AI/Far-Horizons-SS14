@@ -217,12 +217,12 @@ public sealed partial class ChangelingDevourSystem : EntitySystem
         if (changeling.Owner == victim)
             return false; // Can't devour yourself.
 
-        if (!HasComp<HumanoidProfileComponent>(victim))
+        /*if (!HasComp<HumanoidProfileComponent>(victim)) FH Disabled
         {
             if (showPopup)
                 _popupSystem.PopupClient(Loc.GetString("changeling-devour-attempt-failed-cannot-devour"), changeling.Owner, changeling.Owner, PopupType.Medium);
             return false;
-        }
+        }*/
 
         if (HasDevoured(changeling.Owner, victim))
         {

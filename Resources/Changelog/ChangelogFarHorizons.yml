@@ -20968,5 +20968,20 @@ Entries:
   id: 179304
   time: '2026-09-22T18:37:54.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1793
+- author: AthenaAI
+  changes:
+  - message: Makes active crit personnel unable to crawl away when being dragged.
+    type: Tweak
+  id: 179700
+  time: '2026-09-22T18:40:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1797
+- author: AthenaAI
+  changes:
+  - message: Removes the ability to force stand up during active crit as it doesn't
+      make sense since you are in a weakened state.
+    type: Tweak
+  id: 179701
+  time: '2026-09-22T18:40:05.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1797
 Order: -1
 

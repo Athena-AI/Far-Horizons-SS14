@@ -1,0 +1,66 @@
+- type: entity
+  parent: BaseItem
+  id: CoolingUnitNitrogen
+  name: Portable Cryogenics Unit
+  description: A experimental device able to cool a body to subzero temperatures using liquid nitrogen for its fuel.
+  components:
+    - type: Sprite
+      sprite: _Starlight/Objects/Tanks/coolingunit.rsi
+      layers:
+        - state: icon
+        - state: battery-0
+          shader: unshaded
+          visible: false
+          map: ["power"]
+    - type: Appearance
+    - type: Item
+      size: Large
+      shape:
+      - 0,0,1,1
+    - type: Clothing
+      quickEquip: false
+      sprite: _Starlight/Objects/Tanks/coolingunit.rsi
+      slots:
+        - Back
+        - suitStorage
+        - suitStorage2 
+    - type: UseDelay
+      delay: 1
+    - type: ToggleReagentDraw
+    - type: RefillableSolution
+      solution: nitrogentank
+    - type: ExaminableSolution
+      solution: nitrogentank
+      exactVolume: true
+    - type: ReagentDraw
+      enabled: false
+      drainRate: 0.5
+      solutionContainer: nitrogentank
+      whitelistedReagents:
+        - Nitrogen
+    - type: SolutionContainerManager
+      solutions:
+        nitrogentank:
+          reagents:
+          - ReagentId: Nitrogen
+            Quantity: 50
+          maxVol: 50
+    - type: ItemToggle
+      soundActivate: /Audio/Items/flashlight_on.ogg
+      soundDeactivate: /Audio/Items/flashlight_on.ogg
+    - type: CoolingUnit
+      desiredTemp: 255.3
+    - type: ToggleableVisuals
+      spriteLayer: power
+    - type: PhysicalComposition
+      materialComposition:
+        Steel: 185
+    - type: StaticPrice
+      price: 30
+    - type: UserInterface
+      interfaces:
+        enum.CoolingUnitUiKey.Key:
+          type: CoolingUnitBoundUserInterface
+    - type: ActivatableUI
+      inHandsOnly: false
+      key: enum.CoolingUnitUiKey.Key

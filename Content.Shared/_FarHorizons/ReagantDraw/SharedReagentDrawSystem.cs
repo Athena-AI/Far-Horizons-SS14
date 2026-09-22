@@ -129,4 +129,13 @@ public sealed partial class SharedReagentDrawSystem : EntitySystem
 
         UseReagent(ent, solution.Volume.Float(), solution, component);
     }
+
+    public void SetDrawEnabled(Entity<ReagentDrawComponent?> ent, bool enabled)
+    {
+        if (Resolve(ent, ref ent.Comp, false) && ent.Comp.Enabled != enabled)
+        {
+            ent.Comp.Enabled = enabled;
+            Dirty(ent, ent.Comp);
+        }
+    } 
 }

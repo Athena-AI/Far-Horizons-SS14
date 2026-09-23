@@ -20983,5 +20983,12 @@ Entries:
   id: 179701
   time: '2026-09-22T18:40:05.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1797
+- author: RubiconLocked
+  changes:
+  - message: NeoSol lockers will no longer turn into Generic lockers when hacked.
+    type: Fix
+  id: 180100
+  time: '2026-09-23T14:19:03.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1801
 Order: -1
 

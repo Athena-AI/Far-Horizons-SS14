@@ -1,0 +1,23 @@
+- type: entity
+  parent: BaseItem
+  id: BorgResetter
+  name: Cyborg Master Key
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Objects/Weapons/Guns/Battery/dominator_pistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: stun
+      map: ["enum.FireModesLayers.FireMode"]
+    - state: stun-unshaded-3
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: SiliconLawSetter
+  - type: LawboardSlot
+    lawboardSlotId: lawboard_slot
+  - type: ItemSlots
+    slots:
+      lawboard_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: AsimovCircuitBoard

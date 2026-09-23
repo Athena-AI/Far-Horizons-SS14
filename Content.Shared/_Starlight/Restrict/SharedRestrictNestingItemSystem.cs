@@ -89,6 +89,17 @@ public abstract partial class SharedRestrictNestingItemSystem : EntitySystem
         if (!InRange(user, target))
             return;
 
+        //Far Horizons Start
+        var ev = new GettingPickedUpAttemptEvent(user, target, true);
+        RaiseLocalEvent(target, ev);
+
+        if(ev.Cancelled)
+        {
+            _popup.PopupClient(Loc.GetString("restrict-nesting-item-cant-pickup", ("user", ent)), user, user);
+            return;
+        }
+        //Far Horizons End
+
         //we need to recursively check inventory to see if the item being picked up has any other items that prevent nesting
         if (RecursivelyCheckForNesting(ent, skipInitialItem: true))
         {
@@ -205,12 +216,13 @@ public abstract partial class SharedRestrictNestingItemSystem : EntitySystem
         if (TryComp<RestrictNestingItemComponent>(item, out var nestingItem) && !skipInitialItem)
             return true;
 
-        //get the container of the item
-        if (!TryComp<ContainerManagerComponent>(item, out var containerManager))
+        // Far Horizons start
+        if (!TryComp<ContainerManagerComponent>(item, out var containerComp))
             return false;
 
         //now run this on all items in the inventory
-        var containers = containerManager.Containers.Values.ToList();
+        var containers = _containerSystem.GetAllContainers(item, containerComp).ToList();
+        // Far Horizons end
         var items = containers.SelectMany(container => container.ContainedEntities).ToList();
 
         foreach (var itemInInventory in items)

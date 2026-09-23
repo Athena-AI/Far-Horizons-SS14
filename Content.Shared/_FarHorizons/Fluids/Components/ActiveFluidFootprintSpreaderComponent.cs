@@ -1,5 +1,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._FarHorizons.Fluids.Components;
 
@@ -14,4 +15,9 @@ public sealed partial class ActiveFluidFootprintSpreaderComponent : Component
     [ViewVariables] public bool Left = true;
     [ViewVariables] public float Opacity = 1f;
     [ViewVariables] public float OpacityStep;
+    [ViewVariables] public TimeSpan? FootprintRate;
+    [ViewVariables] public float? StepSpacing;
+    [ViewVariables] public ProtoId<FootprintTypePrototype>? Footprint;
+    [ViewVariables] public float? LateralOffset;
+    [ViewVariables] public float FootprintSize = 1f;
 }

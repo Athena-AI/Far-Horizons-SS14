@@ -125,7 +125,7 @@ public abstract partial class SharedAtmosphereSystem
     /// considered ignitable, for both oxidizer and fuel.</param>
     /// <returns>True if the <see cref="GasMixture"/> is ignitable, otherwise, false.</returns>
     [PublicAPI]
-    public bool IsMixtureIgnitable(GasMixture mixture, float epsilon = 0.01f) // Far Horizons change default epsilon
+    public bool IsMixtureIgnitable(GasMixture mixture, float epsilon = 0.5f) // Far Horizons change default epsilon
     {
         return IsMixtureFuel(mixture, epsilon) && IsMixtureOxidizer(mixture, epsilon);
     }

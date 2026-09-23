@@ -6,8 +6,10 @@ using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
+using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._FarHorizons.CyberneticImplanter;
 
@@ -29,6 +31,8 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
         SubscribeLocalEvent<CyberneticImplanterComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<CyberneticImplanterComponent, ExaminedEvent>(OnExamineUnused);
         SubscribeLocalEvent<UsedCyberneticImplanterComponent, ExaminedEvent>(OnExamineUsed);
+        SubscribeLocalEvent<CyberneticImplanterModeComponent, ExaminedEvent>(OnExamineMode);
+        SubscribeLocalEvent<CyberneticImplanterModeComponent, GetVerbsEvent<AlternativeVerb>>(OnAltVerb);
     }
 
     private void OnMapInit(Entity<CyberneticImplanterComponent> entity, ref MapInitEvent args) => entity.Comp.ImplantedOrganDesc ??= _protoManager.Index<EntityPrototype>(entity.Comp.ImplantedOrgan).Description;
@@ -47,8 +51,17 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        if (component.Organ != null)
-            args.PushMarkup(Loc.GetString("comp-usedcyberneticimplanter-examine", ("species", component.Species), ("organ", component.Organ)));
+        args.PushMarkup(Loc.GetString("comp-usedcyberneticimplanter-examine", ("species", component.Species), ("organ", component.Organ)));
+    }
+
+    private void OnExamineMode(EntityUid entity, CyberneticImplanterModeComponent component, ExaminedEvent args) //used to show a description of the selected mode
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        args.PushMarkup(Loc.GetString("gun-cyberneticimplantermode-examine", ("mode", component.Mode
+            ? Loc.GetString("comp-cyberneticimplantermode-right")
+            : Loc.GetString("comp-cyberneticimplantermode-left"))));
     }
 
     //using on self
@@ -114,5 +127,37 @@ public abstract partial class SharedCyberneticImplanterSystem : EntitySystem
             _popupSystem.PopupClient(Loc.GetString("comp-cyberneticimplanter-implantstart", ("implanter", metadata.EntityName)), target, target, PopupType.Medium);
 
         return true;
+    }
+
+    private void OnAltVerb(EntityUid uid, CyberneticImplanterModeComponent component, GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract || args.Hands == null)
+            return;
+
+        AlternativeVerb verb = new()
+        {
+            Act = () => ToggleMode(uid, component, args.User),
+            Text = Loc.GetString("gun-selector-verb", ("mode",
+                component.Mode
+                    ? Loc.GetString("comp-cyberneticimplantermode-left")
+                    : Loc.GetString("comp-cyberneticimplantermode-right"))),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/fold.svg.192dpi.png")),
+        };
+
+        args.Verbs.Add(verb);
+    }
+
+    private void ToggleMode(EntityUid uid, CyberneticImplanterModeComponent component, EntityUid user)
+    {
+        component.Mode = !component.Mode;
+
+        if (TryComp<CyberneticImplanterComponent>(uid, out var comp))
+            comp.ImplantedOrgan = component.Mode ? component.RightOrgan : component.LeftOrgan;
+
+        _audio.PlayPredicted(component.ModeSwitchSound, uid, user);
+        _popupSystem.PopupClient(Loc.GetString("gun-selected-mode", ("mode", component.Mode 
+            ? Loc.GetString("comp-cyberneticimplantermode-right") 
+            : Loc.GetString("comp-cyberneticimplantermode-left"))),
+            uid, user);
     }
 }

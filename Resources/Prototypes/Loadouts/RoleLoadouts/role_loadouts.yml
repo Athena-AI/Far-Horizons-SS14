@@ -13,6 +13,7 @@
   - Trinkets
   - Scarves # Starlight
   - CapPens # Starlight
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -31,6 +32,7 @@
   - Scarves # Starlight
   - HoPPens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 # Silicons
@@ -68,6 +70,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -86,6 +89,7 @@
   - Pens # Starlight
   - BartenderJobTrinkets
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -101,6 +105,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -119,6 +124,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -134,6 +140,7 @@
   - Scarves # Starlight
   - LuxuryPens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -149,6 +156,7 @@
   - Scarves # Starlight
   - LuxuryPens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -170,6 +178,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -188,6 +197,7 @@
   - Pens # Starlight
   - JanitorJobTrinkets
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -205,6 +215,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -223,6 +234,7 @@
   - Scarves # Starlight
   - ClownPens # Starlight
   - ClownJobTrinkets
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobMime
@@ -240,6 +252,7 @@
   - Trinkets
   - Scarves # Starlight
   - MimePens # Starlight
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobMusician
@@ -257,6 +270,7 @@
   - Pens # Starlight
   - Instruments
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 # Cargo
@@ -276,6 +290,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -294,6 +309,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -311,6 +327,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 # Engineering
@@ -331,6 +348,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -344,6 +362,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -362,6 +381,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -378,6 +398,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 # Science
@@ -398,6 +419,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -418,6 +440,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -432,6 +455,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 # Security
@@ -453,6 +477,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - HeadofSecurityJobTrinkets
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathToolSecurity - Starlight removed
 
 - type: roleLoadout
@@ -472,6 +497,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - WardenJobTrinkets
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathToolSecurity - Starlight removed
 
 - type: roleLoadout
@@ -492,6 +518,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - SecurityJobTrinkets
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathToolSecurity - Starlight removed
 
 - type: roleLoadout
@@ -511,6 +538,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - DetectiveJobTrinkets
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathToolSecurity - Starlight removed
 
 - type: roleLoadout
@@ -524,6 +552,7 @@
   - Trinkets
   - Scarves # Starlight
   - Pens # Starlight
+  - Credsticks # Far Horizons
   #- SecurityCadetJobTrinkets
 #  - GroupSpeciesBreathToolSecurity - Starlight removed
 
@@ -541,6 +570,7 @@
   - Pens # Starlight
   - ZookeeperJobTrinkets
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -558,6 +588,7 @@
   - Scarves # Starlight
   - LuxuryPens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -573,6 +604,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 - type: roleLoadout
@@ -588,6 +620,7 @@
   - Scarves # Starlight
   - Pens # Starlight
   - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 #  - GroupSpeciesBreathTool - Starlight removed
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs

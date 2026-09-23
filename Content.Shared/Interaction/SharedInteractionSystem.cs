@@ -75,16 +75,16 @@ namespace Content.Shared.Interaction
         [Dependency] private TagSystem _tagSystem = default!;
         [Dependency] private UseDelaySystem _useDelay = default!;
 
-        private EntityQuery<IgnoreUIRangeComponent> _ignoreUiRangeQuery;
-        private EntityQuery<FixturesComponent> _fixtureQuery;
-        private EntityQuery<ItemComponent> _itemQuery;
-        private EntityQuery<PhysicsComponent> _physicsQuery;
-        private EntityQuery<HandsComponent> _handsQuery;
-        private EntityQuery<InteractionRelayComponent> _relayQuery;
-        private EntityQuery<CombatModeComponent> _combatQuery;
-        private EntityQuery<WallMountComponent> _wallMountQuery;
-        private EntityQuery<UseDelayComponent> _delayQuery;
-        private EntityQuery<ActivatableUIComponent> _uiQuery;
+        [Dependency] private EntityQuery<IgnoreUIRangeComponent> _ignoreUiRangeQuery = default!;
+        [Dependency] private EntityQuery<FixturesComponent> _fixtureQuery = default!;
+        [Dependency] private EntityQuery<ItemComponent> _itemQuery = default!;
+        [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
+        [Dependency] private EntityQuery<HandsComponent> _handsQuery = default!;
+        [Dependency] private EntityQuery<InteractionRelayComponent> _relayQuery = default!;
+        [Dependency] private EntityQuery<CombatModeComponent> _combatQuery = default!;
+        [Dependency] private EntityQuery<WallMountComponent> _wallMountQuery = default!;
+        [Dependency] private EntityQuery<UseDelayComponent> _delayQuery = default!;
+        [Dependency] private EntityQuery<ActivatableUIComponent> _uiQuery = default!;
 
         /// <summary>
         /// The collision mask used by default for
@@ -103,17 +103,6 @@ namespace Content.Shared.Interaction
 
         public override void Initialize()
         {
-            _ignoreUiRangeQuery = GetEntityQuery<IgnoreUIRangeComponent>();
-            _fixtureQuery = GetEntityQuery<FixturesComponent>();
-            _itemQuery = GetEntityQuery<ItemComponent>();
-            _physicsQuery = GetEntityQuery<PhysicsComponent>();
-            _handsQuery = GetEntityQuery<HandsComponent>();
-            _relayQuery = GetEntityQuery<InteractionRelayComponent>();
-            _combatQuery = GetEntityQuery<CombatModeComponent>();
-            _wallMountQuery = GetEntityQuery<WallMountComponent>();
-            _delayQuery = GetEntityQuery<UseDelayComponent>();
-            _uiQuery = GetEntityQuery<ActivatableUIComponent>();
-
             SubscribeLocalEvent<BoundUserInterfaceCheckRangeEvent>(HandleUserInterfaceRangeCheck);
 
             // TODO make this a broadcast event subscription again when engine has updated.
@@ -715,7 +704,7 @@ namespace Content.Shared.Interaction
             if (!Resolve(other, ref other.Comp))
                 return false;
 
-            var ev = new InRangeOverrideEvent(origin, other, true); // Far Horizons
+            var ev = new InRangeOverrideEvent(origin, other, range, collisionMask, predicate, popup, overlapCheck, true); // Far Horizons
             RaiseLocalEvent(origin, ref ev);
 
             if (ev.Handled)
@@ -1587,11 +1576,20 @@ namespace Content.Shared.Interaction
     /// Override event raised directed on a user to check InRangeUnoccluded AND InRangeUnobstructed to the target if you require custom logic.
     /// </summary>
     [ByRefEvent]
-    public record struct InRangeOverrideEvent(EntityUid User, EntityUid Target, bool Action = false) // Far Horizons
+    public record struct InRangeOverrideEvent(EntityUid User, EntityUid Target, 
+        float Range = SharedInteractionSystem.InteractionRange, CollisionGroup CollisionMask = SharedInteractionSystem.InRangeUnobstructedMask, // Far Horizons
+        SharedInteractionSystem.Ignored? Predicate = null, bool Popup = false, bool OverlapCheck = true, bool Action = false) // Far Horizons
     {
         public readonly EntityUid User = User;
         public readonly EntityUid Target = Target;
-        public readonly bool Action = Action; // Far Horizons
+        // Far Horizons Start
+        public readonly float Range = Range;
+        public readonly CollisionGroup CollisionMask = CollisionMask;
+        public readonly SharedInteractionSystem.Ignored? Predicate = Predicate;
+        public readonly bool Popup = Popup;
+        public readonly bool OverlapCheck = OverlapCheck;
+        public readonly bool Action = Action;
+        // Far Horizons End
 
         public bool Handled;
         public bool InRange = false;

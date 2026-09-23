@@ -9,6 +9,7 @@
   access:
   - Cargo
   - Maintenance
+  - MaintenanceNS  # Far Horizons
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: BoxingDay

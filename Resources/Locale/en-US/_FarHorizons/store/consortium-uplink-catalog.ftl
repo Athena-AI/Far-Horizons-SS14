@@ -1,7 +1,7 @@
 # Weapons
 
 uplink-consortium-pistol-viper-name = Viper
-uplink-consortium-pistol-viper-desc = A small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses pistol magazines (.35 auto).
+uplink-consortium-pistol-viper-desc = A small, easily concealable, but somewhat underpowered gun. Retrofitted with a fully automatic receiver. Uses pistol magazines (9mm).
 
 uplink-consortium-pistol-corona-name = UA - Corona 
 uplink-consortium-pistol-corona-desc = A intellectually complex, effective, and loud Consortium Pistol. Named afer the outer part of a star. Uses UA capsule.
@@ -34,7 +34,7 @@ uplink-consortium-gloves-knuckleduster-name = Consortium Knuckle Dusters
 uplink-consortium-gloves-knuckleduster-desc = A pair of plastitanium knuckle dusters that let you punch hard enough to break the Commandants jaw into pieces.
 
 uplink-consortium-hushpup-name = Hushpup
-uplink-consortium-hushpup-desc = A powerful silenced shotgun with a low magazine capacity. Uses .50 shotgun ammo.
+uplink-consortium-hushpup-desc = A powerful silenced shotgun with a low magazine capacity. Uses 12 gauge shotgun shells.
 
 uplink-consortium-c20r-name = C-20r
 uplink-consortium-c20r-desc = Old faithful: The classic C-20r Submachine Gun.
@@ -98,28 +98,28 @@ uplink-consortium-shrapnel-grenade-name = Shrapnel Grenade
 uplink-consortium-shrapnel-grenade-desc = Launches a spray of sharp fragments dealing great damage against unarmored targets.
 
 # Ammo
-uplink-consortium-pistol-magazine-name = Pistol Magazine (.35 auto)
+uplink-consortium-pistol-magazine-name = Pistol Magazine (9mm)
 uplink-consortium-pistol-magazine-desc = Pistol magazine with 15 cartridges. Compatible with the Viper.
 
-uplink-consortium-pistol-magazine-nameFMJ = Pistol Magazine (.35 FMJ)
+uplink-consortium-pistol-magazine-nameFMJ = Pistol Magazine (9mm FMJ)
 uplink-consortium-pistol-magazine-descFMJ = Pistol magazine with 10 cartridges
 
-uplink-consortium-pistol-magazine-nameSP = Pistol Magazine (.35 SP)
+uplink-consortium-pistol-magazine-nameSP = Pistol Magazine (9mm SP)
 uplink-consortium-pistol-magazine-descSP = Pistol magazine with 10 cartridges.
 
-uplink-consortium-pistol-magazine-nameHP = Pistol Magazine (.35 HP)
+uplink-consortium-pistol-magazine-nameHP = Pistol Magazine (9mm HP)
 uplink-consortium-pistol-magazine-descHP = Pistol magazine with 10 cartridges.
 
-uplink-consortium-pistol-magazine-c20r-name = SMG magazine (.35 auto)
+uplink-consortium-pistol-magazine-c20r-name = SMG magazine (9mm)
 uplink-consortium-pistol-magazine-c20r-desc = SMG magazine with 30 cartridges. Compatible with C-20r.
 
-uplink-consortium-magazine-bulldog-pellet-name = Drum magazine (.50 pellet)
+uplink-consortium-magazine-bulldog-pellet-name = Drum magazine (12 gauge pellet)
 uplink-consortium-magazine-bulldog-pellet-desc = Shotgun magazine with 8 shells filled with buckshot. Compatible with the Bulldog.
 
-uplink-consortium-magazine-bulldog-slug-name = Drum magazine (.50 slug)
+uplink-consortium-magazine-bulldog-slug-name = Drum magazine (12 gauge slug)
 uplink-consortium-magazine-bulldog-slug-desc = Shotgun magazine with 8 shells filled with slugs. Compatible with the Bulldog.
 
-uplink-consortium-estoc-ammo-name = Rifle magazine (.20 rifle)
+uplink-consortium-estoc-ammo-name = Rifle magazine (5.56 rifle)
 uplink-consortium-estoc-ammo-desc = A rifle magazine with 25 cartridges. Compatible with the Estoc DMR.
 
 uplink-consortium-pistol-magazine-caseless-name = Pistol Magazine (.25 caseless)
@@ -204,7 +204,7 @@ uplink-consortium-radio-jammer-name = Radio Jammer
 uplink-consortium-radio-jammer-desc = This device will disrupt any nearby outgoing radio communication as well as suit sensors when activated.
 
 uplink-consortium-syndicate-weapon-module-name = Weapon Cyborg Module
-uplink-consortium-syndicate-weapon-module-desc = Upgrades a cyborg with both an energy dagger and an echis pistol.
+uplink-consortium-syndicate-weapon-module-desc = Upgrades a cyborg with both an energy dagger and a Viper ROW pistol.
 
 uplink-consortium-syndicate-martyr-module-name = Martyr Cyborg Module
 uplink-consortium-syndicate-martyr-module-desc = Turn your emagged borg friend into a walking bomb with just this module. Make sure they're loyal to your cause, results may vary.
@@ -287,7 +287,7 @@ uplink-consortium-bulldog-bundle-name = Bulldog Bundle
 uplink-consortium-bulldog-bundle-desc = Lean and mean: Contains the popular Bulldog Shotgun, a 12g slug drum, and four 12g buckshot drums.
 
 uplink-consortium-estoc-bundle-name = Estoc DMR bundle
-uplink-consortium-estoc-bundle-desc = A designated marksman rifle, fitted with a mid-range optic for longer-range combat. Bundled with two rifle magazines (.20 rifle).
+uplink-consortium-estoc-bundle-desc = A designated marksman rifle, fitted with a mid-range optic for longer-range combat. Bundled with two rifle magazines (5.56 Rifle).
 
 uplink-consortium-grenade-launcher-bundle-name = China-Lake Crate
 uplink-consortium-grenade-launcher-bundle-desc = An old China-Lake grenade launcher bundled with 11 rounds of varying destructive capability.
@@ -385,20 +385,20 @@ uplink-consortium-eva-syndie-desc = A simple EVA suit that offers no protection 
 uplink-consortium-hardsuit-carp-name = Carp Hardsuit
 uplink-consortium-hardsuit-carp-desc = Looks like an ordinary carp suit, except fully spaceproof and tricks space carp into thinking you are one of them.
 
-uplink-consortium-hardsuit-syndie-name = Syndicate Hardsuit
-uplink-consortium-hardsuit-syndie-desc = The Syndicate's well known armored blood red hardsuit, capable of space walks and bullet resistant.
+uplink-consortium-hardsuit-lambda-name = "Spartan" Hardsuit
+uplink-consortium-hardsuit-lambda-desc = The signiture hardsuit of the Lambda Hardliners. The perfect choice to fight against insurmountable odds.
 
-uplink-consortium-syndie-raid-name = Syndicate Raid Suit
-uplink-consortium-syndie-raid-desc = A very durable and reasonably flexible suit of blood-red armor, reinforced against all common forms of damage but not capable of space walks. Comes with a sick helmet.
+uplink-consortium-lambda-raid-name = Lambda Raid Suit "Apollo"
+uplink-consortium-lambda-raid-desc = A very durable and reasonably flexible suit of armor for those missions, where speed is of utmost necessity. Incapable of space walks.
 
-uplink-consortium-hardsuit-infiltration-name = Syndicate Infiltration Hardsuit
-uplink-consortium-hardsuit-infiltration-desc = The Syndicate's Special Operations' hardsuit of choice, this hardsuit, as well as durability, has been built with chameleon technology integrated.
+uplink-consortium-hardsuit-infiltration-name = Lambda Infiltration Hardsuit "Hades"
+uplink-consortium-hardsuit-infiltration-desc = A specialized hardsuit, allowing the user to be efficient and unseen, just like Tartarus.
 
-uplink-consortium-hardsuit-syndieelite-name = Syndicate Elite Hardsuit
-uplink-consortium-hardsuit-syndieelite-desc = An elite version of the blood-red hardsuit, with improved mobility and fireproofing. Property of Gorlex Marauders.
+uplink-consortium-hardsuit-lambda-elite-name = Lambda Elite Hardsuit "Helios"
+uplink-consortium-hardsuit-lambda-elite-desc = An elite version of the "Spartan" hardsuit, allowing the user to embody The Sun during missions.
 
-uplink-consortium-clothing-outer-hardsuit-juggernaut-name = Cybersun Juggernaut Suit
-uplink-consortium-clothing-outer-hardsuit-juggernaut-desc = Hyper resilient armor made of materials tested in the Tau chromosphere facility. The only thing that's going to be slowing you down is this suit... and tasers.
+uplink-consortium-clothing-outer-hardsuit-juggernaut-name = Lambda Juggernaut Suit "Polyphemus"
+uplink-consortium-clothing-outer-hardsuit-juggernaut-desc = A suit of armor as powerful as the fabled cyclops. Protects everything except the eyes exceptionally well.
 
 uplink-consortium-energy-dome-name = Personal Energy Dome
 uplink-consortium-energy-dome-desc = A personal shield generator that protects the wearer from lasers and bullets but prevents from using ranged weapons himself. Comes with a small power cell.

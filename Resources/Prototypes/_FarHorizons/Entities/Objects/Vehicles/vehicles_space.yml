@@ -21,6 +21,9 @@
     riderWhitelist:
       tags:
         - CanPilot
+    riderBlacklist:
+      components:
+        - PowerArmorUser
     soundHit:
       collection: MetalThud
   - type: VehicleContainer

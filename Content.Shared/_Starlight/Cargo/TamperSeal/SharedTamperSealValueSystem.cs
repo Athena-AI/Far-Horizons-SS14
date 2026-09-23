@@ -35,7 +35,8 @@ public sealed partial class SharedTamperSealValueSystem : EntitySystem
         var reward = new FinancialMutation(args.Seal.Deliverer, value.Reward);
         var deliverer = _proto.Index(args.Seal.Deliverer);
 
-        if (args.Seal.Deliverer == args.Seal.Recipient) // Don't let Cargo reward themselves.
+        if (args.Seal.Deliverer == args.Seal.Recipient && // Don't let Cargo reward themselves.
+            value.PersonalRefundTarget == null) // Far Horizons
             return;
         if (!TryComp<StationBankAccountComponent>(stationId, out var bank))
             return;
@@ -52,6 +53,8 @@ public sealed partial class SharedTamperSealValueSystem : EntitySystem
 
         // Don't show the "unseal finished" popup if we already showed a reward popup.
         args.ShowPopup = false;
+
+        _personalOrders.UpdateOrderDeliveryStatus(value, false); // Far Horizons
     }
 
     private void OnSealDestroyed(EntityUid uid, TamperSealValueComponent value, ref TamperSealDestroyedEvent args)
@@ -64,7 +67,8 @@ public sealed partial class SharedTamperSealValueSystem : EntitySystem
         var deliverer = _proto.Index(args.Seal.Deliverer);
         var recipient = _proto.Index(args.Seal.Recipient);
 
-        if (args.Seal.Deliverer == args.Seal.Recipient) // Don't let Cargo penalize/refund themselves.
+        if (args.Seal.Deliverer == args.Seal.Recipient && // Don't let Cargo penalize/refund themselves.
+            value.PersonalRefundTarget == null) // Far Horizons
             return;
         if (!TryComp<StationBankAccountComponent>(stationId, out var bank))
             return;
@@ -77,8 +81,12 @@ public sealed partial class SharedTamperSealValueSystem : EntitySystem
         if (value.Refund != 0)
         {
             var refundDebited = ApplyMutation(uid, (stationId, bank), refundCharge, "destroying", "charged", args.User);
-            if (refundDebited)
+            // Far Horizons start
+            if (refundDebited && value.PersonalRefundTarget == null)
                 ApplyMutation(uid, (stationId, bank), refundCredit, "destroying", "refunded", args.User);
+            else if (refundDebited && value.PersonalRefundTarget != null)
+                RefundPersonalAccount(value.PersonalRefundTarget.Value, value.Refund);
+            // Far Horizons end
         }
 
         // Play public sound.
@@ -106,6 +114,8 @@ public sealed partial class SharedTamperSealValueSystem : EntitySystem
 
         // Cancel the "You destroy the seal" popup as we substituted it with the destruction popup.
         args.ShowPopup = false;
+
+        _personalOrders.UpdateOrderDeliveryStatus(value, true); // Far Horizons
     }
 
     /// <summary>

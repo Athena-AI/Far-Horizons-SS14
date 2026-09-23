@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -29,27 +30,39 @@ public sealed partial class FluidFootprintContainerComponent : Component
             return;
 
         if (!ProtoPalette.Contains(footprint))
+        {
+            // Bit 7 is reserved for the Flip flag, capping palette size to 128 items
+            if (ProtoPalette.Count >= 128)
+                return;
+
             ProtoPalette.Add(footprint);
+        }
         
-        var protoId = (byte)ProtoPalette.IndexOf(footprint);
+        var rawProtoId = (byte)ProtoPalette.IndexOf(footprint);
+        var packedProtoAndFlip = (byte)(rawProtoId | (flip ? 0x80 : 0x00));
 
         if (!ColorPalette.Contains(color))
             ColorPalette.Add(color);
         
         var colorId = (byte)ColorPalette.IndexOf(color);
 
-        // Normalize coordinates between -0.25 and 1.25. Coordinate space of a tile is 0 to 1, and this leaves just a small wiggle room to avoid errors
-        var packedPosX = (ushort)(Math.Clamp((position.X + 0.25f) / 1.5f, 0f, 1f) * ushort.MaxValue);
-        var packedPosY = (ushort)(Math.Clamp((position.Y + 0.25f) / 1.5f, 0f, 1f) * ushort.MaxValue);
+        // Normalize coordinates and pack down to byte (0 - 255)
+        var packedPosX = (byte)MathF.Round(Math.Clamp((position.X + 0.5f) / 2.0f, 0f, 1f) * byte.MaxValue);
+        var packedPosY = (byte)MathF.Round(Math.Clamp((position.Y + 0.5f) / 2.0f, 0f, 1f) * byte.MaxValue);
 
-        var packedAngle = (ushort)(angle.Theta / MathF.Tau * ushort.MaxValue);
+        // Normalize angle to 0 - 2PI in 256 discrete steps
+        var theta = angle.Reduced().Theta;
+        if (theta < 0)
+            theta += MathF.Tau;
+
+        var packedAngle = (byte)(Math.Clamp(theta / MathF.Tau, 0f, 1f) * byte.MaxValue);
 
         // Normalize size between 0 and 3
-        var packedSize = (ushort)(Math.Clamp(size / 3f, 0f, 1f) * ushort.MaxValue);
+        var packedSize = (byte)(Math.Clamp(size / 3f, 0f, 1f) * byte.MaxValue);
 
         var packedOpacity = (byte)Math.Clamp((int)(opacity * 255f), 0, 255);
 
-        var result = new FootprintData(packedPosX, packedPosY, packedAngle, protoId, colorId, packedSize, packedOpacity, flip);
+        var result = new FootprintData(packedPosX, packedPosY, packedAngle, packedProtoAndFlip, colorId, packedSize, packedOpacity);
         Footprints.Add(result);
     }
 
@@ -64,27 +77,34 @@ public sealed partial class FluidFootprintContainerComponent : Component
         )
         Unpack(FootprintData data)
     {
-        var posX = (data.PosX / (float)ushort.MaxValue * 1.5f) - 0.25f;
-        var posY = (data.PosY / (float)ushort.MaxValue * 1.5f) - 0.25f;
-        var angle = new Angle(data.Angle / (float)ushort.MaxValue * MathF.Tau);
-        var size = data.Size / (float)ushort.MaxValue * 3f;
-        var footprint = ProtoPalette[data.ProtoId];
+        var posX = (data.PosX / (float)byte.MaxValue * 2.0f) - 0.5f;
+        var posY = (data.PosY / (float)byte.MaxValue * 2.0f) - 0.5f;
+        var angle = new Angle(data.Angle / (float)byte.MaxValue * MathF.Tau);
+        var size = data.Size / (float)byte.MaxValue * 3f;
+        
+        // Unpack ProtoId (bits 0-6) and Flip (bit 7)
+        var protoId = (byte)(data.ProtoAndFlip & 0x7F);
+        var flip = (data.ProtoAndFlip & 0x80) != 0;
+
+        var footprint = ProtoPalette[protoId];
         var color = ColorPalette[data.ColorId];
         var opacity = data.Opacity / 255f;
 
-        return (new Vector2(posX, posY), angle, footprint, size, color, data.Flip, opacity);
+        return (new Vector2(posX, posY), angle, footprint, size, color, flip, opacity);
     }
 }
 
 [Serializable, NetSerializable]
-public readonly record struct FootprintData // 12 bytes baybee
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public readonly record struct FootprintData // 7 bytes baybee
 (
-    ushort PosX,
-    ushort PosY,
-    ushort Angle,
-    byte ProtoId,
+    byte PosX,
+    byte PosY,
+    byte Angle,
+    // 7 bits are dedicated to protoId and 1 bit is a boolean flip. 
+    // This puts a limit of 128 possible different footprints per tile, but with a limit of 100 total, this shouldn't be an issue.
+    byte ProtoAndFlip,
     byte ColorId,
-    ushort Size,
-    byte Opacity,
-    bool Flip
+    byte Size,
+    byte Opacity
 );

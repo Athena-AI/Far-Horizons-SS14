@@ -1361,7 +1361,7 @@
   parent: [ BaseBorgModuleSyndicateCombat, BaseProviderBorgModule, BaseSyndicateContraband ] #FH
   id: BorgModuleSyndicateWeapon
   name: Weapon Cyborg Module #Far Horizons
-  description: a simple weapon module that comes with an Echis and energy dagger. # starlight
+  description: a simple weapon module that comes with a Viper ROW and energy dagger. # Far Horizons (previously edited by SL)
   components:
   - type: Sprite
     layers:
@@ -1369,7 +1369,7 @@
     - state: icon-syndicate
   - type: ItemBorgModule
     hands:
-    - item: WeaponPistolEchis
+    - item: WeaponPistolViperROW # Far Horizons
     - item: EnergyDaggerLoud
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-weapon-module }
@@ -1450,7 +1450,7 @@
 - type: entity
   parent: [ BaseBorgModuleSyndicateCombat, BaseProviderBorgModule, BaseSyndicateContraband ] #Starlight L6 printing #FH
   id: BorgModuleL6C
-  name: L6C ROW Cyborg Module #Far Horizons
+  name: L6C MOW Cyborg Module #Far Horizons
   description: A weapons module that comes with an L6 and capacity to hold 2 spare magazines.
   components:
     - type: Sprite
@@ -1676,6 +1676,22 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
 
 - type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleTileGun
+  name: tile gun xenoborg module
+  description: Module with a tile gun. wait, a what?
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-tile
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponTileGunEmpty
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
+
+- type: entity
   parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleJammer
   name: Jammer Xenoborg Module #Far Horizons
@@ -1743,6 +1759,23 @@
     - item: JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleScout, BaseXenoborgContraband ]
+  id: XenoborgModuleJump
+  name: xenoborg jump module
+  description: Module that allows a xenoborg to jump forward.
+  components:
+  - type: ComponentBorgModule
+    components:
+    - type: JumpAbility
+      action: ActionJumpBoost
+      jumpDistance: 4
+      jumpSound: /Audio/Effects/stealthoff.ogg
+  - type: Sprite
+    layers:
+    - state: xenoborg_scout
+    - state: icon-xenoborg-jump
 
 - type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]

@@ -2,7 +2,7 @@
   name: makarov
   parent: [BaseWeaponPistol, BaseSovietContraband]
   id: WeaponPistolMakarov
-  description: A cheap and cumbersome pistol, with a dot on the rear sight indicating the direction in which it tends to misfire, as this model does not shoot straight. Uses .35 auto ammo.
+  description: A cheap and cumbersome pistol, with a dot on the rear sight indicating the direction in which it tends to misfire, as this model does not shoot straight. Uses 9mm ammo.
   components:
   - type: Sprite
     sprite: _Starlight/Objects/Weapons/Guns/Pistols/makarov.rsi

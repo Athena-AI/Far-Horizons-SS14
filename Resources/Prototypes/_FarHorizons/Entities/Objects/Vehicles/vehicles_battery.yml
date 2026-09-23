@@ -43,6 +43,9 @@
       riderWhitelist:
         tags:
           - CanPilot
+      riderBlacklist:
+        components:
+          - PowerArmorUser
       disallowWielding: true
       allowGunKnockback: true
       soundHit:

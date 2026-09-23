@@ -71,6 +71,8 @@ public abstract partial class SharedHandsSystem : EntitySystem
 
     private void OfferItemVerb(EntityUid uid, HandsComponent component, GetVerbsEvent<Verb> args)
     {
+        OfferCreditsVerb(uid, component, args); // Far Horizons
+
         if (!args.CanAccess || !args.CanInteract || args.User == args.Target
             || args.Using is null || HasComp<UnremoveableComponent>(args.Using) || HasComp<VirtualItemComponent>(args.Using)
             || component.Offering || component.ReceivingOffer

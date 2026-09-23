@@ -127,6 +127,8 @@ public sealed partial class TamperSealComponent : Component
     /// The color of the tamper seal sprite.
     /// </summary>
     [DataField, AutoNetworkedField] public Color FactionColor = Color.White; // Better than transparent as default.
+
+    [DataField, AutoNetworkedField] public NetEntity? EntityAccess = null;
     #endregion
 }
 

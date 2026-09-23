@@ -251,7 +251,7 @@
   description: A machine for all your detective needs, as long as you need clothes.
   components:
   - type: VendingMachine
-    pack: DetDrobeInventory
+    pack: DetDrobeInventoryNeoSol
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -381,6 +381,7 @@
   parent: VendingMachineCart
   id: VendingMachineCartNS
   name: PTech
+  suffix: NS
   description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
   components:
   - type: VendingMachine

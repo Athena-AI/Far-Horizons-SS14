@@ -231,8 +231,8 @@
     - id: ClothingNeckMantleHOPSyndi
     - id: ClothingBeltHoPSyndi
     - id: AccessConfiguratorNS
-    - id: BoxEncryptionKeyAssistant
-    - id: BoxEncryptionKeyService
+    - id: BoxEncryptionKeyAssistantNS
+    - id: BoxEncryptionKeyServiceNS
     - id: BoxHeadset
     - id: BoxIDNS
     - id: BoxPDANS
@@ -278,7 +278,7 @@
     children:
     #- id: ClothingNeckCloakCeElite
     - id: AccessConfiguratorNS
-    - id: BoxEncryptionKeyEngineering
+    - id: BoxEncryptionKeyEngineeringNS
     - id: CigarCase
       prob: 0.15
     - id: ClothingBeltChiefEngineerFilledSyndi
@@ -356,7 +356,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingCloakCmoElite
-    - id: BoxEncryptionKeyMedical
+    - id: BoxEncryptionKeyMedicalNS
     - id: ClothingBackpackDuffelSurgerySyndiFilled
     - id: ClothingEyesHudMedicalSyndi
     - id: ClothingBeltMedicalSyndiFilled
@@ -422,7 +422,7 @@
     children:
     - id: ClothingNeckCloakRdElite
     - id: Intellicard
-    - id: BoxEncryptionKeyScience
+    - id: BoxEncryptionKeyScienceNS
     - id: BoxRDCircuitboards
     - id: ClothingBeltScienceRD
     - id: ClothingHeadsetAltScience
@@ -488,7 +488,7 @@
     - id: ClothingNeckCloakHosEliteSyndi
     - id: WeaponEnergySMG
     - id: BookSpaceLaw
-    - id: BoxEncryptionKeySecurity
+    - id: BoxEncryptionKeySecurityNS
     - id: CigarGoldCase
       prob: 0.50
     - id: ClothingBeltSecuritySyndiFilled
@@ -499,14 +499,14 @@
     - id: ClothingOuterCoatHoSTrenchSyndi
     - id: ClothingShoesBootsJackSyndiFilled
     - id: DoorRemoteSecurityNS
-    - id: HoloprojectorSecurity
+    - id: HoloprojectorSecurityNS
     - id: RubberStampMarshal
     - id: SecurityTechFabCircuitboard
     - id: SecurityAmmoTechFabCircuitboardNS
     - id: CargoRequestSecurityComputerCircuitboard
     - id: WeaponDisabler
-    - id: WantedListCartridge
-    - id: DrinkHosFlask
+    - id: WantedListCartridgeNS
+    - id: DrinkMarshalFlask
     - id: SecurityShuttleConsoleCircuitboard
     - id: PrintedDocumentGreenshiftAlert
       conditions:
@@ -523,7 +523,7 @@
     children:
     - id: ClothingMaskGasSwat
     - id: ClothingOuterHardsuitSecurityRed
-    - id: JetpackSecurityFilled
+    - id: JetpackSecurityNSFilled
     - id: OxygenTankFilled
     - id: NitrogenTankFilled 
     - id: ClothingShoesBootsMagSec
@@ -611,7 +611,7 @@
         - id: FlashlightSeclite
         - id: ClothingHandsGlovesCombat
         - id: ClothingShoesBootsCombat
-        - id: TrackingImplanter
+        - id: TrackingImplanterNS
           amount: 3
         - id: MedkitAdvancedFilled
         - id: WeaponPistolDP 

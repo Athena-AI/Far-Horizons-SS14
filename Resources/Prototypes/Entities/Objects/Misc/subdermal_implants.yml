@@ -79,7 +79,7 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: TrackingImplant
-  name: tracking implant
+  name: Tracking Implant (NT) #FH
   description: This implant has a tracking device attached to the suit sensor network, as well as a condition monitor for the Security radio channel.
   categories: [ HideSpawnMenu ]
   components:
@@ -101,6 +101,7 @@
     #region Starlight Tracker rattle
     - type: TriggerOnMobstateChange
       mobState:
+      - ActiveCritical #FH
       - Critical
     - type: RattleOnTrigger
       targetUser: true
@@ -163,7 +164,7 @@
     - Syndicate
 
 - type: entity
-  parent: [ BaseSubdermalImplant, StorePresetUplink ]
+  parent: BaseSubdermalImplant
   id: UplinkImplant
   name: uplink implant
   description: This implant lets the user access a hidden Syndicate uplink at will.
@@ -174,14 +175,11 @@
     whitelist:
       components:
       - Hands # prevent mouse buying grenade penguin since its not telepathic
-  - type: Store
-    balance:
-      Telecrystal: 0
+  - type: RemoteStore
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
-  - type: UplinkImplant # Starlight-edit: Uplink Implant discounts
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -404,7 +402,7 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: MindShieldImplant
-  name: mindshield implant
+  name: Mindshield Implant (NT) # FH
   description: This implant will ensure protection against mind control devices. # FH
   categories: [ HideSpawnMenu ]
   components:

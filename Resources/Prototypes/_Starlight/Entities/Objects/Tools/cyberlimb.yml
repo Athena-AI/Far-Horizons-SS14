@@ -61,10 +61,12 @@
       - Screwing
     useSound:
       collection: Screwdriver
-  - type: RandomSprite
-    available:
-      - enum.DamageStateVisualLayers.Base:
-          screwdriver: Rainbow
+  #FH Start
+  #- type: RandomSprite
+  #  available:
+  #    - enum.DamageStateVisualLayers.Base:
+  #        screwdriver: Rainbow
+  #FH End
   - type: PhysicalComposition
     materialComposition:
       Steel: 100
@@ -754,7 +756,6 @@
   suffix: grinder/juicer
   components:
     - type: ReagentGrinder
-      needsPower: false
       storageMaxEntities: 2
     - type: ActivatableUI
       key: enum.ReagentGrinderUiKey.Key

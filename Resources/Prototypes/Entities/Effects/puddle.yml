@@ -226,4 +226,7 @@
     minFootprints: 10
     bonusPerUnit: 1 # 30 footprints from 30u, 10 footprints from 10u
     stopAfter: 5.0 # 5 seconds
+    draggingStepSpacing: 0.15
+    draggingFootprint: DraggingTrail
+    draggingFootprintSize: 2.0
   # Far Horizons end

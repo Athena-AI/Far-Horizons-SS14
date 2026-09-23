@@ -11,6 +11,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Pulling.Events;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Speech;
 using Content.Shared.Stunnable;
@@ -52,6 +53,23 @@ public abstract partial class SharedActiveCritSystem : EntitySystem
         SubscribeLocalEvent<ActiveCritComponent, UpdateCanMoveEvent>(OnCanMoveCheck);
         SubscribeLocalEvent<ActiveCritComponent, SpeakAttemptEvent>(OnSpeakAttempt);
         SubscribeLocalEvent<ActiveCritComponent, InRangeOverrideEvent>(OnInRangeCheck);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnStopPullAttempt(Entity<ActiveCritComponent> ent, ref AttemptStopPullingEvent args)
+    {
+        if (args.User == null || !Exists(args.User.Value))
+            return;
+
+        if (args.User.Value == ent.Owner && _mobState.IsCritical(ent.Owner) )
+            args.Cancelled = true;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnForceStandEvent(Entity<ActiveCritComponent> ent, ref TryForceStandEvent args)
+    {
+        if (_mobState.IsCritical(ent.Owner) )
+            args.Cancel();
     }
 
     private void OnInRangeCheck(Entity<ActiveCritComponent> ent, ref InRangeOverrideEvent args)

@@ -71,6 +71,8 @@
       - NewsReaderCartridge
       - MedTekCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
 
 #Security
 
@@ -102,6 +104,8 @@
     - WantedListCartridge
     - MedTekCartridge
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
 
 # For Detective Inquisitive Tethers
 - type: entity
@@ -248,6 +252,8 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -379,6 +385,8 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -434,6 +442,8 @@
       - NewsReaderCartridge
       - MedTekCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
 
 - type: entity
   parent: BaseNeoSolPDA
@@ -446,8 +456,10 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
-    - WantedListCartridge
+    - WantedListCartridgeNS
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
 
 - type: entity
   parent: BaseNeoSolPDA
@@ -464,6 +476,8 @@
       - HullSenseCartridge
       - AstroNavCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
 
 #endregion
 
@@ -599,9 +613,11 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
-    - WantedListCartridge
+    - WantedListCartridgeNS
     - LogProbeCartridge
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
 
 #endregion
 
@@ -638,6 +654,8 @@
       - NewsReaderCartridge
       - MedTekCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
 
 - type: entity #Will do with Red Sword PDA
   parent: BaseNeoSolPDA
@@ -803,6 +821,8 @@
     - CrewManifestCartridge
     - NewsReaderCartridge
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
   - type: Appearance
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
@@ -1105,6 +1125,8 @@
       - MedTekCartridge
       - NanoChatCartridge
       - AstroNavCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
 
 - type: entity
   parent: BaseNeoSolMedicalPDA
@@ -1172,9 +1194,11 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
-    - WantedListCartridge
+    - WantedListCartridgeNS
     - MedTekCartridge
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
 
 - type: entity
   parent: BaseNeoSolMedicalPDA
@@ -1200,9 +1224,11 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
-    - WantedListCartridge
+    - WantedListCartridgeNS
     - MedTekCartridge
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
 
 - type: entity
   parent: BaseEnforcerPDA
@@ -1241,6 +1267,25 @@
     accentHColor: "#004cae"
   - type: Icon
     state: pda-enforcer
+    
+- type: entity
+  parent: BaseEnforcerPDA
+  id: SeniorEnforcerPDA
+  name: Senior Enforcer PDA
+  description: Red to hide the stains of assistant blood.
+  components:
+  - type: Pda
+    id: EnforcerIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-seniorenforcer
+  - type: PdaBorderColor
+    borderColor: "#111230"
+    accentHColor: "#004cae"
+  - type: Icon
+    state: pda-seniorenforcer
 
 - type: entity
   parent: BaseEnforcerPDA
@@ -1285,9 +1330,11 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
-    - WantedListCartridge
+    - WantedListCartridgeNS
     - LogProbeCartridge
     - NanoChatCartridge
+    - FrontierBankCartridge
+    - GSLNowCartridge
 
 #endregion
 
@@ -1452,11 +1499,13 @@
       - NanoTaskCartridge
       - NewsReaderCartridge
       - MedTekCartridge
-      - WantedListCartridge
+      - WantedListCartridgeNS
       - LogProbeCartridge
       - AstroNavCartridge
       - HullSenseCartridge
       - NanoChatCartridge
+      - FrontierBankCartridge
+      - GSLNowCartridge
 
 - type: entity
   parent: SHCPDA

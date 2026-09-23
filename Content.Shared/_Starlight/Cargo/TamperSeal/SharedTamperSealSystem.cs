@@ -152,11 +152,18 @@ public abstract partial class SharedTamperSealSystem : EntitySystem
 
         // High-priority text so it shows at the top, since the tamper seal is the first thing you need to deal with
         // when interacting with an entity that has one.
-        args.PushMarkup(Loc.GetString("tamper-seal-examine-sealed-restricted",
-            ("faction", Loc.GetString(seal.FactionName)), // FH
-            ("factionColor", seal.FactionColor), //FH
-            ("recipient", GetLocRecipientName(seal)),
-            ("recipientColor", seal.RecipientExamineColor)), 100);
+        // Far Horizons start
+        if (seal.EntityAccess != null)
+            args.PushMarkup(Loc.GetString("tamper-seal-examine-sealed-restricted",
+                ("faction", Loc.GetString(seal.FactionName)), // FH
+                ("factionColor", seal.FactionColor), //FH
+                ("recipient", GetLocRecipientName(seal)),
+                ("recipientColor", seal.RecipientExamineColor)), 100);
+        else
+            args.PushMarkup(Loc.GetString("tamper-seal-examine-personal-sealed-restricted",
+                ("recipient", GetLocRecipientName(seal)),
+                ("recipientColor", seal.RecipientExamineColor)), 100);
+        // Far Horizons end
     }
 
     #endregion
@@ -320,6 +327,11 @@ public abstract partial class SharedTamperSealSystem : EntitySystem
     {
         if (!Resolve(uid, ref seal))
             return false;
+        
+        // Far Horizons start
+        if (seal.EntityAccess != null)
+            return GetNetEntity(user) == seal.EntityAccess;
+        // Far Horizons end
 
         var userTags = _accessReader.FindAccessTags(user);
         if (seal.Accesses.Count == 0)

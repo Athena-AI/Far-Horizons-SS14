@@ -20990,5 +20990,30 @@ Entries:
   id: 180100
   time: '2026-09-23T14:19:03.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1801
+- author: princess_gurchi
+  changes:
+  - message: You can now quickly transfer credits from credstick in your active hand
+      to another credstick via right click menu
+    type: Add
+  id: 179800
+  time: '2026-09-23T18:05:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1798
+- author: princess_gurchi
+  changes:
+  - message: You can transfer credtits from credstick in your active hand to station
+      spesos account via right click menu on orders console. The conversion rate in
+      this case is 1:1
+    type: Add
+  id: 179801
+  time: '2026-09-23T18:05:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1798
+- author: princess_gurchi
+  changes:
+  - message: Buffed rewards GSL gets for having the order opened by the right person
+      from 10% of the item price in spesos to 30%
+    type: Tweak
+  id: 179802
+  time: '2026-09-23T18:05:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1798
 Order: -1
 

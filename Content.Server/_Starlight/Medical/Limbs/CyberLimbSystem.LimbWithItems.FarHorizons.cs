@@ -4,6 +4,7 @@ using Content.Shared.Starlight;
 using Content.Shared._Starlight.Cybernetics.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
+using Content.Shared._FarHorizons.Medical.Limbs; //FH
 
 namespace Content.Server._Starlight.Medical.Limbs;
 public sealed partial class CyberLimbSystem

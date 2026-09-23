@@ -1,12 +1,13 @@
 using Content.Client.Stylesheets.Palette;
 using Content.Client.UserInterface.Controls;
+using Content.Shared._FarHorizons.Medical.Limbs;
 using Content.Shared.Starlight;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Client._Starlight.Medical.Limbs;
+namespace Content.Client._FarHorizons.Medical.Limbs;
 
 [UsedImplicitly]
 public sealed partial class CyberLimbSystemItemsRadial(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)

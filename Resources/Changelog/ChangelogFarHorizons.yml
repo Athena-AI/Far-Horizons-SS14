@@ -21015,5 +21015,21 @@ Entries:
   id: 179802
   time: '2026-09-23T18:05:09.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1798
+- author: AthenaAI
+  changes:
+  - message: Adds a radial menu to toggle certain parts of the cyberlimb and its tools.
+      Double tapping the deploy action will automatically instantly deploy the limb.
+    type: Add
+  id: 180200
+  time: '2026-09-23T21:15:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1802
+- author: AthenaAI
+  changes:
+  - message: Made it so you can click on the tools to swap instantly this also applies
+      to borg modules.
+    type: Tweak
+  id: 180201
+  time: '2026-09-23T21:15:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1802
 Order: -1
 

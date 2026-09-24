@@ -1,3 +1,4 @@
+using Content.Shared.Inventory;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -38,12 +39,25 @@ public sealed partial class CoolingUnitComponent : Component
     /// </summary>
     [DataField]
     public float MinTemperature = 200.3f;
+
+    /// <summary>
+    /// In what slots does this cooling unit work on.
+    /// </summary>
+    [DataField]
+    public SlotFlags RequiredSlots = SlotFlags.NONE;
 }
 
 [Serializable, NetSerializable]
 public enum CoolingUnitUiKey : byte
 {
     Key
+}
+
+[Serializable, NetSerializable]
+public enum CoolingUnitVisuals : byte
+{
+    Enabled,
+    Layer
 }
 
 [Serializable, NetSerializable]

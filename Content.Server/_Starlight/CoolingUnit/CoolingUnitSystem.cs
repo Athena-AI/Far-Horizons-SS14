@@ -3,8 +3,9 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._Starlight.CoolingUnit;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Temperature.Components;
-using Robust.Shared.Containers;
 using Robust.Shared.Timing;
+using Content.Shared.Inventory; //FH
+using Robust.Shared.Containers; //FH
 
 namespace Content.Server._Starlight.CoolingUnit;
 
@@ -13,6 +14,7 @@ public sealed partial class CoolingUnitSystem : SharedCoolingUnitSystem
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private TemperatureSystem _tempSys = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private InventorySystem _inventory = default!;
 
     private TimeSpan _nextUpdate = TimeSpan.Zero;
     private readonly TimeSpan _updateCooldown = TimeSpan.FromSeconds(1f);
@@ -33,6 +35,9 @@ public sealed partial class CoolingUnitSystem : SharedCoolingUnitSystem
                 || !TryComp<TemperatureComponent>(parent.Owner, out var tempcomponent) 
                 || !TryComp<ThermalRegulatorComponent>(parent.Owner, out var regulatorcomp))
                     continue;
+
+                if(coolingcomp.RequiredSlots != SlotFlags.NONE && !_inventory.InSlotWithAnyFlags(uid, coolingcomp.RequiredSlots))
+                    return;
 
                 if (tempcomponent.CurrentTemperature > (coolingcomp.DesiredTemp ?? regulatorcomp.NormalBodyTemperature))
                 {

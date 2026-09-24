@@ -1,29 +1,26 @@
 - type: entity
   parent: BaseItem
   id: CoolingUnitNitrogen
-  name: Portable Cryogenics Unit
-  description: A experimental device able to cool a body to subzero temperatures using liquid nitrogen for its fuel.
+  name: Experimental Portable Cryogenics Unit
+  description: A experimental cryogenic device able to cool a body to subzero temperatures using liquid nitrogen for its fuel.
   components:
     - type: Sprite
-      sprite: _Starlight/Objects/Tanks/coolingunit.rsi
+      sprite: _FarHorizons/Objects/Tanks/cryogenicunit.rsi
       layers:
         - state: icon
-        - state: battery-0
-          shader: unshaded
-          visible: false
-          map: ["power"]
+          map: ["enum.CoolingUnitVisuals.Layer"]
     - type: Appearance
     - type: Item
       size: Large
       shape:
-      - 0,0,1,1
+      - 0,0,1,3
     - type: Clothing
       quickEquip: false
-      sprite: _Starlight/Objects/Tanks/coolingunit.rsi
+      sprite: _FarHorizons/Objects/Tanks/cryogenicunit.rsi
       slots:
         - Back
         - suitStorage
-        - suitStorage2 
+        - Belt
     - type: UseDelay
       delay: 1
     - type: ToggleReagentDraw
@@ -34,7 +31,7 @@
       exactVolume: true
     - type: ReagentDraw
       enabled: false
-      drainRate: 0.5
+      drainRate: 0.25
       solutionContainer: nitrogentank
       whitelistedReagents:
         - Nitrogen
@@ -50,6 +47,10 @@
       soundDeactivate: /Audio/Items/flashlight_on.ogg
     - type: CoolingUnit
       desiredTemp: 255.3
+      requiredSlots: 
+      - SUITSTORAGE
+      - BACK
+      - BELT
     - type: ToggleableVisuals
       spriteLayer: power
     - type: PhysicalComposition
@@ -64,3 +65,9 @@
     - type: ActivatableUI
       inHandsOnly: false
       key: enum.CoolingUnitUiKey.Key
+    - type: GenericVisualizer
+      visuals:
+        enum.CoolingUnitVisuals.Enabled:
+          enum.CoolingUnitVisuals.Layer:
+            True: {state: icon-on}
+            False: {state: icon}

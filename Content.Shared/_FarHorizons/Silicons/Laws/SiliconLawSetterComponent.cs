@@ -8,7 +8,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.Silicons.Laws.Components;
 
-[RegisterComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class SiliconLawSetterComponent : Component
 {
     [DataField, AutoNetworkedField]

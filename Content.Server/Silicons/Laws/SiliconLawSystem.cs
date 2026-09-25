@@ -227,7 +227,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
             _roles.MindAddRole(mindId, "MindRoleSubvertedSilicon", silent: true);
     }
 
-    protected override void RemoveSubvertedSiliconRole(EntityUid mindId)
+    public override void RemoveSubvertedSiliconRole(EntityUid mindId) //FH-Edit
     {
         base.RemoveSubvertedSiliconRole(mindId);
 

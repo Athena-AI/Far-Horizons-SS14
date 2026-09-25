@@ -97,7 +97,7 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
         }
     }
 
-    protected virtual void RemoveSubvertedSiliconRole(EntityUid mindId)
+    public virtual void RemoveSubvertedSiliconRole(EntityUid mindId) //FH-Edit
     {
         if (TryComp<MindComponent>(mindId, out var mind))
         {
@@ -111,11 +111,12 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
     }
 
     #region Starlight
-    public void SetLawset(EntityUid entity, SiliconLawset? laws)
+    public void SetLawset(EntityUid entity, SiliconLawset? laws, SoundSpecifier? cue = null) //FH-Edit
     {
         if (!TryComp<SiliconLawProviderComponent>(entity, out var provider))
             return;
         provider.Lawset = laws;
+        NotifyLawsChanged(entity, cue); //FH-Edit
     }
     #endregion
 }

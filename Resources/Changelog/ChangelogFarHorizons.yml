@@ -21062,5 +21062,12 @@ Entries:
   id: 181000
   time: '2026-09-27T14:08:57.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1810
+- author: Mizuki
+  changes:
+  - message: Civilian magazines can now be printed in ammofabs
+    type: Fix
+  id: 181300
+  time: '2026-09-27T14:11:19.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1813
 Order: -1
 

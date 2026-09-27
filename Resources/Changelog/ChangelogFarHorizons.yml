@@ -21100,5 +21100,13 @@ Entries:
   id: 181203
   time: '2026-09-27T14:19:47.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1812
+- author: princess_gurchi
+  changes:
+  - message: Monkeys and kobolds will behave like the rest of the animals rather than
+      like humanoids when zombified, they can be killed without damaging head.
+    type: Tweak
+  id: 181100
+  time: '2026-09-27T14:22:24.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1811
 Order: -1
 

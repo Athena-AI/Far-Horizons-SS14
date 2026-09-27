@@ -20,7 +20,7 @@
 
 - type: cargoProduct
   id: WrappedParcelAloeExtract
-  name: Aloe Extract
+  name: cargo-order-aloeextract
   icon:
     sprite: Objects/Specific/Hydroponics/aloe.rsi
     state: produce
@@ -34,7 +34,7 @@
 
 - type: cargoProduct
   id: WrappedParcelGalaxythistle
-  name: Galaxythistle Extract
+  name: cargo-order-galaxythistleextract
   icon:
     sprite: Objects/Specific/Hydroponics/galaxythistle.rsi
     state: produce

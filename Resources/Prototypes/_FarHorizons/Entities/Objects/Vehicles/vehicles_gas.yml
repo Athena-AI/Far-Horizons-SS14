@@ -77,7 +77,7 @@
   - type: ReagentDraw
     enabled: false
     solutionContainer: fueltank
-    whitelistedReagants: 
+    whitelistedReagents: 
     - WeldingFuel
   - type: FootstepModifier
     footstepSoundCollection:
@@ -356,7 +356,7 @@
   - type: ReagentDraw
     enabled: false
     solutionContainer: fueltank
-    whitelistedReagants: 
+    whitelistedReagents: 
     - WeldingFuel
   - type: FootstepModifier
     footstepSoundCollection:

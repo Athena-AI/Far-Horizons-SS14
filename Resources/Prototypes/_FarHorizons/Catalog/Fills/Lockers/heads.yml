@@ -376,6 +376,7 @@
     - id: RubberStampMD
     - id: PlushieLizardJobChiefmedicalofficer
       prob: 0.02
+    - id: CoolingUnitNitrogen
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

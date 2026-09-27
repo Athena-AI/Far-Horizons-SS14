@@ -315,6 +315,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Burn: 400
   - type: SolutionContainerVisuals
     maxFillLevels: 6
     fillBaseName: ointment
@@ -403,6 +405,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Burn: 400
   - type: SolutionContainerVisuals
     maxFillLevels: 8
     fillBaseName: ointment
@@ -492,6 +496,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Burn: 400
   - type: SolutionContainerVisuals
     maxFillLevels: 6
     fillBaseName: ointment
@@ -596,6 +602,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Brute: 400
   - type: StackPrice
     price: 5
   - type: InteractRestriction
@@ -678,6 +686,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Brute: 400
   - type: StackPrice
     price: 5
   - type: InteractRestriction
@@ -770,6 +780,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps:
+      Brute: 400
   - type: StackPrice
     price: 5
   - type: InteractRestriction
@@ -852,6 +864,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Brute: 400
   - type: StackPrice
     price: 5
   - type: InteractRestriction
@@ -934,6 +948,8 @@
       params:
         volume: 1.0
         variation: 0.125
+    damageCaps: 
+      Brute: 400
   - type: StackPrice
     price: 5
   - type: InteractRestriction

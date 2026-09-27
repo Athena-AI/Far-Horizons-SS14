@@ -21054,5 +21054,13 @@ Entries:
   id: 180500
   time: '2026-09-25T14:12:44.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1805
+- author: rain_enjoyer
+  changes:
+  - message: Added one singular line to the zombie guidebook to better explain how
+      shooting a zombie's head works.
+    type: Add
+  id: 181000
+  time: '2026-09-27T14:08:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1810
 Order: -1
 

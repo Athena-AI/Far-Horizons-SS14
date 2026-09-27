@@ -514,6 +514,7 @@
       unlitRunningState: unlit # Far Horizons - replace with animations when available
       staticPacks:
       - FarHorizonsAmmoStatic #FH
+      - FarHorizonsCivilianMagazinesStatic #FH
       #- SecurityAmmoStatic # SL - disable in favor of previous line
     - type: EmagLatheRecipes
       emagStaticPacks:

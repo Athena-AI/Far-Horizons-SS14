@@ -21069,5 +21069,36 @@ Entries:
   id: 181300
   time: '2026-09-27T14:11:19.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1813
+- author: AthenaAI, KillerTamashii
+  changes:
+  - message: Topicals no longer heal above the 400 cap.
+    type: Tweak
+  id: 181200
+  time: '2026-09-27T14:19:47.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1812
+- author: AthenaAI, KillerTamashii
+  changes:
+  - message: Adds new sealable beaker come with the purchase Aloxadone and Stebillin
+      Extract.
+    type: Add
+  id: 181201
+  time: '2026-09-27T14:19:47.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1812
+- author: AthenaAI, KillerTamashii
+  changes:
+  - message: Adds new option for medical when botany isn't available for Aloe and
+      Galaxy Thistle. They can be purchased from GSL.
+    type: Add
+  id: 181202
+  time: '2026-09-27T14:19:47.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1812
+- author: AthenaAI, KillerTamashii
+  changes:
+  - message: New Experimental Portable Cryogenics Unit uses liquid nitrogen to cool
+      people. Found in the locker of your local CMO or MD. Sprited by Killer Tamashii.
+    type: Add
+  id: 181203
+  time: '2026-09-27T14:19:47.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1812
 Order: -1
 

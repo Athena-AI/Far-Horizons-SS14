@@ -105,11 +105,17 @@
       dismountOnStun: true
       dismountOnKnockdown: true
       armorAffectsVehicle: true
-      northOffset: "0, -0.15"
-      southOffset: "0, -0.15"
-      eastOffset: "0, -0.15"
-      westOffset: "-0, -0.15"
-      southDrawDepth: BelowMobs
+    - type: DirectionalOverride
+      offsets: 
+        North: "0, -0.15"
+        South: "0, -0.15"
+        East: "0, -0.15"
+        West: "-0, -0.15"
+      drawDepths: 
+        North: OverMobs
+        South: BelowMobs
+        East: OverMobs
+        West: OverMobs
     - type: MovementSpeedModifier
       baseSprintSpeed: 4.5
       baseWalkSpeed: 2.5

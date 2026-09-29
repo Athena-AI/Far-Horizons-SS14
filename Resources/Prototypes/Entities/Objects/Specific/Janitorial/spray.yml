@@ -133,6 +133,8 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 120
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Item sizes don't make as much sense for borg handhelds
 
 - type: entity
   parent: [SolutionLarge, MegaSprayBottle]
@@ -154,6 +156,8 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 1
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Item sizes don't make as much sense for borg handhelds
 
 # Vapor
 - type: entity

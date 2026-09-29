@@ -90,6 +90,9 @@
   id: BorgFireExtinguisher
   name: maneuvering jet
   description: Based on fire extinguisher technology, the maneuvering jet is... well yes, its just a bigger fire extinguisher.
+  components:
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Item sizes don't make as much sense for borg handhelds
 
 - type: entity
   parent: [SolutionSpray, SolutionLarge]

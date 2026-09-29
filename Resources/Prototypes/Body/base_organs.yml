@@ -29,7 +29,7 @@
 - type: entity
   id: OrganEdible
   abstract: true
-  parent: BaseItem
+  parent: [BaseItem, SolutionOrganEdibleFood]
   components:
   - type: Edible
   - type: Extractable
@@ -40,13 +40,6 @@
       - ReagentId: Blood
         Quantity: 20
     grindableSolutionName: food
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: UncookedAnimalProteins
-          Quantity: 5
   - type: FlavorProfile
     flavors:
       - people
@@ -54,6 +47,18 @@
     tags:
       - Meat
       - Organic
+
+- type: entity
+  parent: SolutionFood
+  id: SolutionOrganEdibleFood
+  abstract: true
+  components:
+  - type: Solution
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 5
   # Far Horizons end
 
 - type: entity
@@ -759,10 +764,11 @@
   - type: Lung
   - type: Metabolizer
     stages: [ Respiration ]
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Lung gas capacity is determined by respiratory mechanics rather than inventory size.
   - type: SolutionManager
     solutions:
     - SolutionLungGas
-    - SolutionFood
   - type: Sprite
     layers:
     - state: lung-l
@@ -825,9 +831,10 @@
   - type: Organ
     category: Stomach
   - type: Stomach
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Stomach capacity is determined by digestion mechanics rather than inventory size.
   - type: SolutionManager
     solutions:
-    - SolutionFood
     - SolutionStomach
   - type: Metabolizer
     maxReagents: 3

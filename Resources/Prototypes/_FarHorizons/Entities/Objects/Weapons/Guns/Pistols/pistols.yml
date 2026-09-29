@@ -327,7 +327,7 @@
 #region Pathology
 - type: entity
   name: Pathology
-  parent: [BaseWeaponPistol, BaseSecurityContraband]
+  parent: [BaseWeaponPistol, BaseSecurityContraband, SolutionWeapon, SolutionToolSmall]
   id: WeaponPistolPathology
   description: Corpsman's custom-made pistol, posessing a special intergrated knife that partially injects it's contents upon embedding into it's target via a pressure system. Usage of this weapon is more than likely considered a warcrime, thankfully, you're not in a war.
   components:
@@ -351,10 +351,6 @@
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/mk58.ogg
-  - type: SolutionContainerManager
-    solutions:
-      melee:
-        maxVol: 20
   - type: MeleeChemicalInjector
     solution: melee
     transferAmount: 2
@@ -745,4 +741,4 @@
         whitelist:
           tags:
             - CartridgePistol
-  
+

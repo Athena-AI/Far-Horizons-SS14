@@ -183,13 +183,13 @@
       reagents:
       - ReagentId: Oil
         Quantity: 10
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Oil
-          Quantity: 10
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: Oil
+        Quantity: 10
 
 - type: entity
   parent: OrganIPC

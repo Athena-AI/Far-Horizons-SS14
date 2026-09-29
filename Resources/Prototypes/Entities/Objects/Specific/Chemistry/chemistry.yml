@@ -327,6 +327,8 @@
       - state: beakerbluespace
   - type: SolutionContainerVisuals
     maxFillLevels: 0
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Bluespace beakers are intentionally far larger than standard.
 
 - type: entity
   name: dropper
@@ -543,6 +545,8 @@
     tags:
     - Syringe
     - Trash
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Bluespace beakers are intentionally far larger than standard.
 
 - type: entity
   id: SyringeCryostasis

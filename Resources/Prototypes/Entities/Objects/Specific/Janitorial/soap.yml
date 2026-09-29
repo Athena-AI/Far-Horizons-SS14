@@ -247,6 +247,8 @@
       launchForwardsMultiplier: 3.0
   - type: Item
     heldPrefix: omega
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: There doesn't really seem to be much of a reason behind this one, but it's upstream
   - type: Solution
     id: soap
     solution:

@@ -2,14 +2,16 @@
 
 - type: entity
   name: Reinforced Jug
-  parent: BaseItem
+  parent: [ BaseItem, SolutionBeaker ]
   id: JugReinforced
   description: Used to contain a very large amount of chemicals or solutions. Chugging is extremely ill-advised, now explosion AND spill proof!
   components:
-    - type: SolutionContainerManager
-      solutions:
-        beaker:
-          maxVol: 300
+    - type: TESTSolutionSizeNonStandard
+      reason: Reinforced jugs are specifically an upgrade over the standard jugs
+    - type: Solution
+      id: beaker
+      solution:
+        maxVol: 360
     - type: Sprite
       sprite: _FarHorizons/Objects/Specific/Chemistry/reinforced_jug.rsi
       layers:

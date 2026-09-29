@@ -344,14 +344,14 @@
     - Crayon
     - Recyclable
     - Trash  
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 30
-        - ReagentId: MindbreakerToxin
-          Quantity: 20
+  - type: Solution
+    solution:
+      maxVol: 50
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 30
+      - ReagentId: MindbreakerToxin
+        Quantity: 20
 # end SL
 
 - type: entity

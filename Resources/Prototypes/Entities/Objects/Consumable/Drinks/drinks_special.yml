@@ -36,6 +36,8 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 75
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Even upstream ice buckets are just twice as good as normal beakers
 
 - type: entity
   parent: [DrinkBaseMaterialPorcelain, SolutionNormal, DrinkBase]
@@ -125,8 +127,8 @@
     state: icon
   - type: Item
     sprite: Objects/Consumable/Drinks/shaker.rsi
-    shape:
-    - 0,0,0,2 # 3 tall
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Shaker capacity is intentionally 90u despite its standard 1x2 footprint.
   - type: PhysicalComposition
     materialComposition:
       Steel: 50

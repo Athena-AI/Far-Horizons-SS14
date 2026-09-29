@@ -638,11 +638,9 @@
       Metabolites:
         solutionName: metabolites
         solutionOnBody: false
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      food: {}
-      stomach:
-        maxVol: 50
+    - SolutionStomach
   - type: ReattacheableLimbs 
 
 #region SHADEKIN ####

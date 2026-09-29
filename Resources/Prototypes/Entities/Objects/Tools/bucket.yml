@@ -45,3 +45,5 @@
   - type: SolutionTransfer
     transferAmount: 240
     maxTransferAmount: 480
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Item sizes don't make as much sense for borg handhelds

@@ -180,6 +180,8 @@
   - type: Solution
     solution:
       maxVol: 3000 # Badmin abuse
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: admin tool
   - type: UseDelay
     delay: 0.0
 
@@ -712,3 +714,5 @@
       reagents:
       - ReagentId: JuiceThatMakesYouWeh
         Quantity: 60 # Need at least 50 to transform
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Needs to be over the JTMYW threshold

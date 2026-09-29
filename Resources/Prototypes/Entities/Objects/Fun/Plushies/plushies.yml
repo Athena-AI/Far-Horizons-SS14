@@ -1215,7 +1215,7 @@
       CottonBurger: PlushieVulp
 
 - type: entity
-  parent: BasePlushie
+  parent: [ SolutionTiny, BasePlushie ] # FH - SolutionTiny, so that its filling matches its size
   id: ToyIan
   name: ian toy
   description: Unable to eat, but just as fluffy as the real guy!
@@ -1251,6 +1251,13 @@
   - type: FoodSequenceElement
     entries:
       CottonBurger: IanPlushie
+  # Far Horizons start - ToyIan gets less filling because it's smaller
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 15
+  # Far Horizons end
 
 - type: entity
   parent: BasePlushie

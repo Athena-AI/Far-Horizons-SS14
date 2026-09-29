@@ -1333,13 +1333,11 @@
   components:
   - type: Label
     currentLabel: "Endless Corgi Essence"
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: CorgiJuice
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: CorgiJuice
+        Quantity: 30
   - type: SolutionRegeneration
     solution: drink
     generated:

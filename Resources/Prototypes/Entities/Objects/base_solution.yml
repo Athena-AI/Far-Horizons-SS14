@@ -133,6 +133,8 @@
   parent: Solution
   id: SolutionWelder # TODO Refactor fuel usage to comply with welders becoming 30u-60u
   components:
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: As mentioned in the above TODO line, welder size isn't fixed yet because they need to adjust fuel usage first.
   - type: Solution
     id: welder
 

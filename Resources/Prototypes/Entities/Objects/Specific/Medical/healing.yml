@@ -1125,13 +1125,11 @@
     state: pill3
   - type: Label
     currentLabel: psicodine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Psicodine
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Psicodine
+        Quantity: 10
 
 - type: entity
   name: Pill Canister # Far Horizons capitalization

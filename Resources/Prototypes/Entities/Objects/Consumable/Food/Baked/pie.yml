@@ -7,7 +7,8 @@
   id: FoodPieBase
   components:
   - type: Item
-    size: Normal
+    shape: # FH - preserve the original 2x1 footprint so survival cases retain their contents.
+    - 0,0,1,0
   - type: FlavorProfile
     flavors:
       - sweet

@@ -137,3 +137,5 @@
           icon: Rainbow
       - enum.PowerDeviceVisualLayers.Powered:
           detail2: Sixteen
+  - type: TESTSolutionSizeNonStandard # FH
+    reason: Only available through admin spawns and Wizard event gun distribution spell

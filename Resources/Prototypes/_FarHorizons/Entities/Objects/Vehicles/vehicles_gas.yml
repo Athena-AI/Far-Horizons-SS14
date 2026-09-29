@@ -33,12 +33,17 @@
     dismountOnStun: true
     dismountOnKnockdown: true
     ejectOnCrash: true
-    northOffset: "0, -0.12"
-    southOffset: "0, -0.12"
-    eastOffset: "0, -0.2"
-    westOffset: "-0, -0.2"
-    eastDrawDepth: BelowMobs
-    westDrawDepth: BelowMobs
+  - type: DirectionalOverride
+    offsets: 
+      North: "0, -0.12"
+      South: "0, -0.12"
+      East: "0, -0.2"
+      West: "0, -0.2"
+    drawDepths: 
+      North: OverMobs
+      South: OverMobs
+      East: BelowMobs
+      West: BelowMobs
   - type: Strap
   - type: Fixtures
     fixtures:

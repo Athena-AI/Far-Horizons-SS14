@@ -30,7 +30,7 @@ public sealed partial class DirectionalOverrideSystem: EntitySystem
             if (!viewBounds.Contains(worldPos))
                 continue;
 
-            var direction = (xform.LocalRotation - Math.Abs(eyeRotation)).GetCardinalDir();
+            var direction = (_transform.GetWorldRotation(xform) - Math.Abs(eyeRotation)).GetCardinalDir();
 
             if (doComp.Offsets.TryGetValue(direction, out var offset))
                 _sprite.SetOffset((uid, sprite), offset);

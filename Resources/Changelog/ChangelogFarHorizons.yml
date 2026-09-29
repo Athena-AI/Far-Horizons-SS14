@@ -21108,5 +21108,19 @@ Entries:
   id: 181100
   time: '2026-09-27T14:22:24.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1811
+- author: princess_gurchi
+  changes:
+  - message: NS command once again counts as command for rev rounds
+    type: Fix
+  id: 182100
+  time: '2026-09-29T19:20:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1821
+- author: princess_gurchi
+  changes:
+  - message: NS traitors/nukies should be properly handled by secret game mode
+    type: Fix
+  id: 182101
+  time: '2026-09-29T19:20:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1821
 Order: -1
 

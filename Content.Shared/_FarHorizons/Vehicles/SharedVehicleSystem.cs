@@ -41,6 +41,7 @@ using Content.Shared.Emp;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Hands;
 using Content.Shared._FarHorizons.ReagentDraw;
+using Robust.Shared.Network;
 
 namespace Content.Shared._FarHorizons.Vehicles;
 
@@ -48,6 +49,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 {    
     [Dependency] protected ISharedAdminLogManager _adminLogger = default!;
     [Dependency] protected IPrototypeManager _prototypes = default!;
+    [Dependency] protected INetManager _net = default!;
     [Dependency] protected SharedMoverController _mover = default!;
     [Dependency] protected SharedTransformSystem _transform = default!;
     [Dependency] protected SharedBuckleSystem _buckle = default!;
@@ -78,7 +80,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         InitializeRider();
         InitializeBuckle();
-        InitializeContainer();
         
         SubscribeLocalEvent<VehicleComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<VehicleComponent, EntInsertedIntoContainerMessage>(OnEntInsertedVehicle, after: [typeof(SharedContainerSystem)]);

@@ -14,7 +14,12 @@ public readonly record struct RemoveRiderActions(EntityUid Rider);
 public readonly record struct TurnOffVehicleEvent();
 
 [Serializable, NetSerializable]
-public sealed partial class VehicleRemoveDoAfter : SimpleDoAfterEvent;
+public sealed partial class VehicleRemoveDoAfter : SimpleDoAfterEvent
+{
+    public readonly NetEntity Target;
+    public VehicleRemoveDoAfter(NetEntity target) 
+        => Target = target;
+}
 
 [Serializable, NetSerializable]
 public sealed partial class VehicleEntryDoAfter : SimpleDoAfterEvent;

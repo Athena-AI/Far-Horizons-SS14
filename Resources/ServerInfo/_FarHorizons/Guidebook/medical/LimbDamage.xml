@@ -1,6 +1,6 @@
 <Document>
 # Limb Damage
-It is important for medical personell to understand how wounds on their patients's limbs will affect them. 
+It is important for medical personel to understand how wounds on their patient's limbs will affect them. 
 
 This guide will go over how to heal limbs, each limb's health and how damage affects them.
 
@@ -27,7 +27,7 @@ The torso is the health pool, any damage dealt to a patient will be in part tran
 The head, unless stated otherwise in the species's guidebook entry, is a vital organ and the patient will die without it.
 \nIt can only be damaged by direct hits (clicking on the target's sprite while targetting it) with a 60% chance or by explosions and fire, and it will transfer all of the damage it takes to the torso directly (unless considered not vital). If the 60% chance misses, the torso will be hit instead.
 
-destroying it is also easier as it is more fragile, gibbing at 250 blunt damage and being cut off at 150 slash damage.
+Destroying it is also easier as it is more fragile, gibbing at 250 blunt damage and being cut off at 150 slash damage.
 
 ### Arms and Legs
 Arm and Legs are very similar, the only difference being what happens when they are severely damaged.

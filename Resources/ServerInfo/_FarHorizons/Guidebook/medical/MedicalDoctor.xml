@@ -20,14 +20,14 @@ Before we go any further, it's probably a good idea to go over damage types, and
 
 An important note: Most medication has an overdose level, which will cause harm to your patient. Chemicals also take time to metabolise, make sure not to inject too much too quickly.
 
-- Brute Damage: Chemicals, brutepacks or surgery.
-- Burn Damage: Chemicals, ointment or surgery.
-- Toxin (Poison): Chemicals or surgery.
-- Toxin (Radiation) Chemicals or surgery.
-- Asphyxiation: chemicals or defibrillators.
-- Bloodloss: chemicals or bloodpacks.
-- Bleeding: gauze or cauterizing the wound with heat damage.
-- Genetic: chemicals or surgery. 
+- Brute Damage: Chemicals like Bicardine, brutepacks or surgery.
+- Burn Damage: Chemicals like Dermaline, ointment or surgery.
+- Toxin (Poison): Chemicals like Dylovene or surgery.
+- Toxin (Radiation) Chemicals like Arithrazine or surgery.
+- Asphyxiation: chemicals like Dexalin or defibrillators.
+- Bloodloss: chemicals like Saline or bloodpacks.
+- Bleeding: chemicals like Inaprovaline, gauze or cauterizing the wound with heat damage.
+- Genetic: chemicals like Phalanxamine or surgery. 
 
 Many stations are stocked with kits in storage, and all medics have some equipment in their starting belt.
 
@@ -52,7 +52,7 @@ Examine your patient, and note down the important details: Are they alive? Bleed
 
 If alive, treat them as best as you can. Patients generaly are in critical condition at 100 damage, and dead at 200. Keep this in mind when choosing how to treat them. Emergency Pens and Epinephrine are often used to keep patients stable.
 
-If possible, buckle them to a medical bed, if they are dead, strap them to a stasis bed or body bag instead. Just keep in mind that metabolism (and by extension, healing chemicals) are slowed to a crawl when on stasis, they'll need to be taken off of it for the medicine to be effective.
+If possible, buckle them to a medical bed, if they are dead, strap them to a stasis bed or put them inside a body bag instead. Just keep in mind that metabolism (and by extension, healing chemicals) are slowed to a crawl when on stasis, they'll need to be taken off of it for the medicine to be effective.
 <Box>
 <GuideEntityEmbed Entity="MedicalBed"/>
 <GuideEntityEmbed Entity="StasisBed"/>

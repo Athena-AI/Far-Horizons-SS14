@@ -42,6 +42,7 @@ using Content.Shared.PowerCell.Components;
 using Content.Shared.Hands;
 using Content.Shared._FarHorizons.ReagentDraw;
 using Robust.Shared.Network;
+using Content.Shared.Repairable;
 
 namespace Content.Shared._FarHorizons.Vehicles;
 
@@ -370,7 +371,11 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             return;
 
         if(ent.Comp.isBroken)
+        {
             args.PushMarkup(Loc.GetString("vehicle-examine-broken"));
+            if(TryComp<RepairableComponent>(ent.Owner, out var repairComp))
+                args.PushMarkup(Loc.GetString("vehicle-examine-repair", ("quality", repairComp.QualityNeeded.Id)));
+        }
     }
 
     private void OnCanDragDrop(Entity<VehicleComponent> ent, ref CanDropTargetEvent args)

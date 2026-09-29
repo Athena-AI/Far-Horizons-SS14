@@ -102,7 +102,7 @@ public abstract partial class SharedVehicleSystem
                     Act = () =>
                     {
                         if(_gameTiming.IsFirstTimePredicted && _net.IsClient)
-                            _popup.PopupPredicted(Loc.GetString("vehicle-remove-passenger-attempt", ("user", MetaData(user).EntityName), ("passenger", MetaData(passenger).EntityName)), ent.Owner, passenger, PopupType.LargeCaution);
+                            _popup.PopupClient(Loc.GetString("vehicle-remove-passenger-attempt", ("user", MetaData(user).EntityName), ("passenger", MetaData(passenger).EntityName)), ent.Owner, passenger, PopupType.LargeCaution);
                             var doAfterEventArgs = new DoAfterArgs(EntityManager, user, ent.Comp.RemoveTime, new VehicleRemoveDoAfter(GetNetEntity(passenger)), ent.Owner, target: ent.Owner)
                         {
                             BreakOnMove = true,

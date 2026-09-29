@@ -16,7 +16,6 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using System.Numerics;
 using System.Linq;
@@ -43,6 +42,7 @@ using Content.Shared.Hands;
 using Content.Shared._FarHorizons.ReagentDraw;
 using Robust.Shared.Network;
 using Content.Shared.Repairable;
+using Content.Shared.Movement.Events;
 
 namespace Content.Shared._FarHorizons.Vehicles;
 
@@ -101,8 +101,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         SubscribeLocalEvent<VehicleComponent, ExaminedEvent>(OnExamine);
 
         SubscribeLocalEvent<TransformComponent, JetJumpActionEvent>(OnJetJumpActionEvent);
-        SubscribeLocalEvent<DidEquipHandEvent>(OnHandEquipped);
-        _transform.OnGlobalMoveEvent += OnMoveEvent;
     }
 
     protected virtual void OnComponentStartup(Entity<VehicleComponent> ent, ref ComponentStartup args)
@@ -318,7 +316,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnDamageChanged(EntityUid ent, VehicleComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(Entity<VehicleComponent> ent, ref DamageChangedEvent args)
     {
         if(!args.DamageIncreased || args.DamageDelta == null) return;
         if(args.Origin == ent) return;
@@ -331,16 +329,17 @@ public abstract partial class SharedVehicleSystem : EntitySystem
                 _damageable.TryChangeDamage(passenger, damage / vcComp.PassengerSlot.ContainedEntities.Count, origin: args.Origin);
             }
         }
-        else if(HasComp<VehicleBuckleComponent>(ent) && component.Rider != null && !TerminatingOrDeleted(component.Rider.Value))
+        else if(HasComp<VehicleBuckleComponent>(ent) && ent.Comp.Rider != null && !TerminatingOrDeleted(ent.Comp.Rider.Value))
         {
-            _damageable.TryChangeDamage(component.Rider.Value, args.DamageDelta, origin: args.Origin);
-            _color.RaiseEffect(Color.Red, new List<EntityUid>() { component.Rider.Value }, Filter.Pvs(component.Rider.Value, entityManager: EntityManager));
+            _damageable.TryChangeDamage(ent.Comp.Rider.Value, args.DamageDelta, origin: args.Origin);
+            _color.RaiseEffect(Color.Red, new List<EntityUid>() { ent.Comp.Rider.Value }, Filter.Pvs(ent.Comp.Rider.Value, entityManager: EntityManager));
         }
     }
 
-    private void OnEmpPulse(Entity<VehicleComponent> ent, ref EmpPulseEvent args) => TurnOffVehicle(ent.Owner, ent.Comp);
+    private void OnEmpPulse(Entity<VehicleComponent> ent, ref EmpPulseEvent args) 
+        => TurnOffVehicle(ent.Owner, ent.Comp);
 
-    private void OnBreakageEvent(EntityUid ent, VehicleComponent component, BreakageEventArgs args)
+    private void OnBreakageEvent(Entity<VehicleComponent> ent, ref BreakageEventArgs args)
     {
         if(TryComp<VehicleContainerComponent>(ent, out var vcComp))
         {
@@ -348,7 +347,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             {
                 foreach(var passengers in vcComp.PassengerSlot.ContainedEntities.ToArray())
                 {
-                    RemoveRider(passengers, ent, component);
+                    RemoveRider(passengers, ent, ent.Comp);
                     TryRemove(passengers, ent, vcComp);
                 }
             }
@@ -358,11 +357,12 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             _buckle.StrapSetEnabled(ent, false);
         }
         
-        component.isBroken = true;
+        ent.Comp.isBroken = true;
+        Dirty(ent);
 
-        TryUpdateVisualState(ent);
+        TryUpdateVisualState(ent.Owner, VehicleVisualState.Broken);
 
-        TurnOffVehicle(ent, component);
+        TurnOffVehicle(ent, ent.Comp);
     }
 
     private void OnExamine(Entity<VehicleComponent> ent, ref ExaminedEvent args)
@@ -384,7 +384,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         args.Handled = true;
     } 
 
-    public void TryUpdateVisualState(Entity<VehicleComponent?> entity)
+    public void TryUpdateVisualState(Entity<VehicleComponent?> entity, VehicleVisualState finalState = VehicleVisualState.Normal)
     {
         if (!Resolve(entity.Owner, ref entity.Comp))
             return;
@@ -392,16 +392,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         if (_gameTiming.ApplyingState)
             return;
 
-        var finalState = VehicleVisualState.Normal;
-
-        if (entity.Comp.isBroken)
-        {
-            finalState = VehicleVisualState.Broken;
-        }
-        else if (entity.Comp.isMoving)
-        {
-            finalState = VehicleVisualState.Moving;
-        }
         _appearance.SetData(entity.Owner, VehicleVisuals.VisualState, finalState);
     }
     #region Misc Events
@@ -413,38 +403,30 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     }
 
     //The pickable races check...
-    private void OnHandEquipped(DidEquipHandEvent ev)
+    [SubscribeLocalEvent]
+    private void OnHandEquipped(Entity<RiderComponent> ent, ref GotEquippedHandEvent args)
     {
-        if(!TryComp<RiderComponent>(ev.Equipped, out var riderComp) 
-            || riderComp.Riding == null
-            || !TryComp<VehicleComponent>(riderComp.Riding.Value, out var vehicleComp)) return;
-        RemoveRider(ev.Equipped, riderComp.Riding.Value, vehicleComp);
+        if(ent.Comp.Riding == null|| !TryComp<VehicleComponent>(ent.Comp.Riding.Value, out var vehicleComp)) return;
+        RemoveRider(ent.Owner, ent.Comp.Riding.Value, vehicleComp);
     }
 
-    private void OnMoveEvent(ref MoveEvent ev)
-    {
-        var vehicle = ev.Entity.Owner; 
-        if(!TryComp<VehicleComponent>(vehicle, out var vehicleComp)) return;
-        if(!TryComp<PhysicsComponent>(vehicle, out var vehiclePhys)) return;
+    [SubscribeLocalEvent]
+    private void OnMoveEvent(Entity<VehicleComponent> ent, ref SpriteMoveEvent args)
+    {    
+        if(args.IsMoving)
+            TryUpdateVisualState(ent.Owner, VehicleVisualState.Moving);  
+        else
+            TryUpdateVisualState(ent.Owner, VehicleVisualState.Normal);
 
-        var speed = vehiclePhys.LinearVelocity.Length();
-        if(speed >= 0.3)
-            vehicleComp.isMoving = true;
-        else if(speed < 0.3)
-            vehicleComp.isMoving = false;
-            
-        TryUpdateVisualState(vehicle);  
-        Dirty(vehicle, vehicleComp);
-
-        if( vehicleComp.Rider == null) return;
-        var rider = vehicleComp.Rider.Value;
+        if( ent.Comp.Rider == null) return;
+        var rider = ent.Comp.Rider.Value;
 
         if (!rider.IsValid() || !Exists(rider)) return;
 
         var riderTransform = Transform(rider);
-        if(riderTransform.ParentUid !=  vehicle) return;
+        if(riderTransform.ParentUid !=  ent.Owner) return;
 
-        if(HasComp<VehicleBuckleComponent>(vehicle) && TryComp<StrapComponent>(vehicle, out var strapComp))
+        if(HasComp<VehicleBuckleComponent>(ent.Owner) && TryComp<StrapComponent>(ent.Owner, out var strapComp))
         {
             if(!riderTransform.ActivelyLerping && !_gameTiming.ApplyingState)
             {

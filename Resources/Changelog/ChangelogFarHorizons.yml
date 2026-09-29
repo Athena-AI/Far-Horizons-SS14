@@ -21122,5 +21122,12 @@ Entries:
   id: 182101
   time: '2026-09-29T19:20:06.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1821
+- author: Mizuki
+  changes:
+  - message: Frown now has unique ghostrole info
+    type: Fix
+  id: 182300
+  time: '2026-09-29T19:37:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1823
 Order: -1
 

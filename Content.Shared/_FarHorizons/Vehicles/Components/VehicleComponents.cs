@@ -1,6 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Audio;
 using Content.Shared.Whitelist;
+using Content.Shared.FixedPoint;
 
 namespace Content.Shared._FarHorizons.Vehicles.Components;
 
@@ -68,10 +69,10 @@ public sealed partial class VehicleComponent : Component
     public int HandsNeeded = 2;
 
     /// <summary>
-    /// Vehicle health for integrity sake match it to the breakage trigger.
+    /// Vehicle Integrity
     /// </summary>
-    [DataField("health")]
-    public int Health = 150;
+    [ViewVariables, AutoNetworkedField]
+    public FixedPoint2 MaxIntegrity = 0;
 
     /// <summary>
     /// how long does it take the vehicle to start

@@ -93,8 +93,8 @@ public sealed partial class VehicleEquipmentMenu : FancyWindow
 
         var Integrity = 0;
         if(Damage != null)
-            Integrity = Math.Clamp((int) ((Vehicle.Health-_damageable.GetPositiveDamage((Entity, Damage)).DamageDict
-                    .Select(p => (float)p.Value).Sum()) / Vehicle.Health * 100), 0, 100);
+            Integrity = Math.Clamp((int) ((Vehicle.MaxIntegrity -_damageable.GetPositiveDamage((Entity, Damage)).DamageDict
+                    .Sum(p => (float)p.Value)) / Vehicle.MaxIntegrity * 100), 0, 100);
 
         var color = Color.InterpolateBetween(_red, _green, (float)Integrity / 100);
 

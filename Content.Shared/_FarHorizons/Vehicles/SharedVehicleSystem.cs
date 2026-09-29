@@ -47,6 +47,7 @@ namespace Content.Shared._FarHorizons.Vehicles;
 public abstract partial class SharedVehicleSystem : EntitySystem
 {    
     [Dependency] protected ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] protected IPrototypeManager _prototypes = default!;
     [Dependency] protected SharedMoverController _mover = default!;
     [Dependency] protected SharedTransformSystem _transform = default!;
     [Dependency] protected SharedBuckleSystem _buckle = default!;
@@ -102,7 +103,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         _transform.OnGlobalMoveEvent += OnMoveEvent;
     }
 
-    private void OnComponentStartup(Entity<VehicleComponent> ent, ref ComponentStartup args)
+    protected virtual void OnComponentStartup(Entity<VehicleComponent> ent, ref ComponentStartup args)
     {
         if(TryComp<VehicleContainerComponent>(ent.Owner, out var vcComp))
         {

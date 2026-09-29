@@ -5,7 +5,7 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared._FarHorizons.Vehicles;
 
-public abstract partial class SharedVehicleSystem : EntitySystem
+public abstract partial class SharedVehicleSystem
 {    
     public void InitializeContainer()
     {

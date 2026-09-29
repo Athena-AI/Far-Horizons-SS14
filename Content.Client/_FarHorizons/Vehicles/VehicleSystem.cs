@@ -7,13 +7,8 @@ namespace Content.Client._FarHorizons.Vehicles;
 public sealed partial class VehicleSystems : SharedVehicleSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
-    public override void Initialize()
-    {
-        base.Initialize();
 
-        SubscribeLocalEvent<VehicleComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAppearanceChanged(EntityUid uid, VehicleComponent component, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)

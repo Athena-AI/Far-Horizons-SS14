@@ -76,6 +76,7 @@ public sealed partial class SecretRuleSystem : GameRuleSystem<SecretRuleComponen
     private bool TryPickPreset(ProtoId<WeightedRandomPrototype> weights, [NotNullWhen(true)] out GamePresetPrototype? preset)
     {
         var options = _prototypeManager.Index(weights).Weights.ShallowClone();
+        options = options.Where(kv => CheckPresetEligible(kv.Key)).ToDictionary(); // Far Horizons - preemptively ignore presets as to not affect overall weights
         var players = GameTicker.ReadyPlayerCount();
 
         GamePresetPrototype? selectedPreset = null;

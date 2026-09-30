@@ -287,10 +287,12 @@
   id: SecuritySidearm
   name: loadout-group-security-sidearm
   loadouts:
+  - LeverActionModel2325Pistol # FarHorizons
   - SecurityPistolMk58 # FarHorizons
   - SecurityMKT # FarHorizons
   #- SecurityPistolDP //Far Horizons Change
   #- SecurityPistolEnforcer //Far Horizons Change
+  - RevolverIndomitable # FarHorizons
   - SecurityRevolverInstigatorcustom # FarHorizons
   - SecurityRevolverInstigator # FarHorizons
 

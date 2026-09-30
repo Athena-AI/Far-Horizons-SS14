@@ -1034,6 +1034,12 @@
   - SecurityRevolverInstigatorcustom # FarHorizons
   - SecurityRevolverInstigator # FarHorizons
 
+- type: loadoutGroup
+  id: SecurityLongarmNS
+  name: loadout-group-security-longarm
+  loadouts:
+  - LeverActionNS
+
 #region Corpsman
 
 - type: loadoutGroup
@@ -1252,6 +1258,8 @@
 - type: loadoutGroup
   id: BrigSyndiBelt
   name: loadout-group-brigsyndi-belt
+  minLimit: 1
+  maxLimit: 2
   loadouts:
     - BrigSyndiBelt
     - MedicalBeltDeputy

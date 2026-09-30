@@ -52,7 +52,7 @@
 
 - type: loadout
   id: LeverActionCiv
-  dummyEntity: WeaponSniperLeverCivilian
+  dummyEntity: WeaponLeverActionCivilian
   effects:
     - !type:JobRequirementLoadoutEffect
       requirement:
@@ -60,5 +60,5 @@
           time: 54000 # 15h
   storage:
     back: 
-    - WeaponSniperLeverCivilian
+    - WeaponLeverActionCivilian
     - SpeedLoaderLeverCivilianMagnumSP

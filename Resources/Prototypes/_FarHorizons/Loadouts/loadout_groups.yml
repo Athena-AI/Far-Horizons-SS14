@@ -295,12 +295,14 @@
   id: HoSSidearm
   name: loadout-group-security-sidearm
   loadouts:
+  - RevolverIndomitable
   - SecurityRevolverInspectorcustom
   - SecurityRevolverInspector
   - SecurityRevolverOathbreakercustom
   - SecurityRevolverOathbreaker
   - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
+  - LeverActionModel2325Pistol
   - SecurityPistolN1984
   - SecurityPistolDueProcess
   - SecurityPistolEnforcerFH
@@ -462,14 +464,25 @@
 
 #region Security
 
+# General Sec
+
+- type: loadoutGroup
+  id: SecurityLongarm  
+  name: loadout-group-security-longarm
+  loadouts:
+  - LeverActionNT
+  - LeverActionModel2325
+
 # Brigmedic
 
 - type: loadoutGroup
   id: BrigmedicSidearm  
   name: loadout-group-security-sidearm
   loadouts:
+  - RevolverIndomitable
   - SecurityRevolverOathbreakercustom
   - SecurityRevolverOathbreaker
+  - LeverActionModel2325Pistol
   - SecurityPistolMk58
   - SecurityMKT
   - SecurityRevolverInstigatorcustom
@@ -549,9 +562,11 @@
   id: CorpsmanSidearm  
   name: loadout-group-security-sidearm
   loadouts:
+  - LeverActionModel2325Pistol
   - SecurityPistolPathology
   - SecurityPistolMk58
   - SecurityMKT
+  - RevolverIndomitable
   - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
 
@@ -568,6 +583,8 @@
   id: DetectiveSidearm 
   name: loadout-group-security-sidearm
   loadouts:
+  - LeverActionModel2325Pistol
+  - RevolverIndomitable
   - SecurityRevolverInspectorcustom
   - SecurityRevolverInspector
   - SecurityRevolverInstigatorDet
@@ -578,9 +595,11 @@
   id: WardenSidearm 
   name: loadout-group-security-sidearm
   loadouts:
+  - LeverActionModel2325Pistol
   - SecurityPistolDueProcess
   - SecurityPistolMk58
   - SecurityMKT
+  - RevolverIndomitable
   - SecurityRevolverInstigatorcustom
   - SecurityRevolverInstigator
 

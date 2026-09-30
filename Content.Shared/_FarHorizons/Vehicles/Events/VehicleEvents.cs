@@ -1,6 +1,7 @@
 using Content.Shared.DoAfter;
 using Robust.Shared.Serialization;
 using Content.Shared.Actions;
+using Content.Shared.Inventory;
 
 namespace Content.Shared._FarHorizons.Vehicles.Events;
 

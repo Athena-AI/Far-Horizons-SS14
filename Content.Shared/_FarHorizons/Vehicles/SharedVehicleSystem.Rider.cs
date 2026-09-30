@@ -5,7 +5,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared._Starlight.Actions.Events;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Movement.Events;
-using Content.Shared.Movement.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared._FarHorizons.ReagentDraw.Components;
 using Content.Shared.Wieldable;
@@ -17,7 +16,6 @@ using Content.Shared.Hands;
 using Content.Shared.Mobs;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Buckle;
 
 namespace Content.Shared._FarHorizons.Vehicles;
 
@@ -31,7 +29,6 @@ public abstract partial class SharedVehicleSystem
         SubscribeLocalEvent<RiderComponent, UpdateCanMoveEvent>(OnUpdateCanMoveEvent);
         SubscribeLocalEvent<RiderComponent, JumpActionEvent>(OnJumpActionEvent);
         SubscribeLocalEvent<RiderComponent, ShooterImpulseEvent>(OnShooterEvent);
-        SubscribeLocalEvent<RiderComponent, RefreshMovementSpeedModifiersEvent>(OnMovementSpeedRefreshRiderEvent, after: [typeof(MovementSpeedModifierSystem)]);
         SubscribeLocalEvent<RiderComponent, PullAttemptEvent>(OnPullAttempt);
         SubscribeLocalEvent<RiderComponent, EntityTerminatingEvent>(OnRiderTerminating);
     }
@@ -117,12 +114,6 @@ public abstract partial class SharedVehicleSystem
                 _stamina.TakeStaminaDamage(ent.Owner, stamina.CritThreshold*0.10f, component: stamina);
             }
         }
-    }
-
-    private void OnMovementSpeedRefreshRiderEvent(Entity<RiderComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
-    {
-        if(ent.Comp.Riding == null) return;
-        _movementSpeed.RefreshMovementSpeedModifiers(ent.Comp.Riding.Value);
     }
 
     private void OnPullAttempt(Entity<RiderComponent> ent, ref PullAttemptEvent args)

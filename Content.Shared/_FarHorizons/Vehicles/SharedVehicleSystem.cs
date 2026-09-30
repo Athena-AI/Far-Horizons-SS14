@@ -450,6 +450,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         if(!vehicle.Comp.hasKeys && vehicle.Comp.RequireIgnition) return;
         if(vehicle.Comp.Rider != null) return;
         
+        _movementSpeed.RefreshMovementSpeedModifiers(vehicle.Owner);
         _actions.GrantContainedActions(rider, vehicle.Owner);
         UpdateActions(rider, true);
 
@@ -488,6 +489,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         }
 
         vehicle.Comp.Passengers.Remove(rider);
+        _movementSpeed.RefreshMovementSpeedModifiers(vehicle.Owner);
 
         if(HasComp<RelayInputMoverComponent>(rider))
             RemComp<RelayInputMoverComponent>(rider);

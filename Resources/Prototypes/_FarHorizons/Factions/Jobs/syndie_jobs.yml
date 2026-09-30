@@ -13,6 +13,12 @@
     startingGear: SyndieCaptain
     accessGroups: 
     - AllAccessNS
+    special: &neosol_command_mindshield
+      - !type:AddImplantSpecial
+        implants: [ MindShieldImplantNS ]
+      - !type:AddComponentSpecial
+        components:
+          - type: CommandStaff
 
 - type: factionJobAssignment
   id: SyndieHeadOfSecurity
@@ -38,6 +44,7 @@
     - BrigmedicNS
     - GenpopEnterNS
     - GenpopLeaveNS
+    special: *neosol_command_mindshield
 
 
 - type: factionJobAssignment
@@ -62,6 +69,7 @@
     - CryogenicsNS
     - GenpopEnterNS
     - GenpopLeaveNS
+    special: *neosol_command_mindshield
 
 
 - type: factionJobAssignment
@@ -84,7 +92,8 @@
     - BrigNS
     - CryogenicsNS
     - SurgeryNS 
-    - ParamedicNS 
+    - ParamedicNS
+    special: *neosol_command_mindshield
 
 - type: factionJobAssignment
   id: SyndieResearchDirector
@@ -104,7 +113,8 @@
     - EpistemicsProvost
     - BrigNS
     - CryogenicsNS
-    - RoboticsNS 
+    - RoboticsNS
+    special: *neosol_command_mindshield
 
 - type: factionJobAssignment
   id: SyndieHeadOfPersonnel
@@ -147,6 +157,7 @@
     - Salvage
     - Lawyer
     - Cargo
+    special: *neosol_command_mindshield
 
 #region NSHC
 
@@ -191,6 +202,7 @@
       - Mining
       - SalvageLead
       - Cargo
+    special: *neosol_command_mindshield
 
 - type: factionJobAssignment
   id: SyndieBlueShield
@@ -232,6 +244,9 @@
       - Mining
       - SalvageLead
       - Cargo
+    special: &neosol_mindshield
+      - !type:AddImplantSpecial
+        implants: [ MindShieldImplantNS ]
     
 #region Civilan
 
@@ -686,6 +701,7 @@
     - BrigmedicNS
     - GenpopEnterNS
     - GenpopLeaveNS
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieCorpsman
@@ -707,6 +723,7 @@
     - ExternalNS
     - CryogenicsNS
     - BrigmedicNS
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieBrigmedic
@@ -730,6 +747,7 @@
     - BrigmedicNS
     - ChemistryNS
     - SurgeryNS
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieDetective
@@ -749,6 +767,7 @@
     - DetectiveNS
     - CryogenicsNS
     - ExternalNS
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieSecurityOfficer
@@ -767,6 +786,7 @@
     - MaintenanceNS
     - ExternalNS
     - CryogenicsNS
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieSecurityCadet
@@ -785,6 +805,7 @@
     - MaintenanceNS
     - ExternalNS
     - CryogenicsNS
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieSecBorg

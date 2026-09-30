@@ -187,7 +187,7 @@
 
 #Space Hazard Suit
 - type: entity
-  parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
+  parent: [ ClothingOuterHardsuitBase ] # Far Horizons - removed contra base
   id: ClothingOuterHardsuitSpaceHazard
   name: space hazard hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Specifically for the dangers of space mining.
@@ -240,6 +240,7 @@
   parent: [ClothingOuterHardsuitBase, AllowSuitStorageClothing, BaseToggleClothing, BaseSyndicateContraband]
   id: ClothingOuterHardsuitInfiltration
   name: syndicate infiltration hardsuit
+  suffix: NS #Far Horizons
   description: The Syndicate's Special Operations' hardsuit of choice, this hardsuit, as well as durability, has been built with stealth in mind.
   components:
   - type: Sprite

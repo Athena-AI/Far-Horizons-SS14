@@ -182,6 +182,7 @@
     unlitRunningState: unlit # Far Horizons - replace with animations when available
     staticPacks:
     - FarHorizonsSecurityAmmoStatic
+    - FarHorizonsCivilianMagazinesStatic
     dynamicPacks:
     - FarHorizonsSecurityAmmoDynamic
     - FarHorizonsSecurityThrowablesDynamic
@@ -563,6 +564,7 @@
     unlitRunningState: unlit # Far Horizons - replace with animations when available
     staticPacks:
     - FarHorizonsSecurityAmmoStatic
+    - FarHorizonsCivilianMagazinesStatic
     dynamicPacks:
     - FarHorizonsSecurityAmmoDynamic
     - FarHorizonsSecurityThrowablesDynamic

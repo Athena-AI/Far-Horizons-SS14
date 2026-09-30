@@ -4,6 +4,7 @@ using Content.Shared.GameTicking;
 using Content.Shared.PDA;
 using Content.Shared.PDA.Ringer;
 using Content.Shared.Store;
+using Content.Shared._FarHorizons.PDA;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -12,9 +13,9 @@ namespace Content.Server.PDA.Ringer;
 /// <summary>
 /// Handles the server-side logic for <see cref="SharedRingerSystem"/>.
 /// </summary>
-public sealed class RingerSystem : SharedRingerSystem
+public sealed partial class RingerSystem : SharedRingerSystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public static Note[] AllowedNotes =
     {
@@ -239,6 +240,13 @@ public sealed class RingerSystem : SharedRingerSystem
     /// <param name="ringer">The entity providing the code.</param>
     public bool TryMatchRingtoneToStore(Note[] notes, [NotNullWhen(true)] out EntityUid? store, EntityUid? ringer = null)
     {
+        // Far Horizons: Ringer codes may only access a Store from a PDA that previously received a traitor uplink.
+        if (ringer is { } ringerUid && !HasComp<RingerCapablePDAComponent>(ringerUid))
+        {
+            store = null;
+            return false;
+        }
+
         var query = EntityQueryEnumerator<RingerAccessUplinkComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {

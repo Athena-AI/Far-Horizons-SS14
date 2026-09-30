@@ -17,6 +17,26 @@
           amount: 2
           defaultPrototype: Beaker
 
+- type: entity
+  id: GeneratorAcmanMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: A.C.M.A.N.-type generator machine board
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: GeneratorAcman
+      stackRequirements:
+        Manipulator: 4
+        CableHV: 20
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 200
+      chemicalComposition:
+        Silicon: 20
+    - type: StaticPrice
+      price: 40
+
 #region NeoSol
 - type: entity
   id: AutofabMachineCircuitboard
@@ -179,6 +199,92 @@
     stackRequirements:
       Manipulator: 3
 
+#region NT
+- type: entity
+  id: SMESShipMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Ship SMES Circuit Board
+  description: A machine printed circuit board for an ship-grade SMES.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: power_mod
+  - type: MachineBoard
+    prototype: SMESShipEmpty
+    stackRequirements:
+      Manipulator: 4
+      CableHV: 40
+    componentRequirements:
+      PowerCell:
+        amount: 4
+        defaultPrototype: PowerCellHigh
+
+- type: entity
+  id: SMESShuttleMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Shuttle SMES Circuit Board
+  description: A machine printed circuit board for an shuttle-grade SMES.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: power_mod
+  - type: MachineBoard
+    prototype: SMESShuttleEmpty
+    stackRequirements:
+      Manipulator: 3
+      CableHV: 30
+    componentRequirements:
+      PowerCell:
+        amount: 2
+        defaultPrototype: PowerCellHigh
+
+- type: entity
+  id: SubstationShipMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Ship Substation Machine Board
+  description: A machine printed circuit board for a substation.
+  components:
+    - type: MachineBoard
+      prototype: SubstationShipEmpty
+      stackRequirements:
+        Manipulator: 3
+        CableMV: 15
+        CableHV: 15
+      componentRequirements:
+        PowerCell:
+          amount: 1
+          defaultPrototype: PowerCellHigh
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 200
+      chemicalComposition:
+        Silicon: 20
+    - type: StaticPrice
+      price: 58
+
+- type: entity
+  id: SubstationShuttleMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: Shuttle Substation Machine Board
+  description: A machine printed circuit board for a substation.
+  components:
+    - type: MachineBoard
+      prototype: SubstationShuttleEmpty
+      stackRequirements:
+        Manipulator: 2
+        CableMV: 10
+        CableHV: 10
+      componentRequirements:
+        PowerCell:
+          amount: 1
+          defaultPrototype: PowerCellMedium
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 200
+      chemicalComposition:
+        Silicon: 20
+    - type: StaticPrice
+      price: 58
 - type: entity
   id: PrinterNSDocMachineCircuitboard
   parent: BaseMachineCircuitboard

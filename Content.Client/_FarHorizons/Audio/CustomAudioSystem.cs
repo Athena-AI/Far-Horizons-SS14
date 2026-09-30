@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Numerics;
 using Content.Shared._FarHorizons.Audio;
 using Content.Shared._FarHorizons.CCVar;
@@ -14,16 +15,16 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._FarHorizons.Audio.CustomAudio;
 
-public sealed class CustomAudioSystem : EntitySystem
+public sealed partial class CustomAudioSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private const float OcclusionReferenceThickness = 1f;
-    private readonly Dictionary<EntityUid, float> _smoothedOcclusion = new();
+    private readonly ConcurrentDictionary<EntityUid, float> _smoothedOcclusion = new();
 
     // CVAR Controlled Values
     private float _maxRayLength;
@@ -50,7 +51,7 @@ public sealed class CustomAudioSystem : EntitySystem
     }
 
     private void OnEntityTerminating(ref EntityTerminatingEvent ev)
-        => _smoothedOcclusion.Remove(ev.Entity);
+        => _smoothedOcclusion.Remove(ev.Entity, out _);
 
     private void OnRaycastLengthChanged(float value)
         => _maxRayLength = value;
@@ -110,22 +111,18 @@ public sealed class CustomAudioSystem : EntitySystem
             return target;
 
         var dt = (float) _timing.FrameTime.TotalSeconds;
-
-        if (!_smoothedOcclusion.TryGetValue(key, out var current))
-        {
-            _smoothedOcclusion[key] = target;
-            return target;
-        }
-
         var maxDelta = _occlusionSmoothingRate * dt;
-        var diff = target - current;
-
-        var next = MathF.Abs(diff) <= maxDelta
-            ? target
-            : current + (MathF.Sign(diff) * maxDelta);
-
-        _smoothedOcclusion[key] = next;
-        return next;
+        
+        return _smoothedOcclusion.AddOrUpdate(
+        key,
+        target,
+        (_, current) =>
+        {
+            var diff = target - current;
+            return MathF.Abs(diff) <= maxDelta
+                ? target
+                : current + (MathF.Sign(diff) * maxDelta);
+        });
     }
 
     private static bool TryGetRayAabbPenetration(Vector2 origin, Vector2 dir, Box2 aabb, float rayLength, out float penetration)

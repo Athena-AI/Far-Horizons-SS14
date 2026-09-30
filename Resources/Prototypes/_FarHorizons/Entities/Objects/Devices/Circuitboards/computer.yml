@@ -51,3 +51,15 @@
   components:
   - type: ComputerBoard
     prototype: ComputerIdNS
+
+- type: entity
+  parent: IDComputerCircuitboard
+  id: IDComputerCircuitboardGSL
+  name: ID Card Computer Board
+  description: A computer printed circuit board for an ID card console.
+  suffix: GSL
+  components:
+  - type: Sprite
+    state: cpu_supply
+  - type: ComputerBoard
+    prototype: ComputerIdGSL

@@ -91,8 +91,10 @@
 
 - type: listing
   id: UplinkThrowingKnivesKit
-  name: uplink-knives-kit-name
-  description: uplink-knives-kit-desc
+  #Far Horizons - Start - Changed to make faction neutral
+  name: uplink-knives-kit-name-fh
+  description: uplink-knives-kit-desc-fh
+  #Far Horizons - End
   icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: throwing_knives }
   productEntity: ThrowingKnivesKit
   discountCategory: rareDiscounts

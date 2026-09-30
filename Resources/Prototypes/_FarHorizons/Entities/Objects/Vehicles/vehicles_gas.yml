@@ -23,6 +23,9 @@
     riderWhitelist:
       tags:
         - CanPilot
+    riderBlacklist:
+      components:
+        - PowerArmorUser
     soundHit:
       collection: MetalThud
   - type: VehicleBuckle
@@ -74,7 +77,7 @@
   - type: ReagentDraw
     enabled: false
     solutionContainer: fueltank
-    whitelistedReagants: 
+    whitelistedReagents: 
     - WeldingFuel
   - type: FootstepModifier
     footstepSoundCollection:
@@ -117,6 +120,11 @@
   - type: VehicleMods
     vehicleType: Gas
     equipmentSlots: [tires, engine, armor, headlight]
+  - type: FluidFootprintSpreader
+    footprint: TireDual
+    footprintSize: 0.75
+    stepSpacing: 0.1
+    lateralOffset: 0.2
 
 - type: entity
   id: VehicleATVFilled
@@ -187,6 +195,11 @@
     - type: VehicleMods
       vehicleType: Gas
       equipmentSlots: [tires, engine, armor, headlight, lightbar]
+    - type: FluidFootprintSpreader
+      footprint: TireDual
+      footprintSize: 0.75
+      stepSpacing: 0.1
+      lateralOffset: 0.2
 
 - type: entity
   id: VehicleATVNTSecFueled
@@ -256,6 +269,11 @@
     armorAffectsVehicle: true
   - type: VehicleMods
     vehicleType: Gas
+  - type: FluidFootprintSpreader
+    footprint: TireMono
+    footprintSize: 0.5
+    stepSpacing: 0.1
+    lateralOffset: 0
 
 - type: entity
   id: VehicleSkeletonMotorcycleFueledwithKeys
@@ -304,6 +322,9 @@
     riderWhitelist:
       tags:
         - CanPilot
+    riderBlacklist:
+      components:
+        - PowerArmorUser
     soundHit:
       collection: MetalThud
   - type: VehicleContainer
@@ -328,7 +349,7 @@
   - type: ReagentDraw
     enabled: false
     solutionContainer: fueltank
-    whitelistedReagants: 
+    whitelistedReagents: 
     - WeldingFuel
   - type: FootstepModifier
     footstepSoundCollection:
@@ -416,6 +437,11 @@
           tags:
           - VehicleKey
           - ClowncarKeys
+  - type: FluidFootprintSpreader
+    footprint: TireDual
+    footprintSize: 0.5
+    stepSpacing: 0.05
+    lateralOffset: 0.2
 
 - type: entity
   id: VehicleClownCarFilled

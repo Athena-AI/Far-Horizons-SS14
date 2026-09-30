@@ -113,6 +113,10 @@
       params:
         volume: 1.0
         variation: 0.125
+    #FH Start
+    damageCaps: 
+      Burn: 400
+    #FH End
   - type: Stack
     stackType: RegenerativeMesh
     count: 10
@@ -225,6 +229,10 @@
       params:
         volume: 1.0
         variation: 0.125
+    #FH Start
+    damageCaps: 
+      Brute: 400
+    #FH End
   - type: Stack
     stackType: MedicatedSuture
     count: 10
@@ -366,6 +374,8 @@
         Shock: -2.5
         Caustic: -0.5
     bloodlossModifier: -5
+    damageCaps: 
+      Brute: 400
 #FH - End
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"

@@ -29,21 +29,21 @@ using Content.Shared.Eye.Blinding.Systems;
 
 namespace Content.Shared.Medical.Healing;
 
-public sealed class HealingSystem : EntitySystem
+public sealed partial class HealingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstreamSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedStackSystem _stacks = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly ConditionalHealingSystem _conditionalHealing = default!; // Far Horizons
-    [Dependency] private readonly BlindableSystem _blindable = default!; // Far Horizons
-    [Dependency] private readonly LimbDamageSystem _limbDamage = default!; // Far Horizons
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstreamSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedStackSystem _stacks = default!;
+    [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private MobThresholdSystem _mobThresholdSystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private ConditionalHealingSystem _conditionalHealing = default!; // Far Horizons
+    [Dependency] private BlindableSystem _blindable = default!; // Far Horizons
+    [Dependency] private LimbDamageSystem _limbDamage = default!; // Far Horizons
 
     public override void Initialize()
     {
@@ -283,6 +283,24 @@ public sealed class HealingSystem : EntitySystem
 
         if (TryComp<StackComponent>(healing, out var stack) && stack.Count < 1)
             return false;
+
+        //Far Horizons Start
+        if(healing.Comp.DamageCaps.Count > 0)
+        {
+            foreach(var damageCap in healing.Comp.DamageCaps)
+            {
+                var damagePerGroup = _damageable.GetPositiveDamage((target.Owner, target.Comp), damageCap.Key).GetTotal();
+                if(damagePerGroup <= 0)
+                    continue;
+
+                if(damagePerGroup > damageCap.Value)
+                {
+                    _popupSystem.PopupClient(Loc.GetString("medical-item-body-too-damaged", ("item", healing.Owner)), healing.Owner, user);
+                    return false;
+                }
+            }
+        }
+        //Far Horizons End
 
         // Starlight start
         // Far Horizons - migrated solution entities do not require SolutionContainerManager on the item.

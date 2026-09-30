@@ -62,3 +62,5 @@ loadout-group-cargo-technician-hands = Cargo Technician Hands
 loadout-group-janitor-mask = Janitor Mask
 
 loadout-group-civilian-weapons = Civilian Weapons
+
+loadout-group-credsticks = Credstick

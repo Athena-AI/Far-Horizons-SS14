@@ -8,9 +8,9 @@ namespace Content.Server._FarHorizons.StarSystem;
 
 public sealed partial class StarSystemMapSystem : SharedStarSystemMapSystem
 {
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     private StarOverlay _starOverlay = default!;
     private PlanetOverlay _planetOverlay = default!;

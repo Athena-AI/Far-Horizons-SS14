@@ -98,7 +98,7 @@ public partial class RadiationSystem
 
         var box = Box2.FromTwoPoints(source.WorldPosition, destWorld);
         gridList.Clear();
-        _mapManager.FindGridsIntersecting(mapId, box, ref gridList, true);
+        _maps.FindGridsIntersecting(mapId, box, ref gridList, true);
 
         foreach (var grid in gridList)
         {

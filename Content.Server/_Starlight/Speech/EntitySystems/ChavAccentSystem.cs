@@ -8,7 +8,7 @@ namespace Content.Server.Speech.EntitySystems;
 
 public sealed class ChavAccentSystem : RelayAccentSystem<ChavAccentComponent>
 {
-    [Dependency] private readonly ReplacementAccentSystem _replacement = default!;
+    [Dependency] private ReplacementAccentSystem _replacement = default!;
 
     protected override SpeechMessage AccentuateInternal(EntityUid uid, ChavAccentComponent component, SpeechMessage message)
     {

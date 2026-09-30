@@ -235,6 +235,8 @@
   considerations:
     - !type:TargetIsAliveCon
       curve: !type:BoolCurve
+    - !type:TargetIsVisibleCon
+      curve: !type:BoolCurve
     - !type:TargetIsCritCon
       curve: !type:InverseBoolCurve
     - !type:TargetIsStunnedCon

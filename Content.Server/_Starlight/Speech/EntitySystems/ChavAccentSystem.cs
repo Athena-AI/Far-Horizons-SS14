@@ -6,7 +6,7 @@ using Content.Shared._Starlight.Speech;
 
 namespace Content.Server.Speech.EntitySystems;
 
-public sealed class ChavAccentSystem : RelayAccentSystem<ChavAccentComponent>
+public sealed partial class ChavAccentSystem : RelayAccentSystem<ChavAccentComponent>
 {
     [Dependency] private ReplacementAccentSystem _replacement = default!;
 

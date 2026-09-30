@@ -7,7 +7,7 @@ using Content.Shared._Starlight.Speech;
 
 namespace Content.Server._Starlight.Speech.EntitySystems;
 
-public sealed class BarkAccentSystem : RelayAccentSystem<BarkAccentComponent>
+public sealed partial class BarkAccentSystem : RelayAccentSystem<BarkAccentComponent>
 {
     [Dependency] private IRobustRandom _random = default!;
 

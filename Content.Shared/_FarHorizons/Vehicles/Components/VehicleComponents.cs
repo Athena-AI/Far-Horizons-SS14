@@ -15,6 +15,12 @@ public sealed partial class VehicleComponent : Component
     public EntityUid? Rider;
 
     /// <summary>
+    /// The list of passengers in the vehicle
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public List<EntityUid> Passengers = new();
+
+    /// <summary>
     /// check if a vehicle requires ignition before allowing it to move
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -91,6 +97,13 @@ public sealed partial class VehicleComponent : Component
     /// </summary>
     [DataField("allowCrashing"), AutoNetworkedField]
     public bool AllowCrashing = false;
+
+    /// <summary>
+    /// Basically what portion of the damage done to the vehicle is transferred to the passengers
+    /// take into account this multiplier will also be divided across all the passengers so 20% damage will be 5% to each passenger if there is 4 passengers
+    /// </summary>
+    [DataField("damageTransfer")]
+    public float DamageTransferMultiplier = 1.0f;
 
     /// <summary>
     /// Sound played whenever the vehicle is started

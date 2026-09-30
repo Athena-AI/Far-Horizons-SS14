@@ -75,9 +75,9 @@ public sealed partial class VehicleSystems : SharedVehicleSystem
                         _adminLogger.Add(LogType.Slip, LogImpact.Medium, $"{ToPrettyString(rider)} was launched from vehicle {ToPrettyString(ent.Owner)}");
                     }
             }
-            else if(TryComp<VehicleContainerComponent>(ent.Owner, out var vcComp))
+            else
             {
-                foreach(var passenger in vcComp.PassengerSlot.ContainedEntities)
+                foreach(var passenger in ent.Comp.Passengers)
                 {
                     _stun.TryAddStunDuration(passenger, TimeSpan.FromSeconds(3));
                 }

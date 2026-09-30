@@ -319,19 +319,17 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     {
         if(!args.DamageIncreased || args.DamageDelta == null) return;
         if(args.Origin == ent) return;
-        if (TryComp<VehicleContainerComponent>(ent, out var vcComp)
-            && vcComp.PassengerSlot.ContainedEntities.Count != 0)
+
+        var damage = args.DamageDelta * ent.Comp.DamageTransferMultiplier;
+        foreach(var passenger in ent.Comp.Passengers)
         {
-            var damage = args.DamageDelta * vcComp.DamageTransferMultiplier;
-            foreach(var passenger in vcComp.PassengerSlot.ContainedEntities)
-            {
-                _damageable.TryChangeDamage(passenger, damage / vcComp.PassengerSlot.ContainedEntities.Count, origin: args.Origin);
-            }
-        }
-        else if(HasComp<VehicleBuckleComponent>(ent) && ent.Comp.Rider != null && !TerminatingOrDeleted(ent.Comp.Rider.Value))
-        {
-            _damageable.TryChangeDamage(ent.Comp.Rider.Value, args.DamageDelta, origin: args.Origin);
-            _color.RaiseEffect(Color.Red, new List<EntityUid>() { ent.Comp.Rider.Value }, Filter.Pvs(ent.Comp.Rider.Value, entityManager: EntityManager));
+            if(TerminatingOrDeleted(passenger))
+                continue;
+
+            if(!_container.IsEntityInContainer(passenger))
+                _color.RaiseEffect(Color.Red, new List<EntityUid>() { passenger }, Filter.Pvs(passenger, entityManager: EntityManager));
+            
+            _damageable.TryChangeDamage(passenger, damage / ent.Comp.Passengers.Count, origin: args.Origin);
         }
     }
 
@@ -351,7 +349,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
                 }
             }
         }
-        if(TryComp<VehicleBuckleComponent>(ent, out var vbComp))
+        else if(TryComp<VehicleBuckleComponent>(ent, out var vbComp))
         {
             _buckle.StrapSetEnabled(ent, false);
         }
@@ -393,13 +391,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         _appearance.SetData(entity.Owner, VehicleVisuals.VisualState, finalState);
     }
-    #region Misc Events
-
-    private void OnJetJumpActionEvent(Entity<TransformComponent> ent, ref JetJumpActionEvent args)
-    {
-        if(!TryComp<BuckleComponent>(ent.Comp.ParentUid, out var buckleComp)) return;
-        _buckle.Unbuckle((ent.Comp.ParentUid, buckleComp), ent.Comp.ParentUid);
-    }
 
     [SubscribeLocalEvent]
     private void OnMoveEvent(Entity<VehicleComponent> ent, ref SpriteMoveEvent args)
@@ -428,6 +419,14 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             }
         }
     }
+
+    #region Misc Events
+
+    private void OnJetJumpActionEvent(Entity<TransformComponent> ent, ref JetJumpActionEvent args)
+    {
+        if(!TryComp<BuckleComponent>(ent.Comp.ParentUid, out var buckleComp)) return;
+        _buckle.Unbuckle((ent.Comp.ParentUid, buckleComp), ent.Comp.ParentUid);
+    }
     
     #endregion
     #region Functions
@@ -444,6 +443,8 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             _actionBlocker.UpdateCanMove(rider);
 
         RefreshHeldGuns(rider);
+        vehicle.Comp.Passengers.Add(rider);
+        Dirty(vehicle);
 
         if(_whitelist.IsWhitelistFail(vehicle.Comp.RiderWhitelist, rider) || _whitelist.IsWhitelistPass(vehicle.Comp.RiderBlacklist, rider)) return;
         if(!vehicle.Comp.hasKeys && vehicle.Comp.RequireIgnition) return;
@@ -485,6 +486,8 @@ public abstract partial class SharedVehicleSystem : EntitySystem
                 _virtualItem.DeleteInHandsMatching(rider, vehicle);
             }
         }
+
+        vehicle.Comp.Passengers.Remove(rider);
 
         if(HasComp<RelayInputMoverComponent>(rider))
             RemComp<RelayInputMoverComponent>(rider);

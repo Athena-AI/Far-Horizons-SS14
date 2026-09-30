@@ -31,8 +31,6 @@ public abstract partial class SharedVehicleSystem
         if (args.Cancelled || args.Handled)
             return;
         
-        if(!TryComp<VehicleComponent>(ent, out var vehicleComp)) return;
-
         var target = GetEntity(args.Passenger);
         RemoveRider(target, ent.Owner);
         TryRemove(target, ent.Owner);
@@ -57,7 +55,7 @@ public abstract partial class SharedVehicleSystem
         if(!TryComp<VehicleComponent>(ent.Owner, out var vehicleComp) || vehicleComp.isBroken) return; 
         var user = args.User;
 
-        if (CanInsert(ent.Owner) && !ent.Comp.PassengerSlot.ContainedEntities.Contains(user))
+        if (CanInsert(ent.Owner) && !vehicleComp.Passengers.Contains(user))
         {
             var enterVerb = new AlternativeVerb
             {
@@ -74,7 +72,7 @@ public abstract partial class SharedVehicleSystem
             };
             args.Verbs.Add(enterVerb);
         }
-        else if(ent.Comp.PassengerSlot.ContainedEntities.Contains(user))
+        else if(vehicleComp.Passengers.Contains(user))
         {
             var exitVerb = new AlternativeVerb
             {
@@ -89,10 +87,10 @@ public abstract partial class SharedVehicleSystem
             args.Verbs.Add(exitVerb);
         }
             
-        if(ent.Comp.PassengerSlot.ContainedEntities.Count != 0 && !ent.Comp.PassengerSlot.ContainedEntities.Contains(user))
+        if(vehicleComp.Passengers.Count != 0 && !vehicleComp.Passengers.Contains(user))
         {
             var category = new VerbCategory("Remove", null);
-            foreach (var passenger in ent.Comp.PassengerSlot.ContainedEntities)
+            foreach (var passenger in vehicleComp.Passengers)
             {
                 var removeVerb = new AlternativeVerb
                 {
@@ -156,7 +154,7 @@ public abstract partial class SharedVehicleSystem
         if(!TryComp<VehicleComponent>(ent.Owner, out var vehicleComp) || vehicleComp.isBroken)
             return false;
 
-        return ent.Comp.PassengerSlot.ContainedEntities.Count() < ent.Comp.Seats;
+        return vehicleComp.Passengers.Count < ent.Comp.Seats;
     }
 
     public bool TryRemove(EntityUid? rider, Entity<VehicleContainerComponent?> vehicle)

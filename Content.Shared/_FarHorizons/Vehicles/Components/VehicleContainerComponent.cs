@@ -35,13 +35,6 @@ public sealed partial class VehicleContainerComponent : Component
     public readonly string PassengerSlotId = "passenger_slot";
 
     /// <summary>
-    /// Basically what portion of the damage done to the vehicle is transferred to the passengers
-    /// take into account this multiplier will also be divided across all the passengers so 20% damage will be 5% to each passenger if there is 4 passengers
-    /// </summary>
-    [DataField("damageTransfer")]
-    public float DamageTransferMultiplier = 0.5f;
-
-    /// <summary>
     /// Just a check for a if a vehicle is a air tight.
     /// </summary>
     [DataField]

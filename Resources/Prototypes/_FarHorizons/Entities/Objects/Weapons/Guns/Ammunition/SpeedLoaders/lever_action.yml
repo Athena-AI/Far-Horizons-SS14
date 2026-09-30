@@ -20,7 +20,7 @@
     shape:
     - 0,0,0,1
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -36,7 +36,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumHP
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -53,7 +53,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumSP
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -70,7 +70,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumFMJ
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -87,7 +87,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumAP
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -104,7 +104,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumPractice
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -121,7 +121,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumIncendiary
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -138,7 +138,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumUranium
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -155,7 +155,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumRubber
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -188,7 +188,7 @@
     shape:
     - 0,0,2,0
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -203,7 +203,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumSP
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -219,7 +219,7 @@
   - type: BallisticAmmoProvider
     proto: CartridgeMagnumRubber
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/lever_action_speed_loader.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]

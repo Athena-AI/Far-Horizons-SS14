@@ -38,7 +38,6 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Emp;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.Hands;
 using Content.Shared._FarHorizons.ReagentDraw;
 using Robust.Shared.Network;
 using Content.Shared.Repairable;
@@ -444,11 +443,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         if(TryComp<InputMoverComponent>(rider, out var imComp) && imComp.CanMove)
             _actionBlocker.UpdateCanMove(rider);
 
-        foreach(var item in _handsSystem.EnumerateHeld(rider))
-        {
-            if(HasComp<GunComponent>(item))
-                _gun.RefreshModifiers(item);
-        }
+        RefreshHeldGuns(rider);
 
         if(_whitelist.IsWhitelistFail(vehicle.Comp.RiderWhitelist, rider) || _whitelist.IsWhitelistPass(vehicle.Comp.RiderBlacklist, rider)) return;
         if(!vehicle.Comp.hasKeys && vehicle.Comp.RequireIgnition) return;
@@ -470,6 +465,37 @@ public abstract partial class SharedVehicleSystem : EntitySystem
                     EnsureComp<UnremoveableComponent>(virtItem.Value);
             }
         }
+    }
+
+    public void RemoveRider(EntityUid rider, Entity<VehicleComponent?> vehicle)
+    {
+        if(!Resolve(vehicle.Owner, ref vehicle.Comp))
+            return;
+
+        _adminLogger.Add(Database.LogType.Action, Database.LogImpact.Low, $"{ToPrettyString(rider)} exited vehicle {ToPrettyString(vehicle)}");
+
+        if(rider == vehicle.Comp.Rider)
+        {
+            UpdateActions(rider, false);
+            _actions.RemoveProvidedActions(rider, vehicle);
+            vehicle.Comp.Rider = null;
+            
+            for (var i = 0; i < vehicle.Comp.HandsNeeded; i++)
+            {
+                _virtualItem.DeleteInHandsMatching(rider, vehicle);
+            }
+        }
+
+        if(HasComp<RelayInputMoverComponent>(rider))
+            RemComp<RelayInputMoverComponent>(rider);
+        if(HasComp<RiderComponent>(rider))
+            RemComp<RiderComponent>(rider);
+                
+        if(TryComp<InputMoverComponent>(rider, out var imComp) && !imComp.CanMove)
+            _actionBlocker.UpdateCanMove(rider);
+
+        Dirty(vehicle);
+        RefreshHeldGuns(rider);
     }
 
     private void UpdateActions(EntityUid rider, bool gettingOn)
@@ -519,41 +545,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
 
         Dirty(vehicle, vehicleComp);
     } 
-
-    public void RemoveRider(EntityUid rider, Entity<VehicleComponent?> vehicle)
-    {
-        if(!Resolve(vehicle.Owner, ref vehicle.Comp))
-            return;
-
-        _adminLogger.Add(Database.LogType.Action, Database.LogImpact.Low, $"{ToPrettyString(rider)} exited vehicle {ToPrettyString(vehicle)}");
-        foreach(var item in _handsSystem.EnumerateHeld(rider))
-        {
-            if(HasComp<GunComponent>(item))
-                _gun.RefreshModifiers(item);
-        }
-
-        if(rider == vehicle.Comp.Rider)
-        {
-            UpdateActions(rider, false);
-            _actions.RemoveProvidedActions(rider, vehicle);
-            vehicle.Comp.Rider = null;
-            
-            for (var i = 0; i < vehicle.Comp.HandsNeeded; i++)
-            {
-                _virtualItem.DeleteInHandsMatching(rider, vehicle);
-            }
-        }
-
-        if(HasComp<RelayInputMoverComponent>(rider))
-            RemComp<RelayInputMoverComponent>(rider);
-        if(HasComp<RiderComponent>(rider))
-            RemComp<RiderComponent>(rider);
-                
-        if(TryComp<InputMoverComponent>(rider, out var imComp) && !imComp.CanMove)
-            _actionBlocker.UpdateCanMove(rider);
-
-        Dirty(vehicle);
-    }
 
     private void TurnOffVehicle(Entity<VehicleComponent?> ent)
     {

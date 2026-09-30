@@ -21151,5 +21151,21 @@ Entries:
   id: 182202
   time: '2026-09-30T14:31:43.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
+- author: princess_gurchi
+  changes:
+  - message: NS PDAs has a proper credstick slot that's not prioritized over ID and
+      can't fit an ID in it
+    type: Fix
+  id: 182600
+  time: '2026-09-30T15:50:32.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1826
+- author: princess_gurchi
+  changes:
+  - message: Research console can no longer queue already researched tech by alt-clicking
+      it
+    type: Fix
+  id: 182601
+  time: '2026-09-30T15:50:32.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1826
 Order: -1
 

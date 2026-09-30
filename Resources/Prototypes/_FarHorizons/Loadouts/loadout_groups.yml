@@ -683,6 +683,7 @@
   - Mk58Civ
   - InstigatorCiv
   - LeverActionCiv
+  - LeverActionPistolCiv
 
 - type: loadoutGroup
   id: CivilianWeaponsNT

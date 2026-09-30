@@ -16,9 +16,9 @@ public readonly record struct TurnOffVehicleEvent();
 [Serializable, NetSerializable]
 public sealed partial class VehicleRemoveDoAfter : SimpleDoAfterEvent
 {
-    public readonly NetEntity Target;
-    public VehicleRemoveDoAfter(NetEntity target) 
-        => Target = target;
+    public readonly NetEntity Passenger;
+    public VehicleRemoveDoAfter(NetEntity passenger) 
+        => Passenger = passenger;
 }
 
 [Serializable, NetSerializable]

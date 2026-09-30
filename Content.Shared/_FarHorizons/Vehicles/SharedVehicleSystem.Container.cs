@@ -33,7 +33,7 @@ public abstract partial class SharedVehicleSystem
         
         if(!TryComp<VehicleComponent>(ent, out var vehicleComp)) return;
 
-        var target = GetEntity(args.Target);
+        var target = GetEntity(args.Passenger);
         RemoveRider(target, ent.Owner);
         TryRemove(target, ent.Owner);
 

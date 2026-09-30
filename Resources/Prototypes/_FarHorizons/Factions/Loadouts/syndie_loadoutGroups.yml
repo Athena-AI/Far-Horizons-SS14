@@ -1004,7 +1004,9 @@
   minLimit: 1
   maxLimit: 2
   loadouts:
+    - DeputyBelt
     - SecurityBeltSyndi
+    - DeputyRig
     - SecurityWebbingSyndi
 
 - type: loadoutGroup
@@ -1045,7 +1047,12 @@
 - type: loadoutGroup
   id: CorpsmanSyndiBelt
   name: loadout-group-corpsman-syndi-belt
+  minLimit: 1 
+  maxLimit: 2
   loadouts:
+    - MedicalRigDeputy
+    - CorpsmanRig
+    - MedicalBeltDeputy
     - CorpsmanSyndiBelt
 
 - type: loadoutGroup

@@ -36,8 +36,6 @@ public abstract partial class SharedVehicleSystem
         SubscribeLocalEvent<RiderComponent, PullAttemptEvent>(OnPullAttempt);
         SubscribeLocalEvent<RiderComponent, EntityTerminatingEvent>(OnRiderTerminating);
 
-        SubscribeLocalEvent<GunComponent, ItemWieldedEvent>(OnGunWielded);
-        SubscribeLocalEvent<GunComponent, ItemUnwieldedEvent>(OnGunUnwielded);
         SubscribeLocalEvent<GunComponent, GunRefreshModifiersEvent>(OnGunRefreshModifiers);
     }
     #region Rider Events
@@ -161,23 +159,26 @@ public abstract partial class SharedVehicleSystem
 
     private void OnRiderTerminating(Entity<RiderComponent> ent, ref EntityTerminatingEvent args)
     {
-        if (ent.Comp.Riding is { } vehicle && TryComp<VehicleComponent>(vehicle, out var vehicleComp))
-            RemoveRider(ent.Owner, vehicle, vehicleComp);
+        if (ent.Comp.Riding is { } vehicle)
+            RemoveRider(ent.Owner, vehicle);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnHandEquipped(Entity<RiderComponent> ent, ref GotEquippedHandEvent args)
+    {
+        if(ent.Comp.Riding is not { } vehicle) return;
+        RemoveRider(ent.Owner, vehicle);
     }
 
     #endregion
     #region Gun Events
-    private void OnGunUnwielded(EntityUid uid, GunComponent component, ItemUnwieldedEvent args)
-    {
-        if(HasComp<RiderComponent>(args.User))
-            _gun.RefreshModifiers(uid);
-    }
+    [SubscribeLocalEvent]
+    private void OnGunUnwielded(Entity<RiderComponent> ent, ref UnwieldAttemptEvent args)
+        => _gun.RefreshModifiers(args.Wielded);
 
-    private void OnGunWielded(EntityUid uid, GunComponent component, ref ItemWieldedEvent args)
-    {
-        if(HasComp<RiderComponent>(args.User))
-            _gun.RefreshModifiers(uid);
-    }
+    [SubscribeLocalEvent]
+    private void OnGunWielded(Entity<RiderComponent> ent, ref WieldAttemptEvent args)
+        => _gun.RefreshModifiers(args.Wielded);
 
     private void OnGunRefreshModifiers(Entity<GunComponent> ent, ref GunRefreshModifiersEvent args)
     {

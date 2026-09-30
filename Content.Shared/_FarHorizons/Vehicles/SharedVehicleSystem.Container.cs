@@ -18,10 +18,9 @@ public abstract partial class SharedVehicleSystem
         if (args.Cancelled || args.Handled)
             return;
 
-        if(!TryComp<VehicleComponent>(ent, out var vehicleComp)) return;
-        if(!TryInsert(args.Args.Target, ent.Owner, ent.Comp)) return;
+        if(!TryInsert(args.Args.Target, ent.Owner)) return;
 
-        SetUpRider(args.Args.Target!.Value, ent.Owner, vehicleComp);
+        SetUpRider(args.Args.Target!.Value, ent.Owner);
 
         args.Handled = true;
     }
@@ -35,8 +34,8 @@ public abstract partial class SharedVehicleSystem
         if(!TryComp<VehicleComponent>(ent, out var vehicleComp)) return;
 
         var target = GetEntity(args.Target);
-        RemoveRider(target, ent.Owner, vehicleComp);
-        TryRemove(target, ent.Owner, ent.Comp);
+        RemoveRider(target, ent.Owner);
+        TryRemove(target, ent.Owner);
 
         args.Handled = true;
     }
@@ -58,7 +57,7 @@ public abstract partial class SharedVehicleSystem
         if(!TryComp<VehicleComponent>(ent.Owner, out var vehicleComp) || vehicleComp.isBroken) return; 
         var user = args.User;
 
-        if (CanInsert(ent) && !ent.Comp.PassengerSlot.ContainedEntities.Contains(user))
+        if (CanInsert(ent.Owner) && !ent.Comp.PassengerSlot.ContainedEntities.Contains(user))
         {
             var enterVerb = new AlternativeVerb
             {
@@ -82,9 +81,9 @@ public abstract partial class SharedVehicleSystem
                 Text = Loc.GetString("vehicle-verb-leave"),
                 Act = () =>
                 {
-                    TryRemove(user, ent);
+                    TryRemove(user, ent.Owner);
                     if(HasComp<RiderComponent>(user))
-                        RemoveRider(user, ent.Owner, vehicleComp);
+                        RemoveRider(user, ent.Owner);
                 }
             };
             args.Verbs.Add(exitVerb);
@@ -122,9 +121,8 @@ public abstract partial class SharedVehicleSystem
     {
         if(args.Handled) return;
         args.Handled = true;
-        if(TryComp<VehicleComponent>(ent.Owner, out var vehicleComp) && vehicleComp.isBroken) return;
 
-        if(!CanInsert(ent.Owner, ent.Comp)) return;
+        if(!CanInsert(ent.Owner)) return;
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, ent.Comp.EntryTime, new VehicleEntryDoAfter(), ent.Owner, target: args.Dragged)
         {
@@ -132,5 +130,45 @@ public abstract partial class SharedVehicleSystem
         };
 
         _doAfter.TryStartDoAfter(doAfterEventArgs);
+    }
+
+    private bool TryInsert(EntityUid? rider, Entity<VehicleContainerComponent?> vehicle)
+    {
+        if(!Resolve(vehicle.Owner, ref vehicle.Comp))
+            return false;
+
+        if(rider == null)
+            return false;
+                
+        if (!CanInsert(vehicle))
+            return false;
+
+        _container.Insert(rider.Value, vehicle.Comp.PassengerSlot);
+        Dirty(vehicle);
+        return true;
+    }
+
+    public bool CanInsert(Entity<VehicleContainerComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        if(!TryComp<VehicleComponent>(ent.Owner, out var vehicleComp) || vehicleComp.isBroken)
+            return false;
+
+        return ent.Comp.PassengerSlot.ContainedEntities.Count() < ent.Comp.Seats;
+    }
+
+    public bool TryRemove(EntityUid? rider, Entity<VehicleContainerComponent?> vehicle)
+    {
+        if(!Resolve(vehicle, ref vehicle.Comp))
+            return false;
+
+        if(rider == null)
+            return false;
+
+        _container.Remove(rider.Value, vehicle.Comp.PassengerSlot);
+        Dirty(vehicle);
+        return true;
     }
 }

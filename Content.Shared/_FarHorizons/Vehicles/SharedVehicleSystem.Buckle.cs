@@ -25,8 +25,7 @@ public abstract partial class SharedVehicleSystem
 
     private void OnStrapped(Entity<VehicleBuckleComponent> ent, ref StrappedEvent args)
     {
-        if(!TryComp<VehicleComponent>(ent, out var vehicleComp)) return;
-        SetUpRider(args.Buckle.Owner, ent.Owner, vehicleComp);
+        SetUpRider(args.Buckle.Owner, ent.Owner);
         foreach(var held in _handsSystem.EnumerateHeld(args.Buckle.Owner))
         {
             if(TryComp<WieldableComponent>(held, out var wieldComp))
@@ -66,11 +65,9 @@ public abstract partial class SharedVehicleSystem
     }
 
     private void OnUnstrapped(Entity<VehicleBuckleComponent> ent, ref UnstrappedEvent args)
-    {
-        if(!TryComp<VehicleComponent>(ent, out var vehicleComp)) return;
-                
+    {                
         if(HasComp<RiderComponent>(args.Buckle.Owner))
-            RemoveRider(args.Buckle.Owner, ent.Owner, vehicleComp);
+            RemoveRider(args.Buckle.Owner, ent.Owner);
     }
 
     private void OnUnbuckleDoAfter(Entity<VehicleBuckleComponent> ent, ref VehicleUnbuckleDoAfter args)

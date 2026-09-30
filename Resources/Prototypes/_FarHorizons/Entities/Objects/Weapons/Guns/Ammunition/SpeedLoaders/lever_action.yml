@@ -243,7 +243,7 @@
     shape:
     - 0,0,0,1
   - type: Sprite
-    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -256,7 +256,7 @@
       12g: !type:ItemSwitchState
         verb: 12 Gauge
         sprite:
-          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi #Sprites CANNOT be split into seperate folders, it doesn't support it.
+          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi #Sprites CANNOT be split into seperate folders, it doesn't support it.
           state: base
         components:
         - type: ContainerContainer
@@ -282,7 +282,7 @@
       44mag: !type:ItemSwitchState
         verb: .44 Magnum
         sprite:
-          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
+          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
           state: base
         components:
         - type: ContainerContainer
@@ -308,7 +308,7 @@
       38spec: !type:ItemSwitchState
         verb: .38 Special
         sprite:
-          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
+          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
           state: base
         components:
         - type: ContainerContainer
@@ -334,7 +334,7 @@
       rifle: !type:ItemSwitchState
         verb: 7.62 / 5.56
         sprite:
-          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
+          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
           state: base
         components:
         - type: ContainerContainer
@@ -361,7 +361,7 @@
       9mm: !type:ItemSwitchState
         verb: 9mm
         sprite:
-          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
+          sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
           state: base
         components:
         - type: ContainerContainer

@@ -21129,5 +21129,27 @@ Entries:
   id: 182300
   time: '2026-09-29T19:37:07.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1823
+- author: rain_enjoyer
+  changes:
+  - message: Added a Limb damage guidebook entry under Station and shifts/jobs/medical.
+    type: Add
+  id: 182200
+  time: '2026-09-30T14:31:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
+- author: rain_enjoyer
+  changes:
+  - message: Changed the medical doctor guidebook entry to be in line with FH's medical.
+    type: Tweak
+  id: 182201
+  time: '2026-09-30T14:31:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
+- author: rain_enjoyer
+  changes:
+  - message: Fixed laspi, diona and IPC guidebooks not mentioning that their head
+      being hit is about as deadly as an arm being hit.
+    type: Fix
+  id: 182202
+  time: '2026-09-30T14:31:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
 Order: -1
 

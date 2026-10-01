@@ -1029,16 +1029,17 @@
   id: SecuritySidearmNS
   name: loadout-group-security-sidearm
   loadouts:
-  - SecurityPistolMk58
+# Default - Important for Salvage for this to be at the top
   - SecurityPistolMKS #NeoSol version
-  #- SecurityPistolDP //Far Horizons Change
-  #- SecurityPistolEnforcer //Far Horizons Change
-  - SecurityRevolverInstigatorcustom # FarHorizons
-  - SecurityRevolverInstigator # FarHorizons
+  - SecurityRevolverInstigator
+# Prestige Weapons
+  - SecurityRevolverInstigatorcustom
+  - SecurityPistolMk58
 
 - type: loadoutGroup
   id: SecurityLongarmNS
   name: loadout-group-security-longarm
+  minLimit: 0
   loadouts:
   - LeverActionNS
 

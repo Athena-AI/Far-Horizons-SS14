@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 15h #Much deliberation seems to say 15h is a good mark of 'this person is competent with law' so..
+      time: 25h #15hr but cadet time (10hr) isn't counted
 
 #region General
 
@@ -122,12 +122,6 @@
 - type: loadout
   id: LeverActionNT
   dummyEntity: WeaponLeverActionNT
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 10h
   equipment:
     suitstorage: WeaponLeverActionNT
   storage:
@@ -140,8 +134,11 @@
   id: LeverActionModel2325
   dummyEntity: WeaponLeverActionModel2325
   effects:
-  - !type:GroupLoadoutEffect
-    proto: DeputyOfficer
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 20h #10hr but cadet time (10hr) isn't counted - This is both a 'special weapon' & 'prestige weapon' so, it would land in the 10hr range instead of 5
   equipment:
     suitstorage: WeaponLeverActionModel2325
   storage:
@@ -154,8 +151,11 @@
   id: LeverActionModel2325Pistol
   dummyEntity: WeaponLeverActionModel2325Pistol
   effects:
-  - !type:GroupLoadoutEffect
-    proto: DeputyOfficer
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 20h
   storage:
     back:
     - WeaponLeverActionModel2325Pistol
@@ -167,8 +167,11 @@
   id: RevolverIndomitable
   dummyEntity: WeaponRevolverIndomitable
   effects:
-  - !type:GroupLoadoutEffect
-    proto: DeputyOfficer
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 20h
   storage:
     back:
     - WeaponRevolverIndomitable

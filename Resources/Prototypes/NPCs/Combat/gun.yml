@@ -115,6 +115,10 @@
             - type: Gun
         - !type:WieldedPrecondition
           wielded: false
+        # Far Horizons start - Don't wield an empty gun
+        - !type:GunAmmoPrecondition
+          minPercent: 0.001
+        # Far Horizons end
       tasks:
         - !type:HTNPrimitiveTask
           operator: !type:WieldOperator

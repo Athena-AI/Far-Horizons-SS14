@@ -44,7 +44,7 @@ public sealed partial class WieldOperator : HTNOperator
         }
 
         if (!wieldable.Wielded)
-            return HTNOperatorStatus.Failed;
+            return HTNOperatorStatus.Finished; // FH - Failed -> Finished, so that unweilding is considered successful if the weapon is already unwielded.
 
         return wieldableSystem.TryUnwield(weaponUid.Value, wieldable, owner)
             ? HTNOperatorStatus.Finished

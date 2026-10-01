@@ -1703,6 +1703,22 @@
     - MagazinePistolSP
     - MagazinePistolRubber
 
+- type: loadout
+  id: LeverActionNS
+  dummyEntity: WeaponLeverActionNS
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 10h
+  storage:
+    back:
+    - WeaponLeverActionNS
+    - SpeedLoaderMagnumLeverSP
+    - SpeedLoaderMagnumLeverSP
+    - SpeedLoaderMagnumLeverRubber
+
 # Silicons
 - type: roleLoadout
   id: JobBorgNS

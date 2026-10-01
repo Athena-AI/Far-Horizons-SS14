@@ -5,6 +5,15 @@
   recipes:
   - SoftPouchSecurity
   - HardPouchSecurity
+  - WeaponLeverActionNT
+
+- type: latheRecipePack
+  id: FarHorizonsNanoTrasenHardlightTechnologyStatic # Exclusive to NT
+  recipes:
+  - SpeedLoaderMagnumLeverEmptyHardlight
+  - WeaponLeverActionModel2325
+  - WeaponLeverActionModel2325Pistol
+  - WeaponRevolverIndomitable
 
 # Practice ammo/mags and practice weapons
 - type: latheRecipePack
@@ -140,6 +149,13 @@
   - SpeedLoaderMagnumHP
   - SpeedLoaderMagnumFMJ
   - SpeedLoaderMagnumRubber
+# Magnum - Lever Speedloader
+  - SpeedLoaderMagnumLeverEmpty
+  - SpeedLoaderMagnumLeverRubber
+  - SpeedLoaderMagnumLeverHP
+  - SpeedLoaderMagnumLeverSP
+  - SpeedLoaderMagnumLeverFMJ
+  - SpeedLoaderMagnumLeverPractice
 # SMG
   - MagazinePistolSubMachineGunSP
   - MagazinePistolSubMachineGunHP
@@ -238,6 +254,10 @@
   - SpeedLoaderMagnumIncendiary
   - SpeedLoaderMagnumUranium
   - SpeedLoaderMagnumAP
+#Magnum Lever Speedloader
+  - SpeedLoaderMagnumLeverIncendiary
+  - SpeedLoaderMagnumLeverUranium
+  - SpeedLoaderMagnumLeverAP
 # SMG
   - MagazinePistolSubMachineGunIncendiary
   - MagazinePistolSubMachineGunUranium

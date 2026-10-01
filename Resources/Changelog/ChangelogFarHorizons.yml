@@ -21167,5 +21167,28 @@ Entries:
   id: 182601
   time: '2026-09-30T15:50:32.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1826
+- author: KarusKardin
+  changes:
+  - message: Fixed NS security records not sending messages on NS radio
+    type: Fix
+  id: 181800
+  time: '2026-10-01T20:06:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
+- author: KarusKardin
+  changes:
+  - message: Fixed NS security key box containing NT security keys even after I already
+      fixed this (i genuinely do not know how I missed that)
+    type: Fix
+  id: 181801
+  time: '2026-10-01T20:06:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
+- author: KarusKardin
+  changes:
+  - message: Fixed Energy Turrets using the wrong projectile (they are no longer laser
+      shotguns)
+    type: Fix
+  id: 181802
+  time: '2026-10-01T20:06:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
 Order: -1
 

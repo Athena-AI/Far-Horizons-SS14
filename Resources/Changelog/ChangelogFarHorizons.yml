@@ -21190,5 +21190,160 @@ Entries:
   id: 181802
   time: '2026-10-01T20:06:20.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
+- author: Killer Tamashi
+  changes:
+  - message: Added Swordfish Lever-Action (not the wooden one)
+    type: Add
+  id: 182900
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Swordfish Lever-Action Type-T (Avaliable at loadout)
+    type: Add
+  id: 182901
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Swordfish Lever-Action Type-S (Avaliable at loadout)
+    type: Add
+  id: 182902
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Wooden Swordfish Lever-Action Pistol (Avaliable at loadout)
+    type: Add
+  id: 182903
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Wooden Swordfish Sprite
+    type: Add
+  id: 182904
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Civilian Instigator/MK Sprite
+    type: Add
+  id: 182905
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added The Watcher Sprite
+    type: Add
+  id: 182906
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Lever Action Speedloader sprites (they look SO much better than
+      my old SL ones)
+    type: Add
+  id: 182907
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Model 2325 (Lever-Action), Model 2325 Pistol (Lever-Action) & Indomitable
+      - NT exclusive weapons that utilize Hardlight Technology to be able to swap
+      between multiple calibers on the fly. (Avaliable at loadout)
+    type: Add
+  id: 182908
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added 3x Scope, for now only The Watcher has it. (fitting)
+    type: Add
+  id: 182909
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Changed Civilian Swordfish Lever-Action to Wooden Swordfish Lever Action
+    type: Tweak
+  id: 182910
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Changed Civilian Swordfish to load 6 rounds instead of 5
+    type: Tweak
+  id: 182911
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Made The Watcher functional (It now replaces the NT Energy SMG in the
+      Marshal's locker)
+    type: Tweak
+  id: 182912
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Fixed up some weird magazine names/locations
+    type: Tweak
+  id: 182913
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Made NS Security able to swing their Gunswords. With how much I harp
+      on about how it's not "just" a bayonet, it was pretty goofy of me to make it
+      stab only.
+    type: Tweak
+  id: 182914
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Made Lever Action Speedloaders actually craftable (regular, not civ)
+    type: Tweak
+  id: 182915
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Security SoP change to allow Lever Actions to be carried on Code Green
+      (civs can already do this lmao)
+    type: Tweak
+  id: 182916
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Deputy gear 50hr -> 25 hr
+    type: Tweak
+  id: 182917
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Special guns [various hours] -> 5hr
+    type: Tweak
+  id: 182918
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: '''Prestige'' guns 100hr -> 10hr (Cadet time doesn''t count, so you will
+      see general ''sec time'' guns have 20hr insteaed)'
+    type: Tweak
+  id: 182919
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Fixed NS Deputy Loadouts
+    type: Fix
+  id: 182920
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
 Order: -1
 

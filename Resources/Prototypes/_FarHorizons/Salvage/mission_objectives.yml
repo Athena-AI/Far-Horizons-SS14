@@ -51,6 +51,7 @@
     - Mineshaft
     - Reactor
     - Factory
+    - Bunker
 
 - type: salvageMissionObjective
   id: MissionObjectiveCapture
@@ -105,6 +106,7 @@
     - SnowyLabs
     - Reactor
     - Factory
+    - Bunker
 
 - type: salvageMissionObjective
   id: MissionObjectivePurge
@@ -133,6 +135,7 @@
     - SnowyLabs
     - Reactor
     - Factory
+    - Bunker
 
 - type: salvageMissionObjective
   id: MissionObjectiveShutdown
@@ -164,6 +167,7 @@
     - Mineshaft
     - Reactor
     - Factory
+    - Bunker
 
 - type: salvageMissionObjective
   id: MissionObjectiveDisarm

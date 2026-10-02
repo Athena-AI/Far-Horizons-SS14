@@ -376,6 +376,39 @@
 
 # region Tech
 
+- type: entity
+  parent: VendingMachineCart
+  id: VendingMachineCartGSL
+  name: PTech
+  suffix: GSL
+  description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
+  components:
+  - type: VendingMachine
+    pack: PTechInventoryGSL
+    offState: off
+    showPrices: false # Starlight-edit: Vending Machines Prices
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: Machine # Starlight-edit: Vending Machine boards
+    board: VendingMachineCartCircuitboard # Starlight-edit: Vending Machine boards
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/cart.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1
+    energy: 2.0
+    color: "#ffb0b0"
+  - type: AccessReader
+    access: [["Quartermaster"]]
 
 - type: entity
   parent: VendingMachineCart

@@ -22,3 +22,24 @@
   contrabandInventory:
     BalloonSyn: 2
     LuxuryPen: 1
+
+- type: vendingMachineInventory
+  id: PTechInventoryGSL
+  startingInventory:
+    CargoAssistantPDA: 5
+    CargoPDA: 5
+    CargoTechnicianIDCard: 5
+    SalvageSpecialistIDCard: 5
+    ClothingHeadsetCargo: 5
+    RubberStampApproved: 1
+    RubberStampDenied: 1
+    BoxFolderPlasticClipboardEmpty: 2
+    Paper: 10
+    Pen: 8 # Starlight
+    Envelope: 10
+    HandLabeler: 2
+    EncryptionKeyCargo: 2
+  contrabandInventory:
+    LuxuryPen: 1
+    PlushieLizardJobCargotechnician: 1
+

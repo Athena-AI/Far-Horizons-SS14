@@ -21345,5 +21345,12 @@ Entries:
   id: 182920
   time: '2026-10-01T22:57:23.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Lever-Action speedloaders looking very wrong in inventory.
+    type: Fix
+  id: 183400
+  time: '2026-10-02T00:04:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1834
 Order: -1
 

@@ -223,6 +223,7 @@
       PDA-pai: !type:ContainerSlot {}
       Cartridge-Slot: !type:ContainerSlot {}
       program-container: !type:Container
+      PDA-credstick: !type:ContainerSlot {}
   - type: ItemSlots
   - type: Clothing
     quickEquip: false

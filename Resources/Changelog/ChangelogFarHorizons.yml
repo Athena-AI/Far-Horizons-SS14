@@ -21376,5 +21376,20 @@ Entries:
   id: 183102
   time: '2026-10-02T07:32:11.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
+- author: AthenaAI
+  changes:
+  - message: Medibots no longer follow IPCs or any robots.
+    type: Tweak
+  id: 183600
+  time: '2026-10-02T16:33:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1836
+- author: AthenaAI
+  changes:
+  - message: Medibots no longer follow people with unhealable damage aka Genetic and
+      Rads.
+    type: Tweak
+  id: 183601
+  time: '2026-10-02T16:33:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1836
 Order: -1
 

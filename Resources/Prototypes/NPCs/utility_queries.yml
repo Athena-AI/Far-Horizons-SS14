@@ -226,7 +226,7 @@
     - !type:HasDamageTypeFilter
       damageGroups:
         - Brute
-        - Heat
+        - Burn
       damageTypes:
         - Poison
     #FH End

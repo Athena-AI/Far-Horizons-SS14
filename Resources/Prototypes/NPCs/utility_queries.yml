@@ -227,6 +227,7 @@
       damageGroups:
         - Brute
         - Burn
+        - Airloss
       damageTypes:
         - Poison
     #FH End

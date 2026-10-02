@@ -22,50 +22,38 @@ public sealed partial class HasDamageTypeFilter : ExternalFilter
     [DataField]
     public List<ProtoId<DamageTypePrototype>> DamageTypes = new();
 
-    [DataField]
-    public bool Invert;
-
     public override List<EntityUid> GetEntities(NPCBlackboard blackboard, HashSet<EntityUid> entities, IEntityManager entMan)
     {
         var damageable = entMan.System<DamageableSystem>();
         var protoMan = IoCManager.Resolve<IPrototypeManager>();
         _entityList.Clear();
 
+        var filterTypes = new HashSet<ProtoId<DamageTypePrototype>>(DamageTypes);
+        foreach (var group in DamageGroups)
+        {
+            foreach (var type in protoMan.Index(group).DamageTypes)
+                filterTypes.Add(type);
+        }
+
         foreach (var ent in entities)
         {
-            var matches = false;
+            if (entMan.TryGetComponent<DamageableComponent>(ent, out var dmgComp) 
+            && HasMatchingDamage(damageable.GetPositiveDamage((ent, dmgComp)), filterTypes))
+                continue; 
 
-            if (entMan.HasComponent<DamageableComponent>(ent))
-            {
-                var damage = damageable.GetAllDamage(ent);
-                matches = HasMatchingDamage(damage, protoMan);
-            }
-
-            if (matches == Invert)
-                _entityList.Add(ent);
-        }
+            _entityList.Add(ent);
+        }       
 
         return _entityList;
     }
 
-    private bool HasMatchingDamage(DamageSpecifier damage, IPrototypeManager protoMan)
+    private bool HasMatchingDamage(DamageSpecifier damage, HashSet<ProtoId<DamageTypePrototype>> filter)
     {
-        foreach (var type in DamageTypes)
+        foreach (var (type, value) in damage.DamageDict)
         {
-            if (damage.DamageDict.TryGetValue(type, out var value) && value > FixedPoint2.Zero)
+            if(filter.Contains(type) && value > FixedPoint2.Zero)
                 return true;
         }
-
-        if (DamageGroups.Count == 0)
-            return false;
-
-        var perGroup = damage.GetDamagePerGroup(protoMan);
-        foreach (var group in DamageGroups)
-        {
-            if (perGroup.TryGetValue(group, out var total) && total > FixedPoint2.Zero)
-                return true;
-        }
-
         return false;
     }
 }

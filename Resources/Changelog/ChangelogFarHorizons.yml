@@ -21352,5 +21352,29 @@ Entries:
   id: 183400
   time: '2026-10-02T00:04:33.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1834
+- author: princess_gurchi
+  changes:
+  - message: 'New salvage dungeon: Command Bunker. I wonder if there are any cool
+      lockers there.'
+    type: Add
+  id: 183100
+  time: '2026-10-02T07:32:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
+- author: princess_gurchi
+  changes:
+  - message: 'New salvage mission: Data Heist. You are tasked with finding passwords
+      to download data from computers to disks and come back with those disks. It
+      can only appear in Bunker dungeon.'
+    type: Add
+  id: 183101
+  time: '2026-10-02T07:32:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
+- author: princess_gurchi
+  changes:
+  - message: Removed chasms from cave dungeons
+    type: Tweak
+  id: 183102
+  time: '2026-10-02T07:32:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
 Order: -1
 

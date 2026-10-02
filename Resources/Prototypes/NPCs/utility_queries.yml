@@ -217,6 +217,13 @@
       components:
         - type: NPCRecentlyInjected
       retainWithComp: false
+    #FH Start
+    - !type:DamageContainerFilter
+      damageContainers:
+        - Biological
+        - BiologicalMetaphysical
+      invert: true
+    #FH End
   considerations:
     - !type:TargetIsCritCon
       curve: !type:QuadraticCurve

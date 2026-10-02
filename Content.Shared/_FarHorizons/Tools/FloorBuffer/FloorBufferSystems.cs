@@ -16,7 +16,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Hands;
 using Content.Shared.Audio;
 using Content.Shared._FarHorizons.ReagentDraw;
-using Content.Shared._FarHorizons.ReagentDraw.Components;
+using Content.Shared._FarHorizons.ReagentDraw;
 
 namespace Content.Shared._FarHorizons.Tools.FloorBuffer.Systems;
 

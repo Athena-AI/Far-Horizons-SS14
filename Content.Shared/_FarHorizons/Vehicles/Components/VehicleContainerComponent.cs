@@ -2,7 +2,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Containers;
 using Content.Shared.Whitelist;
 
-namespace Content.Shared._FarHorizons.Vehicles.Components;
+namespace Content.Shared._FarHorizons.Vehicles;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VehicleContainerComponent : Component

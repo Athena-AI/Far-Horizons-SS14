@@ -1,9 +1,8 @@
 using Content.Shared.DoAfter;
 using Robust.Shared.Serialization;
 using Content.Shared.Actions;
-using Content.Shared.Inventory;
 
-namespace Content.Shared._FarHorizons.Vehicles.Events;
+namespace Content.Shared._FarHorizons.Vehicles;
 
 [ByRefEvent]
 public readonly record struct AddRiderActions(EntityUid Rider);

@@ -3,7 +3,6 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Robust.Shared.Timing;
 using Robust.Shared.Containers;
-using Content.Shared._FarHorizons.ReagentDraw.Components;
 using Content.Shared.Destructible;
 
 namespace Content.Shared._FarHorizons.ReagentDraw;

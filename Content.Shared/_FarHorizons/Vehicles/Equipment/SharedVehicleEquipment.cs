@@ -1,8 +1,7 @@
 using Robust.Shared.Serialization;
-using Content.Shared._FarHorizons.Vehicles.Components;
 using Content.Shared.DoAfter;
 
-namespace Content.Shared._FarHorizons.Vehicles.Equipment;
+namespace Content.Shared._FarHorizons.Vehicles;
 
 [Serializable, NetSerializable]
 public enum VehicleEquipmentUiKey : byte

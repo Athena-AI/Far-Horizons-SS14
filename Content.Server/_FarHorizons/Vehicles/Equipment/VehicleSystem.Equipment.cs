@@ -1,4 +1,4 @@
-using Content.Shared._FarHorizons.Vehicles.Components;
+using Content.Shared._FarHorizons.Vehicles;
 using Content.Shared.Actions;
 using Content.Shared.Light.Components;
 using Content.Shared.Coordinates;
@@ -11,13 +11,10 @@ using System.Linq;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.PowerCell.Components;
-using Content.Shared._FarHorizons.ReagentDraw.Components;
+using Content.Shared._FarHorizons.ReagentDraw;
 using Content.Shared.UserInterface;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Server._FarHorizons.Vehicles.Atmos;
-using Content.Shared._FarHorizons.Vehicles.Events;
-using Content.Shared._FarHorizons.Vehicles.Equipment;
 using Robust.Shared.Utility;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
@@ -31,13 +28,11 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Audio;
 
 namespace Content.Server._FarHorizons.Vehicles;
-public sealed partial class VehicleSystems
+public sealed partial class VehicleSystem
 {
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private DamageableSystem _damage = default!;
-    [Dependency] private VehicleAtmosphereSystem _vAtmos = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
@@ -97,7 +92,7 @@ public sealed partial class VehicleSystems
         {
             foreach(var itemProto in ent.Comp.StartingEquipment)
             {
-                if (_proto.TryIndex<EntityPrototype>(itemProto, out var proto))
+                if (_prototypes.TryIndex<EntityPrototype>(itemProto, out var proto))
                     if (!proto.Components.ContainsKey("VehicleEquipment"))
                         continue;
                 
@@ -428,7 +423,7 @@ public sealed partial class VehicleSystems
             return;
 
         if(TryComp<VehicleFanModComponent>(fan, out var fanComp))
-            _vAtmos.SetFanState(ent, fanComp, FanState.Off);
+            SetFanState(ent, fanComp, FanState.Off);
     }
 
     private void GridUiChanged(Entity<VehicleModsComponent> ent, ref GridUidChangedEvent args)

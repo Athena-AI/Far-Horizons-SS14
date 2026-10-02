@@ -1,6 +1,5 @@
-using Content.Shared._FarHorizons.Vehicles.Components;
-using Content.Server.Destructible;
 using Content.Shared._FarHorizons.Vehicles;
+using Content.Server.Destructible;
 using Content.Shared.Movement.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Components;
@@ -17,7 +16,7 @@ using Content.Shared.Throwing;
 
 namespace Content.Server._FarHorizons.Vehicles;
 
-public sealed partial class VehicleSystems : SharedVehicleSystem
+public sealed partial class VehicleSystem : SharedVehicleSystem
 {    
     [Dependency] private MovementModStatusSystem _movementStatus = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
@@ -28,6 +27,7 @@ public sealed partial class VehicleSystems : SharedVehicleSystem
     {
         base.Initialize();
         InitializeEquipment();
+        InitializeAtmos();
 
         SubscribeLocalEvent<VehicleComponent, StartCollideEvent>(HandleCollide);
         SubscribeLocalEvent<VehicleComponent, RepairedEvent>(OnRepairFinished);

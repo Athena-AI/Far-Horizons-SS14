@@ -1,4 +1,3 @@
-using Content.Shared._FarHorizons.Vehicles.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Mobs.Components;
@@ -6,7 +5,7 @@ using Content.Shared._Starlight.Actions.Events;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Stunnable;
-using Content.Shared._FarHorizons.ReagentDraw.Components;
+using Content.Shared._FarHorizons.ReagentDraw;
 using Content.Shared.Wieldable;
 using Content.Shared.Wieldable.Components;
 using Content.Shared.Weapons.Ranged.Systems;

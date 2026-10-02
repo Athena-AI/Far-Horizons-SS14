@@ -3,7 +3,7 @@ using Robust.Shared.Audio;
 using Content.Shared.Whitelist;
 using Content.Shared.FixedPoint;
 
-namespace Content.Shared._FarHorizons.Vehicles.Components;
+namespace Content.Shared._FarHorizons.Vehicles;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class VehicleComponent : Component

@@ -1,10 +1,10 @@
 using Content.Shared._FarHorizons.Vehicles;
-using Content.Shared._FarHorizons.Vehicles.Components;
+using Content.Shared._FarHorizons.Vehicles;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._FarHorizons.Vehicles;
 
-public sealed partial class VehicleSystems : SharedVehicleSystem
+public sealed partial class VehicleSystem : SharedVehicleSystem
 {
     [Dependency] private SpriteSystem _sprite = default!;
 

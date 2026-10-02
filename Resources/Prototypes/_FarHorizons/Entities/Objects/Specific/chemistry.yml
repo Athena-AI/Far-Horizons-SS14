@@ -58,7 +58,7 @@
 
 - type: entity
   name: large reinforced beaker
-  parent: [ BeakerReinforced, SolutionLarge ]
+  parent: [ SolutionLarge, BeakerReinforced ]
   description: Used to contain a large amount of chemicals or solutions, now explosion proof!
   id: LargeBeakerReinforced
   components:

@@ -223,6 +223,12 @@
         - Biological
         - BiologicalMetaphysical
       invert: true
+    - !type:HasDamageTypeFilter
+      damageGroups:
+        - Brute
+        - Heat
+      damageTypes:
+        - Poison
     #FH End
   considerations:
     - !type:TargetIsCritCon

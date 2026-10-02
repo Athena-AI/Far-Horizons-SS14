@@ -19,6 +19,8 @@
     size: Normal
     shape:
     - 0,0,0,1
+    storedRotation: 90
+    storedOffset: -1,0
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
@@ -186,7 +188,9 @@
   - type: Item
     size: Normal
     shape:
-    - 0,0,2,0
+    - 0,0,0,1
+    storedRotation: 90
+    storedOffset: -1,0
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/lever_action_speed_loader.rsi
     layers:
@@ -242,6 +246,8 @@
     size: Normal
     shape:
     - 0,0,0,1
+    storedRotation: 90
+    storedOffset: -1,0
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Speedloaders/Lever_Action/multipurpose_speed_loader_hardlight.rsi
     layers:

@@ -213,6 +213,14 @@
       whitelist:
         components:
         - IdCard
+    credstickSlot:
+      priority: -3
+      name: pda-credstick-slot-name
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        tags:
+        - Credstick
   - type: PdaVisuals
   - type: Item
     size: Small

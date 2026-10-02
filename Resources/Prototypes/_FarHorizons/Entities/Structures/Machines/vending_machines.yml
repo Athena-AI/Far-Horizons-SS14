@@ -408,7 +408,7 @@
     energy: 2.0
     color: "#ffb0b0"
   - type: AccessReader
-    access: [["Quartermaster"]]
+    access: [["Quartermaster"], ["SalvageLead"]]
 
 - type: entity
   parent: VendingMachineCart

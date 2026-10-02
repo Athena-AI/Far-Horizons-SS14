@@ -26,10 +26,10 @@
 - type: vendingMachineInventory
   id: PTechInventoryGSL
   startingInventory:
-    CargoAssistantPDA: 5
     CargoPDA: 5
-    CargoTechnicianIDCard: 5
-    SalvageSpecialistIDCard: 5
+    SalvagePDA: 5
+    CargoIDCard: 5
+    SalvageIDCard: 5
     ClothingHeadsetCargo: 5
     RubberStampApproved: 1
     RubberStampDenied: 1
@@ -40,6 +40,7 @@
     HandLabeler: 2
     EncryptionKeyCargo: 2
   contrabandInventory:
-    LuxuryPen: 1
     PlushieLizardJobCargotechnician: 1
+    LuxuryPen: 1
+    
 

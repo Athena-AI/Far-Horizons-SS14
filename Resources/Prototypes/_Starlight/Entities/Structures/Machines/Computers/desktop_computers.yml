@@ -243,6 +243,7 @@
   components:
   - type: Computer
     board: CargoRequestComputerCircuitboardDesktop
+  - type: CredstickDirectTransferTarget # Far Horizons
 
 # Request console variants.
 - type: entity

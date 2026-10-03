@@ -5,7 +5,6 @@ using Content.Server.Roles;
 using Content.Server.Store.Systems;
 using Content.Shared._FarHorizons.Banking;
 using Content.Shared._FarHorizons.Banking.Components;
-using Content.Shared.Containers.ItemSlots;
 using Content.Shared.PDA;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;

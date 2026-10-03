@@ -21709,5 +21709,36 @@ Entries:
   id: 184301
   time: '2026-10-03T18:23:03.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1843
+- author: princess_gurchi
+  changes:
+  - message: Reduced number of required targets for data heist mission per difficulty
+      from 2/3/4 to 1/1/2
+    type: Tweak
+  id: 184200
+  time: '2026-10-03T18:27:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1842
+- author: princess_gurchi
+  changes:
+  - message: Increased number of bonus targets for data heist mission from 2 to 4
+    type: Tweak
+  id: 184201
+  time: '2026-10-03T18:27:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1842
+- author: princess_gurchi
+  changes:
+  - message: Reduced total number of bodies spawned in data heist mission (so the
+      chance of finding one with the password is higher)
+    type: Tweak
+  id: 184202
+  time: '2026-10-03T18:27:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1842
+- author: princess_gurchi
+  changes:
+  - message: Reduced base rewards of data heist mission, but increased rewards from
+      bonuses.
+    type: Tweak
+  id: 184203
+  time: '2026-10-03T18:27:09.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1842
 Order: -1
 

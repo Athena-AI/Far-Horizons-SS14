@@ -335,6 +335,7 @@
     canRestock:
     - PTechInventory
     - PTechInventoryNS #FH
+    - PTechInventoryGSL #FH
   - type: Sprite
     layers:
     - state: base

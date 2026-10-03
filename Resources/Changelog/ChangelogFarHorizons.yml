@@ -21695,5 +21695,19 @@ Entries:
   id: 184000
   time: '2026-10-03T18:20:26.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1840
+- author: rain_enjoyer
+  changes:
+  - message: added cybernetic limb removal SOP to space law
+    type: Add
+  id: 184300
+  time: '2026-10-03T18:23:03.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1843
+- author: rain_enjoyer
+  changes:
+  - message: Renamed the syndicate contraband crime to be faction neutral
+    type: Tweak
+  id: 184301
+  time: '2026-10-03T18:23:03.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1843
 Order: -1
 

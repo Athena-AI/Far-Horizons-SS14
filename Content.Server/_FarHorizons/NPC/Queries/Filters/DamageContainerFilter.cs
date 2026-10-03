@@ -22,9 +22,9 @@ public sealed partial class DamageContainerFilter : ExternalFilter
 
         foreach(var ent in entities)
         {
-            var matches = entMan.TryGetComponent<DamageableComponent>(ent, out var damageComp)
-                          && damageComp.DamageContainerID != null
-                          && !DamageContainers.Contains(damageComp.DamageContainerID.Value);
+            var matches = entMan.TryGetComponent<InjurableComponent>(ent, out var injurableComp)
+                          && injurableComp.DamageContainer != null
+                          && !DamageContainers.Contains(injurableComp.DamageContainer.Value);
 
             if (matches == Invert)
                 _entityList.Add(ent);

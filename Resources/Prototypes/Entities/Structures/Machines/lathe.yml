@@ -457,6 +457,7 @@
     - FarHorizonsSecurityGeneralEquipmentStatic #FarHorizons
     - FarHorizonsCivilianMagazinesStatic #FH
     - FarHorizonsCivilianWeaponsStatic #FH
+    - FarHorizonsNanoTrasenHardlightTechnologyStatic #FH
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons

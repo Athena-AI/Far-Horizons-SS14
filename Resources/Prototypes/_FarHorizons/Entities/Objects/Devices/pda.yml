@@ -213,6 +213,14 @@
       whitelist:
         components:
         - IdCard
+    credstickSlot:
+      priority: -3
+      name: pda-credstick-slot-name
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        tags:
+        - Credstick
   - type: PdaVisuals
   - type: Item
     size: Small
@@ -223,6 +231,7 @@
       PDA-pai: !type:ContainerSlot {}
       Cartridge-Slot: !type:ContainerSlot {}
       program-container: !type:Container
+      PDA-credstick: !type:ContainerSlot {}
   - type: ItemSlots
   - type: Clothing
     quickEquip: false
@@ -343,6 +352,14 @@
       whitelist:
         components:
         - IdCard
+    credstickSlot:
+      priority: -3
+      name: pda-credstick-slot-name
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        tags:
+        - Credstick
   - type: PdaVisuals
   - type: Item
     size: Small
@@ -353,6 +370,7 @@
       PDA-pai: !type:ContainerSlot {}
       Cartridge-Slot: !type:ContainerSlot {}
       program-container: !type:Container
+      PDA-credstick: !type:ContainerSlot {}
   - type: ItemSlots
   - type: Clothing
     quickEquip: false

@@ -21129,5 +21129,267 @@ Entries:
   id: 182300
   time: '2026-09-29T19:37:07.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1823
+- author: rain_enjoyer
+  changes:
+  - message: Added a Limb damage guidebook entry under Station and shifts/jobs/medical.
+    type: Add
+  id: 182200
+  time: '2026-09-30T14:31:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
+- author: rain_enjoyer
+  changes:
+  - message: Changed the medical doctor guidebook entry to be in line with FH's medical.
+    type: Tweak
+  id: 182201
+  time: '2026-09-30T14:31:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
+- author: rain_enjoyer
+  changes:
+  - message: Fixed laspi, diona and IPC guidebooks not mentioning that their head
+      being hit is about as deadly as an arm being hit.
+    type: Fix
+  id: 182202
+  time: '2026-09-30T14:31:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1822
+- author: princess_gurchi
+  changes:
+  - message: NS PDAs has a proper credstick slot that's not prioritized over ID and
+      can't fit an ID in it
+    type: Fix
+  id: 182600
+  time: '2026-09-30T15:50:32.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1826
+- author: princess_gurchi
+  changes:
+  - message: Research console can no longer queue already researched tech by alt-clicking
+      it
+    type: Fix
+  id: 182601
+  time: '2026-09-30T15:50:32.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1826
+- author: KarusKardin
+  changes:
+  - message: Fixed NS security records not sending messages on NS radio
+    type: Fix
+  id: 181800
+  time: '2026-10-01T20:06:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
+- author: KarusKardin
+  changes:
+  - message: Fixed NS security key box containing NT security keys even after I already
+      fixed this (i genuinely do not know how I missed that)
+    type: Fix
+  id: 181801
+  time: '2026-10-01T20:06:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
+- author: KarusKardin
+  changes:
+  - message: Fixed Energy Turrets using the wrong projectile (they are no longer laser
+      shotguns)
+    type: Fix
+  id: 181802
+  time: '2026-10-01T20:06:20.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1818
+- author: Killer Tamashi
+  changes:
+  - message: Added Swordfish Lever-Action (not the wooden one)
+    type: Add
+  id: 182900
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Swordfish Lever-Action Type-T (Avaliable at loadout)
+    type: Add
+  id: 182901
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Swordfish Lever-Action Type-S (Avaliable at loadout)
+    type: Add
+  id: 182902
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Wooden Swordfish Lever-Action Pistol (Avaliable at loadout)
+    type: Add
+  id: 182903
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Wooden Swordfish Sprite
+    type: Add
+  id: 182904
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Civilian Instigator/MK Sprite
+    type: Add
+  id: 182905
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added The Watcher Sprite
+    type: Add
+  id: 182906
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Lever Action Speedloader sprites (they look SO much better than
+      my old SL ones)
+    type: Add
+  id: 182907
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added Model 2325 (Lever-Action), Model 2325 Pistol (Lever-Action) & Indomitable
+      - NT exclusive weapons that utilize Hardlight Technology to be able to swap
+      between multiple calibers on the fly. (Avaliable at loadout)
+    type: Add
+  id: 182908
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Added 3x Scope, for now only The Watcher has it. (fitting)
+    type: Add
+  id: 182909
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Changed Civilian Swordfish Lever-Action to Wooden Swordfish Lever Action
+    type: Tweak
+  id: 182910
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Changed Civilian Swordfish to load 6 rounds instead of 5
+    type: Tweak
+  id: 182911
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Made The Watcher functional (It now replaces the NT Energy SMG in the
+      Marshal's locker)
+    type: Tweak
+  id: 182912
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Fixed up some weird magazine names/locations
+    type: Tweak
+  id: 182913
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Made NS Security able to swing their Gunswords. With how much I harp
+      on about how it's not "just" a bayonet, it was pretty goofy of me to make it
+      stab only.
+    type: Tweak
+  id: 182914
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Made Lever Action Speedloaders actually craftable (regular, not civ)
+    type: Tweak
+  id: 182915
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Security SoP change to allow Lever Actions to be carried on Code Green
+      (civs can already do this lmao)
+    type: Tweak
+  id: 182916
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Deputy gear 50hr -> 25 hr
+    type: Tweak
+  id: 182917
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Special guns [various hours] -> 5hr
+    type: Tweak
+  id: 182918
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: '''Prestige'' guns 100hr -> 10hr (Cadet time doesn''t count, so you will
+      see general ''sec time'' guns have 20hr insteaed)'
+    type: Tweak
+  id: 182919
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Fixed NS Deputy Loadouts
+    type: Fix
+  id: 182920
+  time: '2026-10-01T22:57:23.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1829
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Lever-Action speedloaders looking very wrong in inventory.
+    type: Fix
+  id: 183400
+  time: '2026-10-02T00:04:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1834
+- author: princess_gurchi
+  changes:
+  - message: 'New salvage dungeon: Command Bunker. I wonder if there are any cool
+      lockers there.'
+    type: Add
+  id: 183100
+  time: '2026-10-02T07:32:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
+- author: princess_gurchi
+  changes:
+  - message: 'New salvage mission: Data Heist. You are tasked with finding passwords
+      to download data from computers to disks and come back with those disks. It
+      can only appear in Bunker dungeon.'
+    type: Add
+  id: 183101
+  time: '2026-10-02T07:32:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
+- author: princess_gurchi
+  changes:
+  - message: Removed chasms from cave dungeons
+    type: Tweak
+  id: 183102
+  time: '2026-10-02T07:32:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1831
+- author: AthenaAI
+  changes:
+  - message: Medibots no longer follow IPCs or any robots.
+    type: Tweak
+  id: 183600
+  time: '2026-10-02T16:33:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1836
+- author: AthenaAI
+  changes:
+  - message: Medibots no longer follow people with unhealable damage aka Genetic and
+      Rads.
+    type: Tweak
+  id: 183601
+  time: '2026-10-02T16:33:49.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1836
 Order: -1
 

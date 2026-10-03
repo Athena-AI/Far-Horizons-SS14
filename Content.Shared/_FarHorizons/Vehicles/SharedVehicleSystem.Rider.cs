@@ -89,7 +89,7 @@ public abstract partial class SharedVehicleSystem
 
         var noPower =
             (vehicleComp.CellPowered && pcdComp != null && !_powerCell.HasDrawCharge(riding)) ^
-            (!vehicleComp.CellPowered && rdComp != null && !_reagentDraw.HasDrawReagent(riding));
+            (!vehicleComp.CellPowered && rdComp != null && !_reagentDraw.HasDrawReagant(riding));
 
         if (!noPower) return;
 

@@ -44,7 +44,7 @@
     state: medibot
   - type: HTN
     rootTask:
-      task: RealDocCompound #FH
+      task: MedibotCompound
   - type: Anchorable
   - type: InteractionPopup
     interactSuccessString: petting-success-medibot

@@ -376,7 +376,6 @@
     - id: RubberStampMD
     - id: PlushieLizardJobChiefmedicalofficer
       prob: 0.02
-    - id: CoolingUnitNitrogen
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -487,7 +486,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingNeckCloakHosEliteSyndi
-    - id: WeaponSniperWatcher
+    - id: WeaponEnergySMG
     - id: BookSpaceLaw
     - id: BoxEncryptionKeySecurityNS
     - id: CigarGoldCase

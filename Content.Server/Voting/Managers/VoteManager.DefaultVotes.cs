@@ -678,13 +678,6 @@ namespace Content.Server.Voting.Managers
 
                 if (_playerManager.PlayerCount > (preset.MaxPlayers ?? int.MaxValue))
                     continue;
-                
-                // Far Horizons start
-                if (preset.Faction != null &&
-                    (_factions.GetCurrentFaction() is not {} faction ||
-                    preset.Faction != faction.ID))
-                    continue;
-                // Far Horizons end
 
                 //STARLIGHT
                 //check if its on the cooldown list

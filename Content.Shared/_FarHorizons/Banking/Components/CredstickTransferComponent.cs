@@ -24,9 +24,6 @@ public sealed partial class CredstickTransferReceiverComponent : Component
     [ViewVariables] public int? Amount = null;
 }
 
-[RegisterComponent]
-public sealed partial class CredstickDirectTransferTargetComponent : Component;
-
 [Serializable, NetSerializable]
 public enum CredstickTransferUi : byte
 {

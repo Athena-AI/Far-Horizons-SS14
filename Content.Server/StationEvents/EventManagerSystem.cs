@@ -9,7 +9,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.EntityTable.EntitySelectors;
 using Content.Shared.EntityTable;
-using Content.Server._FarHorizons.Factions;
 
 namespace Content.Server.StationEvents;
 
@@ -22,7 +21,6 @@ public sealed partial class EventManagerSystem : EntitySystem
     [Dependency] private EntityTableSystem _entityTable = default!;
     [Dependency] public GameTicker GameTicker = default!;
     [Dependency] private RoundEndSystem _roundEnd = default!;
-    [Dependency] private IServerFactionManager _factions = default!; // Far Horizons
 
     public bool EventsEnabled { get; private set; }
     private void SetEnabled(bool value) => EventsEnabled = value;
@@ -346,13 +344,6 @@ public sealed partial class EventManagerSystem : EntitySystem
         {
             return false;
         }
-
-        // Far Horizons start
-        if (stationEvent.Faction != null &&
-            (_factions.GetCurrentFaction() is not {} curFaction ||
-            stationEvent.Faction != curFaction.ID))
-            return false;
-        // Far Horizons end
 
         return true;
     }

@@ -67,5 +67,3 @@ guide-entry-fh-security-sop-parole = Parole
 guide-entry-fh-security-sop-permitacquisition = Permit Acquisiton
 
 guide-entry-prometheus-protocol = Prometheus Protocol
-
-guide-entry-limbdamage = Limb Damage

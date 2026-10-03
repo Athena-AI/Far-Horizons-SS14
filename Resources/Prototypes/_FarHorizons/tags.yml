@@ -298,9 +298,6 @@
   id: RocketAmmo120mmShrapnel
 
 - type: Tag
-  id: SalvageBunker
-
-- type: Tag
   id: SalvageElderArena
 
 - type: Tag

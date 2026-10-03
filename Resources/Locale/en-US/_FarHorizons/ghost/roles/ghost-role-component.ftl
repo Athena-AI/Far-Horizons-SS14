@@ -9,6 +9,3 @@ ghost-role-information-detective-scurret-name = Detective WaWa
 ghost-role-information-detective-scurret-description = Be the best detective you can be! Help out the on-station Detective and be sure to say "Wa" a lot.
 
 ghost-role-information-paradox-clone-description-fh = A freak anomaly in time and space has brought you to another reality! You now must find a way to survive, the local Research Director might know something.. Or you could try killing the other 'you', that always works in the movies! ..Right?
-
-ghost-role-information-frown-name = Frown the Slime
-ghost-role-information-frown-description = The grumpiest academic you'll ever see.

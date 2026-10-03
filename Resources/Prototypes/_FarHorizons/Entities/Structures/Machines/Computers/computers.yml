@@ -1411,8 +1411,6 @@
   id: ComputerCriminalRecordsNS
   suffix: NS
   components:
-  - type: CriminalRecordsConsole
-    securityChannel: SyndiSec
   - type: Sprite
     sprite: _FarHorizons/Structures/Machines/Computers/NeoSol/security.rsi
     layers:

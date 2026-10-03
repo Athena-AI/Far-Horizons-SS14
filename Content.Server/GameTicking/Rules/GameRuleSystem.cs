@@ -1,4 +1,3 @@
-using Content.Server._FarHorizons.Factions;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Managers;
 using Content.Shared.GameTicking.Components;
@@ -18,7 +17,6 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
     // Not protected, just to be used in utility methods
     [Dependency] private AtmosphereSystem _atmosphere = default!;
     [Dependency] private MapSystem _map = default!;
-    [Dependency] private IServerFactionManager _factions = default!; // Far Horizons
 
     public override void Initialize()
     {
@@ -42,15 +40,10 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
             var minPlayers = gameRule.MinPlayers;
             var name = ToPrettyString(uid);
 
-            // Far Horizons start
-            var playerNumMatches = args.Players.Length >= minPlayers;
-            var factionMatches = gameRule.Faction == null || gameRule.Faction == _factions.GetCurrentFaction()?.ID;
-
-            if (playerNumMatches && factionMatches)
+            if (args.Players.Length >= minPlayers)
                 continue;
-            // Far Horizons end
 
-            if (gameRule.CancelPresetOnTooFewPlayers && !playerNumMatches) // Far Horizons
+            if (gameRule.CancelPresetOnTooFewPlayers)
             {
                 ChatManager.SendAdminAnnouncement(Loc.GetString("preset-not-enough-ready-players",
                     ("readyPlayersCount", args.Players.Length),
@@ -60,18 +53,6 @@ public abstract partial class GameRuleSystem<T> : EntitySystem where T : ICompon
                 //TODO remove this once announcements are logged
                 Log.Info($"Rule '{name}' requires {minPlayers} players, but only {args.Players.Length} are ready.");
             }
-            // Far Horizons start
-            else if (gameRule.CancelPresetOnFactionMismatch && !factionMatches)
-            {
-                ChatManager.SendAdminAnnouncement(Loc.GetString("preset-not-correct-faction",
-                    ("factionRequired", gameRule.Faction!),
-                    ("factionCurrent", _factions.GetCurrentFaction()!.ID),
-                    ("presetName", name)));
-                args.Cancel();
-                //TODO remove this once announcements are logged
-                Log.Info($"Rule '{name}' requires {gameRule.Faction!} faction, but {_factions.GetCurrentFaction()!.ID} is selected.");
-            }
-            // Far Horizons end
             else
             {
                 ForceEndSelf(uid, gameRule);

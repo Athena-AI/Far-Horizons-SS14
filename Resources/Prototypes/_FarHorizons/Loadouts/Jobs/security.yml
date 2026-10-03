@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 25h #15hr but cadet time (10hr) isn't counted
+      time: 50h
 
 #region General
 
@@ -119,66 +119,6 @@
   equipment:
     eyes: ClothingEyesGlassesDeputyMedical
 
-- type: loadout
-  id: LeverActionNT
-  dummyEntity: WeaponLeverActionNT
-  equipment:
-    suitstorage: WeaponLeverActionNT
-  storage:
-    back:
-    - SpeedLoaderMagnumLeverSP
-    - SpeedLoaderMagnumLeverSP
-    - SpeedLoaderMagnumLeverRubber
-
-- type: loadout
-  id: LeverActionModel2325
-  dummyEntity: WeaponLeverActionModel2325
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 20h #10hr but cadet time (10hr) isn't counted - This is both a 'special weapon' & 'prestige weapon' so, it would land in the 10hr range instead of 5
-  equipment:
-    suitstorage: WeaponLeverActionModel2325
-  storage:
-    back:
-    - SpeedLoaderMagnumLeverEmptyHardlight
-    - SpeedLoaderMagnumLeverEmptyHardlight
-    - SpeedLoaderMagnumLeverEmptyHardlight
-
-- type: loadout
-  id: LeverActionModel2325Pistol
-  dummyEntity: WeaponLeverActionModel2325Pistol
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 20h
-  storage:
-    back:
-    - WeaponLeverActionModel2325Pistol
-    - SpeedLoaderMagnumLeverEmptyHardlight
-    - SpeedLoaderMagnumLeverEmptyHardlight
-    - SpeedLoaderMagnumLeverEmptyHardlight
-
-- type: loadout
-  id: RevolverIndomitable
-  dummyEntity: WeaponRevolverIndomitable
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 20h
-  storage:
-    back:
-    - WeaponRevolverIndomitable
-    - SpeedLoaderMagnumLeverEmptyHardlight
-    - SpeedLoaderMagnumLeverEmptyHardlight
-    - SpeedLoaderMagnumLeverEmptyHardlight
-
 #region Brigmedic
 
 # Eyes
@@ -207,7 +147,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobBrigmedic
-        time: 5h # Needs to be earned
+        time: 36000 # Needs to be earned
   storage:
     back:
     - WeaponRevolverOathbreaker
@@ -223,7 +163,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobBrigmedic
-        time: 10h # Trust me, you don't wanna mess with a brig that knows how to transmute your blood into napalm+phlog mix
+        time: 360000 # Trust me, you don't wanna mess with a brig that knows how to transmute your blood into napalm+phlog mix
   storage:
     back:
     - WeaponRevolverOathbreakercustom
@@ -367,7 +307,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobCorpsman
-        time: 5h # Needs to be earned
+        time: 36000 # Needs to be earned
   storage:
     back:
     - WeaponPistolPathology
@@ -387,7 +327,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobDetective
-        time: 5h # Needs to be earned
+        time: 36000 # Needs to be earned
   storage:
     back:
     - WeaponRevolverInspector
@@ -403,7 +343,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobDetective
-        time: 10h
+        time: 360000 # Gonna be the most competent detective you've seen or some guy who afked for 50 rounds
   storage:
     back:
     - WeaponRevolverInspectorcustom
@@ -440,7 +380,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobSecurityOfficer
-        time: 5h # Needs to be earned
+        time: 36000 # Needs to be earned
   storage:
     back:
     - WeaponRevolverInstigator
@@ -456,7 +396,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobSecurityOfficer
-        time: 10h # Will still struggle with friendly fire.
+        time: 360000 # Will still struggle with friendly fire.
   storage:
     back:
     - WeaponRevolverInspectorcustom
@@ -472,7 +412,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobSecurityOfficer
-        time: 10h
+        time: 360000
   storage:
     back:
     - WeaponPistolMk58
@@ -492,7 +432,7 @@
       requirement:
         !type:RoleTimeRequirement
         role: JobWarden
-        time: 5h # Needs to be earned
+        time: 36000 # Needs to be earned
   storage:
     back:
     - WeaponPistolDP

@@ -28,7 +28,6 @@
   - SecurityBeltSyndi
   - SecurityNonLethalWeaponNS
   - MarshalOuterClothing
-  - SecurityLongarmNS
   - MarshalSidearm
   - SecurityShoesSyndi
   - SurvivalHeadOfSecurity
@@ -377,7 +376,6 @@
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
   - SecurityShoesSyndi
-  - SecurityLongarmNS
   - ConstableSidearm
   - SecurityNonLethalWeaponNS 
   - SurvivalSecurity
@@ -399,9 +397,8 @@
     - CorpsmanSyndiBelt
     - CorpsmanGloves
     - SecurityShoesSyndi
-    - SecurityLongarmNS
-    - CorpsmanSidearm #Still needs new NS version
     - SecurityNonLethalWeaponNS
+    - CorpsmanSidearm #Still needs new NS version
     - SurvivalSecurity
     - Trinkets
     - Scarves
@@ -421,9 +418,8 @@
     - BrigSyndiGloves
     - BrigSyndiBelt
     - SecurityShoesSyndi
-    - SecurityLongarmNS
-    - BrigmedicSidearm #Still needs new NS versions
     - SecurityNonLethalWeaponNS
+    - BrigmedicSidearm #Still needs new NS versions
     - SurvivalSecurity
     - Trinkets
     - Scarves
@@ -442,7 +438,6 @@
   - SecurityBackpackSyndi
   - InspectorOuterClothing
   - InspectorShoes
-  - SecurityLongarmNS
   - DetectiveSidearm #Still needs new NS versions
   - SecurityNonLethalWeaponNS
   - SurvivalSecurity
@@ -463,9 +458,8 @@
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
   - SecurityPDANS
-  - SecurityLongarmNS
-  - SecuritySidearmNS
   - SecurityNonLethalWeaponNS
+  - SecuritySidearmNS
   - SecurityShoesSyndi
   - SurvivalSecurity
   - Trinkets

@@ -76,8 +76,6 @@ public sealed partial class TamperSealSystem : SharedTamperSealSystem
         Appearance.RemoveData(uid, TamperSealVisuals.Destroyed);
         Appearance.RemoveData(uid, FactionTamperSealVisuals.Opened); //Far Horizons
         Appearance.RemoveData(uid, FactionTamperSealVisuals.Destroyed); //Far Horizons
-        Appearance.RemoveData(uid, TamperSealVisuals.Size); //Far Horizons
-        Appearance.RemoveData(uid, FactionTamperSealVisuals.Size); //Far Horizons
     }
 
 }

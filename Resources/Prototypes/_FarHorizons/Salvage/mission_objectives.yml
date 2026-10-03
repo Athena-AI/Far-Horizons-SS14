@@ -200,16 +200,16 @@
   description: salvage-mission-objective-description-data-heist
   announcement: salvage-mission-objective-announcement-data-heist
   baseReward:
-    Easy: 900
-    Moderate: 1100
-    Challenging: 1250
+    Easy: 800
+    Moderate: 1000
+    Challenging: 1150 # Lower rewards, but bonuses can bring it up quite high
   cashMultiplier: 4.5
   numTargets:
-    Easy: 2
-    Moderate: 3
-    Challenging: 4
-  bonus: 350
-  bonusCap: 2
+    Easy: 1
+    Moderate: 1
+    Challenging: 2
+  bonus: 450
+  bonusCap: 4
   allowedDifficulties:
     - Easy
     - Moderate

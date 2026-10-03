@@ -31,7 +31,7 @@
 - type: salvageMissionObjectiveHandler
   id: MissionObjectiveDataHeistHandler
   handler: !type:SalvageMissionDataHeist
-    numBodies: 25
+    numBodies: 20
     codeLength: 6
 
 - type: salvageMissionObjectiveHandler

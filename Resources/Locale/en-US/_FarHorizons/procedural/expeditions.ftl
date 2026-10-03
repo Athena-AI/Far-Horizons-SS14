@@ -1,6 +1,5 @@
 salvage-dungeon-mod-reactor = Nuclear Reactor
 salvage-dungeon-mod-factory = Automated Factory
-salvage-dungeon-mod-bunker = Command Bunker
 
 salvage-air-mod-nitrogen-atmosphere = N2 Atmosphere
 

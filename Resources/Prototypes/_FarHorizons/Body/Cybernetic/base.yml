@@ -83,11 +83,7 @@
     - type: Tag
       tags:
         - Inorganic
-    - type: UserInterface
-      interfaces:
-        enum.LimbItemToggleMenuUiKey.Key:
-          type: CyberLimbSystemItemsRadial
-          
+
 - type: entity
   parent: [ OrganBaseArmLeftNonEdible, OrganCyberExternal ]
   id: OrganCyberArmLeft
@@ -124,10 +120,6 @@
     - type: Tag
       tags:
         - Inorganic
-    - type: UserInterface
-      interfaces:
-        enum.LimbItemToggleMenuUiKey.Key:
-          type: CyberLimbSystemItemsRadial
 
 - type: entity
   parent: [ OrganBaseHandRightNonEdible, OrganCyberExternal ]

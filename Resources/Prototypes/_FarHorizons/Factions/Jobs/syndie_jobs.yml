@@ -13,12 +13,9 @@
     startingGear: SyndieCaptain
     accessGroups: 
     - AllAccessNS
-    special: &neosol_command_mindshield
+    special: &neosol_mindshield
       - !type:AddImplantSpecial
         implants: [ MindShieldImplantNS ]
-      - !type:AddComponentSpecial
-        components:
-          - type: CommandStaff
 
 - type: factionJobAssignment
   id: SyndieHeadOfSecurity
@@ -44,7 +41,7 @@
     - BrigmedicNS
     - GenpopEnterNS
     - GenpopLeaveNS
-    special: *neosol_command_mindshield
+    special: *neosol_mindshield
 
 
 - type: factionJobAssignment
@@ -69,7 +66,7 @@
     - CryogenicsNS
     - GenpopEnterNS
     - GenpopLeaveNS
-    special: *neosol_command_mindshield
+    special: *neosol_mindshield
 
 
 - type: factionJobAssignment
@@ -93,7 +90,7 @@
     - CryogenicsNS
     - SurgeryNS 
     - ParamedicNS
-    special: *neosol_command_mindshield
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieResearchDirector
@@ -114,7 +111,7 @@
     - BrigNS
     - CryogenicsNS
     - RoboticsNS
-    special: *neosol_command_mindshield
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieHeadOfPersonnel
@@ -157,7 +154,7 @@
     - Salvage
     - Lawyer
     - Cargo
-    special: *neosol_command_mindshield
+    special: *neosol_mindshield
 
 #region NSHC
 
@@ -202,7 +199,7 @@
       - Mining
       - SalvageLead
       - Cargo
-    special: *neosol_command_mindshield
+    special: *neosol_mindshield
 
 - type: factionJobAssignment
   id: SyndieBlueShield
@@ -244,9 +241,7 @@
       - Mining
       - SalvageLead
       - Cargo
-    special: &neosol_mindshield
-      - !type:AddImplantSpecial
-        implants: [ MindShieldImplantNS ]
+    special: *neosol_mindshield
     
 #region Civilan
 

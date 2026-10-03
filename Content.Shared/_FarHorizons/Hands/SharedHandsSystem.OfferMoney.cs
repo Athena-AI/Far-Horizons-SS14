@@ -8,8 +8,9 @@ namespace Content.Shared.Hands.EntitySystems;
 public abstract partial class SharedHandsSystem
 {
     [Dependency] private SharedBankingSystem _banking = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
-    private void OfferCreditsVerb(EntityUid uid, GetVerbsEvent<Verb> args)
+    private void OfferCreditsVerb(EntityUid uid, HandsComponent component, GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess ||
             !args.CanInteract ||
@@ -23,10 +24,17 @@ public abstract partial class SharedHandsSystem
 
         args.Verbs.Add(new Verb()
         {
-            Act = () => _banking.CredstickOpenOfferDialog((args.Using.Value, credstick), args.Target, args.User),
+            Act = () => OpenOfferDialog((args.Using.Value, credstick), args.Target, args.User),
             DoContactInteraction = true,
             Text = Loc.GetString("credstick-offer-transfer"),
             IconEntity = GetNetEntity(args.Using)
         });
+    }
+
+    private void OpenOfferDialog(Entity<CredstickComponent> ent, EntityUid target, EntityUid user)
+    {
+        ent.Comp.TransferSource = user;
+        ent.Comp.TransferTarget = target;
+        _ui.OpenUi(ent.Owner, ent.Comp.TransferUiKey, user);
     }
 }

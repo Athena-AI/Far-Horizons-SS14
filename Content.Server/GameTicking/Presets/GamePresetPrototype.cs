@@ -1,5 +1,4 @@
 using Content.Server.Maps;
-using Content.Shared._FarHorizons.Factions;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -54,6 +53,5 @@ namespace Content.Server.GameTicking.Presets
         [DataField("voteCooldown")]
         public int VoteCooldown = 2; // How many rounds before this preset can be voted for again.
         //starlight end
-        [DataField] public ProtoId<FactionPrototype>? Faction = null; // Far Horizons
     }
 }

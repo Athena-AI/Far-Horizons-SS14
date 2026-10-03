@@ -1,4 +1,3 @@
-using Content.Shared._FarHorizons.Factions;
 using Content.Shared.Destructible.Thresholds;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -44,9 +43,6 @@ public sealed partial class GameRuleComponent : Component
     [DataField]
     public List<string> DenyGameRules = new();
     // Starlight End
-
-    [DataField] public ProtoId<FactionPrototype>? Faction = null; // Far Horizons
-    [DataField] public bool CancelPresetOnFactionMismatch = true; // Far Horizons
 }
 
 /// <summary>

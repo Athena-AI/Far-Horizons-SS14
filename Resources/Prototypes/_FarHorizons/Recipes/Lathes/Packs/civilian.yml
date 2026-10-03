@@ -8,8 +8,7 @@
   - WeaponPistolMKTCivilian
   - WeaponPistolMKSCivilian
   - WeaponRevolverInstigatorCivilian
-  - WeaponLeverActionCivilian
-  - WeaponLeverActionCivilianPistol
+  - WeaponSniperLeverCivilian
 
 # Magazines
 - type: latheRecipePack

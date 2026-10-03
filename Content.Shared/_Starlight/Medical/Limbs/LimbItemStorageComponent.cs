@@ -9,7 +9,7 @@ public sealed partial class LimbItemStorageComponent : Component
     public List<EntProtoId> Items = [];
 
     [DataField, AutoNetworkedField]
-    public Dictionary<EntityUid, bool> ItemEntities = new(); //FH Edit
+    public List<EntityUid> ItemEntities = [];
 
     [DataField, AutoNetworkedField]
     public string ContainerId = "cyberlimb";

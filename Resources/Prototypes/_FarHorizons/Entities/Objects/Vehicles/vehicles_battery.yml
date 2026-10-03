@@ -420,7 +420,7 @@
   - type: ReagentDraw
     enabled: false
     solutionContainer: watertank
-    whitelistedReagents: 
+    whitelistedReagants: 
     - Water
     drainRate: 1
   - type: ItemMapper

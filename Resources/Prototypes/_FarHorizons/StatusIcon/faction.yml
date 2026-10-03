@@ -1,7 +1,0 @@
-- type: factionIcon
-  id: ConsortiumFaction
-  priority: 0
-  locationPreference: Left
-  icon:
-    sprite: /Textures/_FarHorizons/Interface/Misc/job_icons.rsi
-    state: Consortium

@@ -433,6 +433,7 @@
       types:
         Slash: 22
     soundHit: /Audio/Weapons/bladeslice.ogg
+    angle: 0
     animation: WeaponArcThrust
   - type: AltFireMelee
   - type: Scope
@@ -507,6 +508,7 @@
       types:
         Slash: 22
     soundHit: /Audio/Weapons/bladeslice.ogg
+    angle: 0
     animation: WeaponArcThrust
   - type: AltFireMelee
   - type: Scope
@@ -590,6 +592,7 @@
       types:
         Slash: 22
     soundHit: /Audio/Weapons/bladeslice.ogg
+    angle: 0
     animation: WeaponArcThrust
   - type: AltFireMelee
   - type: Scope

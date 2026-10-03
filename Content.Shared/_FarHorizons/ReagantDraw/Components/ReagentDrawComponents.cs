@@ -12,8 +12,8 @@ public sealed partial class ReagentDrawComponent : Component
     /// <summary>
     /// ReagentID for what solution to whitelist.
     /// </summary>
-    [DataField("whitelistedReagents")]
-    public List<ProtoId<ReagentPrototype>> WhitelistedReagents = new();
+    [DataField("whitelistedReagants")]
+    public List<ProtoId<ReagentPrototype>> WhitelistedReagants = new();
 
     /// <summary>
     /// Solution container name
@@ -28,19 +28,19 @@ public sealed partial class ReagentDrawComponent : Component
     public Entity<SolutionComponent>? Solution = null;
     
     /// <summary>
-    /// Whether the reagent drain is enabled
+    /// Whether the reagant drain is enabled
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Enabled = true;
 
     /// <summary>
-    /// How much reagent is drained
+    /// How much reagant is drained
     /// </summary>
     [DataField]
     public float DrainRate = 1f;
 
     /// <summary>
-    /// When the next reagent drain will go off
+    /// When the next reagant drain will go off
     /// </summary>
     [DataField("nextUpdate", customTypeSerializer: typeof(TimeOffsetSerializer))]
     [AutoPausedField]
@@ -54,13 +54,13 @@ public sealed partial class ReagentDrawComponent : Component
 }
 
 /// <summary>
-///     Raised when a reagent container's volume is changed
+///     Raised when a reagant container's volume is changed
 /// </summary>
 [ByRefEvent]
-public readonly record struct ReagentChangedEvent(float Volume, float MaxVolume);
+public readonly record struct ReagantChangedEvent(float Volume, float MaxVolume);
 
 /// <summary>
 /// Raised directed on an entity when it no longer has any solution to draw from
 /// </summary>
 [ByRefEvent]
-public readonly record struct ReagentContainerSlotEmptyEvent;
+public readonly record struct ReagantContainerSlotEmptyEvent;

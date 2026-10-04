@@ -2063,14 +2063,14 @@
   components:
   - type: Sprite
     layers:
-    - state: syndi
-    - state: idoperative
+    - state: syndi  # TODO- change to Lambda version
+    - state: idoperative # TODO- change to Lambda version
   - type: Item
     heldPrefix: black
   - type: Access
     tags:
-    - NuclearOperative
-    - SyndicateAgent
+    - LambdaOperative
+    - LambdaAgent
 
 - type: entity
   parent: [ LambdaIDCard, BaseSyndicateContraband ]
@@ -2080,8 +2080,8 @@
   components:
   - type: Sprite
     layers:
-    - state: syndi
-    - state: idoperative
+    - state: syndi  # TODO- change to Lambda version
+    - state: idoperative # TODO- change to Lambda version
   - type: Item
     heldPrefix: black
   - type: AgentIDCard
@@ -2094,8 +2094,8 @@
   components:
   - type: Sprite
     layers:
-    - state: syndi
-    - state: idsyndiagent
+    - state: syndi  # TODO- change to Lambda version
+    - state: idsyndiagent  # TODO- change to Lambda version
   - type: Item
     heldPrefix: black
 
@@ -2107,7 +2107,7 @@
   components:
   - type: Sprite
     layers:
-    - state: syndi
-    - state: idcommander
+    - state: syndi  # TODO- change to Lambda version
+    - state: idcommander  # TODO- change to Lambda version
   - type: Item
     heldPrefix: black

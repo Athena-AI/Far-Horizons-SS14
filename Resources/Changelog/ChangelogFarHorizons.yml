@@ -21740,5 +21740,27 @@ Entries:
   id: 184203
   time: '2026-10-03T18:27:09.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1842
+- author: MightyM1me
+  changes:
+  - message: 'Lambda PDAs: Corpsman, Operative, Commander and "base".'
+    type: Add
+  id: 182000
+  time: '2026-10-04T14:49:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1820
+- author: MightyM1me
+  changes:
+  - message: 'Lambda IDs: Corpsman, Operative, Commander and "base". For now they
+      are still using the syndie ID sprites.'
+    type: Add
+  id: 182001
+  time: '2026-10-04T14:49:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1820
+- author: MightyM1me
+  changes:
+  - message: PDAs added to the loadouts of Lambda Operatives.
+    type: Add
+  id: 182002
+  time: '2026-10-04T14:49:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1820
 Order: -1
 

@@ -1706,12 +1706,6 @@
 - type: loadout
   id: LeverActionNS
   dummyEntity: WeaponLeverActionNS
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Security
-      time: 10h
   storage:
     back:
     - WeaponLeverActionNS

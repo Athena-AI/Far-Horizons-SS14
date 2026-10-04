@@ -21797,5 +21797,12 @@ Entries:
   id: 184903
   time: '2026-10-04T15:00:29.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1849
+- author: Penguinwizzard
+  changes:
+  - message: Fixed more airlock animation sequencing.
+    type: Fix
+  id: 185300
+  time: '2026-10-04T16:49:03.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1853
 Order: -1
 

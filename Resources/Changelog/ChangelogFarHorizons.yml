@@ -21762,5 +21762,12 @@ Entries:
   id: 182002
   time: '2026-10-04T14:49:52.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1820
+- author: Penguinwizzard
+  changes:
+  - message: Airlock animations should be slightly smoother for most airlocks.
+    type: Tweak
+  id: 184800
+  time: '2026-10-04T14:54:04.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1848
 Order: -1
 

@@ -21769,5 +21769,33 @@ Entries:
   id: 184800
   time: '2026-10-04T14:54:04.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1848
+- author: Killer Tamashi
+  changes:
+  - message: Fixed NS Lever-Action being timelocked
+    type: Fix
+  id: 184900
+  time: '2026-10-04T15:00:29.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1849
+- author: Killer Tamashi
+  changes:
+  - message: Fixed NS not being able to print their Lever-Action
+    type: Fix
+  id: 184901
+  time: '2026-10-04T15:00:29.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1849
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Model 2325 (rifle/pistol) & Indomitable eating Shotgun Speedloaders
+    type: Fix
+  id: 184902
+  time: '2026-10-04T15:00:29.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1849
+- author: Killer Tamashi
+  changes:
+  - message: Fixed The Watcher having placeholder RoF values (1/s -> 2.7/s)
+    type: Fix
+  id: 184903
+  time: '2026-10-04T15:00:29.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1849
 Order: -1
 

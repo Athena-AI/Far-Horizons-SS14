@@ -1,7 +1,7 @@
 - type: entity
-  parent: [ToteBase, BaseCommandContraband] #FH
+  parent: [ToteBase, BaseCommandContraband]
   id: BoxCaptainCircuitboardsNS
-  name: Commandant Circuit Tote #FH
+  name: Commandant Circuit Tote
   components:
   - type: EntityTableContainerFill
     containers:
@@ -11,9 +11,9 @@
         - id: StationRecordsComputerCircuitboard
 
 - type: entity
-  parent: [ToteBase, BaseCommandContraband] #FH
+  parent: [ToteBase, BaseCommandContraband]
   id: BoxCECircuitboardsNS
-  name: Foreman Circuit Tote #FH
+  name: Foreman Circuit Tote
   components:
   - type: EntityTableContainerFill
     containers:
@@ -24,12 +24,12 @@
         - id: AtmosMonitoringComputerCircuitboard
         - id: PowerComputerCircuitboardNS
         - id: SolarControlComputerCircuitboardNS
-        - id: EngineeringCommsComputerCircuitboardNS # Starlight
+        - id: EngineeringCommsComputerCircuitboardNS
 
 - type: entity
-  parent: [ToteBase, BaseCommandContraband] #FH
+  parent: [ToteBase, BaseCommandContraband]
   id: BoxCMOCircuitboardsNS
-  name: Medical Director Circuit Tote #FH
+  name: Medical Director Circuit Tote
   components:
   - type: EntityTableContainerFill
     containers:
@@ -37,13 +37,13 @@
         children:
         - id: InterdyneTechFabCircuitboard
         - id: CargoRequestMedicalComputerCircuitboardNS
-        - id: MedicalCommsComputerCircuitboardNS # Starlight
+        - id: MedicalCommsComputerCircuitboardNS
 
 
 - type: entity
-  parent: [ToteBase, BaseCommandContraband] #FH
+  parent: [ToteBase, BaseCommandContraband]
   id: BoxHoPCircuitboardsNS
-  name: Personnel Manager Circuit Tote #FH
+  name: Personnel Manager Circuit Tote
   components:
   - type: EntityTableContainerFill
     containers:
@@ -52,12 +52,12 @@
         - id: IDComputerCircuitboardNS
         - id: FundingAllocationComputerCircuitboardNS
         - id: CargoRequestServiceComputerCircuitboardNS
-        - id: ServiceCommsComputerCircuitboardNS # Starlight
+        - id: ServiceCommsComputerCircuitboardNS
 
 - type: entity
-  parent: [ToteBase, BaseCommandContraband] #FH
+  parent: [ToteBase, BaseCommandContraband]
   id: BoxRDCircuitboardsNS
-  name: Epistemics Provost Circuit Tote #FH
+  name: Epistemics Provost Circuit Tote
   components:
   - type: EntityTableContainerFill
     containers:
@@ -71,4 +71,4 @@
         - id: AnalysisComputerCircuitboardNS #Because sometimes round start artis just fucking explode on the pad.
         - id: ArtifactAnalyzerMachineCircuitboard
         - id: StationAiFixerCircuitboard
-        - id: ScienceCommsComputerCircuitboardNS # Starlight
+        - id: ScienceCommsComputerCircuitboardNS

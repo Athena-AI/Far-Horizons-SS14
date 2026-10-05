@@ -114,30 +114,6 @@
       prototype: ComputerCommsScienceNS
 
 - type: entity
-  parent: [ BaseComputerCircuitboard, BaseCommandContraband ]
-  id: SecurityCommsComputerCircuitboardNS
-  name: security communications console board
-  suffix: NS
-  description: A computer printed circuit board for a security communications console.
-  components:
-    - type: Sprite
-      state: cpu_security
-    - type: ComputerBoard
-      prototype: ComputerCommsSecurityNS
-
-- type: entity
-  parent: [ BaseComputerCircuitboard, BaseCommandContraband ]
-  id: ServiceCommsComputerCircuitboardNS
-  name: service communications console board
-  suffix: NS
-  description: A computer printed circuit board for a service communications console.
-  components:
-    - type: Sprite
-      state: cpu_service
-    - type: ComputerBoard
-      prototype: ComputerCommsServiceNS
-
-- type: entity
   parent: [BaseComputerCircuitboard, BaseGrandTheftContraband]
   id: RecruitmentComputerCircuitboardNS
   name: recruitment computer computer board

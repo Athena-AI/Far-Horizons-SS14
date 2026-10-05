@@ -245,7 +245,7 @@
     - CargoBoardsStatic #Should Syndi have this?
     - NSMedicalBoardsStatic 
     - NSEngineeringBoardsStatic 
-    - NSStarlightVendorBoards #TODO: Figure out what to do with all the vending machines
+    - NSStarlightVendorBoards
     dynamicPacks: #TODO: SYNDI TECH
     - NSEngineeringBoards
     - CargoBoards

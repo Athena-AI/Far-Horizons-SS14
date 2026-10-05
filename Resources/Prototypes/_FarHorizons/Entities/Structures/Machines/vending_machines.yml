@@ -282,7 +282,7 @@
   description: A self cleaning vending machine capable of dispensing clothing for janitors.
   components:
   - type: VendingMachine
-    pack: JaniDrobeInventoryNeoSolNS
+    pack: JaniDrobeInventoryNeoSol
     offState: off
     brokenState: broken
     normalState: normal-unshaded

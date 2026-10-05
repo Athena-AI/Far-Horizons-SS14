@@ -384,6 +384,7 @@
   unlocks:
     - NodeScanner
     - AnalysisComputerCircuitboard
+    - AnalysisComputerCircuitboardNS
     - ArtifactAnalyzerMachineCircuitboard
 
 - type: researchTreeNode
@@ -435,7 +436,9 @@
     - SurveillanceWirelessCameraMovableCircuitboard
     - SurveillanceWirelessCameraAnchoredCircuitboard
     - SurveillanceCameraMonitorCircuitboard
+    - SurveillanceCameraMonitorCircuitboardNS
     - SurveillanceWirelessCameraMonitorCircuitboard
+    - SurveillanceWirelessCameraMonitorCircuitboardNS
     - TelecomServerCircuitboard
     - HolopadMachineCircuitboard
   announceTo:
@@ -1768,6 +1771,7 @@
     - SyringeGun
   unlocks:
     - CloningConsoleComputerCircuitboard 
+    - CloningConsoleComputerCircuitboardNS
     - CloningPodMachineCircuitboard 
     - MedicalScannerMachineCircuitboard
   announceTo:

@@ -1,0 +1,74 @@
+- type: entity
+  parent: [ToteBase, BaseCommandContraband] #FH
+  id: BoxCaptainCircuitboardsNS
+  name: Commandant Circuit Tote #FH
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: CommsComputerCircuitboardNS
+        - id: StationRecordsComputerCircuitboard
+
+- type: entity
+  parent: [ToteBase, BaseCommandContraband] #FH
+  id: BoxCECircuitboardsNS
+  name: Foreman Circuit Tote #FH
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: CargoRequestEngineeringComputerCircuitboardNS
+        - id: AlertsComputerCircuitboard
+        - id: AtmosMonitoringComputerCircuitboard
+        - id: PowerComputerCircuitboardNS
+        - id: SolarControlComputerCircuitboardNS
+        - id: EngineeringCommsComputerCircuitboardNS # Starlight
+
+- type: entity
+  parent: [ToteBase, BaseCommandContraband] #FH
+  id: BoxCMOCircuitboardsNS
+  name: Medical Director Circuit Tote #FH
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: InterdyneTechFabCircuitboard
+        - id: CargoRequestMedicalComputerCircuitboardNS
+        - id: MedicalCommsComputerCircuitboardNS # Starlight
+
+
+- type: entity
+  parent: [ToteBase, BaseCommandContraband] #FH
+  id: BoxHoPCircuitboardsNS
+  name: Personnel Manager Circuit Tote #FH
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: IDComputerCircuitboardNS
+        - id: FundingAllocationComputerCircuitboardNS
+        - id: CargoRequestServiceComputerCircuitboardNS
+        - id: ServiceCommsComputerCircuitboardNS # Starlight
+
+- type: entity
+  parent: [ToteBase, BaseCommandContraband] #FH
+  id: BoxRDCircuitboardsNS
+  name: Epistemics Provost Circuit Tote #FH
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: BoardEngraverMachineCircuitboard
+        - id: ProtolatheMachineCircuitboard
+        - id: ResearchComputerCircuitboardNS
+        - id: CargoRequestScienceComputerCircuitboardNS
+        - id: RoboticsConsoleCircuitboardNS
+        - id: AnalysisComputerCircuitboardNS #Because sometimes round start artis just fucking explode on the pad.
+        - id: ArtifactAnalyzerMachineCircuitboard
+        - id: StationAiFixerCircuitboard
+        - id: ScienceCommsComputerCircuitboardNS # Starlight

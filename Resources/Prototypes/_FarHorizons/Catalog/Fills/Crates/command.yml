@@ -1,7 +1,7 @@
 - type: entity
   parent: CrateCommandSecure
-  suffix: NT, Tech Vault, Secure
-  id: CrateEmergencyRestart
+  suffix: NS, Tech Vault, Secure
+  id: CrateEmergencyRestartNS
   name: emergency restart crate
   description: A secure crate with the essential circuitboards to rebuild a station. For truly dire situations.
   components:
@@ -10,7 +10,7 @@
       entity_storage: !type:AllSelector
         children:
         - id: ProtolatheMachineCircuitboard
-        - id: IDComputerCircuitboard
-        - id: CommsComputerCircuitboard
+        - id: IDComputerCircuitboardNS
+        - id: CommsComputerCircuitboardNS
         - id: AutolatheMachineCircuitboard
-        - id: CircuitImprinterMachineCircuitboard
+        - id: BoardEngraverMachineCircuitboard

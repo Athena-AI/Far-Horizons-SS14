@@ -21804,5 +21804,12 @@ Entries:
   id: 185300
   time: '2026-10-04T16:49:03.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1853
+- author: viv
+  changes:
+  - message: Added hair customizations for Reptilian and Moth species.
+    type: Add
+  id: 185700
+  time: '2026-10-05T03:28:54.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1857
 Order: -1
 

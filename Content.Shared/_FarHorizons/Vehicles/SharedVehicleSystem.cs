@@ -35,7 +35,6 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Emp;
 using Content.Shared.PowerCell.Components;
-using Content.Shared._FarHorizons.ReagentDraw;
 using Robust.Shared.Network;
 using Content.Shared.Repairable;
 using Content.Shared.Movement.Events;
@@ -80,17 +79,13 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         InitializeBuckle();
         
         SubscribeLocalEvent<VehicleComponent, ComponentStartup>(OnComponentStartup);
-        SubscribeLocalEvent<VehicleComponent, EntInsertedIntoContainerMessage>(OnEntInsertedVehicle, after: [typeof(SharedContainerSystem)]);
         SubscribeLocalEvent<VehicleComponent, GetAdditionalAccessEvent>(OnGetAdditionalAccess);
-        SubscribeLocalEvent<VehicleComponent, ItemSlotInsertEvent>(OnInsertEvent);
-        SubscribeLocalEvent<VehicleComponent, ItemSlotEjectEvent>(OnEjectEvent, before: [typeof(SharedHandsSystem)]);
         SubscribeLocalEvent<VehicleComponent, EjectKeysDoAfter>(OnEjectKeysDoAfter);
         SubscribeLocalEvent<VehicleComponent, TurnKeysDoAfter>(OnTurnKeysDoAfter);
         SubscribeLocalEvent<VehicleComponent, ReagentContainerSlotEmptyEvent>(OnEmptyReagentContainer);
         SubscribeLocalEvent<VehicleComponent, PowerCellSlotEmptyEvent>(OnPowerCellEmpty);
         SubscribeLocalEvent<VehicleComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<VehicleComponent, BreakageEventArgs>(OnBreakageEvent);
-        SubscribeLocalEvent<VehicleComponent, DamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<VehicleComponent, TurnKeysEvent>(OnTurnKeysEvent);
         SubscribeLocalEvent<VehicleComponent, HornActionEvent>(OnHornActionEvent);
         SubscribeLocalEvent<VehicleComponent, ToggleTrunkActionEvent>(OnToggleTrunk);
@@ -111,13 +106,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         Dirty(ent);
     }
 
-    private void OnEntInsertedVehicle(Entity<VehicleComponent> ent, ref EntInsertedIntoContainerMessage args)
-    {
-        if(args.Container.ID != "key_slot") return;
-        ent.Comp.hasKeys = _tags.HasTag(args.Entity, s_vehicleKeyTag);
-        Dirty(ent);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInsertEvent(Entity<VehicleComponent> ent, ref ItemSlotInsertEvent args)
     {
         if(_tags.HasTag(args.Item, s_vehicleKeyTag))
@@ -127,7 +116,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             var target = args.User;
             if(target != null)
             {
-                if(TryComp<BuckleComponent>(target, out var buckleComp) && buckleComp.BuckledTo == ent.Owner && ent.Comp.Rider == null)
+                if(TryComp<BuckleComponent>(target, out var buckleComp) && buckleComp.BuckledTo == ent.Owner)
                     SetUpRider(target.Value, (ent.Owner, ent.Comp));
                 if(TryComp<VehicleContainerComponent>(ent.Owner, out var vcComp) && vcComp.PassengerSlot.ContainedEntities.Any(x => x == target))
                     SetUpRider(target.Value, (ent.Owner, ent.Comp));
@@ -135,6 +124,15 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
+    private void OnEntInsertedVehicle(Entity<VehicleComponent> ent, ref EntInsertedIntoContainerMessage args)
+    {
+        if(args.Container.ID != "key_slot") return;
+        ent.Comp.hasKeys = _tags.HasTag(args.Entity, s_vehicleKeyTag);
+        Dirty(ent);
+    }
+
+    [SubscribeLocalEvent(before:[typeof(SharedHandsSystem)])]
     private void OnEjectEvent(Entity<VehicleComponent> ent, ref ItemSlotEjectEvent args)
     {
         if (!_gameTiming.IsFirstTimePredicted) return;
@@ -158,6 +156,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
                     }
                 }
 
+                ent.Comp.Rider = null;
                 TurnOffVehicle((ent.Owner, ent.Comp));
                 _handsSystem.PickupOrDrop(user, item);
                 Dirty(ent);
@@ -313,12 +312,13 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         args.Handled = true;
     }
 
-    private void OnDamageChanged(Entity<VehicleComponent> ent, ref DamageChangedEvent args)
+    [SubscribeLocalEvent]
+    private void OnDamageChanged(Entity<VehicleComponent> ent, ref DamageDealtEvent args)
     {
-        if(!args.DamageIncreased || args.DamageDelta == null) return;
+        if(args.Damage == null) return;
         if(args.Origin == ent) return;
 
-        var damage = args.DamageDelta * ent.Comp.DamageTransferMultiplier;
+        var damage = args.Damage * ent.Comp.DamageTransferMultiplier;
         foreach(var passenger in ent.Comp.Passengers)
         {
             if(TerminatingOrDeleted(passenger))

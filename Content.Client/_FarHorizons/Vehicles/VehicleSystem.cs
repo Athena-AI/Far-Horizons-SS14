@@ -1,5 +1,4 @@
 using Content.Shared._FarHorizons.Vehicles;
-using Content.Shared._FarHorizons.Vehicles;
 using Robust.Client.GameObjects;
 
 namespace Content.Client._FarHorizons.Vehicles;

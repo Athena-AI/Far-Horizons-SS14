@@ -332,7 +332,7 @@
         - PowerArmorUser
     soundHit:
       collection: MetalThud
-    damageTransferMultiplier: 0.5
+    damageTransfer: 0.5
   - type: VehicleContainer
     seats: 2
     passengerWhitelist:

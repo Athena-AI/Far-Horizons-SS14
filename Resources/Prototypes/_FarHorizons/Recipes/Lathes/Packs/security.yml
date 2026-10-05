@@ -1,4 +1,10 @@
-#region Static recipes
+#region Static Recipes - NS
+- type: latheRecipePack
+  id: FarHorizonsNSSecurityGeneralEquipmentStatic
+  recipes:
+  - WeaponLeverActionNS
+
+#region Static recipes - NT
 
 - type: latheRecipePack
   id: FarHorizonsSecurityGeneralEquipmentStatic
@@ -169,7 +175,7 @@
   - Rifle556HeavyMagazineFMJ
   - Rifle556HeavyMagazineEmpty
 
-#region Dynamic recipes
+#region Dynamic recipes - NT
 - type: latheRecipePack
   id: FarHorizonsSecurityWeaponsDynamic
   recipes:

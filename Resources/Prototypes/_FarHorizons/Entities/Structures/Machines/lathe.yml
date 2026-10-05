@@ -371,6 +371,7 @@
     - SecurityWeaponsStatic
     - FarHorizonsCivilianMagazinesStatic
     - FarHorizonsCivilianWeaponsStatic
+    - FarHorizonsNSSecurityGeneralEquipmentStatic
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons

@@ -337,7 +337,6 @@
           whitelist:
            tags:
            - ShellShotgun
-           - SpeedLoaderShotgun
           capacity: 10
           proto: null
           soundInsert:
@@ -630,7 +629,6 @@
           whitelist:
            tags:
            - ShellShotgun
-           - SpeedLoaderShotgun
           capacity: 4
           proto: null
           soundInsert:
@@ -966,10 +964,10 @@
       path: /Audio/_FarHorizons/Items/Weapons/Mark1/mark1.ogg
       params:
         variation: 0.246
-    fireRate: 1
+    fireRate: 2.7 #HoS should not be throwing his special weapon away because it does less DPS than their armory rifle.
     shotsPerBurst: 2
     burstFireRate: 30 #Simulates shooting 2 bullets at once.
-    burstCooldown: 2 # Same DPS, not really a way to balance this properly.
+    burstCooldown: 0.75 # Slightly faster. I think?
     availableModes:
     - Burst
     - SemiAuto

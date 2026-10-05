@@ -52,7 +52,6 @@
         - id: IDComputerCircuitboardNS
         - id: FundingAllocationComputerCircuitboardNS
         - id: CargoRequestServiceComputerCircuitboardNS
-        - id: ServiceCommsComputerCircuitboardNS
 
 - type: entity
   parent: [ToteBase, BaseCommandContraband]

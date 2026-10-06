@@ -21818,5 +21818,13 @@ Entries:
   id: 186200
   time: '2026-10-06T14:23:32.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1862
+- author: idkAnAlliasYetTbh
+  changes:
+  - message: (UNITY) Added a paramedic locker to the paramedic locker room to match
+      the number of roundstart slots.
+    type: Add
+  id: 185500
+  time: '2026-10-06T14:37:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1855
 Order: -1
 

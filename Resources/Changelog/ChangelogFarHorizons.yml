@@ -21811,5 +21811,12 @@ Entries:
   id: 185700
   time: '2026-10-05T03:28:54.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1857
+- author: Mizuki
+  changes:
+  - message: Added circuitboards for NS computers & vending machines
+    type: Add
+  id: 186200
+  time: '2026-10-06T14:23:32.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1862
 Order: -1
 

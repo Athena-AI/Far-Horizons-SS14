@@ -238,14 +238,3 @@
         settings: short
       job: ERTChaplain
       important: true
-
-# Misc
-- type: entity
-  categories: [HideSpawnMenu]
-  parent: NoosphericVFX2
-  id: ERTChaplainSpawnEffect
-  components:
-    - type: EmitSoundOnTrigger
-      sound:
-        path: /Audio/_Starlight/CosmicCult/cleanse_deconversion.ogg
-    - type: TriggerOnSpawn

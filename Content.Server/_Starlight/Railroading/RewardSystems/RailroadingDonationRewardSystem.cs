@@ -1,6 +1,6 @@
-﻿using Content.Shared._Starlight.Railroading;
+﻿using Content.Server._Starlight.Economy;
+using Content.Shared._Starlight.Railroading;
 using Content.Shared._Starlight.Railroading.Events;
-using Content.Shared.Starlight.Economy;
 using Robust.Server.Player;
 using Robust.Shared.Random;
 

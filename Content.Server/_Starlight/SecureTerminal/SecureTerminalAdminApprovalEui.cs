@@ -1,9 +1,7 @@
 using Content.Server.EUI;
+using Content.Server.Starlight.SecureTerminal;
 using Content.Shared._Starlight.SecureTerminal;
 using Content.Shared.Eui;
-using Robust.Server.GameObjects;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 
 namespace Content.Server._Starlight.SecureTerminal;
 

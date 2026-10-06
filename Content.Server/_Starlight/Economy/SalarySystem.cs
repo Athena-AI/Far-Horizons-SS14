@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Server._FarHorizons.Banking;
+﻿using Content.Server._FarHorizons.Banking;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Events;
@@ -10,12 +9,12 @@ using Content.Shared.Chat;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mind;
-using Robust.Server.Player;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Server.Starlight.SecureTerminal;
+using Content.Shared.Starlight.Economy;
 
 namespace Content.Server._Starlight.Economy;
 
@@ -81,7 +80,7 @@ public sealed partial class SalarySystem : SharedSalarySystem
 
     private int CalculateSalaryWithBonuses(int baseSalary, ICommonSession session, string source)
     {
-        var bonusMultiplier = _defaultBonusMultiplier;
+        var bonusMultiplier = 1.0;
 
         var sourceModifier = GetStationSalaryModifier("Everyone") + GetStationSalaryModifier(source);
         var multiplier = Math.Max(0.2f, 1f + sourceModifier); // Minimum income is 20% of the base salary
@@ -109,24 +108,19 @@ public sealed partial class SalarySystem : SharedSalarySystem
 
     private int PaySalary(ICommonSession session, Entity<MindComponent?> mind)
     {
-        // Far Horizons start
-        var senderProto = _roles.MindGetFaction(mind.Value.Owner) ?? _factions.GetCurrentFaction() ?? _factions.GetDefaultFaction();
-        var sender = _prototypes.Index(senderProto).Name;
-        // Far Horizons end
-        
-        if (!_playerResources.TryGetResource(session, "credits", out _))
-            return 0;
-
         var total = 0;
         var roles = _roles.MindGetAllRoleInfo(mind);
         foreach (var role in roles)
         {
-            if (!_salaries.Jobs.TryGetValue(role.Prototype, out var salary))
+            if (_salaries == null || !_salaries.Jobs.TryGetValue(role.Prototype, out var salary) || session.AttachedEntity == null)
                 continue;
 
-            var sender = _salaries.Sender.GetValueOrDefault(role.Prototype, "NanoTrasen");
+            // Far Horizons start
+            var senderProto = _roles.MindGetFaction(mind.Owner) ?? _factions.GetCurrentFaction() ?? _factions.GetDefaultFaction();
+            var sender = _prototypes.Index(senderProto).Name;
+            // Far Horizons end
             var amount = CalculateSalaryWithBonuses(salary, session, sender);
-            _playerResources.TryUpdateResource(session, "credits", amount);
+            _banking.ChangeBalance(session.AttachedEntity.Value, amount); // Far Horizons
 
             var message = Loc.GetString("economy-chat-salary-message", ("amount", amount), ("sender", sender));
             var wrappedMessage = Loc.GetString("economy-chat-salary-wrapped-message", ("amount", amount), ("sender", sender), ("senderColor", "#2384CE"));

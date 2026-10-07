@@ -21848,5 +21848,33 @@ Entries:
   id: 185801
   time: '2026-10-07T17:02:02.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1858
+- author: Princess Cheeseballs
+  changes:
+  - message: Spray effects work again.
+    type: Fix
+  id: 186300
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Items that purge solutions now work again.
+    type: Fix
+  id: 186301
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Items that regenerate solutions now work again.
+    type: Fix
+  id: 186302
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Welders now properly drain fuel.
+    type: Fix
+  id: 186303
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
 Order: -1
 

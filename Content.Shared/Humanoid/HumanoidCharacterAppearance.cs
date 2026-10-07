@@ -187,7 +187,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
                     .MarkingsByLayerAndGroupAndSex(layer, markingData.Value.Group, sex)
                     .ToList();
 
-                if (markings.Count == 0)
+                if (markings.Count == 0 || limitData.Limit == 0)
                     continue;
 
                 if(!limitData.Required && layer is not HumanoidVisualLayers.FacialHair)

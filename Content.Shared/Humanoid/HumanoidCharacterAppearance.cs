@@ -162,7 +162,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
 
         //FarHorizons Start
         Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> newMarkings = new();
-
+        
         foreach (var organ in markingManager.GetOrgans(species))
         {
             if (!markingManager.TryGetMarkingData(organ.Value, out var markingData))
@@ -190,27 +190,13 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
                 if (markings.Count == 0)
                     continue;
 
-                if(!limitData.Required)
+                if(!limitData.Required && layer is not HumanoidVisualLayers.FacialHair)
                     if (random.Prob(0.20f))
                         continue;
 
-                switch (layer)
-                {
-                    case HumanoidVisualLayers.Hair:
-                        if (random.Prob(0.20f) && !limitData.Required)
-                            continue;
-                        break;
-                    case HumanoidVisualLayers.Tail:
-                        if (random.Prob(0.90f) && !limitData.Required)
-                            continue;
-                        break;
-                    case HumanoidVisualLayers.FacialHair:
-                        if(random.Prob(sex == Sex.Female ? 0.90f : 0.70f) && !limitData.Required)
-                            continue;
-                        break;
-                    default:
-                        break;
-                }
+                else if(!limitData.Required && layer is HumanoidVisualLayers.FacialHair)
+                    if(random.Prob(sex == Sex.Female ? 0.90f : 0.70f))
+                        continue;
 
                 var markCount = random.Next(1, limitData.Limit);
                 var chosenMarkings = random.GetItems(markings, markCount, false);
@@ -250,7 +236,13 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         HumanoidVisualLayers.Snout,
         HumanoidVisualLayers.HeadTop,
         HumanoidVisualLayers.FacialHair,
-        HumanoidVisualLayers.Chest
+        HumanoidVisualLayers.Chest,
+        HumanoidVisualLayers.BodyCover,
+        HumanoidVisualLayers.BodyCoverCover,
+        HumanoidVisualLayers.Eyes, 
+        HumanoidVisualLayers.FaceCover,
+        HumanoidVisualLayers.FaceCoverCover,
+        HumanoidVisualLayers.Wings
     ];
     //FarHorizons End
 

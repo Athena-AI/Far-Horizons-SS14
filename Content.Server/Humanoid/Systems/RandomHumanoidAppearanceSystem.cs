@@ -56,7 +56,8 @@ public sealed partial class RandomHumanoidAppearanceSystem : EntitySystem
     {
         if (!HasComp<HumanoidProfileComponent>(uid))
             return;
-        var profile = HumanoidCharacterProfile.Random();
+            
+        var profile = HumanoidCharacterProfile.Random(new HashSet<string> { "IPC" });
         var speciesProto = _prototypeManager.Index(profile.Species);
         
         var dummy = Spawn(speciesProto.Prototype);

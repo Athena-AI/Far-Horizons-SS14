@@ -38,8 +38,11 @@ using Content.Shared.Temperature.Components;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.Weapons.Ranged.Systems;
+//Far Horizons Start
 using Content.Server._FarHorizons.NPC.Queries.Considerations;
 using Content.Server._FarHorizons.NPC.Queries.Filters;
+using Content.Server._FarHorizons.NPC.Queries.Queries;
+//Far Horizons End
 
 namespace Content.Server.NPC.Systems;
 
@@ -535,6 +538,16 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Far Horizons made
                 }
                 break;
             }
+            // Far Horizons start
+            // All FH additions will be defined externally to avoid bloating this function beyond reason
+            case ExternalQuery externalQuery:
+            {
+                foreach (var ent in externalQuery.GetEntities(blackboard, EntityManager))
+                    entities.Add(ent);
+
+                break;
+            }
+            // Far Horizons end
             default:
                 throw new NotImplementedException();
         }

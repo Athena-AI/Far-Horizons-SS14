@@ -21905,5 +21905,28 @@ Entries:
   id: 186600
   time: '2026-10-08T15:59:33.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1866
+- author: AthenaAI
+  changes:
+  - message: Fixes an issue where knockdown counted toward a vehicle's speed. Only
+      clothing affects the vehicle's speed.
+    type: Fix
+  id: 186100
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: AthenaAI
+  changes:
+  - message: Vehicle verbs are now predicted.
+    type: Fix
+  id: 186101
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: AthenaAI
+  changes:
+  - message: Examining a broken vehicle tells you what tool is required to fix the
+      vehicle.
+    type: Tweak
+  id: 186102
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
 Order: -1
 

@@ -1,0 +1,18 @@
+- type: entity
+  parent: RehydratableAnimalCube
+  id: SpaceDragonSpawns
+  name: the carp rift
+  description: What in the goddamn...?
+  suffix: Dragon Carp / Dragon Sharkminnow
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+  - type: Rehydratable
+    possibleSpawns: # 1 in 4 chance for a shork ~ 25%
+    - MobCarpDragon
+    - MobCarpDragon
+    - MobCarpDragon
+    - MobSharkDragon

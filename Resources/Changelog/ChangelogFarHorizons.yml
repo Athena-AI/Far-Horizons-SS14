@@ -21898,5 +21898,12 @@ Entries:
   id: 187102
   time: '2026-10-08T15:33:13.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: AthenaAI
+  changes:
+  - message: Fixed some issues with marking randomization.
+    type: Fix
+  id: 186600
+  time: '2026-10-08T15:59:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1866
 Order: -1
 

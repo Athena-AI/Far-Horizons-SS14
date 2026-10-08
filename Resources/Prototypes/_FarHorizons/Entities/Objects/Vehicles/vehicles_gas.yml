@@ -345,6 +345,7 @@
       storagebase: !type:Container
       vehicle_mods_container: !type:Container
   - type: Solution
+    id: fueltank 
     solution:
       maxVol: 150
   - type: RefillableSolution
@@ -409,7 +410,8 @@
           collection: MetalBreak
       - !type:DoActsBehavior
         acts: ["Breakage"]
-      - !type:ExplodeBehavior
+      - !type:SolutionExplosionBehavior
+        solution: fueltank
       - !type:EmptyContainersBehaviour
         containers:
         - passenger_slot

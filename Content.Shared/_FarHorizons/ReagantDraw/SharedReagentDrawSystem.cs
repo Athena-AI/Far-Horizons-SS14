@@ -3,7 +3,6 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Robust.Shared.Timing;
 using Robust.Shared.Containers;
-using Content.Shared.Destructible;
 
 namespace Content.Shared._FarHorizons.ReagentDraw;
 
@@ -18,7 +17,6 @@ public sealed partial class SharedReagentDrawSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<ReagentDrawComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ReagentDrawComponent, SolutionTransferAttemptEvent>(OnSolutionTransferAttempt);
-        SubscribeLocalEvent<ReagentDrawComponent, BreakageEventArgs>(OnBreakageEvent);
     }
 
     public override void Update(float frameTime)
@@ -120,13 +118,6 @@ public sealed partial class SharedReagentDrawSystem : EntitySystem
             args.Cancel("This solution isn't the right solution!");
             return;
         }
-    }
-
-    private void OnBreakageEvent(EntityUid ent, ReagentDrawComponent component, BreakageEventArgs args)
-    {
-        if(!_solutionContainer.ResolveSolution(ent, component.SolutionContainer, ref component.Solution, out var solution)) return;
-
-        UseReagent(ent, solution.Volume.Float(), solution, component);
     }
 
     public void SetDrawEnabled(Entity<ReagentDrawComponent?> ent, bool enabled)

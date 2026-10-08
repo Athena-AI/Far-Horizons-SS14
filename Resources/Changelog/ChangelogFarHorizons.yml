@@ -21876,5 +21876,27 @@ Entries:
   id: 186303
   time: '2026-10-07T17:04:37.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Penguinwizzard
+  changes:
+  - message: Airlock emag animations should play.
+    type: Fix
+  id: 187100
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: Penguinwizzard
+  changes:
+  - message: Airlocks and windoors should have the same order of options in the AI
+      alt-click rotary menus.
+    type: Fix
+  id: 187101
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: Penguinwizzard
+  changes:
+  - message: Airlocks now have a power consumption of 20u
+    type: Fix
+  id: 187102
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
 Order: -1
 

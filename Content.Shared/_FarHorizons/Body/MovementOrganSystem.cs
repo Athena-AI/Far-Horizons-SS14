@@ -4,6 +4,7 @@ using Content.Shared._FarHorizons.Traits;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Traits.Assorted;
+using Content.Shared.GameTicking;
 
 namespace Content.Shared._FarHorizons.Body;
 
@@ -19,6 +20,7 @@ public sealed partial class MovementOrganSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MovementOrganExpectedToMoveComponent, RefreshMovementSpeedModifiersEvent>(OnMovementModifierRefresh);
+        SubscribeLocalEvent<MovementOrganExpectedToMoveComponent, PlayerSpawnCompleteEvent>((uid, _, _) => SyncAndRefresh(uid));
         SubscribeLocalEvent<MovementOrganExpectedToMoveComponent, TraitsApplied>((uid, _, _) => SyncAndRefresh(uid));
         SubscribeLocalEvent<MovementOrganComponent, OrganGotRemovedEvent>((_, ref args) => SyncAndRefresh(args.Target));
         SubscribeLocalEvent<MovementOrganComponent, OrganGotInsertedEvent>((_, ref args) => SyncAndRefresh(args.Target));

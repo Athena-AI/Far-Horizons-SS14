@@ -21928,5 +21928,54 @@ Entries:
   id: 186102
   time: '2026-10-08T18:01:38.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: Killer Tamashi
+  changes:
+  - message: Added Dragon variant of sharkminnow, which is basically a beefier carp.
+      Can break walls. Not currently spawnable due to issues breaking AI, will be
+      implemented as part of rifts in a separate PR.
+    type: Add
+  id: 187200
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Buffed dragon fireball radius from plus sign shaped (from center, 1 tile
+      out in 4 directions ) to 3x3 square (from center, 1 tile out in 8 directions)
+    type: Tweak
+  id: 187201
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Buffed dragon by 200HP & Gave 5 Flat Piercing protection (this in essence
+      makes it take 2 extra magazines to kill using HP, from 3 on a lecter)
+    type: Tweak
+  id: 187202
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Changed Dragon damage from 15/15 Slash/Pierce to 30 Slash due to armor
+      having Pierce flats.
+    type: Tweak
+  id: 187203
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Removed SL's Dragon HP scaling (it was inconsistent and balanced around
+      ultra-highpop)
+    type: Remove
+  id: 187204
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Dragon being stunnable (it was immune to the status effect, but
+      not the slowdown)
+    type: Fix
+  id: 187205
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
 Order: -1
 

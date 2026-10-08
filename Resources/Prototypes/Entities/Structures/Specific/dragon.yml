@@ -6,7 +6,6 @@
     mode: SnapgridCenter
   components:
   - type: DragonRift
-    spawn: SpaceDragonSpawns #FH
   - type: Transform
     anchored: true
   - type: Physics

@@ -1,12 +1,18 @@
 - type: htnCompound
   id: ZombieCompound
   branches:
+    - preconditions:
+        - !type:IsKnockedDownPrecondition
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:StandUpOperator
+            shutdownState: TaskFinished
     - tasks:
         - !type:HTNCompoundTask
           task: ZombieMeleeCombatCompound
     - tasks:
         - !type:HTNCompoundTask
-          task: IdleCompound
+          task: ZombieIdleCompound
 
 #region Melee Combat
 - type: htnCompound
@@ -25,7 +31,7 @@
   query:
     - !type:NearbyHostilesQuery
   considerations:
-    - !type:TargetIsAliveCon
+    - !type:TargetCanBeInfectedCon
       curve: !type:BoolCurve
     - !type:TargetIsVisibleCon
       curve: !type:BoolCurve
@@ -110,7 +116,7 @@
 
 #region Idle
 - type: htnCompound
-  id: IdleCompound
+  id: ZombieIdleCompound
   branches:
     - tasks:
         - !type:HTNPrimitiveTask

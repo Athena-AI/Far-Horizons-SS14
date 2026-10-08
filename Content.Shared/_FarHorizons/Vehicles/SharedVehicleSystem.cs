@@ -444,9 +444,6 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         vehicle.Comp.Passengers.Add(rider);
         Dirty(vehicle);
 
-        if(HasComp<KnockedDownComponent>(rider) && !HasComp<LegsParalyzedComponent>(rider))
-            RemComp<KnockedDownComponent>(rider);
-
         if(_whitelist.IsWhitelistFail(vehicle.Comp.RiderWhitelist, rider) || _whitelist.IsWhitelistPass(vehicle.Comp.RiderBlacklist, rider)) return;
         if(!vehicle.Comp.hasKeys && vehicle.Comp.RequireIgnition) return;
         if(vehicle.Comp.Rider != null) return;

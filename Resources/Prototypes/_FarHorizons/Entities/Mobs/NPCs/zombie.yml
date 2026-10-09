@@ -1,0 +1,24 @@
+- type: entity
+  name: zombie
+  parent: MobHuman
+  id: MobZombieSpreader
+  suffix: Spreader
+  categories: [ Spawner ]
+  components:
+    - type: RandomSpecies
+    - type: RandomHumanoidAppearance
+      randomizeName: true 
+    - type: InputMover
+    - type: MobMover
+    - type: ZombifyOnSpawn
+      
+
+- type: entity
+  name: zombie
+  parent: MobZombieNonSpreader
+  id: MobZombieNonSpreader
+  suffix: NonSpreader
+  categories: [ Spawner ]
+  components:
+    - type: ZombifyOnSpawn
+      allowSpreading: false

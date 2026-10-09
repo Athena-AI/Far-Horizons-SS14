@@ -51,6 +51,7 @@ using Robust.Shared.Utility;
 using Content.Server._Starlight.Language;
 using Content.Shared._Starlight.Language.Components;
 #endregion Starlight
+using Content.Server._FarHorizons.Zombies; //FH
 
 namespace Content.Server.Zombies;
 
@@ -283,7 +284,8 @@ public sealed partial class ZombieSystem
         _inventory.TryUnequip(target, "gloves", true, true);
 
         //popup
-        _popup.PopupEntity(Loc.GetString("zombie-transform", ("target", target)), target, PopupType.LargeCaution);
+        if(!HasComp<ZombifyOnSpawnComponent>(target)) //FH
+            _popup.PopupEntity(Loc.GetString("zombie-transform", ("target", target)), target, PopupType.LargeCaution);
 
         //Make it sentient if it's an animal or something
         _mind.MakeSentient(target);

@@ -15,7 +15,7 @@
 
 - type: entity
   name: zombie
-  parent: MobZombieNonSpreader
+  parent: MobZombieSpreader
   id: MobZombieNonSpreader
   suffix: NonSpreader
   categories: [ Spawner ]

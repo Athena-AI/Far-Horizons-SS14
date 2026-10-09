@@ -4,6 +4,8 @@ using Content.Server.Objectives.Systems;
 using Content.Server.Popups;
 using Content.Shared.Actions;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Dragon;
 using Content.Shared.Gibbing;
 using Content.Shared.Maps;
@@ -34,6 +36,7 @@ public sealed partial class DragonSystem : EntitySystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private TurfSystem _turf = default!;
     [Dependency] private GibbingSystem _gibbing = default!; // Far Horizons
+    [Dependency] private DamageableSystem _damageable = default!; // FH
     [Dependency] private SmokeSystem _smoke = default!;
 
     private EntityQuery<CarpRiftsConditionComponent> _objQuery;
@@ -94,6 +97,9 @@ public sealed partial class DragonSystem : EntitySystem
 
                 if (TryComp<DragonRiftComponent>(lastRift, out var rift) && rift.State != DragonRiftState.Finished)
                 {
+                    if (TryComp<DamageableComponent>(uid, out var damageable) && !_mobState.IsCritical(uid)) // heal if rift is active and dragon isnt critical
+                        _damageable.HealEvenly((uid, damageable), comp.RegenRate * frameTime);
+                    
                     comp.RiftAccumulator = 0f;
                     continue;
                 }

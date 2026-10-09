@@ -1,15 +1,15 @@
 - type: htnCompound
   id: ZombieCompound
   branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: ZombieMeleeCombatCompound
     - preconditions:
         - !type:IsKnockedDownPrecondition
       tasks:
         - !type:HTNPrimitiveTask
           operator: !type:StandUpOperator
             shutdownState: TaskFinished
-    - tasks:
-        - !type:HTNCompoundTask
-          task: ZombieMeleeCombatCompound
     - tasks:
         - !type:HTNCompoundTask
           task: ZombieIdleCompound

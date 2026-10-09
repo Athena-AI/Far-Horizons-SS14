@@ -21,7 +21,7 @@ public sealed partial class StandUpOperator : HTNOperator
     public override HTNOperatorStatus Update(NPCBlackboard blackboard, float frameTime)
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
-        if(!_entManager.HasComponent<CrawlerComponent>(owner))
+        if(!_entManager.HasComponent<KnockedDownComponent>(owner))
             return HTNOperatorStatus.Finished;
 
         if (_entManager.HasComponent<LegsParalyzedComponent>(owner))

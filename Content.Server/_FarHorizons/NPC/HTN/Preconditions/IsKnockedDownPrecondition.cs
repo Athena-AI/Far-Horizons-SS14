@@ -16,7 +16,6 @@ public sealed partial class IsKnockedDownPrecondition : HTNPrecondition
         if (_entMan.HasComponent<LegsParalyzedComponent>(owner))
             return false;
 
-        var isKnockedDown = _entMan.HasComponent<CrawlerComponent>(owner);
-        return isKnockedDown;
+        return _entMan.HasComponent<KnockedDownComponent>(owner);
     }
 }

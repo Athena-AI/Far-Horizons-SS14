@@ -4,6 +4,7 @@ using Content.Server.Objectives.Systems;
 using Content.Server.Popups;
 using Content.Shared.Actions;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Dragon;
@@ -96,11 +97,16 @@ public sealed partial class DragonSystem : EntitySystem
                 var lastRift = comp.Rifts[^1];
 
                 if (TryComp<DragonRiftComponent>(lastRift, out var rift) && rift.State != DragonRiftState.Finished)
-                {
-                    if (TryComp<DamageableComponent>(uid, out var damageable) && !_mobState.IsCritical(uid)) // heal if rift is active and dragon isnt critical
-                        _damageable.HealEvenly((uid, damageable), comp.RegenRate * frameTime);
-                    
+                { 
                     comp.RiftAccumulator = 0f;
+                    comp.HealingAccumulator += frameTime;
+
+                    if (TryComp<DamageableComponent>(uid, out var damageable) && !_mobState.IsCritical(uid) && comp.HealingAccumulator >= 1) // heal if rift is active and dragon isnt critical
+                    {
+                        _damageable.HealEvenly((uid, damageable), comp.RegenRate);
+                        comp.HealingAccumulator -= 1;
+                    }
+                    
                     continue;
                 }
             }
@@ -279,6 +285,8 @@ public sealed partial class DragonSystem : EntitySystem
                 break;
             }
         }
+
+        ResetHealing(uid, comp); //FH
     }
 
     /// <summary>
@@ -313,5 +321,29 @@ public sealed partial class DragonSystem : EntitySystem
         _movement.RefreshMovementSpeedModifiers(dragonUid);
         _popup.PopupEntity(Loc.GetString("carp-rift-destroyed"), dragonUid, dragonUid);
         // Starlight edit End
+        //FH start
+        ResetHealing(dragonUid, comp); //FH
+
+        var damage = new DamageSpecifier
+        {
+            DamageDict = { ["Blunt"] = 150f },
+        };
+        _damageable.TryChangeDamage(dragonUid, damage); // deal 150 blunt as penalty for failure
+        //FH end
     }
+
+    //FH start
+    /// <summary>
+    /// Reset the healing accumulator and give their last tick of healing
+    /// </summary>
+    public void ResetHealing(EntityUid uid, DragonComponent comp)
+    {
+        if (comp.HealingAccumulator > 0) // give last tick of healing and reset the accumulator
+            if (TryComp<DamageableComponent>(uid, out var damageable) && !_mobState.IsCritical(uid))
+            {
+                _damageable.HealEvenly((uid, damageable), comp.RegenRate);
+                comp.HealingAccumulator = 0;
+            }
+    }
+    //FH end
 }

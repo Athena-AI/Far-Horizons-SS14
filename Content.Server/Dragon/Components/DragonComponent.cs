@@ -88,5 +88,11 @@ namespace Content.Server.Dragon
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite), DataField("regenRate")]
         public float RegenRate = -1f;
+
+        /// <summary>
+        /// Used to accurately heal a dragon every second
+        /// </summary>
+        [DataField("healingaccumulator")]
+        public float HealingAccumulator;
     }
 }

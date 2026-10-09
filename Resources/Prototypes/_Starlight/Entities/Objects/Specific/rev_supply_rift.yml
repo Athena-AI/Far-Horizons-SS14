@@ -6,8 +6,9 @@
     mode: SnapgridCenter
   components:
   - type: RevSupplyRift
-  - type: DragonRift
-    spawn: CrateSovietArmaments
+    spawn: !type:AllSelector #FH start
+      children:
+      - id: CrateSovietArmaments #FH end
     spawnCooldown: 35  # Spawn a crate every 35 seconds
     spawnAccumulator: 35  # Spawn a crate immediately upon creation
   - type: RevolutionaryRift

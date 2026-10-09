@@ -1,7 +1,7 @@
+using Content.Shared._FarHorizons.Vehicles;
 using Robust.Client.UserInterface;
-using Content.Shared._FarHorizons.Vehicles.Equipment;
 
-namespace Content.Client._FarHorizons.Vehicles.Equipment;
+namespace Content.Client._FarHorizons.Vehicles;
 
 public sealed class VehicleEquipmentBoundUserInterface : BoundUserInterface
 {

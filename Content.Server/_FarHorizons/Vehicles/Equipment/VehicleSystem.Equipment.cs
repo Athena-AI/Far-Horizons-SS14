@@ -1,4 +1,4 @@
-using Content.Shared._FarHorizons.Vehicles.Components;
+using Content.Shared._FarHorizons.Vehicles;
 using Content.Shared.Actions;
 using Content.Shared.Light.Components;
 using Content.Shared.Coordinates;
@@ -11,14 +11,10 @@ using System.Linq;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.PowerCell;
-using Content.Shared._FarHorizons.ReagentDraw.Components;
+using Content.Shared._FarHorizons.ReagentDraw;
 using Content.Shared.UserInterface;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Server._FarHorizons.Vehicles.Atmos;
-using Content.Shared._FarHorizons.Vehicles.Events;
-using Content.Shared._FarHorizons.Vehicles.Equipment;
 using Robust.Shared.Utility;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
@@ -29,36 +25,23 @@ using Robust.Shared.Random;
 using Content.Server.Destructible;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Audio;
 
-namespace Content.Server._FarHorizons.Vehicles.Equipment;
-public sealed partial class VehicleEquipmentSystems : EntitySystem
+namespace Content.Server._FarHorizons.Vehicles;
+public sealed partial class VehicleSystem
 {
-    [Dependency] private SharedContainerSystem _container = default!;
-    [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private SharedActionsSystem _actions = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private PowerCellSystem _powerCell = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private DamageableSystem _damage = default!;
-    [Dependency] private VehicleAtmosphereSystem _vAtmos = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IConfigurationManager _configManager = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
 
     private float _frictionModifier;
     private float _airfrictionModifier;
-    public override void Initialize()
+    public void InitializeEquipment()
     {
-        base.Initialize();
-
         SubscribeLocalEvent<VehicleModsComponent, ComponentStartup>(OnCompStartup);
 
         SubscribeLocalEvent<VehicleModsComponent, InteractUsingEvent>(OnInstallAttempt);
@@ -109,7 +92,7 @@ public sealed partial class VehicleEquipmentSystems : EntitySystem
         {
             foreach(var itemProto in ent.Comp.StartingEquipment)
             {
-                if (_proto.TryIndex<EntityPrototype>(itemProto, out var proto))
+                if (_prototypes.TryIndex<EntityPrototype>(itemProto, out var proto))
                     if (!proto.Components.ContainsKey("VehicleEquipment"))
                         continue;
                 
@@ -440,7 +423,7 @@ public sealed partial class VehicleEquipmentSystems : EntitySystem
             return;
 
         if(TryComp<VehicleFanModComponent>(fan, out var fanComp))
-            _vAtmos.SetFanState(ent, fanComp, FanState.Off);
+            SetFanState(ent, fanComp, FanState.Off);
     }
 
     private void GridUiChanged(Entity<VehicleModsComponent> ent, ref GridUidChangedEvent args)

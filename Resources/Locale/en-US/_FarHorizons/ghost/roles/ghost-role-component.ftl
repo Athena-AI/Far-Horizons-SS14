@@ -12,3 +12,6 @@ ghost-role-information-paradox-clone-description-fh = A freak anomaly in time an
 
 ghost-role-information-frown-name = Frown the Slime
 ghost-role-information-frown-description = The grumpiest academic you'll ever see.
+
+ghost-role-information-sentient-sharkminnow-name = Sentient Sharkminnow
+ghost-role-information-sentient-sharkminnow-description = Tear down walls in groups and defend the Dragon & Sentient Carps!

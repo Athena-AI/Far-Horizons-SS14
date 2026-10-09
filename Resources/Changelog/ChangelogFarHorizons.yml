@@ -21834,5 +21834,99 @@ Entries:
   id: 186000
   time: '2026-10-07T14:17:43.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1860
+- author: Princess Cheeseballs, metalgearsloth
+  changes:
+  - message: Artifacts can now have nodes triggered by damage again.
+    type: Fix
+  id: 185800
+  time: '2026-10-07T17:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1858
+- author: Princess Cheeseballs, metalgearsloth
+  changes:
+  - message: Webs (and a few other things) once again take damage properly.
+    type: Fix
+  id: 185801
+  time: '2026-10-07T17:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1858
+- author: Princess Cheeseballs
+  changes:
+  - message: Spray effects work again.
+    type: Fix
+  id: 186300
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Items that purge solutions now work again.
+    type: Fix
+  id: 186301
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Items that regenerate solutions now work again.
+    type: Fix
+  id: 186302
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Welders now properly drain fuel.
+    type: Fix
+  id: 186303
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Penguinwizzard
+  changes:
+  - message: Airlock emag animations should play.
+    type: Fix
+  id: 187100
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: Penguinwizzard
+  changes:
+  - message: Airlocks and windoors should have the same order of options in the AI
+      alt-click rotary menus.
+    type: Fix
+  id: 187101
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: Penguinwizzard
+  changes:
+  - message: Airlocks now have a power consumption of 20u
+    type: Fix
+  id: 187102
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: AthenaAI
+  changes:
+  - message: Fixed some issues with marking randomization.
+    type: Fix
+  id: 186600
+  time: '2026-10-08T15:59:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1866
+- author: AthenaAI
+  changes:
+  - message: Fixes an issue where knockdown counted toward a vehicle's speed. Only
+      clothing affects the vehicle's speed.
+    type: Fix
+  id: 186100
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: AthenaAI
+  changes:
+  - message: Vehicle verbs are now predicted.
+    type: Fix
+  id: 186101
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: AthenaAI
+  changes:
+  - message: Examining a broken vehicle tells you what tool is required to fix the
+      vehicle.
+    type: Tweak
+  id: 186102
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
 Order: -1
 

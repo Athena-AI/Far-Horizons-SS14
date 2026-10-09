@@ -22063,5 +22063,27 @@ Entries:
   id: 187807
   time: '2026-10-09T08:27:44.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: rainenjoyer
+  changes:
+  - message: Changed chemistry machine's UI to work better with the new container
+      sizes.
+    type: Tweak
+  id: 188100
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: rainenjoyer
+  changes:
+  - message: added 40U, 60U and 120U buttons to chemistry machines.
+    type: Add
+  id: 188101
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: rainenjoyer
+  changes:
+  - message: removed the 25U, 50U and 100U buttons from chemistry machines.
+    type: Remove
+  id: 188102
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
 Order: -1
 

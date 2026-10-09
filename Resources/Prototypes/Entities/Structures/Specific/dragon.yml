@@ -10,9 +10,9 @@
     spawn: !type:GroupSelector 
       children:
       - id: MobCarpDragon
-        weight: 85
+        weight: 75
       - id: MobSharkDragon
-        weight: 15
+        weight: 25
   #FH end
   - type: Transform
     anchored: true

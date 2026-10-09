@@ -75,3 +75,7 @@
       - BasePlayingCardDeck # Replace this with your concrete deck.
   - type: StaticPrice
     price: 25
+  - type: Tag
+    tags:
+      - ChameleonProjectorBlacklist 
+    

@@ -10,10 +10,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._Moffstation.Cards;
 
-public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSystem<PlayingCardHandComponent>
+public sealed partial class CardHandVisualizerSystem : ManagedLayerVisualizerSystem<PlayingCardHandComponent> //FH - Make partial for dependencies
 {
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly SharedPlayingCardsSystem _playingCards = default!;
+    //FH - Remove readonly for dependencies
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private SharedPlayingCardsSystem _playingCards = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

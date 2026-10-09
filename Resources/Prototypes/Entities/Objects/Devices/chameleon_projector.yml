@@ -36,6 +36,7 @@
       - Catwalk # Catwalks make you invisible
       - Wall # Walls make you invisible
       - Window # Windows make you invisible
+      - ChameleonProjectorBlacklist #FH
     disguiseProto: ChameleonDisguise
   - type: StaticPrice
     price: 5000

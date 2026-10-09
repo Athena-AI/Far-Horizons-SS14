@@ -21977,5 +21977,28 @@ Entries:
   id: 187205
   time: '2026-10-08T23:32:46.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: KarusKardin
+  changes:
+  - message: Added passive health regeneration to Space Dragons with active rifts
+      (Heals 300 HP total from each rift)
+    type: Add
+  id: 187700
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: KarusKardin
+  changes:
+  - message: Added a 150 blunt damage penalty to dragons when a rift is destroyed
+    type: Add
+  id: 187701
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: KarusKardin
+  changes:
+  - message: Fixed Dragon variant of the sharkminnow not spawning by converting Rifts
+      to use EntityTableSelector
+    type: Fix
+  id: 187702
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
 Order: -1
 

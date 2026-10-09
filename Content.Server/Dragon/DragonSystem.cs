@@ -4,9 +4,9 @@ using Content.Server.Objectives.Systems;
 using Content.Server.Popups;
 using Content.Shared.Actions;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
-using Content.Shared.Damage.Systems;
+using Content.Shared.Damage; //FH
+using Content.Shared.Damage.Components; //FH
+using Content.Shared.Damage.Systems; //FH
 using Content.Shared.Dragon;
 using Content.Shared.Gibbing;
 using Content.Shared.Maps;
@@ -97,8 +97,9 @@ public sealed partial class DragonSystem : EntitySystem
                 var lastRift = comp.Rifts[^1];
 
                 if (TryComp<DragonRiftComponent>(lastRift, out var rift) && rift.State != DragonRiftState.Finished)
-                { 
+                {
                     comp.RiftAccumulator = 0f;
+                    //FH start
                     comp.HealingAccumulator += frameTime;
 
                     if (TryComp<DamageableComponent>(uid, out var damageable) && !_mobState.IsCritical(uid) && comp.HealingAccumulator >= 1) // heal if rift is active and dragon isnt critical
@@ -106,7 +107,8 @@ public sealed partial class DragonSystem : EntitySystem
                         _damageable.HealEvenly((uid, damageable), comp.RegenRate);
                         comp.HealingAccumulator -= 1;
                     }
-                    
+                    //FH end
+
                     continue;
                 }
             }
@@ -321,8 +323,9 @@ public sealed partial class DragonSystem : EntitySystem
         _movement.RefreshMovementSpeedModifiers(dragonUid);
         _popup.PopupEntity(Loc.GetString("carp-rift-destroyed"), dragonUid, dragonUid);
         // Starlight edit End
+
         //FH start
-        ResetHealing(dragonUid, comp); //FH
+        ResetHealing(dragonUid, comp);
 
         var damage = new DamageSpecifier
         {

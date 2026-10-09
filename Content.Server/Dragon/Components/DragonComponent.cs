@@ -83,6 +83,7 @@ namespace Content.Server.Dragon
         [DataField]
         public Solution SmokeSolution = new ([new("Blood", 1)]);
 
+        //FH start
         /// <summary>
         /// How much to heal per second when a rift is active
         /// </summary>
@@ -94,5 +95,6 @@ namespace Content.Server.Dragon
         /// </summary>
         [DataField("healingaccumulator")]
         public float HealingAccumulator;
+        //FH end
     }
 }

@@ -307,7 +307,12 @@ public sealed partial class ZombieSystem
         _identity.QueueIdentityUpdate(target);
 
         var htn = EnsureComp<HTNComponent>(target);
-        htn.RootTask = new HTNCompoundTask() { Task = "ZombieCompound" }; //FH
+        //FH Start
+        htn.RootTask = new HTNCompoundTask() { Task = "ZombieCompound" }; 
+        htn.Blackboard.SetValue("NavClimb", true);
+        htn.Blackboard.SetValue("NavPry", true);
+        htn.Blackboard.SetValue("NavSmash", true);
+        //FH End
         htn.Blackboard.SetValue(NPCBlackboard.Owner, target);
         _npc.SleepNPC(target, htn);
 

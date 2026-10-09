@@ -22000,5 +22000,68 @@ Entries:
   id: 187702
   time: '2026-10-09T07:52:55.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added a system for playing cards. (neomoth, Centronias)
+    type: Add
+  id: 187800
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added standard 54 (52+2 joker) playing card decks. Comes in black, NanoTrasen,
+      and Syndicate flavors! Can be purchased from the local GoodCleanFun vendor.
+      (neomoth, Centronias)
+    type: Add
+  id: 187801
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added Nuno, an original card game that is totally not based off of Uno.
+      (neomoth, Centronias)
+    type: Add
+  id: 187802
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added the ability to provide custom visuals for an item in the strip
+      menu in order to obscure information (such as what playing cards someone else
+      is holding to prevent cheating). (neomoth, Centronias)
+    type: Add
+  id: 187803
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Tarot Cards can now be found in the chaplain's PietyVendor! (Centronias,
+      Huaqas)
+    type: Add
+  id: 187804
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Fixed a few subtle bugs with cards causing visual issues and various
+      mispredicts. (Centronias, Huaqas)
+    type: Fix
+  id: 187805
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Fixed a missing localization on one card deck verb. (Centronias, Huaqas)
+    type: Fix
+  id: 187806
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Picking up cards from hands while your hands are full doesn't
+    type: Fix
+  id: 187807
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
 Order: -1
 

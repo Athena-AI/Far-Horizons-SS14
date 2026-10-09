@@ -1,4 +1,5 @@
 using Content.Server.NPC;
+using Content.Server.Zombies;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Zombies;
@@ -25,6 +26,10 @@ public sealed partial class TargetCanBeInfectedCon : ExternalConsideration
         var mobstate = entMan.System<MobStateSystem>();
         if(mobstate.IsDead(targetUid) || mobstate.IsCritical(targetUid))
         {
+            var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
+            if(entMan.HasComponent<NonSpreaderZombieComponent>(owner))
+                return 0f;
+                
             var ev = new ZombificationResistanceQueryEvent(ProtectiveSlots);
             entMan.EventBus.RaiseLocalEvent(targetUid, ev);
             

@@ -7,7 +7,6 @@ using Robust.Shared.Prototypes;
 using System.Linq; 
 using Content.Server.Cloning;
 using Content.Server.Body.Components;
-using Content.Server.Body;
 // FarHorizons End
 
 namespace Content.Server.Humanoid.Systems;

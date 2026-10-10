@@ -20,4 +20,7 @@
   # Idle when targets not found
   - tasks:
     - !type:HTNCompoundTask
+      task: PatrolBeaconCompound
+  - tasks:
+    - !type:HTNCompoundTask
       task: IdleCompound

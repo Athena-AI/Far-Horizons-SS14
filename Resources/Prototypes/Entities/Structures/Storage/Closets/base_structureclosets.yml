@@ -238,7 +238,7 @@
   - type: Paintable
     group: WallLocker
   # Starlight Start: Wires panel
-  - type: PoweredLocker
+  - type: PassivePower # Far Horizons
   - type: StationAiWhitelist
   - type: WiresPanel
   - type: WiresPanelSecurity

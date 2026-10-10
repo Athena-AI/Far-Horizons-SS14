@@ -1,6 +1,6 @@
+using Content.Shared._FarHorizons.Traits.Assorted;
 using Content.Shared.DoAfter;
 using Content.Shared.Stunnable;
-using Content.Shared.Traits.Assorted;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Combat;
 

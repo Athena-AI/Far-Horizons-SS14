@@ -1,7 +1,7 @@
 using Content.Server.NPC;
 using Content.Server.NPC.HTN.Preconditions;
+using Content.Shared._FarHorizons.Traits.Assorted;
 using Content.Shared.Stunnable;
-using Content.Shared.Traits.Assorted;
 
 namespace Content.Server._FarHorizons.NPC.HTN.Preconditions;
 

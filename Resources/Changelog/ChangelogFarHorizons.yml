@@ -21928,5 +21928,214 @@ Entries:
   id: 186102
   time: '2026-10-08T18:01:38.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: Killer Tamashi
+  changes:
+  - message: Added Dragon variant of sharkminnow, which is basically a beefier carp.
+      Can break walls. Not currently spawnable due to issues breaking AI, will be
+      implemented as part of rifts in a separate PR.
+    type: Add
+  id: 187200
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Buffed dragon fireball radius from plus sign shaped (from center, 1 tile
+      out in 4 directions ) to 3x3 square (from center, 1 tile out in 8 directions)
+    type: Tweak
+  id: 187201
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Buffed dragon by 200HP & Gave 5 Flat Piercing protection (this in essence
+      makes it take 2 extra magazines to kill using HP, from 3 on a lecter)
+    type: Tweak
+  id: 187202
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Changed Dragon damage from 15/15 Slash/Pierce to 30 Slash due to armor
+      having Pierce flats.
+    type: Tweak
+  id: 187203
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Removed SL's Dragon HP scaling (it was inconsistent and balanced around
+      ultra-highpop)
+    type: Remove
+  id: 187204
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Dragon being stunnable (it was immune to the status effect, but
+      not the slowdown)
+    type: Fix
+  id: 187205
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: KarusKardin
+  changes:
+  - message: Added passive health regeneration to Space Dragons with active rifts
+      (Heals 300 HP total from each rift)
+    type: Add
+  id: 187700
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: KarusKardin
+  changes:
+  - message: Added a 150 blunt damage penalty to dragons when a rift is destroyed
+    type: Add
+  id: 187701
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: KarusKardin
+  changes:
+  - message: Fixed Dragon variant of the sharkminnow not spawning by converting Rifts
+      to use EntityTableSelector
+    type: Fix
+  id: 187702
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added a system for playing cards. (neomoth, Centronias)
+    type: Add
+  id: 187800
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added standard 54 (52+2 joker) playing card decks. Comes in black, NanoTrasen,
+      and Syndicate flavors! Can be purchased from the local GoodCleanFun vendor.
+      (neomoth, Centronias)
+    type: Add
+  id: 187801
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added Nuno, an original card game that is totally not based off of Uno.
+      (neomoth, Centronias)
+    type: Add
+  id: 187802
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added the ability to provide custom visuals for an item in the strip
+      menu in order to obscure information (such as what playing cards someone else
+      is holding to prevent cheating). (neomoth, Centronias)
+    type: Add
+  id: 187803
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Tarot Cards can now be found in the chaplain's PietyVendor! (Centronias,
+      Huaqas)
+    type: Add
+  id: 187804
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Fixed a few subtle bugs with cards causing visual issues and various
+      mispredicts. (Centronias, Huaqas)
+    type: Fix
+  id: 187805
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Fixed a missing localization on one card deck verb. (Centronias, Huaqas)
+    type: Fix
+  id: 187806
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Picking up cards from hands while your hands are full doesn't
+    type: Fix
+  id: 187807
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: rainenjoyer
+  changes:
+  - message: Changed chemistry machine's UI to work better with the new container
+      sizes.
+    type: Tweak
+  id: 188100
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: rainenjoyer
+  changes:
+  - message: added 40U, 60U and 120U buttons to chemistry machines.
+    type: Add
+  id: 188101
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: rainenjoyer
+  changes:
+  - message: removed the 25U, 50U and 100U buttons from chemistry machines.
+    type: Remove
+  id: 188102
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: Killer Tamashi
+  changes:
+  - message: Changed Sharkminnow & Dragon Resists -> Flat reduction removed
+    type: Tweak
+  id: 188300
+  time: '2026-10-10T13:59:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1883
+- author: Killer Tamashi
+  changes:
+  - message: Changed Sharkminnow spawn chance to be 5%
+    type: Tweak
+  id: 188301
+  time: '2026-10-10T13:59:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1883
+- author: Killer Tamashi
+  changes:
+  - message: Changed Sharkminnow damage to 15 slash instead of 10 slash and 5 bloodloss
+    type: Tweak
+  id: 188302
+  time: '2026-10-10T13:59:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1883
+- author: AthenaAI
+  changes:
+  - message: Moved the Wheelchair from normal lathe to medical lathe.
+    type: Tweak
+  id: 188400
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: AthenaAI
+  changes:
+  - message: Having one leg will now consider you as being equivalent to a paralyzed
+      person.
+    type: Tweak
+  id: 188401
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: AthenaAI
+  changes:
+  - message: Fixed people being knocked down before they even could see their characters
+      which led to mispredictions.
+    type: Fix
+  id: 188402
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: AthenaAI
+  changes:
+  - message: Fixed Wheelchair bound people being knocked down when they spawned on
+      their wheel chairs.
+    type: Fix
+  id: 188403
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
 Order: -1
 

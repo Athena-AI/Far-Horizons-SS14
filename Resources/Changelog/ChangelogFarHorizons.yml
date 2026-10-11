@@ -22151,5 +22151,28 @@ Entries:
   id: 188900
   time: '2026-10-11T14:53:08.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1889
+- author: princess_gurchi
+  changes:
+  - message: Star System system now supports handmade star systems outside of procedural
+      generation
+    type: Add
+  id: 188800
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: princess_gurchi
+  changes:
+  - message: CC now orbits a pulsar
+    type: Add
+  id: 188801
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: princess_gurchi
+  changes:
+  - message: NSHC now orbits a black hole (risk of high performance impact, please
+      let us know of any FPS drops on HC)
+    type: Add
+  id: 188802
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
 Order: -1
 

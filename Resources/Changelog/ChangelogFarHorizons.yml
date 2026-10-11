@@ -22144,5 +22144,12 @@ Entries:
   id: 188600
   time: '2026-10-11T14:51:21.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1886
+- author: korczoczek
+  changes:
+  - message: Fixed LocId spam when selecting research tree nodes.
+    type: Fix
+  id: 188900
+  time: '2026-10-11T14:53:08.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1889
 Order: -1
 

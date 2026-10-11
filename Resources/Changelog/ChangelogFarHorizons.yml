@@ -22137,5 +22137,12 @@ Entries:
   id: 188403
   time: '2026-10-10T18:23:46.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: Mizuki
+  changes:
+  - message: Carp hivemind is no longer anonymous
+    type: Tweak
+  id: 188600
+  time: '2026-10-11T14:51:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1886
 Order: -1
 

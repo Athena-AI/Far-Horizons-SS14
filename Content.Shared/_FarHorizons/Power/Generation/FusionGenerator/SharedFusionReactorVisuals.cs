@@ -6,15 +6,28 @@ namespace Content.Shared._FarHorizons.Power.Generation.FusionGenerator;
 [Serializable, NetSerializable]
 public enum FusionReactorMaserVisuals
 {
-    Enabled,
+    Power,
+    Jar,
     Injecting
 }
 
 [Serializable, NetSerializable]
 public enum FusionReactorMaserVisualLayers
 {
-    Enabled,
+    Power,
+    Jar,
     Injecting
+}
+
+[Serializable, NetSerializable]
+public enum FusionReactorMaserVisualPowerLevel
+{
+    Level0,
+    Level1,
+    Level2,
+    Level3,
+    Level4,
+    Level5
 }
 #endregion
 
@@ -36,22 +49,23 @@ public enum FusionReactorGasInletVisualLayers
 [Serializable, NetSerializable]
 public enum FusionReactorCoolantPumpVisuals
 {
+    Type,
     Enabled
 }
 
 [Serializable, NetSerializable]
 public enum FusionReactorCoolantPumpVisualLayers
 {
+    Type,
     Enabled
 }
 
 [Serializable, NetSerializable]
 public enum FusionReactorCoolantPumpEnabledType
 {
-    InletOff,
-    InletOn,
-    OutletOff,
-    OutletOn
+    Off,
+    Inlet,
+    Outlet
 }
 #endregion
 
@@ -59,12 +73,16 @@ public enum FusionReactorCoolantPumpEnabledType
 [Serializable, NetSerializable]
 public enum FusionReactorBatteryVisuals
 {
+    Input,
+    Output,
     ChargeLevel
 }
 
 [Serializable, NetSerializable]
 public enum FusionReactorBatteryVisualLayers
 {
+    Input,
+    Output,
     ChargeLevel
 }
 
@@ -97,9 +115,25 @@ public enum FusionReactorControllerVisualLayers
 public enum FusionReactorControllerVisualDisplayState
 {
     Off,
-    On,
-    Warning,
-    Critical,
-    Bad
+    Damage0,
+    Damage1,
+    Damage2,
+    Damage3
+}
+#endregion
+
+#region Torus
+[Serializable, NetSerializable]
+public enum FusionReactorTorusVisuals
+{
+    Magnet,
+    Superconducting
+}
+
+[Serializable, NetSerializable]
+public enum FusionReactorTorusVisualLayers
+{
+    Magnet,
+    Superconducting
 }
 #endregion

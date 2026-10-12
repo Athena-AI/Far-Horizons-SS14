@@ -1,5 +1,6 @@
 using Content.Server._FarHorizons.Power.Generation.FusionGenerator.Components;
 using Content.Server._FarHorizons.Power.Generation.FusionGenerator.NodeGroup;
+using Content.Shared._FarHorizons.Power.Generation.FusionGenerator;
 using Content.Shared.Atmos;
 
 namespace Content.Server._FarHorizons.Power.Generation.FusionGenerator.EntitySystems;
@@ -20,6 +21,7 @@ public sealed partial class FusionReactorSystem
 
         torus.IsMagnet = state;
         UpdateMagnetAudio(uid, torus);
+        UpdateTorusVisuals(uid, torus);
     }
 
     private void ProcessCooling(FusionReactorNodeGroup fusionReactor, float dt)
@@ -98,4 +100,10 @@ public sealed partial class FusionReactorSystem
 
     private void UpdateMagnetAudio(EntityUid uid, FusionReactorTorusComponent comp) =>
         _ambientSoundSystem.SetAmbience(uid, comp.IsMagnet && comp.Superconducting);
+
+    private void UpdateTorusVisuals(EntityUid uid, FusionReactorTorusComponent comp)
+    {
+        _appearance.SetData(uid, FusionReactorTorusVisuals.Magnet, comp.IsMagnet);
+        _appearance.SetData(uid, FusionReactorTorusVisuals.Superconducting, comp.IsMagnet && comp.Superconducting);
+    }
 }

@@ -66,7 +66,11 @@ public sealed partial class FusionReactorSystem
         {
             Text = Loc.GetString(comp.IsInlet ? "fusion-reactor-gas-inlet-verb-set-outlet" : "fusion-reactor-gas-inlet-verb-set-inlet"),
             TextStyleClass = "InteractionVerb",
-            Act = () => comp.IsInlet = !comp.IsInlet,
+            Act = () =>
+            {
+                comp.IsInlet = !comp.IsInlet;
+                UpdateCoolantPumpVisuals(uid, comp);
+            },
         };
         args.Verbs.Add(changeVerb);
     }
@@ -120,11 +124,11 @@ public sealed partial class FusionReactorSystem
 
     private void UpdateCoolantPumpVisuals(EntityUid uid, FusionReactorCoolantPumpComponent comp)
     {
-        var visualState = comp.IsInlet ?
-            comp.Enabled ? FusionReactorCoolantPumpEnabledType.InletOn : FusionReactorCoolantPumpEnabledType.InletOff :
-            comp.Enabled ? FusionReactorCoolantPumpEnabledType.OutletOn : FusionReactorCoolantPumpEnabledType.OutletOff;
+        var visualType = comp.IsInlet ? FusionReactorCoolantPumpEnabledType.Inlet : FusionReactorCoolantPumpEnabledType.Outlet;
+        _appearance.SetData(uid, FusionReactorCoolantPumpVisuals.Type, visualType);
 
-        _appearance.SetData(uid, FusionReactorCoolantPumpVisuals.Enabled, visualState);
+        var visualEnabled = comp.Enabled ? visualType : FusionReactorCoolantPumpEnabledType.Off;
+        _appearance.SetData(uid, FusionReactorCoolantPumpVisuals.Enabled, visualEnabled);
     }
 
     private void OnCoolantPumpSetEnableMessage(EntityUid uid, FusionReactorCoolantPumpComponent comp, ref FusionReactorCoolantPumpSetEnableMessage args)

@@ -68,20 +68,22 @@ public sealed partial class FusionReactorSystem : EntitySystem
         }
     }
 
-    private void UpdateBatteryVisuals(EntityUid uid)
+    private void UpdateBatteryVisuals(EntityUid uid, FusionReactorBatteryComponent comp)
     {
         var chargeLevel = _battery.GetChargeLevel(uid) switch
         {
-            float n when n == 0 => FusionReactorBatteryVisualChargeLevel.Level0,
-            float n when n is > 0 and <= 0.2f => FusionReactorBatteryVisualChargeLevel.Level1,
-            float n when n is > 0.2f and <= 0.4f => FusionReactorBatteryVisualChargeLevel.Level2,
-            float n when n is > 0.4f and <= 0.6f => FusionReactorBatteryVisualChargeLevel.Level3,
-            float n when n is > 0.6f and <= 0.8f => FusionReactorBatteryVisualChargeLevel.Level4,
-            float n when n is > 0.8f => FusionReactorBatteryVisualChargeLevel.Level5,
+            float n when n is <= 0f => FusionReactorBatteryVisualChargeLevel.Level0,
+            float n when n is > 0f and <= 0.25f => FusionReactorBatteryVisualChargeLevel.Level1,
+            float n when n is > 0.25f and <= 0.5f => FusionReactorBatteryVisualChargeLevel.Level2,
+            float n when n is > 0.5f and <= 0.75f => FusionReactorBatteryVisualChargeLevel.Level3,
+            float n when n is > 0.75f and < 1f => FusionReactorBatteryVisualChargeLevel.Level4,
+            float n when n is >= 1f => FusionReactorBatteryVisualChargeLevel.Level5,
             _ => FusionReactorBatteryVisualChargeLevel.Level0
         };
 
         _appearance.SetData(uid, FusionReactorBatteryVisuals.ChargeLevel, chargeLevel);
+        _appearance.SetData(uid, FusionReactorBatteryVisuals.Input, comp.NetBattery.CanCharge);
+        _appearance.SetData(uid, FusionReactorBatteryVisuals.Output, comp.NetBattery.CanDischarge);
     }
 
     #region BUI

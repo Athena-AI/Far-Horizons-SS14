@@ -153,10 +153,10 @@ public sealed partial class FusionReactorSystem
     {
         var displayState = fusionReactor.IntegrityRatio switch
         {
-            float n when n is >= 1 => FusionReactorControllerVisualDisplayState.On,
-            float n when n is > 0.5f and < 1f => FusionReactorControllerVisualDisplayState.Warning,
-            float n when n is > 0.25f and <= 0.5f => FusionReactorControllerVisualDisplayState.Critical,
-            float n when n is <= 0.25f => FusionReactorControllerVisualDisplayState.Bad,
+            float n when n is >= 1 => FusionReactorControllerVisualDisplayState.Damage0,
+            float n when n is > 0.5f and < 1f => FusionReactorControllerVisualDisplayState.Damage1,
+            float n when n is > 0.25f and <= 0.5f => FusionReactorControllerVisualDisplayState.Damage2,
+            float n when n is <= 0.25f => FusionReactorControllerVisualDisplayState.Damage3,
             _ => FusionReactorControllerVisualDisplayState.Off
         };
 

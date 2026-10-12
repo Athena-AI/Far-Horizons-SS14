@@ -83,7 +83,19 @@ public sealed partial class FusionReactorSystem
 
     private void UpdateMaserVisuals(EntityUid uid, FusionReactorMaserComponent comp)
     {
-        _appearance.SetData(uid, FusionReactorMaserVisuals.Enabled, comp.PowerSetting > 0);
+        var powerLevel = (comp.PowerSetting / (float)comp.MaxPowerSetting) switch
+        {
+            float n when n is <= 0f => FusionReactorMaserVisualPowerLevel.Level0,
+            float n when n is > 0f and <= 0.2f => FusionReactorMaserVisualPowerLevel.Level1,
+            float n when n is > 0.2f and <= 0.4f => FusionReactorMaserVisualPowerLevel.Level2,
+            float n when n is > 0.4f and <= 0.6f => FusionReactorMaserVisualPowerLevel.Level3,
+            float n when n is > 0.6f and <= 0.8f => FusionReactorMaserVisualPowerLevel.Level4,
+            float n when n is > 0.8f => FusionReactorMaserVisualPowerLevel.Level5,
+            _ => FusionReactorMaserVisualPowerLevel.Level0
+        };
+
+        _appearance.SetData(uid, FusionReactorMaserVisuals.Power, powerLevel);
+        _appearance.SetData(uid, FusionReactorMaserVisuals.Jar, comp.AMJarSlot.HasItem);
         _appearance.SetData(uid, FusionReactorMaserVisuals.Injecting, comp.InjectAntimatter);
     }
 

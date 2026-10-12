@@ -5,11 +5,11 @@
   description: The control center for a fusion reactor.
   components:
   - type: Sprite
-    sprite: Structures/Power/Generation/ame.rsi
+    sprite: _FarHorizons/Structures/Power/Generation/FusionGenerator/fusion_reactor_controller.rsi
     state: control
     layers:
     - state: control
-    - map: ["display"]
+    - map: ["enum.FusionReactorControllerVisualLayers.Display"]
       state: control_on
       shader: unshaded
       visible: false
@@ -18,10 +18,10 @@
       enum.FusionReactorControllerVisuals.Display:
         enum.FusionReactorControllerVisualLayers.Display:
           Off: { visible: false }
-          On: { state: control_on, visible: true }
-          Warning: { state: control_warning, visible: true }
-          Critical: { state: control_critical, visible: true }
-          Bad: { state: control_fuck, visible: true }
+          Damage0: { visible: true, state: control_on }
+          Damage1: { visible: true, state: control_warning }
+          Damage2: { visible: true, state: control_critical }
+          Damage3: { visible: true, state: control_fuck }
   - type: Appearance
   - type: InteractionOutline
   - type: Rotatable
@@ -59,7 +59,7 @@
   - type: PowerMonitoringDevice
     group: Generator
     loadNode: output
-    sprite: Structures/Power/Generation/ame.rsi
+    sprite: _FarHorizons/Structures/Power/Generation/FusionGenerator/fusion_reactor_controller.rsi
     state: static
   - type: PowerSupplier
     supplyRampRate: 75000

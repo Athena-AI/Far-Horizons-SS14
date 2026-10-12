@@ -55,7 +55,7 @@ public sealed partial class FusionReactorSystem : EntitySystem
     /// <summary>
     /// May eventually be handled by a grid/map level component like the atmosphere system, but for now the system can keep track of it.
     /// </summary>
-    private List<FusionReactorNodeGroup> _fusionReactors = [];
+    private readonly List<FusionReactorNodeGroup> _fusionReactors = [];
 
     public override void Initialize()
     {
@@ -131,8 +131,14 @@ public sealed partial class FusionReactorSystem : EntitySystem
 
     private void UpdateVisuals(FusionReactorNodeGroup fusionReactor)
     {
-        foreach(var (uid, _) in fusionReactor.Batteries)
-            UpdateBatteryVisuals(uid);
+        foreach(var (uid, comp) in fusionReactor.Batteries)
+            UpdateBatteryVisuals(uid, comp);
+
+        foreach(var (uid, comp) in fusionReactor.Torus)
+            UpdateTorusVisuals(uid, comp);
+        
+        foreach(var (uid, comp) in fusionReactor.Magnets)
+            UpdateTorusVisuals(uid, comp);
     }
 
     private bool TryGetReactorGroup(EntityUid uid, [NotNullWhen(true)] out FusionReactorNodeGroup? reactorNodeGroup)

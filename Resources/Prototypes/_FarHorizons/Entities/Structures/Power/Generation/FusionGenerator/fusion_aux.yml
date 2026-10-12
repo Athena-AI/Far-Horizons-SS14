@@ -6,21 +6,28 @@
   suffix: Inlet
   components:
   - type: Sprite
-    sprite: Structures/Piping/Atmospherics/thermomachine.rsi
+    sprite: _FarHorizons/Structures/Power/Generation/FusionGenerator/fusion_reactor_pump.rsi
     layers:
+    - map: ["enum.FusionReactorCoolantPumpVisualLayers.Type"]
+      state: inlet
     - map: ["enum.FusionReactorCoolantPumpVisualLayers.Enabled"]
-      state: freezerOff
+      state: inletOn
+      shader: unshaded
+      visible: false
     - map: [ "enum.PipeVisualLayers.Pipe" ]
       state: pipe
       renderingStrategy: Default
-  - type: GenericVisualizer # When proper sprites are made, this is going to be redone
+  - type: GenericVisualizer
     visuals:
       enum.FusionReactorCoolantPumpVisuals.Enabled:
         enum.FusionReactorCoolantPumpVisualLayers.Enabled:
-          InletOff: { state: freezerOff }
-          InletOn: { state: freezerOn }
-          OutletOff: { state: heaterOff }
-          OutletOn: { state: heaterOn }
+          Off: { visible: false }
+          Inlet: { visible: true, state: inletOn }
+          Outlet: { visible: true, state: outletOn }
+      enum.FusionReactorCoolantPumpVisuals.Type:
+        enum.FusionReactorCoolantPumpVisualLayers.Type:
+          Inlet: { state: inlet }
+          Outlet: { state: outlet }
   - type: AtmosPipeLayers
     spriteLayersRsiPaths:
       enum.PipeVisualLayers.Pipe:
@@ -85,8 +92,12 @@
   components:
   - type: Sprite
     layers:
+    - map: ["enum.FusionReactorCoolantPumpVisualLayers.Type"]
+      state: outlet
     - map: ["enum.FusionReactorCoolantPumpVisualLayers.Enabled"]
-      state: heaterOff
+      state: outletOn
+      shader: unshaded
+      visible: false
     - map: [ "enum.PipeVisualLayers.Pipe" ]
       state: pipe
       renderingStrategy: Default
@@ -100,11 +111,19 @@
   description: Stores the energy needed to operate the fusion reactor.
   components:
   - type: Sprite
-    sprite: _FarHorizons/Structures/Power/smes.rsi
+    sprite: _FarHorizons/Structures/Power/Generation/FusionGenerator/fusion_reactor_battery.rsi
     layers:
-    - state: smes
+    - state: battery
     - map: ["enum.FusionReactorBatteryVisualLayers.ChargeLevel"]
-      state: "smes-og1"
+      state: "charge-lvl1"
+      shader: unshaded
+      visible: false
+    - map: ["enum.FusionReactorBatteryVisualLayers.Input"]
+      state: "input"
+      shader: unshaded
+      visible: false
+    - map: ["enum.FusionReactorBatteryVisualLayers.Output"]
+      state: "output"
       shader: unshaded
       visible: false
   - type: GenericVisualizer
@@ -112,11 +131,19 @@
       enum.FusionReactorBatteryVisuals.ChargeLevel:
         enum.FusionReactorBatteryVisualLayers.ChargeLevel:
           Level0: { visible: false }
-          Level1: { visible: true, state: "smes-og1" }
-          Level2: { visible: true, state: "smes-og2" }
-          Level3: { visible: true, state: "smes-og3" }
-          Level4: { visible: true, state: "smes-og4" }
-          Level5: { visible: true, state: "smes-og5" }
+          Level1: { visible: true, state: "charge-lvl1" }
+          Level2: { visible: true, state: "charge-lvl2" }
+          Level3: { visible: true, state: "charge-lvl3" }
+          Level4: { visible: true, state: "charge-lvl4" }
+          Level5: { visible: true, state: "charge-lvl5" }
+      enum.FusionReactorBatteryVisuals.Input:
+        enum.FusionReactorBatteryVisualLayers.Input:
+          True: { visible: true }
+          False: { visible: false }
+      enum.FusionReactorBatteryVisuals.Output:
+        enum.FusionReactorBatteryVisualLayers.Output:
+          True: { visible: true }
+          False: { visible: false }
   - type: Appearance
   - type: InteractionOutline
   - type: Rotatable
@@ -187,25 +214,36 @@
   description: Heats the plasma within a fusion reactor using concentrated microwaves.
   components:
   - type: Sprite
-    sprite: Structures/Power/Generation/Singularity/emitter.rsi
+    sprite: _FarHorizons/Structures/Power/Generation/FusionGenerator/fusion_reactor_maser.rsi
     layers:
-    - state: emitter2
-    - map: ["enum.FusionReactorMaserVisualLayers.Enabled"]
-      state: beam
+    - state: maser
+    - map: ["enum.FusionReactorMaserVisualLayers.Jar"]
+      state: am-jar
+      visible: false
+    - map: ["enum.FusionReactorMaserVisualLayers.Power"]
+      state: power-lvl1
       shader: unshaded
       visible: false
     - map: ["enum.FusionReactorMaserVisualLayers.Injecting"]
-      state: locked
+      state: am-inject
       shader: unshaded
       visible: false
   - type: GenericVisualizer
     visuals:
-      enum.FusionReactorMaserVisuals.Enabled:
-        enum.FusionReactorMaserVisualLayers.Enabled:
-          True: { visible: true }
-          False: { visible: false }
+      enum.FusionReactorMaserVisuals.Power:
+        enum.FusionReactorMaserVisualLayers.Power:
+          Level0: { visible: false }
+          Level1: { visible: true, state: "power-lvl1" }
+          Level2: { visible: true, state: "power-lvl2" }
+          Level3: { visible: true, state: "power-lvl3" }
+          Level4: { visible: true, state: "power-lvl4" }
+          Level5: { visible: true, state: "power-lvl5" }
       enum.FusionReactorMaserVisuals.Injecting:
         enum.FusionReactorMaserVisualLayers.Injecting:
+          True: { visible: true }
+          False: { visible: false }
+      enum.FusionReactorMaserVisuals.Jar:
+        enum.FusionReactorMaserVisualLayers.Jar:
           True: { visible: true }
           False: { visible: false }
   - type: Appearance
@@ -269,21 +307,23 @@
   description: Breaks down gases into atoms for use in the fusion reactor.
   components:
   - type: Sprite
-    sprite: Structures/Machines/gasrecycler.rsi
+    sprite: _FarHorizons/Structures/Power/Generation/FusionGenerator/fusion_reactor_inlet.rsi
     layers:
     - map: [ "enum.PipeVisualLayers.Pipe" ]
       sprite: Structures/Piping/Atmospherics/pipe.rsi
       state: pipeUnaryConnectors
       renderingStrategy: Default
-    - state: running
+    - state: inlet
     - map: ["enum.FusionReactorGasInletVisualLayers.Enabled"]
-      state: unlit
+      state: running
+      shader: unshaded
+      visible: false
   - type: GenericVisualizer
     visuals:
       enum.FusionReactorGasInletVisuals.Enabled:
         enum.FusionReactorGasInletVisualLayers.Enabled:
-          True: { visible: false }
-          False: { visible: true }
+          True: { visible: true }
+          False: { visible: false }
   - type: AtmosPipeLayers
     spriteLayersRsiPaths:
       enum.PipeVisualLayers.Pipe:

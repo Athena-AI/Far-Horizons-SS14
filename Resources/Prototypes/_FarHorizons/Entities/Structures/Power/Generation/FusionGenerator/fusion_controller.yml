@@ -38,6 +38,7 @@
         layer:
         - MachineLayer
   - type: FusionReactorController
+    alertChannel: ["Engineering", "SyndiEngi"]
   - type: FusionReactorPowerSupply
   - type: FusionReactorRequireValid
     magnet: 1

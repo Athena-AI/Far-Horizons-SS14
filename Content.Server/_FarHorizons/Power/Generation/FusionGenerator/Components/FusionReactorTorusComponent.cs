@@ -6,7 +6,7 @@ namespace Content.Server._FarHorizons.Power.Generation.FusionGenerator.Component
 public sealed partial class FusionReactorTorusComponent : Component
 {
     #region Magnet Variables
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables]
     public bool IsMagnet = false;
 
     [ViewVariables(VVAccess.ReadWrite)]

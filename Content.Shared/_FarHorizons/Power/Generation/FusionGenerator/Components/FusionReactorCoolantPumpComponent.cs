@@ -21,7 +21,7 @@ public sealed partial class FusionReactorCoolantPumpComponent : Component
     /// <summary>
     /// Name of the pipe node
     /// </summary>
-    [DataField]
+    [DataField("pipeNodeID")]
     public string PipeName = "pipe";
 
     /// <summary>

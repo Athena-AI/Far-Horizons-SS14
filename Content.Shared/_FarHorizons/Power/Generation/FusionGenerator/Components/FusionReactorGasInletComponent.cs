@@ -27,7 +27,7 @@ public sealed partial class FusionReactorGasInletComponent : Component
     /// <summary>
     /// Name of the pipe node
     /// </summary>
-    [DataField]
+    [DataField("pipeNodeID")]
     public string PipeName = "pipe";
 
     /// <summary>

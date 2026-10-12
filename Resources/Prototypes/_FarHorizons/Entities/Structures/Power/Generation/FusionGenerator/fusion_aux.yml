@@ -50,6 +50,9 @@
         layer:
         - MachineLayer
   - type: FusionReactorCoolantPump
+    isInlet: true
+    powerDraw: 200
+    pipeNodeID: pipe
   - type: FusionReactorPowerDraw
     draw: 200
     priority: 1
@@ -160,6 +163,8 @@
         layer:
         - MachineLayer
   - type: FusionReactorBattery
+    maxInput: 150000
+    minInput: 5000
   - type: FusionReactorRequireValid
   - type: Battery
     netsync: false
@@ -183,10 +188,7 @@
     voltage: High
     node: input
   - type: PowerNetworkBattery
-    maxSupply: 150000
     maxChargeRate: 5000
-    supplyRampTolerance: 5000
-    supplyRampRate: 1000
   - type: UserInterface
     interfaces:
       enum.FusionReactorUiKey.Key:
@@ -262,6 +264,10 @@
         layer:
         - MachineLayer
   - type: FusionReactorMaser
+    maxPowerSetting: 5
+    powerExponent: 1.7
+    basePower: 10000
+    injectionRate: 1
     jar_slot:
       whitelist:
         components:
@@ -346,6 +352,8 @@
         layer:
         - MachineLayer
   - type: FusionReactorGasInlet
+    maxPowerSetting: 1000000
+    pipeNodeID: pipe
   - type: FusionReactorPowerDraw
   - type: FusionReactorRequireValid
     alone: false

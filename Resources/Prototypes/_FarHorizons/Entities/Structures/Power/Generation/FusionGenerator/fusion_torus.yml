@@ -45,6 +45,9 @@
         layer:
         - MachineLayer
   - type: FusionReactorTorus
+    thermalMass: 86000 # 200kg of YBaCuO
+    tC: 93 # Critical temperature of YBaCuO
+    loss: 0.01
   - type: FusionReactorPowerDraw
     priority: 0
   - type: NodeContainer

@@ -25,5 +25,5 @@ public sealed partial class FusionReactorControllerComponent : Component
     /// Radio channel(s) to send alerts to
     /// </summary>
     [DataField]
-    public string[] AlertChannel = ["Engineering"];
+    public string[] AlertChannel = ["Engineering", "SyndiEngi"];
 }

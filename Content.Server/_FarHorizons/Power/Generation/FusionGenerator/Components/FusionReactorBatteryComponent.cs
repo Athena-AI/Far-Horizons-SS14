@@ -7,21 +7,21 @@ namespace Content.Server._FarHorizons.Power.Generation.FusionGenerator.Component
 [RegisterComponent]
 public sealed partial class FusionReactorBatteryComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("maxInput")]
     public float MaxMaxExternalInput = 150000;
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("minInput")]
     public float MinMaxExternalInput = 5000;
 
     /// <summary>
     /// The power demand
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables]
     public float Demand = 0;
 
     /// <summary>
     /// How much power is being supplied
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables]
     public float Supply = 0;
 
     [ViewVariables]

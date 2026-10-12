@@ -2,14 +2,17 @@
   id: ZombieCompound
   branches:
     - tasks:
+      #Combat
         - !type:HTNCompoundTask
           task: ZombieMeleeCombatCompound
+      #Knockdown
     - preconditions:
         - !type:IsKnockedDownPrecondition
       tasks:
         - !type:HTNPrimitiveTask
           operator: !type:StandUpOperator
             shutdownState: TaskFinished
+      #Idle 
     - tasks:
         - !type:HTNCompoundTask
           task: ZombieIdleCompound
@@ -40,6 +43,10 @@
       curve: !type:PresetCurve
         preset: TargetHealth
     - !type:TargetAccessibleCon
+      curve: !type:BoolCurve
+    - !type:TargetIsVisibleCon
+      curve: !type:BoolCurve
+    - !type:TargetInLOSOrCurrentCon
       curve: !type:BoolCurve
 
 #Checks Before Attacking

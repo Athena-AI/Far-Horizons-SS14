@@ -22255,5 +22255,34 @@ Entries:
   id: 189408
   time: '2026-10-13T17:30:06.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fix mispredictions leading to false failed hypopen/medipen messages [PC]
+    type: Fix
+  id: 189500
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Predict corpsman hypo [PW]
+    type: Tweak
+  id: 189501
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fixed the corpsman hypo failing to find an injectable solution on the
+      target [PW]
+    type: Fix
+  id: 189502
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fixed the corpsman hypo using non-existent messages [PW]
+    type: Fix
+  id: 189503
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
 Order: -1
 

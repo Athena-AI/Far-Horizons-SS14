@@ -22284,5 +22284,13 @@ Entries:
   id: 189503
   time: '2026-10-13T17:35:36.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard
+  changes:
+  - message: Fixed a number of ghost roles that couldn't be taken because their associated
+      jobs didn't have factions (e.g. ERT). All jobs now have faction assignments.
+    type: Fix
+  id: 189700
+  time: '2026-10-13T17:49:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1897
 Order: -1
 

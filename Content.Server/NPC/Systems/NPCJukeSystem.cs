@@ -39,6 +39,9 @@ public sealed partial class NPCJukeSystem : EntitySystem
 
     private void OnJukeSteering(EntityUid uid, NPCJukeComponent component, ref NPCSteeringEvent args)
     {
+        if(args.Steering.Status != SteeringStatus.InRange)
+            return;
+
         if (component.JukeType == JukeType.AdjacentTile)
         {
             if (_npcRangedQuery.TryGetComponent(uid, out var ranged) &&

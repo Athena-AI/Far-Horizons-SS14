@@ -47,6 +47,44 @@
       curve: !type:BoolCurve
 
 - type: utilityQuery
+  id: NearbyDisposalUnits
+  query:
+    - !type:ComponentQuery
+      components:
+        - type: DisposalUnit
+    - !type:ComponentFilter
+      retainWithComp: false
+      components:
+        - type: MailingUnit
+  considerations:
+    - !type:TargetDistanceCon
+      curve: !type:PresetCurve
+        preset: TargetDistance
+    - !type:TargetAccessibleCon
+      curve: !type:BoolCurve
+
+- type: utilityQuery
+  id: NearbyTrash
+  query:
+    - !type:ComponentQuery
+      components:
+        - type: Item
+        - type: Pullable
+        - type: Tag
+    - !type:EntityWhitelistFilter
+      whitelist:
+        tags:
+          - Trash
+    - !type:PullableFilter
+    - !type:RemoveAnchoredFilter
+  considerations:
+    - !type:TargetDistanceCon
+      curve: !type:PresetCurve
+        preset: TargetDistance
+    - !type:TargetAccessibleCon
+      curve: !type:BoolCurve
+
+- type: utilityQuery
   id: RealDocInjectable
   query:
     - !type:ComponentQuery

@@ -333,7 +333,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         if (!SolutionManagerQuery.Resolve(entity, ref entity.Comp))
             return false;
 
-        fill = entity.Comp.SolutionEnts;
+        fill = entity.Comp.SolutionEnts?.ToList() ?? new List<EntProtoId>(); // FH - work around type mismatch that may be due to needing more upstream changes
         return true;
     }
 

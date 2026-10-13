@@ -22174,5 +22174,13 @@ Entries:
   id: 188802
   time: '2026-10-11T14:59:57.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: AthenaAI
+  changes:
+  - message: Revert the behavior of one legged people bein g counted as paralyzed
+      due to some bugs.
+    type: Tweak
+  id: 189300
+  time: '2026-10-13T16:41:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1893
 Order: -1
 

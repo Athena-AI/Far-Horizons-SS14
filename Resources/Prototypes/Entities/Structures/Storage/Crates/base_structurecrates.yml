@@ -193,7 +193,7 @@
   - type: Paintable
     group: CrateSecure
   # Starlight-start: Wires panel
-  - type: PoweredLocker
+  - type: PassivePower # Far Horizons
   - type: StationAiWhitelist
   - type: WiresPanel
   - type: WiresPanelSecurity

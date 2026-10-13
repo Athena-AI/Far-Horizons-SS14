@@ -22137,5 +22137,160 @@ Entries:
   id: 188403
   time: '2026-10-10T18:23:46.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: Mizuki
+  changes:
+  - message: Carp hivemind is no longer anonymous
+    type: Tweak
+  id: 188600
+  time: '2026-10-11T14:51:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1886
+- author: korczoczek
+  changes:
+  - message: Fixed LocId spam when selecting research tree nodes.
+    type: Fix
+  id: 188900
+  time: '2026-10-11T14:53:08.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1889
+- author: princess_gurchi
+  changes:
+  - message: Star System system now supports handmade star systems outside of procedural
+      generation
+    type: Add
+  id: 188800
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: princess_gurchi
+  changes:
+  - message: CC now orbits a pulsar
+    type: Add
+  id: 188801
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: princess_gurchi
+  changes:
+  - message: NSHC now orbits a black hole (risk of high performance impact, please
+      let us know of any FPS drops on HC)
+    type: Add
+  id: 188802
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: AthenaAI
+  changes:
+  - message: Revert the behavior of one legged people bein g counted as paralyzed
+      due to some bugs.
+    type: Tweak
+  id: 189300
+  time: '2026-10-13T16:41:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1893
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots (cleanbot, medibot, hugbot, etc) now uniformly have wire
+      panels with power, speaker, and AI Access wires. (previously just the medibot
+      had a speaker wire)
+    type: Add
+  id: 189400
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots (cleanbot, medibot, hugbot, etc) now have a configuration
+      menu that can be accessed with their access panels open, which allows for configuring
+      power, AI-triggered voicelines ("stay still, please"), and movement behavior.
+      The station AI can access these panels at any time (unless the AIA wire is cut).
+    type: Add
+  id: 189401
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can now be told to leash to a given station beacon, meaning
+      they will move there when idle.
+    type: Add
+  id: 189402
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can now be told to patrol to a given station beacon, meaning
+      they will move there when idle, and then update their target beacon from that
+      beacon's "next beacon" field.
+    type: Add
+  id: 189403
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Station beacons now have a "next beacon" field.
+    type: Add
+  id: 189404
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Cleanbots will now start dragging trash items when they find them.
+    type: Add
+  id: 189405
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Cleanbots dragging trash items that encounter a disposal bin will dispose
+      of the trash item.
+    type: Add
+  id: 189406
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can use doors to get to their movement targets.
+    type: Add
+  id: 189407
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots now have both BasicSilicon and BasicSiliconNS access (rather
+      than just BasicSilicon)
+    type: Tweak
+  id: 189408
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fix mispredictions leading to false failed hypopen/medipen messages [PC]
+    type: Fix
+  id: 189500
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Predict corpsman hypo [PW]
+    type: Tweak
+  id: 189501
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fixed the corpsman hypo failing to find an injectable solution on the
+      target [PW]
+    type: Fix
+  id: 189502
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fixed the corpsman hypo using non-existent messages [PW]
+    type: Fix
+  id: 189503
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard
+  changes:
+  - message: Fixed a number of ghost roles that couldn't be taken because their associated
+      jobs didn't have factions (e.g. ERT). All jobs now have faction assignments.
+    type: Fix
+  id: 189700
+  time: '2026-10-13T17:49:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1897
 Order: -1
 

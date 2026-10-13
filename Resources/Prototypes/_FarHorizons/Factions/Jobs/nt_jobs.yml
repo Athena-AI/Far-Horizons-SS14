@@ -255,3 +255,94 @@
   id: NTBlueShield
   faction: FactionNT
   job: BlueShield
+
+# Special NanoTrasen jobs
+- type: factionJobAssignment
+  id: NTCBURN
+  faction: FactionNT
+  job: CBURN
+
+- type: factionJobAssignment
+  id: NTCentralCommandOfficial
+  faction: FactionNT
+  job: CentralCommandOfficial
+
+- type: factionJobAssignment
+  id: NTDeathSquad
+  faction: FactionNT
+  job: DeathSquad
+
+- type: factionJobAssignment
+  id: NTERTChaplain
+  faction: FactionNT
+  job: ERTChaplain
+
+- type: factionJobAssignment
+  id: NTERTEngineer
+  faction: FactionNT
+  job: ERTEngineer
+
+- type: factionJobAssignment
+  id: NTERTJanitor
+  faction: FactionNT
+  job: ERTJanitor
+
+- type: factionJobAssignment
+  id: NTERTLeader
+  faction: FactionNT
+  job: ERTLeader
+
+- type: factionJobAssignment
+  id: NTERTMedical
+  faction: FactionNT
+  job: ERTMedical
+
+- type: factionJobAssignment
+  id: NTERTSecurity
+  faction: FactionNT
+  job: ERTSecurity
+
+- type: factionJobAssignment
+  id: NTLawyer
+  faction: FactionNT
+  job: Lawyer
+
+- type: factionJobAssignment
+  id: NTVisitor
+  faction: FactionNT
+  job: Visitor
+
+- type: factionJobAssignment
+  id: NTPassenger
+  faction: FactionNT
+  job: Passenger
+
+- type: factionJobAssignment
+  id: NTCCCADOfficial
+  faction: FactionNT
+  job: CC-CADOfficial
+
+- type: factionJobAssignment
+  id: NTCCCIDOfficial
+  faction: FactionNT
+  job: CC-CIDOfficial
+
+- type: factionJobAssignment
+  id: NTCCCSDOfficial
+  faction: FactionNT
+  job: CC-CSDOfficial
+
+- type: factionJobAssignment
+  id: NTCentralCommandOperator
+  faction: FactionNT
+  job: CentralCommandOperator
+
+- type: factionJobAssignment
+  id: NTNanoTrasenSpecialForces
+  faction: FactionNT
+  job: NanoTrasenSpecialForces
+
+- type: factionJobAssignment
+  id: NTNTNCBlueshield
+  faction: FactionNT
+  job: NTNCBlueshield

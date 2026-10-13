@@ -22182,5 +22182,78 @@ Entries:
   id: 189300
   time: '2026-10-13T16:41:48.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1893
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots (cleanbot, medibot, hugbot, etc) now uniformly have wire
+      panels with power, speaker, and AI Access wires. (previously just the medibot
+      had a speaker wire)
+    type: Add
+  id: 189400
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots (cleanbot, medibot, hugbot, etc) now have a configuration
+      menu that can be accessed with their access panels open, which allows for configuring
+      power, AI-triggered voicelines ("stay still, please"), and movement behavior.
+      The station AI can access these panels at any time (unless the AIA wire is cut).
+    type: Add
+  id: 189401
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can now be told to leash to a given station beacon, meaning
+      they will move there when idle.
+    type: Add
+  id: 189402
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can now be told to patrol to a given station beacon, meaning
+      they will move there when idle, and then update their target beacon from that
+      beacon's "next beacon" field.
+    type: Add
+  id: 189403
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Station beacons now have a "next beacon" field.
+    type: Add
+  id: 189404
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Cleanbots will now start dragging trash items when they find them.
+    type: Add
+  id: 189405
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Cleanbots dragging trash items that encounter a disposal bin will dispose
+      of the trash item.
+    type: Add
+  id: 189406
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can use doors to get to their movement targets.
+    type: Add
+  id: 189407
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots now have both BasicSilicon and BasicSiliconNS access (rather
+      than just BasicSilicon)
+    type: Tweak
+  id: 189408
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
 Order: -1
 

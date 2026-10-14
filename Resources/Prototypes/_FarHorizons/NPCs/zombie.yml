@@ -3,30 +3,30 @@
   branches:
     - tasks:
       #Combat
-        - !type:HTNCompoundTask
+      - !type:HTNCompoundTask
           task: ZombieMeleeCombatCompound
       #Knockdown
     - preconditions:
-        - !type:IsKnockedDownPrecondition
+      - !type:IsKnockedDownPrecondition
       tasks:
-        - !type:HTNPrimitiveTask
-          operator: !type:StandUpOperator
-            shutdownState: TaskFinished
+      - !type:HTNPrimitiveTask
+        operator: !type:StandUpOperator
+          shutdownState: TaskFinished
       #Idle 
     - tasks:
-        - !type:HTNCompoundTask
-          task: ZombieIdleCompound
+      - !type:HTNCompoundTask
+        task: ZombieIdleCompound
 
 #region Melee Combat
 - type: htnCompound
   id: ZombieMeleeCombatCompound
   branches:
     - tasks:
-        - !type:HTNPrimitiveTask
-          operator: !type:UtilityOperator
-            proto: ZombieNearbyMeleeTargets
-        - !type:HTNCompoundTask
-          task: BeforeZombieMeleeAttackTargetCompound
+      - !type:HTNPrimitiveTask
+        operator: !type:UtilityOperator
+          proto: ZombieNearbyMeleeTargets
+      - !type:HTNCompoundTask
+        task: BeforeZombieMeleeAttackTargetCompound
 
 #Choose Targets
 - type: utilityQuery
@@ -119,41 +119,74 @@
               key: Target
 
 #region Idle
+#region Idle
 - type: htnCompound
   id: ZombieIdleCompound
   branches:
+    # Join (or become) the swarm leader
     - tasks:
-        - !type:HTNPrimitiveTask
-          operator: !type:WaitOperator
+      - !type:HTNPrimitiveTask
+        preconditions:
+          - !type:AssignedLeaderPrecondition
+            targetKey: FollowTarget
+            invert: true
+        operator: !type:AssignLeaderOperator
+          targetKey: FollowTarget
+          searchRadius: 30
+          whitelist:
+            components:
+            - Zombie
+
+    # Head to follow target
+    - tasks:
+      - !type:HTNPrimitiveTask
+        preconditions:
+          - !type:AssignedLeaderPrecondition
+            targetKey: FollowTarget
+          - !type:CoordinatesNotInRangePrecondition
+            targetKey: FollowTarget
+            rangeKey: FollowRange
+        operator: !type:MoveToOperator
+          pathfindInPlanning: true
+          targetKey: FollowTarget
+          rangeKey: FollowCloseRange
+          removeKeyOnFinish: false
+
+    # Keep idling near follow target
+    - tasks:
+      - !type:HTNPrimitiveTask
+        preconditions:
+          - !type:KeyExistsPrecondition
             key: IdleTime
-          preconditions:
-            - !type:KeyExistsPrecondition
-              key: IdleTime
+          - !type:CoordinatesInRangePrecondition
+            targetKey: FollowTarget
+            rangeKey: FollowRange
+        operator: !type:WaitOperator
+          key: IdleTime
 
-    # Pick a new spot and wait there.
-    - preconditions:
-        - !type:BuckledPrecondition
-          isBuckled: false
-        - !type:PulledPrecondition
-          isPulled: false
-      tasks:
-        - !type:HTNPrimitiveTask
-          operator: !type:PickAccessibleOperator
-            rangeKey: IdleRange
+    # Pick a new idle spot near the follow target
+    - tasks:
+      - !type:HTNPrimitiveTask
+        operator: !type:PickAccessibleOperator
+          rangeKey: FollowCloseRange
+          targetCoordinates: FollowIdleTarget
 
-        - !type:HTNPrimitiveTask
-          operator: !type:MoveToOperator
-            pathfindInPlanning: false
+      - !type:HTNPrimitiveTask
+        operator: !type:MoveToOperator
+          targetKey: FollowIdleTarget
 
-        - !type:HTNPrimitiveTask
-          operator: !type:RandomOperator
-            targetKey: IdleTime
-            minKey: MinimumIdleTime
-            maxKey: MaximumIdleTime
+      - !type:HTNPrimitiveTask
+        operator: !type:RandomOperator
+          targetKey: IdleTime
+          minKey: MinimumIdleTime
+          maxKey: MaximumIdleTime
 
-        - !type:HTNPrimitiveTask
-          operator: !type:WaitOperator
+      - !type:HTNPrimitiveTask
+        preconditions:
+          - !type:KeyExistsPrecondition
             key: IdleTime
-          preconditions:
-            - !type:KeyExistsPrecondition
-              key: IdleTime
+          - !type:CoordinatesInRangePrecondition
+            targetKey: FollowTarget
+            rangeKey: FollowRange
+        operator: !type:WaitOperator
+          key: IdleTime

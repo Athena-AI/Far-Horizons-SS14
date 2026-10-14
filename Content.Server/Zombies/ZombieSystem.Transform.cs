@@ -49,7 +49,9 @@ using Content.Shared._Starlight.Language.Components;
 #endregion Starlight
 using Content.Server._FarHorizons.Zombies; //FH
 
-using Content.Shared._FarHorizons.Traits.Assorted; //FH
+using Content.Shared._FarHorizons.Traits.Assorted;
+using System.Numerics;
+using Robust.Shared.Map; //FH
 
 namespace Content.Server.Zombies;
 
@@ -310,6 +312,9 @@ public sealed partial class ZombieSystem
         htn.Blackboard.SetValue("NavClimb", true);
         htn.Blackboard.SetValue("NavPry", true);
         htn.Blackboard.SetValue("NavSmash", true);
+        htn.Blackboard.SetValue("IdleRange", 3.5f);
+        htn.Blackboard.SetValue("FollowCloseRange", 2.0f);
+        htn.Blackboard.SetValue("FollowRange", 3.0f);
         //FH End
         htn.Blackboard.SetValue(NPCBlackboard.Owner, target);
         _npc.SleepNPC(target, htn);

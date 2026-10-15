@@ -22292,5 +22292,20 @@ Entries:
   id: 189700
   time: '2026-10-13T17:49:39.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1897
+- author: Penguinwizzard
+  changes:
+  - message: Fixed gun executions.
+    type: Fix
+  id: 190200
+  time: '2026-10-15T15:19:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
+- author: Penguinwizzard
+  changes:
+  - message: Almost all of the code around executions is now predicted, so there should
+      be less menu jump and things should be smoother.
+    type: Add
+  id: 190201
+  time: '2026-10-15T15:19:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
 Order: -1
 

@@ -226,7 +226,7 @@ public sealed partial class NPCSteeringSystem
                 lock (_obstacles)
                 {
                     // We're still coming to a stop so wait for the do_after.
-                    SetDirection(uid, mover, steering, Vector2.Zero);
+                    SetDirection(uid, mover, steering, Vector2.Zero); // FH-Edit: Not a perfect fix to the issue where they bounce but 90% it works
                     if (body.LinearVelocity.LengthSquared() > 0.01f)
                     {
                         return true;

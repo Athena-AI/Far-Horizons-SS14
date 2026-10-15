@@ -118,7 +118,7 @@
 - type: htnCompound
   id: ZombieIdleCompound
   branches:
-    # Join (or become) the swarm leader
+    # Join (or become) the flock leader
     - tasks:
       - !type:HTNPrimitiveTask
         preconditions:
@@ -131,6 +131,8 @@
           whitelist:
             components:
             - Zombie
+
+    # Merge different flocks.
     - tasks:
       - !type:HTNPrimitiveTask
         preconditions:

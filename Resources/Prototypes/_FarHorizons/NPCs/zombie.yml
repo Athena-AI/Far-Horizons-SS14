@@ -44,10 +44,6 @@
         preset: TargetHealth
     - !type:TargetAccessibleCon
       curve: !type:BoolCurve
-    - !type:TargetIsVisibleCon
-      curve: !type:BoolCurve
-    - !type:TargetInLOSOrCurrentCon
-      curve: !type:BoolCurve
 
 #Checks Before Attacking
 - type: htnCompound
@@ -119,7 +115,6 @@
               key: Target
 
 #region Idle
-#region Idle
 - type: htnCompound
   id: ZombieIdleCompound
   branches:
@@ -132,7 +127,22 @@
             invert: true
         operator: !type:AssignLeaderOperator
           targetKey: FollowTarget
-          searchRadius: 30
+          searchRadius: 10
+          whitelist:
+            components:
+            - Zombie
+    - tasks:
+      - !type:HTNPrimitiveTask
+        preconditions:
+          - !type:FlockMergePrecondition
+            targetKey: FollowTarget
+            searchRadius: 10
+            whitelist:
+              components:
+              - Zombie
+        operator: !type:AssignLeaderOperator
+          targetKey: FollowTarget
+          searchRadius: 10
           whitelist:
             components:
             - Zombie

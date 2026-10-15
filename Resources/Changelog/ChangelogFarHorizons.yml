@@ -22315,5 +22315,12 @@ Entries:
   id: 189600
   time: '2026-10-15T15:55:33.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1896
+- author: jhrushbe
+  changes:
+  - message: Added the Fusion Reactor.
+    type: Add
+  id: 144600
+  time: '2026-10-15T17:01:30.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1446
 Order: -1
 

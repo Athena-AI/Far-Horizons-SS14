@@ -34,7 +34,6 @@ public sealed partial class CustomAudioSystem : EntitySystem
     }
 
     private readonly ConcurrentDictionary<EntityUid, SmoothState> _smoothedOcclusion = new();
-    [ThreadStatic] private readonly HashSet<EntityUid> _seenEntities = new();
 
     // CVAR Controlled Values
     private float _maxRayLength;
@@ -87,13 +86,13 @@ public sealed partial class CustomAudioSystem : EntitySystem
         var results = _physics.IntersectRay(listener.MapId, ray, rayLength, ignoredEnt, returnOnFirstHit: false);
 
         var totalOcclusion = 0f;
-        _seenEntities.Clear();
+        var seen = new HashSet<EntityUid>();
 
         foreach (var result in results)
         {
             var hit = result.HitEntity;
 
-            if (!_seenEntities.Add(hit))
+            if (!seen.Add(hit))
                 continue;
 
             if (!TryComp<StructureOcclusionComponent>(hit, out var occlusionComp))

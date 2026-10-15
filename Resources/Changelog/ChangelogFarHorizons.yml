@@ -22307,5 +22307,13 @@ Entries:
   id: 190201
   time: '2026-10-15T15:19:55.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
+- author: whatston3
+  changes:
+  - message: Moproaches now regenerate water into their mops instead of bloodstream
+      again. Same with spiders and their venom and fangs.
+    type: Fix
+  id: 189600
+  time: '2026-10-15T15:55:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1896
 Order: -1
 

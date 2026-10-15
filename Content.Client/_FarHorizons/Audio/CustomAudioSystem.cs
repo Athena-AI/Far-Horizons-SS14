@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Numerics;
 using Content.Shared._FarHorizons.Audio;
 using Content.Shared._FarHorizons.CCVar;
@@ -32,8 +33,8 @@ public sealed partial class CustomAudioSystem : EntitySystem
         public TimeSpan LastUpdate;
     }
 
-    private readonly Dictionary<EntityUid, SmoothState> _smoothedOcclusion = new();
-    private readonly HashSet<EntityUid> _seenEntities = new();
+    private readonly ConcurrentDictionary<EntityUid, SmoothState> _smoothedOcclusion = new();
+    [ThreadStatic] private readonly HashSet<EntityUid> _seenEntities = new();
 
     // CVAR Controlled Values
     private float _maxRayLength;
@@ -60,7 +61,7 @@ public sealed partial class CustomAudioSystem : EntitySystem
     }
 
     private void OnEntityTerminating(ref EntityTerminatingEvent ev)
-        => _smoothedOcclusion.Remove(ev.Entity);
+        => _smoothedOcclusion.TryRemove(ev.Entity, out _);
 
     private void OnRaycastLengthChanged(float value)
         => _maxRayLength = value;

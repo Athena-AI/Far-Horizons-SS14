@@ -1749,7 +1749,7 @@
 - type: researchTreeNode
   id: SecBorg
   name: research-tree-node-mech-security
-  cost: 35000
+  cost: 9000
   icon:
     state: electronics
     color: "#003860"

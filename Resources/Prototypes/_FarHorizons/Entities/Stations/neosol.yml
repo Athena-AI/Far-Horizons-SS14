@@ -68,7 +68,7 @@
     - BaseNeosolHighCommand
     - BaseStationEvacuation
     - BaseStationAlertLevels
-    - BaseStationMagnet
+    #- BaseStationMagnet FH-Edit The Data was moved to the magnet's board
     - BaseStationExpeditions
     - BaseStationSalvageJobs
     - BaseStationSiliconLawCrewsimov

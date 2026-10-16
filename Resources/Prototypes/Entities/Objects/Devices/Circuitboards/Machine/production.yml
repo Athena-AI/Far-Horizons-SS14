@@ -1280,6 +1280,7 @@
       Steel: 5
       CableHV: 5
       Cable: 2
+  - type: SalvageMagnetData #FH-Edit
 
 - type: entity
   parent: BaseMachineCircuitboard

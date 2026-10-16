@@ -11,12 +11,17 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+//FH-Start
+using Robust.Shared.Utility;
+using Robust.Shared.Containers;
+//FH-End
 
 namespace Content.Server.Salvage;
 
 public sealed partial class SalvageSystem
 {
     [Dependency] private IRuntimeLog _runtimeLog = default!;
+    [Dependency] private SharedContainerSystem _container = default!; //FH
 
     private static readonly ProtoId<RadioChannelPrototype> MagnetChannel = "GSL"; /// Far Horizons - Changed supply to GSL
 
@@ -41,7 +46,7 @@ public sealed partial class SalvageSystem
 
     private void OnMagnetClaim(EntityUid uid, SalvageMagnetComponent component, ref MagnetClaimOfferEvent args)
     {
-        var station = _station.GetOwningStation(uid);
+        var station = _container.GetContainer(uid, "machine_board").ContainedEntities.FirstOrNull(HasComp<SalvageMagnetDataComponent>); //FH-Edit Moving the data to the board instead of station
 
         if (!TryComp(station, out SalvageMagnetDataComponent? dataComp) ||
             dataComp.EndTime != null)
@@ -66,7 +71,7 @@ public sealed partial class SalvageSystem
 
     private void OnMagnetStartup(EntityUid uid, SalvageMagnetComponent component, ComponentStartup args)
     {
-        UpdateMagnetUI((uid, component), Transform(uid));
+        UpdateMagnetUI((uid, component)); //FH-Edit
     }
 
     private void OnMagnetAnchored(EntityUid uid, SalvageMagnetComponent component, ref AnchorStateChangedEvent args)
@@ -74,7 +79,7 @@ public sealed partial class SalvageSystem
         if (!args.Anchored)
             return;
 
-        UpdateMagnetUI((uid, component), args.Transform);
+        UpdateMagnetUI((uid, component)); //FH-Edit
     }
 
     private void OnMagnetDataMapInit(EntityUid uid, SalvageMagnetDataComponent component, ref MapInitEvent args)
@@ -193,7 +198,10 @@ public sealed partial class SalvageSystem
         }
 
         data.Comp.EndTime = null;
-        UpdateMagnetUIs(data);
+        //FH-Start
+        if(_container.TryGetContainingContainer(data.Owner, out var magnet) && TryComp<SalvageMagnetComponent>(magnet.Owner, out var salvMagnetComp))
+            UpdateMagnetUI((magnet.Owner, salvMagnetComp));
+        //FH-End
     }
 
     private void CreateMagnetOffers(Entity<SalvageMagnetDataComponent> data)
@@ -218,7 +226,10 @@ public sealed partial class SalvageSystem
         }
 
         data.Comp.NextOffer = _timing.CurTime + data.Comp.OfferCooldown;
-        UpdateMagnetUIs(data);
+        //FH-Start
+        if(_container.TryGetContainingContainer(data.Owner, out var magnet) && TryComp<SalvageMagnetComponent>(magnet.Owner, out var salvMagnetComp))
+            UpdateMagnetUI((magnet.Owner, salvMagnetComp));
+        //FH-End
     }
 
     // Just need something to announce.
@@ -228,7 +239,7 @@ public sealed partial class SalvageSystem
 
         while (query.MoveNext(out var magnetUid, out var magnet, out var xform))
         {
-            var stationUid = _station.GetOwningStation(magnetUid, xform);
+            var stationUid = _container.GetContainer(magnetUid, "machine_board").ContainedEntities.FirstOrNull(HasComp<SalvageMagnetDataComponent>); //FH-Edit
 
             if (stationUid != data.Owner)
                 continue;
@@ -239,9 +250,9 @@ public sealed partial class SalvageSystem
         return null;
     }
 
-    private void UpdateMagnetUI(Entity<SalvageMagnetComponent> entity, TransformComponent xform)
+    private void UpdateMagnetUI(Entity<SalvageMagnetComponent> entity) //FH-Edit
     {
-        var station = _station.GetOwningStation(entity, xform);
+        var station = _container.GetContainer(entity.Owner, "machine_board").ContainedEntities.FirstOrNull(HasComp<SalvageMagnetDataComponent>); //FH-Edit
 
         if (!TryComp(station, out SalvageMagnetDataComponent? dataComp))
             return;
@@ -292,7 +303,7 @@ public sealed partial class SalvageSystem
         data.Comp.ActiveSeed = seed;
         data.Comp.EndTime = _timing.CurTime + data.Comp.ActiveTime;
         data.Comp.NextOffer = data.Comp.EndTime.Value;
-        UpdateMagnetUIs(data);
+        UpdateMagnetUI(magnet); //FH-Edit
 
         switch (offering)
         {
@@ -460,6 +471,17 @@ public sealed partial class SalvageSystem
         coords = MapCoordinates.Nullspace;
         return false;
     }
+
+    //FH-Start
+    [SubscribeLocalEvent]
+    private void OnBoardInserted(Entity<SalvageMagnetDataComponent> ent, ref EntGotInsertedIntoContainerMessage args)
+    {
+        if(!TryComp<SalvageMagnetComponent>(args.Container.Owner, out var salvageMagnetComp))
+            return;
+        
+        UpdateMagnetUI((args.Container.Owner, salvageMagnetComp));
+    }
+    //FH-End
 }
 
 [ByRefEvent]

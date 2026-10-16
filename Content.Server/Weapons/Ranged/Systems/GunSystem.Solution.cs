@@ -66,7 +66,8 @@ public sealed partial class GunSystem
         if (!_solutionContainer.TryGetSolution(ent.Owner, ent.Comp.SolutionId, out var solution))
             return (shot, shootable);
 
-        _vapor.TryAddSolution(shot, solution.Value, ent.Comp.FireCost);
+        if(!_vapor.TryAddSolution(shot, solution.Value, ent.Comp.FireCost)) //FH-Edit This is because I want bullets without the vapor system.
+            _solutionContainer.SplitSolution(solution.Value, ent.Comp.FireCost);
         return (shot, shootable);
     }
 }

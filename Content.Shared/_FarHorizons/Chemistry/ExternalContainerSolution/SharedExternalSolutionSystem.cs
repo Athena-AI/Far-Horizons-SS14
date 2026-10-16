@@ -4,18 +4,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._FarHorizons.Chemistry;
 
-public sealed class SharedExternalSolutionSystem : EntitySystem
+public sealed partial class SharedExternalSolutionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _sharedSolution = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private SharedSolutionContainerSystem _sharedSolution = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<ExternalSolutionComponent, EntInsertedIntoContainerMessage>(OnContainerInserted);
-        SubscribeLocalEvent<ExternalSolutionComponent, EntRemovedFromContainerMessage>(OnContainerEjected);
-        SubscribeLocalEvent<ExternalSolutionComponent, SolutionContainerChangedEvent >(OnSolutionChanged);
-        base.Initialize();
-    }
+    [SubscribeLocalEvent]
     private void OnContainerInserted(Entity<ExternalSolutionComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         if(!_gameTiming.IsFirstTimePredicted || !_sharedSolution.TryGetRefillableSolution(args.Entity, out var externalSolutionComp, out var externalSolution)
@@ -27,6 +21,7 @@ public sealed class SharedExternalSolutionSystem : EntitySystem
         Dirty(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnContainerEjected(Entity<ExternalSolutionComponent> ent, ref EntRemovedFromContainerMessage args)
     {
         if(!_gameTiming.IsFirstTimePredicted || !_sharedSolution.TryGetRefillableSolution(args.Entity, out var externalSolutionComp, out var externalSolution)
@@ -38,7 +33,8 @@ public sealed class SharedExternalSolutionSystem : EntitySystem
         Dirty(ent);
     }
 
-    private void OnSolutionChanged(Entity<ExternalSolutionComponent> ent, ref SolutionContainerChangedEvent args)
+    [SubscribeLocalEvent]
+    private void OnSolutionChanged(Entity<ExternalSolutionComponent> ent, ref SolutionChangedEvent args)
     {
         if(!_gameTiming.IsFirstTimePredicted || ent.Comp.ExternalContainer == null || !_sharedSolution.TryGetRefillableSolution(ent.Comp.ExternalContainer.Value, out var externalSolutionComp, out var externalSolution)
         || externalSolution.Volume <= 0 || !_sharedSolution.ResolveSolution(ent.Owner, ent.Comp.Solution, ref ent.Comp.solutionComponent, out var internalSolution))

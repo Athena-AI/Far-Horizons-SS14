@@ -1,6 +1,6 @@
 - type: entity
   name: Plasma Cutter
-  parent: Welder
+  parent: [BaseWelder, SolutionToolSmall]
   id: WeaponPlasmaCutter
   description: You could use it to cut limbs off of xenos! Or, you know, mine stuff.
   components:
@@ -47,7 +47,7 @@
       path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
     projectileSpeed: 25
   - type: SolutionAmmoProvider
-    solutionId: Welder
+    solutionId: welder
     proto: BulletPlasmaCutter
     maxShots: 1
     fireCost: 1
@@ -62,11 +62,11 @@
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
   - type: ExternalSolution
-    solution: Welder
+    solution: welder
 
 - type: entity
   name: Plasma Cutter Fuel Canister
-  parent: BaseItem
+  parent: [ BaseItem, SolutionToolSmall, SolutionTank ]
   id: PlasmaCutterFuelCanisterEmpty
   description: A canister that contains highly concentrated liquid plasma. Used typical to fuel the plasma cutter.
   suffix: Empty
@@ -74,22 +74,18 @@
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
     state: fuel_canister
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        maxVol: 30
   - type: RefillableSolution
-    solution: beaker
+    solution: tank
   - type: ExaminableSolution
-    solution: beaker
+    solution: tank
   - type: SolutionItemStatus
-    solution: beaker
+    solution: tank
   - type: Item
     size: Small
     sprite: _FarHorizons/Objects/Weapons/Guns/Battery/plasma_cutter.rsi
     state: fuel_canister
     shape:
-    - 0,1,0,0
+    - 0,0,0,1
   - type: StaticPrice
     price: 100
 
@@ -100,10 +96,9 @@
   description: A canister that contains highly concentrated liquid plasma. Used typical to fuel the plasma cutter.
   suffix: Full
   components:
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        reagents:
-        - ReagentId: Plasma
-          Quantity: 30
-        maxVol: 30
+  - type: Solution
+    id: tank
+    solution:
+      reagents:
+      - ReagentId: Plasma
+        Quantity: 30

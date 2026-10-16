@@ -22329,5 +22329,13 @@ Entries:
   id: 190600
   time: '2026-10-15T20:50:21.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1906
+- author: princess_gurchi
+  changes:
+  - message: Improvements to audio occlusion, hopefully nearby sounds will no longer
+      sound muffled
+    type: Fix
+  id: 190800
+  time: '2026-10-16T08:10:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1908
 Order: -1
 

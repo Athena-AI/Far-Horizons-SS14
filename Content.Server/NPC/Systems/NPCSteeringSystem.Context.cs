@@ -4,6 +4,8 @@ using Content.Server.Examine;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.Pathfinding;
 using Content.Shared.Climbing;
+using Content.Shared.Doors.Components; // Far Horizons
+using Content.Shared.Doors.Systems; // Far Horizons
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Components;
 using Content.Shared.NPC;
@@ -12,6 +14,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using ClimbingComponent = Content.Shared.Climbing.Components.ClimbingComponent;
+using Robust.Shared.Random;
 
 namespace Content.Server.NPC.Systems;
 
@@ -68,6 +71,16 @@ public sealed partial class NPCSteeringSystem
 
             foreach (var intersecting in ents)
             {
+                // Far Horizons start
+                // Bump-open doors must remain a movement target so their collision handler opens them.
+                if (TryComp<DoorComponent>(intersecting, out var door) &&
+                    door.BumpOpen &&
+                    _tags.HasTag(uid, SharedDoorSystem.DoorBumpTag))
+                {
+                    continue;
+                }
+                // Far Horizons end
+
                 if (!_physics.IsCurrentlyHardCollidable((uid, fixtures, physics), intersecting))
                 {
                     continue;

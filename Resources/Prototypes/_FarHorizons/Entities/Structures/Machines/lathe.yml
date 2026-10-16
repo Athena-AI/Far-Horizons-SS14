@@ -153,6 +153,56 @@
     - StarlightSecurityWeapons
     - StarlightDefenseStatic
 
+- type: entity
+  id: SecurityTechFabAmmo
+  parent: BaseLatheLube
+  name: Security Ammo Techfab
+  description: Prints NanoTrasen-Approved Ammo for use by Security Crew.
+  suffix: NT
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Machines/NT/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: secbullet
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: SecurityAmmoTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit # Far Horizons - replace with animations when available
+    staticPacks:
+    - FarHorizonsSecurityAmmoStatic
+    - FarHorizonsCivilianMagazinesStatic
+    dynamicPacks:
+    - FarHorizonsSecurityAmmoDynamic
+    - FarHorizonsSecurityThrowablesDynamic
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - StarlightSyndicateModulesSecfab
+    - StarlightSyndicateAmmoStatic
+    - FarHorizonsSecurityAmmoEmagStatic
+    - FarHorizonsAmmoStatic
+    emagDynamicPacks:
+    - FarHorizonsSecurityAmmoEmagDynamic
+    - FarHorizonsAmmoDynamic
+  - type: MaterialStorage
+    whitelist: &StandardMaterialWhitelist
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
+
 #region NeoSol
 
 - type: entity
@@ -193,22 +243,23 @@
     - NSScienceBoardsStatic
     - NSServiceBoardsStatic
     - CargoBoardsStatic #Should Syndi have this?
-    - MedicalBoardsStatic
-    - EngineeringBoardsStatic
-#    - StarlightVendorBoards #TODO: Figure out what to do with all the vending machines
+    - NSMedicalBoardsStatic 
+    - NSEngineeringBoardsStatic 
+    - NSStarlightVendorBoards
     dynamicPacks: #TODO: SYNDI TECH
-    - EngineeringBoards
+    - NSEngineeringBoards
     - CargoBoards
-    - MedicalBoards
-    - ServiceBoards
+    - NSMedicalBoards
+    - NSServiceBoards
     - NSScienceBoards
-    - CameraBoards
+    - NSCameraBoards
     - MechBoards
     - ShuttleBoards
     - StarlightMechBoards
     - StarlightLawboards
     - StarlightCircuitImprinterLootable
     - ReactorCircuitboards
+    - FusionReactorCircuitboards
   - type: EmagLatheRecipes
     emagDynamicPacks: #TODO: NT THEMED EMAG PACKS
     - StarlightSecurityBoards
@@ -319,6 +370,9 @@
     - SecurityDisablers
     - StarlightSecurityAmmoEmagStatic
     - SecurityWeaponsStatic
+    - FarHorizonsCivilianMagazinesStatic
+    - FarHorizonsCivilianWeaponsStatic
+    - FarHorizonsNSSecurityGeneralEquipmentStatic
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -482,3 +536,49 @@
 #  - type: GuideHelp
 #    guides:
 #    - Robotics
+
+- type: entity
+  id: SecurityTechFabAmmoNS
+  parent: BaseLatheLube
+  name: Security Ammo Techfab
+  description: Prints NeoSol-Approved Ammo for use by Security Crew.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Structures/Machines/NS/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: secbullet
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: SecurityAmmoTechFabCircuitboardNS
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit # Far Horizons - replace with animations when available
+    staticPacks:
+    - FarHorizonsSecurityAmmoStatic
+    - FarHorizonsCivilianMagazinesStatic
+    dynamicPacks:
+    - FarHorizonsSecurityAmmoDynamic
+    - FarHorizonsSecurityThrowablesDynamic
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - StarlightSyndicateModulesSecfab
+    - StarlightSyndicateAmmoStatic
+    - FarHorizonsSecurityAmmoEmagStatic
+    - FarHorizonsAmmoStatic
+    emagDynamicPacks:
+    - FarHorizonsSecurityAmmoEmagDynamic
+    - FarHorizonsAmmoDynamic
+  - type: MaterialStorage
+    whitelist: *StandardMaterialWhitelist
+  - type: OreSiloClient

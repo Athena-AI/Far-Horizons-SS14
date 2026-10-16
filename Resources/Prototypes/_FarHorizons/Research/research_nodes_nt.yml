@@ -250,6 +250,7 @@
     - PortableGeneratorPacmanMachineCircuitboard
     - PortableGeneratorSuperPacmanMachineCircuitboard
     - PortableGeneratorJrPacmanMachineCircuitboard
+    - GeneratorAcmanMachineCircuitboard
     - SolarControlComputerCircuitboard
     - SolarTrackerElectronics
     - EmitterCircuitboard
@@ -383,6 +384,7 @@
   unlocks:
     - NodeScanner
     - AnalysisComputerCircuitboard
+    - AnalysisComputerCircuitboardNS #Temp addition until NS tree is added
     - ArtifactAnalyzerMachineCircuitboard
 
 - type: researchTreeNode
@@ -434,7 +436,9 @@
     - SurveillanceWirelessCameraMovableCircuitboard
     - SurveillanceWirelessCameraAnchoredCircuitboard
     - SurveillanceCameraMonitorCircuitboard
+    - SurveillanceCameraMonitorCircuitboardNS #Temp addition until NS tree is added
     - SurveillanceWirelessCameraMonitorCircuitboard
+    - SurveillanceWirelessCameraMonitorCircuitboardNS #Temp addition until NS tree is added
     - TelecomServerCircuitboard
     - HolopadMachineCircuitboard
   announceTo:
@@ -477,6 +481,8 @@
     - RightLegCyber
     - LeftFootCyber
     - RightFootCyber
+    - LeftLegCyberHydraulic
+    - RightLegCyberHydraulic
   announceTo:
     - Medical
 
@@ -768,8 +774,14 @@
     - ThrusterMachineCircuitboard
     - GyroscopeMachineCircuitboard
     - MiniGravityGeneratorCircuitboard
+    - SMESShipMachineCircuitboard
+    - SMESShuttleMachineCircuitboard
+    - WallmountSubstationElectronicsShip
+    - WallmountSubstationElectronicsShuttle
+    - SubstationShipMachineCircuitboard
+    - SubstationShuttleMachineCircuitboard
   announceTo:
-    - GSL # Far Horizons
+    - GSL
     - Engineering
 
 - type: researchTreeNode
@@ -947,6 +959,25 @@
     - GoldGasTurbineBlade
     - DiamondGasTurbineBlade
     - GoldGasTurbineStator
+  announceTo:
+    - Engineering
+
+- type: researchTreeNode
+  id: FusionReactorUnlock
+  name: research-tree-node-fusion-1
+  cost: 20000
+  icon:
+    state: power
+    color: "#EFB341"
+  tier: Tier2
+  requires:
+    - NuclearPowerGeneration
+  unlocks:
+    - FusionReactorCoolantPumpMachineCircuitboard
+    - FusionReactorCapacitorMachineCircuitboard
+    - FusionReactorMaserMachineCircuitboard
+    - FusionReactorGasInletMachineCircuitboard
+    - FusionReactorControllerMachineCircuitboard
   announceTo:
     - Engineering
 
@@ -1195,8 +1226,6 @@
   - RightArmCyberHerakles
   - LeftArmCyberRipper
   - RightArmCyberRipper
-  - LeftLegCyberHydraulic
-  - RightLegCyberHydraulic
   - LeftLegCyberCargo
   - RightLegCyberCargo
 
@@ -1761,6 +1790,7 @@
     - SyringeGun
   unlocks:
     - CloningConsoleComputerCircuitboard 
+    - CloningConsoleComputerCircuitboardNS #Temp addition until NS tree is added
     - CloningPodMachineCircuitboard 
     - MedicalScannerMachineCircuitboard
   announceTo:

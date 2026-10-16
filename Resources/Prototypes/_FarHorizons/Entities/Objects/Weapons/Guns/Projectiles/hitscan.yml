@@ -66,45 +66,78 @@
 
 #region Plasma
 - type: entity
-  id: BoltPlasmaSpread
-  name: Split Plasma Bolt
-  parent: BasicHitscanNoBeam
+  id: BoltPlasma
+  name: Plasma Bolt
+  parent: BasicHitscan
+  categories: [ HideSpawnMenu ]
   components:
   - type: HitscanReflect
     reflectiveType: NonEnergy
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 50 # Change to a lower number when support is added # About as strong as slugs (and weaker than current eshotty), does a bit more damage to account for lack of AP. Will likely be stronger in practice due to majority species having heat weakness + flat heat being -4 instead of -5 - assuming you point blank someone with it.
-        Structural: 90 # Change to a lower number when support is added
+        Heat: 20 # 100 total damage with 20 getting eaten by flats. 
+        Structural: 15 # 75 total
   - type: HitscanBasicRaycast
-    maxDistance: 4
     collisionMask: BulletImpassable
-  - type: HitscanBasicVisuals
-    muzzleFlash:
-      sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
-      state: heavylaser_flash
-    bullet:
-      sprite:
-        sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi # Resprite for plasma-y sprites eventually.
-        state: heavylaser
-#  count: 8
-#  spread: 30 # Immense heat warps the barrel, not very accurate.
+
+
+
+- type: entity
+  id: BoltPlasmaSpread
+  name: Split Plasma Bolt
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage # this doesn't actually do anything, it only exists to allow you to inspect the gun to see damage values
+    damage:
+      types:
+        Heat: 20
+        Structural: 15
+  - type: ProjectileSpread
+    proto: BoltPlasma
+    count: 5
+    spread: 30
+
+- type: entity
+  id: BoltPlasmaSingle
+  name: Single Plasma Bolt
+  parent: BasicHitscan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanReflect
+    reflectiveType: NonEnergy
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 45
+        Structural: 75
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
 
 #region Lasers
 - type: entity
-  id: RedLaserBeamSpread
-  name:  Split Laser Beam
+  id: RedLaserBeamShotgun
+  name: Laser Beam Spread
   parent: BasicHitscan
+  categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 30 # Buckshot is 70 for reference. Performs a bit worse against a blood-red compared to buckshot, which is fine given it goes through glass.
-  - type: HitscanBasicRaycast
-    maxDistance: 5 #simulates spread, buckshot barely hits past this distance
-#  count: 8
-#  spread: 30
+        Heat: 10 # 50 total, goes though windows and has spread
+
+- type: entity
+  id: RedLaserBeamSpread
+  name:  Split Laser Beam
+  components:
+  - type: HitscanBasicDamage # this doesn't actually do anything, it only exists to allow you to inspect the gun to see damage values
+    damage:
+      types:
+        Heat: 10
+  - type: ProjectileSpread
+    proto: RedLaserBeamShotgun
+    count: 5
+    spread: 30
 
 - type: entity
   id: DestroyBeamDominator
@@ -148,6 +181,58 @@
     damage:
       types:
         Heat: 18
+
+# Laser for UA - Corona
+- type: entity
+  id: RedLaserBeamCorona
+  name: Laser Beam
+  parent: LaserTrace
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 35
+
+# AP Laser for UA - Corona
+- type: entity
+  id: RedLaserBeamCoronaAP
+  name: Laser Beam
+  parent: LaserTrace
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicRaycast
+    collisionMask: BulletImpassable
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 25
+
+- type: entity
+  parent: BasicHitscan
+  id: RedShuttleLightLaser
+  name: Red Shuttle Light Laser Ray
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 12
+        Structural: 40
+
+- type: entity
+  parent: BasicHitscan
+  id: RedShuttleHeavyLaser
+  name: Red Shuttle Heavy Laser Ray
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 80
+        Structural: 750
 
 #region Bullets
 
@@ -357,19 +442,19 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBasicDamage
-    armorPenetration: -0.13
+    armorPenetration: 0.25
     damage:
       types:
-        Piercing: 30
-        Structural: 10
+        Piercing: 6.7
+        Structural: 13.4
   - type: HitscanPierce
-    chance: 0.40
+    chance: 0.34
   - type: ProjectileSpread
-    proto: PelletShotgunTrace
+    proto: PelletShotgunFlechetteTrace
     count: 6
     spread: 10 #This needs to be removed from hitscan code itself in the future, it breaks guns because spread is not supposed to be defined here.
   - type: HitscanRicochet
-    chance: 0.30
+    chance: 0.40
 
 - type: entity
   id: PelletShotgunSlugTrace
@@ -406,7 +491,7 @@
         Structural: 23.33
     armorPenetration: 0.35
   - type: HitscanPierce
-    chance: 0.75
+    chance: 0.37
     pierceLevel: HardenedMetal
   - type: HitscanBasicVisuals
     bullet:
@@ -418,7 +503,7 @@
     count: 6
     spread: 10 #This needs to be removed from hitscan code itself in the future, it breaks guns because spread is not supposed to be defined here.
   - type: HitscanRicochet
-    chance: 0.80
+    chance: 0.40
 
 - type: entity
   id: PelletShotgunUraniumSpreadTrace
@@ -590,6 +675,31 @@
     proto: PelletShotgunBreachTrace
     count: 12
     spread: 50
+
+#region Railgun
+
+- type: entity
+  id: HeavyRodBulletTrace
+  parent: BulletTrace
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    armorPenetration: 0.75
+    damage:
+      types:
+        Piercing: 150
+        Structural: 1500
+  - type: HitscanStaminaDamage
+    staminaDamage: 100
+  - type: HitscanPierce
+    chance: 0.9
+    pierceLevel: HardenedMetal
+    deviation: 0.005
+  - type: HitscanRicochet
+    chance: 0.9
+  - type: HitscanReflect
+    reflectiveType: NonEnergy
+    maxReflections: 2 # This is the recursion depth for reflect, ricochet, and pierce
 
 #region Rubber Rounds
 

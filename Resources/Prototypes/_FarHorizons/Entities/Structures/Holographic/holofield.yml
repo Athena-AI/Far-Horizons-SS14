@@ -127,8 +127,9 @@
     lastSignals:
       ConnectionStatus: false
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -257,6 +258,8 @@
   id: HolographicField
   name: Holographic Field
   description: A Holographic Field that blocks airflow.
+  suffix: DO NOT MAP
+  categories: [ DoNotMap ]
   placement:
     mode: SnapgridCenter
   components:
@@ -302,11 +305,14 @@
     radius: 3
     color: "#66ffea"
   - type: GenericField
+  - type: LineOfSightExclude
 
 - type: entity
   id: HolographicFieldBarrier
   name: Holographic Barrier
   description: A Holographic Barrier that blocks projectiles and crew.
+  suffix: DO NOT MAP
+  categories: [ DoNotMap ]
   placement:
     mode: SnapgridCenter
   components:
@@ -364,8 +370,9 @@
         collection:
           EnergyMiss
   - type: Damageable
-    damageContainer: Shield
     damageModifierSet: HardLightBarrier
+  - type: Injurable
+    damageContainer: Shield
   - type: ExaminableDamage
     messages: FieldMessages
   - type: Pierceable

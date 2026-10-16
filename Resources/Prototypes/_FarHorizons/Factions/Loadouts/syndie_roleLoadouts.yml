@@ -14,6 +14,7 @@
   - Trinkets
   - Scarves
   - CapPens
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieHeadOfSecurity #Marshal
@@ -27,6 +28,7 @@
   - SecurityBeltSyndi
   - SecurityNonLethalWeaponNS
   - MarshalOuterClothing
+  - SecurityLongarmNS
   - MarshalSidearm
   - SecurityShoesSyndi
   - SurvivalHeadOfSecurity
@@ -34,6 +36,7 @@
   - Scarves
   - Pens
   - HeadofSecurityJobTrinkets
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieChiefEngineer #Foreman
@@ -50,6 +53,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieChiefMedicalOfficer #Medical Director
@@ -67,6 +72,8 @@
   - Trinkets
   - Scarves 
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieResearchDirector #Head of Research
@@ -83,6 +90,8 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieHeadOfPersonnel #Personnel Manager
@@ -98,6 +107,8 @@
   - Trinkets
   - Scarves 
   - HoPPens
+  - CivilianWeaponsNS
+  - Credsticks
 
 
 - type: roleLoadout
@@ -111,6 +122,8 @@
   - CommandEyewearSyndi
   - Survival
   - Trinkets
+  - CivilianWeaponsFactionless
+  - Credsticks
 
 #region Law
 
@@ -123,6 +136,8 @@
   - LawyerShoes
   - Trinkets
   - Survival
+  - CivilianWeaponsFactionless
+  - Credsticks
 
 #region Civilian
 
@@ -143,6 +158,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 #region Engineering
 
@@ -159,6 +176,8 @@
   - Trinkets
   - Scarves 
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieStationEngineer #Station Engineer
@@ -174,6 +193,8 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieTechnicalAssistant #Technical Assistant
@@ -184,6 +205,8 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
   
 #region Medical
 
@@ -204,6 +227,8 @@
   - Scarves
   - SurgeonEquipmentGroup
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieChemist #Pharmacist
@@ -222,6 +247,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieParamedic #Medic
@@ -238,6 +265,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieMedicalDoctor #Clinician
@@ -255,6 +284,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieMedicalIntern #Nursing Assistant
@@ -266,6 +297,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndiePsychologist #Psychoanalyst
@@ -277,6 +310,8 @@
   - Survival
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 #region Science
 
@@ -294,6 +329,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieScientist #Researcher
@@ -311,6 +348,8 @@
   - Trinkets
   - Scarves
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieResearchAssistant #Undergraduate
@@ -322,6 +361,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNS
+  - Credsticks
 
 #region Security
 
@@ -336,13 +377,15 @@
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
   - SecurityShoesSyndi
-  - WardenSidearm #Still needs new NS versions
+  - SecurityLongarmNS
+  - ConstableSidearm
   - SecurityNonLethalWeaponNS 
   - SurvivalSecurity
   - Trinkets
   - Scarves
   - Pens
   - WardenJobTrinkets
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieCorpsman #Corpsman
@@ -352,16 +395,19 @@
     - SecMedEyesSyndi
     - CorpsmanJumpsuit
     - CorpsmanBackpack
-    - CorpsmanOuterClothing
+    - CorpsmanSyndiOuterClothing
     - CorpsmanSyndiBelt
     - CorpsmanGloves
     - SecurityShoesSyndi
-    - SecurityNonLethalWeaponNS
+    - SecurityLongarmNS
     - CorpsmanSidearm #Still needs new NS version
+    - SecurityNonLethalWeaponNS
     - SurvivalSecurity
     - Trinkets
     - Scarves
     - Pens
+    - SecurityJobTrinkets
+    - Credsticks
 
 - type: roleLoadout
   id: SyndieBrigmedic #Brigmedic
@@ -375,12 +421,15 @@
     - BrigSyndiGloves
     - BrigSyndiBelt
     - SecurityShoesSyndi
-    - SecurityNonLethalWeaponNS
+    - SecurityLongarmNS
     - BrigmedicSidearm #Still needs new NS versions
+    - SecurityNonLethalWeaponNS
     - SurvivalSecurity
     - Trinkets
     - Scarves
     - Pens
+    - SecurityJobTrinkets
+    - Credsticks
 
 - type: roleLoadout
   id: SyndieDetective #Inspector
@@ -393,6 +442,7 @@
   - SecurityBackpackSyndi
   - InspectorOuterClothing
   - InspectorShoes
+  - SecurityLongarmNS
   - DetectiveSidearm #Still needs new NS versions
   - SecurityNonLethalWeaponNS
   - SurvivalSecurity
@@ -400,6 +450,7 @@
   - Scarves
   - Pens
   - DetectiveJobTrinkets
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieSecurityOfficer #Enforcer
@@ -411,15 +462,17 @@
   - EnforcerOuterClothing
   - SecurityBackpackSyndi
   - SecurityBeltSyndi
-  - SecurityPDA
-  - SecurityNonLethalWeaponNS
+  - SecurityPDANS
+  - SecurityLongarmNS
   - SecuritySidearmNS
+  - SecurityNonLethalWeaponNS
   - SecurityShoesSyndi
   - SurvivalSecurity
   - Trinkets
   - Scarves # Starlight
   - Pens # Starlight
   - SecurityJobTrinkets
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieSecurityCadet #Recruit
@@ -431,6 +484,7 @@
   - Trinkets
   - Scarves 
   - Pens
+  - Credsticks
 
 #region Service
 - type: roleLoadout
@@ -447,6 +501,8 @@
   - Trinkets
   - Scarves 
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieJanitor
@@ -463,6 +519,8 @@
   - Scarves
   - Pens 
   - JanitorJobTrinkets
+  - CivilianWeaponsNS
+  - Credsticks
 
 - type: roleLoadout
   id: SyndieBotanist
@@ -477,7 +535,25 @@
   - Trinkets
   - Scarves 
   - Pens 
+  - CivilianWeaponsNS
+  - Credsticks
 
+- type: roleLoadout
+  id: SyndieClown
+  canCustomizeName: true
+  groups:
+  - ClownHead
+  - ClownJumpsuitNS
+  - ClownBackpack
+  - ClownOuterClothing
+  - ClownShoesNS
+  - Glasses
+  - SurvivalService #FH
+  - Trinkets
+  - Scarves
+  - ClownPens
+  - ClownJobTrinkets
+  - Credsticks
 
 #region SHC
 
@@ -494,6 +570,7 @@
   - Scarves
   - Pens
   - SurvivalSecurity
+  - Credsticks
 
 - type: roleLoadout
   id: NeoSolRepresentative #NeoSol Representative
@@ -508,3 +585,5 @@
   - Scarves
   - NTRPens
   - SurvivalStationManagement
+  - CivilianWeaponsNS
+  - Credsticks

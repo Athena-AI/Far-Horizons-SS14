@@ -8,7 +8,10 @@
   },
   "states": [
     {
-      "name": "TableFrame" 
+      "name": "TableFrame"
+    },
+    {
+      "name": "Table-Frame" 
     },
 	{
       "name": "green",
@@ -126,25 +129,6 @@
     },
     {
       "name": "delta",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "Wanted",
       "delays": [
         [
           0.1,

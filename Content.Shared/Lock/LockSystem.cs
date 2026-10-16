@@ -18,10 +18,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
-#region Starlight
-using Content.Shared.Mindshield.Components;
-using Content.Shared._Starlight.Power.Components;
-#endregion Starlight
+using Content.Shared.Mindshield.Components; // Starlight
+using Content.Shared._FarHorizons.Power.Components; // Far Horizons
 
 namespace Content.Shared.Lock;
 
@@ -29,15 +27,15 @@ namespace Content.Shared.Lock;
 /// Handles (un)locking and examining of Lock components
 /// </summary>
 [UsedImplicitly]
-public sealed class LockSystem : EntitySystem
+public sealed partial class LockSystem : EntitySystem
 {
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _sharedPopupSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _sharedPopupSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
 
     private readonly LocId _defaultDenyReason = "lock-comp-has-user-access-fail";
 
@@ -148,7 +146,7 @@ public sealed class LockSystem : EntitySystem
 
         if (!CanToggleLock(uid, user, quiet: false))
             return false;
-        
+
         if (lockComp.MindShieldLock && !HasMindshield(uid, user, quiet: false))
             return false;
 
@@ -179,7 +177,7 @@ public sealed class LockSystem : EntitySystem
         if (!Resolve(uid, ref lockComp))
             return;
 
-        if (lockComp.Locked || (lockComp.PowerNeeded && TryComp<PoweredLockerComponent>(uid, out var power) && !power.Powered)) // Starlight-edit: Powered Locker
+        if (lockComp.Locked || (lockComp.PowerNeeded && TryComp<PassivePowerComponent>(uid, out var power) && !power.Powered)) // Starlight-edit: Powered Locker
             return;
 
         if (user is { Valid: true })
@@ -212,7 +210,7 @@ public sealed class LockSystem : EntitySystem
         if (!Resolve(uid, ref lockComp))
             return;
 
-        if (!lockComp.Locked || (lockComp.PowerNeeded && TryComp<PoweredLockerComponent>(uid, out var power) && !power.Powered)) // Starlight-edit: Powered Locker
+        if (!lockComp.Locked || (lockComp.PowerNeeded && TryComp<PassivePowerComponent>(uid, out var power) && !power.Powered)) // Starlight-edit: Powered Locker
             return;
 
         if (user is { Valid: true })
@@ -250,7 +248,7 @@ public sealed class LockSystem : EntitySystem
 
         if (!CanToggleLock(uid, user, quiet: false))
             return false;
-        
+
         if (lockComp.MindShieldLock && !HasMindshield(uid, user, quiet: false))
             return false;
 
@@ -368,7 +366,7 @@ public sealed class LockSystem : EntitySystem
 
         return false;
     }
-    
+
     private bool HasMindshield(EntityUid uid, EntityUid user, bool quiet = true)
     {
         if (HasComp<MindShieldComponent>(user))
@@ -403,7 +401,7 @@ public sealed class LockSystem : EntitySystem
         if (!_emag.CompareFlag(args.Type, EmagType.Access))
             return;
 
-        if (!component.Locked || !component.BreakOnAccessBreaker || (component.PowerNeeded && TryComp<PoweredLockerComponent>(uid, out var power) && !power.Powered)) // Starlight-edit: Powered Locker
+        if (!component.Locked || !component.BreakOnAccessBreaker || (component.PowerNeeded && TryComp<PassivePowerComponent>(uid, out var power) && !power.Powered)) // Far Horizons
             return;
 
         _audio.PlayPredicted(component.UnlockSound, uid, args.UserUid);

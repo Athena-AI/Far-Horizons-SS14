@@ -166,7 +166,19 @@
     tags:
     - PetWearable
     - CorgiWearable
-  
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSecurityDeputy
+  name: Deputy Hat
+  description: The peak of law enforcement fashion.
+  suffix: NT
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Head/Hats/deputy_hat.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Head/Hats/deputy_hat.rsi
+
 #region Service
 - type: entity
   parent: ClothingHeadBase
@@ -553,6 +565,18 @@
     - CorgiWearable
 
 #region Security
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSecurityDeputySyndi
+  name: Deputy Hat
+  description: The peak of law enforcement fashion.
+  suffix: NS
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Head/Hats/NeoSol/deputy_hat_red.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Head/Hats/NeoSol/deputy_hat_red.rsi
 
 - type: entity
   parent: ClothingHeadBase

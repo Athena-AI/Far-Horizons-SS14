@@ -44,8 +44,9 @@
       - Pullable # no dragging things in
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: StrongMetallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -58,6 +59,7 @@
   - type: Construction
     graph: Turnstile
     node: turnstile
+  - type: LineOfSightExclude # Far Horizons
 
 - # Spawned by the client-side turnstile examine code to indicate the direction to pass through.
   type: entity

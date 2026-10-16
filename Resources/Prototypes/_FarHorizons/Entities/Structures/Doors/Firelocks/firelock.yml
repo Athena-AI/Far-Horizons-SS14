@@ -22,8 +22,9 @@
     - type: DeviceNetworkRequiresPower
     - type: InteractionOutline
     - type: Damageable
-      damageContainer: StructuralInorganic
       damageModifierSet: StructuralMetallicStrong
+    - type: Injurable
+      damageContainer: StructuralInorganic
     - type: RCDDeconstructable
       cost: 4
       delay: 6
@@ -194,6 +195,7 @@
       occludes: false
     - type: Construction
       node: FirelockGlass
+    - type: LineOfSightExclude
 
 - type: entity
   id: FirelockEdgeNeoSol
@@ -235,3 +237,4 @@
     - type: Construction
       graph: Firelock
       node: FirelockEdge
+    - type: LineOfSightExclude

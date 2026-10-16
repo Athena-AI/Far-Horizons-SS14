@@ -12,6 +12,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobMagistrate
@@ -27,6 +29,8 @@
   - Trinkets
   - Scarves
   - LuxuryPens
+  - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobSurgeon
@@ -45,6 +49,8 @@
   - Scarves
   - SurgeonEquipmentGroup #FH
   - Pens
+  - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobNanoTrasenRepresentative
@@ -58,6 +64,8 @@
   - Scarves
   - NTRPens
   - SurvivalStationManagement #FH
+  - CivilianWeaponsNT # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobIAA
@@ -71,6 +79,8 @@
   - Scarves
   - LuxuryPens
   - SurvivalStationManagement #FH
+  - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobBlueShield
@@ -87,6 +97,7 @@
   - Scarves
   - Pens
   - SurvivalSecurity
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobMiningSpecialist
@@ -104,6 +115,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobMailTech
@@ -118,6 +131,8 @@
   - Trinkets
   - Scarves
   - Pens
+  - CivilianWeaponsFactionless # FH
+  - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobBrigmedic
@@ -135,11 +150,14 @@
     - BrigmedicBeaker
     - SecurityShoes
     - SecurityNonLethalWeapon
+    - SecurityLongarm #FH
     - BrigmedicSidearm # FarHorizons
     - SurvivalSecurity
     - Trinkets
     - Scarves
     - Pens
+    - SecurityJobTrinkets #FH
+    - Credsticks # Far Horizons
 
 - type: roleLoadout
   id: JobSalvageLead
@@ -155,6 +173,8 @@
     - SurvivalCargo #FH
     - Trinkets
     - Scarves # FH
+    - CivilianWeaponsFactionless # FH
+    - Credsticks # Far Horizons
 
 # Antagonist Loadouts
 - type: roleLoadout

@@ -12,64 +12,6 @@
     - GalacticCommon
     - Machine
     - Trinary
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _FarHorizons/Mobs/Species/IPC/parts.rsi
-    layers:
-    - map: [ "enum.HumanoidVisualLayers.Chest" ]
-    - map: [ "enum.HumanoidVisualLayers.Head" ]
-    - map: [ "enum.HumanoidVisualLayers.Snout" ]
-    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
-    - map: [ "enum.HumanoidVisualLayers.RArm" ]
-    - map: [ "enum.HumanoidVisualLayers.LArm" ]
-    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
-    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
-    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
-    - map: ["jumpsuit"]
-    - map: ["enum.HumanoidVisualLayers.LFoot"]
-    - map: ["enum.HumanoidVisualLayers.RFoot"]
-    - map: ["enum.HumanoidVisualLayers.LHand"]
-    - map: ["enum.HumanoidVisualLayers.RHand"]
-    - map: [ "gloves" ]
-    - map: [ "shoes" ]
-    - map: [ "ears" ]
-    - map: [ "eyes" ]
-    - map: [ "outerClothing" ]
-    - map: [ "belt" ]
-    - map: [ "id" ]
-    - map: [ "back" ]
-    - map: [ "neck" ]
-    - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
-    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
-    - map: [ "enum.HumanoidVisualLayers.Hair" ]
-    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
-    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
-    - map: [ "enum.HumanoidVisualLayers.Tail" ]
-    - map: [ "mask" ]
-    - map: [ "head" ]
-    - map: [ "pocket1" ]
-    - map: [ "pocket2" ]
-    - map: ["enum.BorgVisualLayers.Body"]
-      state: light
-      visible: false
-    - map: ["enum.BorgVisualLayers.Light"]
-      state: light
-      shader: unshaded
-      visible: false
-    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
-      color: "#ffffff"
-      sprite: Objects/Misc/handcuffs.rsi # Would do a custom dog handcuff sprite but unfortunately handcuffs have their overlay baked-in to the cuff itself so this is mostly filler
-      state: body-overlay-2
-      visible: false
-    - map: ["enum.BorgVisualLayers.LightStatus"]
-      state: light
-      shader: unshaded
-      visible: false
-    - map: [ "clownedon" ] # Dynamically generated
-      sprite: "Effects/creampie.rsi"
-      state: "creampie_human"
-      visible: false
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -118,16 +60,14 @@
   - type: Stamina
     staminaAlert: "IPCStamina"
   - type: Damageable
-    damageContainer: Robotic
     damageModifierSet: IPC
-  - type: SolutionContainerManager
+  - type: Injurable
+    damageContainer: Robotic
+  - type: SolutionManager
     solutions:
-      bloodstream:
-        canReact: false # My robots aren't beakers! (oil -> ash conversion is evil and needs to go)
-      bloodstreamTemporary:
-        canReact: false
-      metabolites:
-        canReact: false
+    - SolutionIPCBloodstream
+    - SolutionIPCBloodstreamTemporary
+    - SolutionIPCMetabolites
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -415,6 +355,36 @@
       - shoes
   - type: LimbDamageable # Far Horizons
     proto: LimbTargetIPC
+
+- type: entity
+  parent: Solution
+  id: SolutionIPCBloodstream
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: bloodstream
+    solution:
+      canReact: false # My robots aren't beakers! (oil -> ash conversion is evil and needs to go)
+
+- type: entity
+  parent: Solution
+  id: SolutionIPCBloodstreamTemporary
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: bloodstreamTemporary
+    solution:
+      canReact: false
+
+- type: entity
+  parent: Solution
+  id: SolutionIPCMetabolites
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: metabolites
+    solution:
+      canReact: false
 
 - type: entity
   parent: BaseMentalAction

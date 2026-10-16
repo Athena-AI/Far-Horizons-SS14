@@ -91,8 +91,10 @@
 
 - type: listing
   id: UplinkThrowingKnivesKit
-  name: uplink-knives-kit-name
-  description: uplink-knives-kit-desc
+  #Far Horizons - Start - Changed to make faction neutral
+  name: uplink-knives-kit-name-fh
+  description: uplink-knives-kit-desc-fh
+  #Far Horizons - End
   icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: throwing_knives }
   productEntity: ThrowingKnivesKit
   discountCategory: rareDiscounts
@@ -194,7 +196,7 @@
 - type: listing
   id: UplinkHushpup
   name: uplink-hushpup-name
-  description: uplink-hushpup-desc
+  description: uplink-hushpup-desc-fh #FH
   icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/hushpup.rsi, state: icon }
   productEntity: BriefcaseWeaponHushpupFilled
   discountCategory: rareDiscounts
@@ -1136,6 +1138,16 @@
     Telecrystal: 2
   categories:
   - UplinkDisruption
+
+- type: listing
+  id: UplinkTravelCamera
+  name: uplink-travel-camera-name
+  description: uplink-travel-camera-desc
+  productEntity: TravelCamera
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkDeception
 
 - type: listing
   id: UplinkDuffelSurgery
@@ -2323,3 +2335,21 @@
   - !type:BuyerJobCondition
     whitelist:
     - Lawyer
+
+#Objective items
+
+# FH, listing disabled
+#- type: listing
+#  id: uplinkHijackBeacon
+#  name: uplink-hijack-beacon-name
+#  description: uplink-hijack-beacon-desc
+#  productEntity: HijackBeacon
+#  categories:
+#    - UplinkObjective
+#  conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
+#  - !type:BuyerObjectiveWhitelistCondition
+#    whitelist:
+#      components:
+#      - HijackTradeStationCondition

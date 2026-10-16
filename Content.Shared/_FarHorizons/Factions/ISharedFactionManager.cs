@@ -26,9 +26,13 @@ public interface ISharedFactionManager
     public IEnumerable<FactionPrototype> ListSpawnableFactions();
     public IEnumerable<ProtoId<FactionPrototype>> ListSpawnableFactionIDs();
     public IEnumerable<FactionDepartmentAssignmentPrototype> ListFactionDepartments();
-    public IEnumerable<FactionJobAssignmentPrototype> ListFactionJobs();
+    public IEnumerable<FactionJobAssignmentPrototype> ListFactionJobs(bool showHidden = false);
 
     public bool TryFindFaction(string search, out FactionPrototype? faction);
+
+    public FactionJobAssignmentPrototype? GetJobAssignment((ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) factionJob);
+    public bool TryGetJobAssignment((ProtoId<FactionPrototype> faction, ProtoId<JobPrototype> job) factionJob, out FactionJobAssignmentPrototype? assignment);
+    
 
     public string? GetMapPool();
 
@@ -57,6 +61,8 @@ public interface ISharedFactionManager
     public IReadOnlyCollection<ProtoId<AccessLevelPrototype>>? OverrideJobExtendedAccess((ProtoId<FactionPrototype>? faction, ProtoId<JobPrototype> job) factionJob);
     public IReadOnlyCollection<ProtoId<AccessGroupPrototype>>? OverrideJobExtendedAccessGroups(FactionJobAssignmentPrototype assignment);
     public IReadOnlyCollection<ProtoId<AccessGroupPrototype>>? OverrideJobExtendedAccessGroups((ProtoId<FactionPrototype>? faction, ProtoId<JobPrototype> job) factionJob);
+    public JobSpecial[] OverrideJobSpecial(FactionJobAssignmentPrototype assignment);
+    public JobSpecial[] OverrideJobSpecial((ProtoId<FactionPrototype>? faction, ProtoId<JobPrototype> job) factionJob);
     public string GetAnnouncerSender(ProtoId<FactionPrototype> faction);
     public string GetAnnouncerSender();
 }

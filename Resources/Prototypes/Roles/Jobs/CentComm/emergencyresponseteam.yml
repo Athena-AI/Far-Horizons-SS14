@@ -414,9 +414,9 @@
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
     ears: ClothingHeadsetCentCom #Starlight
-    belt: ClothingBeltMilitaryWebbingERT
+    belt: ClothingBeltMilitaryWebbing
     pocket2: CombatKnife
-    suitstorage: WeaponRiflePeacemaker # Starlight-edit: Changed from: WeaponRifleLecter
+    suitstorage: WeaponRifleLecter #FH-Edit Reverted to Lecter
   storage:
     # SL - Start
     back:
@@ -434,10 +434,10 @@
     - CrowbarRed
     - Zipties
     - MedkitCombatFilled
-    - MagazineRifleSP
-    - MagazineRifleSP
-    - MagazineRifleIncendiary
-    - MagazineRifleUranium
+    - MagazineRifle556SP #FH-Edit
+    - MagazineRifle556SP #FH-Edit
+    - MagazineRifle556Incendiary #FH-Edit
+    - MagazineRifle556Uranium #FH-Edit
     - Zipties
 
 - type: startingGear

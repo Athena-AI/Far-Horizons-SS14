@@ -14,12 +14,12 @@ orphans:
 nullspace: []
 tilemap:
   4: Space
-  13: FloorMetalBlue
-  11: FloorMetalDark
+  13: FloorShuttleBlue
+  11: FloorTechMaintDark
   6: FloorMetalDiamond
-  10: FloorMetalGreen
-  15: FloorMetalPurple
-  14: FloorMetalRed
+  10: FloorGreenCircuit
+  15: FloorShuttlePurple
+  14: FloorShuttleRed
   12: FloorMiningDark
   7: FloorRGlass
   0: FloorShuttleBlack
@@ -4272,7 +4272,7 @@ entities:
           - 67
     - type: Fixtures
       fixtures: {}
-- proto: MagazineBoxRifleBig
+- proto: MagazineCanisterRifle556FMJ
   entities:
   - uid: 310
     components:
@@ -4368,7 +4368,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 25
-- proto: MagazineRifleFMJ
+- proto: MagazineRifle556FMJ
   entities:
   - uid: 300
     components:
@@ -4519,7 +4519,7 @@ entities:
     - type: Transform
       pos: 1.6724777,1.7218652
       parent: 1
-- proto: OilPack
+- proto: BloodpackOil
   entities:
   - uid: 814
     components:

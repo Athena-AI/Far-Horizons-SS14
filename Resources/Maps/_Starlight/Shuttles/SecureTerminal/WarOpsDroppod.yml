@@ -14,11 +14,11 @@ orphans:
 nullspace: []
 tilemap:
   4: Space
-  13: FloorMetalBlue
-  11: FloorMetalDark
+  13: FloorShuttleBlue
+  11: FloorTechMaintDark
   6: FloorMetalDiamond
-  10: FloorMetalGreen
-  14: FloorMetalRed
+  10: FloorGreenCircuit
+  14: FloorShuttleRed
   12: FloorMiningDark
   7: FloorRGlass
   0: FloorShuttleBlack
@@ -4662,7 +4662,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 550
-- proto: MagazineRifleFMJ
+- proto: MagazineRifle556FMJ
   entities:
   - uid: 563
     components:
@@ -4712,7 +4712,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 572
-- proto: MagazineRifleIncendiary
+- proto: MagazineRifle556Incendiary
   entities:
   - uid: 566
     components:
@@ -4722,7 +4722,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 561
-- proto: MagazineRifleSP
+- proto: MagazineRifle556SP
   entities:
   - uid: 562
     components:
@@ -4796,7 +4796,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 572
-- proto: MagazineRifleUranium
+- proto: MagazineRifle556Uranium
   entities:
   - uid: 570
     components:
@@ -6863,7 +6863,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 509
-- proto: WeaponRifleLeikha
+- proto: WeaponRifleLecter
   entities:
   - uid: 568
     components:
@@ -6935,7 +6935,7 @@ entities:
       canCollide: False
     - type: InsideEntityStorage
       storage: 550
-- proto: WeaponSubMachineGunSP91RC
+- proto: WeaponSubMachineGunSparv
   entities:
   - uid: 532
     components:

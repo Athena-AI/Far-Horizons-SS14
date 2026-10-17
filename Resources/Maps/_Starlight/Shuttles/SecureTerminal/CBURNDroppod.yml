@@ -8312,7 +8312,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 5.5,-8.5
       parent: 1
-- proto: SMESBlue
+- proto: SMESShip
   entities:
   - uid: 1111
     components:
@@ -8464,7 +8464,7 @@ entities:
     - type: Transform
       pos: 0.5,-10.5
       parent: 1
-- proto: StairStageBlack
+- proto: RMCStairsDarkSolo
   entities:
   - uid: 1128
     components:
@@ -9109,7 +9109,7 @@ entities:
     - type: Transform
       pos: 13.5,-10.5
       parent: 1
-- proto: TurnstileCentComm
+- proto: TurnstileCommand
   entities:
   - uid: 1213
     components:

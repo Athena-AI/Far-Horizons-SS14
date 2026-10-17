@@ -22337,5 +22337,35 @@ Entries:
   id: 190800
   time: '2026-10-16T08:10:37.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1908
+- author: R3v3l4t1on
+  changes:
+  - message: Mechanical security is now a T2 research that needs laser weapons as
+      a prereq. It's also a lot cheaper now (35k > 9k).
+    type: Tweak
+  id: 191100
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: GSL now gets to know when advanced tools are researched. For the fultons,
+      obviously.
+    type: Tweak
+  id: 191101
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: Security gets to know when thermals are unlocked.
+    type: Tweak
+  id: 191102
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: AI lawboards research now announces to binary.
+    type: Tweak
+  id: 191103
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
 Order: -1
 

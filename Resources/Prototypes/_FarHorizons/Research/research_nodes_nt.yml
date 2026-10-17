@@ -935,6 +935,7 @@
     - FultonBeacon
   announceTo:
     - Engineering
+    - GSL # For the fultons
 
 - type: researchTreeNode
   id: NuclearPowerRecycling
@@ -1162,6 +1163,8 @@
     - ArtistCircuitBoard
     - NutimovCircuitBoard
     - JermovCircuitBoard
+  announceTo:
+    - Binary
 
 - type: researchTreeNode
   id: ClowningTech
@@ -1705,6 +1708,7 @@
     - CyberEyeThermal
   announceTo:
     - Medical
+    - Security
 
 # Cyborgs
 
@@ -1745,14 +1749,13 @@
 - type: researchTreeNode
   id: SecBorg
   name: research-tree-node-mech-security
-  cost: 35000
+  cost: 9000
   icon:
     state: electronics
     color: "#003860"
-  tier: Tier3
+  tier: Tier2
   requires:
-    - BorgPlaceholder3
-    - FunctionalCyberlimbsMKII
+    - LaserGun
   unlocks:
     - SecborgEndoskeleton
     - BorgModuleLaserCarbine

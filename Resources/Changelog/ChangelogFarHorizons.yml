@@ -21818,5 +21818,524 @@ Entries:
   id: 186200
   time: '2026-10-06T14:23:32.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1862
+- author: idkAnAlliasYetTbh
+  changes:
+  - message: (UNITY) Added a paramedic locker to the paramedic locker room to match
+      the number of roundstart slots.
+    type: Add
+  id: 185500
+  time: '2026-10-06T14:37:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1855
+- author: Penguinwizzard
+  changes:
+  - message: Fixed labels for Dexalin pill canisters, as well as Dermaline and Tricordrazine
+      pills
+    type: Fix
+  id: 186000
+  time: '2026-10-07T14:17:43.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1860
+- author: Princess Cheeseballs, metalgearsloth
+  changes:
+  - message: Artifacts can now have nodes triggered by damage again.
+    type: Fix
+  id: 185800
+  time: '2026-10-07T17:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1858
+- author: Princess Cheeseballs, metalgearsloth
+  changes:
+  - message: Webs (and a few other things) once again take damage properly.
+    type: Fix
+  id: 185801
+  time: '2026-10-07T17:02:02.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1858
+- author: Princess Cheeseballs
+  changes:
+  - message: Spray effects work again.
+    type: Fix
+  id: 186300
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Items that purge solutions now work again.
+    type: Fix
+  id: 186301
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Items that regenerate solutions now work again.
+    type: Fix
+  id: 186302
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Princess Cheeseballs
+  changes:
+  - message: Welders now properly drain fuel.
+    type: Fix
+  id: 186303
+  time: '2026-10-07T17:04:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1863
+- author: Penguinwizzard
+  changes:
+  - message: Airlock emag animations should play.
+    type: Fix
+  id: 187100
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: Penguinwizzard
+  changes:
+  - message: Airlocks and windoors should have the same order of options in the AI
+      alt-click rotary menus.
+    type: Fix
+  id: 187101
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: Penguinwizzard
+  changes:
+  - message: Airlocks now have a power consumption of 20u
+    type: Fix
+  id: 187102
+  time: '2026-10-08T15:33:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1871
+- author: AthenaAI
+  changes:
+  - message: Fixed some issues with marking randomization.
+    type: Fix
+  id: 186600
+  time: '2026-10-08T15:59:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1866
+- author: AthenaAI
+  changes:
+  - message: Fixes an issue where knockdown counted toward a vehicle's speed. Only
+      clothing affects the vehicle's speed.
+    type: Fix
+  id: 186100
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: AthenaAI
+  changes:
+  - message: Vehicle verbs are now predicted.
+    type: Fix
+  id: 186101
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: AthenaAI
+  changes:
+  - message: Examining a broken vehicle tells you what tool is required to fix the
+      vehicle.
+    type: Tweak
+  id: 186102
+  time: '2026-10-08T18:01:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1861
+- author: Killer Tamashi
+  changes:
+  - message: Added Dragon variant of sharkminnow, which is basically a beefier carp.
+      Can break walls. Not currently spawnable due to issues breaking AI, will be
+      implemented as part of rifts in a separate PR.
+    type: Add
+  id: 187200
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Buffed dragon fireball radius from plus sign shaped (from center, 1 tile
+      out in 4 directions ) to 3x3 square (from center, 1 tile out in 8 directions)
+    type: Tweak
+  id: 187201
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Buffed dragon by 200HP & Gave 5 Flat Piercing protection (this in essence
+      makes it take 2 extra magazines to kill using HP, from 3 on a lecter)
+    type: Tweak
+  id: 187202
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Changed Dragon damage from 15/15 Slash/Pierce to 30 Slash due to armor
+      having Pierce flats.
+    type: Tweak
+  id: 187203
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Removed SL's Dragon HP scaling (it was inconsistent and balanced around
+      ultra-highpop)
+    type: Remove
+  id: 187204
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: Killer Tamashi
+  changes:
+  - message: Fixed Dragon being stunnable (it was immune to the status effect, but
+      not the slowdown)
+    type: Fix
+  id: 187205
+  time: '2026-10-08T23:32:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1872
+- author: KarusKardin
+  changes:
+  - message: Added passive health regeneration to Space Dragons with active rifts
+      (Heals 300 HP total from each rift)
+    type: Add
+  id: 187700
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: KarusKardin
+  changes:
+  - message: Added a 150 blunt damage penalty to dragons when a rift is destroyed
+    type: Add
+  id: 187701
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: KarusKardin
+  changes:
+  - message: Fixed Dragon variant of the sharkminnow not spawning by converting Rifts
+      to use EntityTableSelector
+    type: Fix
+  id: 187702
+  time: '2026-10-09T07:52:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1877
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added a system for playing cards. (neomoth, Centronias)
+    type: Add
+  id: 187800
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added standard 54 (52+2 joker) playing card decks. Comes in black, NanoTrasen,
+      and Syndicate flavors! Can be purchased from the local GoodCleanFun vendor.
+      (neomoth, Centronias)
+    type: Add
+  id: 187801
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added Nuno, an original card game that is totally not based off of Uno.
+      (neomoth, Centronias)
+    type: Add
+  id: 187802
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Added the ability to provide custom visuals for an item in the strip
+      menu in order to obscure information (such as what playing cards someone else
+      is holding to prevent cheating). (neomoth, Centronias)
+    type: Add
+  id: 187803
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Tarot Cards can now be found in the chaplain's PietyVendor! (Centronias,
+      Huaqas)
+    type: Add
+  id: 187804
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Fixed a few subtle bugs with cards causing visual issues and various
+      mispredicts. (Centronias, Huaqas)
+    type: Fix
+  id: 187805
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Fixed a missing localization on one card deck verb. (Centronias, Huaqas)
+    type: Fix
+  id: 187806
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: Mizuki, neomoth, Centronias, Huaqas
+  changes:
+  - message: Picking up cards from hands while your hands are full doesn't
+    type: Fix
+  id: 187807
+  time: '2026-10-09T08:27:44.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1878
+- author: rainenjoyer
+  changes:
+  - message: Changed chemistry machine's UI to work better with the new container
+      sizes.
+    type: Tweak
+  id: 188100
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: rainenjoyer
+  changes:
+  - message: added 40U, 60U and 120U buttons to chemistry machines.
+    type: Add
+  id: 188101
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: rainenjoyer
+  changes:
+  - message: removed the 25U, 50U and 100U buttons from chemistry machines.
+    type: Remove
+  id: 188102
+  time: '2026-10-09T16:49:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1881
+- author: Killer Tamashi
+  changes:
+  - message: Changed Sharkminnow & Dragon Resists -> Flat reduction removed
+    type: Tweak
+  id: 188300
+  time: '2026-10-10T13:59:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1883
+- author: Killer Tamashi
+  changes:
+  - message: Changed Sharkminnow spawn chance to be 5%
+    type: Tweak
+  id: 188301
+  time: '2026-10-10T13:59:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1883
+- author: Killer Tamashi
+  changes:
+  - message: Changed Sharkminnow damage to 15 slash instead of 10 slash and 5 bloodloss
+    type: Tweak
+  id: 188302
+  time: '2026-10-10T13:59:11.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1883
+- author: AthenaAI
+  changes:
+  - message: Moved the Wheelchair from normal lathe to medical lathe.
+    type: Tweak
+  id: 188400
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: AthenaAI
+  changes:
+  - message: Having one leg will now consider you as being equivalent to a paralyzed
+      person.
+    type: Tweak
+  id: 188401
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: AthenaAI
+  changes:
+  - message: Fixed people being knocked down before they even could see their characters
+      which led to mispredictions.
+    type: Fix
+  id: 188402
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: AthenaAI
+  changes:
+  - message: Fixed Wheelchair bound people being knocked down when they spawned on
+      their wheel chairs.
+    type: Fix
+  id: 188403
+  time: '2026-10-10T18:23:46.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1884
+- author: Mizuki
+  changes:
+  - message: Carp hivemind is no longer anonymous
+    type: Tweak
+  id: 188600
+  time: '2026-10-11T14:51:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1886
+- author: korczoczek
+  changes:
+  - message: Fixed LocId spam when selecting research tree nodes.
+    type: Fix
+  id: 188900
+  time: '2026-10-11T14:53:08.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1889
+- author: princess_gurchi
+  changes:
+  - message: Star System system now supports handmade star systems outside of procedural
+      generation
+    type: Add
+  id: 188800
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: princess_gurchi
+  changes:
+  - message: CC now orbits a pulsar
+    type: Add
+  id: 188801
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: princess_gurchi
+  changes:
+  - message: NSHC now orbits a black hole (risk of high performance impact, please
+      let us know of any FPS drops on HC)
+    type: Add
+  id: 188802
+  time: '2026-10-11T14:59:57.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1888
+- author: AthenaAI
+  changes:
+  - message: Revert the behavior of one legged people bein g counted as paralyzed
+      due to some bugs.
+    type: Tweak
+  id: 189300
+  time: '2026-10-13T16:41:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1893
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots (cleanbot, medibot, hugbot, etc) now uniformly have wire
+      panels with power, speaker, and AI Access wires. (previously just the medibot
+      had a speaker wire)
+    type: Add
+  id: 189400
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots (cleanbot, medibot, hugbot, etc) now have a configuration
+      menu that can be accessed with their access panels open, which allows for configuring
+      power, AI-triggered voicelines ("stay still, please"), and movement behavior.
+      The station AI can access these panels at any time (unless the AIA wire is cut).
+    type: Add
+  id: 189401
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can now be told to leash to a given station beacon, meaning
+      they will move there when idle.
+    type: Add
+  id: 189402
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can now be told to patrol to a given station beacon, meaning
+      they will move there when idle, and then update their target beacon from that
+      beacon's "next beacon" field.
+    type: Add
+  id: 189403
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Station beacons now have a "next beacon" field.
+    type: Add
+  id: 189404
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Cleanbots will now start dragging trash items when they find them.
+    type: Add
+  id: 189405
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Cleanbots dragging trash items that encounter a disposal bin will dispose
+      of the trash item.
+    type: Add
+  id: 189406
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots can use doors to get to their movement targets.
+    type: Add
+  id: 189407
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard
+  changes:
+  - message: Simple bots now have both BasicSilicon and BasicSiliconNS access (rather
+      than just BasicSilicon)
+    type: Tweak
+  id: 189408
+  time: '2026-10-13T17:30:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1894
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fix mispredictions leading to false failed hypopen/medipen messages [PC]
+    type: Fix
+  id: 189500
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Predict corpsman hypo [PW]
+    type: Tweak
+  id: 189501
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fixed the corpsman hypo failing to find an injectable solution on the
+      target [PW]
+    type: Fix
+  id: 189502
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard and Princess Cheeeseballs
+  changes:
+  - message: Fixed the corpsman hypo using non-existent messages [PW]
+    type: Fix
+  id: 189503
+  time: '2026-10-13T17:35:36.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1895
+- author: Penguinwizzard
+  changes:
+  - message: Fixed a number of ghost roles that couldn't be taken because their associated
+      jobs didn't have factions (e.g. ERT). All jobs now have faction assignments.
+    type: Fix
+  id: 189700
+  time: '2026-10-13T17:49:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1897
+- author: Penguinwizzard
+  changes:
+  - message: Fixed gun executions.
+    type: Fix
+  id: 190200
+  time: '2026-10-15T15:19:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
+- author: Penguinwizzard
+  changes:
+  - message: Almost all of the code around executions is now predicted, so there should
+      be less menu jump and things should be smoother.
+    type: Add
+  id: 190201
+  time: '2026-10-15T15:19:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
+- author: whatston3
+  changes:
+  - message: Moproaches now regenerate water into their mops instead of bloodstream
+      again. Same with spiders and their venom and fangs.
+    type: Fix
+  id: 189600
+  time: '2026-10-15T15:55:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1896
+- author: jhrushbe
+  changes:
+  - message: Added the Fusion Reactor.
+    type: Add
+  id: 144600
+  time: '2026-10-15T17:01:30.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1446
+- author: princess_gurchi
+  changes:
+  - message: CC jobs no longer visible in job list in lobby
+    type: Fix
+  id: 190600
+  time: '2026-10-15T20:50:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1906
+- author: princess_gurchi
+  changes:
+  - message: Improvements to audio occlusion, hopefully nearby sounds will no longer
+      sound muffled
+    type: Fix
+  id: 190800
+  time: '2026-10-16T08:10:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1908
 Order: -1
 

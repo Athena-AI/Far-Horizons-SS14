@@ -1,4 +1,3 @@
-using Content.Shared._FarHorizons.ReagentDraw.Components;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 

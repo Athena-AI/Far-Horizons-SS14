@@ -162,6 +162,30 @@
 #region NSHC
 
 - type: factionJobAssignment
+  id: SyndieHCCOAOfficial
+  faction: FactionSyndicate
+  job: HC-COAOfficial
+  hidden: true
+
+- type: factionJobAssignment
+  id: SyndieHCDCIOfficial
+  faction: FactionSyndicate
+  job: HC-DCIOfficial
+  hidden: true
+
+- type: factionJobAssignment
+  id: SyndieHCGWSOfficial
+  faction: FactionSyndicate
+  job: HC-GWSOfficial
+  hidden: true
+
+- type: factionJobAssignment
+  id: SyndieHighCommandOfficial
+  faction: FactionSyndicate
+  job: HighCommandOfficial
+  hidden: true
+
+- type: factionJobAssignment
   id: SyndieNanoTrasenRepresentative
   faction: FactionSyndicate
   job: NanoTrasenRepresentative

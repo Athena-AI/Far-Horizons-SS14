@@ -23,8 +23,6 @@
               implants:
                 - MindShieldImplant
                 - DeathRattleImplantCentcomm
-            - type: SpawnOnTrigger
-              proto: ERTChaplainSpawnEffect
             - type: TriggerOnSpawn
           mindRoles:
             - MindRoleGhostCorporateAligned

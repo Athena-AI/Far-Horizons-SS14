@@ -1,7 +1,7 @@
 fusion-reactor-controller-ui-format-power = { POWERWATTS($power) }
 fusion-reactor-controller-ui-format-percent = { TOSTRING($value, "P1") }
-fusion-reactor-controller-ui-format-temperature = { TOSTRING($value, "F1") } k
-fusion-reactor-controller-ui-format-pressure = { TOSTRING($value, "F1") } pa
+fusion-reactor-controller-ui-format-temperature = { TOSTRING($value, "F1") } K
+fusion-reactor-controller-ui-format-pressure = { TOSTRING($value, "F1") } Pa
 fusion-reactor-controller-ui-format-seconds = { TOSTRING($value, "F1") }
 
 fusion-reactor-controller-ui-unit-mol = mol
@@ -42,7 +42,7 @@ fusion-reactor-controller-ui-stat-no-data = N/A
 fusion-reactor-controller-ui-eject = Eject
 
 fusion-reactor-controller-ui-action-denied = Controller is not master, action prohibited
-fusion-reactor-controller-ui-low-pressure = Pressure too low to inject
+fusion-reactor-controller-ui-low-pressure = Magnetic pressure too low to inject
 
 # [8] has an invisible character, U+200B, because it does not accept empty strings
 fusion-reactor-controller-ui-fmt-prefix = { TOSTRING($divided, "F1") } { $places ->

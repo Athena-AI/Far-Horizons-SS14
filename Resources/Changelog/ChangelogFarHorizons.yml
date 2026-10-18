@@ -22367,5 +22367,118 @@ Entries:
   id: 191103
   time: '2026-10-17T14:25:28.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: Added a fuel pipe from atmos to TEG.
+    type: Add
+  id: 191000
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added colouring to the reactor's fuel piping.
+    type: Add
+  id: 191001
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added a button to toggle the tinted windows in server room.
+    type: Add
+  id: 191002
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added decals to a secret door near evac.
+    type: Add
+  id: 191003
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added plumbing to the toilets at evac and medical.
+    type: Add
+  id: 191004
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid atmos piping around reactor so it's less hideous and doesn't go
+      through 500 walls.
+    type: Tweak
+  id: 191005
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Moved the exosuit fabricator in robotics so borg bodies don't get stuck.
+    type: Tweak
+  id: 191006
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: 'Slightly changed the pipes to the top artifact chamber: It''s got a
+      research-locked atmos alarm/scrubber/air injector now,'
+    type: Tweak
+  id: 191007
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid science/salvage docks slightly to hopefully stop salvage from blocking
+      the dock when they return from exped.
+    type: Tweak
+  id: 191008
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid a little bit of atmos/disposal piping around the station to be
+      less horrendous looking.
+    type: Tweak
+  id: 191009
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Solar airlocks now have engineering-locked doors inside, and external-locked
+      doors outside to combat doorlagger virus spacing all of maints.
+    type: Tweak
+  id: 191010
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the turbine area being unpowered roundstart due to missing MV,
+    type: Fix
+  id: 191011
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed part of robotics/science being unpowered roundstart due to missing
+      LV,
+    type: Fix
+  id: 191012
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the expeditioneer not starting with all of its' thrusters turned
+      on.
+    type: Fix
+  id: 191013
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the freezer in kitchen using the wrong gas pump/vent variants,
+      they now use freezer variants (also added a freezer alarm/sensor),
+    type: Fix
+  id: 191014
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
 Order: -1
 

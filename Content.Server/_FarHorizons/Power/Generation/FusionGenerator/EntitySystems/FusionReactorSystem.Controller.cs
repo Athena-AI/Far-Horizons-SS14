@@ -40,17 +40,17 @@ public sealed partial class FusionReactorSystem
         var extractTarget = comp.ExtractMode switch
         {
             FusionReactorPowerExtractType.Watts =>
-                comp.WattSetting * dt,
+                comp.WattSetting * dt / comp.PowerEfficiency,
             FusionReactorPowerExtractType.Temperature =>
                 (float)_fusionSystem.GetHeatCapacity(fusionReactor.Plasma) * MathF.Min((float)fusionReactor.Plasma.Temperature - comp.TempSetting, (float)fusionReactor.Plasma.Temperature * comp.TemperatureExtractMax * dt),
             _ => 0,
         };
 
-        extractTarget = MathF.Pow(MathF.Max(extractTarget * comp.PowerEfficiency, 0), comp.PowerExponent);
+        extractTarget = MathF.Pow(MathF.Max(extractTarget, 0), comp.PowerExponent);
 
         var extracted = -(float)_fusionSystem.ChangeJoule(fusionReactor.Plasma, -extractTarget);
 
-        SetPowerSupply(uid, extracted > 0, extracted * fusionReactor.PlasmaStability / dt);
+        SetPowerSupply(uid, extracted > 0, extracted * fusionReactor.PlasmaStability * comp.PowerEfficiency / dt);
 
         SetOnSurplus(uid, () =>
         {

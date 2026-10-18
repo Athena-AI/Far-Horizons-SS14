@@ -22480,5 +22480,20 @@ Entries:
   id: 191014
   time: '2026-10-18T11:47:06.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: princess_gurchi
+  changes:
+  - message: Round should no longer auto restart by rolling traitors via secret game
+      preset in NS round
+    type: Fix
+  id: 191200
+  time: '2026-10-18T13:52:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
+- author: princess_gurchi
+  changes:
+  - message: Vampires can drink from blood bags again
+    type: Fix
+  id: 191201
+  time: '2026-10-18T13:52:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
 Order: -1
 

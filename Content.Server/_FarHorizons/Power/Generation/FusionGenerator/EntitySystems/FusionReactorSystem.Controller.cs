@@ -37,24 +37,20 @@ public sealed partial class FusionReactorSystem
 
         fusionReactor.RequestedMagneticPressure = comp.RequestedMagneticPressure;
 
-        /// The thought here is that: 
-        /// - the Watt setting, which requires constant monitoring, is always going to work, even if at reduced capacity
-        /// - the Temperature setting, which is fully autonomous, is heavily dependent on stability
-
         var extractTarget = comp.ExtractMode switch
         {
-            FusionReactorPowerExtractType.Watts => comp.WattSetting * dt * MathF.Max(fusionReactor.PlasmaStability, 0.001f),
+            FusionReactorPowerExtractType.Watts =>
+                comp.WattSetting * dt / comp.PowerEfficiency,
             FusionReactorPowerExtractType.Temperature =>
-                (float)(_fusionSystem.GetHeatCapacity(fusionReactor.Plasma) * (fusionReactor.Plasma.Temperature - comp.TempSetting)
-                 * fusionReactor.PlasmaStability * fusionReactor.PlasmaStability), // intentional double multiply of PlasmaStability
+                (float)_fusionSystem.GetHeatCapacity(fusionReactor.Plasma) * MathF.Min((float)fusionReactor.Plasma.Temperature - comp.TempSetting, (float)fusionReactor.Plasma.Temperature * comp.TemperatureExtractMax * dt),
             _ => 0,
         };
 
-        extractTarget = MathF.Max(extractTarget, 0);
+        extractTarget = MathF.Pow(MathF.Max(extractTarget, 0), comp.PowerExponent);
 
-        var extracted = -_fusionSystem.ChangeJoule(fusionReactor.Plasma, -extractTarget);
+        var extracted = -(float)_fusionSystem.ChangeJoule(fusionReactor.Plasma, -extractTarget);
 
-        SetPowerSupply(uid, extracted > 0, (float)extracted / dt);
+        SetPowerSupply(uid, extracted > 0, extracted * fusionReactor.PlasmaStability * comp.PowerEfficiency / dt);
 
         SetOnSurplus(uid, () =>
         {

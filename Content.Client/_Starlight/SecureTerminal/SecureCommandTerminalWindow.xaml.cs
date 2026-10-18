@@ -30,6 +30,11 @@ public sealed partial class SecureCommandTerminalWindow : FancyWindow
     // Double-click tracking for the Request button
     private string? _pendingConfirmId;
 
+    //FH Start
+    private string? _childRootId;
+    private readonly Dictionary<string, Button> _childButtons = new();
+    //FH End
+
     public SecureCommandTerminalWindow()
     {
         IoCManager.InjectDependencies(this);
@@ -87,6 +92,9 @@ public sealed partial class SecureCommandTerminalWindow : FancyWindow
     {
         _selectedRequestButton = null;
         _requestButtons.Clear();
+        _childRootId = null; //FH
+        _childButtons.Clear(); //FH
+        ChildActionsContainer.RemoveAllChildren(); //FH
         RequestListContainer.RemoveAllChildren();
 
         var allProtos = _protos.EnumeratePrototypes<SecureCommandTerminalRequestPrototype>()
@@ -205,6 +213,8 @@ public sealed partial class SecureCommandTerminalWindow : FancyWindow
             DenyButton.Disabled = true;
             RecallButton.Visible = false;
             RecallButton.Disabled = true;
+            _childRootId = null; //FH
+            _childButtons.Clear(); //FH
             ChildActionsContainer.RemoveAllChildren();
             AuthDescLabel.SetMessage(string.Empty);
             AuthorizerListContainer.RemoveAllChildren();
@@ -335,12 +345,42 @@ public sealed partial class SecureCommandTerminalWindow : FancyWindow
         }
 
         // Child action buttons (e.g. End GAMMA Alert nested under Code GAMMA)
-        ChildActionsContainer.RemoveAllChildren();
-        var childProtos = _protos.EnumeratePrototypes<SecureCommandTerminalRequestPrototype>()
-            .Where(p => p.ParentId == proto.ID)
-            .OrderBy(p => p.SortOrder);
-        foreach (var child in childProtos)
+        //FH-Edit Start
+        var rootId = proto.ParentId ?? proto.ID;
+
+        if (_childRootId != rootId)
         {
+            _childRootId = rootId;
+            _childButtons.Clear();
+            ChildActionsContainer.RemoveAllChildren();
+
+            foreach (var child in _protos.EnumeratePrototypes<SecureCommandTerminalRequestPrototype>()
+                        .Where(p => p.ParentId == rootId)
+                        .OrderBy(p => p.SortOrder))
+            {
+                var childId = child.ID;
+                var childBtn = new Button
+                {
+                    Text = Loc.GetString(child.Name),
+                    HorizontalExpand = true,
+                    Margin = new Thickness(0, 2, 0, 0),
+                };
+                childBtn.OnPressed += _ =>
+                {
+                    _selectedRequestId = childId;
+                    _pendingConfirmId = null;
+                    RefreshRightPanel(_lastState!);
+                };
+                ChildActionsContainer.AddChild(childBtn);
+                _childButtons[childId] = childBtn;
+            }
+        }
+
+        foreach (var (childId, childBtn) in _childButtons)
+        {
+            if (!_protos.TryIndex<SecureCommandTerminalRequestPrototype>(childId, out var child))
+                continue;
+
             var childAlertElapsed = (_timing.CurTime - state.AlertLevelSetAt).TotalMinutes;
             var childAvailable = !state.UsedOnce.Contains(child.ID)
                 && !state.CoolingDown.ContainsKey(child.ID)
@@ -349,25 +389,12 @@ public sealed partial class SecureCommandTerminalWindow : FancyWindow
                 && !(child.RequiresAlertLevel != null && state.CurrentAlertLevel != child.RequiresAlertLevel)
                 && !(child.RequiresAlertActiveMinutes > 0 && childAlertElapsed < child.RequiresAlertActiveMinutes)
                 && state.Proposals.Find(p => p.RequestId == child.ID) == null;
-            var childBtn = new Button
-            {
-                Text = Loc.GetString(child.Name),
-                Disabled = !childAvailable,
-                HorizontalExpand = true,
-                Margin = new Thickness(0, 2, 0, 0),
-            };
-            if (!childAvailable)
-                childBtn.ModulateSelfOverride = Color.FromHex("#cc3333");
-            var childId = child.ID;
-            childBtn.OnPressed += _ =>
-            {
-                _selectedRequestId = childId;
-                _pendingConfirmId = null;
-                RebuildRequestList(_lastState!);
-                RefreshRightPanel(_lastState!);
-            };
-            ChildActionsContainer.AddChild(childBtn);
+
+            childBtn.Disabled = !childAvailable;
+            childBtn.Pressed = child.ID == proto.ID;
+            childBtn.ModulateSelfOverride = childAvailable ? null : Color.FromHex("#cc3333");
         }
+        //FH-Edit End
 
         // Auth section
         if (proposal == null)

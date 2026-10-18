@@ -22495,5 +22495,51 @@ Entries:
   id: 191201
   time: '2026-10-18T13:52:48.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
+- author: jhrushbe
+  changes:
+  - message: Added a lock to the fusion reactor's controller.
+    type: Add
+  id: 191400
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor is now less capable of making Gigawatts of power.
+    type: Tweak
+  id: 191401
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor stability now affects power extraction rather than energy
+      extraction.
+    type: Tweak
+  id: 191402
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Updated the fusion reactor controller's low pressure warning to specify
+      magnetic pressure.
+    type: Tweak
+  id: 191403
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Plasma temperature and pressure values will now display with SI prefixes
+      in the fusion reactor controller's UI.
+    type: Tweak
+  id: 191404
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Fixed a bug where the fusion reactor's "temperature" power extraction
+      mode worked too well.
+    type: Fix
+  id: 191405
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
 Order: -1
 

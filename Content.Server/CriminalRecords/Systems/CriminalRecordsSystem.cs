@@ -240,7 +240,7 @@ public sealed partial class CriminalRecordsSystem : SharedCriminalRecordsSystem
 
         _cartridge.ActivateProgram(item, programUid);
         Timer.Spawn(TimeSpan.FromMilliseconds(300), () => UpdateReaderUi((programUid, program), item, metaComp.EntityName));
-        _activatableUISystem.InteractUIp(user, item, activeComp);
+        _activatableUISystem.InteractUI(user, (item, activeComp));
     }
 
     private void OnGetActions(Entity<CrimeAnalyzerComponent> ent, ref GetItemActionsEvent args)

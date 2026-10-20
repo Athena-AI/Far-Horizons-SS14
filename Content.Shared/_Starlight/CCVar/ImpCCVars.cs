@@ -1,7 +1,7 @@
 using Robust.Shared;
 using Robust.Shared.Configuration;
 
-namespace Content.Shared._Starlight.CCVar;
+namespace Content.Shared.Starlight.CCVar;
 
 // ReSharper disable once InconsistentNaming
 [CVarDefs]

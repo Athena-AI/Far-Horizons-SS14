@@ -182,9 +182,8 @@ public sealed partial class ActivatableUISystem : EntitySystem
         SetCurrentSingleUser(uid, null, component);
     }
     
-    public bool InteractUIp(EntityUid user, EntityUid uiEntity, ActivatableUIComponent aui) => InteractUI(user, uiEntity, aui); //FarHorizons
     // Begin Stellar - interaction particles
-    private void InteractUI(EntityUid user, Entity<ActivatableUIComponent> ui)
+    public void InteractUI(EntityUid user, Entity<ActivatableUIComponent> ui) //FH-Edit
     {
         var interactionParticle = false;
 

@@ -15,7 +15,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared._Starlight.CCVar;
+using Content.Shared.Starlight.CCVar;
 using Robust.Server.Audio;
 using Content.Shared.Actions.Components;
 

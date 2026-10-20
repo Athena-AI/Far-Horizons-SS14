@@ -24,7 +24,7 @@ using Robust.Shared.Random;
 #region Starlight
 using Content.Shared._Starlight.Cargo.TamperSeal.Components;
 using Content.Server._Starlight.Cargo.TamperSeal.Components;
-using Content.Shared._Starlight.CCVar;
+using Content.Shared.Starlight.CCVar;
 using Content.Shared.Access;
 #endregion
 

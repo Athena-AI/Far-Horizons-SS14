@@ -377,11 +377,10 @@ public sealed partial class FusionReactorNodeGroup : BaseNodeGroup
 
     private float StabilityCalculation()
     {
-        var ex = Plasma.Volume / Plasma.ConstrainedVolume;
-        var x = 1 - (0.5f * (float)ex);
+        var ex = (float)(Plasma.Volume / Plasma.ConstrainedVolume);
 
         // Go put it in desmos yourself if you're so curious
-        var value = Math.Clamp(1.5625f * (x - MathF.Pow(x, 8)), 0, 1);
-        return !float.IsNaN(value) ? value : 0;
+        var value = Math.Clamp(1.53125f * (MathF.Tanh(3 * ex) - (0.5f * ex)), 0, 1);
+        return float.IsFinite(value) ? value : 0;
     }
 }

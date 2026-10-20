@@ -21,8 +21,8 @@ namespace Content.Server._Starfall.Particles;
 /// TODO: KILL WHEN GIBBING IS PREDICTED/SHARED I BEG
 public sealed class GibMistParticleSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {

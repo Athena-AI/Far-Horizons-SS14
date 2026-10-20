@@ -9,7 +9,7 @@ namespace Content.Client._Starfall.Particles;
 /// </summary>
 public sealed class GibMistParticleSystem : EntitySystem
 {
-    [Dependency] private readonly ParticleSystem _particles = default!;
+    [Dependency] private ParticleSystem _particles = default!;
 
     private static readonly ProtoId<ParticleEffectPrototype> MistEffect = "SfGibMist";
 

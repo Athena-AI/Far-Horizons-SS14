@@ -1,6 +1,7 @@
 using Content.Client.UserInterface;
 using Content.Shared._FarHorizons.Fusion;
 using Content.Shared._FarHorizons.Power.Generation.FusionGenerator;
+using Content.Shared.Lock;
 using JetBrains.Annotations;
 using Robust.Client.Timing;
 using Robust.Client.UserInterface;
@@ -11,6 +12,7 @@ namespace Content.Client._FarHorizons.Power.UI.FusionReactor;
 public sealed partial class FusionReactorControllerBoundUserInterface : BoundUserInterface, IBuiPreTickUpdate
 {
     [Dependency] private IClientGameTiming _gameTiming = null!;
+    [Dependency] private LockSystem _lock = default!;
 
     [ViewVariables]
     private FusionReactorControllerWindow? _window;
@@ -100,7 +102,13 @@ public sealed partial class FusionReactorControllerBoundUserInterface : BoundUse
     {
         if (!_master)
         {
-            _window?.DisplayMessage(Loc.GetString("fusion-reactor-controller-ui-action-denied"));
+            _window?.DisplayMessage(Loc.GetString("fusion-reactor-controller-ui-popup-action-denied"));
+            return;
+        }
+
+        if (_lock.IsLocked(Owner))
+        {
+            _window?.DisplayMessage(Loc.GetString("fusion-reactor-controller-ui-popup-locked"));
             return;
         }
 

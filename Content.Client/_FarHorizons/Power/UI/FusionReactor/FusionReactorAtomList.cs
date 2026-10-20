@@ -183,29 +183,13 @@ public class FusionAtomEntry : BoxContainer
     public void Update()
     {
         _atomLabel.Text = Atom.ToString();
-        _molLabel.Text = SIFormat(Mols, Unit);
+        _molLabel.Text = FusionReactorUIHelper.SIFormat(Mols, Unit);
     }
 
     public void Update(double mols)
     {
         Mols = mols;
         Update();
-    }
-
-    protected static string SIFormat(double value, string unit = "")
-    {
-        const int MinExponentPower = -24;
-        const int MaxExponentPower = 12;
-
-        if (value == 0)
-            return $"0 {unit}";
-
-        var exponent = Math.Floor(Math.Log10(Math.Abs(value)));
-        var magnitude = (int)Math.Clamp(Math.Floor(exponent / 3) * 3, MinExponentPower, MaxExponentPower);
-
-        var scaled = value * Math.Pow(10, -magnitude);
-
-        return $"{Loc.GetString("fusion-reactor-controller-ui-fmt-prefix", ("divided", scaled), ("places", (magnitude - MinExponentPower) / 3))}{unit}";
     }
 }
 
@@ -302,5 +286,24 @@ public sealed class FusionAtomInjectEntry : FusionAtomEntry
 
         _injectMode.SelectId((int)data.transferType);
         _entryBox.Text = data.Quantity.ToString();
+    }
+}
+
+public sealed class FusionReactorUIHelper
+{
+    public static string SIFormat(double value, string unit = "")
+    {
+        const int MinExponentPower = -24;
+        const int MaxExponentPower = 15;
+
+        if (value == 0)
+            return $"0 {unit}";
+
+        var exponent = Math.Floor(Math.Log10(Math.Abs(value)));
+        var magnitude = (int)Math.Clamp(Math.Floor(exponent / 3) * 3, MinExponentPower, MaxExponentPower);
+
+        var scaled = value * Math.Pow(10, -magnitude);
+
+        return $"{Loc.GetString("fusion-reactor-controller-ui-fmt-prefix", ("divided", scaled), ("places", (magnitude - MinExponentPower) / 3))}{unit}";
     }
 }

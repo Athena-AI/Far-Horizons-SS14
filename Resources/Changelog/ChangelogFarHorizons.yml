@@ -22337,5 +22337,209 @@ Entries:
   id: 190800
   time: '2026-10-16T08:10:37.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1908
+- author: R3v3l4t1on
+  changes:
+  - message: Mechanical security is now a T2 research that needs laser weapons as
+      a prereq. It's also a lot cheaper now (35k > 9k).
+    type: Tweak
+  id: 191100
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: GSL now gets to know when advanced tools are researched. For the fultons,
+      obviously.
+    type: Tweak
+  id: 191101
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: Security gets to know when thermals are unlocked.
+    type: Tweak
+  id: 191102
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: AI lawboards research now announces to binary.
+    type: Tweak
+  id: 191103
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: Added a fuel pipe from atmos to TEG.
+    type: Add
+  id: 191000
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added colouring to the reactor's fuel piping.
+    type: Add
+  id: 191001
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added a button to toggle the tinted windows in server room.
+    type: Add
+  id: 191002
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added decals to a secret door near evac.
+    type: Add
+  id: 191003
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added plumbing to the toilets at evac and medical.
+    type: Add
+  id: 191004
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid atmos piping around reactor so it's less hideous and doesn't go
+      through 500 walls.
+    type: Tweak
+  id: 191005
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Moved the exosuit fabricator in robotics so borg bodies don't get stuck.
+    type: Tweak
+  id: 191006
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: 'Slightly changed the pipes to the top artifact chamber: It''s got a
+      research-locked atmos alarm/scrubber/air injector now,'
+    type: Tweak
+  id: 191007
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid science/salvage docks slightly to hopefully stop salvage from blocking
+      the dock when they return from exped.
+    type: Tweak
+  id: 191008
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid a little bit of atmos/disposal piping around the station to be
+      less horrendous looking.
+    type: Tweak
+  id: 191009
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Solar airlocks now have engineering-locked doors inside, and external-locked
+      doors outside to combat doorlagger virus spacing all of maints.
+    type: Tweak
+  id: 191010
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the turbine area being unpowered roundstart due to missing MV,
+    type: Fix
+  id: 191011
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed part of robotics/science being unpowered roundstart due to missing
+      LV,
+    type: Fix
+  id: 191012
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the expeditioneer not starting with all of its' thrusters turned
+      on.
+    type: Fix
+  id: 191013
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the freezer in kitchen using the wrong gas pump/vent variants,
+      they now use freezer variants (also added a freezer alarm/sensor),
+    type: Fix
+  id: 191014
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: princess_gurchi
+  changes:
+  - message: Round should no longer auto restart by rolling traitors via secret game
+      preset in NS round
+    type: Fix
+  id: 191200
+  time: '2026-10-18T13:52:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
+- author: princess_gurchi
+  changes:
+  - message: Vampires can drink from blood bags again
+    type: Fix
+  id: 191201
+  time: '2026-10-18T13:52:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
+- author: jhrushbe
+  changes:
+  - message: Added a lock to the fusion reactor's controller.
+    type: Add
+  id: 191400
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor is now less capable of making Gigawatts of power.
+    type: Tweak
+  id: 191401
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor stability now affects power extraction rather than energy
+      extraction.
+    type: Tweak
+  id: 191402
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Updated the fusion reactor controller's low pressure warning to specify
+      magnetic pressure.
+    type: Tweak
+  id: 191403
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Plasma temperature and pressure values will now display with SI prefixes
+      in the fusion reactor controller's UI.
+    type: Tweak
+  id: 191404
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Fixed a bug where the fusion reactor's "temperature" power extraction
+      mode worked too well.
+    type: Fix
+  id: 191405
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
 Order: -1
 

@@ -116,8 +116,8 @@ public sealed partial class FusionReactorControllerWindow : FancyWindow
 
         if (msg.Plasma.TotalMoles > 0)
         {
-            ReactorTempValue.Text = Loc.GetString("fusion-reactor-controller-ui-format-temperature", ("value", msg.Plasma.Temperature));
-            ReactorPressureValue.Text = Loc.GetString("fusion-reactor-controller-ui-format-pressure", ("value", msg.Plasma.Pressure));
+            ReactorTempValue.Text = FusionReactorUIHelper.SIFormat(msg.Plasma.Temperature, Loc.GetString("fusion-reactor-controller-ui-unit-kelvin"));
+            ReactorPressureValue.Text = FusionReactorUIHelper.SIFormat(msg.Plasma.Pressure, Loc.GetString("fusion-reactor-controller-ui-unit-pascal"));
             ReactorExpansionValue.Text = Loc.GetString("fusion-reactor-controller-ui-format-percent", ("value", msg.Plasma.Volume / msg.Plasma.ConstrainedVolume));
             ReactorStabilityValue.Text = Loc.GetString("fusion-reactor-controller-ui-format-percent", ("value", msg.Stability));
         }
@@ -282,7 +282,7 @@ public sealed partial class FusionReactorControllerWindow : FancyWindow
 
         if (!drain && _lastState.Plasma.Pressure <= 0)
         {
-            InvalidPopup.Display(Loc.GetString("fusion-reactor-controller-ui-low-pressure"));
+            InvalidPopup.Display(Loc.GetString("fusion-reactor-controller-ui-popup-low-pressure"));
             return;
         }
 

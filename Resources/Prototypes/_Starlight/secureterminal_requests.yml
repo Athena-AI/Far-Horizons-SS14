@@ -555,11 +555,10 @@
 # ── ITG Salvage Team ──────────────────────────────────────────────────────────
 - type: secureTerminalRequest
   id: ITGSalvageTeam
-  name: secure-terminal-itg-salvage-team-name
-  description: secure-terminal-itg-salvage-team-desc
-  announcement: secure-terminal-itg-salvage-team-announcement
+  name: secure-terminal-gsl-salvage-team-name #FH ITG->GSL
+  description: secure-terminal-gsl-salvage-team-desc #FH ITG->GSL
+  announcement: secure-terminal-gsl-salvage-team-announcement #FH ITG->GSL
   announcementColor: "#ff4444"
-  activationDelaySecs: 60
   fee: 5000
   salaryModifiers:
     - source: Interstellar Trade Guild
@@ -586,9 +585,9 @@
 - type: secureTerminalRequest
   id: DismissITGSalvageTeam
   parentId: ITGSalvageTeam
-  name: secure-terminal-dismiss-itg-salvage-team-name
-  description: secure-terminal-dismiss-itg-salvage-team-desc
-  announcement: secure-terminal-dismiss-itg-salvage-team-announcement
+  name: secure-terminal-dismiss-gsl-salvage-team-name #FH ITG->GSL
+  description: secure-terminal-dismiss-gsl-salvage-team-desc #FH ITG->GSL
+  announcement: secure-terminal-dismiss-gsl-salvage-team-announcement #FH ITG->GSL
   announcementColor: "#ff4444"
   activationDelaySecs: 0
   fee: 0

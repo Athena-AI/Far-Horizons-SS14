@@ -115,6 +115,18 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
                 if (!_protos.TryIndex<SecureCommandTerminalRequestPrototype>(requestId, out var activeProto))
                     continue;
 
+                if (proposal.Status == SecureTerminalProposalStatus.Activating &&
+                    activeProto.VetoSchemes.Count > 0 && HasLostVetoPresence(proposal))
+                    RemoveAbsentVetoers(proposal);
+
+                if (proposal.Status == SecureTerminalProposalStatus.Activating &&
+                    proposal.ActivateAt > now && activeProto.VetoSchemes.Count > 0 &&
+                    HasVeto(proposal, activeProto))
+                {
+                    (toCancel ??= new()).Add(requestId);
+                    continue;
+                }
+
                 if (proposal.Status == SecureTerminalProposalStatus.Pending)
                 {
                     if (!IsRequesterPresent(proposal))
@@ -333,6 +345,19 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
             return;
         }
 
+        // We charge charge the requester when requested so we don't have to deal with them not having the funds when approved.
+        if (proto.Fee > 0)
+        {
+            /*if (_playerResources.TryGetResource(actor, "credits", out var balance) && balance < proto.Fee)
+            {
+                _popup.PopupCursor($"Insufficient funds. Required: {proto.Fee}\u20a1", actor, PopupType.Medium);
+                return;
+            }
+
+            _playerResources.TryUpdateResource(actor, "credits", -proto.Fee);
+            _popup.PopupCursor($"Held {proto.Fee}\u20a1 pending authorization.", actor, PopupType.Medium);*/
+        }
+
         // Create the proposal
         var proposal = new SecureTerminalProposalData
         {
@@ -395,6 +420,10 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
             return;
         }
 
+        if (comp.Admin)
+        {
+            proposal.AdminApproved = true;
+        }
         if (!comp.Admin && proposal.UsedTerminals.Contains(uid))
         {
             _popup.PopupCursor(Loc.GetString("secure-terminal-already-activated"), actor, PopupType.Medium);
@@ -437,6 +466,8 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
 
         if (deniedProposal.Status == SecureTerminalProposalStatus.Activating)
         {
+            if (deniedProposal.UsedRescindTerminals.Contains(uid))
+                return;
 
             _chatManager.SendAdminAnnouncement(
                 $"Secure Terminal — {MetaData(actor).EntityName} ({GetJobName(actor)}) DENIED / cancelled: {Loc.GetString(proto.Name)}.");
@@ -447,8 +478,11 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
                 return;
             }
 
-            if (!deniedProposal.ActivateAt.HasValue || deniedProposal.ActivateAt.Value <= _timing.CurTime)
+            if (!deniedProposal.ActivateAt.HasValue || deniedProposal.ActivateAt.Value <= _timing.CurTime || proto.VetoSchemes.Count == 0 ||
+                !TryVeto(actor, deniedProposal, proto, uid))
                 _popup.PopupCursor(Loc.GetString("secure-terminal-request-denied"), actor, PopupType.Medium);
+            else if (HasVeto(deniedProposal, proto))
+                CancelProposal(stationUid.Value, stationComp, msg.RequestId, deniedProposal, uid, actor, comp.Admin, true);
             return;
         }
 
@@ -799,14 +833,37 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
 
         if (_protos.TryIndex<SecureCommandTerminalRequestPrototype>(requestId, out var proto))
         {
+            var vetoers = string.Join(", ", proposal.Rescinders
+                .GroupBy(vetoer => vetoer.PlayerUid)
+                .Select(group => group.First())
+                .Select(vetoer => $"{vetoer.Name} ({vetoer.Job})"));
+            _chatManager.SendAdminAnnouncement(veto
+                ? Loc.GetString("secure-terminal-proposal-vetoed-by",
+                    ("vetoers", vetoers),
+                    ("request", Loc.GetString(proto.Name)))
+                : Loc.GetString("secure-terminal-proposal-cancelled-by",
+                    ("actor", actorName),
+                    ("request", Loc.GetString(proto.Name))));
+
             if (proto.ProposalAnnouncement)
             {
-                var locKey = admin
-                    ? "secure-terminal-proposal-denied-cc"
-                    : "secure-terminal-proposal-denied";
-                _chat.DispatchGlobalAnnouncement(
-                    Loc.GetString(locKey, ("request", Loc.GetString(proto.Name))),
-                    colorOverride: proto.AnnouncementColor);
+                if (veto)
+                {
+                    _chat.DispatchGlobalAnnouncement(
+                        Loc.GetString("secure-terminal-proposal-vetoed-by",
+                            ("vetoers", vetoers),
+                            ("request", Loc.GetString(proto.Name))),
+                        colorOverride: proto.AnnouncementColor);
+                }
+                else
+                {
+                    var locKey = admin
+                        ? "secure-terminal-proposal-denied-cc"
+                        : "secure-terminal-proposal-denied";
+                    _chat.DispatchGlobalAnnouncement(
+                        Loc.GetString(locKey, ("request", Loc.GetString(proto.Name))),
+                        colorOverride: proto.AnnouncementColor);
+                }
             }
 
             if (terminalUid.IsValid() && !admin)
@@ -825,6 +882,8 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
             return;
 
         var amount = (int)(proto.Fee * fraction);
+        //if (amount > 0)
+            //_playerResources.TryUpdateResource(requester, "credits", amount);
     }
 
     /// <summary>Execute the prototype's configured action against the station.</summary>
@@ -880,6 +939,78 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
         var result = new List<bool>(new bool[groupCount]);
         foreach (var (_, _, _, _, authorizerSchemeIndex, groupIndex) in proposal.Authorizers)
             if (authorizerSchemeIndex == schemeIndex && groupIndex >= 0 && groupIndex < result.Count)
+                result[groupIndex] = true;
+        return result;
+    }
+
+    private void RemoveAbsentVetoers(SecureTerminalProposalData proposal)
+    {
+        var removedTerminals = new List<EntityUid>();
+        proposal.Rescinders.RemoveAll(vetoer =>
+        {
+            if (_ui.IsUiOpen(vetoer.TerminalUid, SecureCommandTerminalUiKey.Key, vetoer.PlayerUid))
+                return false;
+
+            removedTerminals.Add(vetoer.TerminalUid);
+            return true;
+        });
+
+        removedTerminals.ForEach(terminalUid => proposal.UsedRescindTerminals.Remove(terminalUid));
+    }
+
+    private bool HasLostVetoPresence(SecureTerminalProposalData proposal) =>
+        proposal.Rescinders.Any(vetoer =>
+            !_ui.IsUiOpen(vetoer.TerminalUid, SecureCommandTerminalUiKey.Key, vetoer.PlayerUid));
+
+    private bool TryVeto(EntityUid actor, SecureTerminalProposalData proposal,
+        SecureCommandTerminalRequestPrototype proto, EntityUid terminalUid)
+    {
+        var accessTags = _idCard.TryFindIdCard(actor, out var idCard)
+            ? _access.FindAccessTags(idCard.Owner)
+            : Array.Empty<ProtoId<Content.Shared.Access.AccessLevelPrototype>>();
+        var vetoed = false;
+        for (var schemeIndex = 0; schemeIndex < proto.VetoSchemes.Count; schemeIndex++)
+        {
+            if (proposal.Rescinders.Any(v => v.PlayerUid == actor && v.SchemeIndex == schemeIndex))
+                continue;
+
+            var scheme = proto.VetoSchemes[schemeIndex];
+            var satisfied = BuildSatisfiedVetoGroups(proposal, schemeIndex, scheme.Groups.Count);
+            for (var groupIndex = 0; groupIndex < scheme.Groups.Count; groupIndex++)
+            {
+                if (satisfied[groupIndex] || !scheme.Groups[groupIndex].Any(tag => accessTags.Contains(tag)))
+                    continue;
+
+                string name, job;
+                if (_idCard.TryFindIdCard(actor, out var vetoIdCard))
+                {
+                    name = vetoIdCard.Comp.FullName ?? MetaData(actor).EntityName;
+                    job = vetoIdCard.Comp.LocalizedJobTitle ?? GetJobName(actor);
+                }
+                else
+                {
+                    name = MetaData(actor).EntityName;
+                    job = GetJobName(actor);
+                }
+                proposal.UsedRescindTerminals.Add(terminalUid);
+                proposal.Rescinders.Add((actor, name, job, terminalUid, schemeIndex, groupIndex));
+                vetoed = true;
+                break;
+            }
+        }
+
+        return vetoed;
+    }
+
+    private static bool HasVeto(SecureTerminalProposalData proposal, SecureCommandTerminalRequestPrototype proto) =>
+        proto.VetoSchemes.Select((scheme, index) => BuildSatisfiedVetoGroups(proposal, index, scheme.Groups.Count))
+            .Any(groups => groups.All(satisfied => satisfied));
+
+    private static List<bool> BuildSatisfiedVetoGroups(SecureTerminalProposalData proposal, int schemeIndex, int groupCount)
+    {
+        var result = new List<bool>(new bool[groupCount]);
+        foreach (var (_, _, _, _, vetoSchemeIndex, groupIndex) in proposal.Rescinders)
+            if (vetoSchemeIndex == schemeIndex && groupIndex >= 0 && groupIndex < result.Count)
                 result[groupIndex] = true;
         return result;
     }
@@ -984,10 +1115,33 @@ public sealed partial class SecureCommandTerminalSystem : EntitySystem
                     };
                 }).ToList();
 
+                var vetoSchemeStates = proto.VetoSchemes.Select((scheme, schemeIndex) =>
+                {
+                    var groups = scheme.Groups;
+                    var satisfiedGroups = BuildSatisfiedVetoGroups(data, schemeIndex, groups.Count);
+                    var vetoByGroup = data.Rescinders
+                        .Where(v => v.SchemeIndex == schemeIndex)
+                        .ToDictionary(v => v.GroupIndex, v => (v.Name, v.Job));
+                    var authorizedBy = Enumerable.Range(0, groups.Count)
+                        .Select(i => vetoByGroup.TryGetValue(i, out var veto) ? veto : (string.Empty, string.Empty))
+                        .ToList();
+
+                    return new SecureTerminalAuthSchemeState
+                    {
+                        Id = scheme.Id,
+                        Name = scheme.Name,
+                        Description = scheme.Description,
+                        AuthorizedBy = authorizedBy,
+                        GroupsSatisfied = satisfiedGroups,
+                        GroupLabels = groups.Select(g => string.Join(" / ", g)).ToList(),
+                    };
+                }).ToList();
+
                 proposals.Add(new SecureTerminalProposalState
                 {
                     RequestId = requestId,
                     AuthSchemes = schemeStates,
+                    VetoSchemes = vetoSchemeStates,
                     AuthorizedBy = data.Authorizers
                         .GroupBy(authorizer => authorizer.PlayerUid)
                         .Select(group => group.First())

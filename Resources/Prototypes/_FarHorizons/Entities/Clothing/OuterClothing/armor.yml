@@ -881,7 +881,7 @@
 
 #region ## USSP ##
 - type: entity
-  parent: [ ClothingOuterArmorBaseCarapace, BaseSovietContraband ]
+  parent: [ ClothingOuterArmorBaseCarapace, ClothingOuterWinterCoat, BaseSovietContraband ]
   id: ClothingOuterArmorAdmiralCarapace
   name: Admiral's Carapace
   suffix: USSP

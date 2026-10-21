@@ -69,6 +69,7 @@
     - proto: MobSovietComradeAk 
       cost: 30
       prob: 0.4
+      max: 1
     #boss / meeeh
     - proto: MobBearSoviet
       cost: 35

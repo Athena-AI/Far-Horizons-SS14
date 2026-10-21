@@ -119,3 +119,20 @@
     - !type:TargetDistanceCon
       curve: !type:PresetCurve
         preset: TargetDistance
+
+- type: utilityQuery
+  id: InventoryMelee
+  query:
+    - !type:InventoryQuery
+    - !type:ComponentFilter
+      components:
+        - type: MeleeWeapon
+          damage:
+            types:
+              Blunt: 0
+  considerations:
+    - !type:TargetMeleeCon
+      curve: !type:QuadraticCurve
+        slope: 0.5
+        exponent: 0.5
+        yOffset: 0

@@ -3,6 +3,7 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Server.NPC.HTN.Preconditions;
 using Content.Server.NPC;
+using System.Linq;
 
 namespace Content.Server._FarHorizons.NPC.HTN.Preconditions;
 
@@ -30,6 +31,6 @@ public sealed partial class NeedToPumpPrecondition : HTNPrecondition
         if (!_entManager.TryGetComponent<BallisticAmmoProviderComponent>(heldEntity, out var ballisticAmmoComp) || !ballisticAmmoComp.Cycleable)
             return false;
 
-        return ballisticAmmoComp.UnspawnedCount > 0 && ballisticAmmoComp.Entities.Count > 0;
+        return (ballisticAmmoComp.UnspawnedCount >= 0 || ballisticAmmoComp.Entities.Count > 0) && ballisticAmmoComp.Entities.Count(x => _entManager.TryGetComponent<CartridgeAmmoComponent>(x, out var cartridge) && cartridge.Spent) > 0;
     }
 }

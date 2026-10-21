@@ -3,7 +3,7 @@
   equipment:
     head: ClothingHeadHatUshanka
     jumpsuit: ClothingUniformJumpsuitSoviet
-    shoes: ClothingShoesBootsCowboyBlack
+    shoes: ClothingShoesBootsCowboyBlackCommieFilled
     id: SovietIdCard
 
 - type: startingGear
@@ -46,7 +46,6 @@
     - Flare
     - MagazinePistolSP
     - MagazinePistolSP
-    - MagazinePistolSP
 
 #Mosin
 - type: startingGear
@@ -54,6 +53,7 @@
   parent: [SovietComradeGear, SovietComradeGearBelt]
   equipment:
     head: ClothingHeadHatCapMilitsya
+    rig: ClothingBeltSovietMarineWebbing
     outerClothing: ClothingOuterWinterMilitsiya
   inhand:
   - WeaponSniperMosin
@@ -65,8 +65,6 @@
     - Flare
     - Flare
     - Flare
-    - SpeedLoaderLightRifle
-    - SpeedLoaderLightRifle
     - SpeedLoaderLightRifle
 
 #Shotgun
@@ -86,8 +84,6 @@
     - Flare
     - Flare
     - MagazineShotgunTozExtended
-    - MagazineShotgunTozExtended
-    - MagazineShotgunTozExtended
   inhand:
   - WeaponShotgunToz106Extended
 
@@ -98,6 +94,7 @@
   equipment:
     head: ClothingHeadHatCapCommissar
     jumpsuit: ClothingUniformJumpsuitCommissar
+    rig: ClothingBeltSovietMarineWebbing
     outerClothing: ClothingOuterWinterCommissar
   inhand:
   - WeaponSubMachineGunPPSH
@@ -110,8 +107,6 @@
     - Flare
     - Flare
     - MagazinePistolSubMachineGunPPSH 
-    - MagazinePistolSubMachineGunPPSH 
-    - MagazinePistolSubMachineGunPPSH 
 
 #AK
 - type: startingGear
@@ -119,6 +114,7 @@
   parent: [SovietComradeGear, SovietComradeGearBelt]
   equipment:
     head: ClothingHeadHatCapAdmiral
+    eyes: ClothingEyesHudSovietMarine
     neck: ClothingNeckMantleAdmiral
     jumpsuit: ClothingUniformJumpsuitAdmiral
     outerClothing: ClothingOuterArmorAdmiralCarapace
@@ -132,5 +128,4 @@
     - Flare
     - Flare
     - Flare
-    - MagazineLightRifleSP 
     - MagazineLightRifleSP 

@@ -22555,5 +22555,61 @@ Entries:
   id: 192300
   time: '2026-10-22T14:16:40.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1923
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Added new USSP themed gear. Sprites by Bazingaman.
+    type: Add
+  id: 191800
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Added the gear to the communist salvage dungeon table.
+    type: Add
+  id: 191801
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Added 3 new communist enemies the SMG, Mosin and Miner enemy.
+    type: Add
+  id: 191802
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Taught NPCs to swap to their melee weapons when they have no ammo.
+    type: Add
+  id: 191803
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Taught NPCs how to use weapons with bayonets.
+    type: Add
+  id: 191804
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Taught NPCs how to pump weapons.
+    type: Add
+  id: 191805
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: The ToZ uses real ammo and not a fake .42 shotgun shell.
+    type: Tweak
+  id: 191806
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Gave a proper shotgun to the sawn shotgun communist.
+    type: Tweak
+  id: 191807
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
 Order: -1
 

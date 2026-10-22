@@ -22541,5 +22541,12 @@ Entries:
   id: 191405
   time: '2026-10-18T13:57:22.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: qriqii
+  changes:
+  - message: fixed the X-01 (BSO laser pistol) having a mindshield lock
+    type: Fix
+  id: 191900
+  time: '2026-10-22T03:07:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1919
 Order: -1
 

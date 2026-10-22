@@ -239,6 +239,13 @@
         - !type:ActiveHandComponentPrecondition
           components:
             - type: Gun
+        - !type:ActiveHandComponentPrecondition
+           components:
+            - type: MeleeWeapon
+              damage:
+                types:
+                  Blunt: 0
+           invert: true
         - !type:GunAmmoPrecondition
           maxPercent: 0.001
       tasks:

@@ -108,7 +108,7 @@
 - type: htnCompound
   id: PickupMeleeCompound
   branches:
-    - precondition:
+    - preconditions:
       - !type:ActiveHandFreePrecondition 
       
       tasks:
@@ -119,7 +119,7 @@
         - !type:HTNPrimitiveTask
           operator: !type:EquipOperator
 
-    - precondition:
+    - preconditions:
       - !type:ActiveHandFreePrecondition 
 
       tasks:

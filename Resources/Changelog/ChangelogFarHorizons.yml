@@ -22548,5 +22548,12 @@ Entries:
   id: 191900
   time: '2026-10-22T03:07:37.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1919
+- author: qriqii
+  changes:
+  - message: fixed NS trackers not being deimplantable
+    type: Fix
+  id: 192300
+  time: '2026-10-22T14:16:40.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1923
 Order: -1
 

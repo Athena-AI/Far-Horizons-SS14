@@ -75,6 +75,7 @@
     interfaces:
       enum.FusionReactorUiKey.Key:
         type: FusionReactorControllerBoundUserInterface
+  - type: StationAiWhitelist
   - type: AccessReader
     access: [["Engineering"]]
   - type: Lock

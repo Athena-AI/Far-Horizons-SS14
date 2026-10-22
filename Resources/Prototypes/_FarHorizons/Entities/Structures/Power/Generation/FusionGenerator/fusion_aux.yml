@@ -163,13 +163,13 @@
         layer:
         - MachineLayer
   - type: FusionReactorBattery
-    maxInput: 150000
+    maxInput: 200000
     minInput: 5000
   - type: FusionReactorRequireValid
   - type: Battery
     netsync: false
-    startingCharge: 16000000
-    maxCharge: 16000000
+    startingCharge: 24000000
+    maxCharge: 24000000
   - type: ExaminableBattery
   - type: Machine
     board: FusionReactorCapacitorMachineCircuitboard

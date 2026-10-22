@@ -263,16 +263,28 @@
   id: FusionConversionZauker
   gas: Zauker
   products:
-    # Zauker is N7H9 (not named, but a real compound) for the purpose of conversion because I said so
+    # Zauker is C4H8Cl2S (Mustard gas) because it sure does act like it
 
     # Hydrogen
-    1,0: 8.998695
-    1,1: 0.001035
-    1,2: 9e-16
+    1,0: 7.99884
+    1,1: 0.00092
+    1,2: 8e-16
 
-    # Nitrogen
-    7,7: 6.9734
-    7,8: 0.0266
+    # Carbon
+    6,6: 3.956
+    6,7: 0.0424
+    6,8: 0.0016
+
+    # Sulfur
+    16,16: 0.948
+    # 16,17: 0.0076
+    # 16,18: 0.0437
+    # 16,20: 0.0007
+
+    # Chlorine
+    # 17,18: 0.758
+    # 17,20: 0.242
+
 
 - type: fusionConversion
   id: FusionConversionHalon

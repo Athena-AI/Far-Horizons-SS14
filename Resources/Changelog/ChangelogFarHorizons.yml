@@ -22611,5 +22611,65 @@ Entries:
   id: 191807
   time: '2026-10-22T16:55:07.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: jhrushbe
+  changes:
+  - message: The Station AI can now access the fusion reactor's controller.
+    type: Add
+  id: 192100
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Changed the way the fusion reactor's magnetic pressure is calculated
+      to reduce strobing behavior.
+    type: Tweak
+  id: 192101
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor controller can now extract only up to a set portion
+      of the total energy.
+    type: Tweak
+  id: 192102
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Set buttons will no longer deactivate when an input is denied in the
+      fusion reactor controller's UI, allowing you to try again.
+    type: Tweak
+  id: 192103
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor capacitor max charge rate increased from 150kW to 200kW.
+    type: Tweak
+  id: 192104
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor capacitor charge capacity increased from 16MJ to 24MJ.
+    type: Tweak
+  id: 192105
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: The gas to atom conversion for Zauker has been changed from N7H9 to C4H8Cl2S.
+    type: Tweak
+  id: 192106
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor will no longer tolerate NaN, Infinity, or NegativeInfinity
+      inputs.
+    type: Fix
+  id: 192107
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
 Order: -1
 

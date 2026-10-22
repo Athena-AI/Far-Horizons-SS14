@@ -81,3 +81,40 @@
     stealGroup: HeadCloak
   - type: StaticPrice
     price: 2000
+
+#region ## USSP ##
+- type: entity
+  parent: [ClothingNeckBase, BaseSovietContraband]
+  id: ClothingNeckMantleAdmiral
+  name: Admiral's Mantle
+  suffix: USSP
+  description: A mantle that shows off the status of an Admiral of a USSP station.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Neck/Mantles/USSP/admiralmantle.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Neck/Mantles/USSP/admiralmantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseSovietContraband]
+  id: ClothingNeckMantleCommissar
+  name: Commissar's Mantle
+  suffix: USSP
+  description: A mantle to given to the best performing Commissars.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Neck/Mantles/USSP/commissarmantle.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Neck/Mantles/USSP/commissarmantle.rsi
+
+- type: entity
+  parent: [ClothingNeckBase, BaseSovietContraband]
+  id: ClothingNeckMantleImperialOfficerFormal
+  name: Imperial Officer's Formal Mantle
+  suffix: USSP
+  description: A formal mantle from a Imperial Officer, one of the highest rankings in the USSP.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/Neck/Mantles/USSP/imperialofficerformalmantle.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/Neck/Mantles/USSP/imperialofficerformalmantle.rsi

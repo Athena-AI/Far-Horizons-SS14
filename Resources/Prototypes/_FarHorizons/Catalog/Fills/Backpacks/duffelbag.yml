@@ -203,7 +203,7 @@
         children:
         - id: WeaponShotgunToz106Extended
         - id: MagazineShotgunToz
-        - id: BoxLethalshotToz
+        - id: BoxShotgunFlechette
 
 - type: entity
   id: ClothingBackpackDuffelWeaponRifleAk

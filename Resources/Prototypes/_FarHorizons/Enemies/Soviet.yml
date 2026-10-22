@@ -4,13 +4,11 @@
   id: MobSovietComrade
   categories: [ Spawner ]
   components:
-    #FarHorizons Start
     - type: RandomSpecies
     - type: RandomHumanoidAppearance
       randomizeName: true 
       namePrefix: Comrade 
       lastNameOnly: true 
-    #FarHorizons End
     - type: Prying
       pryPowered: true
       force: true
@@ -34,48 +32,64 @@
           
 #melee
 - type: entity
-  suffix: Broken Bottle
+  suffix: USSP, Miner
   parent: MobSovietComrade
-  id: MobSovietComradeBrokenBottle
+  id: MobSovietComradeMiner
   components:
     - type: Loadout
       prototypes:
-        - SovietComradeGearBrokenBottle
-- type: entity
-  suffix: Finka
-  parent: MobSovietComrade
-  id: MobSovietComradeFinka
-  components:
-    - type: Loadout
-      prototypes:
-        - SovietComradeGearFinka
-#shotgun
-- type: entity
-  suffix: Sawn
-  parent: MobSovietComrade
-  id: MobSovietComradeSawn
-  components:
-    - type: Loadout
-      prototypes:
-        - SovietComradeGearSawn
+        - SovietComradeGearMiner
+
 #pistol
 - type: entity
-  suffix: Makarov
+  suffix: USSP, Makarov
   parent: MobSovietComrade
   id: MobSovietComradeMakarov
   components:
     - type: Loadout
       prototypes:
         - SovietComradeGearMakarov
+
+#mosin
+- type: entity
+  suffix: USSP, Mosin
+  parent: MobSovietComrade
+  id: MobSovietComradeMosin
+  components:
+    - type: Loadout
+      prototypes:
+        - SovietComradeGearMosin
+        
+#shotgun
+- type: entity
+  suffix: USSP, Shotgun
+  parent: MobSovietComrade
+  id: MobSovietComradeShotgun
+  components:
+    - type: Loadout
+      prototypes:
+        - SovietComradeGearToz
+
+#smg
+- type: entity
+  suffix: USSP, SMG
+  parent: MobSovietComrade
+  id: MobSovietComradeSMG
+  components:
+    - type: Loadout
+      prototypes:
+        - SovietComradeGearSMG
+
 #rifle
 - type: entity
-  suffix: Ak
+  suffix: USSP, Ak
   parent: MobSovietComrade
   id: MobSovietComradeAk
   components:
     - type: Loadout
       prototypes:
         - SovietComradeGearAk
+
 #boss
 - type: entity
   name: soviet bear

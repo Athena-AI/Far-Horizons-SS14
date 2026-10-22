@@ -108,6 +108,20 @@
         - !type:HTNPrimitiveTask
           operator: !type:RackBoltOperator
 
+    #FH-Start
+    # pump the gun if necessary
+    - preconditions:
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: Gun
+        - !type:GunAmmoPrecondition
+          minPercent: 0.001
+        - !type:NeedToPumpPrecondition
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:PumpOperator
+    #FH-End
+
     # Wield gun
     - preconditions:
         - !type:ActiveHandComponentPrecondition
@@ -225,6 +239,13 @@
         - !type:ActiveHandComponentPrecondition
           components:
             - type: Gun
+        - !type:ActiveHandComponentPrecondition
+           components:
+            - type: MeleeWeapon
+              damage:
+                types:
+                  Blunt: 0
+           invert: true
         - !type:GunAmmoPrecondition
           maxPercent: 0.001
       tasks:

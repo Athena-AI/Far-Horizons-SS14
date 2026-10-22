@@ -215,12 +215,15 @@ public sealed partial class FusionReactorControllerWindow : FancyWindow
     private void OnSetExtractPressed()
     {
         var type = (FusionReactorPowerExtractType)ExtractionOption.SelectedId;
-        var wattSetting = float.TryParse(WattSetting.Text, out var watts) && !float.IsNaN(watts) ? watts : -1;
-        var tempSetting = float.TryParse(TemperatureSetting.Text, out var temp) && !float.IsNaN(temp) ? temp : -1;
+        var wattSetting = float.TryParse(WattSetting.Text, out var watts) && float.IsFinite(watts) ? watts : -1;
+        var tempSetting = float.TryParse(TemperatureSetting.Text, out var temp) && float.IsFinite(temp) ? temp : -1;
 
         // Using negative values as an error flag, also acts as a bit of input filtering
-        if (watts < 0 || temp < 0)
+        if (wattSetting < 0 || tempSetting < 0)
+        {
+            DisplayMessage(Loc.GetString("fusion-reactor-controller-ui-popup-invalid-number"));
             return;
+        }
 
         OnExtractSet?.Invoke(new(type, temp, watts));
         SetExtractionButton.Disabled = true;
@@ -228,8 +231,11 @@ public sealed partial class FusionReactorControllerWindow : FancyWindow
 
     private void OnSetPressurePressed()
     {
-        if (!float.TryParse(PressureSetting.Text, out var num) || float.IsNaN(num))
+        if (!float.TryParse(PressureSetting.Text, out var num) || !float.IsFinite(num))
+        {
+            DisplayMessage(Loc.GetString("fusion-reactor-controller-ui-popup-invalid-number"));
             return;
+        }
 
         OnPressureSet?.Invoke(num);
         SetPressureButton.Disabled = true;

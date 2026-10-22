@@ -71,28 +71,32 @@ public sealed partial class FusionReactorSystem
     {
         reactorNodeGroup.Magnets.ForEach(m => UpdateMagnetAudio(m.Owner, m.Comp));
 
-        if (reactorNodeGroup.SuperconductingCount <= 0)
+        var superconducting = reactorNodeGroup.SuperconductingCount;
+        if (superconducting <= 0)
         {
             reactorNodeGroup.MagneticPressure = 1000;
-            foreach (var (uid, magnet) in reactorNodeGroup.Magnets)
+            foreach (var (uid, _) in reactorNodeGroup.Magnets)
                 SetPowerDraw(uid, false);
 
             return;
         }
 
-        // Power draw is RequestedMagneticPressure/SuperconductingCount * TorusCount/10 watts
-        var targetDraw = reactorNodeGroup.Torus.Count * reactorNodeGroup.RequestedMagneticPressure / (reactorNodeGroup.SuperconductingCount * 10);
-        var dE = targetDraw / reactorNodeGroup.SuperconductingCount;
-        var dP = reactorNodeGroup.RequestedMagneticPressure / reactorNodeGroup.SuperconductingCount;
+        var totalRequestedDraw = reactorNodeGroup.MagnetPowerRatio * reactorNodeGroup.Torus.Count * reactorNodeGroup.RequestedMagneticPressure / superconducting;
+        var drawPerMagnet = totalRequestedDraw / superconducting;
+        var pressurePerWatt = reactorNodeGroup.RequestedMagneticPressure / totalRequestedDraw;
 
         reactorNodeGroup.MagneticPressure = 0;
         foreach (var (uid, magnet) in reactorNodeGroup.Magnets)
         {
-            SetPowerDraw(uid, magnet.IsMagnet && magnet.Superconducting, dE);
+            SetPowerDraw(uid, magnet.IsMagnet && magnet.Superconducting, drawPerMagnet);
             SetOnSatisfy(uid, () =>
             {
-                magnet.Temperature += GetPowerSupplied(uid) * dt * magnet.Loss / magnet.ThermalMass;
-                reactorNodeGroup.MagneticPressure += dP * GetPowerSatisfaction(uid);
+                var suppliedJoule = GetPowerSupplied(uid) * dt;
+                magnet.Temperature += suppliedJoule * magnet.Loss / magnet.ThermalMass;
+                magnet.Charge += suppliedJoule;
+                var usedCharge = magnet.Charge * magnet.ChargeUse * dt;
+                magnet.Charge -= usedCharge;
+                reactorNodeGroup.MagneticPressure += pressurePerWatt * usedCharge / dt;
                 reactorNodeGroup.Plasma.Pressure = reactorNodeGroup.MagneticPressure;
             });
         }

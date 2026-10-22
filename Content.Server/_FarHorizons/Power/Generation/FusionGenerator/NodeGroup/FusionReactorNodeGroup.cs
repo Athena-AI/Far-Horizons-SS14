@@ -92,6 +92,13 @@ public sealed partial class FusionReactorNodeGroup : BaseNodeGroup
     public float RequestedMagneticPressure { get; set; } = 1000;
 
     /// <summary>
+    /// A scaler on how many watts a magnet needs to exert pressure.
+    /// </summary>
+    /// <remarks>Unit is Watts * torus^-1 * Pa^-1</remarks>
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float MagnetPowerRatio = 0.1f;
+
+    /// <summary>
     /// The stability of the plasma within the reactor
     /// </summary>
     /// <remarks>

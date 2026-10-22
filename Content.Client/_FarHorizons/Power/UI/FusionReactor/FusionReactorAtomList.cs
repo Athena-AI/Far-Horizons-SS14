@@ -266,10 +266,10 @@ public sealed class FusionAtomInjectEntry : FusionAtomEntry
         _entryBox.OnTextChanged += _ => _setButton.Disabled = false;
         _setButton.OnPressed += _ =>
         {
-            if (float.TryParse(_entryBox.Text, out var num) && !float.IsNaN(num))
-            {
-                OnSetPressed?.Invoke(new((FusionReactorTransferType)_injectMode.SelectedId, num));
-            }
+            if (!float.TryParse(_entryBox.Text, out var num) || !float.IsFinite(num))
+                return;
+
+            OnSetPressed?.Invoke(new((FusionReactorTransferType)_injectMode.SelectedId, num));
             _setButton.Disabled = true;
         };
 

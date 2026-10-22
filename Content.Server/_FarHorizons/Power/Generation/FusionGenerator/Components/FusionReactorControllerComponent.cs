@@ -22,22 +22,22 @@ public sealed partial class FusionReactorControllerComponent : Component
     public Dictionary<FusionAtom, FusionReactorTransferData> Transfers = [];
 
     /// <summary>
-    /// Threshold where it switches from linear to logarithmic power extraction
+    /// Exponent applied to the power output
     /// </summary>
     [DataField]
     public float PowerExponent = 0.95f;
 
     /// <summary>
-    /// Overall power extraction efficiency
+    /// The fraction of energy extracted that turns into usable power
     /// </summary>
     [DataField]
     public float PowerEfficiency = 0.35f;
 
     /// <summary>
-    /// Largest portion of energy temperature extract mode can take from the reactor's plasma per second
+    /// Largest portion of energy the controller can extract from the reactor's plasma per second
     /// </summary>
     [DataField]
-    public float TemperatureExtractMax = 0.01f;
+    public float EnergyExtractMax = 0.01f;
 
     /// <summary>
     /// Radio channel(s) to send alerts to

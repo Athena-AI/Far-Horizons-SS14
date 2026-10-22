@@ -37,20 +37,22 @@ public sealed partial class FusionReactorSystem
 
         fusionReactor.RequestedMagneticPressure = comp.RequestedMagneticPressure;
 
+        var heatCap = _fusionSystem.GetHeatCapacity(fusionReactor.Plasma);
         var extractTarget = comp.ExtractMode switch
         {
             FusionReactorPowerExtractType.Watts =>
                 comp.WattSetting * dt / comp.PowerEfficiency,
             FusionReactorPowerExtractType.Temperature =>
-                (float)_fusionSystem.GetHeatCapacity(fusionReactor.Plasma) * MathF.Min((float)fusionReactor.Plasma.Temperature - comp.TempSetting, (float)fusionReactor.Plasma.Temperature * comp.TemperatureExtractMax * dt),
+                 heatCap * (fusionReactor.Plasma.Temperature - comp.TempSetting),
             _ => 0,
         };
 
-        extractTarget = MathF.Pow(MathF.Max(extractTarget, 0), comp.PowerExponent);
+        extractTarget = Math.Clamp(extractTarget, 0, heatCap * fusionReactor.Plasma.Temperature * comp.EnergyExtractMax * dt);
 
         var extracted = -(float)_fusionSystem.ChangeJoule(fusionReactor.Plasma, -extractTarget);
+        var supply = MathF.Pow(extracted * fusionReactor.PlasmaStability * comp.PowerEfficiency / dt, comp.PowerExponent);
 
-        SetPowerSupply(uid, extracted > 0, extracted * fusionReactor.PlasmaStability * comp.PowerEfficiency / dt);
+        SetPowerSupply(uid, extracted > 0, supply);
 
         SetOnSurplus(uid, () =>
         {

@@ -46,6 +46,7 @@ fusion-reactor-controller-ui-eject = Eject
 fusion-reactor-controller-ui-popup-action-denied = Controller is not master
 fusion-reactor-controller-ui-popup-low-pressure = Magnetic pressure too low to inject
 fusion-reactor-controller-ui-popup-locked = Parameter lock enabled
+fusion-reactor-controller-ui-popup-invalid-number = Invalid input
 
 # [8] has an invisible character, U+200B, because it does not accept empty strings
 fusion-reactor-controller-ui-fmt-prefix = { TOSTRING($divided, "F1") } { $places ->

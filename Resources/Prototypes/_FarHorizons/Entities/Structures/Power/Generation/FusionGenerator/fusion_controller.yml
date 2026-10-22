@@ -41,7 +41,7 @@
     alertChannel: ["Engineering", "SyndiEngi"]
     powerExponent: 0.95
     powerEfficiency: 0.35
-    temperatureExtractMax: 0.01
+    energyExtractMax: 0.01
   - type: FusionReactorPowerSupply
   - type: FusionReactorRequireValid
     magnet: 1

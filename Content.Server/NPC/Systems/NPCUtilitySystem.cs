@@ -289,9 +289,15 @@ public sealed partial class NPCUtilitySystem : EntitySystem // Far Horizons made
                     return 0f;
                 }
 
-                if (ballisticAmmoProvider != null && 
+                if (ballisticAmmoProvider != null &&
                     _whitelistSystem.IsWhitelistFailOrNull(ballisticAmmoProvider.Whitelist, targetUid))
                 {
+                    if(TryComp<BallisticAmmoProviderComponent>(targetUid, out var targetBallisticAmmoComp) && 
+                        targetBallisticAmmoComp.Proto != null)
+                    {
+                        return 1f;
+                    }
+
                     return 0f;
                 }
                 // Far Horizons end

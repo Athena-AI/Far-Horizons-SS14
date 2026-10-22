@@ -3,7 +3,10 @@
 - type: htnCompound
   id: MeleeCombatCompound
   branches:
-    - tasks:
+    - preconditions:
+      - !type:KeyNotExistsPrecondition
+        key: HeldGun
+      tasks:
         - !type:HTNPrimitiveTask
           operator: !type:UtilityOperator
             proto: NearbyMeleeTargets

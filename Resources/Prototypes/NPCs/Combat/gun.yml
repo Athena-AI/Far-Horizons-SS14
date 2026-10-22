@@ -185,21 +185,10 @@
           maxPercent: 0.0
       tasks:
         - !type:HTNCompoundTask
-          task: ReloadGunFromInventoryCompound
+          task: BeforeReloadCompound
+        - !type:HTNCompoundTask
+          task: ReloadMagazineGunCompound
 
-    # If still at 0 ammo - try to reload from ground
-    - preconditions:
-        - !type:ActiveHandComponentPrecondition
-          components:
-            - type: Gun
-            - type: ChamberMagazineAmmoProvider
-        - !type:GunAmmoPrecondition
-          maxPercent: 0.0
-      tasks:
-        - !type:HTNCompoundTask
-          task: ReloadGunFromGroundCompound
-    
-    # Reload shotguns
     - preconditions:
         - !type:ActiveHandComponentPrecondition
           components:
@@ -209,19 +198,9 @@
           maxPercent: 0.0
       tasks:
         - !type:HTNCompoundTask
-          task: ReloadShotgunFromInventoryCompound
-    
-    # Reload shotguns from ground if still at 0 ammo
-    - preconditions:
-        - !type:ActiveHandComponentPrecondition
-          components:
-            - type: Gun
-            - type: BallisticAmmoProvider
-        - !type:GunAmmoPrecondition
-          maxPercent: 0.0
-      tasks:
+          task: BeforeReloadCompound
         - !type:HTNCompoundTask
-          task: ReloadShotgunFromGroundCompound
+          task: ReloadBallisticGunCompound
     # FH end
 
     # Pickup gun with ammo if we have no ammo

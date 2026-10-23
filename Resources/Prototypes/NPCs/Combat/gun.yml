@@ -96,6 +96,32 @@
 - type: htnCompound
   id: RangedCombatCompound
   branches:
+  #FH Start
+    #If they see a gun and arent currently handling a gun go grab that gun
+    - preconditions:
+        - !type:ActiveHandEntityPrecondition
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: Gun
+          invert: true
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: BallisticAmmoProvider
+          invert: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UtilityOperator
+            proto: NearbyGuns
+        - !type:HTNPrimitiveTask
+          operator: !type:DropOperator
+
+    - preconditions:
+        - !type:ActiveHandFreePrecondition
+      tasks:
+        - !type:HTNCompoundTask
+          task: PickupGunCompound
+  #FH-End
+
     # Close or rack the gun chamber if necessary
     - preconditions:
         - !type:ActiveHandComponentPrecondition
@@ -139,6 +165,9 @@
 
     # Move to target and shoot them if ammo
     - preconditions:
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: Gun
         - !type:GunAmmoPrecondition
           minPercent: 0.001
       tasks:
@@ -201,17 +230,25 @@
           task: BeforeReloadCompound
         - !type:HTNCompoundTask
           task: ReloadBallisticGunCompound
-    # FH end
 
-    # Pickup gun with ammo if we have no ammo
-    -  preconditions:
-         - !type:ActiveHandComponentPrecondition
-           components:
-             - type: Gun
-           invert: true
-       tasks:
-         - !type:HTNCompoundTask
-           task: PickupGunCompound
+    # In case reload was interrupted by a replan this finished them swapping to their gun.
+    - preconditions:
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: BallisticAmmoProvider
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: Gun
+          invert: true
+        - !type:KeyExistsPrecondition
+          key: HeldGun
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:DropOperator
+        - !type:HTNPrimitiveTask
+          operator: !type:SwapToHandHoldingEntityOperator
+            targetKey: HeldGun
+    # FH end
 
     # Discard gun if no ammo
     - preconditions:

@@ -18,6 +18,7 @@
     - Flare
     - Flare
     - Flare
+    - Finka
 
 #Miner
 - type: startingGear
@@ -44,6 +45,7 @@
     - Flare
     - Flare
     - Flare
+    - Finka
     - MagazinePistolSP
     - MagazinePistolSP
 
@@ -65,6 +67,7 @@
     - Flare
     - Flare
     - Flare
+    - Finka
     - SpeedLoaderLightRifle
 
 #Shotgun
@@ -83,6 +86,7 @@
     - Flare
     - Flare
     - Flare
+    - Finka
     - MagazineShotgunTozExtended
   inhand:
   - WeaponShotgunToz106Extended
@@ -106,6 +110,7 @@
     - Flare
     - Flare
     - Flare
+    - Finka
     - MagazinePistolSubMachineGunPPSH 
 
 #AK
@@ -128,4 +133,5 @@
     - Flare
     - Flare
     - Flare
+    - Finka
     - MagazineLightRifleSP 

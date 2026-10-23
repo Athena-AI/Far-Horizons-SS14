@@ -22671,5 +22671,12 @@ Entries:
   id: 192107
   time: '2026-10-22T17:34:48.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: qriqii
+  changes:
+  - message: fixed security sign missing its background
+    type: Fix
+  id: 192700
+  time: '2026-10-23T17:17:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1927
 Order: -1
 

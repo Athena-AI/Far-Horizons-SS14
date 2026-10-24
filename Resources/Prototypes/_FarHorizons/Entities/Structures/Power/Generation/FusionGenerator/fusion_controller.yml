@@ -39,8 +39,8 @@
         - MachineLayer
   - type: FusionReactorController
     alertChannel: ["Engineering", "SyndiEngi"]
-    powerExponent: 0.95
-    powerEfficiency: 0.35
+    powerExponent: 0.92
+    powerEfficiency: 0.5
     energyExtractMax: 0.01
   - type: FusionReactorPowerSupply
   - type: FusionReactorRequireValid

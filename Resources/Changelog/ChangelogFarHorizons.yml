@@ -22723,5 +22723,34 @@ Entries:
   id: 193105
   time: '2026-10-25T15:36:38.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: AthenaAI
+  changes:
+  - message: Fixes the hardsuit helmets for the miner and aegis variant.
+    type: Fix
+  id: 193200
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: AthenaAI
+  changes:
+  - message: Fixes the ZoZ commie not using fletchette.
+    type: Fix
+  id: 193201
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: AthenaAI
+  changes:
+  - message: Moved the Finka to the commie belt due to issues with diona not having
+      boots.
+    type: Tweak
+  id: 193202
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: AthenaAI
+  changes:
+  - message: Taught NPCs how Speedloaders work.
+    type: Add
+  id: 193203
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
 Order: -1
 

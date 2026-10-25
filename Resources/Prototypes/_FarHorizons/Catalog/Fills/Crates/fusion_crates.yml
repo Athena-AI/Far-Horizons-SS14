@@ -13,7 +13,7 @@
   id: CrateFusionReactorCircuits
   parent: CrateEngineeringSecure
   name: Fusion Reactor Circuits Crate
-  description: A selection of circuit boards for building a fusion reactor's machines.
+  description: A selection of circuit boards for building fusion reactor machines.
   components:
   - type: StorageFill
     contents:

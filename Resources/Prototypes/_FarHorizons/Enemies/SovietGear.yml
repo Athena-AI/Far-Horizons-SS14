@@ -87,9 +87,9 @@
     - Flare
     - Flare
     - Finka
-    - MagazineShotgunTozExtended
+    - MagazineShotgunTozExtendedFlechette
   inhand:
-  - WeaponShotgunToz106Extended
+  - WeaponShotgunToz106ExtendedFlechette
 
 #SMG
 - type: startingGear

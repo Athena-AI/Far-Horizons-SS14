@@ -88,3 +88,13 @@
   cost: 9000
   category: cargoproduct-category-name-engineering
   group: market
+
+- type: cargoProduct
+  id: FusionReactorFlatpackPurchase
+  icon:
+    sprite: Structures/Storage/Crates/engicrate_secure.rsi
+    state: icon
+  product: CrateFusionReactorFlatpacks
+  cost: 16000
+  category: cargoproduct-category-name-engineering
+  group: market

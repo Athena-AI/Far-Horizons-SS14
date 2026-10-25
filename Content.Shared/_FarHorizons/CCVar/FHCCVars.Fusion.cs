@@ -31,7 +31,7 @@ public sealed partial class FHCCVars
     /// If the fusion reactor is allowed to generate a station-ending explosion.
     /// </summary>
     public static readonly CVarDef<bool> FusionReactorAllowMassDestruction =
-        CVarDef.Create("fusion_reactor.allow_mass_destruction", true, CVar.SERVERONLY, Loc.GetString("fusion-reactor-cvar-description-mass-destruction"));
+        CVarDef.Create("fusion_reactor.allow_mass_destruction", false, CVar.SERVERONLY, Loc.GetString("fusion-reactor-cvar-description-mass-destruction"));
 
     /// <summary>
     /// Number of seconds the reactor will sit in stage 3 before exploding or continuing to stage 4.
@@ -61,7 +61,7 @@ public sealed partial class FHCCVars
     /// Maximum explosive power of a fusion reactor meltdown when <see cref="FusionReactorAllowMassDestruction"/> is true.
     /// </summary>
     public static readonly CVarDef<float> FusionReactorExplosiveForceMaxDestruction =
-        CVarDef.Create("fusion_reactor.explosion_max_destruction", 750000f, CVar.SERVERONLY, Loc.GetString("fusion-reactor-cvar-description-explosion-max-destruction"));
+        CVarDef.Create("fusion_reactor.explosion_max_destruction", 500000f, CVar.SERVERONLY, Loc.GetString("fusion-reactor-cvar-description-explosion-max-destruction"));
 
     /// <summary>
     /// The ticks per second of the fusion reactor's calculations

@@ -12,8 +12,8 @@
 - type: entity
   id: CrateFusionReactorCircuits
   parent: CrateEngineeringSecure
-  name: Fusion Reactor Machines Crate
-  description: A selection of circuit boards for building a fusion reactor's machines.
+  name: Fusion Reactor Circuits Crate
+  description: A selection of circuit boards for building fusion reactor machines.
   components:
   - type: StorageFill
     contents:
@@ -26,4 +26,23 @@
       - id: FusionReactorGasInletMachineCircuitboard
         amount: 1
       - id: FusionReactorControllerMachineCircuitboard
+        amount: 1
+
+- type: entity
+  id: CrateFusionReactorFlatpacks
+  parent: CrateEngineeringSecure
+  name: Fusion Reactor Flatpacks Crate
+  description: Flatpacked machines for a fusion reactor. Someone paid a lot of money for this.
+  components:
+  - type: StorageFill
+    contents:
+      - id: FusionReactorCoolantPumpFlatpack
+        amount: 2
+      - id: FusionReactorBatteryFlatpack
+        amount: 4
+      - id: FusionReactorMaserFlatpack
+        amount: 2
+      - id: FusionReactorGasInletFlatpack
+        amount: 1
+      - id: FusionReactorControllerFlatpack
         amount: 1

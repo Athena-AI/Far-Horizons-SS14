@@ -41,7 +41,7 @@ public sealed partial class FusionReactorSystem
         var extractTarget = comp.ExtractMode switch
         {
             FusionReactorPowerExtractType.Watts =>
-                comp.WattSetting * dt / comp.PowerEfficiency,
+                MathF.Pow(comp.WattSetting, 1 / comp.PowerExponent) * dt / comp.PowerEfficiency,
             FusionReactorPowerExtractType.Temperature =>
                  heatCap * (fusionReactor.Plasma.Temperature - comp.TempSetting),
             _ => 0,

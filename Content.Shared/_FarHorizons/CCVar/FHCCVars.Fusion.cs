@@ -31,7 +31,7 @@ public sealed partial class FHCCVars
     /// If the fusion reactor is allowed to generate a station-ending explosion.
     /// </summary>
     public static readonly CVarDef<bool> FusionReactorAllowMassDestruction =
-        CVarDef.Create("fusion_reactor.allow_mass_destruction", true, CVar.SERVERONLY, Loc.GetString("fusion-reactor-cvar-description-mass-destruction"));
+        CVarDef.Create("fusion_reactor.allow_mass_destruction", false, CVar.SERVERONLY, Loc.GetString("fusion-reactor-cvar-description-mass-destruction"));
 
     /// <summary>
     /// Number of seconds the reactor will sit in stage 3 before exploding or continuing to stage 4.

@@ -22678,5 +22678,50 @@ Entries:
   id: 192700
   time: '2026-10-23T17:17:21.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1927
+- author: jhrushbe
+  changes:
+  - message: Added flatpacks and a flatpack crate for the fusion reactor machines.
+    type: Add
+  id: 193100
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Changed the fusion reactor controller's efficiency from 35% to 50% and
+      its exponent from 0.95 to 0.92.
+    type: Tweak
+  id: 193101
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Made the fusion reactor's mass destruction explosion 1/3 weaker, from
+      750,000 to 500,000. This brings it down to 1/10 the power of the nuke.
+    type: Tweak
+  id: 193102
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Made the fusion reactor not do the mass destruction explosion by default.
+    type: Tweak
+  id: 193103
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Fixed the fusion reactor controller's watt extraction mode being inaccurate.
+    type: Fix
+  id: 193104
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Fixed a minor grammar mistake in the fusion reactor circuits crate's
+      description.
+    type: Fix
+  id: 193105
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
 Order: -1
 

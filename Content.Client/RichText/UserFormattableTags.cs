@@ -1,4 +1,5 @@
-﻿using Content.Client.UserInterface.RichText;
+﻿using Content.Client._FarHorizons.UserInterface.RichText; //FH
+using Content.Client.UserInterface.RichText;
 using Robust.Client.UserInterface.RichText;
 
 namespace Content.Client.RichText;

@@ -28,6 +28,19 @@ public sealed partial class ChameleonProjectorSystem : SharedChameleonProjectorS
 
     private void OnHandleState(Entity<ChameleonDisguiseComponent> ent, ref AfterAutoHandleStateEvent args)
     {
+        // Far Horizons start - The lifecycle around the chameleon disguise means that we can get an OnHandleState before
+        // the sprites are initialized, triggering their shader initializion twice and thus a warning. Ignoring any state
+        // updates until after they're initialized and then copying the visuals (via our separate-file OnDisguiseStartup)
+        // avoids this warning.
+        if (!Initialized(ent))
+            return;
+
+        CopyVisuals(ent);
+    }
+
+    private void CopyVisuals(Entity<ChameleonDisguiseComponent> ent)
+    {
+        // Far Horizons end
         CopySprite(ent);
         CopyComp<GenericVisualizerComponent>(ent);
         CopyComp<SolutionContainerVisualsComponent>(ent);

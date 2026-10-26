@@ -328,11 +328,22 @@ public abstract partial class SharedChameleonProjectorSystem : EntitySystem
         if (!GetSrcComp<T>(ent.Comp, out var src))
             return true;
 
+        // Far Horizons start - we change up the component handling here to avoid it being added before copying values,
+        //                      to avoid the lifetime event handlers starting with an empty component. We also RemComp
+        //                      after copying, to avoid a nice bug if you're copying a component to yourself, which is
+        //                      potentially broken by cleanup.
+        /*
         // remove then re-add to prevent a funny
         RemComp<T>(ent);
         var dest = AddComp<T>(ent);
+        */
+        var dest = EntityManager.ComponentFactory.GetComponent<T>();
         _serMan.CopyTo(src, ref dest, notNullableOverride: true);
-        Dirty(ent, dest);
+        RemComp<T>(ent);
+        AddComp(ent, dest);
+        if (_net.IsServer)
+          // Far Horizons end
+          Dirty(ent, dest);
         return false;
     }
 

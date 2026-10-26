@@ -9,6 +9,7 @@
   cost: 2000
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: FunInstrumentsBrass
@@ -19,6 +20,7 @@
   cost: 1000
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: FunInstrumentsString
@@ -29,6 +31,7 @@
   cost: 2250 # Starlight, because of the fretless
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: FunInstrumentsWoodwind
@@ -39,6 +42,7 @@
   cost: 2000
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: FunInstrumentsKeyedPercussion
@@ -49,6 +53,7 @@
   cost: 2000
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: FunInstrumentsSpecial
@@ -59,6 +64,7 @@
   cost: 2500 # Starlight, price can be a little higher because of the NT4 player, the real best thing in there
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: FunInstrumentsRandom
@@ -69,6 +75,7 @@
   cost: 2000
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 # Big Instruments
 
@@ -81,6 +88,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: PianoInstrument
@@ -91,6 +99,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: UprightPianoInstrument
@@ -101,6 +110,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: VibraphoneInstrument
@@ -111,6 +121,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: MarimbaInstrument
@@ -121,6 +132,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: TubaInstrument
@@ -131,6 +143,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: HarpInstrument
@@ -141,6 +154,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: TimpaniInstrument
@@ -151,6 +165,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: TaikoInstrument
@@ -161,6 +176,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: ContrabassInstrument
@@ -171,6 +187,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: MinimoogInstrument
@@ -181,6 +198,7 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
 
 - type: cargoProduct
   id: TomDrumsInstrument
@@ -191,3 +209,15 @@
   cost: 750
   category: cargoproduct-category-name-instruments
   group: market
+  personalOrder: true # Far Horizons
+
+- type: cargoProduct
+  id: BigDrumsInstrument
+  icon:
+    sprite: Objects/Fun/Instruments/structureinstruments.rsi
+    state: drum
+  product: BigDrumsInstrument
+  cost: 750 # Starlight, make it consistent with the others
+  category: cargoproduct-category-name-instruments # Starlight, consistent with the others
+  group: market
+  personalOrder: true # Far Horizons

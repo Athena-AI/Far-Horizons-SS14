@@ -561,3 +561,5 @@
         whitelist:
           tags:
             - CartridgePistol
+  - type: UseDelay
+    delay: 1 #Drum mag makes it unwieldly

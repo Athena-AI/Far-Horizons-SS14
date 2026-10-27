@@ -46,8 +46,8 @@
 #  - type: MagazineVisuals
 #    magState: magb
 #    steps: 4
+#    zeroVisible: false
 #FH Edit - End
-    zeroVisible: false
   - type: Appearance
 
 - type: entity

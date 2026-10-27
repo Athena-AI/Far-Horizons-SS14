@@ -14,9 +14,9 @@
   - type: Clothing
 #FH - Start
     sprite: _FarHorizons/Objects/Weapons/Guns/LMGs/DP28/DP28_x32.rsi
+    quickEquip: false
   - type: Item
     sprite: _FarHorizons/Objects/Weapons/Guns/LMGs/DP28/DP28_x32.rsi
-    quickEquip: false
   - type: MagazineVisuals
     magState: mag
     steps: 1

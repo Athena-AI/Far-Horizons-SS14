@@ -36,6 +36,7 @@
   id: ConsortiumUplinkRifleMosin
   name: uplink-consortium-rifle-mosin-name
   description: uplink-consortium-rifle-mosin-desc
+  icon: { sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/Bolt_Actions/Mosin/mosin_x64x32.rsi, state: icon }
   productEntity: WeaponSniperMosin
   cost:
     Refinedbluespacecrystal: 1

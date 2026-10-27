@@ -130,7 +130,7 @@
   name: Sentinel
   parent: [BaseWeaponShotgunAny, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunSentinel
-  description: An odd magazine-fed pump action shotgun that is the result of a regulatory compromise. Fires as fast as you can pump it, loads 12 gauge shotgun shells.
+  description: An odd magazine-fed bolt-action shotgun that is the result of a regulatory compromise. Fires as fast as you can operate the bolt, loads 12 gauge shotgun shells.
   components:
   - type: Sprite
     sprite: _FarHorizons/Objects/Weapons/Guns/Shotguns/Sentinel/clothing.rsi

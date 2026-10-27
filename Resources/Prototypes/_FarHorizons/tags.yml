@@ -19,6 +19,9 @@
   id: AmmoBoxRifle556
 
 - type: Tag
+  id: AmmoBoxRifle792
+
+- type: Tag
   id: AmmoBoxRevolver38
 
 - type: Tag
@@ -56,6 +59,9 @@
 
 - type: Tag
   id: CartridgeRevolver38
+
+- type: Tag
+  id: CartridgeRifle792
 
 - type: Tag
   id: ChemBag
@@ -341,7 +347,10 @@
 
 - type: Tag
   id: SpeedLoaderRevolver38
-  
+
+- type: Tag
+  id: SpeedLoaderRifle792
+ 
 - type: Tag
   id: STVKeys
 

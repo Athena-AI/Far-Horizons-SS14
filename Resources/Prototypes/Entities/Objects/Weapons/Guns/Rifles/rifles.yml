@@ -84,12 +84,18 @@
   description: A somewhat battered combat rifle of a design originating from old Earth. Favored by criminals, militias, and terrorists due to its famed reliability and easy-to-manufacture design. Feeds from 7.62 rifle magazines. #FH
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/ak.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Rifles/AKMS/akms_x64x32.rsi #FH
     layers:
     - state: base
       map: [ "enum.GunVisualLayers.Base" ]
     - state: mag-0
       map: [ "enum.GunVisualLayers.Mag" ]
+#FH Edit - Start
+  - type: Clothing
+    sprite: _FarHorizons/Objects/Weapons/Guns/Rifles/AKMS/akms_x32.rsi
+  - type: Item
+    sprite: _FarHorizons/Objects/Weapons/Guns/Rifles/AKMS/akms_x32.rsi
+#FH Edit - End
   - type: Gun
     fireRate: 5
     soundGunshot:

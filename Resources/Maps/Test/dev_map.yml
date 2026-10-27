@@ -11794,7 +11794,7 @@ entities:
     - type: Transform
       pos: 35.5,16.5
       parent: 1
-- proto: MagazineBoxRifle762
+- proto: MagazineBoxRifle762SP
   entities:
   - uid: 2071
     components:
@@ -11938,7 +11938,7 @@ entities:
     - type: Transform
       pos: 2.35,-1.35
       parent: 2709
-- proto: MagazineRifle762
+- proto: MagazineRifle762SP
   entities:
   - uid: 2109
     components:
@@ -11954,7 +11954,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: MagazineRifle762Box
+- proto: MagazineRifle762BoxSP
   entities:
   - uid: 2074
     components:

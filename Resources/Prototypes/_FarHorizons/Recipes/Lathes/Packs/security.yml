@@ -286,16 +286,50 @@
 - type: latheRecipePack
   id: FarHorizonsSecurityAmmoEmagStatic
   recipes:
-# Magazine
+# LMG
+  - MagazineRifle762BoxHP
+  - MagazineRifle762BoxFMJ
+  - MagazineRifle762BoxPractice
+  - MagazineRifle762BoxRubber
   - L6SawMagazine
+# 7.92 - Will probably be moved to normal tables in future
+  - SpeedLoaderRifle792
+  - SpeedLoaderRifle792HP
+  - SpeedLoaderRifle792SP
+  - SpeedLoaderRifle792FMJ
+  - SpeedLoaderRifle792Practice
+  - SpeedLoaderRifle792Rubber
+# 7.92 box
+  - MagazineBoxRifle792
+  - MagazineBoxRifle792HP
+  - MagazineBoxRifle792SP
+  - MagazineBoxRifle792FMJ
+  - MagazineBoxRifle792Practice
+  - MagazineBoxRifle792Rubber
+# 7.62
   - MagazineRifle762SP
   - MagazineRifle762HP
   - MagazineRifle762FMJ
-  - MagazineRifle762Maxim
   - MagazineRifle762Empty
+#7.62 Pan
+  - MagazineRifle762Maxim
+  - MagazineRifle762PanEmpty
+  - MagazineRifle762PanHP
+  - MagazineRifle762PanFMJ
+  - MagazineRifle762PanRubber
+  - MagazineRifle762PanPractice
+# 9mm
   - MagazinePistolSubMachineGunUzi
-  - MagazinePistolSubMachineGunPPSH
+# .44
   - MagazineMagnumRifleSP
+# 9mm Drum
+  - MagazinePistolSubMachineGunPPSH
+  - MagazinePistolSubMachineGunPPSHEmpty
+  - MagazinePistolSubMachineGunPPSHRubber
+  - MagazinePistolSubMachineGunPPSHHP
+  - MagazinePistolSubMachineGunPPSH
+  - MagazinePistolSubMachineGunPPSHFMJ
+  - MagazinePistolSubMachineGunPPSHPractice
 # Box
   - MagazineBoxCaselessRifle
   - MagazineBoxCaselessRifleRubber
@@ -305,10 +339,30 @@
 - type: latheRecipePack
   id: FarHorizonsSecurityAmmoEmagDynamic
   recipes:
-# Magazine
+# LMG
+  - MagazineRifle762BoxAP
+  - MagazineRifle762BoxIncendiary
+  - MagazineRifle762BoxUranium
+# 7.92 - Will probably be moved to normal tables in future
+  - SpeedLoaderRifle792Incendiary
+  - SpeedLoaderRifle792Uranium
+  - SpeedLoaderRifle792AP
+# 7.92 box
+  - MagazineBoxRifle792Uranium
+  - MagazineBoxRifle792Incendiary
+  - MagazineBoxRifle792AP
+# 7.62
   - MagazineRifle762Incendiary
   - MagazineRifle762Uranium
   - MagazineRifle762AP
+#7.62 Pan
+  - MagazineRifle762PanIncendiary
+  - MagazineRifle762PanUranium
+  - MagazineRifle762PanAP
+# 9mm Drum
+  - MagazinePistolSubMachineGunPPSHIncendiary
+  - MagazinePistolSubMachineGunPPSHUranium
+  - MagazinePistolSubMachineGunPPSHAP
 
 - type: latheRecipePack
   id: FarHorizonsSecurityVehiclePartsDynamic

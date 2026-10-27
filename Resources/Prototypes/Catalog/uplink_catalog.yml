@@ -39,6 +39,7 @@
   id: UplinkRifleMosin
   name: uplink-rifle-mosin-name
   description: uplink-rifle-mosin-desc
+  icon: { sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/Bolt_Actions/Mosin/mosin_x64x32.rsi, state: icon } #FH
   productEntity: WeaponSniperMosin
   cost:
     Telecrystal: 1

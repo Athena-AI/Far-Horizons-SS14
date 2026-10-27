@@ -127,6 +127,9 @@
   requires:
     - RiotControl
   unlocks:
+#LMG
+    - MagazineRifle762BoxIncendiary
+    - MagazineRifle762BoxUranium
 #Speedloader
     - SpeedLoaderMagnumIncendiary
     - SpeedLoaderShotgunIncendiary
@@ -148,6 +151,9 @@
     - MagazineMagnumIncendiary
     - MagazinePistol38Incendiary
     - MagazineRifle38Incendiary
+    - MagazinePistolSubMachineGunPPSHIncendiary
+    - MagazineRifle762PanIncendiary
+    - SpeedLoaderRifle792Incendiary
     - MagazineRifle38Uranium
     - MagazineMagnumUranium
     - MagazinePistol38Uranium
@@ -157,6 +163,9 @@
     - MagazinePistolUranium
     - MagazinePistolSubMachineGunUranium
     - MagazineRifle762Uranium
+    - MagazinePistolSubMachineGunPPSHUranium
+    - MagazineRifle762PanUranium
+    - SpeedLoaderRifle792Uranium
 #Box
     - BoxShotgunIncendiary
     - MagazineBoxPistolIncendiary
@@ -164,6 +173,7 @@
     - MagazineBoxRifle762Incendiary
     - MagazineBoxRifle556Incendiary
     - MagazineBoxRevolver38Incendiary
+    - MagazineBoxRifle792Incendiary
     - MagazineBoxRevolver38Uranium
     - MagazineBoxPistolUranium
     - MagazineBoxMagnumUranium
@@ -171,6 +181,7 @@
     - MagazineBoxRifle556Uranium
     - BoxShotgunUranium
     - BoxShotgunUraniumFlechette
+    - MagazineBoxRifle792Uranium
 #Canister
     - MagazineCanisterPistolIncendiary
     - MagazineCanisterPistolUranium
@@ -716,6 +727,8 @@
   requires: 
     - SpecialAmmo
   unlocks:
+#LMG
+    - MagazineRifle762BoxAP
 #SpeedLoader
     - SpeedLoaderMagnumAP
 #Magazine
@@ -725,12 +738,16 @@
     - MagazineRifle762AP
     - Rifle556HeavyMagazineAP
     - MagazinePistolSubMachineGunAP
+    - MagazinePistolSubMachineGunPPSHAP
+    - MagazineRifle762PanAP
+    - SpeedLoaderRifle792AP
 #Box
     - MagazineBoxMagnumAP
     - MagazineBoxPistolAP
     - MagazineBoxRevolver38AP
     - MagazineBoxRifle556AP
     - MagazineBoxRifle762AP
+    - MagazineBoxRifle792AP
 #Canister
     - MagazineCanisterPistolAP
     - MagazineCanisterRifle556AP

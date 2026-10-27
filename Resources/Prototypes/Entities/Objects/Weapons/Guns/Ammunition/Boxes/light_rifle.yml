@@ -18,10 +18,10 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Boxes/light_rifle.rsi
+    sprite: _FarHorizons/Objects/Weapons/Guns/Ammunition/Boxes/Rifle/7.62.rsi #FH
   - type: MagazineVisuals
     magState: mag
-    steps: 4
+    steps: 9 #FH
     zeroVisible: false
   - type: Appearance
 
@@ -34,16 +34,19 @@
   components:
   - type: BallisticAmmoProvider
     capacity: 200
-    proto: CartridgeRifle762SP #FH
+#FH Edit - Start
+    proto: CartridgeRifle762SP
   - type: Sprite
     layers:
-    - state: base-b
+    - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: magb-1
+    - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-  - type: MagazineVisuals
-    magState: magb
-    steps: 4
+    - state: sp
+#  - type: MagazineVisuals
+#    magState: magb
+#    steps: 4
+#FH Edit - End
     zeroVisible: false
   - type: Appearance
 
@@ -60,56 +63,12 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-    - state: sp
+    - state: sp #FH
 # Starlight-start
   - type: Tag
     tags:
     - MagazineBoxRifle762 #FH
 # Starlight-end
-
-- type: entity
-  parent: BaseMagazineBoxRifle762 #FH
-  id: MagazineBoxRifle762HP #FH
-  name: ammunition box (7.62 rifle HP) #FH
-  components:
-  - type: BallisticAmmoProvider
-    proto: CartridgeRifle762HP #FH
-  - type: Sprite
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-
-- type: entity
-  parent: BaseMagazineBoxRifle762 #FH
-  id: MagazineBoxRifle762FMJ #FH
-  name: ammunition box (7.62 rifle FMJ) #FH
-  components:
-  - type: BallisticAmmoProvider
-    proto: CartridgeRifle762FMJ #FH
-  - type: Sprite
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-    - state: fmj
-
-- type: entity
-  parent: BaseMagazineBoxRifle762 #FH
-  id: MagazineBoxRifle762AP #FH
-  name: ammunition box (7.62 rifle AP) #FH
-  components:
-  - type: BallisticAmmoProvider
-    proto: CartridgeRifle762AP #FH
-  - type: Sprite
-    layers:
-    - state: base
-      map: ["enum.GunVisualLayers.Base"]
-    - state: mag-1
-      map: ["enum.GunVisualLayers.Mag"]
-    - state: ap
 
 - type: entity
   parent: BaseMagazineBoxRifle762 #FH
@@ -125,7 +84,7 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-    - state: practice
+    - state: practice #FH
 
 - type: entity
   parent: BaseMagazineBoxRifle762 #FH
@@ -141,7 +100,7 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-    - state: incendiary
+    - state: incendiary #FH
 
 - type: entity
   parent: BaseMagazineBoxRifle762 #FH
@@ -157,4 +116,4 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
-    - state: uranium
+    - state: uranium #FH

@@ -459,7 +459,6 @@
           whitelist:
            tags:
            - ShellShotgun
-           - SpeedLoaderShotgun
           capacity: 2
           proto: null
           soundInsert:

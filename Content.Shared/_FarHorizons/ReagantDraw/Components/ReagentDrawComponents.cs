@@ -4,7 +4,7 @@ using Content.Shared.Chemistry.Components;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._FarHorizons.ReagentDraw.Components;
+namespace Content.Shared._FarHorizons.ReagentDraw;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ReagentDrawComponent : Component
@@ -22,7 +22,7 @@ public sealed partial class ReagentDrawComponent : Component
     public string SolutionContainer = "default";
 
     /// <summary>
-    /// The solution on the <see cref="SolutionContainerManagerComponent"/> to use.
+    /// The solution-carrying entity (either the inserted ent or a solution ent in its SolutionManager) to use.
     /// </summary>
     [ViewVariables]
     public Entity<SolutionComponent>? Solution = null;

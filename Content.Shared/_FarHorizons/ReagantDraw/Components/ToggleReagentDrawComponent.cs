@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._FarHorizons.ReagentDraw.Components;
+namespace Content.Shared._FarHorizons.ReagentDraw;
 
 /// <summary>
 /// Integrate ReagentDraw and ItemToggle.

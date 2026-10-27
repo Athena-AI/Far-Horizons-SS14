@@ -395,6 +395,7 @@
   unlocks:
     - NodeScanner
     - AnalysisComputerCircuitboard
+    - AnalysisComputerCircuitboardNS #Temp addition until NS tree is added
     - ArtifactAnalyzerMachineCircuitboard
 
 - type: researchTreeNode
@@ -446,7 +447,9 @@
     - SurveillanceWirelessCameraMovableCircuitboard
     - SurveillanceWirelessCameraAnchoredCircuitboard
     - SurveillanceCameraMonitorCircuitboard
+    - SurveillanceCameraMonitorCircuitboardNS #Temp addition until NS tree is added
     - SurveillanceWirelessCameraMonitorCircuitboard
+    - SurveillanceWirelessCameraMonitorCircuitboardNS #Temp addition until NS tree is added
     - TelecomServerCircuitboard
     - HolopadMachineCircuitboard
   announceTo:
@@ -949,6 +952,7 @@
     - FultonBeacon
   announceTo:
     - Engineering
+    - GSL # For the fultons
 
 - type: researchTreeNode
   id: NuclearPowerRecycling
@@ -973,6 +977,25 @@
     - GoldGasTurbineBlade
     - DiamondGasTurbineBlade
     - GoldGasTurbineStator
+  announceTo:
+    - Engineering
+
+- type: researchTreeNode
+  id: FusionReactorUnlock
+  name: research-tree-node-fusion-1
+  cost: 20000
+  icon:
+    state: power
+    color: "#EFB341"
+  tier: Tier2
+  requires:
+    - NuclearPowerGeneration
+  unlocks:
+    - FusionReactorCoolantPumpMachineCircuitboard
+    - FusionReactorCapacitorMachineCircuitboard
+    - FusionReactorMaserMachineCircuitboard
+    - FusionReactorGasInletMachineCircuitboard
+    - FusionReactorControllerMachineCircuitboard
   announceTo:
     - Engineering
 
@@ -1157,6 +1180,8 @@
     - ArtistCircuitBoard
     - NutimovCircuitBoard
     - JermovCircuitBoard
+  announceTo:
+    - Binary
 
 - type: researchTreeNode
   id: ClowningTech
@@ -1700,6 +1725,7 @@
     - CyberEyeThermal
   announceTo:
     - Medical
+    - Security
 
 # Cyborgs
 
@@ -1740,14 +1766,13 @@
 - type: researchTreeNode
   id: SecBorg
   name: research-tree-node-mech-security
-  cost: 35000
+  cost: 9000
   icon:
     state: electronics
     color: "#003860"
-  tier: Tier3
+  tier: Tier2
   requires:
-    - BorgPlaceholder3
-    - FunctionalCyberlimbsMKII
+    - LaserGun
   unlocks:
     - SecborgEndoskeleton
     - BorgModuleLaserCarbine
@@ -1785,6 +1810,7 @@
     - SyringeGun
   unlocks:
     - CloningConsoleComputerCircuitboard 
+    - CloningConsoleComputerCircuitboardNS #Temp addition until NS tree is added
     - CloningPodMachineCircuitboard 
     - MedicalScannerMachineCircuitboard
   announceTo:

@@ -222,7 +222,7 @@
 
 - type: entity
   id: ClothingBackpackDuffelDP28Bundle
-  parent: ClothingBackpackDuffelSSF
+  parent: ClothingBackpackDuffelSSFLarge
   components:
   - type: EntityTableContainerFill
     containers:

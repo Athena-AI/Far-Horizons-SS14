@@ -4,6 +4,10 @@ using Content.Shared.Examine;
 using Content.Shared.Power.Components;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
+//FH Start
+using Content.Shared.PowerCell.Components;
+using Content.Shared.Item.ItemToggle;
+//FH End
 
 namespace Content.Shared.Power.EntitySystems;
 
@@ -14,6 +18,7 @@ public abstract partial class SharedBatterySystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private ItemToggleSystem _itemToggle = default!; //FH
 
     public override void Initialize()
     {
@@ -108,6 +113,13 @@ public abstract partial class SharedBatterySystem : EntitySystem
     /// </summary>
     private void OnRefreshChargeRate(Entity<BatterySelfRechargerComponent> ent, ref RefreshChargeRateEvent args)
     {
+        //FH Start
+        if(TryComp<ToggleCellDrawComponent>(Transform(ent).ParentUid, out var tcdComp) && 
+        tcdComp.DisableSelfRechargeOnToggle &&
+        _itemToggle.IsActivated(Transform(ent).ParentUid)) 
+            return; 
+        // FH End
+
         #region Starlight
         if (ent.Comp.AutoRechargePauseTime > TimeSpan.Zero &&
             (_timing.CurTime < ent.Comp.NextAutoRecharge ||

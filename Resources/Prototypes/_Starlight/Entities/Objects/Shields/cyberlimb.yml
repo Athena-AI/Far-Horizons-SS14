@@ -100,6 +100,7 @@
       containers:
         cell_slot: !type:ContainerSlot
     - type: ToggleCellDraw
+      disableSelfRechargeOnToggle: true
     - type: PowerCellDraw
       drawRate: 2 
     - type: PowerCellSlot
@@ -109,11 +110,9 @@
       slots:
         cell_slot:
           name: power-cell-slot-component-slot-name-default
-          startingItem: PowerCellMedium
+          startingItem: PowerCellMicroreactor
           disableEject: true
-          whitelist:
-            tags:
-              - PowerCell
+          swap: false
     #FH End
 
 #- type: entity

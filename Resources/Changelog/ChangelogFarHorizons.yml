@@ -22780,5 +22780,13 @@ Entries:
   id: 193600
   time: '2026-10-28T14:37:55.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1936
+- author: Penguinwizzard
+  changes:
+  - message: NPCs now know how to manually cycle bolts for weapons where that is two
+      actions (open/close)
+    type: Add
+  id: 194500
+  time: '2026-10-28T15:03:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1945
 Order: -1
 

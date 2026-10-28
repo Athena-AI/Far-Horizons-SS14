@@ -22788,5 +22788,27 @@ Entries:
   id: 194500
   time: '2026-10-28T15:03:22.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1945
+- author: Mizuki
+  changes:
+  - message: Added NS R&D server, which sends to NS channels
+    type: Add
+  id: 194000
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: Mizuki
+  changes:
+  - message: Tech unlock notifications now get sent to NS channels in addition to
+      NT
+    type: Fix
+  id: 194001
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: Mizuki
+  changes:
+  - message: NS R&D console now sends to NS sci channel
+    type: Fix
+  id: 194002
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
 Order: -1
 

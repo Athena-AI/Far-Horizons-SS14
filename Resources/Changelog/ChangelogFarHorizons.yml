@@ -22759,5 +22759,19 @@ Entries:
   id: 193800
   time: '2026-10-26T17:06:12.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1938
+- author: xsainteer and Penuinwizzard
+  changes:
+  - message: Chameleon projectors work again.
+    type: Fix
+  id: 193500
+  time: '2026-10-28T14:35:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1935
+- author: xsainteer and Penuinwizzard
+  changes:
+  - message: Chameleon projectors cause fewer console warnings when you use them.
+    type: Fix
+  id: 193501
+  time: '2026-10-28T14:35:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1935
 Order: -1
 

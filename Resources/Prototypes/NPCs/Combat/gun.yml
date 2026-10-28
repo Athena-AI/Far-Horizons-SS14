@@ -135,6 +135,18 @@
           operator: !type:RackBoltOperator
 
     #FH-Start
+    # Cycle a manual bolt if the gun cannot rack in one action.
+    - preconditions:
+        - !type:ActiveHandComponentPrecondition
+          components:
+            - type: Gun
+        - !type:GunAmmoPrecondition
+          minPercent: 0.001
+        - !type:NeedToCycleBoltPrecondition
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:CycleBoltOperator
+
     # pump the gun if necessary
     - preconditions:
         - !type:ActiveHandComponentPrecondition

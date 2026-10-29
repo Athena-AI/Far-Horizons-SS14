@@ -149,6 +149,7 @@
   - type: Sharp
   - type: StaticPrice
     price: 500
+  - type: GunRequiresWield
 
 - type: entity
   name: Scoped Kardashev-Mosin

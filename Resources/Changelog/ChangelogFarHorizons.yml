@@ -22759,5 +22759,56 @@ Entries:
   id: 193800
   time: '2026-10-26T17:06:12.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1938
+- author: xsainteer and Penuinwizzard
+  changes:
+  - message: Chameleon projectors work again.
+    type: Fix
+  id: 193500
+  time: '2026-10-28T14:35:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1935
+- author: xsainteer and Penuinwizzard
+  changes:
+  - message: Chameleon projectors cause fewer console warnings when you use them.
+    type: Fix
+  id: 193501
+  time: '2026-10-28T14:35:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1935
+- author: Penguinwizzard
+  changes:
+  - message: Fixed moproaches not regenerating water.
+    type: Fix
+  id: 193600
+  time: '2026-10-28T14:37:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1936
+- author: Penguinwizzard
+  changes:
+  - message: NPCs now know how to manually cycle bolts for weapons where that is two
+      actions (open/close)
+    type: Add
+  id: 194500
+  time: '2026-10-28T15:03:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1945
+- author: Mizuki
+  changes:
+  - message: Added NS R&D server, which sends to NS channels
+    type: Add
+  id: 194000
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: Mizuki
+  changes:
+  - message: Tech unlock notifications now get sent to NS channels in addition to
+      NT
+    type: Fix
+  id: 194001
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: Mizuki
+  changes:
+  - message: NS R&D console now sends to NS sci channel
+    type: Fix
+  id: 194002
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
 Order: -1
 

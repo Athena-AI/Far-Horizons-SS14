@@ -1,7 +1,8 @@
+using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-namespace Content.Server.CartridgeLoader.Cartridges;
+namespace Content.Shared._FarHorizons.CartridgeLoader;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class CrimeAnalyzerComponent : Component
 {
     [DataField]

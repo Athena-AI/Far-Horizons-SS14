@@ -22867,5 +22867,59 @@ Entries:
   id: 193707
   time: '2026-10-29T19:10:13.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: NT-CC branded paper, complete with new sprites. (Caws & CaasGit)
+    type: Add
+  id: 194100
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: The [datetime] paperwork tag. Similar to [signature], this will automatically
+      fills out the date & shift time for you when you click it. (Caws & CaasGit)
+    type: Add
+  id: 194101
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: All paperwork has been updated to use the new [datetime] paperwork tag.
+      (Caws & CaasGit)
+    type: Tweak
+  id: 194102
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: All documents printed from a document printer will automagically brand
+      the paper with NT-CC branding. (Caws & CaasGit)
+    type: Tweak
+  id: 194103
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: Paperwork "Declaration of Sentience" title is now centered. (Caws & CaasGit)
+    type: Fix
+  id: 194104
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: The shift date and time are now determined by the server, meaning it's
+      now the same for all players. (redmushie)
+    type: Fix
+  id: 194105
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: Shift Time on paperwork when using the [datetime] tag should now be accurate.
+      (Caws)
+    type: Fix
+  id: 194106
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
 Order: -1
 

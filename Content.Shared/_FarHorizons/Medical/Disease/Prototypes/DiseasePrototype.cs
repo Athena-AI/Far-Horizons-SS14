@@ -30,6 +30,12 @@ public sealed partial class DiseasePrototype : IPrototype
     [DataField("desc", required: true)]
     public string Description { get; private set; } = default!;
 
+    [DataField]
+    public bool ShowDisease = true;
+
+    [DataField]
+    public bool AllowModification = true;
+
     /// <summary>
     /// Name of the strain
     /// </summary>

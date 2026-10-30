@@ -5,6 +5,7 @@ using Content.Shared.Forensics.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Systems;
 using Content.Shared._FarHorizons.Medical.Disease.Components;
+using System.Linq;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Systems;
 
@@ -79,8 +80,8 @@ public sealed partial class DiseaseSwabSystem : EntitySystem
 
         if (TryComp<DiseaseCarrierComponent>(target, out var carrier))
         {
-            if(carrier.ActiveDiseases.Count > 0)
-                ent.Comp.DiseasesData = new Dictionary<DiseaseData, StageData>(carrier.ActiveDiseases);
+            if(carrier.ActiveDiseases.Count(x => x.Key.ShowDisease) > 0)
+                ent.Comp.DiseasesData = new Dictionary<DiseaseData, StageData>(carrier.ActiveDiseases.Where(x => x.Key.ShowDisease));
             if(carrier.Immunity.Count > 0)
                 ent.Comp.Immunity = new Dictionary<DiseaseData, float>(carrier.Immunity);
 

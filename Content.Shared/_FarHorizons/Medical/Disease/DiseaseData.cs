@@ -32,6 +32,12 @@ public partial record struct DiseaseData
     [DataField(required: true)]
     public string Description = default!;
 
+    [DataField]
+    public bool ShowDisease = true;
+
+    [DataField]
+    public bool AllowModification = true;
+
     /// <summary>
     /// Randomized name for the strain of the disease.
     /// </summary>

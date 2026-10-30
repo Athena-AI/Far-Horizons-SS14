@@ -452,6 +452,9 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         {
             status.ShowDisease = carrier.ActiveDiseases.Any(x =>
             {
+                if(!x.Key.ShowDisease)
+                    return false;
+                    
                 var stages = _proto.Index(x.Key.Vector).Timers;
                 var maxStage = stages.Count;
 

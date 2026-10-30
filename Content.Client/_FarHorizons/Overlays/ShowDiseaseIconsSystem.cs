@@ -23,7 +23,7 @@ public sealed partial class ShowDiseaseIconsSystem : EquipmentHudSystem<ShowDise
         if (!IsActive)
             return;
 
-        if (carrier.ActiveDiseases.Count == 0)
+        if (carrier.ActiveDiseases.Count(x => x.Key.ShowDisease) == 0)
             return;
 
         var iconId = carrier.DiseaseIcon;
@@ -32,6 +32,9 @@ public sealed partial class ShowDiseaseIconsSystem : EquipmentHudSystem<ShowDise
 
         var showDisease = carrier.ActiveDiseases.Any(x =>
         {
+            if(!x.Key.ShowDisease)
+                return false;
+                
             var stages = _prototype.Index(x.Key.Vector).Timers;
             var maxStage = stages.Count;
 

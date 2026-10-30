@@ -354,6 +354,8 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             Id = diseaseId,
             Name = proto.Name,
             Description = proto.Description,
+            ShowDisease = proto.ShowDisease,
+            AllowModification = proto.AllowModification,
             StrainName = proto.StrainName,
             StrainId = proto.StrainId,
             Vector = proto.Vector,
@@ -380,6 +382,9 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
     public DiseaseData? UpdateDisease(DiseaseData disease)
     {
+        if(disease.AllowModification)
+            return disease;
+
         //Basic Info
         disease.Name = "Unknown Disease";
         disease.Description = "Unknown Disease";
@@ -532,7 +537,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             bloodData.Add(diseaseData);
         }
     
-        diseaseData.ActiveDiseases = new Dictionary<DiseaseData, StageData>(ent.Comp.ActiveDiseases);
+        diseaseData.ActiveDiseases = new Dictionary<DiseaseData, StageData>(ent.Comp.ActiveDiseases.Where(x => x.Key.ShowDisease));
         diseaseData.Immunity = new Dictionary<DiseaseData, float>(ent.Comp.Immunity);
         bloodstream.BloodReferenceSolution.SetReagentData(bloodData);
 

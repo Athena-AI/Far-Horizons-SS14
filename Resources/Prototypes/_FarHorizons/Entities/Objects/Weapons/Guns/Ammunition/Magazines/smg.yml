@@ -4,7 +4,7 @@
   id: BaseMagazinePistolSubMachineGunPPSH
   name: PPSH Drum Magazine
   abstract: true
-  description: Large 71-Round Drum magazine desinged for the PPSh-59.
+  description: Large 71-Round Drum magazine designed for the PPSh-59.
   components:
   - type: BallisticAmmoProvider
     proto: null
@@ -47,7 +47,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHHP
   name: PPSH Drum Magazine (SMG HP)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Hollow-Point 9mm bullets, effective against unarmored targets.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Hollow-Point 9mm bullets, effective against unarmored targets.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolHP
@@ -65,7 +65,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSH
   name: PPSH Drum Magazine (SMG SP)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Soft-Point 9mm bullets, effective against lightly-armored targets.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Soft-Point 9mm bullets, effective against lightly-armored targets.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolSP
@@ -83,7 +83,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHFMJ
   name: PPSH Drum Magazine (SMG FMJ)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Full Metal Jacket 9mm bullets, effective against armored targets.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Full Metal Jacket 9mm bullets, effective against armored targets.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolFMJ
@@ -101,7 +101,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHIncendiary
   name: PPSH Drum Magazine (SMG Incendiary)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Self-Igniting 9mm bullets, effective against fleshy targets.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Self-Igniting 9mm bullets, effective against fleshy targets.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolIncendiary
@@ -119,7 +119,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHUranium
   name: PPSH Drum Magazine (SMG Uranium)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Uranium-Core 9mm bullets, delivers radiation poisoning on contact.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Uranium-Core 9mm bullets, delivers radiation poisoning on contact.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolUranium
@@ -137,7 +137,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHAP
   name: PPSH Drum Magazine (SMG AP)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Armor-Piercing 9mm bullets, effective against heavily-armored targets.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Armor-Piercing 9mm bullets, effective against heavily-armored targets.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolAP
@@ -155,7 +155,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHPractice
   name: PPSH Drum Magazine (SMG Practice)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Chalk 9mm bullets, used for target practice.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Chalk 9mm bullets, used for target practice.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolPractice
@@ -173,7 +173,7 @@
   parent: BaseMagazinePistolSubMachineGunPPSH
   id: MagazinePistolSubMachineGunPPSHRubber
   name: PPSH Drum Magazine (SMG Rubber)
-  description: Large 71-Round Drum magazine desinged for the PPSh-59. Loaded with Rubber 9mm bullets, mostly harmless.
+  description: Large 71-Round Drum magazine designed for the PPSh-59. Loaded with Rubber 9mm bullets, mostly harmless.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgePistolRubber

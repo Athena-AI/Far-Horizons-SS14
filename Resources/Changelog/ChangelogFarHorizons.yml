@@ -22942,5 +22942,61 @@ Entries:
   id: 195100
   time: '2026-10-29T19:26:59.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1951
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Toggleable shields now require the shield to be toggled to actually give
+      protection.
+    type: Fix
+  id: 194300
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: pAI's and other minded entities no longer prevent you from raising your
+      shield as long as they are in a container of some kind.
+    type: Fix
+  id: 194301
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Changes to the underlying code of blocking and reflection to enable power
+      draw when reducing damage.
+    type: Tweak
+  id: 194302
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Pistols, handheld computers like station maps/portable crew monitors,
+      and holoprojectors no longer eject their - magazine/battery when using a hotkey
+      to grab them from a pocket.
+    type: Tweak
+  id: 194303
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: E-Shield and Bulwark shield use the new energy mechanic and recharge
+      when not toggled on.
+    type: Tweak
+  id: 194304
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Infiltration suits have had their duration slashed in half but they recharge
+      now when not on.
+    type: Tweak
+  id: 194305
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: You can pistol whip people for 6 blunt now.
+    type: Tweak
+  id: 194306
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
 Order: -1
 

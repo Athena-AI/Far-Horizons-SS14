@@ -19,6 +19,8 @@ using Robust.Shared.Network;
 using Content.Shared.Metabolism;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Zombies;
+using Robust.Shared.Random;
+using Content.Shared._Starlight.Abstract.Extensions;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Systems;
 
@@ -29,6 +31,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _prototypes = default!;
     [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
     [Dependency] private SharedDiseaseSymptomSystem _symptoms = default!;
     [Dependency] private SharedDiseaseCureSystem _cure = default!;
     [Dependency] private InventorySystem _inventory = default!;
@@ -36,8 +39,8 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private INetManager _net = default!;
     [Dependency] private StatusEffectsSystem _effect = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private static readonly string _firstStrainName = "StrainFirstNames";
     private static readonly string _secondStrainName = "StrainSecondNames";
@@ -146,8 +149,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
             return currentStage;
 
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, currentStage.AdvanceStageAt.Microseconds, stages[currentStage.Stage]);
-        var rand = new System.Random(seed);
-        var mod = NextFloat(rand, disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y);
+        var mod = _random.NextFloatPredicted(_timing, disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y, seed);
         currentStage.AdvanceStageAt = _timing.CurTime + TimeSpan.FromSeconds(stages[currentStage.Stage] * mod);
         currentStage.Stage = Math.Min(currentStage.Stage + 1, maxStage);
         return currentStage; 
@@ -299,18 +301,16 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
 
         // TODO: Replace with RandomPredicted once the engine PR is merged
         var seed = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.AdvanceStageAt.GetHashCode()]);
-        var rand = new System.Random(seed);
 
-        if (rand.NextDouble() > probability)
+        if (_random.ProbPredicted(_timing, probability, seed))
             return false;
 
         if (TryComp<DiseaseCarrierComponent>(uid, out var carrier) && carrier.Immunity.TryGetValue(disease, out var immunityStrength))
         {
             // Roll against immunity strength.
             // TODO: Replace with RandomPredicted once the engine PR is merged
-            var seedImmunity = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.AdvanceStageAt.GetHashCode()]);
-            var randImmunity = new System.Random(seedImmunity);
-            if (randImmunity.NextDouble() > 1f-immunityStrength)
+            seed = SharedRandomExtensions.HashCodeCombine([(int)_timing.CurTick.Value, uid.GetHashCode(), stage.AdvanceStageAt.GetHashCode()]);
+            if (_random.ProbPredicted(_timing, 1f-immunityStrength, seed))
                 return false;
         }
 
@@ -422,8 +422,7 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
                 disease.Stats.Transmittable,
                 i);
 
-            var rand = new System.Random(seed);
-            var idx = rand.Next(possibleCures.Count);
+            var idx = _random.NextPredicted(_timing, possibleCures.Count);
 
             selectedCures.Add(possibleCures[idx]);
             possibleCures.RemoveAt(idx);
@@ -465,9 +464,8 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
         var stages = _prototypes.Index(disease.Vector).Timers;
 
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, startStage);
-        var rand = new System.Random(seed);
 
-        var timerModifier = NextFloat(rand, disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y);
+        var timerModifier = _random.NextFloatPredicted(_timing, disease.DiseaseTimerThresholds.X, disease.DiseaseTimerThresholds.Y, seed);
         var stage = new StageData
         {
             Stage = startStage,
@@ -480,14 +478,13 @@ public sealed partial class SharedDiseaseSystem : EntitySystem
     {
         const int MaxValue = 99;
         var seed = SharedRandomExtensions.HashCodeCombine((int) _timing.CurTick.Value, MaxValue);
-        var rand = new System.Random(seed);
 
         var firstOptions = _prototypes.Index<LocalizedDatasetPrototype>(_firstStrainName).Values;
         var secondOptions = _prototypes.Index<LocalizedDatasetPrototype>(_secondStrainName).Values;
 
-        var first = firstOptions[rand.Next(firstOptions.Count)];
-        var second = secondOptions[rand.Next(secondOptions.Count)];
-        var number = rand.Next(MaxValue);
+        var first = _random.PickPredicted(_timing, firstOptions, seed);
+        var second = _random.PickPredicted(_timing, secondOptions, seed);
+        var number = _random.NextPredictedMax(_timing, MaxValue, seed);
 
         return ($"{first}{number}{second}", $"{first}-{number} {second}");
     }

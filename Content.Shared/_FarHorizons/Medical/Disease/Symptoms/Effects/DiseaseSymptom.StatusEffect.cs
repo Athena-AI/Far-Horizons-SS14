@@ -6,6 +6,8 @@ using Robust.Shared.Timing;
 using Content.Shared.Random.Helpers;
 using System.Linq;
 using Robust.Shared.Network;
+using Robust.Shared.Random;
+using Content.Shared._Starlight.Abstract.Extensions;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Symptoms;
 
@@ -21,10 +23,11 @@ public sealed partial class SymptomStatusEffect : SymptomBehavior
 
 public sealed partial class SymptomStatusEffect
 {
-    [Dependency] private SharedEntityEffectsSystem _effects = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private INetManager _net = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
 
     /// <summary>
     /// Executes the status effects.
@@ -49,8 +52,7 @@ public sealed partial class SymptomStatusEffect
             symptom.ID.GetHashCode(),
             Index
         );        
-        var rand = new System.Random(seed);
-        if(rand.NextDouble() > Probability)
+        if(_random.ProbPredicted(_timing, Probability, seed))
             return false;
 
         _effects.ApplyEffects(entity, Effects);

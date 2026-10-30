@@ -9,6 +9,7 @@ using Robust.Shared.Serialization;
 using Content.Shared._FarHorizons.Medical.Disease.Systems;
 using Robust.Shared.Timing;
 using Content.Shared.Random.Helpers;
+using Content.Shared._Starlight.Abstract.Extensions;
 
 namespace Content.Shared._FarHorizons.Medical.Disease.Cures;
 
@@ -38,6 +39,7 @@ public sealed partial class CureBedrest
     {
         var _entityManager = IoCManager.Resolve<IEntityManager>();
         var _timing = IoCManager.Resolve<IGameTiming>();
+        var _random = IoCManager.Resolve<IRobustRandom>();
 
         var onBed = false;
         if (_entityManager.TryGetComponent(uid, out BuckleComponent? buckle) && buckle.BuckledTo is { } strappedTo)
@@ -53,9 +55,8 @@ public sealed partial class CureBedrest
         var chance = MathF.Max(0f, BedrestChance) * sleepMult;
 
         var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, _entityManager.GetNetEntity(uid).Id);
-        var rand = new System.Random(seed);
 
-        return rand.Prob(chance);
+        return _random.ProbPredicted(_timing, chance, seed);
     }
 
     public override IEnumerable<string> BuildDiagnoserLines(IPrototypeManager prototypes)

@@ -101,7 +101,7 @@ public sealed partial class NPCSteeringSystem
                     continue;
 
                 // Interacts are bit nicer than bumps, so try interacting regardless.
-                _interaction.InteractionActivate(uid, ent);
+                _interaction.InteractionActivate(uid, ent, complexInteractions: true); //FH-Edit - So things without hands can still open doors without bump
 
                 return SteeringObstacleStatus.Continuing;
             }

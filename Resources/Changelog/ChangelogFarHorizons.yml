@@ -22292,5 +22292,852 @@ Entries:
   id: 189700
   time: '2026-10-13T17:49:39.000000+00:00'
   url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1897
+- author: Penguinwizzard
+  changes:
+  - message: Fixed gun executions.
+    type: Fix
+  id: 190200
+  time: '2026-10-15T15:19:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
+- author: Penguinwizzard
+  changes:
+  - message: Almost all of the code around executions is now predicted, so there should
+      be less menu jump and things should be smoother.
+    type: Add
+  id: 190201
+  time: '2026-10-15T15:19:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1902
+- author: whatston3
+  changes:
+  - message: Moproaches now regenerate water into their mops instead of bloodstream
+      again. Same with spiders and their venom and fangs.
+    type: Fix
+  id: 189600
+  time: '2026-10-15T15:55:33.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1896
+- author: jhrushbe
+  changes:
+  - message: Added the Fusion Reactor.
+    type: Add
+  id: 144600
+  time: '2026-10-15T17:01:30.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1446
+- author: princess_gurchi
+  changes:
+  - message: CC jobs no longer visible in job list in lobby
+    type: Fix
+  id: 190600
+  time: '2026-10-15T20:50:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1906
+- author: princess_gurchi
+  changes:
+  - message: Improvements to audio occlusion, hopefully nearby sounds will no longer
+      sound muffled
+    type: Fix
+  id: 190800
+  time: '2026-10-16T08:10:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1908
+- author: R3v3l4t1on
+  changes:
+  - message: Mechanical security is now a T2 research that needs laser weapons as
+      a prereq. It's also a lot cheaper now (35k > 9k).
+    type: Tweak
+  id: 191100
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: GSL now gets to know when advanced tools are researched. For the fultons,
+      obviously.
+    type: Tweak
+  id: 191101
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: Security gets to know when thermals are unlocked.
+    type: Tweak
+  id: 191102
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: AI lawboards research now announces to binary.
+    type: Tweak
+  id: 191103
+  time: '2026-10-17T14:25:28.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1911
+- author: R3v3l4t1on
+  changes:
+  - message: Added a fuel pipe from atmos to TEG.
+    type: Add
+  id: 191000
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added colouring to the reactor's fuel piping.
+    type: Add
+  id: 191001
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added a button to toggle the tinted windows in server room.
+    type: Add
+  id: 191002
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added decals to a secret door near evac.
+    type: Add
+  id: 191003
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Added plumbing to the toilets at evac and medical.
+    type: Add
+  id: 191004
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid atmos piping around reactor so it's less hideous and doesn't go
+      through 500 walls.
+    type: Tweak
+  id: 191005
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Moved the exosuit fabricator in robotics so borg bodies don't get stuck.
+    type: Tweak
+  id: 191006
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: 'Slightly changed the pipes to the top artifact chamber: It''s got a
+      research-locked atmos alarm/scrubber/air injector now,'
+    type: Tweak
+  id: 191007
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid science/salvage docks slightly to hopefully stop salvage from blocking
+      the dock when they return from exped.
+    type: Tweak
+  id: 191008
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Redid a little bit of atmos/disposal piping around the station to be
+      less horrendous looking.
+    type: Tweak
+  id: 191009
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Solar airlocks now have engineering-locked doors inside, and external-locked
+      doors outside to combat doorlagger virus spacing all of maints.
+    type: Tweak
+  id: 191010
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the turbine area being unpowered roundstart due to missing MV,
+    type: Fix
+  id: 191011
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed part of robotics/science being unpowered roundstart due to missing
+      LV,
+    type: Fix
+  id: 191012
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the expeditioneer not starting with all of its' thrusters turned
+      on.
+    type: Fix
+  id: 191013
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: R3v3l4t1on
+  changes:
+  - message: Fixed the freezer in kitchen using the wrong gas pump/vent variants,
+      they now use freezer variants (also added a freezer alarm/sensor),
+    type: Fix
+  id: 191014
+  time: '2026-10-18T11:47:06.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1910
+- author: princess_gurchi
+  changes:
+  - message: Round should no longer auto restart by rolling traitors via secret game
+      preset in NS round
+    type: Fix
+  id: 191200
+  time: '2026-10-18T13:52:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
+- author: princess_gurchi
+  changes:
+  - message: Vampires can drink from blood bags again
+    type: Fix
+  id: 191201
+  time: '2026-10-18T13:52:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1912
+- author: jhrushbe
+  changes:
+  - message: Added a lock to the fusion reactor's controller.
+    type: Add
+  id: 191400
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor is now less capable of making Gigawatts of power.
+    type: Tweak
+  id: 191401
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor stability now affects power extraction rather than energy
+      extraction.
+    type: Tweak
+  id: 191402
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Updated the fusion reactor controller's low pressure warning to specify
+      magnetic pressure.
+    type: Tweak
+  id: 191403
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Plasma temperature and pressure values will now display with SI prefixes
+      in the fusion reactor controller's UI.
+    type: Tweak
+  id: 191404
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: jhrushbe
+  changes:
+  - message: Fixed a bug where the fusion reactor's "temperature" power extraction
+      mode worked too well.
+    type: Fix
+  id: 191405
+  time: '2026-10-18T13:57:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1914
+- author: qriqii
+  changes:
+  - message: fixed the X-01 (BSO laser pistol) having a mindshield lock
+    type: Fix
+  id: 191900
+  time: '2026-10-22T03:07:37.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1919
+- author: qriqii
+  changes:
+  - message: fixed NS trackers not being deimplantable
+    type: Fix
+  id: 192300
+  time: '2026-10-22T14:16:40.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1923
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Added new USSP themed gear. Sprites by Bazingaman.
+    type: Add
+  id: 191800
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Added the gear to the communist salvage dungeon table.
+    type: Add
+  id: 191801
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Added 3 new communist enemies the SMG, Mosin and Miner enemy.
+    type: Add
+  id: 191802
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Taught NPCs to swap to their melee weapons when they have no ammo.
+    type: Add
+  id: 191803
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Taught NPCs how to use weapons with bayonets.
+    type: Add
+  id: 191804
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Taught NPCs how to pump weapons.
+    type: Add
+  id: 191805
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: The ToZ uses real ammo and not a fake .42 shotgun shell.
+    type: Tweak
+  id: 191806
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: AthenaAI, Bazingaman
+  changes:
+  - message: Gave a proper shotgun to the sawn shotgun communist.
+    type: Tweak
+  id: 191807
+  time: '2026-10-22T16:55:07.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1918
+- author: jhrushbe
+  changes:
+  - message: The Station AI can now access the fusion reactor's controller.
+    type: Add
+  id: 192100
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Changed the way the fusion reactor's magnetic pressure is calculated
+      to reduce strobing behavior.
+    type: Tweak
+  id: 192101
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor controller can now extract only up to a set portion
+      of the total energy.
+    type: Tweak
+  id: 192102
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Set buttons will no longer deactivate when an input is denied in the
+      fusion reactor controller's UI, allowing you to try again.
+    type: Tweak
+  id: 192103
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor capacitor max charge rate increased from 150kW to 200kW.
+    type: Tweak
+  id: 192104
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: Fusion reactor capacitor charge capacity increased from 16MJ to 24MJ.
+    type: Tweak
+  id: 192105
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: The gas to atom conversion for Zauker has been changed from N7H9 to C4H8Cl2S.
+    type: Tweak
+  id: 192106
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: jhrushbe
+  changes:
+  - message: The fusion reactor will no longer tolerate NaN, Infinity, or NegativeInfinity
+      inputs.
+    type: Fix
+  id: 192107
+  time: '2026-10-22T17:34:48.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1921
+- author: qriqii
+  changes:
+  - message: fixed security sign missing its background
+    type: Fix
+  id: 192700
+  time: '2026-10-23T17:17:21.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1927
+- author: jhrushbe
+  changes:
+  - message: Added flatpacks and a flatpack crate for the fusion reactor machines.
+    type: Add
+  id: 193100
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Changed the fusion reactor controller's efficiency from 35% to 50% and
+      its exponent from 0.95 to 0.92.
+    type: Tweak
+  id: 193101
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Made the fusion reactor's mass destruction explosion 1/3 weaker, from
+      750,000 to 500,000. This brings it down to 1/10 the power of the nuke.
+    type: Tweak
+  id: 193102
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Made the fusion reactor not do the mass destruction explosion by default.
+    type: Tweak
+  id: 193103
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Fixed the fusion reactor controller's watt extraction mode being inaccurate.
+    type: Fix
+  id: 193104
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: jhrushbe
+  changes:
+  - message: Fixed a minor grammar mistake in the fusion reactor circuits crate's
+      description.
+    type: Fix
+  id: 193105
+  time: '2026-10-25T15:36:38.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1931
+- author: AthenaAI
+  changes:
+  - message: Fixes the hardsuit helmets for the miner and aegis variant.
+    type: Fix
+  id: 193200
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: AthenaAI
+  changes:
+  - message: Fixes the ZoZ commie not using fletchette.
+    type: Fix
+  id: 193201
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: AthenaAI
+  changes:
+  - message: Moved the Finka to the commie belt due to issues with diona not having
+      boots.
+    type: Tweak
+  id: 193202
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: AthenaAI
+  changes:
+  - message: Taught NPCs how Speedloaders work.
+    type: Add
+  id: 193203
+  time: '2026-10-25T15:46:31.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1932
+- author: Mizuki
+  changes:
+  - message: Sec now spawns with instigator custom when selected in loadout
+    type: Fix
+  id: 193800
+  time: '2026-10-26T17:06:12.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1938
+- author: xsainteer and Penuinwizzard
+  changes:
+  - message: Chameleon projectors work again.
+    type: Fix
+  id: 193500
+  time: '2026-10-28T14:35:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1935
+- author: xsainteer and Penuinwizzard
+  changes:
+  - message: Chameleon projectors cause fewer console warnings when you use them.
+    type: Fix
+  id: 193501
+  time: '2026-10-28T14:35:52.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1935
+- author: Penguinwizzard
+  changes:
+  - message: Fixed moproaches not regenerating water.
+    type: Fix
+  id: 193600
+  time: '2026-10-28T14:37:55.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1936
+- author: Penguinwizzard
+  changes:
+  - message: NPCs now know how to manually cycle bolts for weapons where that is two
+      actions (open/close)
+    type: Add
+  id: 194500
+  time: '2026-10-28T15:03:22.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1945
+- author: Mizuki
+  changes:
+  - message: Added NS R&D server, which sends to NS channels
+    type: Add
+  id: 194000
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: Mizuki
+  changes:
+  - message: Tech unlock notifications now get sent to NS channels in addition to
+      NT
+    type: Fix
+  id: 194001
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: Mizuki
+  changes:
+  - message: NS R&D console now sends to NS sci channel
+    type: Fix
+  id: 194002
+  time: '2026-10-28T19:10:41.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1940
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: MIDI files for instruments are now stored and used as a persistent collection.
+    type: Add
+  id: 193700
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: MIDI files in your collection can be filtered and played in random order.
+    type: Add
+  id: 193701
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: The minimum volume for MIDI Input can now be adjusted inside the instrument
+      UI.
+    type: Add
+  id: 193702
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: Added drum kit. It can be ordered in cargo for 750 spesos.
+    type: Add
+  id: 193703
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: Added a fretless bass guitar instrument.
+    type: Add
+  id: 193704
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: Cargo request computer now has separate category for instruments.
+    type: Add
+  id: 193705
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: The GUI for instruments has been completely overhauled.
+    type: Tweak
+  id: 193706
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: wonderfulnewworld, Ataman, Matriotix, ProPeperos
+  changes:
+  - message: Instruments from cargo has been tweaked and reduced in price.
+    type: Tweak
+  id: 193707
+  time: '2026-10-29T19:10:13.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1937
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: NT-CC branded paper, complete with new sprites. (Caws & CaasGit)
+    type: Add
+  id: 194100
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: The [datetime] paperwork tag. Similar to [signature], this will automatically
+      fills out the date & shift time for you when you click it. (Caws & CaasGit)
+    type: Add
+  id: 194101
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: All paperwork has been updated to use the new [datetime] paperwork tag.
+      (Caws & CaasGit)
+    type: Tweak
+  id: 194102
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: All documents printed from a document printer will automagically brand
+      the paper with NT-CC branding. (Caws & CaasGit)
+    type: Tweak
+  id: 194103
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: Paperwork "Declaration of Sentience" title is now centered. (Caws & CaasGit)
+    type: Fix
+  id: 194104
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: The shift date and time are now determined by the server, meaning it's
+      now the same for all players. (redmushie)
+    type: Fix
+  id: 194105
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: Caws & CaasGit, redmushie
+  changes:
+  - message: Shift Time on paperwork when using the [datetime] tag should now be accurate.
+      (Caws)
+    type: Fix
+  id: 194106
+  time: '2026-10-29T19:13:39.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1941
+- author: rain_enjoyer
+  changes:
+  - message: Amoxla now heals 3% for every U.
+    type: Tweak
+  id: 194900
+  time: '2026-10-29T19:23:53.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1949
+- author: rain_enjoyer
+  changes:
+  - message: Fixed blood healing items healing half of the % that they should.
+    type: Fix
+  id: 194901
+  time: '2026-10-29T19:23:53.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1949
+- author: AthenaAI
+  changes:
+  - message: Makes all the verbs from cartridges predicted for a smoother experience.
+    type: Tweak
+  id: 195100
+  time: '2026-10-29T19:26:59.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1951
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Toggleable shields now require the shield to be toggled to actually give
+      protection.
+    type: Fix
+  id: 194300
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: pAI's and other minded entities no longer prevent you from raising your
+      shield as long as they are in a container of some kind.
+    type: Fix
+  id: 194301
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Changes to the underlying code of blocking and reflection to enable power
+      draw when reducing damage.
+    type: Tweak
+  id: 194302
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Pistols, handheld computers like station maps/portable crew monitors,
+      and holoprojectors no longer eject their - magazine/battery when using a hotkey
+      to grab them from a pocket.
+    type: Tweak
+  id: 194303
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: E-Shield and Bulwark shield use the new energy mechanic and recharge
+      when not toggled on.
+    type: Tweak
+  id: 194304
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: Infiltration suits have had their duration slashed in half but they recharge
+      now when not on.
+    type: Tweak
+  id: 194305
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Bornstellar, Hanz (Adrian Butler), AthenaAI
+  changes:
+  - message: You can pistol whip people for 6 blunt now.
+    type: Tweak
+  id: 194306
+  time: '2026-10-30T08:48:17.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1943
+- author: Killer Tamashi
+  changes:
+  - message: Added 7.92, used in Mosin. Hits much harder. (Producible in Ammo Techfab
+      / Emagged Security Techfab)
+    type: Add
+  id: 194200
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Added Scoped Mosin, variant of Mosin that has a rare chance to spawn
+      in place of a Mosin for Revs. As you might guess, comes with a scope.
+    type: Add
+  id: 194201
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Added various new sprites (DP28 & Mags, Makarov, AK & Mags, PPSH & Mags,
+      L6 Mags, Mosin & Clips)
+    type: Add
+  id: 194202
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Renamed all instances of .30 to 7.62. Yell at me if I missed one.
+    type: Tweak
+  id: 194203
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed Makarov accuracy, it's now on par with other pistols. Still shoots
+      slower tho.
+    type: Tweak
+  id: 194204
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed Mosin to be bolt-operated (hit z twice, once to eject casing,
+      second to chamber new round) and to fire much slower (0.8/s)
+    type: Tweak
+  id: 194205
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed Mosin's bayonet to have the same DPS as a combat knife (18/s)
+    type: Tweak
+  id: 194206
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed Mosin bundle for Revs to come with 2 clips.
+    type: Tweak
+  id: 194207
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed PPSH to use it's more iconic drum magazines, loads 71 rounds.
+    type: Tweak
+  id: 194208
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed PPSH bundle to have one less mag due to drum.
+    type: Tweak
+  id: 194209
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Changed PPSH to have a longer delay (0.5s > 1s) due to using drum magazines.
+    type: Tweak
+  id: 194210
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Removed some unused SL sprites (DP28, M429, Makarov, PPSH, Enforcer,
+      Combat Shotgun & Due Process)
+    type: Remove
+  id: 194211
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: Killer Tamashi
+  changes:
+  - message: Removed .44 rifle speedloader from techfabs, as, the only gun that used
+      it was the Mosin and it doesn't fire .44 anymore.
+    type: Remove
+  id: 194212
+  time: '2026-10-30T09:01:10.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1942
+- author: qriqii
+  changes:
+  - message: replaced AI core lights on Unity with ones that actually need power
+    type: Fix
+  id: 195900
+  time: '2026-10-31T16:52:26.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1959
+- author: qriqii
+  changes:
+  - message: (Unity) Added cameras to Security. You ever get the feeling that the
+      AI is watching?
+    type: Add
+  id: 195901
+  time: '2026-10-31T16:52:26.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1959
+- author: AthenaAI
+  changes:
+  - message: Fixed the fact power armor couldn't wear gas tanks or guns.
+    type: Fix
+  id: 196200
+  time: '2026-11-01T15:43:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1962
+- author: AthenaAI
+  changes:
+  - message: Added damagetransfer to the NT Suit of 10%.
+    type: Add
+  id: 196201
+  time: '2026-11-01T15:43:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1962
+- author: AthenaAI
+  changes:
+  - message: Added stamina damage resistance to the NT Juggernaut Suit.
+    type: Add
+  id: 196202
+  time: '2026-11-01T15:43:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1962
+- author: AthenaAI
+  changes:
+  - message: Changed the powercell from medium to high in the NT Juggernaut Suit.
+    type: Tweak
+  id: 196203
+  time: '2026-11-01T15:43:56.000000+00:00'
+  url: https://github.com/Far-Horizons-SS14/Far-Horizons-SS14/pull/1962
 Order: -1
 

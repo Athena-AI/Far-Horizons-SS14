@@ -1,16 +1,12 @@
 using Content.Server.FarHorizons.Tools.Shipyard.Components;
 using Content.Shared.PowerCell;
 using Content.Shared.FarHorizons.Tools.Shipyard;
-using Content.Shared.Damage;
 using Content.Shared.DoAfter;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
-using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;

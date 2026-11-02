@@ -9,6 +9,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Random; // Starlight
 
 namespace Content.Shared._Moffstation.Cards.Systems;
 
@@ -32,6 +33,7 @@ public abstract partial class SharedPlayingCardsSystem : EntitySystem
     [Dependency] private SharedStorageSystem _storage = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private IRobustRandom _random = default!; // Starlight
 
     /// The priority of verbs for placing cards, should be high so that alt+clicking things always tries to do these.
     private const int PlacementVerbPriority = 100;

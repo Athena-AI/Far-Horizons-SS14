@@ -20,7 +20,7 @@ public sealed class ComradeWeaponTests : GameTest
 
         - type: entity
           id: TestMagazineLightRifleLoaded
-          parent: MagazineLightRifleSP
+          parent: MagazineRifle762SP
           components:
           - type: BallisticAmmoProvider
             unspawnedCount: 30

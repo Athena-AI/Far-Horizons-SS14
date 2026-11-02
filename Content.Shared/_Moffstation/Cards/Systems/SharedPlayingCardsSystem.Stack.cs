@@ -9,7 +9,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using static Content.Shared._Moffstation.Cards.Components.PlayingCardStackComponent.Verbs;
-using Content.Shared._FarHorizons.Random.Helpers; //FH - Replace SL Extension
+using Content.Shared._Starlight.Abstract.Extensions; //Starlight
 
 namespace Content.Shared._Moffstation.Cards.Systems;
 
@@ -162,10 +162,10 @@ public abstract partial class SharedPlayingCardsSystem
         switch (entity.Comp)
         {
             case PlayingCardDeckComponent deck:
-                FhRandomExtensions.ShufflePredicted(_gameTiming, GetNetEntity(entity), deck.Cards);
+                _random.ShufflePredicted(_gameTiming, deck.Cards, GetNetEntity(entity).Id); //FH-Edit
                 break;
             case PlayingCardHandComponent hand:
-                FhRandomExtensions.ShufflePredicted(_gameTiming, GetNetEntity(entity), hand.Cards);
+                _random.ShufflePredicted(_gameTiming, hand.Cards, GetNetEntity(entity).Id); //FH-Edit
                 break;
             default:
                 entity.Comp.ThrowUnknownInheritor<PlayingCardStackComponent>();

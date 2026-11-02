@@ -1145,6 +1145,9 @@
     access: [["ResearchNS"]]
   - type: Computer
     board: ResearchComputerCircuitboardNS
+  - type: ActiveRadio
+    channels:
+    - SyndiSci
 
 - type: entity
   parent: ComputerCommsScience

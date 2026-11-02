@@ -459,7 +459,7 @@
         time: 10h # Will still struggle with friendly fire.
   storage:
     back:
-    - WeaponRevolverInspectorcustom
+    - WeaponRevolverInstigatorcustom
     - SpeedLoaderRevolver38SP
     - SpeedLoaderRevolver38SP
     - SpeedLoaderRevolver38Rubber

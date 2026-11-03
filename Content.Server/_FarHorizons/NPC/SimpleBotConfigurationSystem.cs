@@ -40,7 +40,6 @@ public sealed partial class SimpleBotConfigurationSystem : EntitySystem
             // Yes, I know the simple bots can't perform interact actions; this is needed
             // so that the pathfinding system paths them through doors.
             htn.Blackboard.SetValue(NPCBlackboard.NavInteract, true);
-            htn.Blackboard.SetValue(NPCBlackboard.NavAccess, true);
         }
 
         SetPowered(ent, ent.Comp.Powered);

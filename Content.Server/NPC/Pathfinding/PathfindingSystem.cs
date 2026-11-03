@@ -472,13 +472,6 @@ namespace Content.Server.NPC.Pathfinding
                 flags |= PathFlags.Interact;
             }
 
-            // Far Horizons start
-            if (blackboard.TryGetValue<bool>(NPCBlackboard.NavAccess, out var access, EntityManager) && access)
-            {
-                flags |= PathFlags.Access;
-            }
-            // Far Horizons end
-
             return flags;
         }
 

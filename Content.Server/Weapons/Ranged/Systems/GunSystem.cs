@@ -164,7 +164,8 @@ public sealed partial class GunSystem : SharedGunSystem
 
                     Audio.PlayPredicted(gun.Comp.SoundGunshotModified, gun, user);
                     //FH-Start
-                    var ev = new NoiseEmittedEvent(gun, _transform.GetMapCoordinates(gun), gun.Comp.SoundGunshotModified != null ? gun.Comp.SoundGunshotModified.Params.Volume : 0f);
+                    var source = user != null ? user.Value : gun.Owner;
+                    var ev = new NoiseEmittedEvent(source, _transform.GetMapCoordinates(source), gun.Comp.SoundGunshotModified!.Params);
                     RaiseLocalEvent(ref ev);
                     //FH-End                    
                     break;
@@ -245,7 +246,8 @@ public sealed partial class GunSystem : SharedGunSystem
             MuzzleFlash(gun, ammoComp, mapDirection.ToAngle(), user);
             Audio.PlayPredicted(gun.Comp.SoundGunshotModified, gun, user);
             //FH-Start
-            var ev = new NoiseEmittedEvent(gun, _transform.GetMapCoordinates(gun), gun.Comp.SoundGunshotModified != null ? gun.Comp.SoundGunshotModified.Params.Volume : 0f);
+            var source = user != null ? user.Value : gun.Owner;
+            var ev = new NoiseEmittedEvent(source, _transform.GetMapCoordinates(source), gun.Comp.SoundGunshotModified!.Params);
             RaiseLocalEvent(ref ev);
             //FH-End
         }

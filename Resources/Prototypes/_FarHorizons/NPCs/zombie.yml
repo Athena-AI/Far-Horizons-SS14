@@ -44,11 +44,29 @@
         preset: TargetHealth
     - !type:TargetAccessibleCon
       curve: !type:BoolCurve
+    - !type:TargetInLOSOrCurrentCon
+      curve: !type:BoolCurve
 
 #Checks Before Attacking
 - type: htnCompound
   id: BeforeZombieMeleeAttackTargetCompound
   branches:
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: NoisePos
+      tasks:
+      - !type:HTNPrimitiveTask
+          operator: !type:RemoveKeyOperator
+            key: NoisePos
+
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: FollowTarget
+      tasks:
+      - !type:HTNPrimitiveTask
+          operator: !type:RemoveKeyOperator
+            key: FollowTarget
+
     - preconditions:
         - !type:BuckledPrecondition
           isBuckled: true
@@ -118,6 +136,21 @@
 - type: htnCompound
   id: ZombieIdleCompound
   branches:
+  - tasks:
+    - !type:HTNPrimitiveTask
+      preconditions:
+        - !type:KeyExistsPrecondition
+          key: NoisePos
+      operator: !type:MoveToOperator
+        pathfindInPlanning: true
+        targetKey: NoisePos
+        rangeKey: MeleeRange
+        removeKeyOnFinish: false
+        shutdownState: TaskFinished
+    - !type:HTNPrimitiveTask
+        operator: !type:RemoveKeyOperator
+          key: NoisePos
+
     # Join (or become) the flock leader
     - tasks:
       - !type:HTNPrimitiveTask

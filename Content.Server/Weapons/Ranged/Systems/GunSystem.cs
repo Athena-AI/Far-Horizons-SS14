@@ -24,6 +24,7 @@ using Content.Shared.Mech.Components;
 using Robust.Server.GameObjects;
 #endregion Starlight
 using Content.Shared._FarHorizons.Vehicles; //FarHorizons
+using Content.Shared._FarHorizons.Audio; //FarHorizons
 
 namespace Content.Server.Weapons.Ranged.Systems;
 
@@ -162,6 +163,10 @@ public sealed partial class GunSystem : SharedGunSystem
                     Del(ent);
 
                     Audio.PlayPredicted(gun.Comp.SoundGunshotModified, gun, user);
+                    //FH-Start
+                    var ev = new NoiseEmittedEvent(gun, _transform.GetMapCoordinates(gun), gun.Comp.SoundGunshotModified != null ? gun.Comp.SoundGunshotModified.Params.Volume : 0f);
+                    RaiseLocalEvent(ref ev);
+                    //FH-End                    
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -239,6 +244,10 @@ public sealed partial class GunSystem : SharedGunSystem
 
             MuzzleFlash(gun, ammoComp, mapDirection.ToAngle(), user);
             Audio.PlayPredicted(gun.Comp.SoundGunshotModified, gun, user);
+            //FH-Start
+            var ev = new NoiseEmittedEvent(gun, _transform.GetMapCoordinates(gun), gun.Comp.SoundGunshotModified != null ? gun.Comp.SoundGunshotModified.Params.Volume : 0f);
+            RaiseLocalEvent(ref ev);
+            //FH-End
         }
     }
 

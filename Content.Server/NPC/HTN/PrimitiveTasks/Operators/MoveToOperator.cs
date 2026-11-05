@@ -137,6 +137,9 @@ public sealed partial class MoveToOperator : HTNOperator, IHtnConditionalShutdow
     {
         base.Startup(blackboard);
 
+        if (!blackboard.TryGetValue<EntityCoordinates>(TargetKey, out var coords, _entManager))
+            return;
+
         // Need to remove the planning value for execution.
         blackboard.Remove<EntityCoordinates>(NPCBlackboard.OwnerCoordinates);
         var targetCoordinates = blackboard.GetValue<EntityCoordinates>(TargetKey);

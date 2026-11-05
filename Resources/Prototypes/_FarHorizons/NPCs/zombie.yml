@@ -136,18 +136,18 @@
 - type: htnCompound
   id: ZombieIdleCompound
   branches:
-  - tasks:
-    - !type:HTNPrimitiveTask
-      preconditions:
-        - !type:KeyExistsPrecondition
-          key: NoisePos
-      operator: !type:MoveToOperator
-        pathfindInPlanning: true
-        targetKey: NoisePos
-        rangeKey: MeleeRange
-        removeKeyOnFinish: false
-        shutdownState: TaskFinished
-    - !type:HTNPrimitiveTask
+    - tasks:
+      - !type:HTNPrimitiveTask
+        preconditions:
+          - !type:KeyExistsPrecondition
+            key: NoisePos
+        operator: !type:MoveToOperator
+          pathfindInPlanning: true
+          targetKey: NoisePos
+          rangeKey: MeleeRange
+          removeKeyOnFinish: false
+          shutdownState: TaskFinished
+      - !type:HTNPrimitiveTask
         operator: !type:RemoveKeyOperator
           key: NoisePos
 
@@ -211,27 +211,27 @@
 
     # Pick a new idle spot near the follow target
     - tasks:
-      - !type:HTNPrimitiveTask
-        operator: !type:PickAccessibleOperator
-          rangeKey: FollowCloseRange
-          targetCoordinates: FollowIdleTarget
-
-      - !type:HTNPrimitiveTask
-        operator: !type:MoveToOperator
-          targetKey: FollowIdleTarget
-
-      - !type:HTNPrimitiveTask
-        operator: !type:RandomOperator
-          targetKey: IdleTime
-          minKey: MinimumIdleTime
-          maxKey: MaximumIdleTime
-
-      - !type:HTNPrimitiveTask
-        preconditions:
-          - !type:KeyExistsPrecondition
-            key: IdleTime
-          - !type:CoordinatesInRangePrecondition
-            targetKey: FollowTarget
+        - !type:HTNPrimitiveTask
+          operator: !type:PickAccessibleOperator
             rangeKey: FollowRange
-        operator: !type:WaitOperator
-          key: IdleTime
+            targetCoordinates: FollowIdleTarget
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            targetKey: FollowIdleTarget
+
+        - !type:HTNPrimitiveTask
+          operator: !type:RandomOperator
+            targetKey: IdleTime
+            minKey: MinimumIdleTime
+            maxKey: MaximumIdleTime
+
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: IdleTime
+            - !type:CoordinatesInRangePrecondition
+              targetKey: FollowTarget
+              rangeKey: FollowRange
+          operator: !type:WaitOperator
+            key: IdleTime

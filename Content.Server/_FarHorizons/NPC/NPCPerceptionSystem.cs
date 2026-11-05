@@ -1,4 +1,6 @@
+using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
+using Content.Server.NPC.Systems;
 using Content.Shared._FarHorizons.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -16,6 +18,8 @@ public sealed partial class NPCPerceptionSystem : EntitySystem
     [Dependency] private TransformSystem _transform = default!;
     [Dependency] private SharedAudioOcclusionSystem _occlusion = default!;
     [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private HTNSystem _htn = default!;
+    [Dependency] private NPCSteeringSystem _steering = default!;
 
     [SubscribeLocalEvent]
     private void OnNoiseEmitted(ref NoiseEmittedEvent args)
@@ -35,7 +39,11 @@ public sealed partial class NPCPerceptionSystem : EntitySystem
             if (npc.Owner == args.Source)
                 continue;
 
-            if (!npc.Comp.Blackboard.TryGetValue("HearingThreshold", out float hearingThreshold, EntityManager))
+            var bb = npc.Comp.Blackboard;
+            if (bb.TryGetValue<EntityUid>("Target", out _, EntityManager))
+                continue;
+
+            if (!bb.TryGetValue("HearingThreshold", out float hearingThreshold, EntityManager))
                 continue;
 
             var npcPos = _transform.GetMapCoordinates(npc.Owner);
@@ -46,8 +54,20 @@ public sealed partial class NPCPerceptionSystem : EntitySystem
 
             if (occlusion >= hearingThreshold)
                 continue;
-            
-            npc.Comp.Blackboard.SetValue("NoisePos", target);
+
+            var hadNoise = bb.TryGetValue<EntityCoordinates>("NoisePos", out _, EntityManager);
+            bb.SetValue("NoisePos", target);
+
+            if (hadNoise && HasComp<NPCSteeringComponent>(npc.Owner))
+            {
+                var steering = _steering.Register(npc.Owner, target);
+                if (bb.TryGetValue<float>("MeleeRange", out var range, EntityManager))
+                    steering.Range = range; 
+            }
+            else
+            {
+                _htn.Replan(npc.Comp);
+            }
         }
     }
 }   

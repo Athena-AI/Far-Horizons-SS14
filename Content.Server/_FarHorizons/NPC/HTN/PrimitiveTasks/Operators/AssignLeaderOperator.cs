@@ -25,7 +25,7 @@ public sealed partial class AssignLeaderOperator : HTNOperator
         NPCBlackboard blackboard, CancellationToken cancelToken)
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
-        var leader = FlockHelper.FindBestLeader(_entMan, owner, TargetKey, SearchRadius, Whitelist) ?? owner;
+        var leader = FlockHelper.FindBestLeader(_entMan, owner, TargetKey, SearchRadius, Whitelist);
 
         return (true, new Dictionary<string, object>
         {
@@ -38,7 +38,7 @@ public sealed partial class AssignLeaderOperator : HTNOperator
         base.Startup(blackboard);
 
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
-        var leader = FlockHelper.FindBestLeader(_entMan, owner, TargetKey, SearchRadius, Whitelist) ?? owner;
+        var leader = FlockHelper.FindBestLeader(_entMan, owner, TargetKey, SearchRadius, Whitelist);
 
         blackboard.SetValue(TargetKey, new EntityCoordinates(leader, Vector2.Zero));
     }

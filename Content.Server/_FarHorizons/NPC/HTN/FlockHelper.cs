@@ -7,6 +7,8 @@ namespace Content.Server._FarHorizons.NPC.HTN;
 
 public static class FlockHelper
 {
+    private const int MaxDepth = 16;
+
     /// <summary>
     /// Follows the FollowTarget chain from <paramref name="start"/> to its root leader
     /// (an entity whose key points at itself). Null if the chain is broken, dead, or has no key.
@@ -16,7 +18,7 @@ public static class FlockHelper
         var mobState = entMan.System<MobStateSystem>();
         var current = start;
 
-        for (var i = 0; i < 4; i++) // depth cap also guards against cycles
+        for (var i = 0; i < MaxDepth; i++) // depth cap also guards against cycles
         {
             if (!entMan.EntityExists(current) || mobState.IsIncapacitated(current))
                 return null;
@@ -35,48 +37,33 @@ public static class FlockHelper
     }
 
     /// <summary>
-    /// Counts nearby flock members per root leader (including the owner) and returns
-    /// the root with the most followers. Ties go to the lowest EntityUid so every
-    /// zombie agrees on the winner.
+    /// Returns the lowest-EntityUid living flock member in range, counting the owner.
+    /// Every member in the same neighborhood picks the same leader.
     /// </summary>
-    public static EntityUid? FindBestLeader(IEntityManager entMan, EntityUid owner, string key,
+    public static EntityUid FindBestLeader(IEntityManager entMan, EntityUid owner, string key,
         float radius, EntityWhitelist? whitelist)
     {
         var lookup = entMan.System<EntityLookupSystem>();
         var whitelistSys = entMan.System<EntityWhitelistSystem>();
-        var counts = new Dictionary<EntityUid, int>();
+        var mobState = entMan.System<MobStateSystem>();
 
-        void Vote(EntityUid member)
-        {
-            if (FindCurrentLeader(entMan, member, key) is { } root)
-                counts[root] = counts.GetValueOrDefault(root) + 1;
-        }
-
-        Vote(owner); // no-op if the owner has no key yet
-
+        var best = owner;
         var coords = entMan.GetComponent<TransformComponent>(owner).Coordinates;
+
         foreach (var member in lookup.GetEntitiesInRange<HTNComponent>(coords, radius))
         {
-            if (member.Owner == owner)
+            if (member.Owner.Id >= best.Id)
                 continue;
 
             if (whitelist != null && !whitelistSys.IsWhitelistPass(whitelist, member.Owner))
                 continue;
 
-            Vote(member.Owner);
+            if (mobState.IsIncapacitated(member.Owner))
+                continue;
+
+            best = member.Owner;
         }
 
-        EntityUid? best = null;
-        var bestCount = 0;
-        foreach (var (leader, count) in counts)
-        {
-            if (count > bestCount || (count == bestCount && best != null && leader.Id < best.Value.Id))
-            {
-                best = leader;
-                bestCount = count;
-            }
-        }
-
-        return best;
+        return FindCurrentLeader(entMan, best, key) ?? best;
     }
 }

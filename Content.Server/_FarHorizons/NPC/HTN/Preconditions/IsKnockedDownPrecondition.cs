@@ -1,6 +1,7 @@
 using Content.Server.NPC;
 using Content.Server.NPC.HTN.Preconditions;
 using Content.Shared._FarHorizons.Traits.Assorted;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Stunnable;
 
 namespace Content.Server._FarHorizons.NPC.HTN.Preconditions;
@@ -8,12 +9,13 @@ namespace Content.Server._FarHorizons.NPC.HTN.Preconditions;
 public sealed partial class IsKnockedDownPrecondition : HTNPrecondition
 {
     [Dependency] private IEntityManager _entMan = default!;
-
+    
     public override bool IsMet(NPCBlackboard blackboard)
     {
+        var mobState = _entMan.System<MobStateSystem>();
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
 
-        if (_entMan.HasComponent<LegsParalyzedComponent>(owner))
+        if (_entMan.HasComponent<LegsParalyzedComponent>(owner) || mobState.IsIncapacitated(owner))
             return false;
 
         return _entMan.HasComponent<KnockedDownComponent>(owner);

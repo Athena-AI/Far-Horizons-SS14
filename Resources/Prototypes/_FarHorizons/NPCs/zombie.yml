@@ -190,7 +190,7 @@
             targetKey: FollowTarget
           - !type:CoordinatesNotInRangePrecondition
             targetKey: FollowTarget
-            rangeKey: FollowRange
+            rangeKey: FollowCloseRange
         operator: !type:MoveToOperator
           pathfindInPlanning: true
           targetKey: FollowTarget

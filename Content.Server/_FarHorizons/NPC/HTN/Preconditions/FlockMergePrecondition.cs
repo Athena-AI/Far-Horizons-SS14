@@ -26,6 +26,6 @@ public sealed partial class FlockMergePrecondition : HTNPrecondition
             return false;
 
         var best = FlockHelper.FindBestLeader(_entMan, owner, TargetKey, SearchRadius, Whitelist);
-        return best != null && best != owner;
+        return best != owner;
     }
 }

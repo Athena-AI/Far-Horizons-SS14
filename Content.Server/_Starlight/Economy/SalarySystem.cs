@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server._FarHorizons.Banking;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking.Events;
@@ -26,6 +27,7 @@ public sealed partial class SalarySystem : SharedSalarySystem
     [Dependency] private RoleSystem _roles = default!;
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private ISharedFactionManager _factions = default!; // Far Horizons
+    [Dependency] private BankingSystem _banking = default!; // Far Horizons
 
     private float _delayAccumulator = 0f;
     private readonly Stopwatch _stopwatch = new();
@@ -78,7 +80,7 @@ public sealed partial class SalarySystem : SharedSalarySystem
                         {
                             var amount = CalculateSalaryWithBonuses(salary, query.Current.Session);
 
-                            query.Current.Data.Balance += amount;
+                            _banking.ChangeBalance(query.Current.Session.AttachedEntity.Value, amount); // Far Horizons
                             var message = Loc.GetString("economy-chat-salary-message", ("amount", amount), ("sender", sender)); // Far Horizons
                             var wrappedMessage = Loc.GetString("economy-chat-salary-wrapped-message", ("amount", amount), ("sender", sender), ("senderColor", "#2384CE")); // Far Horizons
                             _chat.ChatMessageToOne(ChatChannel.Notifications, message, wrappedMessage, default, false, query.Current.Session.Channel, Color.FromHex("#57A3F7"));
@@ -105,6 +107,8 @@ public sealed partial class SalarySystem : SharedSalarySystem
             return;
 
         playerData.Balance += amount;
+        if (session.AttachedEntity != null)
+            _banking.ChangeBalance(session.AttachedEntity.Value, amount); // Far Horizons
 
         // We need to make a prototype
         var i = _random.Next(0, 20);

@@ -130,7 +130,6 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("noiseChannel");
             _prototypeManager.RegisterIgnore("playerConnectionWhitelist");
             _prototypeManager.RegisterIgnore("spaceBiome");
-            _prototypeManager.RegisterIgnore("worldgenConfig");
             _prototypeManager.RegisterIgnore("gameRule");
             _prototypeManager.RegisterIgnore("worldSpell");
             _prototypeManager.RegisterIgnore("entitySpell");
@@ -142,8 +141,13 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("ghostRoleRaffleDecider");
             _prototypeManager.RegisterIgnore("codewordGenerator");
             _prototypeManager.RegisterIgnore("codewordFaction");
-            _prototypeManager.RegisterIgnore("salvageMissionObjectiveHandler"); // Far Horizons
-            _prototypeManager.RegisterIgnore("bossMechanicsSheet"); // Far Horizons
+            // Far Horizons - start
+            _prototypeManager.RegisterIgnore("salvageMissionObjectiveHandler");
+            _prototypeManager.RegisterIgnore("bossMechanicsSheet");
+            _prototypeManager.RegisterIgnore("fusionReaction");
+            _prototypeManager.RegisterIgnore("fusionDecay");
+            _prototypeManager.RegisterIgnore("fusionConversion");
+            // Far Horizons - end
             
             _prototypeManager.RegisterIgnore("onSignActions"); //🌟Starlight🌟
 

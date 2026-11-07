@@ -212,6 +212,20 @@
     proto: DeputyOfficer
   equipment:
     head: ClothingHeadHelmetSecurityDeputySyndi
+    
+- type: loadout
+  id: EnforcerPDA
+  equipment:
+    id: EnforcerPDA
+    
+- type: loadout
+  id: SeniorEnforcerPDA
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorOfficer
+  equipment:
+    id: SeniorEnforcerPDA
+
 
 #Botanist
 - type: loadout
@@ -1688,6 +1702,16 @@
     - MagazinePistolSP
     - MagazinePistolSP
     - MagazinePistolRubber
+
+- type: loadout
+  id: LeverActionNS
+  dummyEntity: WeaponLeverActionNS
+  storage:
+    back:
+    - WeaponLeverActionNS
+    - SpeedLoaderMagnumLeverSP
+    - SpeedLoaderMagnumLeverSP
+    - SpeedLoaderMagnumLeverRubber
 
 # Silicons
 - type: roleLoadout

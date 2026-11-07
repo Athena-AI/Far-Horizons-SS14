@@ -265,6 +265,7 @@
   parent: VendingMachine
   id: VendingMachineCart
   name: PTech
+  suffix: NT #FH
   description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
   components:
   - type: VendingMachine
@@ -1017,6 +1018,7 @@
   parent: VendingMachine
   id: VendingMachineSec
   name: SecTech
+  suffix: NT #FH
   description: A vending machine containing Security equipment. A label reads SECURITY PERSONNEL ONLY.
   components:
   - type: VendingMachine

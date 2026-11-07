@@ -39,6 +39,7 @@
   id: UplinkRifleMosin
   name: uplink-rifle-mosin-name
   description: uplink-rifle-mosin-desc
+  icon: { sprite: /Textures/_FarHorizons/Objects/Weapons/Guns/Bolt_Actions/Mosin/mosin_x64x32.rsi, state: icon } #FH
   productEntity: WeaponSniperMosin
   cost:
     Telecrystal: 1
@@ -641,7 +642,7 @@
   id: UplinkMosinAmmo
   name: uplink-mosin-ammo-name
   description: uplink-mosin-ammo-desc
-  productEntity: MagazineBoxLightRifleFMJ
+  productEntity: MagazineBoxRifle762FMJ #FH
   cost:
     Telecrystal: 1
   categories:
@@ -1138,6 +1139,16 @@
     Telecrystal: 2
   categories:
   - UplinkDisruption
+
+- type: listing
+  id: UplinkTravelCamera
+  name: uplink-travel-camera-name
+  description: uplink-travel-camera-desc
+  productEntity: TravelCamera
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkDeception
 
 - type: listing
   id: UplinkDuffelSurgery
@@ -2325,3 +2336,21 @@
   - !type:BuyerJobCondition
     whitelist:
     - Lawyer
+
+#Objective items
+
+# FH, listing disabled
+#- type: listing
+#  id: uplinkHijackBeacon
+#  name: uplink-hijack-beacon-name
+#  description: uplink-hijack-beacon-desc
+#  productEntity: HijackBeacon
+#  categories:
+#    - UplinkObjective
+#  conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
+#  - !type:BuyerObjectiveWhitelistCondition
+#    whitelist:
+#      components:
+#      - HijackTradeStationCondition

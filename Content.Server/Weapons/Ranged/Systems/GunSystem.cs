@@ -17,13 +17,13 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Robust.Shared.Random;
 
 #region Starlight
 using Content.Shared.Mech.Components;
 using Robust.Server.GameObjects;
-using Robust.Shared.Random;
 #endregion Starlight
-using Content.Shared._FarHorizons.Vehicles.Components; //FarHorizons
+using Content.Shared._FarHorizons.Vehicles; //FarHorizons
 
 namespace Content.Server.Weapons.Ranged.Systems;
 

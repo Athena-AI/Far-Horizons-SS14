@@ -52,6 +52,9 @@ public sealed partial class TamperSealValueComponent : Component
         }
     };
 
+    [DataField, AutoNetworkedField] public NetEntity? PersonalRefundTarget = null; // Far Horizons
+    [DataField, AutoNetworkedField] public int? OrderId = null; // Far Horizons
+
 }
 
 [Serializable, NetSerializable]

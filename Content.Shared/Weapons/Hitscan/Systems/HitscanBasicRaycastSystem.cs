@@ -19,7 +19,7 @@ using Content.Shared.Mech.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared._Starlight.NullSpace;
 
-using Content.Shared._FarHorizons.Vehicles.Components;
+using Content.Shared._FarHorizons.Vehicles;
 using Content.Shared._FarHorizons.LimbDamage;
 using Content.Shared._FarHorizons.LimbDamage.Components;
 #endregion Starlight
@@ -34,13 +34,11 @@ public sealed partial class HitscanBasicRaycastSystem : EntitySystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private LimbDamageSystem _limbDamage = default!;
 
-    private EntityQuery<HitscanBasicVisualsComponent> _visualsQuery;
+    [Dependency] private EntityQuery<HitscanBasicVisualsComponent> _visualsQuery = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-
-        _visualsQuery = GetEntityQuery<HitscanBasicVisualsComponent>();
 
         SubscribeLocalEvent<HitscanBasicRaycastComponent, HitscanTraceEvent>(OnHitscanFired);
     }

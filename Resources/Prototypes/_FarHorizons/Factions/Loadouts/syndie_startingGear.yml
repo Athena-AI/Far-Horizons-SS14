@@ -155,7 +155,7 @@
 - type: startingGear
   id: SyndieChemistGear
   equipment:
-    id: ChemistryPDA
+    id: PharmacistPDA
     ears: ClothingHeadsetMedicalSyndi
     rig: ChemBag
     belt: ClothingBeltMedicalSyndiFilled

@@ -49,7 +49,8 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private ISharedFactionManager _factions = default!; // Far Horizons
 
-    private EntityQuery<SuitSensorComponent> _sensorQuery;
+    [Dependency] private EntityQuery<SuitSensorComponent> _sensorQuery = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -65,8 +66,6 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         SubscribeLocalEvent<SuitSensorComponent, EntGotInsertedIntoContainerMessage>(OnInsert);
         SubscribeLocalEvent<SuitSensorComponent, EntGotRemovedFromContainerMessage>(OnRemove);
         SubscribeLocalEvent<SuitSensorComponent, SuitSensorChangeDoAfterEvent>(OnSuitSensorDoAfter);
-
-        _sensorQuery = GetEntityQuery<SuitSensorComponent>();
     }
 
     /// <summary>
@@ -426,18 +425,17 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
                 status.TotalDamage = totalDamage;
                 status.TotalDamageThreshold = totalDamageThreshold;
                 EntityCoordinates coordinates;
-                var xformQuery = GetEntityQuery<TransformComponent>();
 
                 if (transform.GridUid != null)
                 {
                     coordinates = new EntityCoordinates(transform.GridUid.Value,
-                        Vector2.Transform(_transform.GetWorldPosition(transform, xformQuery),
-                            _transform.GetInvWorldMatrix(xformQuery.GetComponent(transform.GridUid.Value), xformQuery)));
+                        Vector2.Transform(_transform.GetWorldPosition(transform),
+                            _transform.GetInvWorldMatrix(transform.GridUid.Value)));
                 }
                 else if (transform.MapUid != null)
                 {
                     coordinates = new EntityCoordinates(transform.MapUid.Value,
-                        _transform.GetWorldPosition(transform, xformQuery));
+                        _transform.GetWorldPosition(transform));
                 }
                 else
                 {
@@ -454,18 +452,13 @@ public abstract partial class SharedSuitSensorSystem : EntitySystem
         {
             status.ShowDisease = carrier.ActiveDiseases.Any(x =>
             {
-                if(!_proto.TryIndex(x.Key.Id, out var disease))
+                var stages = _proto.Index(x.Key.Vector).Timers;
+                var maxStage = stages.Count;
+
+                if(x.Key.Stealth.HasFlag(DiseaseStealthFlags.Hidden) && x.Value.Stage < maxStage/2)
                     return false;
 
-                var index = x.Value.Stage;
-
-                if (index < 0 || index >= disease.Stages.Count)
-                {
-                    Log.Error($"Invalid stage index {index} for {x.Key}");
-                    return false;
-                }
-
-                return (disease.Stages[index].Stealth & DiseaseStealthFlags.Hidden) == 0;
+                return true;
             });
             status.DiseaseIcon = carrier.DiseaseIcon;
         }

@@ -1,4 +1,5 @@
 using Content.Server.Actions;
+using Content.Server.Store.Systems;
 using Content.Shared._FarHorizons.Magic;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store.Components;
@@ -16,11 +17,11 @@ public sealed partial class IntrinsicAugmentsSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<IntrinsicAugmentsComponent, MapInitEvent>(OnCantripInit);
-        SubscribeLocalEvent<StorePurchaseCompletedEvent>(OnPurchase);
+        SubscribeLocalEvent<IntrinsicAugmentsComponent, ComponentStartup>(OnCantripInit);
+        SubscribeLocalEvent<StoreBuyFinishedEvent>(OnPurchase);
     }
 
-    private void OnPurchase(ref StorePurchaseCompletedEvent ev)
+    private void OnPurchase(ref StoreBuyFinishedEvent ev)
     {
         if (!TryComp<IntrinsicAugmentsComponent>(ev.Buyer, out var comp) ||
             comp.Store == null ||
@@ -41,7 +42,7 @@ public sealed partial class IntrinsicAugmentsSystem : EntitySystem
         RemCompDeferred<IntrinsicAugmentsComponent>(ev.Buyer);
     }
 
-    private void OnCantripInit(Entity<IntrinsicAugmentsComponent> ent, ref MapInitEvent args)
+    private void OnCantripInit(Entity<IntrinsicAugmentsComponent> ent, ref ComponentStartup args)
     {
         _actions.AddAction(ent, ent.Comp.Action);
         EntityManager.AddComponents(ent, ent.Comp.AddComponents);

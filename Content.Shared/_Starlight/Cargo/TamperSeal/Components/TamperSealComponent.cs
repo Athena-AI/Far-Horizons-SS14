@@ -127,6 +127,8 @@ public sealed partial class TamperSealComponent : Component
     /// The color of the tamper seal sprite.
     /// </summary>
     [DataField, AutoNetworkedField] public Color FactionColor = Color.White; // Better than transparent as default.
+
+    [DataField, AutoNetworkedField] public NetEntity? EntityAccess = null;
     #endregion
 }
 
@@ -142,7 +144,8 @@ public partial record struct TamperSealAccessPattern(
 public enum TamperSealVisuals : byte
 {
     Opened,
-    Destroyed
+    Destroyed,
+    Size //FH
 }
 
 /// <summary>
@@ -165,7 +168,8 @@ public enum TamperSealLayers : byte
 public enum FactionTamperSealVisuals : byte
 {
     Opened,
-    Destroyed
+    Destroyed,
+    Size
 }
 
 /// <summary>

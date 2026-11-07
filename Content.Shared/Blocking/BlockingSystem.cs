@@ -18,6 +18,10 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
 
+#region Starlight
+using Content.Shared.Item.ItemToggle.Components;
+#endregion
+
 namespace Content.Shared.Blocking;
 
 public sealed partial class BlockingSystem : EntitySystem
@@ -32,6 +36,11 @@ public sealed partial class BlockingSystem : EntitySystem
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private ExamineSystemShared _examine = default!;
     [Dependency] private TurfSystem _turf = default!;
+
+    [Dependency] private EntityQuery<BlockingComponent> _blockQuery = default!;
+    [Dependency] private EntityQuery<HandsComponent> _handQuery = default!;
+    [Dependency] private EntityQuery<MobStateComponent> _mobQuery = default!;
+    [Dependency] private EntityQuery<BlockingUserComponent> _userQuery = default!;
 
     public override void Initialize()
     {
@@ -91,10 +100,7 @@ public sealed partial class BlockingSystem : EntitySystem
         if (args.Handled)
             return;
 
-        var blockQuery = GetEntityQuery<BlockingComponent>();
-        var handQuery = GetEntityQuery<HandsComponent>();
-
-        if (!handQuery.TryGetComponent(args.Performer, out var hands))
+        if (!_handQuery.TryGetComponent(args.Performer, out var hands))
             return;
 
         var shields = _handsSystem.EnumerateHeld((args.Performer, hands)).ToArray();
@@ -104,7 +110,7 @@ public sealed partial class BlockingSystem : EntitySystem
             if (shield == uid)
                 continue;
 
-            if (blockQuery.TryGetComponent(shield, out var otherBlockComp) && otherBlockComp.IsBlocking)
+            if (_blockQuery.TryGetComponent(shield, out var otherBlockComp) && otherBlockComp.IsBlocking)
             {
                 CantBlockError(args.Performer);
                 return;
@@ -165,15 +171,23 @@ public sealed partial class BlockingSystem : EntitySystem
             return false;
         }
 
+        #region Starlight
+        // Don't allow someone to block if their shield isn't activated
+        if (TryComp<ItemToggleComponent>(item, out var itemToggle) && !itemToggle.Activated)
+        {
+            CantBlockError(user);
+            return false;
+        }
+        #endregion
+
         //Don't allow someone to block if someone else is on the same tile
         var playerTileRef = _turf.GetTileRef(xform.Coordinates);
         if (playerTileRef != null)
         {
             var intersecting = _lookup.GetLocalEntitiesIntersecting(playerTileRef.Value, 0f);
-            var mobQuery = GetEntityQuery<MobStateComponent>();
             foreach (var uid in intersecting)
             {
-                if (uid != user && mobQuery.HasComponent(uid))
+                if (uid != user && _mobQuery.HasComponent(uid) && (MetaData(uid).Flags & MetaDataFlags.InContainer) == 0) //Starlight edit, if the entity is in a container (like a pAI) ignore it
                 {
                     TooCloseError(user);
                     return false;
@@ -271,17 +285,14 @@ public sealed partial class BlockingSystem : EntitySystem
         if (component.IsBlocking)
             StopBlocking(uid, component, user);
 
-        var userQuery = GetEntityQuery<BlockingUserComponent>();
-        var handQuery = GetEntityQuery<HandsComponent>();
-
-        if (!handQuery.TryGetComponent(user, out var hands))
+        if (!_handQuery.TryGetComponent(user, out var hands))
             return;
 
         var shields = _handsSystem.EnumerateHeld((user, hands)).ToArray();
 
         foreach (var shield in shields)
         {
-            if (HasComp<BlockingComponent>(shield) && userQuery.TryGetComponent(user, out var blockingUserComponent))
+            if (HasComp<BlockingComponent>(shield) && _userQuery.TryGetComponent(user, out var blockingUserComponent))
             {
                 blockingUserComponent.BlockingItem = shield;
                 return;

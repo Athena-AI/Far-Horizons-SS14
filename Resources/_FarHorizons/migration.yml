@@ -367,3 +367,20 @@ ShelfArmoryKrammerLargeFilled: ShelfArmoryCitadelLargeFilled
 ShelfArmoryP291SLargeFilled: ShelfArmorySparvSLargeFilled
 ShelfArmoryP291TLargeFilled: ShelfArmorySparvTLargeFilled
 WeaponPistolEchis: WeaponPistolViperROW
+
+# 2026-09-11 - economy moves to cashless
+NTCredit: Credstick1
+NTCredit10: Credstick10
+NTCredit50: Credstick50
+NTCredit100: Credstick100
+NTCredit200: Credstick200
+NTCredit500: Credstick500
+NTCredit1000: Credstick1000
+NTCredit10000: Credstick10000
+NTCredit30000: null
+NTCredit60000: null
+ATM: CredstickATM
+
+# 2026-10-01 - LightRifle/.30 proto rename to 762 for easier finding in spawn menu.
+CartridgeLightRifle: CartridgeRifle762SP
+MagazineLightRifleMaxim: MagazineRifle762Maxim

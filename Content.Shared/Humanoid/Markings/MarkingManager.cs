@@ -176,13 +176,16 @@ public sealed partial class MarkingManager
     /// </summary>
     public void EnsureValidLayers(Dictionary<HumanoidVisualLayers, List<Marking>> markingSets, HashSet<HumanoidVisualLayers> layers)
     {
-        foreach (var markings in markingSets.Values)
+        foreach (var (markingSet, markings) in markingSets)
         {
             for (var i = markings.Count - 1; i >= 0; i--)
             {
                 if (!TryGetMarking(markings[i], out var marking) || !layers.Contains(marking.BodyPart))
                     markings.RemoveAt(i);
             }
+
+            if (markings.Count == 0)
+                markingSets.Remove(markingSet);
         }
     }
 
@@ -214,7 +217,7 @@ public sealed partial class MarkingManager
                     continue;
                 }
 
-                counts[marking.BodyPart] = counts.GetValueOrDefault(marking.BodyPart) + 1;
+                counts[marking.BodyPart] = count + 1;
             }
         }
 

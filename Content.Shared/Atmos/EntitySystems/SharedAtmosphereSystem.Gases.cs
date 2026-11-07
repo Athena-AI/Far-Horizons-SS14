@@ -78,8 +78,6 @@ public abstract partial class SharedAtmosphereSystem
             GasReagents[idx] = gasPrototype.Reagent;
         }
 
-        Array.Resize(ref _gasMolarHeatCapacities, MathHelper.NextMultipleOf(Atmospherics.TotalNumberOfGases, 4));
-
         for (var i = 0; i < GasPrototypes.Length; i++)
         {
             /*
@@ -125,7 +123,7 @@ public abstract partial class SharedAtmosphereSystem
     /// considered ignitable, for both oxidizer and fuel.</param>
     /// <returns>True if the <see cref="GasMixture"/> is ignitable, otherwise, false.</returns>
     [PublicAPI]
-    public bool IsMixtureIgnitable(GasMixture mixture, float epsilon = 0.01f) // Far Horizons change default epsilon
+    public bool IsMixtureIgnitable(GasMixture mixture, float epsilon = 0.5f) // Far Horizons change default epsilon
     {
         return IsMixtureFuel(mixture, epsilon) && IsMixtureOxidizer(mixture, epsilon);
     }
@@ -424,7 +422,7 @@ public abstract partial class SharedAtmosphereSystem
         if (deltaP <= 0)
             return null;
 
-        return ReleaseGasAt(mixture, (float)GetFlowVolume(mixture, deltaP, area, dt), deltaP);
+        return ReleaseGasAt(mixture, (float)GetFlowVolume(mixture, deltaP, area, dt), mixture.Pressure);
     }
 
     /// <summary>

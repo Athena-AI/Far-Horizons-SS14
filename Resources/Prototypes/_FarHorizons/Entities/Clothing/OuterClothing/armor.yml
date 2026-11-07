@@ -769,3 +769,184 @@
       ArmLeft: {}
       LegRight: {}
       LegLeft: {}
+
+#region High Command
+- type: entity
+  parent: [ ClothingOuterArmorBaseCarapace, BaseCentcommContraband ]
+  id: ClothingOuterArmorHighCommandCarapace
+  name: High Command Carapace
+  suffix: NS
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/high_command_carapace.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/NeoSol/high_command_carapace.rsi
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - WhitelistChameleon
+
+- type: entity
+  parent:
+    [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseCentcommContraband]
+  id: ClothingOuterVestWebEliteHighCommand
+  name: High Command Elite Web Vest
+  suffix: NS
+  description: A synthetic armor vest redesignated for use by the High Command, webbing and heat resistant fibers included.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Vests/elitevest.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Vests/elitevest.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 0.1
+    coolingCoefficient: 0.1
+  - type: Armor
+    modifiers:
+      flatReductions:
+        Piercing: 5 
+        Heat: 4 
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.7
+        Heat: 0.3
+        Radiation: 0.5
+        Caustic: 0.5
+    staminaModifier: 0.35
+  - type: LimbArmor 
+    limbs:
+      ArmRight: {}
+      ArmLeft: {}
+      LegRight: {}
+      LegLeft: {}
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0.85
+
+
+#region ## NanoTrasen ##
+
+
+
+
+
+
+
+#region Lambda Raid Suit
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
+  id: ClothingOuterArmorLambdaRaid
+  name: Lambda Raid Suit "Apollo"
+  suffix: NT
+  description: A very durable and reasonably flexible suit of armor for those missions, where speed is of utmost necessity. Incapable of space walks.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/hardliner_raid.rsi
+    layers:
+    - state: icon
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/hardliner_raid.rsi
+    clothingVisuals:
+      outerClothing:
+        - state: equipped-OUTERCLOTHING
+      outerClothing-vox:
+        - state: equipped-OUTERCLOTHING-vox
+      outerClothing-resomi:
+        - state: equipped-OUTERCLOTHING-resomi
+      outerClothing-avali:
+        - state: equipped-OUTERCLOTHING-avali
+  - type: Pierceable
+    level: Metal
+  - type: Armor
+    modifiers:
+      flatReductions:
+        Piercing: 5
+        Heat: 4 
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.35
+        Heat: 0.3
+        Caustic: 0.5
+    staminaModifier: 0.1
+  - type: LimbArmor 
+    limbs:
+      ArmRight: {}
+      ArmLeft: {}
+      LegRight: {}
+      LegLeft: {}
+  - type: ExplosionResistance
+    damageCoefficient: 0.35
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1.1
+  #Shoulder mounted flashlight
+  - type: ToggleableVisuals
+    spriteLayer: light
+    clothingVisuals:
+      outerClothing:
+        - state: equipped-OUTERCLOTHING-light
+      outerClothing-vox:
+        - state: equipped-OUTERCLOTHING-light-vox
+      outerClothing-resomi:
+        - state: equipped-OUTERCLOTHING-light-resomi
+      outerClothing-avali:
+        - state: equipped-OUTERCLOTHING-light-avali
+  - type: ItemTogglePointLight
+  - type: Appearance
+  - type: HandheldLight
+    addPrefix: false
+    blinkingBehaviourId: blinking
+    radiatingBehaviourId: radiating
+  - type: PointLight
+    enabled: false
+    color: white
+    radius: 5
+    energy: 2
+    lightMask: ConeSingle
+    autoRot: true
+    netsync: false
+  - type: LightBehaviour
+    behaviours:
+      - !type:FadeBehaviour
+        id: radiating
+        interpolate: Linear
+        maxDuration: 2.0
+        startValue: 3.0
+        endValue: 2.0
+        isLooped: true
+        reverseWhenFinished: true
+      - !type:PulseBehaviour
+        id: blinking
+        interpolate: Nearest
+        maxDuration: 1.0
+        startValue: 0.1
+        endValue: 2.0
+        isLooped: true
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRechargeRate: 2
+  - type: Item
+    size: Normal
+
+#region ## USSP ##
+- type: entity
+  parent: [ ClothingOuterArmorBaseCarapace, ClothingOuterWinterCoat, BaseSovietContraband ]
+  id: ClothingOuterArmorAdmiralCarapace
+  name: Admiral's Carapace
+  suffix: USSP
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
+  components:
+  - type: Sprite
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/USSP/admiral_carapace.rsi
+  - type: Clothing
+    sprite: _FarHorizons/Clothing/OuterClothing/Armor/USSP/admiral_carapace.rsi
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - WhitelistChameleon

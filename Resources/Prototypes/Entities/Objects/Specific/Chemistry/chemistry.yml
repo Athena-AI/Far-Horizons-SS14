@@ -94,6 +94,11 @@
   - type: StaticPrice
     price: 30
   - type: DnaSubstanceTrace
+  #FarHorizons Start
+  - type: AtmosExposed
+  - type: SolutionGasHeatConductivity
+    solution: beaker
+  #FarHorizons End
 
 - type: entity
   parent: [SolutionBeaker, SolutionSmall, BaseItem]
@@ -157,7 +162,12 @@
   - type: StaticPrice
     price: 30
   - type: DnaSubstanceTrace
-
+  #FarHorizons Start
+  - type: AtmosExposed
+  - type: SolutionGasHeatConductivity
+    solution: beaker
+  #FarHorizons End
+  
 - type: entity
   name: beaker
   parent: BaseBeaker

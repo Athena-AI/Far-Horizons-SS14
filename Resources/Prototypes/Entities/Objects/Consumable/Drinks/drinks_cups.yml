@@ -17,6 +17,10 @@
   - type: ItemPrice
     priceCategory: drink
   # Starlight-end
+  #FH Start
+  - type: AtmosExposed
+  - type: SolutionGasHeatConductivity
+  #FH End
 
 # A mug is a type of cup.[2]
 - type: entity

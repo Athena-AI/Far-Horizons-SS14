@@ -211,4 +211,7 @@
     draggingStepSpacing: 0.15
     draggingFootprint: DraggingTrail
     draggingFootprintSize: 2.0
+  - type: AtmosExposed
+  - type: SolutionGasHeatConductivity
+    solution: puddle
   # Far Horizons end

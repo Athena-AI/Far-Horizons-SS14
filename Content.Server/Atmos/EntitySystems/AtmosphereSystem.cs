@@ -41,7 +41,7 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
     [Dependency] public PuddleSystem Puddle = default!;
     [Dependency] private DamageableSystem _damage = default!;
 
-    public const float ExposedUpdateDelay = 1f;
+    public const float ExposedUpdateDelay = 1f; //FH-Edit
     private float _exposedTimer = 0f;
 
     private EntityQuery<GridAtmosphereComponent> _atmosQuery;

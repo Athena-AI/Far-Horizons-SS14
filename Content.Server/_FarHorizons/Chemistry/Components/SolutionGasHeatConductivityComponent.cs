@@ -1,10 +1,10 @@
-namespace Content.Server.Chemistry.Components.SolutionManager;
+namespace Content.Server._FarHorizons.Chemistry;
 
 /// <summary>
 /// Lets the solution conduct heat to/from atmos gases.
 /// </summary>
 [RegisterComponent]
-public sealed class SolutionGasHeatConductivityComponent : Component
+public sealed partial class SolutionGasHeatConductivityComponent : Component
 {
     /// <summary>
     /// Solution that conducts heat.

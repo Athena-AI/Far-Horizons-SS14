@@ -1,9 +1,14 @@
+using System.Linq;
 using Content.Client.Clothing;
 using Content.Client.Items.Systems;
 using Content.Client.Toggleable;
+using Content.Shared._FarHorizons.Body;
 using Content.Shared._FarHorizons.PowerArmor;
 using Content.Shared.Clothing.Components;
+using Content.Shared.Humanoid;
+using Content.Shared.Inventory.Events;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Preferences;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Containers;
@@ -79,23 +84,6 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
         }
         if (ent.Comp.PartType == PowerArmorVisualLayers.Head && _sprite.LayerMapTryGet(powerArmor, "light", out _, false))
             _sprite.LayerSetRsi(powerArmor, "light", spriteData.ActualState.RSI, new Robust.Client.Graphics.RSI.StateId($"{spriteData.ActualState.StateId}-light"));
-
-        if(TryComp<ClothingComponent>(powerArmor, out var clothingComp) && spriteData.ActualState.StateId.Name != null)
-        {
-            var slot = ent.Comp.PartType == PowerArmorVisualLayers.Head ? "head" : "outerClothing";
-            _clothing.SetLayerRSI(clothingComp, slot , $"enum.PowerArmorVisualLayers.{ent.Comp.PartType}", spriteData.ActualState.RSI.Path.ToString(), spriteData.ActualState.StateId.Name);
-            _clothing.SetLayerVisibility(clothingComp, slot, $"enum.PowerArmorVisualLayers.{ent.Comp.PartType}", true);
-            
-            if (TryComp<ToggleableVisualsComponent>(powerArmor, out var toggleComp)
-                && toggleComp.ClothingVisuals.TryGetValue(slot, out var clothingVisuals)
-                && clothingVisuals.TryFirstOrDefault(out var targetLayer))
-            {
-                targetLayer.RsiPath = spriteData.ActualState.RSI.Path.ToString();
-                targetLayer.State = $"{spriteData.ActualState.StateId}-light";
-            }
-
-            _item.VisualsChanged(powerArmor);
-        }
     }
 
     protected override void OnPartEjected(Entity<PowerArmorPartComponent> ent, ref EntGotRemovedFromContainerMessage args)
@@ -122,6 +110,38 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
         }
     }
     
+    [SubscribeLocalEvent]
+    private void OnClothingEquipped(Entity<PowerArmorComponent> ent, ref GotEquippedEvent args)
+    {
+        if(!TryComp<ClothingComponent>(ent.Owner, out var clothingComp))
+            return;         
+        var race = CompOrNull<HumanoidProfileComponent>(args.EquipTarget)?.Species;
+
+        foreach(var slot in ent.Comp.Parts)
+        {
+            if(slot.Value == null || !TryComp<PowerArmorPartComponent>(slot.Value, out var partComp) || partComp.RsiPath == null)
+                continue;
+            
+            if(partComp.PartVisuals.TryGetValue($"{partComp.PartType}-{race}", out var states))
+                if(states.TryFirstOrDefault(x => x.State == $"equipped-{partComp.PartType}-{race})", out var state))
+            else if(!partComp.PartVisuals.TryGetValue($"{partComp.PartType}-{race}", out var states))
+                continue;
+
+            _clothing.SetLayerRSI(clothingComp, args.Slot, $"enum.PowerArmorVisualLayers.{slot.Key}", partComp.RsiPath, state.State);
+            _clothing.SetLayerVisibility(clothingComp, args.Slot, $"enum.PowerArmorVisualLayers.{slot.Key}", true);
+            
+            if (TryComp<ToggleableVisualsComponent>(ent.Owner, out var toggleComp)
+                && toggleComp.ClothingVisuals.TryGetValue(args.Slot, out var clothingVisuals)
+                && clothingVisuals.TryFirstOrDefault(out var targetLayer))
+            {
+                targetLayer.RsiPath = partComp.RsiPath;
+                targetLayer.State = $"{state.State}-unshaded";
+            }
+        }
+
+        _item.VisualsChanged(ent.Owner);
+    }
+
     [SubscribeLocalEvent]
     private void OnAppearanceChange(Entity<PowerArmorPartComponent> ent, ref AppearanceChangeEvent args)
     {

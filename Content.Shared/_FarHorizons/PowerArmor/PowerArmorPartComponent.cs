@@ -10,6 +10,21 @@ namespace Content.Shared._FarHorizons.PowerArmor;
 public sealed partial class PowerArmorPartComponent : Component
 {
     /// <summary>
+    /// The type of part this part is.
+    /// </summary>
+    [DataField(required: true)]
+    public PowerArmorVisualLayers PartType = default;
+
+    [DataField("sprite")]
+    public string? RsiPath;
+    
+    /// <summary>
+    /// The visuals for the power armor part.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, List<PrototypeLayerData>> PartVisuals = new();
+
+    /// <summary>
     /// How much damage goes to the user.
     /// </summary>
     [DataField(required: true)]
@@ -32,12 +47,6 @@ public sealed partial class PowerArmorPartComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public float SpeedModifier = 1.0f;
-
-    /// <summary>
-    /// The type of part this part is.
-    /// </summary>
-    [DataField(required: true)]
-    public PowerArmorVisualLayers PartType = default;
 
     [DataField]
     public TimeSpan InstallTime = TimeSpan.FromSeconds(5);

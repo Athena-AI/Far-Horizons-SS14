@@ -8,31 +8,55 @@
   },
   "states": [
     {
-        "name": "equipped-head",
+        "name": "equipped-HEAD",
         "directions": 4
     },
     {
-        "name": "equipped-head-light",
+        "name": "equipped-HEAD-light",
         "directions": 4
     },
     {
-        "name": "chest",
+        "name": "equipped-HEAD-avali",
         "directions": 4
     },
     {
-        "name": "larm",
+        "name": "equipped-HEAD-light-avali",
         "directions": 4
     },
     {
-        "name": "rarm",
+        "name": "equipped-HEAD-vox",
         "directions": 4
     },
     {
-        "name": "lleg",
+        "name": "equipped-HEAD-light-vox",
         "directions": 4
     },
     {
-        "name": "rleg",
+        "name": "equipped-HEAD-vulpkanin",
+        "directions": 4
+    },
+    {
+        "name": "equipped-HEAD-light-vulpkanin",
+        "directions": 4
+    },
+    {
+        "name": "equipped-CHEST",
+        "directions": 4
+    },
+    {
+        "name": "equipped-LARM",
+        "directions": 4
+    },
+    {
+        "name": "equipped-RARM",
+        "directions": 4
+    },
+    {
+        "name": "equipped-LLEG",
+        "directions": 4
+    },
+    {
+        "name": "equipped-RLEG",
         "directions": 4
     }
 ]

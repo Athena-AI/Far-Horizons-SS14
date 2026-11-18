@@ -2,13 +2,11 @@ using System.Linq;
 using Content.Client.Clothing;
 using Content.Client.Items.Systems;
 using Content.Client.Toggleable;
-using Content.Shared._FarHorizons.Body;
 using Content.Shared._FarHorizons.PowerArmor;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory.Events;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.Preferences;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Containers;
@@ -117,25 +115,43 @@ public sealed partial class PowerArmorSystem : SharedPowerArmorSystem
             return;         
         var race = CompOrNull<HumanoidProfileComponent>(args.EquipTarget)?.Species;
 
-        foreach(var slot in ent.Comp.Parts)
+        foreach (var slot in ent.Comp.Parts)
         {
-            if(slot.Value == null || !TryComp<PowerArmorPartComponent>(slot.Value, out var partComp) || partComp.RsiPath == null)
-                continue;
-            
-            if(partComp.PartVisuals.TryGetValue($"{partComp.PartType}-{race}", out var states))
-                if(states.TryFirstOrDefault(x => x.State == $"equipped-{partComp.PartType}-{race})", out var state))
-            else if(!partComp.PartVisuals.TryGetValue($"{partComp.PartType}-{race}", out var states))
+            if (slot.Value == null
+                || !TryComp<PowerArmorPartComponent>(slot.Value, out var partComp)
+                || partComp.RsiPath == null)
                 continue;
 
-            _clothing.SetLayerRSI(clothingComp, args.Slot, $"enum.PowerArmorVisualLayers.{slot.Key}", partComp.RsiPath, state.State);
-            _clothing.SetLayerVisibility(clothingComp, args.Slot, $"enum.PowerArmorVisualLayers.{slot.Key}", true);
-            
+            var partType = slot.Key.ToString();
+            string? speciesKey = null;
+            if (race != null)
+            {
+                var wanted = $"{partType}-{race}";
+                speciesKey = partComp.PartVisuals.Keys
+                    .FirstOrDefault(k => string.Equals(k, wanted, StringComparison.OrdinalIgnoreCase));
+            }
+
+            var key = speciesKey ?? partType;
+
+            if (!partComp.PartVisuals.TryGetValue(key, out var states))
+                continue; 
+
+            var baseState = states.FirstOrDefault(x => x.Shader == null);
+            if (baseState == null)
+                continue;
+
+            var unshadedState = states.FirstOrDefault(x => x.Shader == "unshaded");
+            unshadedState ??= baseState; 
+
+            _clothing.SetLayerRSI(clothingComp, args.Slot, $"enum.PowerArmorVisualLayers.{partType}", partComp.RsiPath, baseState.State);
+            _clothing.SetLayerVisibility(clothingComp, args.Slot, $"enum.PowerArmorVisualLayers.{partType}", true);
+
             if (TryComp<ToggleableVisualsComponent>(ent.Owner, out var toggleComp)
                 && toggleComp.ClothingVisuals.TryGetValue(args.Slot, out var clothingVisuals)
-                && clothingVisuals.TryFirstOrDefault(out var targetLayer))
+                && clothingVisuals.FirstOrDefault() is { } targetLayer)
             {
                 targetLayer.RsiPath = partComp.RsiPath;
-                targetLayer.State = $"{state.State}-unshaded";
+                targetLayer.State = unshadedState.State;
             }
         }
 

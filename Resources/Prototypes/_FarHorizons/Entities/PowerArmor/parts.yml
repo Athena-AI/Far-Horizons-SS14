@@ -26,9 +26,14 @@
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.Head"]
       offset: 0, -0.25 
-      state: equipped-head
+      state: equipped-HEAD
   - type: PowerArmorPart
     partType: Head
+    partVisuals: 
+      Head:
+      - state: equipped-HEAD
+      - state: equipped-HEAD-light
+        shader: unshaded
 
 - type: entity
   id: PowerArmorChestBase
@@ -38,9 +43,12 @@
   - type: Sprite
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.Chest"]
-      state: chest
+      state:  equipped-CHEST
   - type: PowerArmorPart
     partType: Chest
+    partVisuals:
+      Chest:
+      - state: equipped-CHEST
 
 - type: entity
   id: PowerArmorLArmBase
@@ -51,9 +59,12 @@
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.LArm"]
       offset: 0.25, 0
-      state: larm
+      state: equipped-LARM
   - type: PowerArmorPart
     partType: LArm
+    partVisuals:
+      LArm:
+      - state: equipped-LARM
 
 - type: entity
   id: PowerArmorRArmBase
@@ -64,9 +75,12 @@
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.RArm"]
       offset: -0.25, 0
-      state: rarm
+      state: equipped-RARM
   - type: PowerArmorPart
     partType: RArm
+    partVisuals:
+      RArm:
+      - state: equipped-RARM
 
 - type: entity
   id: PowerArmorLLegBase
@@ -77,9 +91,12 @@
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.LLeg"]
       offset: 0.125, 0.25
-      state: lleg
+      state: equipped-LLEG
   - type: PowerArmorPart
     partType: LLeg
+    partVisuals:
+      LLeg:
+      - state: equipped-LLEG
 
 - type: entity
   id: PowerArmorRLegBase
@@ -90,9 +107,12 @@
     layers: 
     - map: [ "enum.PowerArmorVisualLayers.RLeg"]
       offset: -0.125, 0.25
-      state: rleg
+      state: equipped-RLEG
   - type: PowerArmorPart
     partType: RLeg
+    partVisuals:
+      RLeg:
+      - state: equipped-RLEG
 
 #region NanoTrasen
 - type: entity
@@ -174,7 +194,19 @@
     partVisuals: 
       Head:
       - state: equipped-HEAD
-      - state: equipped-HEAD-unshaded
+      - state: equipped-HEAD-light
+        shader: unshaded
+      Head-avali:
+      - state: equipped-HEAD-avali
+      - state: equipped-HEAD-light-avali
+        shader: unshaded
+      Head-vox:
+      - state: equipped-HEAD-vox
+      - state: equipped-HEAD-light-vox
+        shader: unshaded
+      Head-vulpkanin:
+      - state: equipped-HEAD-vulpkanin
+      - state: equipped-HEAD-light-vulpkanin
         shader: unshaded
 
 #region Chest

@@ -10,25 +10,14 @@ public sealed partial class FHCCVars
     
     public static readonly CVarDef<string> ServerName =
         CVarDef.Create("lobby.server_name", "Far Horizons", CVar.SERVER | CVar.REPLICATED);
-
-    /// <summary>
-    ///     List of factions enabled for vote.
-    /// </summary>
-    public static readonly CVarDef<string> VotableFactions =
-        CVarDef.Create("factions.votable_factions", "FactionNT,FactionSyndicate", CVar.SERVER | CVar.REPLICATED);
-
-    /// <summary>
-    ///     Sets the duration of the faction vote timer.
-    /// </summary>
-    public static readonly CVarDef<int>
-        VoteTimerFaction = CVarDef.Create("vote.timerfaction", 90, CVar.SERVERONLY);
-
     public static readonly CVarDef<string> LimbTargettingStyle =
         CVarDef.Create("ui.limb_targetting_style", "LimbTargetHuman",
             CVar.CLIENTONLY | CVar.ARCHIVE);
-
     public static readonly CVarDef<bool> LimbTargettingMatchSpecies =
         CVarDef.Create("ui.limb_targetting_match_species", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> LimbTargettingSyncHealthAnalyzer =
+        CVarDef.Create("ui.limb_targetting_sync_health_analyzer", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<string> HostileTelegraphsColor = 
         CVarDef.Create("accessibility.hostile_telegraphs_color", "#FF0000FF", CVar.CLIENTONLY | CVar.ARCHIVE);

@@ -475,6 +475,7 @@
   - type: PowerCellDraw
     drawRate: 5.6 #FH-Edit Roughly the half the amount of the old duration
   - type: ToggleCellDraw
+    disableSelfRechargeOnToggle: true #FH
   - type: PowerCellSlot
     cellSlotId: cell_slot
     fitsInCharger: false
